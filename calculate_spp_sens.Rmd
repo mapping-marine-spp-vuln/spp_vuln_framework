@@ -1,0 +1,154 @@
+---
+title: "Calculate species sensitivity from traits"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+
+```
+
+# Summary
+
+Read in Excel spreadsheets of taxonomic traits filled in by taxon experts.  Process into a long/tidy format with checks on validity of category values.  Identify categories that were assigned non-valid values.
+
+# Data
+
+`_raw_data/all_taxa_trait_data.xlsx` is the raw workbook prepared by Nathalie Butt from the various submissions of the taxa-group experts.  This has been processed and cleaned to `_data/spp_traits_valid.csv`.
+
+`excel_files/trait_stressor_sens_tidy.xlsx` is a workbook with each sheet indicating a stressor, and sensitivity scores for each trait with respect to that stressor.
+
+# Methods
+
+## Use scored sensitivity traits to stressors against species scored to traits
+
+```{r}
+str_sens_traits_file <- here('trait_stressor_rankings/trait_stressor_sens.xlsx')
+layers <- readxl::excel_sheets(str_sens_traits_file)
+str_sens_trait_scores <- lapply(layers,
+        FUN = function(l) { # l <- layers[1]
+          df <- readxl::read_excel(str_sens_traits_file, sheet = l) %>%
+            mutate(stressor = l)
+          if(class(df$sens_score) == 'character') {
+            df <- df %>% 
+              mutate(sens_score = case_when(
+                str_detect(tolower(sens_score), '^y') ~ 1,
+                str_detect(tolower(sens_score), '^n') ~ 0,
+                TRUE ~ NA_real_))
+          }
+          return(df)
+        }) %>%
+  bind_rows() %>%
+  mutate(trait_val_clean = str_replace_all(tolower(trait_value), '[^0-9a-z<>]', ''),
+         category = tolower(category))
+
+
+
+spp_traits <- read_csv('_data/spp_traits_valid.csv') %>%
+  mutate(trait_val_clean = str_replace_all(tolower(trait_val), '[^0-9a-z<>]', ''))
+
+spp_sens <- spp_traits %>%
+  left_join(str_sens_trait_scores, by = c('category', 'trait', 'trait_val_clean')) %>%
+  filter(!is.na(stressor)) %>%
+  group_by(spp_gp, stressor, sheet) %>%
+  summarize(sens_score = sum(sens_score, na.rm = TRUE))
+```
+
+```{r}
+
+y <- str_sens_trait_scores %>%
+  filter(stressor == 'wildlife_strike') %>%
+  select(category, trait, trait_val = trait_value, s = sens_score) %>%
+  group_by(category, trait) %>%
+  filter(any(s > 0)) %>%
+  ungroup() %>%
+  distinct()
+
+vaq_df <- spp_traits %>%
+  filter(str_detect(tolower(spp_gp), '^vaquita')) %>%
+  right_join(y, by = c('category', 'trait', 'trait_val')) %>%
+  mutate(spp_trait = ifelse(is.na(spp_gp), 0, 1)) %>%
+  select(trait, trait_val, v = spp_trait)
+auk_df <- spp_traits %>%
+  filter(str_detect(tolower(spp_gp), '^auks')) %>%
+  right_join(y, by = c('category', 'trait', 'trait_val')) %>%
+  mutate(spp_trait = ifelse(is.na(spp_gp), 0, 1)) %>%
+  select(trait, trait_val, a = spp_trait)
+
+combo_df <- y %>%
+  select(-category) %>%
+  mutate(a = auk_df$a,
+         v = vaq_df$v)
+
+# s <- y$sens_score
+# v <- vaq_df$spp_trait
+# a <- auk_df$spp_trait
+# 
+# t(s) %*% v
+# t(s) %*% a
+```
+
+The method here is to take a vector of trait values for a species, and multiply it by a vector of stressor sensitivities per trait.  So a simplified version is:
+
+Vector $\mathbf{s}$ of sensitivity to wildlife strike stressors based on traits:
+
+`r knitr::kable(y %>% select(-category))`
+
+Vector $\mathbf{s}$ of trait presence for Vaquita:
+
+`r knitr::kable(vaq_df)` 
+
+Vector multiply: $\mathbf{s}^T\mathbf{v} = 2$
+
+-----
+
+Vector $\mathbf{a}$ of trait presence for Auks:
+
+`r knitr::kable(auk_df)` 
+
+Vector multiply: $\mathbf{s}^T\mathbf{a} = 4$
+
+-----
+
+See vectors side by side:
+
+`r knitr::kable(combo_df)` 
+
+Note that vaquita aren't listed as being at the air-sea interface... and while they're wee, they're bigger than a meter I am pretty sure.  So vaquita should really be scored a 4.
+
+```{r}
+p <- ggplot(spp_sens, aes(x = stressor, y = sens_score)) +
+  geom_jitter(size = 1, alpha = .6) +
+  theme(axis.text.x = element_text(angle = 75, hjust = 1)) +
+  facet_wrap(~ sheet)
+
+ggsave(here('figs/spp_sens_text.png'), height = 6, width = 6, dpi = 300)
+
+knitr::include_graphics(here('figs/spp_sens_text.png'))
+```
+
+### try adaptive capacity traits...
+
+later!
+
+``` {r}
+str_adcap_traits_file <- here('trait_stressor_rankings/trait_stressor_adcap.xlsx')
+```
+

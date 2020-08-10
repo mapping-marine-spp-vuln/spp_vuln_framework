@@ -38,6 +38,8 @@ Using the results from scores across all stressors, we can generate a matrix of 
 
 # Methods
 
+## Generate a new format for trait scoring
+
 Read in the cleaned up spreadsheet, convert to tidy format (long instead of wide).
 
 ```{r}
@@ -62,7 +64,7 @@ write_csv(sens_trait_df, here('int/sens_traits.csv'))
 write_csv(adcap_trait_df, here('int/adcap_traits.csv'))
 ```
 
-Sensitivity traits should be scored per stressor; adaptive capacity could be scored per stressor, but may be better scored against spatial and temporal characteristics of stressors.  
+Sensitivity traits should be scored per stressor; adaptive capacity could be scored per stressor, but perhaps can be scored against spatial and temporal characteristics of stressors, for better consistency?  
 
 * Spatial characteristics could be something like: 
     * localized (< 1 km in extent)
@@ -74,4 +76,5 @@ Sensitivity traits should be scored per stressor; adaptive capacity could be sco
     * extractive
     * non-extractive
     
+It may also be worth considering general resilience traits (like global population and such) separately from specific resilience traits - though this starts to get more into the weeds.
 
