@@ -67,7 +67,7 @@ catvals_df_prehabs <- catvals_df_raw %>%
 
 ### Read in the first column of habitats from the list.  Paste together with
 ### semicolon separator.  Set to lower case.
-habs <- readxl::read_excel(here('_raw_data/hab_list.xlsx')) %>%
+habs <- readxl::read_excel(here('excel_files/hab_list.xlsx')) %>%
   janitor::clean_names() %>%
   .$habitat_types %>%
   tolower() %>%
@@ -133,7 +133,7 @@ process_sheet <- function(f, s) {
   }
     
   df <- df_raw %>%
-    gather(spp_gp, trait_val, -c(1:3)) %>%
+    gather(spp_gp, trait_value, -c(1:3)) %>%
     janitor::clean_names() %>%
     select(-category_units)
   
@@ -145,7 +145,7 @@ process_sheet <- function(f, s) {
              ### fill in below the "physiological tolerance breadths" category
            category = ifelse(!category %in% categories, NA, category)) %>%
     fill(category, .direction = 'down') %>%
-    select(category, trait, spp_gp, trait_val) %>%
+    select(category, trait, spp_gp, trait_value) %>%
     filter(!is.na(trait)) %>%
       ### drops rows with no trait listed
     filter(trait != category) %>%
@@ -167,18 +167,154 @@ Check raw data against valid category values.
 * Split trait values on semicolons to separate multiple cell values; then unnest and str_trim.
 
 ```{r}
+clean_up_mess <- function(df) {
+  df %>%
+    mutate(trait_val_clean = str_trim(trait_val_clean)) %>%
+    filter(trait_val_clean != '') %>%
+    select(category, trait, trait_value, trait_val_clean, spp_gp, sheet) %>%
+    distinct()
+}
+
+clean_trait <- function(x) {
+  str_replace_all(x, '[^0-9a-zA-Z<>;]', '') %>% tolower()
+}
+```
+
+### clean up troublesome traits
+
+```{r}
 catvals_df_clean <- read_csv('int/category_vals_valid.csv') %>%
   mutate(cat_val_clean = str_replace_all(tolower(cat_vals), '[^0-9a-z<>;]', ''))
 
+### focus on zone traits
+zone_vals <- catvals_df_valid %>%
+  filter(trait == 'zone') %>%
+  .$cat_vals %>% paste0(collapse = '|')
+
+spp_data_zones <- raw_data_df %>%
+  filter(trait == 'zone') %>%
+  ### fix misspelling:
+  mutate(trait_value = str_replace_all(trait_value, 'demerssal', 'demersal')) %>%
+  mutate(tmp = str_extract_all(tolower(trait_value), zone_vals)) %>%
+  unnest(tmp) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+  
+### focus on mobility traits
+mob_vals <- catvals_df_valid %>%
+  filter(trait == 'adult mobility') %>%
+  .$cat_vals %>% paste0(collapse = '|')
+# "sessile|nearly sessile/sedentary|passive|vertical migrator|mobile resident|horizontal migrator|nomadic"
+  
+spp_data_mobility <- raw_data_df %>%
+  filter(trait == 'adult mobility') %>%
+  mutate(tmp = str_replace_all(tolower(trait_value), '[^a-z ]+', ';')) %>%
+  ### split and unnest, trim and clean:
+  mutate(tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  ### clean up some inconsistencies
+  mutate(tmp = str_replace_all(tmp, 'horiz[a-z]+', 'horizontal'),
+         tmp = str_replace_all(tmp, 'vertic[a-z]+', 'vertical'),
+         tmp = str_replace_all(tmp, 'migrat[a-z]+', 'migrator'),
+         tmp = str_replace_all(tmp, 'residen[a-z]+', 'resident'),
+         tmp = str_replace_all(tmp, 'sedentary', 'nearly sessile/sedentary')) %>%
+  # mutate(tmp = ifelse(str_detect(tmp, mob_vals),
+  #                                 str_extract_all(tmp, mob_vals),
+  #                                 tmp)) %>%
+  mutate(tmp = str_extract_all(tmp, mob_vals)) %>%
+  unnest(tmp) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+
+### focus on depth traits
+depth_vals <- catvals_df_valid %>%
+  filter(trait == 'depth (min/max)') %>%
+  .$cat_vals %>% paste0(collapse = '|')
+
+spp_data_depth <- raw_data_df %>%
+  filter(trait == 'depth (min/max)') %>%
+  mutate(tmp = str_replace_all(tolower(trait_value), '[^a-z0-9 ]+', ';')) %>%
+  mutate(tmp = str_extract_all(tmp, depth_vals)) %>%
+  unnest(tmp) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+
+### focus on thermal sensitivity traits
+### ocean warming values are 5°C-10-15-20-25-30°C
+spp_data_thermal1 <- raw_data_df %>%
+  filter(str_detect(trait, 'thermal - sensitivity to ocean warming')) %>%
+  rowwise() %>%
+  mutate(trait_num = str_extract_all(trait_value, '[0-9]+') %>% unlist() %>% as.integer() %>% max(),
+         trait_num = min(floor(trait_num / 5) * 5, 30),
+         trait_num = ifelse(is.infinite(trait_num), NA, trait_num)) %>%
+  ungroup() %>%
+  mutate(tmp = ifelse(!is.na(trait_num), paste0(trait_num, 'c'),
+                                tolower(trait_value))) %>%
+  mutate(trait_val_clean = ifelse(str_detect(tmp, 'broad|low sensitivity'), 
+                                  '30c', tmp)) %>%
+  clean_up_mess()
+
+# spp_data_thermal1$trait_val_clean %>% unique()
+
+### heat spike values are yes/no
+spp_data_thermal2 <- raw_data_df %>%
+  filter(str_detect(trait, 'thermal - sensitivity to heat spikes')) %>%
+  mutate(tmp = tolower(trait_value),
+         tmp = case_when(str_detect(tmp, 'broad') ~ 'no',
+                         str_detect(tmp, 'narrow|sensitive') ~ 'yes',
+                         str_detect(tmp, 'can recover') ~ 'no',
+                         TRUE ~ tmp)) %>%
+  mutate(trait_val_clean = str_replace_all(tmp, '[^a-z0-9]+', '_')) %>%
+  clean_up_mess()
+
+# spp_data_thermal2$trait_val_clean %>% unique()
+
+### focus on pH traits
+ph_vals <- catvals_df_valid %>%
+  filter(trait == 'ph') %>%
+  .$cat_vals %>% paste0(collapse = '|')
+
+### ph values are <7.4|7.5-7.7|7.8-8.2
+spp_data_ph <- raw_data_df %>%
+  filter(trait == 'ph') %>%
+  ### fix a typo:
+  mutate(trait_value = str_replace(trait_value, '(?<=\\d),(?=\\d)', '.')) %>%
+  ### get mean - find into which category the mean falls
+  rowwise() %>%
+  mutate(trait_mean = str_extract_all(trait_value, '[0-9.]+') %>% unlist() %>% as.numeric() %>% mean(),
+         trait_mean = ifelse(is.infinite(trait_mean), NA, trait_mean)) %>%
+  ungroup() %>%
+  mutate(tmp = case_when(is.na(trait_mean) ~ tolower(trait_value),
+                         trait_mean < 7.5 ~ '<7.4',
+                         trait_mean < 7.8 ~ '7.5-7.7',
+                         TRUE ~ '7.8-8.2')) %>%
+  mutate(tmp = case_when(str_detect(tmp, 'broad|not sensitive') ~ '<7.4', 
+                         str_detect(tmp, 'narrow')              ~ '7.8-8.2',
+                                    TRUE                        ~ tmp)) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+
+```
+
+### combine into a relatively clean df
+
+``` {r}
+
 spp_data_clean <- raw_data_df %>%
-  mutate(trait_val_clean = str_replace_all(tolower(trait_val), '[^0-9a-z<>;]', '')) %>%
+  filter(!trait %in% c('zone', 'adult mobility', 'depth (min/max)', 'ph') &
+           !str_detect(trait, 'thermal - sensitivity'))%>%
+  mutate(trait_val_clean = clean_trait(trait_value)) %>%
   ### split and unnest, trim and clean:
   mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%
   unnest(trait_val_clean) %>%
-  mutate(trait_val_clean = str_trim(trait_val_clean)) %>%
-  filter(trait_val_clean != '') %>%
-  select(category, trait, trait_val, trait_val_clean, spp_gp, sheet) %>%
-  distinct()
+  clean_up_mess() %>%
+  bind_rows(spp_data_zones) %>%
+  bind_rows(spp_data_mobility) %>%
+  bind_rows(spp_data_depth) %>%
+  bind_rows(spp_data_thermal1) %>%
+  bind_rows(spp_data_thermal2) %>%
+  bind_rows(spp_data_ph) %>%
+  mutate(trait_val_clean = clean_trait(trait_val_clean)) ### just to make sure
 
 spp_validcheck <- spp_data_clean %>%
   left_join(catvals_df_clean %>% mutate(valid = TRUE), 
@@ -194,10 +330,25 @@ write_csv(spp_invalid, 'invalid_spp_category_values.csv')
 
 spp_valid <- spp_validcheck %>%
   filter(valid) %>%
-  select(category, trait, trait_val, spp_gp, sheet)
+  select(category, trait, trait_value, trait_val_clean, spp_gp, sheet) %>%
+  mutate(category = str_replace_all(category, '[^A-Za-z0-9]+', '_') %>% tolower(),
+         category = str_replace_all(category, '^_|_$', ''),
+         trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_') %>% tolower(),
+         trait    = str_replace_all(trait, '^_|_$', ''))
 
-spp_valid$spp_gp %>% n_distinct()
+# spp_valid$spp_gp %>% n_distinct()
 
 write_csv(spp_valid, '_data/spp_traits_valid.csv')
+```
+
+There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups accounted for with at least some valid data.
+
+#### Trouble spots - count of spp with mismatched trait values by trait
+
+``` {r}
+knitr::kable(spp_invalid %>% 
+               group_by(trait) %>% 
+               summarize(n_mismatches = n()) %>% 
+               arrange(desc(n_mismatches)))
 ```
 
