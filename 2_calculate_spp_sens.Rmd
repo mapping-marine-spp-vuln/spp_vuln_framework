@@ -73,11 +73,19 @@ spp_traits <- read_csv('_data/spp_traits_valid.csv') %>%
 ```
 
 ```{r}
-str_sens_traits_file <- here('trait_stressor_rankings/trait_stressor_sens.xlsx')
-layers <- readxl::excel_sheets(str_sens_traits_file)
-str_sens_trait_scores <- lapply(layers,
+trait_str_sens_files <- list.files(here('trait_stressor_rankings'), 
+                                    pattern = 'trait_stressor_sens',
+                                    full.names = TRUE)
+
+sens_traits_list <- vector('list', length = length(trait_str_sens_files)) %>%
+  setNames(trait_str_sens_files)
+
+for(f in trait_str_sens_files) {
+  layers <- readxl::excel_sheets(f)
+  
+  sens_trait_scores <- lapply(layers,
         FUN = function(l) { # l <- layers[1]
-          df <- readxl::read_excel(str_sens_traits_file, sheet = l) %>%
+          df <- readxl::read_excel(f, sheet = l) %>%
             mutate(stressor = l)
           if(class(df$sens_score) == 'character') {
             df <- df %>% 
@@ -88,10 +96,16 @@ str_sens_trait_scores <- lapply(layers,
           }
           return(df)
         }) %>%
-  bind_rows() %>%
-  clean_traits() %>%
-  ### drop these - going into other categories - we'll change the sheets later
-  filter(!str_detect(category, 'spatial_scale|breeding_nesting|foraging_range'))
+    bind_rows() %>%
+    clean_traits() %>%
+    ### drop these - going into other categories - we'll change the sheets later
+    filter(!str_detect(category, 'spatial_scale|breeding_nesting|foraging_range')) 
+  
+  sens_traits_list[[f]] <- sens_trait_scores
+}
+
+str_sens_trait_scores <- bind_rows(sens_traits_list)
+
 
 spp_sens <- spp_traits %>%
   left_join(str_sens_trait_scores, by = c('category', 'trait', 'trait_val_clean')) %>%
@@ -101,7 +115,7 @@ spp_sens <- spp_traits %>%
   ungroup()
 ```
 
-```{r}
+```{r, eval = FALSE}
 
 y <- str_sens_trait_scores %>%
   filter(stressor == 'wildlife_strike') %>%
@@ -135,33 +149,39 @@ combo_df <- y %>%
 # t(s) %*% a
 ```
 
-The method here is to take a vector of trait values for a species, and multiply it by a vector of stressor sensitivities per trait.  So a simplified version is:
+<!-- The method here is to take a vector of trait values for a species, and multiply it by a vector of stressor sensitivities per trait.  So a simplified version is: -->
 
-Vector $\mathbf{s}$ of sensitivity to wildlife strike stressors based on traits:
+<!-- Vector $\mathbf{s}$ of sensitivity to wildlife strike stressors based on traits: -->
 
-`r knitr::kable(y %>% select(-category))`
+``` {r, eval = FALSE}
+knitr::kable(y %>% select(-category))
+```
 
-Vector $\mathbf{v}$ of trait presence for Vaquita:
+<!-- Vector $\mathbf{v}$ of trait presence for Vaquita: -->
 
 `r knitr::kable(vaq_df)` 
 
-Vector multiply: $\mathbf{s}^T\mathbf{v} = 2$
+<!-- Vector multiply: $\mathbf{s}^T\mathbf{v} = 2$ -->
 
------
+<!-- ----- -->
 
-Vector $\mathbf{a}$ of trait presence for Auks:
+<!-- Vector $\mathbf{a}$ of trait presence for Auks: -->
 
-`r knitr::kable(auk_df)` 
+```{r, eval = FALSE}
+knitr::kable(auk_df)
+``` 
 
-Vector multiply: $\mathbf{s}^T\mathbf{a} = 4$
+<!-- Vector multiply: $\mathbf{s}^T\mathbf{a} = 4$ -->
 
------
+<!-- ----- -->
 
-See vectors side by side:
+<!-- See vectors side by side: -->
 
-`r knitr::kable(combo_df)` 
+```{r, eval = FALSE}
+knitr::kable(combo_df)
+``` 
 
-Note that vaquita aren't listed as being at the air-sea interface... and while they're wee, they're bigger than a meter I am pretty sure.  So vaquita should really be scored a 4.  And the mammal sheet should be checked over.
+<!-- Note that vaquita aren't listed as being at the air-sea interface... and while they're wee, they're bigger than a meter I am pretty sure.  So vaquita should really be scored a 4.  And the mammal sheet should be checked over. -->
 
 ```{r}
 p <- ggplot(spp_sens, aes(x = stressor, y = sens_score)) +
@@ -218,25 +238,36 @@ knitr::include_graphics(here('figs/spp_adcap_gen_scores.png'))
 Specific adaptive capacity traits are basically related to an organism's ability to avoid or mitigate exposure, primarily through movement and larval dispersal.
 
 ``` {r}
-adcap_spec_traits_file <- here('trait_stressor_rankings/trait_stressor_adcap_specific.xlsx')
+adcap_spec_traits_files <- list.files(here('trait_stressor_rankings'), 
+                                    pattern = 'trait_stressor_adcap_spec',
+                                    full.names = TRUE)
 
-layers <- readxl::excel_sheets(adcap_spec_traits_file)
-adcap_spec_traits <- lapply(layers,
-        FUN = function(l) { # l <- layers[1]
-          df <- readxl::read_excel(adcap_spec_traits_file, sheet = l) %>%
-            mutate(stressor = l)
-          if(class(df$adcap_score) == 'character') {
-            df <- df %>% 
-              mutate(adcap_score = case_when(
-                str_detect(tolower(adcap_score), '^y') ~ 1,
-                str_detect(tolower(adcap_score), '^n') ~ 0,
-                TRUE ~  as.numeric(adcap_score)))
-          }
-          return(df)
-        }) %>%
-  bind_rows() %>%
-  clean_traits() %>%
-  filter(!str_detect(category, 'spatial_scale'))
+adcap_spec_traits_list <- vector('list', length = length(adcap_spec_traits_files)) %>%
+  setNames(adcap_spec_traits_files)
+
+for(f in adcap_spec_traits_files) {
+  layers <- readxl::excel_sheets(f)
+  spec_traits <- lapply(layers,
+          FUN = function(l) { # l <- layers[1]
+            df <- readxl::read_excel(f, sheet = l) %>%
+              mutate(stressor = l)
+            if(class(df$adcap_score) == 'character') {
+              df <- df %>% 
+                mutate(adcap_score = case_when(
+                  str_detect(tolower(adcap_score), '^y') ~ 1,
+                  str_detect(tolower(adcap_score), '^n') ~ 0,
+                  TRUE ~  as.numeric(adcap_score)))
+            }
+            return(df)
+          }) %>%
+    bind_rows() %>%
+    clean_traits() %>%
+    filter(!str_detect(category, 'spatial_scale'))
+  
+  adcap_spec_traits_list[[f]] <- spec_traits
+}
+
+adcap_spec_traits <- bind_rows(adcap_spec_traits_list)
 
 spp_adcap_spec <- spp_traits %>%
   select(-trait_value) %>%
@@ -273,26 +304,37 @@ knitr::include_graphics(here('figs/spp_adcap_spec_scores.png'))
 Exposure potential modifier checks whether the depth and oceanic zones of the stressor match with the depth and oceanic zones of the species.  These fall into the "spatial scale" category with the exception of EOO.
 
 ```{r}
-str_exposure_file <- here('trait_stressor_rankings/trait_stressor_adcap_specific.xlsx')
+exp_traits_files <- list.files(here('trait_stressor_rankings'), 
+                                    pattern = 'trait_stressor_adcap_spec',
+                                    full.names = TRUE)
 
-layers <- readxl::excel_sheets(str_exposure_file)
-str_exposure <- lapply(layers,
-        FUN = function(l) { # l <- layers[1]
-          df <- readxl::read_excel(str_exposure_file, sheet = l) %>%
-            mutate(stressor = l)
-          if(class(df$adcap_score) == 'character') {
-            df <- df %>% 
-              mutate(adcap_score = case_when(
-                str_detect(tolower(adcap_score), '^y') ~ 1,
-                str_detect(tolower(adcap_score), '^n') ~ 0,
-                TRUE ~ as.numeric(adcap_score)))
-          }
-          return(df)
-        }) %>%
-  bind_rows() %>%
-  clean_traits() %>%
-  rename(exposure = adcap_score) %>%
-  filter(str_detect(category, 'spatial_scale'))
+exp_traits_list <- vector('list', length = length(exp_traits_files)) %>%
+  setNames(exp_traits_files)
+
+for(f in exp_traits_files) {
+  layers <- readxl::excel_sheets(f)
+  str_exp <- lapply(layers,
+          FUN = function(l) { # l <- layers[1]
+            df <- readxl::read_excel(f, sheet = l) %>%
+              mutate(stressor = l)
+            if(class(df$adcap_score) == 'character') {
+              df <- df %>% 
+                mutate(adcap_score = case_when(
+                  str_detect(tolower(adcap_score), '^y') ~ 1,
+                  str_detect(tolower(adcap_score), '^n') ~ 0,
+                  TRUE ~ as.numeric(adcap_score)))
+            }
+            return(df)
+          }) %>%
+    bind_rows() %>%
+    clean_traits() %>%
+    rename(exposure = adcap_score) %>%
+    filter(str_detect(category, 'spatial_scale'))
+  
+  exp_traits_list[[f]] <- str_exp
+}
+  
+str_exposure <- bind_rows(exp_traits_list)
 
 spp_exposure <- spp_traits %>%
   select(-trait_value) %>%
@@ -331,8 +373,8 @@ based on vector $\mathbf{g}$ of trait-based general adaptive capacity;
 $$\text{exposure potential modifier } E_{i,j} = \begin{cases} 1 \text{ when }\mathbf{e}_j^T \mathbf{t}_i > 0\\ 0 \text{ else} \end{cases}$$
 based on vector $\mathbf{e}_j$ of trait-based presence of stressor $j$ (i.e. depth zones and ocean zones in which stressor occurs).
 
-$$\text{vulnerability } V_{i,j} = \frac{S_{i,j} / \bar{S_j}}{1 + G_i/\bar{G} + K_{i,j}/\bar{K_j}} \times E_{i,j}$$
-Each component ($S_{i,j}, G_i, K_{i,j}$) is normalized by the mean value for that component for that stressor across all species.
+$$\text{vulnerability } V_{i,j} = \frac{S_{i,j} / {S_j}'}{1 + G_i/ {G}' + K_{i,j}/ {K_j}'} \times E_{i,j}$$
+Each component ($S_{i,j}, G_i, K_{i,j}$) is normalized by a reference value ($S_{j}', G', K_{j}'$ using mean, median, max, etc) for that component for that stressor across all species.  Note: median risks referencing to zero for some stressors with few sensitivities (e.g. light pollution); mean risks having a very low reference for the same.  Max risks being driven by an outlier, but here the sensitivity scores are generally capped at some low-ish value since there are a finite number of traits that can confer sensitivity.  Therefore, we will use max as the reference point.  We may wish to consider max possible, which may differ from max observed, in a future iteration?
 
 For species with NA in specific adaptive capacity, force to zero (no matching adaptive traits); for species with NA in exposure potential, force to 1 (assume exposure potential).
 
@@ -346,31 +388,33 @@ spp_vulnerability <- spp_sens %>%
          exposure_mod     = ifelse(is.na(exposure_mod), 1, exposure_mod)) %>%
   ### calculate means.  General adcap is overall; specific adcap and sensitivity are by stressor
   group_by(stressor) %>%
-  mutate(mean_adcap_spec = mean(adcap_spec_score),
-         mean_sens = mean(sens_score)) %>%
+  mutate(max_adcap_spec = max(adcap_spec_score),
+         max_sens = max(sens_score)) %>%
   ungroup() %>%
-  mutate(mean_adcap_gen = mean(adcap_gen_score)) %>%
+  mutate(max_adcap_gen = max(adcap_gen_score)) %>%
   ### rescale components
-  mutate(sens_rescale = sens_score / mean_sens,
-         adcap_gen_rescale = adcap_gen_score / mean_adcap_gen,
-         adcap_spec_rescale = adcap_spec_score / mean_adcap_spec) %>%
+  mutate(sens_rescale = sens_score / max_sens,
+         adcap_gen_rescale = adcap_gen_score / max_adcap_gen,
+         adcap_spec_rescale = adcap_spec_score / max_adcap_spec) %>%
   ### mash 'em all together
   mutate(vuln = sens_rescale / (1 + adcap_gen_rescale + adcap_spec_rescale) * exposure_mod)
 
 vuln_plot <- ggplot(spp_vulnerability, aes(x = stressor, y = vuln)) +
-  ggtheme_plot(base_size = 7) +
-  geom_jitter(size = 1, alpha = .6, width = .2, height = .05) +
+  ggtheme_plot() +
+  geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
         strip.background = element_rect(fill = 'grey90')) +
-  facet_wrap(~ sheet, scales = 'free_y')
+  facet_wrap(~ sheet) +
+  labs(title = 'rescale using max reference point')
 
-ggsave(plot = vuln_plot, filename = here('figs/vuln_plot.png'), width = 6, height = 5, dpi = 300)
+ggsave(plot = vuln_plot, filename = here('figs/vuln_plot.png'), width = 8, height = 8, dpi = 300)
 knitr::include_graphics(here('figs/vuln_plot.png'))
+
 ```
 
 ## examine components by taxon and stressor
 
-```{r}
+```{r, eval = FALSE}
 spp_vuln_summary <- spp_vulnerability %>%
   group_by(sheet, stressor) %>%
   summarize(n_spp = n_distinct(spp_gp),

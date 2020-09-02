@@ -43,7 +43,6 @@ Set up path and sheetnames
 raw_file <- here('_raw_data/all_taxa_trait_data.xlsx')
 
 sheetnames <- readxl::excel_sheets(raw_file)
-sheetnames <- sheetnames[sheetnames != 'habitat_list'] ### drop extraneous sheet
 ```
 
 Process Nat's key
@@ -114,6 +113,8 @@ The following sheets seem to have additional information with headers: `r probs`
 * Reef fishes have a species count in the first line (which becomes header) then genus/species in the second line (which should be captured as the taxonomic group).
 * Corals have genus in top line, and then spp count in second line.  Not a problem; this will be dropped.
 * Echinoderms have species names in top row (which becomes header, OK) then some limited info on order in second row (which will be dropped).
+* Molluscs have order info in first line, then species info in second line (which should be captured as the taxonomic group).  NOTE: raw file modified to remove a duplicate of Anadara trapezia (all values identical), and fix where suddenly the species names switch rows.
+* fish_Beth have order info in first line, family in second line, then species info in third line (which should be captured as the taxonomic group).
 
 ``` {r}
 process_sheet <- function(f, s) {
@@ -124,9 +125,10 @@ process_sheet <- function(f, s) {
   categories <- read_csv('int/category_vals_valid.csv') %>%
     .$category %>% unique()
   
-  if(s %in% c('cephalopods', 'reef_other_fish')) {
+  swap_colnames <- c('cephalopods' = 1, 'reef_other_fish' = 1, 'molluscs' = 1, 'fish_Beth' = 2)
+  if(s %in% names(swap_colnames)) {
     ### problematic spp sheets - taxonomic info in second line of csv
-    spp_names <- df_raw[1, ]
+    spp_names <- df_raw[swap_colnames[s], ] %>% as.character()
     spp_names[1:3] <- c('category', 'sub_category', 'category units')
     df_raw <- df_raw %>%
       setNames(spp_names)
@@ -154,6 +156,7 @@ process_sheet <- function(f, s) {
   
   return(df_cleaned)
 }
+
 
 raw_data_df <- lapply(sheetnames, FUN = function(s) process_sheet(raw_file, s)) %>%
   bind_rows()
@@ -341,14 +344,15 @@ spp_valid <- spp_validcheck %>%
 write_csv(spp_valid, '_data/spp_traits_valid.csv')
 ```
 
-There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups accounted for with at least some valid data.
+There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups accounted for with at least some valid trait codes.
 
 #### Trouble spots - count of spp with mismatched trait values by trait
 
 ``` {r}
-knitr::kable(spp_invalid %>% 
-               group_by(trait) %>% 
+
+DT::datatable(spp_invalid %>% 
+               group_by(trait, sheet) %>% 
                summarize(n_mismatches = n()) %>% 
-               arrange(desc(n_mismatches)))
+               arrange(sheet, desc(n_mismatches)))
 ```
 
