@@ -159,7 +159,9 @@ knitr::kable(y %>% select(-category))
 
 <!-- Vector $\mathbf{v}$ of trait presence for Vaquita: -->
 
-`r knitr::kable(vaq_df)` 
+```{r, eval = FALSE} 
+knitr::kable(vaq_df)
+``` 
 
 <!-- Vector multiply: $\mathbf{s}^T\mathbf{v} = 2$ -->
 

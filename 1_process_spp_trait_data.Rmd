@@ -104,10 +104,10 @@ hdr_check <- lapply(sheetnames, FUN = function(s) check_headers(raw_file, s)) %>
   bind_rows() %>%
   filter(!is.na(val))
 
-probs <- hdr_check$sheet %>% unique()
+extras <- hdr_check$sheet %>% unique()
 ```
 
-The following sheets seem to have additional information with headers: `r probs`.
+The following sheets seem to have additional information with headers: `r extras`.
 
 * Cephalopods have order info in first line (which becomes header) then species info in second line (which should be captured as the taxonomic group).
 * Reef fishes have a species count in the first line (which becomes header) then genus/species in the second line (which should be captured as the taxonomic group).
@@ -125,14 +125,15 @@ process_sheet <- function(f, s) {
   categories <- read_csv('int/category_vals_valid.csv') %>%
     .$category %>% unique()
   
-  swap_colnames <- c('cephalopods' = 1, 'reef_other_fish' = 1, 'molluscs' = 1, 'fish_Beth' = 2)
-  if(s %in% names(swap_colnames)) {
-    ### problematic spp sheets - taxonomic info in second line of csv
-    spp_names <- df_raw[swap_colnames[s], ] %>% as.character()
-    spp_names[1:3] <- c('category', 'sub_category', 'category units')
-    df_raw <- df_raw %>%
-      setNames(spp_names)
-  }
+  ### this should no longer be necessary - spp traits xlsx is fixed
+  # swap_colnames <- c('cephalopods' = 1, 'reef_other_fish' = 1, 'molluscs' = 1, 'fish_Beth' = 2)
+  # if(s %in% names(swap_colnames)) {
+  #   ### problematic spp sheets - taxonomic info in second line of csv
+  #   spp_names <- df_raw[swap_colnames[s], ] %>% as.character()
+  #   spp_names[1:3] <- c('category', 'sub_category', 'category units')
+  #   df_raw <- df_raw %>%
+  #     setNames(spp_names)
+  # }
     
   df <- df_raw %>%
     gather(spp_gp, trait_value, -c(1:3)) %>%
