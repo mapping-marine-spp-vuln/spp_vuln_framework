@@ -40,15 +40,15 @@ Columns `category`, `sub-category`, and `category units` are standard.  Addition
 Set up path and sheetnames
 
 ```{r}
-raw_file <- here('_raw_data/master_all_taxa_trait_data.xlsx')
+raw_file <- here('_raw_data/xlsx/master_all_taxa_trait_data.xlsx')
 
 sheetnames <- readxl::excel_sheets(raw_file)
 ```
 
-Process Nat's key
+Process Nat's key to create a final key
 
 ```{r}
-catvals_df_raw <- readxl::read_excel(here('excel_files/cat_val_key_tidyish.xlsx')) %>%
+catvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/cat_val_key_tidyish.xlsx')) %>%
   janitor::clean_names() %>%
   select(category, trait, cat_vals) %>%
   filter(!(is.na(category) & is.na(trait))) %>%
@@ -66,7 +66,7 @@ catvals_df_prehabs <- catvals_df_raw %>%
 
 ### Read in the first column of habitats from the list.  Paste together with
 ### semicolon separator.  Set to lower case.
-habs <- readxl::read_excel(here('excel_files/hab_list.xlsx')) %>%
+habs <- readxl::read_excel(here('_raw_data/xlsx/hab_list.xlsx')) %>%
   janitor::clean_names() %>%
   .$habitat_types %>%
   tolower() %>%
@@ -163,7 +163,14 @@ process_sheet <- function(f, s) {
 
 
 raw_data_df <- lapply(sheetnames, FUN = function(s) process_sheet(raw_file, s)) %>%
-  bind_rows()
+  bind_rows() %>%
+  ### fix typos:
+  mutate(trait_value = str_replace_all(trait_value, 'demerssal', 'demersal'),
+         trait_value = str_replace_all(trait_value, 'esturary', 'estuary'),
+         trait_value = str_replace_all(trait_value, 'interntidal', 'intertidal'),
+         trait_value = str_replace_all(trait_value, 'lentgh', 'length'),
+         trait_value = str_replace_all(trait_value, 'this sp,', 'this sp.'))
+
 ```
 
 Check raw data against valid category values.
@@ -183,7 +190,26 @@ clean_up_mess <- function(df) {
 }
 
 clean_trait <- function(x) {
-  str_replace_all(x, '[^0-9a-zA-Z<>;]', '') %>% tolower()
+  ### First: remove numeric commas
+  y <- str_replace_all(x, '(?<=[0-9]),(?=[0-9])', '') %>%
+    ### then: drop all non-alphanumeric and a few key punctuation:
+    str_replace_all('[^0-9a-zA-Z<>,;\\-\\.\\(\\)/ ]', '') %>% 
+    ### lower case; do it after dropping any weird non-ascii characters:
+    tolower() %>% 
+    str_trim() %>%
+    str_replace_all('n/a', 'na') %>%
+    ### convert remaining commas and slashes to semicolons:
+    str_replace_all('[,/]', ';') %>%
+    ### drop spaces after numbers e.g. 3 mm -> 3mm:
+    str_replace_all('(?<=[0-9]) ', '') %>%
+    ### drop spaces before or after punctuation (non-alphanumeric):
+    str_replace_all(' (?=[^a-z0-9\\(])|(?<=[^a-z0-9\\)]) ', '') %>%
+    ### manually fix some valid slashes:
+    str_replace_all('nearly sessile;sedentary', 'nearly sessile/sedentary') %>%
+    str_replace_all('live birth;egg care', 'live birth/egg care') %>%
+    str_replace_all('chitin;caco3mix', 'chitin/caco3 mix')
+    
+  return(y)
 }
 ```
 
@@ -191,7 +217,7 @@ clean_trait <- function(x) {
 
 ```{r}
 catvals_df_clean <- read_csv('_data/trait_vals_valid.csv') %>%
-  mutate(cat_val_clean = str_replace_all(tolower(cat_vals), '[^0-9a-z<>;]', ''))
+  mutate(cat_val_clean = clean_trait(cat_vals))
 
 ### focus on zone traits
 zone_vals <- catvals_df_valid %>%
@@ -201,7 +227,6 @@ zone_vals <- catvals_df_valid %>%
 spp_data_zones <- raw_data_df %>%
   filter(trait == 'zone') %>%
   ### fix misspelling:
-  mutate(trait_value = str_replace_all(trait_value, 'demerssal', 'demersal')) %>%
   mutate(tmp = str_extract_all(tolower(trait_value), zone_vals)) %>%
   unnest(tmp) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
@@ -323,40 +348,31 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_ph) %>%
   mutate(trait_val_clean = clean_trait(trait_val_clean)) ### just to make sure
 
-spp_validcheck <- spp_data_clean %>%
-  left_join(catvals_df_clean %>% mutate(valid = TRUE), 
-            by = c('category', 'trait', 
-                   'trait_val_clean' = 'cat_val_clean')) %>%
-  filter(!is.na(spp_gp))
+tmp <- spp_data_clean %>% select(trait_value, trait_val_clean) %>% distinct()
 
-spp_invalid <- spp_validcheck %>%
-  filter(is.na(valid)) %>%
-  filter(trait_val_clean != 'na') %>%
-  select(-valid)
-write_csv(spp_invalid, 'invalid_spp_category_values.csv')
-
-spp_valid <- spp_validcheck %>%
-  filter(valid) %>%
-  select(category, trait, trait_value, trait_val_clean, spp_gp, sheet) %>%
-  mutate(category = str_replace_all(category, '[^A-Za-z0-9]+', '_') %>% tolower(),
-         category = str_replace_all(category, '^_|_$', ''),
-         trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_') %>% tolower(),
-         trait    = str_replace_all(trait, '^_|_$', ''))
-
-# spp_valid$spp_gp %>% n_distinct()
-
-write_csv(spp_valid, '_data/spp_traits_valid.csv')
 ```
 
-There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups accounted for with at least some valid trait codes.
+### write out clean species group sheets
 
-#### Trouble spots - count of spp with mismatched trait values by trait
+Here we need to recombine multiple trait vals into one line.
+```{r}
+spp_data_out <- spp_data_clean %>%
+  mutate(spp_gp = tolower(spp_gp)) %>%
+  rename(trait_val_orig = trait_value) %>%
+  group_by(category, trait, sheet, spp_gp, trait_val_orig) %>%
+  summarize(trait_val_clean = paste0(trait_val_clean, collapse = ';')) %>%
+  ungroup()
 
-``` {r}
+sheets <- spp_data_out$sheet %>% unique()
 
-DT::datatable(spp_invalid %>% 
-               group_by(trait, sheet) %>% 
-               summarize(n_mismatches = n()) %>% 
-               arrange(sheet, desc(n_mismatches)))
+for(s in sheets) { ### s <- sheets[1]
+  spp_gp_data <- spp_data_out %>%
+    filter(sheet == s) %>%
+    spread(spp_gp, trait_val_clean)
+  
+  fstem <- here('_raw_data/spp_trait_csvs/spp_traits_%s.csv')
+  write_csv(spp_gp_data, sprintf(fstem, s))
+}
 ```
+
 
