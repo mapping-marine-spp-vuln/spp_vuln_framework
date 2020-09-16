@@ -1,0 +1,53 @@
+category,trait,sheet,trait_val_orig,acropora,diploastrea heliopora,pocillopora,porites
+biophysical traits,adult body mass/body size,corals,unknown,unknown,unknown,unknown,unknown
+biophysical traits,biomineral,corals,aragonite,aragonite,aragonite,aragonite,aragonite
+biophysical traits,calcium carbonate structure location,corals,external,external,external,external,external
+biophysical traits,calcium carbonate structure stages,corals,adult,adult,adult,adult,adult
+biophysical traits,communication requirement (sound),corals,no,no,no,no,no
+biophysical traits,extreme pressure wave sensitive structures,corals,no,no,no,no,no
+biophysical traits,flight,corals,no,no,no,no,no
+biophysical traits,"navigation requirements (sound or light, or magnetic)",corals,no,no,no,no,no
+biophysical traits,respiration structures,corals,diffusiion,diffusiion,NA,NA,NA
+biophysical traits,respiration structures,corals,diffusion,NA,diffusion,diffusion,diffusion
+breeding/nesting range/number of spawning aggregations (fish),number of sites,corals,does not aggregate,does not aggregate,does not aggregate,does not aggregate,does not aggregate
+foraging range,"number of sites, incl. terrestrial wetlands",corals,does not aggregate,does not aggregate,does not aggregate,does not aggregate,does not aggregate
+movement,adult mobility,corals,sessile,sessile,sessile,sessile,sessile
+movement,planktonic larval duration (pld),corals,<1 week mostly; some 4 months-1 yr,<1week mostly;some 4months-1yr,<1week mostly;some 4months-1yr,<1week mostly;some 4months-1yr,<1week mostly;some 4months-1yr
+physiological tolerance breadths,dissolved oxygen,corals,low tolerance,low tolerance,low tolerance,low tolerance,low tolerance
+physiological tolerance breadths,ph,corals,7.8-8.2,7.8-8.2,7.8-8.2,7.8-8.2,7.8-8.2
+physiological tolerance breadths,salinity,corals,stenohaline,stenohaline,stenohaline,stenohaline,stenohaline
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),corals,not sensitive,not sensitive,not sensitive,not sensitive,not sensitive
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,corals,yes - narrow,yes,yes,yes,yes
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,corals,30°C,30c,30c,30c,30c
+r (reproductive traits),age to 1st reproduction/generation time,corals,1-5 yr,NA,NA,1-5yr,NA
+r (reproductive traits),age to 1st reproduction/generation time,corals,1-5/5-10,NA,1-5;5-10,NA,1-5;5-10
+r (reproductive traits),age to 1st reproduction/generation time,corals,1-5yrs,1-5yrs,NA,NA,NA
+r (reproductive traits),are there sub-populations?,corals,yes,yes,yes,yes,yes
+r (reproductive traits),can the sex ratio be altered by a stressor?,corals,no,no,no,no,no
+r (reproductive traits),fecundity,corals,"1,000-10,000",1000-10000,1000-10000,1000-10000,1000-10000
+r (reproductive traits),feeding larva (post-hatching metamorphosis),corals,non-feeding,non-feeding,non-feeding,non-feeding,non-feeding
+r (reproductive traits),global population size,corals,100K-1 M,NA,NA,NA,100k-1m
+r (reproductive traits),global population size,corals,100k-1M,100k-1m,NA,NA,NA
+r (reproductive traits),global population size,corals,100K-1M,NA,NA,100k-1m,NA
+r (reproductive traits),global population size,corals,10K-100K,NA,10k-100k,NA,NA
+r (reproductive traits),lifetime # reproductive opportunities,corals,100+,NA,NA,100,NA
+r (reproductive traits),lifetime # reproductive opportunities,corals,500+,NA,NA,NA,500
+r (reproductive traits),lifetime # reproductive opportunities,corals,51-100,51-100,51-100,NA,NA
+r (reproductive traits),max age,corals,>500yrs,NA,NA,NA,>500yrs
+r (reproductive traits),max age,corals,10-20yrs,NA,NA,10-20yrs,NA
+r (reproductive traits),max age,corals,20-100 yrs,NA,20-100yrs,NA,NA
+r (reproductive traits),max age,corals,20-100yrs,20-100yrs,NA,NA,NA
+r (reproductive traits),parental investment,corals,spawner,spawner,spawner,NA,NA
+r (reproductive traits),parental investment,corals,spawner/brooder,NA,NA,spawner;brooder,spawner;brooder
+r (reproductive traits),post-birth/hatching parental dependence,corals,"NA",na,na,na,na
+r (reproductive traits),reproductive strategy,corals,sexual dioecious,NA,NA,NA,sexual dioecious
+r (reproductive traits),reproductive strategy,corals,sexual hermaphrodite,sexual hermaphrodite,sexual hermaphrodite,sexual hermaphrodite,NA
+spatial scale of species,eoo (range),corals,">20,000",>20000,>20000,>20000,>20000
+spatial scale of species,zone,corals,benthic,benthic,benthic,benthic,benthic
+specialisation,across-stage dependent habitats + condition,corals,"coral reef, surface waters",coral reef;surface waters,coral reef;surface waters,coral reef;surface waters,coral reef;surface waters
+specialisation,air-sea interface,corals,no,no,no,no,no
+specialisation,dependent interspecific interactions,corals,no,no,no,no,no
+specialisation,extreme diet specialization,corals,generalist,generalist,generalist,generalist,generalist
+specialisation,light dependence,corals,yes,yes,yes,yes,yes
+specialisation,terrestrial and marine life stages,corals,no,no,no,no,no
+specialisation,within-stage dependent habitats + condition,corals,coral reef,coral reef,coral reef,coral reef,coral reef

@@ -1,0 +1,143 @@
+category,trait,sheet,trait_val_orig,acrchordus,amblyrhynchus cristatus,caretta caretta,chelonia mydas,crocodylus acutus,crocodylus porosus,dermochelys coriacea,ephalophis,eretmochelys imbricata,hydrelaps,hydrophiidae,laticauda,lepidochelys kempii,lepidochelys olivacea,natator depressus,parahydrophis
+biophysical traits,adult body mass/body size,reptiles,>1000 mm,NA,NA,NA,>1000mm,NA,NA,>1000mm,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,adult body mass/body size,reptiles,>1000mm,NA,>1000mm,NA,NA,>1000mm,>1000mm,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,adult body mass/body size,reptiles,50-999,NA,NA,50-999,NA,NA,NA,NA,NA,50-999,NA,NA,NA,50-999,50-999,50-999,NA
+biophysical traits,adult body mass/body size,reptiles,large (max body length ~ 2m),large (max body length2m),NA,NA,NA,NA,NA,NA,large (max body length2m),NA,large (max body length2m),large (max body length2m),large (max body length2m),NA,NA,NA,large (max body length2m)
+biophysical traits,biomineral,reptiles,mo,NA,mo,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,biomineral,reptiles,"NA",NA,NA,na,na,na,na,na,NA,na,NA,NA,NA,na,na,na,NA
+biophysical traits,biomineral,reptiles,none,none,NA,NA,NA,NA,NA,NA,none,NA,none,none,none,NA,NA,NA,none
+biophysical traits,calcium carbonate structure location,reptiles,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none
+biophysical traits,calcium carbonate structure stages,reptiles,no,NA,no,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,calcium carbonate structure stages,reptiles,none,none,NA,none,none,none,none,none,none,none,none,none,none,none,none,none,none
+biophysical traits,communication requirement (sound),reptiles,no,no,no,no,no,NA,NA,no,no,no,no,no,no,no,no,no,no
+biophysical traits,communication requirement (sound),reptiles,yes,NA,NA,NA,NA,yes,yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,extreme pressure wave sensitive structures,reptiles,lungs,NA,NA,NA,NA,NA,lungs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,extreme pressure wave sensitive structures,reptiles,lungs?,lungs,NA,NA,NA,NA,NA,NA,lungs,NA,lungs,lungs,lungs,NA,NA,NA,lungs
+biophysical traits,extreme pressure wave sensitive structures,reptiles,probably not,NA,probably not,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,extreme pressure wave sensitive structures,reptiles,unknown,NA,NA,unknown,unknown,NA,NA,unknown,NA,unknown,NA,NA,NA,unknown,unknown,unknown,NA
+biophysical traits,flight,reptiles,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+biophysical traits,"navigation requirements (sound or light, or magnetic)",reptiles,no,no,no,NA,NA,NA,NA,NA,no,NA,no,NA,no,NA,NA,NA,no
+biophysical traits,"navigation requirements (sound or light, or magnetic)",reptiles,unknown,NA,NA,NA,NA,unknown,unknown,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+biophysical traits,"navigation requirements (sound or light, or magnetic)",reptiles,unknown (known to come up to light),NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,unknown (known to come up to light),NA,NA,NA,NA,NA
+biophysical traits,"navigation requirements (sound or light, or magnetic)",reptiles,yes,NA,NA,yes,yes,NA,NA,yes,NA,yes,NA,NA,NA,yes,yes,yes,NA
+biophysical traits,respiration structures,reptiles,lungs,lungs,lungs,lungs,lungs,NA,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs
+breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",reptiles,medium,medium,NA,NA,NA,NA,NA,NA,medium,NA,medium,medium,NA,medium,NA,NA,medium
+breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",reptiles,"NA",NA,NA,na,na,NA,NA,na,NA,na,NA,NA,NA,NA,na,na,NA
+breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",reptiles,small,NA,small,NA,NA,NA,NA,NA,NA,NA,NA,NA,small,NA,NA,NA,NA
+breeding/nesting range/number of spawning aggregations (fish),number of sites,reptiles,few,few,few,NA,NA,NA,NA,NA,few,NA,few,NA,few,few,NA,NA,few
+breeding/nesting range/number of spawning aggregations (fish),number of sites,reptiles,many,NA,NA,many,many,many,many,many,NA,many,NA,many,NA,NA,many,many,NA
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,reptiles,yes,NA,yes,yes,yes,yes,yes,yes,NA,yes,NA,NA,NA,yes,yes,yes,NA
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,reptiles,yes (dependence on reef and intertidal habitats),NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,yes (dependence on reef and intertidal habitats),NA,NA,NA,NA,NA
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,reptiles,yes (dependent on coastal cave and crevices for nest sites),NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,yes (dependent on coastal cave and crevices for nest sites),NA,NA,NA,NA
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,reptiles,yes (dependent on intertidal and mangrove habitats),yes (dependent on intertidal and mangrove habitats),NA,NA,NA,NA,NA,NA,yes (dependent on intertidal and mangrove habitats),NA,yes (dependent on intertidal and mangrove habitats),NA,NA,NA,NA,NA,yes (dependent on intertidal and mangrove habitats)
+foraging range,"if one/few, size",reptiles,"few, medium",few;medium,NA,NA,NA,NA,NA,NA,few;medium,NA,few;medium,few;medium,few;medium,NA,NA,NA,few;medium
+foraging range,"if one/few, size",reptiles,medium,NA,NA,NA,NA,medium,medium,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+foraging range,"if one/few, size",reptiles,"NA",NA,NA,na,na,NA,NA,na,NA,na,NA,NA,NA,na,na,na,NA
+foraging range,"if one/few, size",reptiles,very small,NA,very small,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+foraging range,"number of sites, incl. terrestrial wetlands",reptiles,does not aggregate,NA,NA,does not aggregate,does not aggregate,NA,NA,does not aggregate,NA,does not aggregate,NA,NA,NA,does not aggregate,does not aggregate,does not aggregate,NA
+foraging range,"number of sites, incl. terrestrial wetlands",reptiles,few - limited to specific leking sites oneach island,NA,few-limited to specific leking sites oneach island,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+foraging range,"number of sites, incl. terrestrial wetlands",reptiles,many,many,NA,NA,NA,many,many,NA,many,NA,many,many,many,NA,NA,NA,many
+foraging range,sub-population dependence on particular sites,reptiles,no,NA,NA,no,no,NA,NA,no,NA,no,NA,NA,NA,no,no,no,NA
+foraging range,sub-population dependence on particular sites,reptiles,yes,NA,yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+foraging range,sub-population dependence on particular sites,reptiles,"yes (coral reefs, seagrass beds, coastal bays)",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,yes (coral reefs;seagrass beds;coastal bays),NA,NA,NA,NA,NA
+foraging range,sub-population dependence on particular sites,reptiles,yes (coral reefs),NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,yes (coral reefs),NA,NA,NA,NA
+foraging range,sub-population dependence on particular sites,reptiles,"yes (estuaries, mangroves)",yes (estuaries;mangroves),NA,NA,NA,NA,NA,NA,yes (estuaries;mangroves),NA,yes (estuaries;mangroves),NA,NA,NA,NA,NA,yes (estuaries;mangroves)
+movement,adult mobility,reptiles,mobile resident,NA,mobile resident,NA,NA,mobile resident,mobile resident,NA,NA,NA,NA,mobile resident,NA,NA,NA,NA,NA
+movement,adult mobility,reptiles,"mobile resident, amphibious",mobile resident,NA,NA,NA,NA,NA,NA,mobile resident,NA,mobile resident,NA,mobile resident,NA,NA,NA,mobile resident
+movement,adult mobility,reptiles,nomadic,NA,NA,NA,NA,NA,NA,nomadic,NA,NA,NA,NA,NA,NA,nomadic,NA,NA
+movement,planktonic larval duration (pld),reptiles,not larvae,NA,not larvae,not larvae,not larvae,not larvae,not larvae,not larvae,NA,not larvae,NA,NA,NA,not larvae,not larvae,not larvae,NA
+physiological tolerance breadths,dissolved oxygen,reptiles,air-breather,NA,air-breather,air-breather,air-breather,air-breather,air-breather,air-breather,NA,air-breather,NA,NA,NA,air-breather,air-breather,air-breather,NA
+physiological tolerance breadths,dissolved oxygen,reptiles,broad (air-breather),broad (air-breather),NA,NA,NA,NA,NA,NA,broad (air-breather),NA,broad (air-breather),broad (air-breather),broad (air-breather),NA,NA,NA,broad (air-breather)
+physiological tolerance breadths,ph,reptiles,broad,NA,<7.4,<7.4,<7.4,NA,NA,<7.4,NA,<7.4,NA,NA,NA,<7.4,<7.4,<7.4,NA
+physiological tolerance breadths,ph,reptiles,unknown,NA,NA,NA,NA,unknown,unknown,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+physiological tolerance breadths,ph,reptiles,unkown,unkown,NA,NA,NA,NA,NA,NA,unkown,NA,unkown,unkown,unkown,NA,NA,NA,unkown
+physiological tolerance breadths,salinity,reptiles,broad (Hypersaline - freshwater),broad (hypersaline-freshwater),NA,NA,NA,NA,NA,NA,broad (hypersaline-freshwater),NA,broad (hypersaline-freshwater),broad (hypersaline-freshwater),broad (hypersaline-freshwater),NA,NA,NA,broad (hypersaline-freshwater)
+physiological tolerance breadths,salinity,reptiles,"NA",NA,na,na,na,na,na,na,NA,na,NA,NA,NA,na,na,na,NA
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),reptiles,"NA",NA,NA,NA,NA,na,na,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),reptiles,not sensitive,NA,not sensitive,not sensitive,not sensitive,NA,NA,not sensitive,NA,not sensitive,NA,NA,NA,not sensitive,not sensitive,not sensitive,NA
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),reptiles,sensitive,sensitive,NA,NA,NA,NA,NA,NA,sensitive,NA,sensitive,sensitive,sensitive,NA,NA,NA,sensitive
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,reptiles,broad,NA,NA,no,no,NA,NA,no,NA,no,NA,NA,NA,no,no,no,NA
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,reptiles,narrow,NA,yes,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,reptiles,no - broad,no,NA,NA,NA,NA,NA,NA,no,NA,no,no,no,NA,NA,NA,no
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,reptiles,30,NA,30c,30c,30c,30c,30c,30c,NA,30c,NA,NA,NA,30c,30c,30c,NA
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,reptiles,30˚ (18 - 40deg therm threshold),30c,NA,NA,NA,NA,NA,NA,30c,NA,30c,30c,30c,NA,NA,NA,30c
+r (reproductive traits),age to 1st reproduction/generation time,reptiles,>20,NA,NA,>20,>20,NA,NA,NA,NA,>20,NA,NA,NA,NA,NA,>20,NA
+r (reproductive traits),age to 1st reproduction/generation time,reptiles,1 - 5 yrs,1-5yrs,NA,NA,NA,NA,NA,NA,1-5yrs,NA,1-5yrs,1-5yrs,1-5yrs,NA,NA,NA,1-5yrs
+r (reproductive traits),age to 1st reproduction/generation time,reptiles,1-5,NA,1-5,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),age to 1st reproduction/generation time,reptiles,10-20,NA,NA,NA,NA,NA,NA,10-20,NA,NA,NA,NA,NA,10-20,10-20,NA,NA
+r (reproductive traits),age to 1st reproduction/generation time,reptiles,10-20 y,NA,NA,NA,NA,10-20y,10-20y,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),are there sub-populations?,reptiles,no,no,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,no,NA,NA,NA
+r (reproductive traits),are there sub-populations?,reptiles,yes,NA,yes,yes,yes,NA,NA,yes,yes,yes,yes,yes,yes,NA,yes,yes,yes
+r (reproductive traits),can the sex ratio be altered by a stressor?,reptiles,no larva,NA,no larva,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),can the sex ratio be altered by a stressor?,reptiles,yes,yes,NA,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes
+r (reproductive traits),fecundity,reptiles,1 - 10,1-10,1-10,NA,NA,NA,NA,NA,1-10,NA,1-10,1-10,1-10,NA,NA,NA,1-10
+r (reproductive traits),fecundity,reptiles,100-1000,NA,NA,100-1000,100-1000,NA,NA,100-1000,NA,100-1000,NA,NA,NA,100-1000,100-1000,NA,NA
+r (reproductive traits),fecundity,reptiles,20-50,NA,NA,NA,NA,20-50,20-50,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),fecundity,reptiles,50-100,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,50-100,NA
+r (reproductive traits),feeding larva (post-hatching metamorphosis),reptiles,no,no,NA,NA,NA,no,no,NA,no,NA,no,no,no,NA,NA,NA,no
+r (reproductive traits),feeding larva (post-hatching metamorphosis),reptiles,no larva,NA,no larva,no larva,no larva,NA,NA,no larva,NA,no larva,NA,NA,NA,no larva,no larva,no larva,NA
+r (reproductive traits),global population size,reptiles,100K-1M,NA,100k-1m,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),global population size,reptiles,10K-100K,10k-100k,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),global population size,reptiles,1K-100K,NA,NA,1k-100k,1k-100k,NA,NA,1k-100k,NA,1k-100k,NA,NA,NA,1k-100k,1k-100k,1k-100k,NA
+r (reproductive traits),global population size,reptiles,"C. acutus = ~20,000",NA,NA,NA,NA,c.acutus20000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),global population size,reptiles,"C. porosus = >200,000",NA,NA,NA,NA,NA,c.porosus>200000,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),global population size,reptiles,"species dependant (some <1000, most 100K-1M)",NA,NA,NA,NA,NA,NA,NA,species dependant (some<1000;most 100k-1m),NA,species dependant (some<1000;most 100k-1m),species dependant (some<1000;most 100k-1m),species dependant (some<1000;most 100k-1m),NA,NA,NA,species dependant (some<1000;most 100k-1m)
+r (reproductive traits),lifetime # reproductive opportunities,reptiles,11-25,NA,11-25,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),lifetime # reproductive opportunities,reptiles,2 - 10,2-10,NA,NA,NA,NA,NA,NA,2-10,NA,2-10,2-10,2-10,NA,NA,NA,2-10
+r (reproductive traits),lifetime # reproductive opportunities,reptiles,26-50,NA,NA,26-50,NA,26-50,26-50,26-50,NA,NA,NA,NA,NA,26-50,26-50,NA,NA
+r (reproductive traits),lifetime # reproductive opportunities,reptiles,51-100,NA,NA,NA,51-100,NA,NA,NA,NA,51-100,NA,NA,NA,NA,NA,51-100,NA
+r (reproductive traits),max age,reptiles,10 - 20yrs,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,10-20yrs,10-20yrs,NA,NA,NA,NA
+r (reproductive traits),max age,reptiles,10-20,NA,10-20,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),max age,reptiles,20-100,NA,NA,20-100,20-100,20-100,20-100,20-100,NA,20-100,NA,NA,NA,20-100,20-100,20-100,NA
+r (reproductive traits),max age,reptiles,5 - 10yrs,5-10yrs,NA,NA,NA,NA,NA,NA,5-10yrs,NA,5-10yrs,NA,NA,NA,NA,NA,5-10yrs
+r (reproductive traits),parental investment,reptiles,(mixed) live birth,(mixed) live birth,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),parental investment,reptiles,"(mixed) live birth, egg-layer (unattended)",NA,NA,NA,NA,NA,NA,NA,(mixed) live birth;egg-layer (unattended),NA,(mixed) live birth;egg-layer (unattended),NA,NA,NA,NA,NA,(mixed) live birth;egg-layer (unattended)
+r (reproductive traits),parental investment,reptiles,egg care,NA,NA,NA,NA,egg care,egg care,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),parental investment,reptiles,egg layer,NA,egg layer,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),parental investment,reptiles,egg-layer,NA,NA,egg-layer,egg-layer,NA,NA,egg-layer,NA,egg-layer,NA,NA,NA,egg-layer,egg-layer,egg-layer,NA
+r (reproductive traits),parental investment,reptiles,egg-layer (unattended),NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,egg-layer (unattended),NA,NA,NA,NA
+r (reproductive traits),parental investment,reptiles,live birth,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,live birth,NA,NA,NA,NA,NA
+r (reproductive traits),post-birth/hatching parental dependence,reptiles,hatchling maternal dependence,NA,NA,NA,NA,hatchling maternal dependence,hatchling maternal dependence,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+r (reproductive traits),post-birth/hatching parental dependence,reptiles,"NA",na,na,na,na,NA,NA,na,na,na,na,na,na,na,na,na,na
+r (reproductive traits),reproductive strategy,reptiles,sexual dioecious,sexual dioecious,NA,NA,NA,sexual dioecious,sexual dioecious,NA,sexual dioecious,NA,sexual dioecious,sexual dioecious,sexual dioecious,NA,NA,NA,sexual dioecious
+r (reproductive traits),reproductive strategy,reptiles,sexual dioeciuos,NA,sexual dioeciuos,sexual dioeciuos,sexual dioeciuos,NA,NA,sexual dioeciuos,NA,sexual dioeciuos,NA,NA,NA,sexual dioeciuos,sexual dioeciuos,sexual dioeciuos,NA
+spatial scale of species,depth (min/max),reptiles,epipelagic,NA,epipelagic,epipelagic,epipelagic,NA,NA,epipelagic,NA,epipelagic,NA,NA,NA,epipelagic,epipelagic,epipelagic,NA
+spatial scale of species,eoo (range),reptiles,<100 km2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,<100km2,<100km2,NA,NA,NA,NA
+spatial scale of species,eoo (range),reptiles,">20,000",NA,NA,>20000,>20000,>20000,>20000,>20000,NA,>20000,NA,NA,NA,>20000,>20000,>20000,NA
+spatial scale of species,eoo (range),reptiles,100 - 5000,100-5000,NA,NA,NA,NA,NA,NA,100-5000,NA,100-5000,NA,NA,NA,NA,NA,100-5000
+spatial scale of species,eoo (range),reptiles,"5000-19,999",NA,5000-19999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+spatial scale of species,zone,reptiles,benthic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,benthic,NA,NA,NA,NA,NA
+spatial scale of species,zone,reptiles,benthic/amphibious,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,benthic,NA,NA,NA,NA
+spatial scale of species,zone,reptiles,intertidal,NA,intertidal,NA,NA,intertidal,intertidal,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+spatial scale of species,zone,reptiles,intertidal/benthic,intertidal;benthic,NA,NA,NA,NA,NA,NA,intertidal;benthic,NA,intertidal;benthic,NA,NA,NA,NA,NA,intertidal;benthic
+spatial scale of species,zone,reptiles,"neritic, pelagic",NA,NA,neritic;pelagic,neritic;pelagic,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,neritic;pelagic,NA
+spatial scale of species,zone,reptiles,"pelagic, benthic",NA,NA,NA,NA,NA,NA,NA,NA,pelagic;benthic,NA,NA,NA,pelagic;benthic,NA,NA,NA
+spatial scale of species,zone,reptiles,"pelagic, oceanic",NA,NA,NA,NA,NA,NA,pelagic;oceanic,NA,NA,NA,NA,NA,NA,pelagic;oceanic,NA,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"Coral Reef, Rocky Reef, Rocky intertidal, Subtidal soft bottom, Beach, Surface water",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,coral reef;rocky reef;rocky intertidal;subtidal soft bottom;beach;surface water,NA,NA,NA,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"Coral Reef, Seagrass, Intertidal mud, Mangrove, Subtidal soft bottom, Surface water",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,coral reef;seagrass;intertidal mud;mangrove;subtidal soft bottom;surface water,NA,NA,NA,NA,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"coral reef, segrass, surface water, beach, continental shelf",NA,NA,NA,coral reef;segrass;surface water;beach;continental shelf,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"coral reef, surface water, beach, continental shelf",NA,NA,NA,NA,NA,NA,NA,NA,coral reef;surface water;beach;continental shelf,NA,NA,NA,NA,NA,NA,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"Mangrove, Beach, Intertidal mud, Rocky intertidal",NA,NA,NA,NA,mangrove;beach;intertidal mud;rocky intertidal,mangrove;beach;intertidal mud;rocky intertidal,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"rocky intertidal, hard shelf, surface water",NA,rocky intertidal;hard shelf;surface water,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"Seagrass, Intertidal mud, Mangrove, Subtidal soft bottom, Salt marsh, Surface water",seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh;surface water,NA,NA,NA,NA,NA,NA,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh;surface water,NA,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh;surface water,NA,NA,NA,NA,NA,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh;surface water
+specialisation,across-stage dependent habitats + condition,reptiles,"surface water, beach, continental shelf",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,surface water;beach;continental shelf,NA,surface water;beach;continental shelf,NA
+specialisation,across-stage dependent habitats + condition,reptiles,"surface water, deep water, beach, continental shelf",NA,NA,surface water;deep water;beach;continental shelf,NA,NA,NA,surface water;deep water;beach;continental shelf,NA,NA,NA,NA,NA,NA,surface water;deep water;beach;continental shelf,NA,NA
+specialisation,air-sea interface,reptiles,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes
+specialisation,dependent interspecific interactions,reptiles,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+specialisation,extreme diet specialization,reptiles,generalist,NA,NA,NA,NA,generalist,generalist,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,extreme diet specialization,reptiles,mixed,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,mixed,NA,NA,NA,NA,NA
+specialisation,extreme diet specialization,reptiles,no,no,NA,no,no,NA,NA,no,no,NA,no,NA,NA,no,no,no,no
+specialisation,extreme diet specialization,reptiles,specialist,NA,specialist,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,extreme diet specialization,reptiles,yes,NA,NA,NA,NA,NA,NA,NA,NA,yes,NA,NA,yes,NA,NA,NA,NA
+specialisation,light dependence,reptiles,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+specialisation,terrestrial and marine life stages,reptiles,no,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,no,NA,NA,NA,NA,NA
+specialisation,terrestrial and marine life stages,reptiles,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,NA,yes,yes,yes,yes,yes
+specialisation,within-stage dependent habitats + condition,reptiles,"Coral Reef, Rocky Reef, Rocky intertidal, Subtidal soft bottom, Beach",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,coral reef;rocky reef;rocky intertidal;subtidal soft bottom;beach,NA,NA,NA,NA
+specialisation,within-stage dependent habitats + condition,reptiles,"Coral Reef, Seagrass, Intertidal mud, Mangrove, Subtidal soft bottom",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,coral reef;seagrass;intertidal mud;mangrove;subtidal soft bottom,NA,NA,NA,NA,NA
+specialisation,within-stage dependent habitats + condition,reptiles,"coral reef, seagrass, surface water, beach, continental shelf",NA,NA,NA,coral reef;seagrass;surface water;beach;continental shelf,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,within-stage dependent habitats + condition,reptiles,"coral reef, surface water, beach, continental shelf",NA,NA,NA,NA,NA,NA,NA,NA,coral reef;surface water;beach;continental shelf,NA,NA,NA,NA,NA,NA,NA
+specialisation,within-stage dependent habitats + condition,reptiles,"Mangrove, Beach, Intertidal mud, Rocky intertidal",NA,NA,NA,NA,mangrove;beach;intertidal mud;rocky intertidal,mangrove;beach;intertidal mud;rocky intertidal,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,within-stage dependent habitats + condition,reptiles,"rocky intertidal, hard shelf, surface water",NA,rocky intertidal;hard shelf;surface water,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+specialisation,within-stage dependent habitats + condition,reptiles,"Seagrass, Intertidal mud, Mangrove, Subtidal soft bottom, Salt marsh",seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh,NA,NA,NA,NA,NA,NA,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh,NA,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh,NA,NA,NA,NA,NA,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh
+specialisation,within-stage dependent habitats + condition,reptiles,"surface water, beach, continental shelf",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,surface water;beach;continental shelf,NA,surface water;beach;continental shelf,NA
+specialisation,within-stage dependent habitats + condition,reptiles,"surface water, deep water, beach, continental shelf",NA,NA,surface water;deep water;beach;continental shelf,NA,NA,NA,surface water;deep water;beach;continental shelf,NA,NA,NA,NA,NA,NA,surface water;deep water;beach;continental shelf,NA,NA

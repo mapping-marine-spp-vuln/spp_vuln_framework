@@ -40,7 +40,7 @@ Columns `category`, `sub-category`, and `category units` are standard.  Addition
 Set up path and sheetnames
 
 ```{r}
-raw_file <- here('_raw_data/all_taxa_trait_data.xlsx')
+raw_file <- here('_raw_data/master_all_taxa_trait_data.xlsx')
 
 sheetnames <- readxl::excel_sheets(raw_file)
 ```
@@ -84,7 +84,7 @@ catvals_df_valid <- catvals_df_prehabs %>%
   filter(!str_detect(cat_vals, 'habitat')) %>%
   bind_rows(catvals_hab)
 
-write_csv(catvals_df_valid, 'int/category_vals_valid.csv')
+write_csv(catvals_df_valid, '_data/trait_vals_valid.csv')
 ```
 
 Read in Excel sheets one at a time, convert to long format, bind into a single dataframe with minimal processing.
@@ -93,10 +93,13 @@ First, check headers to make sure there's not taxonomic information in multiple 
 
 ```{r}
 check_headers <- function(f, s) {
+  ### s <- sheetnames[5]; f <- raw_file
   df <- readxl::read_excel(path = f, sheet = s, n_max = 1) %>%
     gather(hdg, val, -c(1:3)) %>%
     select(hdg, val) %>%
-    mutate(sheet = s)
+    mutate(sheet = s,
+           hdg = as.character(hdg),
+           val = as.character(val))
   return(df)
 }
 
@@ -122,7 +125,7 @@ process_sheet <- function(f, s) {
   df_raw <- readxl::read_excel(path = f, sheet = s)
   
   ### read in to get "valid" categories
-  categories <- read_csv('int/category_vals_valid.csv') %>%
+  categories <- read_csv('_data/trait_vals_valid.csv') %>%
     .$category %>% unique()
   
   ### this should no longer be necessary - spp traits xlsx is fixed
@@ -187,7 +190,7 @@ clean_trait <- function(x) {
 ### clean up troublesome traits
 
 ```{r}
-catvals_df_clean <- read_csv('int/category_vals_valid.csv') %>%
+catvals_df_clean <- read_csv('_data/trait_vals_valid.csv') %>%
   mutate(cat_val_clean = str_replace_all(tolower(cat_vals), '[^0-9a-z<>;]', ''))
 
 ### focus on zone traits

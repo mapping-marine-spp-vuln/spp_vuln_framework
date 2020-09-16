@@ -1,0 +1,34 @@
+category,trait,sheet,trait_val_orig,demospongiae
+biophysical traits,adult body mass/body size,sponges,not large,not large
+biophysical traits,biomineral,sponges,silicate,silicate
+biophysical traits,calcium carbonate structure location,sponges,no (but has silicious spicules),no (but has silicious spicules)
+biophysical traits,calcium carbonate structure stages,sponges,no (but adults and larvae have silicious spicules),no (but adults and larvae have silicious spicules)
+biophysical traits,communication requirement (sound),sponges,no,no
+biophysical traits,extreme pressure wave sensitive structures,sponges,probably,probably
+biophysical traits,flight,sponges,no,no
+biophysical traits,"navigation requirements (sound or light, or magnetic)",sponges,"yes, larval navigation def by light; sound unknown",yes;larval navigation def by light;sound unknown
+biophysical traits,respiration structures,sponges,"filter feeding - used for gas exchange as well as acquisition of nutrients (and also of sperm, in spermcast spawners) and expulsion of waste and of gamates or larvae",filter feeding-used for gas exchange as well as acquisition of nutrients (and also of sperm;in spermcast spawners) and expulsion of waste and of gamates or larvae
+breeding/nesting range/number of spawning aggregations (fish),number of sites,sponges,"NA",na
+foraging range,"number of sites, incl. terrestrial wetlands",sponges,"filter feeders (such as sponges and many other marine inverts) feed from water passing through, so foraging range could actually be enormous",filter feeders (such as sponges and many other marine inverts) feed from water passing through;so foraging range could actually be enormous
+movement,planktonic larval duration (pld),sponges,most larvae lecithotrophic; PLD< 1day,most larvae lecithotrophic;pld<1day
+physiological tolerance breadths,salinity,sponges,"high tolerance to fluctuations in these parameters, which vary substantially in the reef flat habitat of this species",high tolerance to fluctuations in these parameters;which vary substantially in the reef flat habitat of this species
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),sponges,"yes, can lead to fragmentation of adults",yes;can lead to fragmentation of adults
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,sponges,can recover from short-term heat spikes,no
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,sponges,sustained 30C would very likely be detrimental to CURRENT populations,30c
+r (reproductive traits),age to 1st reproduction/generation time,sponges,"probably <1, or 1-2 yr",probably<1;or 1-2yr
+r (reproductive traits),can the sex ratio be altered by a stressor?,sponges,"unknown, probably no",unknown;probably no
+r (reproductive traits),fecundity,sponges,100-1000 (and asexual repro also possible),100-1000(and asexual repro also possible)
+r (reproductive traits),feeding larva (post-hatching metamorphosis),sponges,non-feeding larvae + metamorphosis,non-feeding larvaemetamorphosis
+r (reproductive traits),global population size,sponges,unsure; maybe 1-10K ???,unsure;maybe 1-10k
+r (reproductive traits),lifetime # reproductive opportunities,sponges,100+,100
+r (reproductive traits),max age,sponges,"probably 1-5 yrs, although with asexual reproduction could be much longer",probably 1-5yrs;although with asexual reproduction could be much longer
+r (reproductive traits),parental investment,sponges,spermcast spawner (embryos brooded),spermcast spawner (embryos brooded)
+r (reproductive traits),post-birth/hatching parental dependence,sponges,< 1 day,<1day
+r (reproductive traits),reproductive strategy,sponges,sexual hermaphrodite /asexual (some demosponges are dioecious),sexual hermaphrodite;asexual (some demosponges are dioecious)
+spatial scale of species,eoo (range),sponges,"don't know, but would guess < 100 km2",dont know;but would guess<100km2
+spatial scale of species,zone,sponges,benthic adults; pelagic larvae,benthic;pelagic
+specialisation,air-sea interface,sponges,no,no
+specialisation,dependent interspecific interactions,sponges,yes,yes
+specialisation,extreme diet specialization,sponges,no,no
+specialisation,light dependence,sponges,"well yes, because circadian rhythms entrained by light, with effacts on multiple physiological factors",well yes;because circadian rhythms entrained by light;with effacts on multiple physiological factors
+specialisation,terrestrial and marine life stages,sponges,"no, marine only",no;marine only
