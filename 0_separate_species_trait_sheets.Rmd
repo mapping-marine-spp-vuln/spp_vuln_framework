@@ -37,32 +37,62 @@ Columns `category`, `sub-category`, and `category units` are standard.  Addition
 
 # Methods
 
-Set up path and sheetnames
+Set up cleaner functions
 
 ```{r}
-raw_file <- here('_raw_data/xlsx/master_all_taxa_trait_data.xlsx')
+clean_up_mess <- function(df) {
+  df %>%
+    mutate(trait_val_clean = str_trim(trait_val_clean)) %>%
+    filter(trait_val_clean != '') %>%
+    select(category, trait, trait_value, trait_val_clean, spp_gp, sheet) %>%
+    distinct()
+}
 
-sheetnames <- readxl::excel_sheets(raw_file)
+clean_trait <- function(x) {
+  ### First: remove numeric commas
+  y <- str_replace_all(x, '(?<=[0-9]),(?=[0-9])', '') %>%
+    ### then: drop all non-alphanumeric and a few key punctuation:
+    str_replace_all('[^0-9a-zA-Z<>,;\\-\\.\\(\\)/ ]', '') %>% 
+    ### lower case; do it after dropping any weird non-ascii characters:
+    tolower() %>% 
+    str_trim() %>%
+    str_replace_all('n/a', 'na') %>%
+    ### convert remaining commas and slashes to semicolons:
+    str_replace_all('[,/]', ';') %>%
+    ### drop spaces after numbers e.g. 3 mm -> 3mm:
+    str_replace_all('(?<=[0-9]) ', '') %>%
+    ### drop spaces before or after punctuation (non-alphanumeric):
+    str_replace_all(' (?=[^a-z0-9\\(])|(?<=[^a-z0-9\\)]) ', '') %>%
+    ### manually fix some valid slashes:
+    str_replace_all('nearly sessile;sedentary', 'nearly sessile/sedentary') %>%
+    str_replace_all('live birth;egg care', 'live birth/egg care') %>%
+    str_replace_all('chitin;caco3mix', 'chitin/caco3 mix')
+    
+  return(y)
+}
 ```
 
 Process Nat's key to create a final key
 
 ```{r}
-catvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/cat_val_key_tidyish.xlsx')) %>%
+traitvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/cat_val_key_tidyish.xlsx')) %>%
   janitor::clean_names() %>%
-  select(category, trait, cat_vals) %>%
+  select(category, trait, trait_value = cat_vals) %>%
   filter(!(is.na(category) & is.na(trait))) %>%
   fill(category, .direction = 'down') %>%
-  mutate(category = tolower(category), trait = tolower(trait))
+  mutate(category = tolower(category), 
+         trait = tolower(trait),
+         trait_value = clean_trait(trait_value))
+  
 
-catvals_df_prehabs <- catvals_df_raw %>%
-  mutate(cat_vals = str_split(cat_vals, pattern = ';')) %>%
-  unnest(cat_vals) %>%
+traitvals_df_prehabs <- traitvals_df_raw %>%
+  mutate(trait_value = str_split(trait_value, pattern = ';')) %>%
+  unnest(trait_value) %>%
   ### trim whitespace, replace the temporary slash fixes
-  mutate(cat_vals = str_trim(cat_vals)) %>%
+  mutate(trait_value = str_trim(trait_value)) %>%
            ### undo the temp slash fix
-  filter(!is.na(cat_vals)) %>%
-  filter(cat_vals != '')
+  filter(!is.na(trait_value)) %>%
+  filter(trait_value != '')
 
 ### Read in the first column of habitats from the list.  Paste together with
 ### semicolon separator.  Set to lower case.
@@ -73,21 +103,30 @@ habs <- readxl::read_excel(here('_raw_data/xlsx/hab_list.xlsx')) %>%
   paste(collapse = ';')
     
 ### Separate out habitat rows, attach valid habitats, bind back to original.
-catvals_hab <- catvals_df_prehabs %>%
-  filter(str_detect(cat_vals, 'habitat')) %>%
-  mutate(cat_vals = habs,
-         cat_vals = str_split(habs, pattern = ';')) %>%
-  unnest(cat_vals)
+traitvals_hab <- traitvals_df_prehabs %>%
+  filter(str_detect(trait_value, 'habitat')) %>%
+  mutate(trait_value = habs,
+         trait_value = str_split(habs, pattern = ';')) %>%
+  unnest(trait_value)
   
 
-catvals_df_valid <- catvals_df_prehabs %>%
-  filter(!str_detect(cat_vals, 'habitat')) %>%
-  bind_rows(catvals_hab)
+traitvals_df_valid <- traitvals_df_prehabs %>%
+  filter(!str_detect(trait_value, 'habitat')) %>%
+  bind_rows(traitvals_hab) %>%
+  rename(trait_value = trait_value)
 
-write_csv(catvals_df_valid, '_data/trait_vals_valid.csv')
+write_csv(traitvals_df_valid, '_data/trait_vals_valid.csv')
 ```
 
 Read in Excel sheets one at a time, convert to long format, bind into a single dataframe with minimal processing.
+
+Set up path and sheetnames
+
+```{r}
+raw_file <- here('_raw_data/xlsx/master_all_taxa_trait_data.xlsx')
+
+sheetnames <- readxl::excel_sheets(raw_file)
+```
 
 First, check headers to make sure there's not taxonomic information in multiple rows.  The first row of each sheet should be blank, as most sheets have a space before the first category ("Movement").  Even without this space, "Movement" should not have any values of its own, so still blank.
 
@@ -110,14 +149,6 @@ hdr_check <- lapply(sheetnames, FUN = function(s) check_headers(raw_file, s)) %>
 extras <- hdr_check$sheet %>% unique()
 ```
 
-The following sheets seem to have additional information with headers: `r extras`.
-
-* Cephalopods have order info in first line (which becomes header) then species info in second line (which should be captured as the taxonomic group).
-* Reef fishes have a species count in the first line (which becomes header) then genus/species in the second line (which should be captured as the taxonomic group).
-* Corals have genus in top line, and then spp count in second line.  Not a problem; this will be dropped.
-* Echinoderms have species names in top row (which becomes header, OK) then some limited info on order in second row (which will be dropped).
-* Molluscs have order info in first line, then species info in second line (which should be captured as the taxonomic group).  NOTE: raw file modified to remove a duplicate of Anadara trapezia (all values identical), and fix where suddenly the species names switch rows.
-* fish_Beth have order info in first line, family in second line, then species info in third line (which should be captured as the taxonomic group).
 
 ``` {r}
 process_sheet <- function(f, s) {
@@ -180,49 +211,17 @@ Check raw data against valid category values.
 * Ditch numeric commas.
 * Split trait values on semicolons to separate multiple cell values; then unnest and str_trim.
 
-```{r}
-clean_up_mess <- function(df) {
-  df %>%
-    mutate(trait_val_clean = str_trim(trait_val_clean)) %>%
-    filter(trait_val_clean != '') %>%
-    select(category, trait, trait_value, trait_val_clean, spp_gp, sheet) %>%
-    distinct()
-}
-
-clean_trait <- function(x) {
-  ### First: remove numeric commas
-  y <- str_replace_all(x, '(?<=[0-9]),(?=[0-9])', '') %>%
-    ### then: drop all non-alphanumeric and a few key punctuation:
-    str_replace_all('[^0-9a-zA-Z<>,;\\-\\.\\(\\)/ ]', '') %>% 
-    ### lower case; do it after dropping any weird non-ascii characters:
-    tolower() %>% 
-    str_trim() %>%
-    str_replace_all('n/a', 'na') %>%
-    ### convert remaining commas and slashes to semicolons:
-    str_replace_all('[,/]', ';') %>%
-    ### drop spaces after numbers e.g. 3 mm -> 3mm:
-    str_replace_all('(?<=[0-9]) ', '') %>%
-    ### drop spaces before or after punctuation (non-alphanumeric):
-    str_replace_all(' (?=[^a-z0-9\\(])|(?<=[^a-z0-9\\)]) ', '') %>%
-    ### manually fix some valid slashes:
-    str_replace_all('nearly sessile;sedentary', 'nearly sessile/sedentary') %>%
-    str_replace_all('live birth;egg care', 'live birth/egg care') %>%
-    str_replace_all('chitin;caco3mix', 'chitin/caco3 mix')
-    
-  return(y)
-}
-```
 
 ### clean up troublesome traits
 
 ```{r}
-catvals_df_clean <- read_csv('_data/trait_vals_valid.csv') %>%
-  mutate(cat_val_clean = clean_trait(cat_vals))
+traitvals_df_clean <- read_csv('_data/trait_vals_valid.csv') %>%
+  mutate(cat_val_clean = clean_trait(trait_value))
 
 ### focus on zone traits
-zone_vals <- catvals_df_valid %>%
+zone_vals <- traitvals_df_valid %>%
   filter(trait == 'zone') %>%
-  .$cat_vals %>% paste0(collapse = '|')
+  .$trait_value %>% paste0(collapse = '|')
 
 spp_data_zones <- raw_data_df %>%
   filter(trait == 'zone') %>%
@@ -233,9 +232,9 @@ spp_data_zones <- raw_data_df %>%
   clean_up_mess()
   
 ### focus on mobility traits
-mob_vals <- catvals_df_valid %>%
+mob_vals <- traitvals_df_valid %>%
   filter(trait == 'adult mobility') %>%
-  .$cat_vals %>% paste0(collapse = '|')
+  .$trait_value %>% paste0(collapse = '|')
 # "sessile|nearly sessile/sedentary|passive|vertical migrator|mobile resident|horizontal migrator|nomadic"
   
 spp_data_mobility <- raw_data_df %>%
@@ -259,9 +258,9 @@ spp_data_mobility <- raw_data_df %>%
   clean_up_mess()
 
 ### focus on depth traits
-depth_vals <- catvals_df_valid %>%
+depth_vals <- traitvals_df_valid %>%
   filter(trait == 'depth (min/max)') %>%
-  .$cat_vals %>% paste0(collapse = '|')
+  .$trait_value %>% paste0(collapse = '|')
 
 spp_data_depth <- raw_data_df %>%
   filter(trait == 'depth (min/max)') %>%
@@ -302,9 +301,9 @@ spp_data_thermal2 <- raw_data_df %>%
 # spp_data_thermal2$trait_val_clean %>% unique()
 
 ### focus on pH traits
-ph_vals <- catvals_df_valid %>%
+ph_vals <- traitvals_df_valid %>%
   filter(trait == 'ph') %>%
-  .$cat_vals %>% paste0(collapse = '|')
+  .$trait_value %>% paste0(collapse = '|')
 
 ### ph values are <7.4|7.5-7.7|7.8-8.2
 spp_data_ph <- raw_data_df %>%
@@ -352,22 +351,26 @@ tmp <- spp_data_clean %>% select(trait_value, trait_val_clean) %>% distinct()
 
 ```
 
-### write out clean species group sheets
+### write out clean species group sheets.  NOTE: THIS IS SET TO eval = FALSE TO AVOID OVERWRITING SHEETS ACCIDENTALLY!
 
-Here we need to recombine multiple trait vals into one line.
-```{r}
+
+Here we need to recombine multiple trait vals into one line, separate using a semicolon for easy splitting later.
+
+```{r, eval = FALSE}
 spp_data_out <- spp_data_clean %>%
   mutate(spp_gp = tolower(spp_gp)) %>%
   rename(trait_val_orig = trait_value) %>%
   group_by(category, trait, sheet, spp_gp, trait_val_orig) %>%
   summarize(trait_val_clean = paste0(trait_val_clean, collapse = ';')) %>%
-  ungroup()
+  ungroup() %>%
+  filter(sheet != 'fish_Beth') ### these were added to reef_fish
 
 sheets <- spp_data_out$sheet %>% unique()
 
 for(s in sheets) { ### s <- sheets[1]
   spp_gp_data <- spp_data_out %>%
     filter(sheet == s) %>%
+    select(-trait_val_orig, -sheet) %>%
     spread(spp_gp, trait_val_clean)
   
   fstem <- here('_raw_data/spp_trait_csvs/spp_traits_%s.csv')

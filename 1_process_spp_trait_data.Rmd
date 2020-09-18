@@ -31,317 +31,60 @@ Read in Excel spreadsheets of taxonomic traits filled in by taxon experts.  Proc
 
 # Data
 
-`_raw_data/all_taxa_trait_data.xlsx' is the raw spreadsheet prepared by Nathalie Butt from the various submissions of the taxa-group experts.  Basic format:
-
-Columns `category`, `sub-category`, and `category units` are standard.  Additional columns correspond to species or species groups, with perhaps additional idiosyncratic columns populated with totals, notes, comments, etc.
+`_raw_data/all_taxa_trait_data.xlsx' is the raw spreadsheet prepared by Nathalie Butt from the various submissions of the taxa-group experts.  This is broken into individual .csvs for manual editing.
 
 # Methods
 
-Set up path and sheetnames
-
-```{r}
-raw_file <- here('_raw_data/master_all_taxa_trait_data.xlsx')
-
-sheetnames <- readxl::excel_sheets(raw_file)
-```
-
-Process Nat's key
-
-```{r}
-catvals_df_raw <- readxl::read_excel(here('excel_files/cat_val_key_tidyish.xlsx')) %>%
-  janitor::clean_names() %>%
-  select(category, trait, cat_vals) %>%
-  filter(!(is.na(category) & is.na(trait))) %>%
-  fill(category, .direction = 'down') %>%
-  mutate(category = tolower(category), trait = tolower(trait))
-
-catvals_df_prehabs <- catvals_df_raw %>%
-  mutate(cat_vals = str_split(cat_vals, pattern = ';')) %>%
-  unnest(cat_vals) %>%
-  ### trim whitespace, replace the temporary slash fixes
-  mutate(cat_vals = str_trim(cat_vals)) %>%
-           ### undo the temp slash fix
-  filter(!is.na(cat_vals)) %>%
-  filter(cat_vals != '')
-
-### Read in the first column of habitats from the list.  Paste together with
-### semicolon separator.  Set to lower case.
-habs <- readxl::read_excel(here('excel_files/hab_list.xlsx')) %>%
-  janitor::clean_names() %>%
-  .$habitat_types %>%
-  tolower() %>%
-  paste(collapse = ';')
-    
-### Separate out habitat rows, attach valid habitats, bind back to original.
-catvals_hab <- catvals_df_prehabs %>%
-  filter(str_detect(cat_vals, 'habitat')) %>%
-  mutate(cat_vals = habs,
-         cat_vals = str_split(habs, pattern = ';')) %>%
-  unnest(cat_vals)
-  
-
-catvals_df_valid <- catvals_df_prehabs %>%
-  filter(!str_detect(cat_vals, 'habitat')) %>%
-  bind_rows(catvals_hab)
-
-write_csv(catvals_df_valid, '_data/trait_vals_valid.csv')
-```
-
-Read in Excel sheets one at a time, convert to long format, bind into a single dataframe with minimal processing.
-
-First, check headers to make sure there's not taxonomic information in multiple rows.  The first row of each sheet should be blank, as most sheets have a space before the first category ("Movement").  Even without this space, "Movement" should not have any values of its own, so still blank.
-
-```{r}
-check_headers <- function(f, s) {
-  ### s <- sheetnames[5]; f <- raw_file
-  df <- readxl::read_excel(path = f, sheet = s, n_max = 1) %>%
-    gather(hdg, val, -c(1:3)) %>%
-    select(hdg, val) %>%
-    mutate(sheet = s,
-           hdg = as.character(hdg),
-           val = as.character(val))
-  return(df)
-}
-
-hdr_check <- lapply(sheetnames, FUN = function(s) check_headers(raw_file, s)) %>%
-  bind_rows() %>%
-  filter(!is.na(val))
-
-extras <- hdr_check$sheet %>% unique()
-```
-
-The following sheets seem to have additional information with headers: `r extras`.
-
-* Cephalopods have order info in first line (which becomes header) then species info in second line (which should be captured as the taxonomic group).
-* Reef fishes have a species count in the first line (which becomes header) then genus/species in the second line (which should be captured as the taxonomic group).
-* Corals have genus in top line, and then spp count in second line.  Not a problem; this will be dropped.
-* Echinoderms have species names in top row (which becomes header, OK) then some limited info on order in second row (which will be dropped).
-* Molluscs have order info in first line, then species info in second line (which should be captured as the taxonomic group).  NOTE: raw file modified to remove a duplicate of Anadara trapezia (all values identical), and fix where suddenly the species names switch rows.
-* fish_Beth have order info in first line, family in second line, then species info in third line (which should be captured as the taxonomic group).
-
-``` {r}
-process_sheet <- function(f, s) {
-  ### f <- raw_file; s <- sheetnames[1]
-  df_raw <- readxl::read_excel(path = f, sheet = s)
-  
-  ### read in to get "valid" categories
-  categories <- read_csv('_data/trait_vals_valid.csv') %>%
-    .$category %>% unique()
-  
-  ### this should no longer be necessary - spp traits xlsx is fixed
-  # swap_colnames <- c('cephalopods' = 1, 'reef_other_fish' = 1, 'molluscs' = 1, 'fish_Beth' = 2)
-  # if(s %in% names(swap_colnames)) {
-  #   ### problematic spp sheets - taxonomic info in second line of csv
-  #   spp_names <- df_raw[swap_colnames[s], ] %>% as.character()
-  #   spp_names[1:3] <- c('category', 'sub_category', 'category units')
-  #   df_raw <- df_raw %>%
-  #     setNames(spp_names)
-  # }
-    
-  df <- df_raw %>%
-    gather(spp_gp, trait_value, -c(1:3)) %>%
-    janitor::clean_names() %>%
-    select(-category_units)
-  
-  df_cleaned <- df %>%
-    mutate(trait = ifelse(is.na(sub_category), category, sub_category),
-           trait = tolower(trait),
-           category = tolower(category),
-           category = ifelse(category == 'light dependence', 'specialisation', category),
-             ### fill in below the "physiological tolerance breadths" category
-           category = ifelse(!category %in% categories, NA, category)) %>%
-    fill(category, .direction = 'down') %>%
-    select(category, trait, spp_gp, trait_value) %>%
-    filter(!is.na(trait)) %>%
-      ### drops rows with no trait listed
-    filter(trait != category) %>%
-      ### drops category headings in the traits column
-    mutate(sheet = s)
-  
-  return(df_cleaned)
-}
-
-
-raw_data_df <- lapply(sheetnames, FUN = function(s) process_sheet(raw_file, s)) %>%
-  bind_rows()
-```
-
-Check raw data against valid category values.
-
-* Set all values to lower case to avoid case sensitivity.
-* replace "n/a" with "na"
-* Ditch numeric commas.
-* Split trait values on semicolons to separate multiple cell values; then unnest and str_trim.
-
-```{r}
-clean_up_mess <- function(df) {
-  df %>%
-    mutate(trait_val_clean = str_trim(trait_val_clean)) %>%
-    filter(trait_val_clean != '') %>%
-    select(category, trait, trait_value, trait_val_clean, spp_gp, sheet) %>%
-    distinct()
-}
-
-clean_trait <- function(x) {
-  str_replace_all(x, '[^0-9a-zA-Z<>;]', '') %>% tolower()
-}
-```
-
-### clean up troublesome traits
-
-```{r}
-catvals_df_clean <- read_csv('_data/trait_vals_valid.csv') %>%
-  mutate(cat_val_clean = str_replace_all(tolower(cat_vals), '[^0-9a-z<>;]', ''))
-
-### focus on zone traits
-zone_vals <- catvals_df_valid %>%
-  filter(trait == 'zone') %>%
-  .$cat_vals %>% paste0(collapse = '|')
-
-spp_data_zones <- raw_data_df %>%
-  filter(trait == 'zone') %>%
-  ### fix misspelling:
-  mutate(trait_value = str_replace_all(trait_value, 'demerssal', 'demersal')) %>%
-  mutate(tmp = str_extract_all(tolower(trait_value), zone_vals)) %>%
-  unnest(tmp) %>%
-  mutate(trait_val_clean = clean_trait(tmp)) %>%
-  clean_up_mess()
-  
-### focus on mobility traits
-mob_vals <- catvals_df_valid %>%
-  filter(trait == 'adult mobility') %>%
-  .$cat_vals %>% paste0(collapse = '|')
-# "sessile|nearly sessile/sedentary|passive|vertical migrator|mobile resident|horizontal migrator|nomadic"
-  
-spp_data_mobility <- raw_data_df %>%
-  filter(trait == 'adult mobility') %>%
-  mutate(tmp = str_replace_all(tolower(trait_value), '[^a-z ]+', ';')) %>%
-  ### split and unnest, trim and clean:
-  mutate(tmp = str_split(tmp, ';')) %>%
-  unnest(tmp) %>%
-  ### clean up some inconsistencies
-  mutate(tmp = str_replace_all(tmp, 'horiz[a-z]+', 'horizontal'),
-         tmp = str_replace_all(tmp, 'vertic[a-z]+', 'vertical'),
-         tmp = str_replace_all(tmp, 'migrat[a-z]+', 'migrator'),
-         tmp = str_replace_all(tmp, 'residen[a-z]+', 'resident'),
-         tmp = str_replace_all(tmp, 'sedentary', 'nearly sessile/sedentary')) %>%
-  # mutate(tmp = ifelse(str_detect(tmp, mob_vals),
-  #                                 str_extract_all(tmp, mob_vals),
-  #                                 tmp)) %>%
-  mutate(tmp = str_extract_all(tmp, mob_vals)) %>%
-  unnest(tmp) %>%
-  mutate(trait_val_clean = clean_trait(tmp)) %>%
-  clean_up_mess()
-
-### focus on depth traits
-depth_vals <- catvals_df_valid %>%
-  filter(trait == 'depth (min/max)') %>%
-  .$cat_vals %>% paste0(collapse = '|')
-
-spp_data_depth <- raw_data_df %>%
-  filter(trait == 'depth (min/max)') %>%
-  mutate(tmp = str_replace_all(tolower(trait_value), '[^a-z0-9 ]+', ';')) %>%
-  mutate(tmp = str_extract_all(tmp, depth_vals)) %>%
-  unnest(tmp) %>%
-  mutate(trait_val_clean = clean_trait(tmp)) %>%
-  clean_up_mess()
-
-### focus on thermal sensitivity traits
-### ocean warming values are 5°C-10-15-20-25-30°C
-spp_data_thermal1 <- raw_data_df %>%
-  filter(str_detect(trait, 'thermal - sensitivity to ocean warming')) %>%
-  rowwise() %>%
-  mutate(trait_num = str_extract_all(trait_value, '[0-9]+') %>% unlist() %>% as.integer() %>% max(),
-         trait_num = min(floor(trait_num / 5) * 5, 30),
-         trait_num = ifelse(is.infinite(trait_num), NA, trait_num)) %>%
-  ungroup() %>%
-  mutate(tmp = ifelse(!is.na(trait_num), paste0(trait_num, 'c'),
-                                tolower(trait_value))) %>%
-  mutate(trait_val_clean = ifelse(str_detect(tmp, 'broad|low sensitivity'), 
-                                  '30c', tmp)) %>%
-  clean_up_mess()
-
-# spp_data_thermal1$trait_val_clean %>% unique()
-
-### heat spike values are yes/no
-spp_data_thermal2 <- raw_data_df %>%
-  filter(str_detect(trait, 'thermal - sensitivity to heat spikes')) %>%
-  mutate(tmp = tolower(trait_value),
-         tmp = case_when(str_detect(tmp, 'broad') ~ 'no',
-                         str_detect(tmp, 'narrow|sensitive') ~ 'yes',
-                         str_detect(tmp, 'can recover') ~ 'no',
-                         TRUE ~ tmp)) %>%
-  mutate(trait_val_clean = str_replace_all(tmp, '[^a-z0-9]+', '_')) %>%
-  clean_up_mess()
-
-# spp_data_thermal2$trait_val_clean %>% unique()
-
-### focus on pH traits
-ph_vals <- catvals_df_valid %>%
-  filter(trait == 'ph') %>%
-  .$cat_vals %>% paste0(collapse = '|')
-
-### ph values are <7.4|7.5-7.7|7.8-8.2
-spp_data_ph <- raw_data_df %>%
-  filter(trait == 'ph') %>%
-  ### fix a typo:
-  mutate(trait_value = str_replace(trait_value, '(?<=\\d),(?=\\d)', '.')) %>%
-  ### get mean - find into which category the mean falls
-  rowwise() %>%
-  mutate(trait_mean = str_extract_all(trait_value, '[0-9.]+') %>% unlist() %>% as.numeric() %>% mean(),
-         trait_mean = ifelse(is.infinite(trait_mean), NA, trait_mean)) %>%
-  ungroup() %>%
-  mutate(tmp = case_when(is.na(trait_mean) ~ tolower(trait_value),
-                         trait_mean < 7.5 ~ '<7.4',
-                         trait_mean < 7.8 ~ '7.5-7.7',
-                         TRUE ~ '7.8-8.2')) %>%
-  mutate(tmp = case_when(str_detect(tmp, 'broad|not sensitive') ~ '<7.4', 
-                         str_detect(tmp, 'narrow')              ~ '7.8-8.2',
-                                    TRUE                        ~ tmp)) %>%
-  mutate(trait_val_clean = clean_trait(tmp)) %>%
-  clean_up_mess()
-
-```
-
-### combine into a relatively clean df
+Read in csvs one at a time, convert to long format, bind into a single dataframe with minimal processing.
 
 ``` {r}
 
-spp_data_clean <- raw_data_df %>%
-  filter(!trait %in% c('zone', 'adult mobility', 'depth (min/max)', 'ph') &
-           !str_detect(trait, 'thermal - sensitivity'))%>%
-  mutate(trait_val_clean = clean_trait(trait_value)) %>%
-  ### split and unnest, trim and clean:
-  mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%
-  unnest(trait_val_clean) %>%
-  clean_up_mess() %>%
-  bind_rows(spp_data_zones) %>%
-  bind_rows(spp_data_mobility) %>%
-  bind_rows(spp_data_depth) %>%
-  bind_rows(spp_data_thermal1) %>%
-  bind_rows(spp_data_thermal2) %>%
-  bind_rows(spp_data_ph) %>%
-  mutate(trait_val_clean = clean_trait(trait_val_clean)) ### just to make sure
+spp_csvs <- list.files(here('_raw_data/spp_trait_csvs'), 
+                       pattern = 'spp_traits',
+                       full.names = TRUE)
 
-spp_validcheck <- spp_data_clean %>%
-  left_join(catvals_df_clean %>% mutate(valid = TRUE), 
-            by = c('category', 'trait', 
-                   'trait_val_clean' = 'cat_val_clean')) %>%
+taxa <- basename(spp_csvs) %>% str_replace_all('spp_traits_|.csv', '')
+
+process_csv <- function(f) { ### f <- spp_csvs[1]
+  x <- read_csv(f) %>%
+    gather(spp_gp, trait_value, -category, -trait)
+}
+
+spp_data_raw <- lapply(spp_csvs, FUN = process_csv) %>%
+  setNames(taxa) %>%
+  bind_rows(.id = 'taxon') %>%
+  mutate(trait_value = str_split(trait_value, pattern = ';')) %>%
+  unnest(trait_value)
+
+```
+
+Get the valid trait values from the key and bind with the noted traits to compare validity.
+
+``` {r}
+
+traitvals_valid <- read_csv('_data/trait_vals_valid.csv')
+
+spp_validcheck <- spp_data_raw %>%
+  left_join(traitvals_valid %>% 
+              mutate(valid = TRUE), ### add flag to detect unmatched values
+            by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(spp_gp))
 
 spp_invalid <- spp_validcheck %>%
   filter(is.na(valid)) %>%
-  filter(trait_val_clean != 'na') %>%
+  filter(trait_value != 'na') %>%
   select(-valid)
-write_csv(spp_invalid, 'invalid_spp_category_values.csv')
+write_csv(spp_invalid, 'invalid_spp_trait_values.csv')
 
 spp_valid <- spp_validcheck %>%
   filter(valid) %>%
-  select(category, trait, trait_value, trait_val_clean, spp_gp, sheet) %>%
-  mutate(category = str_replace_all(category, '[^A-Za-z0-9]+', '_') %>% tolower(),
+  select(category, trait, trait_value, spp_gp, taxon) %>%
+  mutate(category = str_replace_all(category, '[^A-Za-z0-9]+', '_'),
          category = str_replace_all(category, '^_|_$', ''),
-         trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_') %>% tolower(),
-         trait    = str_replace_all(trait, '^_|_$', ''))
+         trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_'),
+         trait    = str_replace_all(trait, '^_|_$', '')) %>%
+  mutate(spp_gp = str_replace_all(spp_gp, '\\(|\\)', ''),
+         spp_gp = str_replace_all(spp_gp, '\\n', ' '))
 
 # spp_valid$spp_gp %>% n_distinct()
 
@@ -355,8 +98,8 @@ There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups 
 ``` {r}
 
 DT::datatable(spp_invalid %>% 
-               group_by(trait, sheet) %>% 
+               group_by(trait, taxon) %>% 
                summarize(n_mismatches = n()) %>% 
-               arrange(sheet, desc(n_mismatches)))
+               arrange(taxon, desc(n_mismatches)))
 ```
 

@@ -49,16 +49,16 @@ clean_traits <- function(df, overwrite_clean_col = FALSE) {
            category = str_replace_all(category, '^_|_$', ''),
            trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_') %>% tolower(),
            trait    = str_replace_all(trait, '^_|_$', ''))
-  if(!overwrite_clean_col & ('trait_val_clean' %in% names(df))) {
-      return(df) ### without overwriting existing trait_val_clean
+  if(!overwrite_clean_col & ('trait_value' %in% names(df))) {
+      return(df) ### without overwriting existing trait_value
   }
-  if(overwrite_clean_col & ('trait_val_clean' %in% names(df))) {
-    x <- readline(prompt = 'Overwriting existing trait_val_clean column? y/n ')
+  if(overwrite_clean_col & ('trait_value' %in% names(df))) {
+    x <- readline(prompt = 'Overwriting existing trait_value column? y/n ')
     if(str_detect(x, '^n')) stop('dammit!')
   }
   ### overwrite existing, or add new
   df <- df %>%
-    mutate(trait_val_clean = str_replace_all(tolower(trait_value), '[^0-9a-z<>]', ''))
+    mutate(trait_value = str_replace_all(tolower(trait_value), '[^0-9a-z<>]', ''))
   
   return(df)
 }
@@ -76,11 +76,9 @@ assign_rank_scores <- function(x) {
 }
 ```
 
-Since the species trait file is already cleaned, DO NOT use the `clean_traits` function - it will overwrite the `trait_val_clean` column.
+Since the species trait file is already cleaned, DO NOT use the `clean_traits` function - it will overwrite the `trait_value` column.
 ```{r}
-spp_traits <- read_csv('_data/spp_traits_valid.csv') %>%
-  mutate(spp_gp = str_replace_all(spp_gp, '\\(|\\)', ''),
-         spp_gp = str_replace_all(spp_gp, '\\n', ' '))
+spp_traits <- read_csv('_data/spp_traits_valid.csv')
 
 ```
 
@@ -112,13 +110,17 @@ for(f in trait_str_sens_files) {
 }
 
 str_sens_trait_scores <- bind_rows(sens_traits_list) %>%
-  select(category, trait, trait_value, sens_score, stressor, trait_val_clean)
+  select(category, trait, trait_value, sens_score, stressor, trait_value)
 
-
+### To score for a species/stressor combo, first average the score for
+### each trait (e.g. if multiple values were noted, just give the average)
+### then sum across all traits
 spp_sens <- spp_traits %>%
-  left_join(str_sens_trait_scores, by = c('category', 'trait', 'trait_val_clean')) %>%
+  left_join(str_sens_trait_scores, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor)) %>%
-  group_by(spp_gp, stressor, sheet) %>%
+  group_by(spp_gp, stressor, taxon, trait) %>%
+  summarize(sens_score = mean(sens_score, na.rm = TRUE)) %>%
+  group_by(spp_gp, stressor, taxon) %>%
   summarize(sens_score = sum(sens_score, na.rm = TRUE)) %>%
   ungroup()
 ```
@@ -129,7 +131,7 @@ spp_sens <- spp_traits %>%
 p <- ggplot(spp_sens, aes(x = stressor, y = sens_score)) +
   geom_jitter(size = 1, alpha = .6) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
-  facet_wrap(~ sheet)
+  facet_wrap(~ taxon)
 
 ggsave(here('figs/spp_sens_scores.png'), height = 6, width = 6, dpi = 300)
 
@@ -139,10 +141,10 @@ knitr::include_graphics(here('figs/spp_sens_scores.png'))
 ### Sensitivity to top three stressors by taxon
 ```{r}
 top_3_sens <- spp_sens %>%
-  group_by(sheet, stressor) %>%
+  group_by(taxon, stressor) %>%
   summarize(sens_score = mean(sens_score)) %>%
   arrange(desc(sens_score)) %>%
-  group_by(sheet) %>%
+  group_by(taxon) %>%
   filter(sens_score >= nth(sens_score, 3))
 
 DT::datatable(top_3_sens)
@@ -163,9 +165,8 @@ adcap_gen_traits <- readxl::read_excel(adcap_gen_traits_file) %>%
   clean_traits()
 
 spp_adcap_gen <- spp_traits %>%
-  select(-trait_value) %>%
-  left_join(adcap_gen_traits, by = c('category', 'trait', 'trait_val_clean')) %>%
-  group_by(spp_gp, sheet) %>%
+  left_join(adcap_gen_traits, by = c('category', 'trait', 'trait_value')) %>%
+  group_by(spp_gp, taxon) %>%
   summarize(adcap_gen_score = sum(adcap_score, na.rm = TRUE)) %>%
   ungroup()
   
@@ -174,7 +175,7 @@ spp_adcap_gen <- spp_traits %>%
 ```
 
 ```{r}
-p <- ggplot(spp_adcap_gen, aes(x = sheet, y = adcap_gen_score)) +
+p <- ggplot(spp_adcap_gen, aes(x = taxon, y = adcap_gen_score)) +
   geom_jitter(size = 1, alpha = .6, width = .2) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5))
 
@@ -220,10 +221,9 @@ for(f in adcap_spec_traits_files) {
 adcap_spec_traits <- bind_rows(adcap_spec_traits_list)
 
 spp_adcap_spec <- spp_traits %>%
-  select(-trait_value) %>%
-  left_join(adcap_spec_traits, by = c('category', 'trait', 'trait_val_clean')) %>%
+  left_join(adcap_spec_traits, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor)) %>%
-  group_by(spp_gp, stressor, sheet) %>%
+  group_by(spp_gp, stressor, taxon) %>%
   summarize(adcap_spec_score = sum(adcap_score, na.rm = TRUE)) %>%
   ungroup()
   
@@ -242,7 +242,7 @@ adcap_spec_sum <- spp_adcap_spec %>%
 p <- ggplot(spp_adcap_spec, aes(x = stressor, y = adcap_spec_score)) +
   geom_jitter(size = 1, alpha = .6, width = .2, height = .05) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
-  facet_wrap( ~ sheet)
+  facet_wrap( ~ taxon)
 
 ggsave(here('figs/spp_adcap_spec_scores.png'), height = 6, width = 6, dpi = 300)
 
@@ -254,10 +254,10 @@ knitr::include_graphics(here('figs/spp_adcap_spec_scores.png'))
 ### Adaptive capacity to top three stressors by taxon
 ```{r}
 top_3_adcap <- spp_adcap_spec %>%
-  group_by(sheet, stressor) %>%
+  group_by(taxon, stressor) %>%
   summarize(adcap_score = mean(adcap_spec_score)) %>%
   arrange(desc(adcap_score)) %>%
-  group_by(sheet) %>%
+  group_by(taxon) %>%
   filter(adcap_score >= nth(adcap_score, 3))
 
 DT::datatable(top_3_adcap)
@@ -296,17 +296,16 @@ for(f in exp_traits_files) {
 str_exposure <- bind_rows(exp_traits_list)
 
 spp_exposure <- spp_traits %>%
-  select(-trait_value) %>%
-  left_join(str_exposure, by = c('category', 'trait', 'trait_val_clean')) %>%
+  left_join(str_exposure, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor)) %>%
-  group_by(spp_gp, stressor, sheet) %>%
+  group_by(spp_gp, stressor, taxon) %>%
   summarize(exposure_mod = as.integer(sum(exposure, na.rm = TRUE) > 0)) %>%
   ungroup()  %>%
-  arrange(stressor, sheet)
+  arrange(stressor, taxon)
   
 non_exposures <- spp_exposure %>% 
   filter(exposure_mod == 0) %>% 
-  group_by(sheet, stressor) %>% 
+  group_by(taxon, stressor) %>% 
   summarize(n_spp_gps = n_distinct(spp_gp)) %>%
   arrange(stressor, desc(n_spp_gps))
 ```
@@ -360,9 +359,9 @@ if(!all(exp_strs %in% adcap_strs) | !all(adcap_strs %in% exp_strs)) {
 
 ```{r}
 spp_vulnerability <- spp_sens %>%
-  left_join(spp_adcap_gen, by = c('sheet', 'spp_gp')) %>%
-  left_join(spp_adcap_spec, by = c('sheet', 'spp_gp', 'stressor')) %>%
-  left_join(spp_exposure, by = c('sheet', 'spp_gp', 'stressor')) %>%
+  left_join(spp_adcap_gen, by = c('taxon', 'spp_gp')) %>%
+  left_join(spp_adcap_spec, by = c('taxon', 'spp_gp', 'stressor')) %>%
+  left_join(spp_exposure, by = c('taxon', 'spp_gp', 'stressor')) %>%
   ### fix NAs
   mutate(adcap_spec_score = ifelse(is.na(adcap_spec_score), 0, adcap_spec_score),
          exposure_mod     = ifelse(is.na(exposure_mod), 1, exposure_mod)) %>%
@@ -396,7 +395,7 @@ vuln_plot <- ggplot(spp_vulnerability, aes(x = stressor, y = vuln)) +
   geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
         strip.background = element_rect(fill = 'grey90')) +
-  facet_wrap(~ sheet) +
+  facet_wrap(~ taxon) +
   labs(title = 'rescale using max reference point')
 
 ggsave(plot = vuln_plot, filename = here('figs/vuln_plot.png'), width = 8, height = 8, dpi = 300)
@@ -407,10 +406,10 @@ knitr::include_graphics(here('figs/vuln_plot.png'))
 ### Vulnerability to top three stressors by taxon
 ```{r}
 top_3_vuln <- spp_vulnerability %>%
-  group_by(sheet, stressor) %>%
+  group_by(taxon, stressor) %>%
   summarize(vuln = mean(vuln)) %>%
-  group_by(sheet) %>%
-  arrange(sheet, desc(vuln)) %>%
+  group_by(taxon) %>%
+  arrange(taxon, desc(vuln)) %>%
   filter(vuln >= nth(vuln, 3))
 
 knitr::kable(top_3_vuln)
@@ -420,7 +419,7 @@ knitr::kable(top_3_vuln)
 
 ```{r, eval = FALSE}
 spp_vuln_summary <- spp_vulnerability %>%
-  group_by(sheet, stressor) %>%
+  group_by(taxon, stressor) %>%
   summarize(n_spp = n_distinct(spp_gp),
             sens_mean = mean(sens_rescale),
             sens_sd   = sd(sens_rescale),
@@ -442,29 +441,6 @@ ggplot(spp_vuln_summary, aes(x = stressor, color = component, group = component)
                  position = position_dodge(width = .8)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
         strip.background = element_rect(fill = 'grey90')) +
-  facet_wrap(~ sheet, scales = 'free_y')
+  facet_wrap(~ taxon, scales = 'free_y')
 ```
-
-
-## Question parking lot: 
-
-How to score sensitivity traits
-
-- add up all sensitivity-trait values that are turned on? can be continuous, greater than one
-- how to avoid double counting (e.g. air sea interface and lungs for wildlife strikes?)
-- how to be methodical about scoring sensitivity on a continuous scale?
-
-How to score adaptive capacity/exposure potential traits
-
-- same concerns as sensitivity
-- can we score adaptive capacity based on broader stressor characteristics, instead of individual stressors?
-- general resilience traits (e.g. reproductive) vs specific resilience traits
-
-What about conditional scoring?
-
-- e.g. flow chart - if a species is in the epipelagic zone, then check whether it’s air sea interface, etc.
-
-How to connect sensitivity to adaptive capacity? Ad cap as multiplier, e.g. 0-1 to mitigate the sensitivity score?
-
-How to incorporate habitats - 
 

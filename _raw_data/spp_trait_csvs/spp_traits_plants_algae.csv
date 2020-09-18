@@ -1,95 +1,43 @@
-category,trait,sheet,trait_val_orig,avicennia marina,macrocystis,porolithon,posidonia australis
-biophysical traits,adult body mass/body size,plants_algae,50 - 999mm,NA,NA,NA,50-999mm
-biophysical traits,adult body mass/body size,plants_algae,50mm-999mm,NA,NA,50mm-999mm,NA
-biophysical traits,adult body mass/body size,plants_algae,very large,very large,very large,NA,NA
-biophysical traits,biomineral,plants_algae,hi Mg calcite,NA,NA,hi mg calcite,NA
-biophysical traits,biomineral,plants_algae,no,NA,no,NA,NA
-biophysical traits,biomineral,plants_algae,"Other lignin- cellulose (unique to the mangroves, seagrass and saltmarsh)",other lignin-cellulose (unique to the mangroves;seagrass and saltmarsh),NA,NA,other lignin-cellulose (unique to the mangroves;seagrass and saltmarsh)
-biophysical traits,calcium carbonate structure location,plants_algae,cell walls deposit calcium carbonate heavily,NA,NA,cell walls deposit calcium carbonate heavily,NA
-biophysical traits,calcium carbonate structure location,plants_algae,none,none,none,NA,none
-biophysical traits,calcium carbonate structure stages,plants_algae,calcification after germination and through adulthood,NA,NA,calcification after germination and through adulthood,NA
-biophysical traits,calcium carbonate structure stages,plants_algae,none,none,none,NA,none
-biophysical traits,communication requirement (sound),plants_algae,no,no,no,no,no
-biophysical traits,extreme pressure wave sensitive structures,plants_algae,no sensitivity,NA,NA,no sensitivity,NA
-biophysical traits,extreme pressure wave sensitive structures,plants_algae,pneumatocyst (gas bladders),NA,pneumatocyst (gas bladders),NA,NA
-biophysical traits,extreme pressure wave sensitive structures,plants_algae,yes,yes,NA,NA,yes
-biophysical traits,flight,plants_algae,no,no,no,no,no
-biophysical traits,"navigation requirements (sound or light, or magnetic)",plants_algae,no,no,no,no,no
-biophysical traits,respiration structures,plants_algae,no,NA,no,no,no
-biophysical traits,respiration structures,plants_algae,pnuemataphores,pnuemataphores,NA,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),number of sites,plants_algae,many,many,NA,NA,many
-breeding/nesting range/number of spawning aggregations (fish),number of sites,plants_algae,"NA",NA,NA,na,NA
-breeding/nesting range/number of spawning aggregations (fish),number of sites,plants_algae,NA - entire distribution,NA,na-entire distribution,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,plants_algae,no,no,NA,NA,no
-breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,plants_algae,possibly,NA,possibly,possibly,NA
-foraging range,"if one/few, size",plants_algae,very small,very small,NA,NA,very small
-foraging range,"number of sites, incl. terrestrial wetlands",plants_algae,many,many,many,NA,many
-foraging range,"number of sites, incl. terrestrial wetlands",plants_algae,"NA",NA,NA,na,NA
-foraging range,sub-population dependence on particular sites,plants_algae,no,no,NA,NA,no
-foraging range,sub-population dependence on particular sites,plants_algae,possible local adaptation,NA,possible local adaptation,NA,NA
-movement,adult mobility,plants_algae,"passive in drift when detached, viability typically < 4 months",NA,passive,NA,NA
-movement,adult mobility,plants_algae,sessile,sessile,NA,sessile,sessile
-movement,planktonic larval duration (pld),plants_algae,<1 week,NA,NA,<1week,NA
-movement,planktonic larval duration (pld),plants_algae,<1month,<1month,NA,NA,<1month
-physiological tolerance breadths,dissolved oxygen,plants_algae,broad,NA,broad,NA,NA
-physiological tolerance breadths,dissolved oxygen,plants_algae,high tolerance,high tolerance,NA,NA,high tolerance
-physiological tolerance breadths,dissolved oxygen,plants_algae,low tolerance,NA,NA,low tolerance,NA
-physiological tolerance breadths,ph,plants_algae,"7.8-8.2, narrow",NA,NA,7.8-8.2,NA
-physiological tolerance breadths,ph,plants_algae,broad,<7.4,<7.4,NA,<7.4
-physiological tolerance breadths,salinity,plants_algae,euryhaline,euryhaline,NA,NA,NA
-physiological tolerance breadths,salinity,plants_algae,"euryhaline, narrow",NA,NA,euryhaline;narrow,NA
-physiological tolerance breadths,salinity,plants_algae,"narrow, average marine",NA,narrow;average marine,NA,NA
-physiological tolerance breadths,salinity,plants_algae,stenohaline,NA,NA,NA,stenohaline
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),plants_algae,easily dislodged by large waves,NA,easily dislodged by large waves,NA,NA
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),plants_algae,"no sensitive, thrives in high wave action --reef crest",NA,NA,no sensitive;thrives in high wave action--reef crest,NA
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),plants_algae,sensitive,sensitive,NA,NA,sensitive
-physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,plants_algae,no = broad,no,NA,NA,NA
-physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,plants_algae,"no, broad, resistant to intertidal conditions",NA,NA,no,NA
-physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,plants_algae,y - narrow,NA,NA,NA,yes
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,plants_algae,~6 - 24 oC,NA,20c,NA,NA
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,plants_algae,20 C   narrow,NA,NA,NA,20c
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,plants_algae,30 C   broad,30c,NA,NA,NA
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,plants_algae,up to 33 oC,NA,NA,30c,NA
-r (reproductive traits),age to 1st reproduction/generation time,plants_algae,< 1yr,NA,NA,<1yr,NA
-r (reproductive traits),age to 1st reproduction/generation time,plants_algae,1-5yrs,1-5yrs,NA,NA,1-5yrs
-r (reproductive traits),age to 1st reproduction/generation time,plants_algae,"6-12 months for sporophyte, 12-15 days for gametophyte",NA,6-12months for sporophyte;12-15days for gametophyte,NA,NA
-r (reproductive traits),are there sub-populations?,plants_algae,"likely, unknown",NA,NA,likely;unknown,NA
-r (reproductive traits),are there sub-populations?,plants_algae,yes,yes,NA,NA,yes
-r (reproductive traits),can the sex ratio be altered by a stressor?,plants_algae,no,no,no,NA,no
-r (reproductive traits),can the sex ratio be altered by a stressor?,plants_algae,unknown,NA,NA,unknown,NA
-r (reproductive traits),fecundity,plants_algae,"1-10 for sporophyte, < 1 for gametophyte",NA,1-10for sporophyte;<1for gametophyte,NA,NA
-r (reproductive traits),fecundity,plants_algae,100-1000,100-1000,NA,NA,100-1000
-r (reproductive traits),fecundity,plants_algae,tetraspores(asexual)  >1000s,NA,NA,tetraspores(asexual)>1000s,NA
-r (reproductive traits),feeding larva (post-hatching metamorphosis),plants_algae,yes (photosyntehtic),yes (photosyntehtic),NA,NA,yes (photosyntehtic)
-r (reproductive traits),feeding larva (post-hatching metamorphosis),plants_algae,yes (photosynthetic spores and eggs),NA,yes (photosynthetic spores and eggs),yes (photosynthetic spores and eggs),NA
-r (reproductive traits),global population size,plants_algae,>100k,>100k,NA,NA,>100k
-r (reproductive traits),global population size,plants_algae,>100K,NA,>100k,NA,NA
-r (reproductive traits),global population size,plants_algae,>1M,NA,NA,>1m,NA
-r (reproductive traits),lifetime # reproductive opportunities,plants_algae,100+,100,NA,100,100
-r (reproductive traits),lifetime # reproductive opportunities,plants_algae,"100+ for spropphytes, 1 for gametophytes",NA,100for spropphytes;1for gametophytes,NA,NA
-r (reproductive traits),max age,plants_algae,>100 years,>100years,NA,NA,>100years
-r (reproductive traits),max age,plants_algae,5-10 yrs but could be than 10,NA,NA,5-10yrs but could be than 10,NA
-r (reproductive traits),parental investment,plants_algae,spawner,spawner,spawner,spawner,spawner
-r (reproductive traits),post-birth/hatching parental dependence,plants_algae,"NA",na,NA,NA,na
-r (reproductive traits),reproductive strategy,plants_algae,both sexual and asexual,NA,NA,both sexual and asexual,NA
-r (reproductive traits),reproductive strategy,plants_algae,heteromorphic alternation of generations,NA,heteromorphic alternation of generations,NA,NA
-r (reproductive traits),reproductive strategy,plants_algae,sexual hermaphorodite,sexual hermaphorodite,NA,NA,sexual hermaphorodite
-spatial scale of species,depth (min/max),plants_algae,epipelagic,epipelagic,NA,NA,epipelagic
-spatial scale of species,depth (min/max),plants_algae,epipelagic <30 m,NA,NA,epipelagic,NA
-spatial scale of species,eoo (range),plants_algae,<100 km2,NA,<100km2,NA,NA
-spatial scale of species,eoo (range),plants_algae,">20,000",>20000,NA,NA,NA
-spatial scale of species,eoo (range),plants_algae,"5000-19,999",NA,NA,NA,5000-19999
-spatial scale of species,eoo (range),plants_algae,pantropical,NA,NA,pantropical,NA
-spatial scale of species,zone,plants_algae,Benthic,benthic,NA,NA,benthic
-spatial scale of species,zone,plants_algae,benthic subtidal,NA,benthic,NA,NA
-spatial scale of species,zone,plants_algae,"intertidal, benthic",NA,NA,intertidal;benthic,NA
-specialisation,air-sea interface,plants_algae,"no sensitive, thrives in high wave action --reef crest",NA,NA,no sensitive;thrives in high wave action--reef crest,NA
-specialisation,air-sea interface,plants_algae,yes - although not sure what this really means - propagules float,yes-although not sure what this really means-propagules float,NA,NA,yes-although not sure what this really means-propagules float
-specialisation,air-sea interface,plants_algae,"yes, canopy at sea surface",NA,yes;canopy at sea surface,NA,NA
-specialisation,dependent interspecific interactions,plants_algae,examples of strong interactions but not clear if universal or needed for survival,NA,NA,examples of strong interactions but not clear if universal or needed for survival,NA
-specialisation,dependent interspecific interactions,plants_algae,no,no,NA,NA,no
-specialisation,extreme diet specialization,plants_algae,"NA",na,NA,NA,na
-specialisation,extreme diet specialization,plants_algae,no,NA,no,no,NA
-specialisation,light dependence,plants_algae,yes (photosyntehtic),yes (photosyntehtic),yes (photosyntehtic),yes (photosyntehtic),yes (photosyntehtic)
-specialisation,terrestrial and marine life stages,plants_algae,no,no,NA,no,no
-specialisation,within-stage dependent habitats + condition,plants_algae,coral reefs,NA,NA,coral reefs,NA
+category,trait,avicennia marina,macrocystis,porolithon,posidonia australis
+biophysical traits,adult body mass/body size,very large,very large,50mm-999mm,50-999mm
+biophysical traits,biomineral,other lignin-cellulose (unique to the mangroves;seagrass and saltmarsh),no,hi mg calcite,other lignin-cellulose (unique to the mangroves;seagrass and saltmarsh)
+biophysical traits,calcium carbonate structure location,none,none,cell walls deposit calcium carbonate heavily,none
+biophysical traits,calcium carbonate structure stages,none,none,calcification after germination and through adulthood,none
+biophysical traits,communication requirement (sound),no,no,no,no
+biophysical traits,extreme pressure wave sensitive structures,yes,pneumatocyst (gas bladders),no sensitivity,yes
+biophysical traits,flight,no,no,no,no
+biophysical traits,"navigation requirements (sound or light, or magnetic)",no,no,no,no
+biophysical traits,respiration structures,pnuemataphores,no,no,no
+breeding/nesting range/number of spawning aggregations (fish),number of sites,many,na-entire distribution,na,many
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,no,possibly,possibly,no
+foraging range,"if one/few, size",very small,NA,NA,very small
+foraging range,"number of sites, incl. terrestrial wetlands",many,many,na,many
+foraging range,sub-population dependence on particular sites,no,possible local adaptation,NA,no
+movement,adult mobility,sessile,passive,sessile,sessile
+movement,planktonic larval duration (pld),<1month,NA,<1week,<1month
+physiological tolerance breadths,dissolved oxygen,high tolerance,broad,low tolerance,high tolerance
+physiological tolerance breadths,ph,<7.4,<7.4,7.8-8.2,<7.4
+physiological tolerance breadths,salinity,euryhaline,narrow;average marine,euryhaline;narrow,stenohaline
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive,easily dislodged by large waves,no sensitive;thrives in high wave action--reef crest,sensitive
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no,NA,no,yes
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c,20c,30c,20c
+r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,6-12months for sporophyte;12-15days for gametophyte,<1yr,1-5yrs
+r (reproductive traits),are there sub-populations?,yes,NA,likely;unknown,yes
+r (reproductive traits),can the sex ratio be altered by a stressor?,no,no,unknown,no
+r (reproductive traits),fecundity,100-1000,1-10for sporophyte;<1for gametophyte,tetraspores(asexual)>1000s,100-1000
+r (reproductive traits),feeding larva (post-hatching metamorphosis),yes (photosyntehtic),yes (photosynthetic spores and eggs),yes (photosynthetic spores and eggs),yes (photosyntehtic)
+r (reproductive traits),global population size,>100k,>100k,>1m,>100k
+r (reproductive traits),lifetime # reproductive opportunities,100,100for spropphytes;1for gametophytes,100,100
+r (reproductive traits),max age,>100years,NA,5-10yrs but could be than 10,>100years
+r (reproductive traits),parental investment,spawner,spawner,spawner,spawner
+r (reproductive traits),post-birth/hatching parental dependence,na,NA,NA,na
+r (reproductive traits),reproductive strategy,sexual hermaphorodite,heteromorphic alternation of generations,both sexual and asexual,sexual hermaphorodite
+spatial scale of species,depth (min/max),epipelagic,NA,epipelagic,epipelagic
+spatial scale of species,eoo (range),>20000,<100km2,pantropical,5000-19999
+spatial scale of species,zone,benthic,benthic,intertidal;benthic,benthic
+specialisation,air-sea interface,yes-although not sure what this really means-propagules float,yes;canopy at sea surface,no sensitive;thrives in high wave action--reef crest,yes-although not sure what this really means-propagules float
+specialisation,dependent interspecific interactions,no,NA,examples of strong interactions but not clear if universal or needed for survival,no
+specialisation,extreme diet specialization,na,no,no,na
+specialisation,light dependence,yes (photosyntehtic),yes (photosyntehtic),yes (photosyntehtic),yes (photosyntehtic)
+specialisation,terrestrial and marine life stages,no,NA,no,no
+specialisation,within-stage dependent habitats + condition,NA,NA,coral reefs,NA

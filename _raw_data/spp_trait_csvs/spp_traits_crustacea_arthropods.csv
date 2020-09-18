@@ -1,158 +1,44 @@
-category,trait,sheet,trait_val_orig,bythograea thermydron,mictyris platychelus,nymphon australe,palaemon elegans,paralithodes camtschaticus,peneaus,pycnogonum,scylla serrata,trapezia flavopunctata
-biophysical traits,adult body mass/body size,crustacea_arthropods,0.5-49mm,NA,0.5-49mm,NA,NA,NA,NA,NA,NA,NA
-biophysical traits,adult body mass/body size,crustacea_arthropods,"10 mm body length, 15 mm leg span",NA,NA,NA,NA,NA,NA,10mm body length;15mm leg span,NA,NA
-biophysical traits,adult body mass/body size,crustacea_arthropods,"10 mm body length, 25 mm leg span",NA,NA,10mm body length;25mm leg span,NA,NA,NA,NA,NA,NA
-biophysical traits,adult body mass/body size,crustacea_arthropods,100 mm body length,NA,NA,NA,NA,NA,100mm body length,NA,NA,NA
-biophysical traits,adult body mass/body size,crustacea_arthropods,4-6 cm,NA,NA,NA,4-6cm,NA,NA,NA,NA,NA
-biophysical traits,adult body mass/body size,crustacea_arthropods,50mm-999mm,50mm-999mm,NA,NA,NA,50mm-999mm,NA,NA,50mm-999mm,50mm-999mm
-biophysical traits,biomineral,crustacea_arthropods,"aragonite, calcite and chitin",NA,NA,NA,aragonite;calcite and chitin,NA,NA,NA,NA,NA
-biophysical traits,biomineral,crustacea_arthropods,calcite,NA,NA,NA,NA,NA,calcite,NA,NA,NA
-biophysical traits,biomineral,crustacea_arthropods,"calcite, chitin/CaCO3",calcite;chitin;caco3,calcite;chitin;caco3,NA,NA,calcite;chitin;caco3,NA,NA,calcite;chitin;caco3,calcite;chitin;caco3
-biophysical traits,biomineral,crustacea_arthropods,none,NA,NA,none,NA,NA,NA,none,NA,NA
-biophysical traits,calcium carbonate structure location,crustacea_arthropods,external,external,external,NA,NA,external,external,NA,external,external
-biophysical traits,calcium carbonate structure location,crustacea_arthropods,external and internal,NA,NA,NA,external and internal,NA,NA,NA,NA,NA
-biophysical traits,calcium carbonate structure location,crustacea_arthropods,none,NA,NA,none,NA,NA,NA,none,NA,NA
-biophysical traits,calcium carbonate structure stages,crustacea_arthropods,both,NA,NA,NA,both,NA,both,NA,NA,NA
-biophysical traits,calcium carbonate structure stages,crustacea_arthropods,both - unsure,both-unsure,NA,NA,NA,NA,NA,NA,NA,NA
-biophysical traits,calcium carbonate structure stages,crustacea_arthropods,both-unsure,NA,both-unsure,NA,NA,both-unsure,NA,NA,both-unsure,both-unsure
-biophysical traits,calcium carbonate structure stages,crustacea_arthropods,none,NA,NA,none,NA,NA,NA,none,NA,NA
-biophysical traits,communication requirement (sound),crustacea_arthropods,no,no,no,NA,no,no,NA,NA,no,no
-biophysical traits,communication requirement (sound),crustacea_arthropods,none,NA,NA,none,NA,NA,none,none,NA,NA
-biophysical traits,extreme pressure wave sensitive structures,crustacea_arthropods,low sensitivity,low sensitivity,low sensitivity,NA,NA,NA,NA,NA,low sensitivity,NA
-biophysical traits,extreme pressure wave sensitive structures,crustacea_arthropods,low sensitvity,NA,NA,NA,NA,low sensitvity,NA,NA,NA,low sensitvity
-biophysical traits,extreme pressure wave sensitive structures,crustacea_arthropods,none,NA,NA,none,NA,NA,NA,none,NA,NA
-biophysical traits,extreme pressure wave sensitive structures,crustacea_arthropods,yes,NA,NA,NA,NA,NA,yes,NA,NA,NA
-biophysical traits,flight,crustacea_arthropods,no,no,no,NA,no,no,NA,NA,no,no
-biophysical traits,flight,crustacea_arthropods,none,NA,NA,none,NA,NA,none,none,NA,NA
-biophysical traits,"navigation requirements (sound or light, or magnetic)",crustacea_arthropods,none,NA,NA,none,NA,NA,NA,none,NA,NA
-biophysical traits,"navigation requirements (sound or light, or magnetic)",crustacea_arthropods,yes,NA,NA,NA,yes,NA,yes,NA,NA,NA
-biophysical traits,"navigation requirements (sound or light, or magnetic)",crustacea_arthropods,yes - night vision,yes-night vision,NA,NA,NA,NA,NA,NA,NA,NA
-biophysical traits,"navigation requirements (sound or light, or magnetic)",crustacea_arthropods,yes-light,NA,yes-light,NA,NA,yes-light,NA,NA,yes-light,yes-light
-biophysical traits,respiration structures,crustacea_arthropods,gills,gills,gills,NA,gills,gills,NA,NA,gills,gills
-biophysical traits,respiration structures,crustacea_arthropods,gills/filter feeding,NA,NA,NA,NA,NA,gills;filter feeding,NA,NA,NA
-biophysical traits,respiration structures,crustacea_arthropods,skin or cuticle,NA,NA,skin or cuticle,NA,NA,NA,skin or cuticle,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",crustacea_arthropods,large,NA,NA,NA,NA,NA,large,NA,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",crustacea_arthropods,small,NA,NA,NA,small,NA,NA,NA,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",crustacea_arthropods,very small,NA,NA,NA,NA,NA,NA,very small,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),number of sites,crustacea_arthropods,few,NA,NA,NA,few,NA,NA,few,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),number of sites,crustacea_arthropods,many,many,many,many,NA,many,NA,NA,many,many
-breeding/nesting range/number of spawning aggregations (fish),number of sites,crustacea_arthropods,none,NA,NA,NA,NA,NA,none,NA,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,crustacea_arthropods,difficult to say - they may be dependent on th intertidal pools in summer and the offshore waters in winter.,NA,NA,NA,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,NA,NA,NA,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,crustacea_arthropods,no,no,no,no,NA,no,NA,NA,no,no
-breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,crustacea_arthropods,none,NA,NA,NA,NA,NA,none,NA,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,crustacea_arthropods,yes,NA,NA,NA,NA,NA,NA,yes,NA,NA
-foraging range,"if one/few, size",crustacea_arthropods,unknown,NA,NA,NA,unknown,NA,NA,NA,NA,NA
-foraging range,"if one/few, size",crustacea_arthropods,very small,NA,NA,NA,NA,NA,NA,very small,NA,NA
-foraging range,"number of sites, incl. terrestrial wetlands",crustacea_arthropods,many,many,many,NA,many,many,many,NA,many,many
-foraging range,"number of sites, incl. terrestrial wetlands",crustacea_arthropods,one,NA,NA,NA,NA,NA,NA,one,NA,NA
-foraging range,sub-population dependence on particular sites,crustacea_arthropods,no,NA,NA,no,NA,NA,NA,NA,NA,NA
-foraging range,sub-population dependence on particular sites,crustacea_arthropods,none,NA,NA,NA,NA,NA,none,NA,NA,NA
-foraging range,sub-population dependence on particular sites,crustacea_arthropods,unknown,NA,NA,NA,unknown,NA,NA,NA,NA,NA
-foraging range,sub-population dependence on particular sites,crustacea_arthropods,yes,NA,NA,NA,NA,NA,NA,yes,NA,NA
-movement,adult mobility,crustacea_arthropods,mobile resident,mobile resident,mobile resident,NA,NA,NA,NA,mobile resident,NA,mobile resident
-movement,adult mobility,crustacea_arthropods,mobile resident - horizontal migrator,NA,NA,NA,mobile resident;horizontal migrator,NA,NA,NA,NA,NA
-movement,adult mobility,crustacea_arthropods,"mobile resident, horizontal migrator",NA,NA,mobile resident;horizontal migrator,NA,NA,NA,NA,NA,NA
-movement,adult mobility,crustacea_arthropods,mobile resident; horizontal migrator,NA,NA,NA,NA,NA,NA,NA,mobile resident;horizontal migrator,NA
-movement,adult mobility,crustacea_arthropods,"vertical migrator, horizontal migrator, nomadic",NA,NA,NA,NA,NA,vertical migrator;horizontal migrator;nomadic,NA,NA,NA
-movement,adult mobility,crustacea_arthropods,vertical migrator; horizontal migrator,NA,NA,NA,NA,vertical migrator;horizontal migrator,NA,NA,NA,NA
-movement,planktonic larval duration (pld),crustacea_arthropods,<1 month,NA,NA,NA,NA,NA,NA,NA,<1month,NA
-movement,planktonic larval duration (pld),crustacea_arthropods,<1 week,<1week,NA,NA,NA,NA,NA,NA,NA,NA
-movement,planktonic larval duration (pld),crustacea_arthropods,<3-4 months,NA,NA,NA,NA,<3-4months,NA,NA,NA,NA
-movement,planktonic larval duration (pld),crustacea_arthropods,unknown,NA,unknown,unknown,unknown,NA,unknown,unknown,NA,unknown
-physiological tolerance breadths,dissolved oxygen,crustacea_arthropods,1.0 mg l−1 to 7mg l−1,NA,NA,NA,NA,NA,1.0mg l1to 7mg l1,NA,NA,NA
-physiological tolerance breadths,dissolved oxygen,crustacea_arthropods,air breather,NA,air breather,NA,NA,NA,NA,NA,NA,NA
-physiological tolerance breadths,dissolved oxygen,crustacea_arthropods,broad,NA,NA,NA,broad,NA,NA,NA,NA,NA
-physiological tolerance breadths,dissolved oxygen,crustacea_arthropods,high tolerance - dissolved oxygen low near hydrothermal vents,high tolerance-dissolved oxygen low near hydrothermal vents,NA,NA,NA,NA,NA,NA,high tolerance-dissolved oxygen low near hydrothermal vents,NA
-physiological tolerance breadths,dissolved oxygen,crustacea_arthropods,low tolerance,NA,NA,NA,NA,low tolerance,NA,NA,NA,low tolerance
-physiological tolerance breadths,dissolved oxygen,crustacea_arthropods,unknown,NA,NA,unknown,NA,NA,NA,unknown,NA,NA
-physiological tolerance breadths,ph,crustacea_arthropods,<7.4 - more acidic near hydrothermal vents,<7.4,NA,NA,NA,NA,NA,NA,NA,NA
-physiological tolerance breadths,ph,crustacea_arthropods,7.8-8.2,NA,7.8-8.2,NA,NA,7.8-8.2,NA,NA,7.8-8.2,7.8-8.2
-physiological tolerance breadths,ph,crustacea_arthropods,broad,NA,NA,NA,<7.4,NA,<7.4,NA,NA,NA
-physiological tolerance breadths,ph,crustacea_arthropods,unknown,NA,NA,unknown,NA,NA,NA,unknown,NA,NA
-physiological tolerance breadths,salinity,crustacea_arthropods,1%o to 32%o,NA,NA,NA,NA,NA,1o to 32o,NA,NA,NA
-physiological tolerance breadths,salinity,crustacea_arthropods,broad,NA,NA,NA,broad,NA,NA,NA,NA,NA
-physiological tolerance breadths,salinity,crustacea_arthropods,"NA",na,na,NA,NA,na,NA,NA,na,na
-physiological tolerance breadths,salinity,crustacea_arthropods,narrow,NA,NA,narrow,NA,NA,NA,narrow,NA,NA
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),crustacea_arthropods,N/A,NA,NA,NA,na,NA,NA,NA,NA,NA
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),crustacea_arthropods,not sensitive,not sensitive,not sensitive,NA,NA,not sensitive,NA,NA,not sensitive,not sensitive
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,crustacea_arthropods,0-10 deg,NA,NA,NA,NA,NA,NA,10c,NA,NA
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,crustacea_arthropods,10,NA,NA,NA,NA,10c,NA,NA,NA,NA
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,crustacea_arthropods,10-25 deg --broad?,NA,NA,NA,NA,NA,25c,NA,NA,NA
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,crustacea_arthropods,25,25c,NA,NA,NA,NA,NA,NA,NA,25c
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,crustacea_arthropods,30,NA,30c,NA,NA,NA,NA,NA,30c,NA
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,crustacea_arthropods,broad,NA,NA,NA,30c,NA,NA,NA,NA,NA
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,crustacea_arthropods,polar subantarctic temps,NA,NA,polar subantarctic temps,NA,NA,NA,NA,NA,NA
-r (reproductive traits),age to 1st reproduction/generation time,crustacea_arthropods,<1 yr,NA,NA,NA,NA,NA,<1yr,NA,NA,NA
-r (reproductive traits),age to 1st reproduction/generation time,crustacea_arthropods,1 to 5 yrs,NA,NA,NA,NA,NA,NA,1to 5yrs,NA,NA
-r (reproductive traits),age to 1st reproduction/generation time,crustacea_arthropods,1-5,NA,1-5,NA,NA,NA,NA,NA,1-5,1-5
-r (reproductive traits),age to 1st reproduction/generation time,crustacea_arthropods,1-5 years,NA,NA,NA,1-5years,NA,NA,NA,NA,NA
-r (reproductive traits),age to 1st reproduction/generation time,crustacea_arthropods,5-10,NA,NA,NA,NA,5-10,NA,NA,NA,NA
-r (reproductive traits),age to 1st reproduction/generation time,crustacea_arthropods,5-10 yrs (data for another Nymphon species),NA,NA,5-10yrs (data for another nymphon species),NA,NA,NA,NA,NA,NA
-r (reproductive traits),age to 1st reproduction/generation time,crustacea_arthropods,unknown,unknown,NA,NA,NA,NA,NA,NA,NA,NA
-r (reproductive traits),are there sub-populations?,crustacea_arthropods,yes,yes,yes,NA,NA,yes,NA,NA,yes,yes
-r (reproductive traits),can the sex ratio be altered by a stressor?,crustacea_arthropods,no,NA,NA,no,NA,NA,NA,no,NA,NA
-r (reproductive traits),can the sex ratio be altered by a stressor?,crustacea_arthropods,unknown,unknown,unknown,NA,NA,unknown,NA,NA,unknown,unknown
-r (reproductive traits),can the sex ratio be altered by a stressor?,crustacea_arthropods,yes,NA,NA,NA,yes,NA,yes,NA,NA,NA
-r (reproductive traits),fecundity,crustacea_arthropods,">10,000",NA,>10000,NA,NA,>10000,>10000,NA,>10000,>10000
-r (reproductive traits),fecundity,crustacea_arthropods,10-100,NA,NA,NA,10-100,NA,NA,10-100,NA,NA
-r (reproductive traits),fecundity,crustacea_arthropods,100-1000,NA,NA,100-1000,NA,NA,NA,NA,NA,NA
-r (reproductive traits),fecundity,crustacea_arthropods,unknown,unknown,NA,NA,NA,NA,NA,NA,NA,NA
-r (reproductive traits),feeding larva (post-hatching metamorphosis),crustacea_arthropods,feeding,feeding,feeding,NA,NA,feeding,NA,NA,feeding,feeding
-r (reproductive traits),feeding larva (post-hatching metamorphosis),crustacea_arthropods,yes,NA,NA,yes,yes,NA,yes,yes,NA,NA
-r (reproductive traits),global population size,crustacea_arthropods,<1000,NA,NA,NA,NA,NA,NA,<1000,NA,NA
-r (reproductive traits),global population size,crustacea_arthropods,>100 k,NA,NA,NA,>100k,NA,NA,NA,NA,NA
-r (reproductive traits),global population size,crustacea_arthropods,>100k,NA,NA,NA,NA,NA,>100k,NA,NA,NA
-r (reproductive traits),global population size,crustacea_arthropods,>1M,>1m,NA,NA,NA,NA,NA,NA,NA,NA
-r (reproductive traits),global population size,crustacea_arthropods,">1M - no population estimate, but I estimate this is the size",NA,>1m-no population estimate;but i estimate this is the size,NA,NA,>1m-no population estimate;but i estimate this is the size,NA,NA,>1m-no population estimate;but i estimate this is the size,>1m-no population estimate;but i estimate this is the size
-r (reproductive traits),global population size,crustacea_arthropods,"dominant sp, 1-10k",NA,NA,dominant sp;1-10k,NA,NA,NA,NA,NA,NA
-r (reproductive traits),lifetime # reproductive opportunities,crustacea_arthropods,100+,NA,NA,NA,NA,NA,100,NA,NA,NA
-r (reproductive traits),lifetime # reproductive opportunities,crustacea_arthropods,11 to 25,NA,NA,NA,NA,NA,NA,11to 25,NA,NA
-r (reproductive traits),lifetime # reproductive opportunities,crustacea_arthropods,11-25,NA,NA,NA,NA,11-25,NA,NA,NA,NA
-r (reproductive traits),lifetime # reproductive opportunities,crustacea_arthropods,2-10,NA,2-10,NA,NA,NA,NA,NA,2-10,NA
-r (reproductive traits),lifetime # reproductive opportunities,crustacea_arthropods,26 to 50,NA,NA,26to 50,NA,NA,NA,NA,NA,NA
-r (reproductive traits),lifetime # reproductive opportunities,crustacea_arthropods,4-6 broods,NA,NA,NA,4-6broods,NA,NA,NA,NA,NA
-r (reproductive traits),lifetime # reproductive opportunities,crustacea_arthropods,unknown,unknown,NA,NA,NA,NA,NA,NA,NA,unknown
-r (reproductive traits),max age,crustacea_arthropods,1-5,1-5,1-5,NA,NA,NA,NA,NA,1-5,1-5
-r (reproductive traits),max age,crustacea_arthropods,20-100,NA,NA,NA,NA,20-100,NA,NA,NA,NA
-r (reproductive traits),parental investment,crustacea_arthropods,egg care,NA,NA,egg care,egg care,egg care,egg care,egg care,NA,NA
-r (reproductive traits),parental investment,crustacea_arthropods,egg-layer,egg-layer,NA,NA,NA,NA,NA,NA,NA,egg-layer
-r (reproductive traits),parental investment,crustacea_arthropods,spawner,NA,spawner,NA,NA,NA,NA,NA,spawner,NA
-r (reproductive traits),post-birth/hatching parental dependence,crustacea_arthropods,<week,NA,NA,NA,NA,<week,NA,NA,NA,NA
-r (reproductive traits),post-birth/hatching parental dependence,crustacea_arthropods,"NA",na,na,NA,NA,NA,NA,NA,na,na
-r (reproductive traits),reproductive strategy,crustacea_arthropods,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious
-spatial scale of species,depth (min/max),crustacea_arthropods,epipelagic; mesopelagic,epipelagic;mesopelagic,NA,NA,NA,NA,NA,NA,epipelagic;mesopelagic,NA
-spatial scale of species,eoo (range),crustacea_arthropods,<100km2,NA,NA,NA,NA,NA,NA,<100km2,NA,NA
-spatial scale of species,eoo (range),crustacea_arthropods,<99km2,<99km2,<99km2,NA,NA,<99km2,NA,NA,<99km2,<99km2
-spatial scale of species,eoo (range),crustacea_arthropods,">20,000",NA,NA,NA,NA,NA,>20000,NA,NA,NA
-spatial scale of species,eoo (range),crustacea_arthropods,100-5000?,NA,NA,NA,100-5000,NA,NA,NA,NA,NA
-spatial scale of species,eoo (range),crustacea_arthropods,"20,000? This sp, is antarctic circumpolar",NA,NA,20000this sp;is antarctic circumpolar,NA,NA,NA,NA,NA,NA
-spatial scale of species,zone,crustacea_arthropods,benthic,NA,NA,benthic,NA,NA,NA,benthic,NA,benthic
-spatial scale of species,zone,crustacea_arthropods,demersal,demersal,NA,NA,NA,NA,demersal,NA,NA,NA
-spatial scale of species,zone,crustacea_arthropods,intertidal,NA,intertidal,NA,intertidal,intertidal,NA,NA,intertidal,NA
-specialisation,across-stage dependent habitats + condition,crustacea_arthropods,coral reef,NA,NA,NA,NA,NA,NA,NA,NA,coral reef
-specialisation,across-stage dependent habitats + condition,crustacea_arthropods,"deep water, hydrothermal vents",deep water;hydrothermal vents,NA,NA,NA,NA,NA,NA,NA,NA
-specialisation,across-stage dependent habitats + condition,crustacea_arthropods,"estuary, mangrove, intertidal, beach",NA,estuary;mangrove;intertidal;beach,NA,NA,NA,NA,NA,NA,NA
-specialisation,across-stage dependent habitats + condition,crustacea_arthropods,"intertidal mud, beach",NA,NA,NA,NA,intertidal mud;beach,NA,NA,NA,NA
-specialisation,across-stage dependent habitats + condition,crustacea_arthropods,"intertidal mud, mangrove, estuary",NA,NA,NA,NA,NA,NA,NA,intertidal mud;mangrove;estuary,NA
-specialisation,air-sea interface,crustacea_arthropods,no,NA,NA,no,no,NA,NA,NA,NA,NA
-specialisation,air-sea interface,crustacea_arthropods,none,NA,NA,NA,NA,NA,none,NA,NA,NA
-specialisation,air-sea interface,crustacea_arthropods,yes,yes,yes,NA,NA,yes,NA,yes,yes,yes
-specialisation,dependent interspecific interactions,crustacea_arthropods,no,no,no,NA,no,no,NA,NA,no,NA
-specialisation,dependent interspecific interactions,crustacea_arthropods,none,NA,NA,NA,NA,NA,none,NA,NA,NA
-specialisation,dependent interspecific interactions,crustacea_arthropods,yes,NA,NA,yes,NA,NA,NA,yes,NA,NA
-specialisation,dependent interspecific interactions,crustacea_arthropods,yes w/ coral,NA,NA,NA,NA,NA,NA,NA,NA,yes w;coral
-specialisation,extreme diet specialization,crustacea_arthropods,generalist,generalist,generalist,NA,NA,generalist,NA,NA,generalist,generalist
-specialisation,extreme diet specialization,crustacea_arthropods,no - broadly omniverous,NA,NA,NA,no-broadly omniverous,NA,NA,NA,NA,NA
-specialisation,extreme diet specialization,crustacea_arthropods,none,NA,NA,NA,NA,NA,none,NA,NA,NA
-specialisation,extreme diet specialization,crustacea_arthropods,yes,NA,NA,yes,NA,NA,NA,yes,NA,NA
-specialisation,light dependence,crustacea_arthropods,no,no,no,no,no,no,NA,no,no,no
-specialisation,light dependence,crustacea_arthropods,none,NA,NA,NA,NA,NA,none,NA,NA,NA
-specialisation,terrestrial and marine life stages,crustacea_arthropods,no,no,no,NA,no,no,NA,NA,no,no
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,coral reef,NA,NA,NA,NA,NA,NA,NA,NA,coral reef
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,deep soft benthic,NA,NA,deep soft benthic,NA,NA,NA,NA,NA,NA
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,"deep water, hydrothermal vents",deep water;hydrothermal vents,NA,NA,NA,NA,NA,NA,NA,NA
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,"estuary, mangrove, intertidal, beach",NA,estuary;mangrove;intertidal;beach,NA,NA,NA,NA,NA,NA,NA
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,"intertidal, cora reef",NA,NA,NA,NA,NA,NA,intertidal;cora reef,NA,NA
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,kelp forest - hide for first year of life here,NA,NA,NA,NA,kelp forest-hide for first year of life here,NA,NA,NA,NA
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,"soft , rock pool, intertidal",NA,NA,NA,soft;rock pool;intertidal,NA,NA,NA,NA,NA
-specialisation,within-stage dependent habitats + condition,crustacea_arthropods,surface water? - during planktonic stage?,NA,NA,NA,NA,NA,NA,NA,surface water-during planktonic stage,NA
+category,trait,bythograea thermydron,mictyris platychelus,nymphon australe,palaemon elegans,paralithodes camtschaticus,peneaus,pycnogonum,scylla serrata,trapezia flavopunctata
+biophysical traits,adult body mass/body size,50mm-999mm,0.5-49mm,10mm body length;25mm leg span,4-6cm,50mm-999mm,100mm body length,10mm body length;15mm leg span,50mm-999mm,50mm-999mm
+biophysical traits,biomineral,calcite;chitin;caco3,calcite;chitin;caco3,none,aragonite;calcite and chitin,calcite;chitin;caco3,calcite,none,calcite;chitin;caco3,calcite;chitin;caco3
+biophysical traits,calcium carbonate structure location,external,external,none,external and internal,external,external,none,external,external
+biophysical traits,calcium carbonate structure stages,both-unsure,both-unsure,none,both,both-unsure,both,none,both-unsure,both-unsure
+biophysical traits,communication requirement (sound),no,no,none,no,no,none,none,no,no
+biophysical traits,extreme pressure wave sensitive structures,low sensitivity,low sensitivity,none,NA,low sensitvity,yes,none,low sensitivity,low sensitvity
+biophysical traits,flight,no,no,none,no,no,none,none,no,no
+biophysical traits,"navigation requirements (sound or light, or magnetic)",yes-night vision,yes-light,none,yes,yes-light,yes,none,yes-light,yes-light
+biophysical traits,respiration structures,gills,gills,skin or cuticle,gills,gills,gills;filter feeding,skin or cuticle,gills,gills
+breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",NA,NA,NA,small,NA,large,very small,NA,NA
+breeding/nesting range/number of spawning aggregations (fish),number of sites,many,many,many,few,many,none,few,many,many
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,no,no,no,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,no,none,yes,no,no
+foraging range,"if one/few, size",NA,NA,NA,unknown,NA,NA,very small,NA,NA
+foraging range,"number of sites, incl. terrestrial wetlands",many,many,NA,many,many,many,one,many,many
+foraging range,sub-population dependence on particular sites,NA,NA,no,unknown,NA,none,yes,NA,NA
+movement,adult mobility,mobile resident,mobile resident,mobile resident;horizontal migrator,mobile resident;horizontal migrator,vertical migrator;horizontal migrator,vertical migrator;horizontal migrator;nomadic,mobile resident,mobile resident;horizontal migrator,mobile resident
+movement,planktonic larval duration (pld),<1week,unknown,unknown,unknown,<3-4months,unknown,unknown,<1month,unknown
+physiological tolerance breadths,dissolved oxygen,high tolerance-dissolved oxygen low near hydrothermal vents,air breather,unknown,broad,low tolerance,1.0mg l1to 7mg l1,unknown,high tolerance-dissolved oxygen low near hydrothermal vents,low tolerance
+physiological tolerance breadths,ph,<7.4,7.8-8.2,unknown,<7.4,7.8-8.2,<7.4,unknown,7.8-8.2,7.8-8.2
+physiological tolerance breadths,salinity,na,na,narrow,broad,na,1o to 32o,narrow,na,na
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),not sensitive,not sensitive,NA,na,not sensitive,NA,NA,not sensitive,not sensitive
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,25c,30c,polar subantarctic temps,30c,10c,25c,10c,30c,25c
+r (reproductive traits),age to 1st reproduction/generation time,unknown,1-5,5-10yrs (data for another nymphon species),1-5years,5-10,<1yr,1to 5yrs,1-5,1-5
+r (reproductive traits),are there sub-populations?,yes,yes,NA,NA,yes,NA,NA,yes,yes
+r (reproductive traits),can the sex ratio be altered by a stressor?,unknown,unknown,no,yes,unknown,yes,no,unknown,unknown
+r (reproductive traits),fecundity,unknown,>10000,100-1000,10-100,>10000,>10000,10-100,>10000,>10000
+r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding,feeding,yes,yes,feeding,yes,yes,feeding,feeding
+r (reproductive traits),global population size,>1m,>1m-no population estimate;but i estimate this is the size,dominant sp;1-10k,>100k,>1m-no population estimate;but i estimate this is the size,>100k,<1000,>1m-no population estimate;but i estimate this is the size,>1m-no population estimate;but i estimate this is the size
+r (reproductive traits),lifetime # reproductive opportunities,unknown,2-10,26to 50,4-6broods,11-25,100,11to 25,2-10,unknown
+r (reproductive traits),max age,1-5,1-5,NA,NA,20-100,NA,NA,1-5,1-5
+r (reproductive traits),parental investment,egg-layer,spawner,egg care,egg care,egg care,egg care,egg care,spawner,egg-layer
+r (reproductive traits),post-birth/hatching parental dependence,na,na,NA,NA,<week,NA,NA,na,na
+r (reproductive traits),reproductive strategy,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious
+spatial scale of species,depth (min/max),epipelagic;mesopelagic,NA,NA,NA,NA,NA,NA,epipelagic;mesopelagic,NA
+spatial scale of species,eoo (range),<99km2,<99km2,20000this sp;is antarctic circumpolar,100-5000,<99km2,>20000,<100km2,<99km2,<99km2
+spatial scale of species,zone,demersal,intertidal,benthic,intertidal,intertidal,demersal,benthic,intertidal,benthic
+specialisation,across-stage dependent habitats + condition,deep water;hydrothermal vents,estuary;mangrove;intertidal;beach,NA,NA,intertidal mud;beach,NA,NA,intertidal mud;mangrove;estuary,coral reef
+specialisation,air-sea interface,yes,yes,no,no,yes,none,yes,yes,yes
+specialisation,dependent interspecific interactions,no,no,yes,no,no,none,yes,no,yes w;coral
+specialisation,extreme diet specialization,generalist,generalist,yes,no-broadly omniverous,generalist,none,yes,generalist,generalist
+specialisation,light dependence,no,no,no,no,no,none,no,no,no
+specialisation,terrestrial and marine life stages,no,no,NA,no,no,NA,NA,no,no
+specialisation,within-stage dependent habitats + condition,deep water;hydrothermal vents,estuary;mangrove;intertidal;beach,deep soft benthic,soft;rock pool;intertidal,kelp forest-hide for first year of life here,NA,intertidal;cora reef,surface water-during planktonic stage,coral reef
