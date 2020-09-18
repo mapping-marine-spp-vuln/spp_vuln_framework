@@ -202,7 +202,7 @@ These vulnerability scores are calculated in the `calculate_spp_vuln.Rmd` script
 spp_vuln <- read_csv(here('_output/spp_gp_vulnerability.csv'))
 
 spp_gps <- spp_vuln %>%
-  select(sheet, spp_gp) %>%
+  select(taxon, spp_gp) %>%
   mutate(name = tolower(spp_gp)) %>%
   distinct()
 ```
@@ -221,33 +221,38 @@ traits_vs_am <- tx_am %>%
             
 traits_match_am <- traits_vs_am %>%
   filter(!is.na(am_sid)) %>%
-  filter(!is.na(sheet)) %>%
-  select(am_sid, matched_name = name, matched_rank = rank, sheet, spp_gp) %>%
+  filter(!is.na(taxon)) %>%
+  ### drop duplicates e.g. matched by both species name and family name
+  mutate(rank = factor(rank, levels = ranks)) %>%
+  group_by(am_sid) %>%
+  filter(as.numeric(rank) == max(as.numeric(rank))) %>%
+  ungroup() %>%
+  select(am_sid, match_name = name, match_rank = rank, taxon, spp_gp) %>%
   left_join(am_spp %>%
               select(am_sid = speciesid, sciname, comname = f_bname), by = c('am_sid'))
 
 traits_match_am_sum <- traits_match_am %>%
-  group_by(sheet) %>%
+  group_by(taxon) %>%
   summarize(n_spp = n_distinct(am_sid),
-            n_spp_match = sum(matched_rank == 'species', na.rm = TRUE),
-            n_genus_match = sum(matched_rank == 'genus', na.rm = TRUE),
-            n_fam_match = sum(matched_rank == 'family', na.rm = TRUE),
-            n_class_match = sum(matched_rank == 'class', na.rm = TRUE))
+            n_spp_match = sum(match_rank == 'species', na.rm = TRUE),
+            n_genus_match = sum(match_rank == 'genus', na.rm = TRUE),
+            n_fam_match = sum(match_rank == 'family', na.rm = TRUE),
+            n_class_match = sum(match_rank == 'class', na.rm = TRUE))
 knitr::kable(traits_match_am_sum)
 ```
 
-#### unmatched in AquaMaps
+#### in spp traits, unmatched in AquaMaps
 
 ```{r}
 traits_unmatch_am <- traits_vs_am %>%
   group_by(spp_gp) %>%
   filter(!any(!is.na(rank))) %>%
   ungroup() %>%
-  select(sheet, spp_gp) %>%
-  arrange(sheet, spp_gp)
+  select(taxon, spp_gp) %>%
+  arrange(taxon, spp_gp)
   
 traits_unmatched_am_sum <- traits_unmatch_am %>%
-  group_by(sheet) %>%
+  group_by(taxon) %>%
   summarize(n_spp = n_distinct(spp_gp)) %>%
   ungroup() %>%
   arrange(desc(n_spp))
@@ -255,6 +260,22 @@ traits_unmatched_am_sum <- traits_unmatch_am %>%
 knitr::kable(traits_unmatched_am_sum)
 
 DT::datatable(traits_unmatch_am)
+```
+
+#### in Aquamaps, unmatched in spp traits
+
+```{r}
+am_unmatch_traits <- am_spp %>%
+  filter(!speciesid %in% traits_match_am$am_sid)
+  
+am_unmatch_traits_sum <- am_unmatch_traits %>%
+  group_by(kingdom, phylum, class) %>%
+  summarize(n_spp = n_distinct(speciesid)) %>%
+  ungroup() %>%
+  arrange(desc(n_spp))
+  
+DT::datatable(am_unmatch_traits_sum)
+
 ```
 
 
@@ -272,13 +293,18 @@ traits_vs_iucn <- tx_iucn %>%
 
 traits_match_iucn <- traits_vs_iucn %>%
   filter(!is.na(iucn_sid)) %>%
-  filter(!is.na(sheet)) %>%
-  select(iucn_sid, matched_name = name, matched_rank = rank, sheet, spp_gp) %>%
+  filter(!is.na(taxon)) %>%
+  ### drop duplicates e.g. matched by both species name and family name
+  mutate(rank = factor(rank, levels = ranks)) %>%
+  group_by(iucn_sid) %>%
+  filter(as.numeric(rank) == max(as.numeric(rank))) %>%
+  ungroup() %>%
+  select(iucn_sid, matched_name = name, matched_rank = rank, taxon, spp_gp) %>%
   left_join(iucn_spp %>%
               select(iucn_sid, sciname), by = c('iucn_sid'))
 
 traits_match_iucn_sum <- traits_match_iucn %>%
-  group_by(sheet) %>%
+  group_by(taxon) %>%
   summarize(n_spp = n_distinct(iucn_sid),
             n_spp_match = sum(matched_rank == 'species', na.rm = TRUE),
             n_genus_match = sum(matched_rank == 'genus', na.rm = TRUE),
@@ -287,18 +313,18 @@ traits_match_iucn_sum <- traits_match_iucn %>%
 knitr::kable(traits_match_iucn_sum)
 ```
 
-#### unmatched in IUCN
+#### in spp traits, unmatched in IUCN
 
 ```{r}
 traits_unmatch_iucn <- traits_vs_iucn %>%
   group_by(spp_gp) %>%
   filter(!any(!is.na(rank))) %>%
   ungroup() %>%
-  select(sheet, spp_gp) %>%
-  arrange(sheet, spp_gp)
+  select(taxon, spp_gp) %>%
+  arrange(taxon, spp_gp)
 
 traits_unmatched_iucn_sum <- traits_unmatch_iucn %>%
-  group_by(sheet) %>%
+  group_by(taxon) %>%
   summarize(n_spp = n_distinct(spp_gp)) %>%
   ungroup() %>%
   arrange(desc(n_spp))
@@ -306,5 +332,27 @@ traits_unmatched_iucn_sum <- traits_unmatch_iucn %>%
 knitr::kable(traits_unmatched_iucn_sum)
 
 DT::datatable(traits_unmatch_iucn)
+```
+
+#### in IUCN, unmatched in spp traits
+
+```{r}
+iucn_unmatch_traits <- iucn_spp %>%
+  filter(!iucn_sid %in% traits_match_iucn$iucn_sid)
+  
+iucn_unmatch_traits_sum <- iucn_unmatch_traits %>%
+  group_by(kingdom, phylum, class) %>%
+  summarize(n_spp = n_distinct(iucn_sid)) %>%
+  ungroup() %>%
+  mutate(kingdom = tolower(kingdom), phylum = tolower(phylum), class = tolower(class)) %>%
+  arrange(desc(n_spp))
+  
+DT::datatable(iucn_unmatch_traits_sum)
+
+```
+
+```{r}
+traits_unmatch_all <- bind_rows(traits_unmatch_am, traits_unmatch_iucn) %>%
+  distinct()
 ```
 

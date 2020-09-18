@@ -1,4 +1,4 @@
-category,trait,cat_vals
+category,trait,trait_value
 movement,adult mobility,sessile
 movement,adult mobility,nearly sessile/sedentary
 movement,adult mobility,passive
@@ -6,11 +6,11 @@ movement,adult mobility,vertical migrator
 movement,adult mobility,mobile resident
 movement,adult mobility,horizontal migrator
 movement,adult mobility,nomadic
-movement,planktonic larval duration (pld),<1 day
-movement,planktonic larval duration (pld),<1 week
-movement,planktonic larval duration (pld),<1 month
-movement,planktonic larval duration (pld),<4 months
-movement,planktonic larval duration (pld),4 months -1yr
+movement,planktonic larval duration (pld),<1day
+movement,planktonic larval duration (pld),<1week
+movement,planktonic larval duration (pld),<1month
+movement,planktonic larval duration (pld),<4months
+movement,planktonic larval duration (pld),4months-1yr
 movement,planktonic larval duration (pld),>1yr
 movement,planktonic larval duration (pld),not larvae
 r (reproductive traits),reproductive strategy,sexual dioecious
@@ -24,14 +24,14 @@ r (reproductive traits),fecundity,10-20
 r (reproductive traits),fecundity,20-50
 r (reproductive traits),fecundity,50-100
 r (reproductive traits),fecundity,100-1000
-r (reproductive traits),fecundity,"1000-10,000"
-r (reproductive traits),fecundity,">10,000"
+r (reproductive traits),fecundity,1000-10000
+r (reproductive traits),fecundity,>10000
 r (reproductive traits),lifetime # reproductive opportunities,1
 r (reproductive traits),lifetime # reproductive opportunities,2-10
 r (reproductive traits),lifetime # reproductive opportunities,11-25
 r (reproductive traits),lifetime # reproductive opportunities,26-50
 r (reproductive traits),lifetime # reproductive opportunities,51-100
-r (reproductive traits),lifetime # reproductive opportunities,100+
+r (reproductive traits),lifetime # reproductive opportunities,100
 r (reproductive traits),age to 1st reproduction/generation time,>20yrs
 r (reproductive traits),age to 1st reproduction/generation time,10-20yrs
 r (reproductive traits),age to 1st reproduction/generation time,5-10yrs
@@ -44,7 +44,7 @@ r (reproductive traits),max age,5-10yrs
 r (reproductive traits),max age,1-5yrs
 r (reproductive traits),max age,3months-1yr
 r (reproductive traits),max age,<3months
-r (reproductive traits),parental investment,live birth/ egg care
+r (reproductive traits),parental investment,live birth/egg care
 r (reproductive traits),parental investment,spawner
 r (reproductive traits),parental investment,egg-layer
 r (reproductive traits),parental investment,egg-layer (unattended)
@@ -52,31 +52,31 @@ r (reproductive traits),post-birth/hatching parental dependence,>year
 r (reproductive traits),post-birth/hatching parental dependence,month-year
 r (reproductive traits),post-birth/hatching parental dependence,week-month
 r (reproductive traits),post-birth/hatching parental dependence,<week
-r (reproductive traits),post-birth/hatching parental dependence,"NA"
+r (reproductive traits),post-birth/hatching parental dependence,na
 r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding
 r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding
 r (reproductive traits),feeding larva (post-hatching metamorphosis),no larva
-r (reproductive traits),feeding larva (post-hatching metamorphosis),"NA"
+r (reproductive traits),feeding larva (post-hatching metamorphosis),na
 r (reproductive traits),global population size,<1000
-r (reproductive traits),global population size,1K-10K
-r (reproductive traits),global population size,10K-100K
-r (reproductive traits),global population size,100K-1M
-r (reproductive traits),global population size,>1M
+r (reproductive traits),global population size,1k-10k
+r (reproductive traits),global population size,10k-100k
+r (reproductive traits),global population size,100k-1m
+r (reproductive traits),global population size,>1m
 r (reproductive traits),are there sub-populations?,yes
 r (reproductive traits),are there sub-populations?,no
 r (reproductive traits),can the sex ratio be altered by a stressor?,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,no
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,5°C
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,10°C
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,15°C
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,20°C
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,25°C
-physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30°C
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,5c
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,10c
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,15c
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,20c
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,25c
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,yes
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no
 physiological tolerance breadths,salinity,stenohaline
 physiological tolerance breadths,salinity,euryhaline
-physiological tolerance breadths,salinity,"NA"
+physiological tolerance breadths,salinity,na
 physiological tolerance breadths,ph,<7.4
 physiological tolerance breadths,ph,7.5-7.7
 physiological tolerance breadths,ph,7.8-8.2
@@ -86,7 +86,7 @@ physiological tolerance breadths,dissolved oxygen,high tolerance
 physiological tolerance breadths,dissolved oxygen,air breathers
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),not sensitive
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),"NA"
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),na
 specialisation,light dependence,yes
 specialisation,light dependence,no
 specialisation,air-sea interface,floating
@@ -120,8 +120,8 @@ foraging range,sub-population dependence on particular sites,yes
 foraging range,sub-population dependence on particular sites,no
 spatial scale of species,eoo (range),<99
 spatial scale of species,eoo (range),100-4999
-spatial scale of species,eoo (range),"5000-19,999"
-spatial scale of species,eoo (range),">20,000"
+spatial scale of species,eoo (range),5000-19999
+spatial scale of species,eoo (range),>20000
 spatial scale of species,depth (min/max),epipelagic
 spatial scale of species,depth (min/max),mesopelagic
 spatial scale of species,depth (min/max),bathypelagic
@@ -133,10 +133,10 @@ spatial scale of species,zone,oceanic
 spatial scale of species,zone,pelagic
 spatial scale of species,zone,demersal
 spatial scale of species,zone,benthic
-biophysical traits,adult body mass/body size,>1000 mm
-biophysical traits,adult body mass/body size,50 mm-999 mm
-biophysical traits,adult body mass/body size,0.5-49 mm
-biophysical traits,adult body mass/body size,<0.4 mm
+biophysical traits,adult body mass/body size,>1000mm
+biophysical traits,adult body mass/body size,50mm-999mm
+biophysical traits,adult body mass/body size,0.5-49mm
+biophysical traits,adult body mass/body size,<0.4mm
 biophysical traits,calcium carbonate structure location,none
 biophysical traits,calcium carbonate structure location,internal
 biophysical traits,calcium carbonate structure location,external with a cover
@@ -148,9 +148,9 @@ biophysical traits,calcium carbonate structure stages,larvae
 biophysical traits,calcium carbonate structure stages,adult
 biophysical traits,calcium carbonate structure stages,both
 biophysical traits,biomineral,aragonite
-biophysical traits,biomineral,High Mg calcite
+biophysical traits,biomineral,high mg calcite
 biophysical traits,biomineral,calcite
-biophysical traits,biomineral,chitin/CaCO3 mix
+biophysical traits,biomineral,chitin/caco3 mix
 biophysical traits,biomineral,silicate
 biophysical traits,biomineral,other
 biophysical traits,flight,yes
