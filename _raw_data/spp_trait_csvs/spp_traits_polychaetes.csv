@@ -1,16 +1,14 @@
 category,trait,nephtyidae,nereididae,sabellidae,terebellidae
-biophysical traits,adult body mass/body size,0.5-49mm,0.5-49mm,0.5-49mm,0.5-49mm
+biophysical traits,adult body mass/body size,0.5mm-49mm,0.5mm-49mm,0.5mm-49mm,0.5mm-49mm
 biophysical traits,respiration structures,NA,NA,filter feeder,NA
-breeding/nesting range/number of spawning aggregations (fish),number of sites,co-ordinated spawning,some mass spawning,some mass spawning,co-ordinated spawning
 movement,adult mobility,mobile resident,mobile resident,sessile,sessile
-movement,planktonic larval duration (pld),days-weeks,days-weeks,days-weeks,days-weeks
-r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs,>1yr,1-5yrs
+movement,planktonic larval duration (pld) exposure,days-weeks,days-weeks,days-weeks,days-weeks
+r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs,1-5yrs,1-5yrs
 r (reproductive traits),fecundity,100-1000,1000-10000,5-10;1000-10000,1000-10000
 r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding,feeding,feeding,feeding;non-feeding
-r (reproductive traits),global population size,species restricted distributions,species restricted distributions,species restricted distributions,species restricted distributions
 r (reproductive traits),lifetime # reproductive opportunities,1;2-10,1;2-10,1;2-10,1;2-10
 r (reproductive traits),max age,1-5yrs,1-5yrs,1-5yrs,1-5yrs
-r (reproductive traits),parental investment,spawner;brooder,spawner;brooder,spawner;brooder,NA
+r (reproductive traits),parental investment,spawner,spawner,spawner,NA
 r (reproductive traits),post-birth/hatching parental dependence,na,na,na,na
 r (reproductive traits),reproductive strategy,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious
 specialisation,extreme diet specialization,generalist,generalist,generalist,generalist

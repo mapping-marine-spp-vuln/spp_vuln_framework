@@ -1,28 +1,26 @@
 category,trait,demospongiae
-biophysical traits,adult body mass/body size,not large
+biophysical traits,adult body mass/body size,0.5mm-49mm;50mm-999mm
 biophysical traits,biomineral,silicate
-biophysical traits,calcium carbonate structure location,no (but has silicious spicules)
 biophysical traits,calcium carbonate structure stages,no (but adults and larvae have silicious spicules)
 biophysical traits,communication requirement (sound),no
-biophysical traits,extreme pressure wave sensitive structures,probably
+biophysical traits,extreme pressure wave sensitive structures,medium
 biophysical traits,flight,no
 biophysical traits,"navigation requirements (sound or light, or magnetic)",yes;larval navigation def by light;sound unknown
 biophysical traits,respiration structures,filter feeding-used for gas exchange as well as acquisition of nutrients (and also of sperm;in spermcast spawners) and expulsion of waste and of gamates or larvae
-breeding/nesting range/number of spawning aggregations (fish),number of sites,na
-foraging range,"number of sites, incl. terrestrial wetlands",filter feeders (such as sponges and many other marine inverts) feed from water passing through;so foraging range could actually be enormous
-movement,planktonic larval duration (pld),most larvae lecithotrophic;pld<1day
+breeding/nesting range/number of spawning aggregations (fish),number of sites,does not aggregate
+movement,planktonic larval duration (pld) exposure,most larvae lecithotrophic;pld<1day
 physiological tolerance breadths,salinity,high tolerance to fluctuations in these parameters;which vary substantially in the reef flat habitat of this species
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),yes;can lead to fragmentation of adults
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c
-r (reproductive traits),age to 1st reproduction/generation time,probably<1;or 1-2yr
+r (reproductive traits),age to 1st reproduction/generation time,<1yr;1-5yrs
 r (reproductive traits),can the sex ratio be altered by a stressor?,unknown;probably no
-r (reproductive traits),fecundity,100-1000(and asexual repro also possible)
+r (reproductive traits),fecundity,100-1000
 r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding larvaemetamorphosis
-r (reproductive traits),global population size,unsure;maybe 1-10k
-r (reproductive traits),lifetime # reproductive opportunities,100
-r (reproductive traits),max age,probably 1-5yrs;although with asexual reproduction could be much longer
-r (reproductive traits),parental investment,spermcast spawner (embryos brooded)
+r (reproductive traits),global population size,<1000;1k-10k
+r (reproductive traits),lifetime # reproductive opportunities,>100
+r (reproductive traits),max age,1-5yrs
+r (reproductive traits),parental investment,spawner
 r (reproductive traits),post-birth/hatching parental dependence,<1day
 r (reproductive traits),reproductive strategy,sexual hermaphrodite;asexual (some demosponges are dioecious)
 spatial scale of species,eoo (range),dont know;but would guess<100km2

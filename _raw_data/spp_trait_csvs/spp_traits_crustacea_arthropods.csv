@@ -1,35 +1,35 @@
 category,trait,bythograea thermydron,mictyris platychelus,nymphon australe,palaemon elegans,paralithodes camtschaticus,peneaus,pycnogonum,scylla serrata,trapezia flavopunctata
-biophysical traits,adult body mass/body size,50mm-999mm,0.5-49mm,10mm body length;25mm leg span,4-6cm,50mm-999mm,100mm body length,10mm body length;15mm leg span,50mm-999mm,50mm-999mm
-biophysical traits,biomineral,calcite;chitin;caco3,calcite;chitin;caco3,none,aragonite;calcite and chitin,calcite;chitin;caco3,calcite,none,calcite;chitin;caco3,calcite;chitin;caco3
-biophysical traits,calcium carbonate structure location,external,external,none,external and internal,external,external,none,external,external
+biophysical traits,adult body mass/body size,50mm-999mm,0.5mm-49mm,0.5mm-49mm,0.5mm-49mm;50mm-999mm,50mm-999mm,50mm-999mm,0.5mm-49mm,50mm-999mm,50mm-999mm
+biophysical traits,biomineral,calcite;chitin/caco3 mix,calcite;chitin/caco3 mix,NA,aragonite;calcite;chitin/caco3 mix,calcite;chitin/caco3 mix,calcite,NA,calcite;chitin/caco3 mix,calcite;chitin/caco3 mix
+biophysical traits,calcium carbonate structure location,external,external,none,external;internal,external,external,none,external,external
 biophysical traits,calcium carbonate structure stages,both-unsure,both-unsure,none,both,both-unsure,both,none,both-unsure,both-unsure
 biophysical traits,communication requirement (sound),no,no,none,no,no,none,none,no,no
-biophysical traits,extreme pressure wave sensitive structures,low sensitivity,low sensitivity,none,NA,low sensitvity,yes,none,low sensitivity,low sensitvity
+biophysical traits,extreme pressure wave sensitive structures,NA,NA,none,NA,NA,high,none,NA,NA
 biophysical traits,flight,no,no,none,no,no,none,none,no,no
 biophysical traits,"navigation requirements (sound or light, or magnetic)",yes-night vision,yes-light,none,yes,yes-light,yes,none,yes-light,yes-light
 biophysical traits,respiration structures,gills,gills,skin or cuticle,gills,gills,gills;filter feeding,skin or cuticle,gills,gills
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",NA,NA,NA,small,NA,large,very small,NA,NA
-breeding/nesting range/number of spawning aggregations (fish),number of sites,many,many,many,few,many,none,few,many,many
+breeding/nesting range/number of spawning aggregations (fish),number of sites,many,many,many,few,many,does not aggregate,few,many,many
 breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,no,no,no,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,no,none,yes,no,no
 foraging range,"if one/few, size",NA,NA,NA,unknown,NA,NA,very small,NA,NA
 foraging range,"number of sites, incl. terrestrial wetlands",many,many,NA,many,many,many,one,many,many
 foraging range,sub-population dependence on particular sites,NA,NA,no,unknown,NA,none,yes,NA,NA
 movement,adult mobility,mobile resident,mobile resident,mobile resident;horizontal migrator,mobile resident;horizontal migrator,vertical migrator;horizontal migrator,vertical migrator;horizontal migrator;nomadic,mobile resident,mobile resident;horizontal migrator,mobile resident
-movement,planktonic larval duration (pld),<1week,unknown,unknown,unknown,<3-4months,unknown,unknown,<1month,unknown
+movement,planktonic larval duration (pld) exposure,<1week,unknown,unknown,unknown,<3-4months,unknown,unknown,<1month,unknown
 physiological tolerance breadths,dissolved oxygen,high tolerance-dissolved oxygen low near hydrothermal vents,air breather,unknown,broad,low tolerance,1.0mg l1to 7mg l1,unknown,high tolerance-dissolved oxygen low near hydrothermal vents,low tolerance
 physiological tolerance breadths,ph,<7.4,7.8-8.2,unknown,<7.4,7.8-8.2,<7.4,unknown,7.8-8.2,7.8-8.2
 physiological tolerance breadths,salinity,na,na,narrow,broad,na,1o to 32o,narrow,na,na
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),not sensitive,not sensitive,NA,na,not sensitive,NA,NA,not sensitive,not sensitive
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,25c,30c,polar subantarctic temps,30c,10c,25c,10c,30c,25c
-r (reproductive traits),age to 1st reproduction/generation time,unknown,1-5,5-10yrs (data for another nymphon species),1-5years,5-10,<1yr,1to 5yrs,1-5,1-5
+r (reproductive traits),age to 1st reproduction/generation time,NA,1-5yrs,5-10yrs,1-5yrs,5-10yrs,<1yr,1-5yrs,1-5yrs,1-5yrs
 r (reproductive traits),are there sub-populations?,yes,yes,NA,NA,yes,NA,NA,yes,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,unknown,unknown,no,yes,unknown,yes,no,unknown,unknown
-r (reproductive traits),fecundity,unknown,>10000,100-1000,10-100,>10000,>10000,10-100,>10000,>10000
+r (reproductive traits),fecundity,NA,>10000,100-1000,10-20;20-50;50-100,>10000,>10000,10-20;20-50;50-100,>10000,>10000
 r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding,feeding,yes,yes,feeding,yes,yes,feeding,feeding
-r (reproductive traits),global population size,>1m,>1m-no population estimate;but i estimate this is the size,dominant sp;1-10k,>100k,>1m-no population estimate;but i estimate this is the size,>100k,<1000,>1m-no population estimate;but i estimate this is the size,>1m-no population estimate;but i estimate this is the size
-r (reproductive traits),lifetime # reproductive opportunities,unknown,2-10,26to 50,4-6broods,11-25,100,11to 25,2-10,unknown
-r (reproductive traits),max age,1-5,1-5,NA,NA,20-100,NA,NA,1-5,1-5
-r (reproductive traits),parental investment,egg-layer,spawner,egg care,egg care,egg care,egg care,egg care,spawner,egg-layer
+r (reproductive traits),global population size,>1m,>1m,<1000;1k-10k,100k-1m;>1m,>1m,100k-1m;>1m,1k-10k,>1m,>1m
+r (reproductive traits),lifetime # reproductive opportunities,NA,2-10,26-50,2-10,11-25,>100,11-25,2-10,NA
+r (reproductive traits),max age,1-5yrs,1-5yrs,NA,NA,20-100yrs,NA,NA,1-5yrs,1-5yrs
+r (reproductive traits),parental investment,egg-layer,spawner,live birth/egg care,live birth/egg care,live birth/egg care,live birth/egg care,live birth/egg care,spawner,egg-layer
 r (reproductive traits),post-birth/hatching parental dependence,na,na,NA,NA,<week,NA,NA,na,na
 r (reproductive traits),reproductive strategy,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious
 spatial scale of species,depth (min/max),epipelagic;mesopelagic,NA,NA,NA,NA,NA,NA,epipelagic;mesopelagic,NA

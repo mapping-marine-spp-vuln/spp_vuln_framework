@@ -152,7 +152,7 @@ extras <- hdr_check$sheet %>% unique()
 
 ``` {r}
 process_sheet <- function(f, s) {
-  ### f <- raw_file; s <- sheetnames[1]
+  ### f <- raw_file; s <- sheetnames[10]
   df_raw <- readxl::read_excel(path = f, sheet = s)
   
   ### read in to get "valid" categories
@@ -195,12 +195,13 @@ process_sheet <- function(f, s) {
 
 raw_data_df <- lapply(sheetnames, FUN = function(s) process_sheet(raw_file, s)) %>%
   bind_rows() %>%
-  ### fix typos:
+  ### fix typos and minor fixes:
   mutate(trait_value = str_replace_all(trait_value, 'demerssal', 'demersal'),
          trait_value = str_replace_all(trait_value, 'esturary', 'estuary'),
          trait_value = str_replace_all(trait_value, 'interntidal', 'intertidal'),
          trait_value = str_replace_all(trait_value, 'lentgh', 'length'),
-         trait_value = str_replace_all(trait_value, 'this sp,', 'this sp.'))
+         trait_value = str_replace_all(trait_value, 'this sp,', 'this sp.'),
+         trait = str_replace_all(trait, '\\(pld\\)$', '(pld) exposure'))
 
 ```
 
@@ -214,11 +215,10 @@ Check raw data against valid category values.
 
 ### clean up troublesome traits
 
-```{r}
+```{r clean up zone traits}
 traitvals_df_clean <- read_csv('_data/trait_vals_valid.csv') %>%
   mutate(cat_val_clean = clean_trait(trait_value))
 
-### focus on zone traits
 zone_vals <- traitvals_df_valid %>%
   filter(trait == 'zone') %>%
   .$trait_value %>% paste0(collapse = '|')
@@ -230,8 +230,9 @@ spp_data_zones <- raw_data_df %>%
   unnest(tmp) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
-  
-### focus on mobility traits
+```
+
+``` {r clean up mobility traits}
 mob_vals <- traitvals_df_valid %>%
   filter(trait == 'adult mobility') %>%
   .$trait_value %>% paste0(collapse = '|')
@@ -257,7 +258,9 @@ spp_data_mobility <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
-### focus on depth traits
+```
+
+``` {r clean up depth traits}
 depth_vals <- traitvals_df_valid %>%
   filter(trait == 'depth (min/max)') %>%
   .$trait_value %>% paste0(collapse = '|')
@@ -270,7 +273,9 @@ spp_data_depth <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
-### focus on thermal sensitivity traits
+```
+
+``` {r clean up thermal sensitivity traits}
 ### ocean warming values are 5°C-10-15-20-25-30°C
 spp_data_thermal1 <- raw_data_df %>%
   filter(str_detect(trait, 'thermal - sensitivity to ocean warming')) %>%
@@ -294,13 +299,16 @@ spp_data_thermal2 <- raw_data_df %>%
          tmp = case_when(str_detect(tmp, 'broad') ~ 'no',
                          str_detect(tmp, 'narrow|sensitive') ~ 'yes',
                          str_detect(tmp, 'can recover') ~ 'no',
+                         str_detect(tmp, 'not likely') ~ 'no',
                          TRUE ~ tmp)) %>%
   mutate(trait_val_clean = str_replace_all(tmp, '[^a-z0-9]+', '_')) %>%
   clean_up_mess()
 
-# spp_data_thermal2$trait_val_clean %>% unique()
+# spp_data_thermal2$trait_val_clean %>% table()
 
-### focus on pH traits
+```
+
+``` {r clean up pH traits}
 ph_vals <- traitvals_df_valid %>%
   filter(trait == 'ph') %>%
   .$trait_value %>% paste0(collapse = '|')
@@ -325,19 +333,507 @@ spp_data_ph <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
+# spp_data_ph$trait_val_clean %>% table()
+```
+
+``` {r clean up biomineral traits}
+biomin1_vals <- traitvals_df_valid %>%
+  filter(trait == 'calcium carbonate structure location') %>%
+  .$trait_value %>% paste0(collapse = '|')
+
+spp_data_biomin1 <- raw_data_df %>%
+  filter(trait == 'calcium carbonate structure location') %>%
+  rowwise() %>%
+  mutate(tmp = tolower(trait_value),
+         tmp = case_when(str_detect(tmp, 'ext.+cover') ~ 'external with a cover',
+                         str_detect(tmp, 'calcium carbonate') ~ 'external',
+                         str_detect(tmp, biomin1_vals) ~ str_extract_all(tmp, biomin1_vals) %>% 
+                                  unlist() %>% paste0(collapse = ';'),
+                         TRUE ~ NA_character_)) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+
+biomin2_vals <- traitvals_df_valid %>%
+  filter(trait == 'biomineral') %>%
+  .$trait_value %>% paste0(collapse = '|')
+
+spp_data_biomin2 <- raw_data_df %>%
+  filter(trait == 'biomineral') %>%
+  rowwise() %>%
+  mutate(tmp = tolower(trait_value),
+         tmp = str_replace(tmp, 'hi mg', 'high mg'),
+         tmp = str_replace(tmp, 'chitin(/caco3)?', 'chitin/caco3 mix'),
+         tmp = case_when(str_detect(tmp, biomin2_vals) ~ str_extract_all(tmp, biomin2_vals) %>% 
+                                  unlist() %>% paste0(collapse = ';'),
+                         TRUE ~ NA_character_)) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+
+spp_data_biomin <- bind_rows(spp_data_biomin1, spp_data_biomin2)
+```
+
+``` {r clean up body size}
+bodysize_vals <- traitvals_df_valid %>%
+  filter(trait == 'adult body mass/body size') %>%
+  .$trait_value %>% paste0(collapse = '|')
+
+spp_data_bodysize <- raw_data_df %>%
+  filter(trait == 'adult body mass/body size') %>%
+  mutate(tmp = str_replace_all(trait_value, '.+:', ''),
+         tmp = clean_trait(tmp),
+         tmp = str_replace(tmp, ' +\\(.+\\)', ''),
+         tmp = ifelse(str_detect(tmp, 'not large'), '0.5-49mm;50mm-999mm', tmp), ### demospongiae
+         tmp = ifelse(str_detect(tmp, 'large'), '>1000mm', tmp),
+         tmp = str_replace(tmp, '>?1000[^a-z]|>?1000$', '>1000mm'),
+         tmp = str_replace_all(tmp, '(?<=[0-9])$', 'mm'),
+         tmp = str_replace_all(tmp, '(?<=[0-9])(?=[^a-z0-9\\.])', 'mm'),
+         tmp = str_replace_all(tmp, '5.+->', '50mm-999mm;>')) %>%
+  rowwise() %>%
+  mutate(tmp = ifelse(str_detect(tmp, bodysize_vals), 
+                      str_extract_all(tmp, bodysize_vals) %>% unlist() %>% paste(collapse = ';'),
+                      NA)) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+
+```
+
+``` {r clean up fecundity}
+### Here, extract numerics from the string, use the min and max values to
+### identify the span, then assign categories within that span. UGH
+
+fecund_lims <- traitvals_df_valid %>%
+  filter(trait == 'fecundity') %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(trait_value, '[0-9]+'),
+         fmin = as.integer(vals[1]), 
+         fmax = as.integer(vals[2])) %>%
+  ungroup() %>%
+  mutate(fmin = ifelse(trait_value == '<1', 0, fmin),
+         fmax = ifelse(trait_value == '<1', 1, fmax),
+         fmax = ifelse(trait_value == '>10000', 10001, fmax)) %>%
+  select(trait_value, fmin, fmax) %>%
+  arrange(fmin) %>%
+  mutate(gp = 1:n(),
+         ftmp = NA) %>% ### tmp
+  group_by(gp) %>%
+  complete(ftmp = fmin:(fmax-1), nesting(trait_value, fmin, fmax)) %>%
+  filter(!is.na(ftmp)) %>%
+  ungroup() %>%
+  mutate(fmin = ftmp,
+         fmax = ftmp+1,
+         fmax = ifelse(fmax > 10000, Inf, fmax)) %>%
+  distinct()
+  
+
+spp_data_fecund <- raw_data_df %>%
+  filter(trait == 'fecundity') %>%
+  filter(!is.na(trait_value)) %>%
+  rowwise() %>%
+  mutate(tmp = clean_trait(trait_value),
+         tmp = str_replace_all(tmp, 'to ', '-'),
+         tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  group_by(spp_gp, sheet) %>%
+  mutate(tmp_sep = 1:n()) %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(tmp, '[0-9]+')) %>%
+  ungroup() %>%
+  unnest(vals) %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  mutate(vals = as.integer(vals),
+         fmin = min(vals),
+         fmin = ifelse(str_detect(tmp, '<1[^0-9]|<1$'), 0, fmin),
+         fmax = max(vals),
+         fmax = ifelse(str_detect(tmp, '>10000'), Inf, fmax)) %>%
+  left_join(fecund_lims %>% select(fmin, gp_min = gp), by = 'fmin') %>%
+  left_join(fecund_lims %>% select(fmax, gp_max = gp), by = 'fmax') %>%
+  mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
+         gp = NA) %>% ### tmp
+  distinct() %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  ungroup() %>%
+  filter(!is.na(gp)) %>%
+  left_join(fecund_lims %>% select(gp, trait_val_clean = trait_value), by = 'gp') %>%
+  select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
+  distinct()
+
+```
+
+``` {r clean up global pop size}
+### Here, extract numerics from the string, use the min and max values to
+### identify the span, then assign categories within that span. UGH
+
+pop_lims <- traitvals_df_valid %>%
+  filter(trait == 'global population size') %>%
+  mutate(trait_value = str_replace_all(trait_value, 'k', '000'),
+         trait_value = str_replace_all(trait_value, 'm', '000000')) %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(trait_value, '[0-9]+'),
+         fmin = as.integer(vals[1]), 
+         fmax = as.integer(vals[2])) %>%
+  ungroup() %>%
+  mutate(fmin = ifelse(trait_value == '<1000', 0, fmin),
+         fmax = ifelse(trait_value == '<1000', 1000, fmax),
+         fmax = ifelse(trait_value == '>1000000', 1000001, fmax)) %>%
+  select(trait_value, fmin, fmax) %>%
+  arrange(fmin) %>%
+  mutate(gp = 1:n(),
+         ftmp = NA) %>% ### tmp
+  group_by(gp) %>%
+  complete(ftmp = fmin:(fmax-1), nesting(trait_value, fmin, fmax)) %>%
+  filter(!is.na(ftmp)) %>%
+  ungroup() %>%
+  mutate(fmin = ftmp,
+         fmax = ftmp+1,
+         fmax = ifelse(fmax > 1000000, Inf, fmax)) %>%
+  distinct()
+  
+
+spp_data_pop <- raw_data_df %>%
+  filter(trait == 'global population size') %>%
+  filter(!is.na(trait_value)) %>%
+  rowwise() %>%
+  mutate(tmp = clean_trait(trait_value),
+         tmp = str_replace_all(tmp, '(?<=[0-9])k', '000'),
+         tmp = str_replace_all(tmp, '(?<=[0-9])m', '000000'),
+         tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  group_by(spp_gp, sheet) %>%
+  mutate(tmp_sep = 1:n()) %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(tmp, '[0-9]+')) %>%
+  ungroup() %>%
+  unnest(vals) %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  mutate(vals = as.integer(vals),
+         fmin = min(vals),
+         fmin = ifelse(str_detect(tmp, '<1[^0-9]|<1$'), 0, fmin),
+         fmax = max(vals),
+         fmax = ifelse(str_detect(tmp, '>10000'), Inf, fmax)) %>%
+  left_join(pop_lims %>% select(fmin, gp_min = gp), by = 'fmin') %>%
+  left_join(pop_lims %>% select(fmax, gp_max = gp), by = 'fmax') %>%
+  mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
+         gp = NA) %>% ### tmp
+  distinct() %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  ungroup() %>%
+  filter(!is.na(gp)) %>%
+  left_join(pop_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
+  select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
+  distinct() %>%
+  ### convert back to m and k versions... UGH
+  mutate(trait_val_clean = str_replace_all(trait_val_clean, '000000', 'm'),
+         trait_val_clean = str_replace_all(trait_val_clean, '000(?=[^0-9])|000$', 'k'),
+         trait_val_clean = str_replace_all(trait_val_clean, '<1k', '<1000'))
+
+x <- spp_data_pop %>% select(trait_value, trait_val_clean) %>% distinct()
+
+```
+
+``` {r clean up max age}
+### Here, extract numerics from the string, use the min and max values to
+### identify the span, then assign categories within that span. UGH
+
+age_lims <- traitvals_df_valid %>%
+  filter(trait == 'max age') %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(trait_value, '[0-9]+'),
+         fmin = as.integer(vals[1]), 
+         fmax = as.integer(vals[2])) %>%
+  ungroup() %>%
+  mutate(fmin = ifelse(str_detect(trait_value, '3month'), 0, fmin),
+         fmax = ifelse(str_detect(trait_value, '3month'), 1, fmax),
+         fmax = ifelse(trait_value == '>100yrs', 101, fmax)) %>%
+  select(trait_value, fmin, fmax) %>%
+  arrange(fmin, trait_value) %>%
+  mutate(gp = 1:n(),
+         ftmp = NA) %>% ### tmp
+  group_by(gp) %>%
+  complete(ftmp = fmin:(fmax-1), nesting(trait_value, fmin, fmax)) %>%
+  filter(!is.na(ftmp)) %>%
+  ungroup() %>%
+  mutate(fmin = ftmp,   fmin = ifelse(trait_value == '3months-1yr', .25, fmin),
+         fmax = ftmp+1, fmax = ifelse(trait_value == '<3months', .25, fmax),
+         fmax = ifelse(fmax > 100, Inf, fmax)) %>%
+  distinct()
+  
+
+spp_data_age <- raw_data_df %>%
+  filter(trait == 'max age') %>%
+  filter(!is.na(trait_value)) %>%
+  rowwise() %>%
+  mutate(tmp = str_replace_all(trait_value, '.+:|\\(.+\\)', ''),
+         tmp = clean_trait(tmp),
+         tmp = str_replace_all(tmp, '3month', '0.25'),
+         tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  group_by(spp_gp, sheet) %>%
+  mutate(tmp_sep = 1:n()) %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(tmp, '[0-9\\.]+')) %>%
+  ungroup() %>%
+  unnest(vals) %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  mutate(vals = as.numeric(vals),
+         fmin = min(vals),
+         fmax = max(vals),
+         fmin = ifelse(str_detect(tmp, '<0.25'), 0, fmin),
+         fmax = ifelse(fmax > 100, Inf, fmax)) %>%
+  left_join(age_lims %>% select(fmin, gp_min = gp), by = 'fmin') %>%
+  left_join(age_lims %>% select(fmax, gp_max = gp), by = 'fmax') %>%
+  mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
+         gp = NA) %>% ### tmp
+  distinct() %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  ungroup() %>%
+  filter(!is.na(gp)) %>%
+  left_join(age_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
+  select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
+  distinct()
+
+x <- spp_data_age %>% select(trait_value, trait_val_clean) %>% distinct()
+
+```
+
+``` {r clean up gen time}
+### Here, extract numerics from the string, use the min and max values to
+### identify the span, then assign categories within that span. UGH
+
+gen_time_lims <- traitvals_df_valid %>%
+  filter(trait == 'age to 1st reproduction/generation time') %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(trait_value, '[0-9]+'),
+         fmin = as.integer(vals[1]), 
+         fmax = as.integer(vals[2])) %>%
+  ungroup() %>%
+  mutate(fmin = ifelse(trait_value == '<1yr', 0, fmin),
+         fmax = ifelse(trait_value == '<1yr', 1, fmax),
+         fmax = ifelse(trait_value == '>20yrs', 21, fmax)) %>%
+  select(trait_value, fmin, fmax) %>%
+  arrange(fmin) %>%
+  mutate(gp = 1:n(),
+         ftmp = NA) %>% ### tmp
+  group_by(gp) %>%
+  complete(ftmp = fmin:(fmax-1), nesting(trait_value, fmin, fmax)) %>%
+  filter(!is.na(ftmp)) %>%
+  ungroup() %>%
+  mutate(fmin = ftmp,
+         fmax = ftmp+1,
+         fmax = ifelse(fmax > 20, Inf, fmax)) %>%
+  distinct()
+  
+
+spp_data_gen_time <- raw_data_df %>%
+  filter(trait == 'age to 1st reproduction/generation time') %>%
+  filter(!is.na(trait_value)) %>%
+  rowwise() %>%
+  mutate(tmp = str_replace_all(trait_value, '\\(.*\\)', ''),
+         tmp = str_replace_all(tmp, '.+:', ''),
+         tmp = clean_trait(tmp),
+         tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  group_by(spp_gp, sheet) %>%
+  mutate(tmp_sep = 1:n()) %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(tmp, '[0-9]+')) %>%
+  ungroup() %>%
+  unnest(vals) %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  mutate(vals = as.integer(vals),
+         fmin = min(vals),
+         fmin = ifelse(str_detect(tmp, '<1[^0-9]|<1$'), 0, fmin),
+         fmax = max(vals),
+         fmax = ifelse(fmax > 20, Inf, fmax)) %>%
+  left_join(gen_time_lims %>% select(fmin, gp_min = gp), by = 'fmin') %>%
+  left_join(gen_time_lims %>% select(fmax, gp_max = gp), by = 'fmax') %>%
+  mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
+         gp = NA) %>% ### tmp
+  distinct() %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  ungroup() %>%
+  filter(!is.na(gp)) %>%
+  left_join(gen_time_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
+  select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
+  distinct()
+
+x <- spp_data_gen_time %>% select(trait_value, trait_val_clean) %>% distinct()
+
+y <- spp_data_gen_time %>%
+  filter(str_detect(trait_value, 'meter|feet|foot'))
+```
+
+``` {r clean up lifetime reprod opps}
+### Here, extract numerics from the string, use the min and max values to
+### identify the span, then assign categories within that span. UGH
+
+reprod_lims <- traitvals_df_valid %>%
+  filter(trait == 'lifetime # reproductive opportunities') %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(trait_value, '[0-9]+'),
+         fmin = as.integer(vals[1]), 
+         fmax = as.integer(vals[2])) %>%
+  ungroup() %>%
+  mutate(fmin = ifelse(trait_value == '1', 0, fmin),
+         fmax = ifelse(trait_value == '1', 1, fmax),
+         fmax = ifelse(trait_value == '>100', 100, fmax)) %>%
+  select(trait_value, fmin, fmax) %>%
+  arrange(fmin) %>%
+  mutate(gp = 1:n(),
+         ftmp = NA) %>% ### tmp
+  group_by(gp) %>%
+  complete(ftmp = fmin:fmax, nesting(trait_value, fmin, fmax)) %>%
+  filter(!is.na(ftmp)) %>%
+  ungroup() %>%
+  mutate(fmin = ftmp,
+         fmax = ftmp+1,
+         fmax = ifelse(fmax > 100, Inf, fmax)) %>%
+  distinct() %>%
+  filter(!(trait_value == '51-100' & fmin == 100))
+  
+
+spp_data_reprod <- raw_data_df %>%
+  filter(trait == 'lifetime # reproductive opportunities') %>%
+  filter(!is.na(trait_value)) %>%
+  rowwise() %>%
+  mutate(tmp = clean_trait(trait_value),
+         tmp = str_replace_all(tmp, '\\(.+\\)', ''),
+         tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  group_by(spp_gp, sheet) %>%
+  mutate(tmp_sep = 1:n()) %>%
+  rowwise() %>%
+  mutate(vals = str_extract_all(tmp, '[0-9]+')) %>%
+  ungroup() %>%
+  unnest(vals) %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  mutate(vals = as.integer(vals),
+         fmin = min(vals),
+         fmax = max(vals),
+         fmin = ifelse(tmp == '1', 0, fmin),
+         fmax = ifelse(str_detect(tmp, '>100'), Inf, fmax)) %>%
+  left_join(reprod_lims %>% select(fmin, gp_min = gp), by = 'fmin') %>%
+  left_join(reprod_lims %>% select(fmax, gp_max = gp), by = 'fmax') %>%
+  mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
+         gp = NA) %>% ### tmp
+  distinct() %>%
+  group_by(spp_gp, sheet, tmp_sep) %>%
+  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  ungroup() %>%
+  filter(!is.na(gp)) %>%
+  left_join(reprod_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
+  select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
+  distinct()
+
+x <- spp_data_reprod %>% select(trait_value, trait_val_clean) %>% distinct()
+
+```
+
+``` {r clean up number of sites}
+### Here, sub in reasonable values.  If aggregates but uncertain, assign
+### all aggregation values and let the code find the mean value. UGH
+
+nsite_vals <- 'one|few|many|does not aggregate'
+### one, few, many, does not aggregate
+
+spp_data_nsite <- raw_data_df %>%
+  filter(str_detect(trait, 'number of sites')) %>%
+  mutate(tmp = str_replace_all(trait_value, '\\(.+\\)', ''),
+         tmp = clean_trait(tmp)) %>%
+  rowwise() %>%
+  mutate(tmp1 = case_when(str_detect(tmp, 'entire distribution|small') ~ 'one',
+                          str_detect(tmp, '^n') ~ 'does not aggregate',
+                          str_detect(tmp, nsite_vals) ~ str_extract_all(tmp, nsite_vals) %>% 
+                            unlist() %>% paste0(collapse = ';'), ### extract vals in a sec
+                          str_detect(tmp, '(?<!not )aggreg|yes') ~ 'one;few;many',
+                          TRUE ~ NA_character_),
+         tmp1 = str_split(tmp1, ';')) %>%
+  ungroup() %>%
+  unnest(tmp1) %>%
+  mutate(trait_val_clean = clean_trait(tmp1)) %>%
+  clean_up_mess()
+
+x <- spp_data_nsite$trait_val_clean %>% unique()
+
+```
+
+``` {r clean up pressure sensitive structures}
+### Lungs don't seem to be particularly sensitive to high power sonar;
+### guessing gas bladders as well.  Assign low sensitivity.
+
+pressure_vals <- traitvals_df_valid %>%
+  filter(trait == 'extreme pressure wave sensitive structures') %>%
+  .$trait_value
+  
+spp_data_prs <- raw_data_df %>%
+  filter(trait == 'extreme pressure wave sensitive structures') %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(tmp = str_replace_all(trait_value, 'sensitivity', ''),
+         tmp = clean_trait(tmp),
+         tmp = case_when(tmp == 'probably'      ~ 'medium',
+                         tmp == 'probably not'  ~ 'low',
+                         str_detect(tmp, 'yes') ~ 'high',
+                         str_detect(tmp, 'no')  ~ 'none',
+                         str_detect(tmp, 'lung|gas bladder') ~ 'low',
+                         TRUE ~ NA_character_)) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+  
+```
+
+``` {r clean up parental investment}
+### create a super clean version to match str_extracted values
+parent_vals <- traitvals_df_valid %>%
+  filter(trait == 'parental investment') %>%
+  select(trait_val_clean = trait_value) %>%
+  mutate(tmp = str_split(trait_val_clean, ';|/')) %>%
+  unnest(tmp) %>%
+  mutate(tmp = str_replace_all(tmp, '[^a-z]', '')) %>%
+  arrange(desc(tmp)) ### to get unattended to match first!
+# "live birth/egg care" "spawner" "egg-layer" "egg-layer (unattended)"
+parent_match <- parent_vals$tmp %>% paste0(collapse = '|')
+
+spp_data_parent <- raw_data_df %>%
+  filter(trait == 'parental investment') %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(tmp = clean_trait(trait_value),
+         tmp = str_split(tmp, ';|/|and')) %>%
+  unnest(tmp) %>%
+  mutate(tmp = str_replace_all(tmp, '[^a-z]', ''),
+         tmp = str_extract(tmp, parent_match)) %>%
+  left_join(parent_vals, by = 'tmp') %>%
+  clean_up_mess()
+  
+x <- spp_data_parent %>% select(trait_value, trait_val_clean) %>% distinct()
 ```
 
 ### combine into a relatively clean df
 
 ``` {r}
 
+cleaned_traits <- c('zone', 'adult mobility', 
+                    'fecundity',
+                    'parental investment',
+                    'global population size',
+                    'max age',
+                    'depth (min/max)', 'ph',
+                    'number of sites',
+                    'number of sites, incl. terrestrial wetlands',
+                    'age to 1st reproduction/generation time',
+                    'lifetime # reproductive opportunities',
+                    'thermal - sensitivity to ocean warming - max temps tolerated',
+                    'thermal - sensitivity to heat spikes/heat waves',
+                    'extreme pressure wave sensitive structures',
+                    'adult body mass/body size',
+                    'biomineral',
+                    'calcium carbonate structure location')
+
 spp_data_clean <- raw_data_df %>%
-  filter(!trait %in% c('zone', 'adult mobility', 'depth (min/max)', 'ph') &
-           !str_detect(trait, 'thermal - sensitivity'))%>%
+  filter(!trait %in% cleaned_traits) %>%
   mutate(trait_val_clean = clean_trait(trait_value)) %>%
-  ### split and unnest, trim and clean:
-  mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%
-  unnest(trait_val_clean) %>%
   clean_up_mess() %>%
   bind_rows(spp_data_zones) %>%
   bind_rows(spp_data_mobility) %>%
@@ -345,25 +841,36 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_thermal1) %>%
   bind_rows(spp_data_thermal2) %>%
   bind_rows(spp_data_ph) %>%
-  mutate(trait_val_clean = clean_trait(trait_val_clean)) ### just to make sure
+  bind_rows(spp_data_biomin) %>%
+  bind_rows(spp_data_bodysize) %>%
+  bind_rows(spp_data_fecund) %>%
+  bind_rows(spp_data_pop) %>%
+  bind_rows(spp_data_prs) %>%
+  bind_rows(spp_data_gen_time) %>%
+  bind_rows(spp_data_reprod) %>%
+  bind_rows(spp_data_nsite) %>%
+  bind_rows(spp_data_parent) %>%
+  bind_rows(spp_data_age) %>%
+  ### split and unnest, trim and clean:
+  mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%
+  unnest(trait_val_clean)
 
-tmp <- spp_data_clean %>% select(trait_value, trait_val_clean) %>% distinct()
+x <- spp_data_clean %>% select(trait, trait_value, trait_val_clean) %>% distinct()
 
 ```
 
-### write out clean species group sheets.  NOTE: THIS IS SET TO eval = FALSE TO AVOID OVERWRITING SHEETS ACCIDENTALLY!
+### write out clean species group sheets.  NOTE: After running, set this to eval = FALSE to avoid overwriting later manual edits 
 
 
 Here we need to recombine multiple trait vals into one line, separate using a semicolon for easy splitting later.
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 spp_data_out <- spp_data_clean %>%
   mutate(spp_gp = tolower(spp_gp)) %>%
   rename(trait_val_orig = trait_value) %>%
   group_by(category, trait, sheet, spp_gp, trait_val_orig) %>%
   summarize(trait_val_clean = paste0(trait_val_clean, collapse = ';')) %>%
-  ungroup() %>%
-  filter(sheet != 'fish_Beth') ### these were added to reef_fish
+  ungroup()
 
 sheets <- spp_data_out$sheet %>% unique()
 
