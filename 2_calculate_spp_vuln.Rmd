@@ -43,7 +43,7 @@ Set up a function to consistently clean trait values.  Trait values in the speci
 
 This function also cleans up category and trait names for consistency.  All lower case, punctuation and spaces replaced with underscores.  Again, the species trait file is already cleaned in this manner.
 ```{r}
-clean_traits <- function(df, overwrite_clean_col = FALSE) {
+clean_traitnames <- function(df, overwrite_clean_col = FALSE) {
   df <- df %>% 
     mutate(category = str_replace_all(category, '[^A-Za-z0-9]+', '_') %>% tolower(),
            category = str_replace_all(category, '^_|_$', ''),
@@ -63,6 +63,32 @@ clean_traits <- function(df, overwrite_clean_col = FALSE) {
   return(df)
 }
 
+clean_traitvals <- function(df) {
+  x <- df$trait_value
+  ### First: remove numeric commas
+  y <- str_replace_all(x, '(?<=[0-9]),(?=[0-9])', '') %>%
+    ### then: drop all non-alphanumeric and a few key punctuation:
+    str_replace_all('[^0-9a-zA-Z<>,;\\-\\.\\(\\)/ ]', '') %>% 
+    ### lower case; do it after dropping any weird non-ascii characters:
+    tolower() %>% 
+    str_trim() %>%
+    str_replace_all('n/a', 'na') %>%
+    ### convert remaining commas and slashes to semicolons:
+    str_replace_all('[,/]', ';') %>%
+    ### drop spaces after numbers e.g. 3 mm -> 3mm:
+    str_replace_all('(?<=[0-9]) ', '') %>%
+    ### drop spaces before or after punctuation (non-alphanumeric):
+    str_replace_all(' (?=[^a-z0-9\\(])|(?<=[^a-z0-9\\)]) ', '') %>%
+    ### manually fix some valid slashes:
+    str_replace_all('nearly sessile;sedentary', 'nearly sessile/sedentary') %>%
+    str_replace_all('live birth;egg care', 'live birth/egg care') %>%
+    str_replace_all('chitin;caco3mix', 'chitin/caco3 mix') %>%
+    str_replace_all('0.5-49mm', '0.5mm-49mm')
+    
+  df$trait_value <- y
+  return(df)
+}
+
 assign_rank_scores <- function(x) {
   y <- tolower(as.character(x))
   z <- case_when(!is.na(as.numeric(x)) ~ as.numeric(x),
@@ -71,12 +97,12 @@ assign_rank_scores <- function(x) {
                  str_detect(y, '^med') ~ 0.67,
                  str_detect(y, '^hi')  ~ 1.00,
                  str_detect(y, '^y')   ~ 1.00, ### yes
-                 TRUE ~ NA_real_)
+                 TRUE                  ~ 0) ### basically NA
   return(z)
 }
 ```
 
-Since the species trait file is already cleaned, DO NOT use the `clean_traits` function - it will overwrite the `trait_value` column.
+Since the species trait file is already cleaned, DO NOT use the `clean_traitvals` function - it will overwrite the `trait_value` column.
 ```{r}
 spp_traits <- read_csv('_data/spp_traits_valid.csv')
 
@@ -102,7 +128,8 @@ for(f in trait_str_sens_files) {
           return(df)
         }) %>%
     bind_rows() %>%
-    clean_traits() %>%
+    clean_traitnames() %>%
+    clean_traitvals() %>%
     ### drop these - going into other categories - we'll change the sheets later
     filter(!str_detect(category, 'spatial_scale|breeding_nesting|foraging_range')) 
   
@@ -110,7 +137,9 @@ for(f in trait_str_sens_files) {
 }
 
 str_sens_trait_scores <- bind_rows(sens_traits_list) %>%
-  select(category, trait, trait_value, sens_score, stressor, trait_value)
+  select(category, trait, trait_value, sens_score, stressor) %>%
+  mutate(sens_score = ifelse(is.na(sens_score), 0, sens_score)) %>%
+  filter(!is.na(trait))
 
 ### To score for a species/stressor combo, first average the score for
 ### each trait (e.g. if multiple values were noted, just give the average)
@@ -123,6 +152,18 @@ spp_sens <- spp_traits %>%
   group_by(spp_gp, stressor, taxon) %>%
   summarize(sens_score = sum(sens_score, na.rm = TRUE)) %>%
   ungroup()
+```
+
+### Check matching
+
+Unmatched traits between sensitivity scoring sheets and species trait sheets:
+
+```{r}
+x <- spp_traits %>% select(category, trait, trait_value) %>% distinct()
+y <- str_sens_trait_scores %>% select(category, trait, trait_value) %>% distinct()
+
+x$trait[!x$trait %in% y$trait] %>% unique()
+y$trait[!y$trait %in% x$trait] %>% unique()
 ```
 
 ### Sensitivity by species group and stressor
@@ -161,8 +202,8 @@ adcap_gen_traits <- readxl::read_excel(adcap_gen_traits_file) %>%
   # filter(trait != 'max age' & trait != 'if one/few, size') %>%
   mutate(adcap_score_orig = as.character(adcap_score),
          adcap_score = assign_rank_scores(adcap_score)) %>%
-  filter(!is.na(adcap_score)) %>%
-  clean_traits()
+  clean_traitnames() %>%
+  clean_traitvals()
 
 spp_adcap_gen <- spp_traits %>%
   left_join(adcap_gen_traits, by = c('category', 'trait', 'trait_value')) %>%
@@ -172,6 +213,18 @@ spp_adcap_gen <- spp_traits %>%
   
 # hist(spp_adcap_gen$adcap_gen_score)
 
+```
+
+### Check matching
+
+Unmatched traits between general adaptive capacity scoring sheet and species trait sheets:
+
+```{r}
+x <- spp_traits %>% select(category, trait, trait_value) %>% distinct()
+y <- adcap_gen_traits %>% select(category, trait, trait_value) %>% distinct()
+
+x$trait[!x$trait %in% y$trait] %>% unique()
+y$trait[!y$trait %in% x$trait] %>% unique()
 ```
 
 ```{r}
@@ -212,7 +265,8 @@ for(f in adcap_spec_traits_files) {
             return(df)
           }) %>%
     bind_rows() %>%
-    clean_traits() %>%
+    clean_traitnames() %>%
+    clean_traitvals() %>%
     filter(!str_detect(category, 'spatial_scale')) ### drop exposure traits
   
   adcap_spec_traits_list[[f]] <- spec_traits
@@ -234,6 +288,18 @@ adcap_spec_sum <- spp_adcap_spec %>%
   summarize(median = median(adcap_spec_score, na.rm = TRUE),
             mean   = mean(adcap_spec_score, na.rm = TRUE),
             sd     = sd(adcap_spec_score, na.rm = TRUE))
+```
+
+### Check matching
+
+Unmatched traits between specific adaptive capacity scoring sheet and species trait sheets:
+
+```{r}
+x <- spp_traits %>% select(category, trait, trait_value) %>% distinct()
+y <- adcap_spec_traits %>% select(category, trait, trait_value) %>% distinct()
+
+x$trait[!x$trait %in% y$trait] %>% unique()
+y$trait[!y$trait %in% x$trait] %>% unique()
 ```
 
 ### specific adaptive capacity by stressor and species group
@@ -286,7 +352,7 @@ for(f in exp_traits_files) {
             return(df)
           }) %>%
     bind_rows() %>%
-    clean_traits() %>%
+    clean_traitnames() %>%
     rename(exposure = adcap_score) %>%
     filter(str_detect(category, 'spatial_scale')) ### include only exposure traits
   
@@ -312,7 +378,7 @@ non_exposures <- spp_exposure %>%
 
 ### These species are not listed as potential exposure to these stressors: 
 
-`r knitr::kable(non_exposures)`
+`r DT::datatable(non_exposures)`
 
 Note: this is exposure potential only, based on overlap between species presence and stressor presence - nothing about sensitivity or actual exposure.  Check that these logic out.
 
@@ -383,6 +449,8 @@ spp_vulnerability <- spp_sens %>%
   ### mash 'em all together
   mutate(vuln = sens_rescale / (1 + adcap_gen_rescale + adcap_spec_rescale) * exposure_mod)
 
+x <- spp_vulnerability %>%
+  filter(taxon == 'reef_fish')
 write_csv(spp_vulnerability, here('_output/spp_gp_vulnerability.csv'))
 ```
 
@@ -444,3 +512,12 @@ ggplot(spp_vuln_summary, aes(x = stressor, color = component, group = component)
   facet_wrap(~ taxon, scales = 'free_y')
 ```
 
+# TO DO
+
+- fix navigation requirements (light, sound, magnetic) into separate rows where appropriate
+    - e.g. cetaceans navigate by sound; birds/turtles/sharks maybe by magnetic; turtles by light?
+    - this has to be done on the species trait sheet level.
+- get traits for wayyyy more species
+    - where are the rest of the corals?
+    - more fish please
+    - extract some values from FishBase and SealifeBase perhaps

@@ -6,17 +6,18 @@ movement,adult mobility,vertical migrator
 movement,adult mobility,mobile resident
 movement,adult mobility,horizontal migrator
 movement,adult mobility,nomadic
-movement,planktonic larval duration (pld),<1day
-movement,planktonic larval duration (pld),<1week
-movement,planktonic larval duration (pld),<1month
-movement,planktonic larval duration (pld),<4months
-movement,planktonic larval duration (pld),4months-1yr
-movement,planktonic larval duration (pld),>1yr
-movement,planktonic larval duration (pld),not larvae
+movement,planktonic larval duration (pld) exposure,<1day
+movement,planktonic larval duration (pld) exposure,<1week
+movement,planktonic larval duration (pld) exposure,<1month
+movement,planktonic larval duration (pld) exposure,<4months
+movement,planktonic larval duration (pld) exposure,4months-1yr
+movement,planktonic larval duration (pld) exposure,>1yr
+movement,planktonic larval duration (pld) exposure,not larvae
 r (reproductive traits),reproductive strategy,sexual dioecious
 r (reproductive traits),reproductive strategy,sexual hermaphrodite
 r (reproductive traits),reproductive strategy,asexual
 r (reproductive traits),reproductive strategy,colonial
+r (reproductive traits),fecundity,<1
 r (reproductive traits),fecundity,1-2
 r (reproductive traits),fecundity,2-5
 r (reproductive traits),fecundity,5-10
@@ -31,7 +32,7 @@ r (reproductive traits),lifetime # reproductive opportunities,2-10
 r (reproductive traits),lifetime # reproductive opportunities,11-25
 r (reproductive traits),lifetime # reproductive opportunities,26-50
 r (reproductive traits),lifetime # reproductive opportunities,51-100
-r (reproductive traits),lifetime # reproductive opportunities,100
+r (reproductive traits),lifetime # reproductive opportunities,>100
 r (reproductive traits),age to 1st reproduction/generation time,>20yrs
 r (reproductive traits),age to 1st reproduction/generation time,10-20yrs
 r (reproductive traits),age to 1st reproduction/generation time,5-10yrs
@@ -135,7 +136,7 @@ spatial scale of species,zone,demersal
 spatial scale of species,zone,benthic
 biophysical traits,adult body mass/body size,>1000mm
 biophysical traits,adult body mass/body size,50mm-999mm
-biophysical traits,adult body mass/body size,0.5-49mm
+biophysical traits,adult body mass/body size,0.5mm-49mm
 biophysical traits,adult body mass/body size,<0.4mm
 biophysical traits,calcium carbonate structure location,none
 biophysical traits,calcium carbonate structure location,internal
@@ -161,7 +162,8 @@ biophysical traits,"navigation requirements (sound or light, or magnetic)",yes
 biophysical traits,"navigation requirements (sound or light, or magnetic)",no
 biophysical traits,extreme pressure wave sensitive structures,high
 biophysical traits,extreme pressure wave sensitive structures,medium
-biophysical traits,extreme pressure wave sensitive structures,low sensitivity
+biophysical traits,extreme pressure wave sensitive structures,low
+biophysical traits,extreme pressure wave sensitive structures,none
 biophysical traits,respiration structures,lungs
 biophysical traits,respiration structures,gills
 biophysical traits,respiration structures,skin

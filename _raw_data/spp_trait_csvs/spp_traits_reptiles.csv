@@ -1,10 +1,9 @@
 category,trait,acrchordus,amblyrhynchus cristatus,caretta caretta,chelonia mydas,crocodylus acutus,crocodylus porosus,dermochelys coriacea,ephalophis,eretmochelys imbricata,hydrelaps,hydrophiidae,laticauda,lepidochelys kempii,lepidochelys olivacea,natator depressus,parahydrophis
-biophysical traits,adult body mass/body size,large (max body length2m),>1000mm,50-999,>1000mm,>1000mm,>1000mm,>1000mm,large (max body length2m),50-999,large (max body length2m),large (max body length2m),large (max body length2m),50-999,50-999,50-999,large (max body length2m)
-biophysical traits,biomineral,none,mo,na,na,na,na,na,none,na,none,none,none,na,na,na,none
+biophysical traits,adult body mass/body size,>1000mm,>1000mm,50mm-999mm,>1000mm,>1000mm,>1000mm,>1000mm,>1000mm,50mm-999mm,>1000mm,>1000mm,>1000mm,50mm-999mm,50mm-999mm,50mm-999mm,>1000mm
 biophysical traits,calcium carbonate structure location,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none,none
 biophysical traits,calcium carbonate structure stages,none,no,none,none,none,none,none,none,none,none,none,none,none,none,none,none
 biophysical traits,communication requirement (sound),no,no,no,no,yes,yes,no,no,no,no,no,no,no,no,no,no
-biophysical traits,extreme pressure wave sensitive structures,lungs,probably not,unknown,unknown,NA,lungs,unknown,lungs,unknown,lungs,lungs,lungs,unknown,unknown,unknown,lungs
+biophysical traits,extreme pressure wave sensitive structures,low,low,none,none,NA,low,none,low,none,low,low,low,none,none,none,low
 biophysical traits,flight,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
 biophysical traits,"navigation requirements (sound or light, or magnetic)",no,no,yes,yes,unknown,unknown,yes,no,yes,no,unknown (known to come up to light),no,yes,yes,yes,no
 biophysical traits,respiration structures,lungs,lungs,lungs,lungs,NA,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs
@@ -12,25 +11,25 @@ breeding/nesting range/number of spawning aggregations (fish),"if one/few, size"
 breeding/nesting range/number of spawning aggregations (fish),number of sites,few,few,many,many,many,many,many,few,many,few,many,few,few,many,many,few
 breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,yes (dependent on intertidal and mangrove habitats),yes,yes,yes,yes,yes,yes,yes (dependent on intertidal and mangrove habitats),yes,yes (dependent on intertidal and mangrove habitats),yes (dependence on reef and intertidal habitats),yes (dependent on coastal cave and crevices for nest sites),yes,yes,yes,yes (dependent on intertidal and mangrove habitats)
 foraging range,"if one/few, size",few;medium,very small,na,na,medium,medium,na,few;medium,na,few;medium,few;medium,few;medium,na,na,na,few;medium
-foraging range,"number of sites, incl. terrestrial wetlands",many,few-limited to specific leking sites oneach island,does not aggregate,does not aggregate,many,many,does not aggregate,many,does not aggregate,many,many,many,does not aggregate,does not aggregate,does not aggregate,many
+foraging range,"number of sites, incl. terrestrial wetlands",many,few;one,does not aggregate,does not aggregate,many,many,does not aggregate,many,does not aggregate,many,many,many,does not aggregate,does not aggregate,does not aggregate,many
 foraging range,sub-population dependence on particular sites,yes (estuaries;mangroves),yes,no,no,NA,NA,no,yes (estuaries;mangroves),no,yes (estuaries;mangroves),yes (coral reefs;seagrass beds;coastal bays),yes (coral reefs),no,no,no,yes (estuaries;mangroves)
 movement,adult mobility,mobile resident,mobile resident,NA,NA,mobile resident,mobile resident,nomadic,mobile resident,NA,mobile resident,mobile resident,mobile resident,NA,nomadic,NA,mobile resident
-movement,planktonic larval duration (pld),NA,not larvae,not larvae,not larvae,not larvae,not larvae,not larvae,NA,not larvae,NA,NA,NA,not larvae,not larvae,not larvae,NA
+movement,planktonic larval duration (pld) exposure,NA,not larvae,not larvae,not larvae,not larvae,not larvae,not larvae,NA,not larvae,NA,NA,NA,not larvae,not larvae,not larvae,NA
 physiological tolerance breadths,dissolved oxygen,broad (air-breather),air-breather,air-breather,air-breather,air-breather,air-breather,air-breather,broad (air-breather),air-breather,broad (air-breather),broad (air-breather),broad (air-breather),air-breather,air-breather,air-breather,broad (air-breather)
 physiological tolerance breadths,ph,unkown,<7.4,<7.4,<7.4,unknown,unknown,<7.4,unkown,<7.4,unkown,unkown,unkown,<7.4,<7.4,<7.4,unkown
 physiological tolerance breadths,salinity,broad (hypersaline-freshwater),na,na,na,na,na,na,broad (hypersaline-freshwater),na,broad (hypersaline-freshwater),broad (hypersaline-freshwater),broad (hypersaline-freshwater),na,na,na,broad (hypersaline-freshwater)
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive,not sensitive,not sensitive,not sensitive,na,na,not sensitive,sensitive,not sensitive,sensitive,sensitive,sensitive,not sensitive,not sensitive,not sensitive,sensitive
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no,yes,no,no,NA,NA,no,no,no,no,no,no,no,no,no,no
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c
-r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5,>20,>20,10-20y,10-20y,10-20,1-5yrs,>20,1-5yrs,1-5yrs,1-5yrs,10-20,10-20,>20,1-5yrs
+r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs,>20yrs,>20yrs,10-20yrs,10-20yrs,10-20yrs,1-5yrs,>20yrs,1-5yrs,1-5yrs,1-5yrs,10-20yrs,10-20yrs,>20yrs,1-5yrs
 r (reproductive traits),are there sub-populations?,no,yes,yes,yes,NA,NA,yes,yes,yes,yes,yes,yes,no,yes,yes,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,yes,no larva,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes
-r (reproductive traits),fecundity,1-10,1-10,100-1000,100-1000,20-50,20-50,100-1000,1-10,100-1000,1-10,1-10,1-10,100-1000,100-1000,50-100,1-10
+r (reproductive traits),fecundity,1-2;2-5;5-10,1-2;2-5;5-10,100-1000,100-1000,20-50,20-50,100-1000,1-2;2-5;5-10,100-1000,1-2;2-5;5-10,1-2;2-5;5-10,1-2;2-5;5-10,100-1000,100-1000,50-100,1-2;2-5;5-10
 r (reproductive traits),feeding larva (post-hatching metamorphosis),no,no larva,no larva,no larva,no,no,no larva,no,no larva,no,no,no,no larva,no larva,no larva,no
-r (reproductive traits),global population size,10k-100k,100k-1m,1k-100k,1k-100k,c.acutus20000,c.porosus>200000,1k-100k,species dependant (some<1000;most 100k-1m),1k-100k,species dependant (some<1000;most 100k-1m),species dependant (some<1000;most 100k-1m),species dependant (some<1000;most 100k-1m),1k-100k,1k-100k,1k-100k,species dependant (some<1000;most 100k-1m)
+r (reproductive traits),global population size,10k-100k,100k-1m,1k-10k;10k-100k,1k-10k;10k-100k,10k-100k,100k-1m,1k-10k;10k-100k,1k-10k;100k-1m,1k-10k;10k-100k,1k-10k;100k-1m,1k-10k;100k-1m,1k-10k;100k-1m,1k-10k;10k-100k,1k-10k;10k-100k,1k-10k;10k-100k,1k-10k;100k-1m
 r (reproductive traits),lifetime # reproductive opportunities,2-10,11-25,26-50,51-100,26-50,26-50,26-50,2-10,51-100,2-10,2-10,2-10,26-50,26-50,51-100,2-10
-r (reproductive traits),max age,5-10yrs,10-20,20-100,20-100,20-100,20-100,20-100,5-10yrs,20-100,5-10yrs,10-20yrs,10-20yrs,20-100,20-100,20-100,5-10yrs
-r (reproductive traits),parental investment,(mixed) live birth,egg layer,egg-layer,egg-layer,egg care,egg care,egg-layer,(mixed) live birth;egg-layer (unattended),egg-layer,(mixed) live birth;egg-layer (unattended),live birth,egg-layer (unattended),egg-layer,egg-layer,egg-layer,(mixed) live birth;egg-layer (unattended)
+r (reproductive traits),max age,5-10yrs,10-20yrs,20-100yrs,20-100yrs,20-100yrs,20-100yrs,20-100yrs,5-10yrs,20-100yrs,5-10yrs,10-20yrs,10-20yrs,20-100yrs,20-100yrs,20-100yrs,5-10yrs
+r (reproductive traits),parental investment,live birth/egg care,egg-layer,egg-layer,egg-layer,live birth/egg care,live birth/egg care,egg-layer,live birth/egg care;egg-layer (unattended),egg-layer,live birth/egg care;egg-layer (unattended),live birth/egg care,egg-layer (unattended),egg-layer,egg-layer,egg-layer,live birth/egg care;egg-layer (unattended)
 r (reproductive traits),post-birth/hatching parental dependence,na,na,na,na,hatchling maternal dependence,hatchling maternal dependence,na,na,na,na,na,na,na,na,na,na
 r (reproductive traits),reproductive strategy,sexual dioecious,sexual dioeciuos,sexual dioeciuos,sexual dioeciuos,sexual dioecious,sexual dioecious,sexual dioeciuos,sexual dioecious,sexual dioeciuos,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioeciuos,sexual dioeciuos,sexual dioeciuos,sexual dioecious
 spatial scale of species,depth (min/max),NA,epipelagic,epipelagic,epipelagic,NA,NA,epipelagic,NA,epipelagic,NA,NA,NA,epipelagic,epipelagic,epipelagic,NA
