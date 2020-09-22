@@ -6,6 +6,7 @@ movement,adult mobility,vertical migrator
 movement,adult mobility,mobile resident
 movement,adult mobility,horizontal migrator
 movement,adult mobility,nomadic
+movement,adult mobility,unknown
 movement,planktonic larval duration (pld) exposure,<1day
 movement,planktonic larval duration (pld) exposure,<1week
 movement,planktonic larval duration (pld) exposure,<1month
@@ -13,10 +14,12 @@ movement,planktonic larval duration (pld) exposure,<4months
 movement,planktonic larval duration (pld) exposure,4months-1yr
 movement,planktonic larval duration (pld) exposure,>1yr
 movement,planktonic larval duration (pld) exposure,not larvae
+movement,planktonic larval duration (pld) exposure,unknown
 r (reproductive traits),reproductive strategy,sexual dioecious
 r (reproductive traits),reproductive strategy,sexual hermaphrodite
 r (reproductive traits),reproductive strategy,asexual
 r (reproductive traits),reproductive strategy,colonial
+r (reproductive traits),reproductive strategy,unknown
 r (reproductive traits),fecundity,<1
 r (reproductive traits),fecundity,1-2
 r (reproductive traits),fecundity,2-5
@@ -27,17 +30,20 @@ r (reproductive traits),fecundity,50-100
 r (reproductive traits),fecundity,100-1000
 r (reproductive traits),fecundity,1000-10000
 r (reproductive traits),fecundity,>10000
+r (reproductive traits),fecundity,unknown
 r (reproductive traits),lifetime # reproductive opportunities,1
 r (reproductive traits),lifetime # reproductive opportunities,2-10
 r (reproductive traits),lifetime # reproductive opportunities,11-25
 r (reproductive traits),lifetime # reproductive opportunities,26-50
 r (reproductive traits),lifetime # reproductive opportunities,51-100
 r (reproductive traits),lifetime # reproductive opportunities,>100
+r (reproductive traits),lifetime # reproductive opportunities,unknown
 r (reproductive traits),age to 1st reproduction/generation time,>20yrs
 r (reproductive traits),age to 1st reproduction/generation time,10-20yrs
 r (reproductive traits),age to 1st reproduction/generation time,5-10yrs
 r (reproductive traits),age to 1st reproduction/generation time,1-5yrs
 r (reproductive traits),age to 1st reproduction/generation time,<1yr
+r (reproductive traits),age to 1st reproduction/generation time,unknown
 r (reproductive traits),max age,>100yrs
 r (reproductive traits),max age,20-100yrs
 r (reproductive traits),max age,10-20yrs
@@ -45,131 +51,169 @@ r (reproductive traits),max age,5-10yrs
 r (reproductive traits),max age,1-5yrs
 r (reproductive traits),max age,3months-1yr
 r (reproductive traits),max age,<3months
+r (reproductive traits),max age,unknown
 r (reproductive traits),parental investment,live birth/egg care
 r (reproductive traits),parental investment,spawner
 r (reproductive traits),parental investment,egg-layer
-r (reproductive traits),parental investment,egg-layer (unattended)
+r (reproductive traits),parental investment,egg-layer unattended
+r (reproductive traits),parental investment,unknown
 r (reproductive traits),post-birth/hatching parental dependence,>year
 r (reproductive traits),post-birth/hatching parental dependence,month-year
 r (reproductive traits),post-birth/hatching parental dependence,week-month
 r (reproductive traits),post-birth/hatching parental dependence,<week
 r (reproductive traits),post-birth/hatching parental dependence,na
+r (reproductive traits),post-birth/hatching parental dependence,unknown
 r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding
 r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding
 r (reproductive traits),feeding larva (post-hatching metamorphosis),no larva
 r (reproductive traits),feeding larva (post-hatching metamorphosis),na
+r (reproductive traits),feeding larva (post-hatching metamorphosis),unknown
 r (reproductive traits),global population size,<1000
 r (reproductive traits),global population size,1k-10k
 r (reproductive traits),global population size,10k-100k
 r (reproductive traits),global population size,100k-1m
 r (reproductive traits),global population size,>1m
+r (reproductive traits),global population size,unknown
 r (reproductive traits),are there sub-populations?,yes
 r (reproductive traits),are there sub-populations?,no
+r (reproductive traits),are there sub-populations?,unknown
 r (reproductive traits),can the sex ratio be altered by a stressor?,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,no
+r (reproductive traits),can the sex ratio be altered by a stressor?,unknown
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,5c
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,10c
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,15c
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,20c
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,25c
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,unknown
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,yes
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,unknown
 physiological tolerance breadths,salinity,stenohaline
 physiological tolerance breadths,salinity,euryhaline
 physiological tolerance breadths,salinity,na
+physiological tolerance breadths,salinity,unknown
 physiological tolerance breadths,ph,<7.4
 physiological tolerance breadths,ph,7.5-7.7
 physiological tolerance breadths,ph,7.8-8.2
+physiological tolerance breadths,ph,unknown
 physiological tolerance breadths,dissolved oxygen,low tolerance
 physiological tolerance breadths,dissolved oxygen,medium tolerance
 physiological tolerance breadths,dissolved oxygen,high tolerance
 physiological tolerance breadths,dissolved oxygen,air breathers
+physiological tolerance breadths,dissolved oxygen,unknown
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),not sensitive
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),na
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),unknown
 specialisation,light dependence,yes
 specialisation,light dependence,no
+specialisation,light dependence,unknown
 specialisation,air-sea interface,floating
 specialisation,air-sea interface,yes
 specialisation,air-sea interface,no
+specialisation,air-sea interface,unknown
+specialisation,within-stage dependent habitats + condition,unknown
+specialisation,across-stage dependent habitats + condition,unknown
 specialisation,terrestrial and marine life stages,yes
 specialisation,terrestrial and marine life stages,no
+specialisation,terrestrial and marine life stages,unknown
 specialisation,extreme diet specialization,specialist
 specialisation,extreme diet specialization,generalist
+specialisation,extreme diet specialization,unknown
 specialisation,dependent interspecific interactions,yes
 specialisation,dependent interspecific interactions,no
+specialisation,dependent interspecific interactions,unknown
 breeding/nesting range/number of spawning aggregations (fish),number of sites,one
 breeding/nesting range/number of spawning aggregations (fish),number of sites,few
 breeding/nesting range/number of spawning aggregations (fish),number of sites,many
 breeding/nesting range/number of spawning aggregations (fish),number of sites,does not aggregate
+breeding/nesting range/number of spawning aggregations (fish),number of sites,unknown
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",very small
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",small
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",medium
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",large
+breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",unknown
 breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,yes
 breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,no
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,unknown
 foraging range,"number of sites, incl. terrestrial wetlands",one
 foraging range,"number of sites, incl. terrestrial wetlands",few
 foraging range,"number of sites, incl. terrestrial wetlands",many
 foraging range,"number of sites, incl. terrestrial wetlands",does not aggregate
+foraging range,"number of sites, incl. terrestrial wetlands",unknown
 foraging range,"if one/few, size",very small
 foraging range,"if one/few, size",small
 foraging range,"if one/few, size",medium
 foraging range,"if one/few, size",large
+foraging range,"if one/few, size",unknown
 foraging range,sub-population dependence on particular sites,yes
 foraging range,sub-population dependence on particular sites,no
+foraging range,sub-population dependence on particular sites,unknown
 spatial scale of species,eoo (range),<99
 spatial scale of species,eoo (range),100-4999
 spatial scale of species,eoo (range),5000-19999
 spatial scale of species,eoo (range),>20000
+spatial scale of species,eoo (range),unknown
 spatial scale of species,depth (min/max),epipelagic
 spatial scale of species,depth (min/max),mesopelagic
 spatial scale of species,depth (min/max),bathypelagic
 spatial scale of species,depth (min/max),abyssopelagic
 spatial scale of species,depth (min/max),hadopelagic
+spatial scale of species,depth (min/max),unknown
 spatial scale of species,zone,intertidal
 spatial scale of species,zone,neritic
 spatial scale of species,zone,oceanic
 spatial scale of species,zone,pelagic
 spatial scale of species,zone,demersal
 spatial scale of species,zone,benthic
+spatial scale of species,zone,unknown
 biophysical traits,adult body mass/body size,>1000mm
 biophysical traits,adult body mass/body size,50mm-999mm
 biophysical traits,adult body mass/body size,0.5mm-49mm
 biophysical traits,adult body mass/body size,<0.4mm
+biophysical traits,adult body mass/body size,unknown
 biophysical traits,calcium carbonate structure location,none
 biophysical traits,calcium carbonate structure location,internal
 biophysical traits,calcium carbonate structure location,external with a cover
 biophysical traits,calcium carbonate structure location,external
 biophysical traits,calcium carbonate structure location,in external protein matrix
 biophysical traits,calcium carbonate structure location,in cellulose cell wall
+biophysical traits,calcium carbonate structure location,unknown
 biophysical traits,calcium carbonate structure stages,none
 biophysical traits,calcium carbonate structure stages,larvae
 biophysical traits,calcium carbonate structure stages,adult
 biophysical traits,calcium carbonate structure stages,both
+biophysical traits,calcium carbonate structure stages,unknown
 biophysical traits,biomineral,aragonite
 biophysical traits,biomineral,high mg calcite
 biophysical traits,biomineral,calcite
 biophysical traits,biomineral,chitin/caco3 mix
 biophysical traits,biomineral,silicate
 biophysical traits,biomineral,other
+biophysical traits,biomineral,unknown
 biophysical traits,flight,yes
 biophysical traits,flight,no
+biophysical traits,flight,unknown
 biophysical traits,communication requirement (sound),yes
 biophysical traits,communication requirement (sound),no
+biophysical traits,communication requirement (sound),unknown
 biophysical traits,"navigation requirements (sound or light, or magnetic)",yes
 biophysical traits,"navigation requirements (sound or light, or magnetic)",no
+biophysical traits,"navigation requirements (sound or light, or magnetic)",unknown
 biophysical traits,extreme pressure wave sensitive structures,high
 biophysical traits,extreme pressure wave sensitive structures,medium
 biophysical traits,extreme pressure wave sensitive structures,low
 biophysical traits,extreme pressure wave sensitive structures,none
+biophysical traits,extreme pressure wave sensitive structures,unknown
 biophysical traits,respiration structures,lungs
 biophysical traits,respiration structures,gills
 biophysical traits,respiration structures,skin
 biophysical traits,respiration structures,diffusion
 biophysical traits,respiration structures,pneumatophores
 biophysical traits,respiration structures,filter feeders
+biophysical traits,respiration structures,unknown
 specialisation,within-stage dependent habitats + condition,deep water
 specialisation,within-stage dependent habitats + condition,subtidal soft bottom
 specialisation,within-stage dependent habitats + condition,hard slope

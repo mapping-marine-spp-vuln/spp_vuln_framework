@@ -1,4 +1,5 @@
 category,trait,acropora,diploastrea heliopora,pocillopora,porites
+biophysical traits,adult body mass/body size,unknown,unknown,unknown,unknown
 biophysical traits,biomineral,aragonite,aragonite,aragonite,aragonite
 biophysical traits,calcium carbonate structure location,external,external,external,external
 biophysical traits,calcium carbonate structure stages,adult,adult,adult,adult
@@ -10,7 +11,7 @@ biophysical traits,respiration structures,diffusiion,diffusion,diffusion,diffusi
 breeding/nesting range/number of spawning aggregations (fish),number of sites,does not aggregate,does not aggregate,does not aggregate,does not aggregate
 foraging range,"number of sites, incl. terrestrial wetlands",does not aggregate,does not aggregate,does not aggregate,does not aggregate
 movement,adult mobility,sessile,sessile,sessile,sessile
-movement,planktonic larval duration (pld) exposure,<1week mostly;some 4months-1yr,<1week mostly;some 4months-1yr,<1week mostly;some 4months-1yr,<1week mostly;some 4months-1yr
+movement,planktonic larval duration (pld) exposure,<1week;4months-1yr,<1week;4months-1yr,<1week;4months-1yr,<1week;4months-1yr
 physiological tolerance breadths,dissolved oxygen,low tolerance,low tolerance,low tolerance,low tolerance
 physiological tolerance breadths,ph,7.8-8.2,7.8-8.2,7.8-8.2,7.8-8.2
 physiological tolerance breadths,salinity,stenohaline,stenohaline,stenohaline,stenohaline

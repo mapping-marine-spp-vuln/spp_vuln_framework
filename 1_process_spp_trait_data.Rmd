@@ -1,5 +1,5 @@
 ---
-title: "Process species trait spreadsheets"
+title: "Process species trait data"
 author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
 output: 
   html_document:
@@ -68,7 +68,10 @@ spp_validcheck <- spp_data_raw %>%
   left_join(traitvals_valid %>% 
               mutate(valid = TRUE), ### add flag to detect unmatched values
             by = c('category', 'trait', 'trait_value')) %>%
-  filter(!is.na(spp_gp))
+  filter(!is.na(spp_gp)) %>%
+  filter(trait_value != '') %>%
+  group_by(taxon) %>%
+  mutate(n_spp_gps = n_distinct(spp_gp))
 
 spp_invalid <- spp_validcheck %>%
   filter(is.na(valid)) %>%
@@ -78,7 +81,7 @@ write_csv(spp_invalid, 'invalid_spp_trait_values.csv')
 
 spp_valid <- spp_validcheck %>%
   filter(valid) %>%
-  select(category, trait, trait_value, spp_gp, taxon) %>%
+  select(-valid) %>%
   mutate(category = str_replace_all(category, '[^A-Za-z0-9]+', '_'),
          category = str_replace_all(category, '^_|_$', ''),
          trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_'),
@@ -93,13 +96,28 @@ write_csv(spp_valid, '_data/spp_traits_valid.csv')
 
 There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups accounted for with at least some valid trait codes.
 
+#### Matched traits - count of spp with matched trait values by trait
+
+``` {r}
+x <- spp_valid %>% 
+              group_by(trait, taxon) %>% 
+              summarize(n_matches = n(),
+                        n_spp_gps = first(n_spp_gps),
+                        pct_match = 100 * n_matches / n_spp_gps) %>% 
+              arrange(taxon, desc(pct_match))
+DT::datatable(x)
+```
+
+
 #### Trouble spots - count of spp with mismatched trait values by trait
 
 ``` {r}
 
 DT::datatable(spp_invalid %>% 
-               group_by(trait, taxon) %>% 
-               summarize(n_mismatches = n()) %>% 
-               arrange(taxon, desc(n_mismatches)))
+                group_by(trait, taxon) %>% 
+                summarize(n_mismatches = n(),
+                          n_spp_gps = first(n_spp_gps),
+                          pct_mismatch = 100 * n_mismatches / n_spp_gps) %>% 
+                arrange(desc(pct_mismatch), taxon))
 ```
 
