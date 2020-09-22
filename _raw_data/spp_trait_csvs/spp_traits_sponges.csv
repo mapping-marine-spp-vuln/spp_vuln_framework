@@ -1,32 +1,35 @@
 category,trait,demospongiae
 biophysical traits,adult body mass/body size,0.5mm-49mm;50mm-999mm
 biophysical traits,biomineral,silicate
-biophysical traits,calcium carbonate structure stages,no (but adults and larvae have silicious spicules)
+biophysical traits,calcium carbonate structure location,none
+biophysical traits,calcium carbonate structure stages,no
 biophysical traits,communication requirement (sound),no
 biophysical traits,extreme pressure wave sensitive structures,medium
 biophysical traits,flight,no
 biophysical traits,"navigation requirements (sound or light, or magnetic)",yes;larval navigation def by light;sound unknown
-biophysical traits,respiration structures,filter feeding-used for gas exchange as well as acquisition of nutrients (and also of sperm;in spermcast spawners) and expulsion of waste and of gamates or larvae
+biophysical traits,respiration structures,filter feeding-used for gas exchange as well as acquisition of nutrients and expulsion of waste and of gamates or larvae
 breeding/nesting range/number of spawning aggregations (fish),number of sites,does not aggregate
-movement,planktonic larval duration (pld) exposure,most larvae lecithotrophic;pld<1day
-physiological tolerance breadths,salinity,high tolerance to fluctuations in these parameters;which vary substantially in the reef flat habitat of this species
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),yes;can lead to fragmentation of adults
+movement,adult mobility,sessile
+movement,planktonic larval duration (pld) exposure,<1day
+physiological tolerance breadths,salinity,euryhaline
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive can lead to fragmentation of adults
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c
 r (reproductive traits),age to 1st reproduction/generation time,<1yr;1-5yrs
 r (reproductive traits),can the sex ratio be altered by a stressor?,unknown;probably no
 r (reproductive traits),fecundity,100-1000
-r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding larvaemetamorphosis
-r (reproductive traits),global population size,<1000;1k-10k
+r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding larvae metamorphosis
+r (reproductive traits),global population size,unknown;<1000;1k-10k
 r (reproductive traits),lifetime # reproductive opportunities,>100
 r (reproductive traits),max age,1-5yrs
 r (reproductive traits),parental investment,spawner
-r (reproductive traits),post-birth/hatching parental dependence,<1day
-r (reproductive traits),reproductive strategy,sexual hermaphrodite;asexual (some demosponges are dioecious)
-spatial scale of species,eoo (range),dont know;but would guess<100km2
+r (reproductive traits),post-birth/hatching parental dependence,<week
+r (reproductive traits),reproductive strategy,sexual hermaphrodite;asexual;sexual dioecious
+spatial scale of species,depth (min/max),epipelagic
+spatial scale of species,eoo (range),<99
 spatial scale of species,zone,benthic;pelagic
 specialisation,air-sea interface,no
 specialisation,dependent interspecific interactions,yes
-specialisation,extreme diet specialization,no
+specialisation,extreme diet specialization,generalist
 specialisation,light dependence,well yes;because circadian rhythms entrained by light;with effacts on multiple physiological factors
 specialisation,terrestrial and marine life stages,no;marine only

@@ -15,7 +15,7 @@ foraging range,"number of sites, incl. terrestrial wetlands",many,many,does not 
 foraging range,sub-population dependence on particular sites,no,possible local adaptation,NA,no
 movement,adult mobility,sessile,passive,sessile,sessile
 movement,planktonic larval duration (pld) exposure,<1month,NA,<1week,<1month
-physiological tolerance breadths,dissolved oxygen,high tolerance,broad,low tolerance,high tolerance
+physiological tolerance breadths,dissolved oxygen,high tolerance,high tolerance,low tolerance,high tolerance
 physiological tolerance breadths,ph,<7.4,<7.4,7.8-8.2,<7.4
 physiological tolerance breadths,salinity,euryhaline,narrow;average marine,euryhaline;narrow,stenohaline
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive,easily dislodged by large waves,no sensitive;thrives in high wave action--reef crest,sensitive
@@ -25,19 +25,19 @@ r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,<1yr,<1yr
 r (reproductive traits),are there sub-populations?,yes,NA,likely;unknown,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,no,no,unknown,no
 r (reproductive traits),fecundity,100-1000,1-2;2-5;5-10;<1,1000-10000;>10000,100-1000
-r (reproductive traits),feeding larva (post-hatching metamorphosis),yes (photosyntehtic),yes (photosynthetic spores and eggs),yes (photosynthetic spores and eggs),yes (photosyntehtic)
+r (reproductive traits),feeding larva (post-hatching metamorphosis),yes,yes,yes,yes
 r (reproductive traits),global population size,100k-1m;>1m,100k-1m;>1m,>1m,100k-1m;>1m
 r (reproductive traits),lifetime # reproductive opportunities,>100,>100;1,>100,>100
 r (reproductive traits),max age,>100yrs,NA,5-10yrs,>100yrs
 r (reproductive traits),parental investment,spawner,spawner,spawner,spawner
 r (reproductive traits),post-birth/hatching parental dependence,na,NA,NA,na
-r (reproductive traits),reproductive strategy,sexual hermaphorodite,heteromorphic alternation of generations,both sexual and asexual,sexual hermaphorodite
+r (reproductive traits),reproductive strategy,sexual hermaphrodite,asexual;sexual dioecious;sexual hermaphrodite,sexual dioecious;sexual hermaphrodite;asexual,sexual hermaphrodite
 spatial scale of species,depth (min/max),epipelagic,NA,epipelagic,epipelagic
-spatial scale of species,eoo (range),>20000,<100km2,pantropical,5000-19999
+spatial scale of species,eoo (range),>20000,<99,NA,5000-19999
 spatial scale of species,zone,benthic,benthic,intertidal;benthic,benthic
 specialisation,air-sea interface,yes-although not sure what this really means-propagules float,yes;canopy at sea surface,no sensitive;thrives in high wave action--reef crest,yes-although not sure what this really means-propagules float
 specialisation,dependent interspecific interactions,no,NA,examples of strong interactions but not clear if universal or needed for survival,no
 specialisation,extreme diet specialization,na,no,no,na
-specialisation,light dependence,yes (photosyntehtic),yes (photosyntehtic),yes (photosyntehtic),yes (photosyntehtic)
+specialisation,light dependence,yes,yes,yes,yes
 specialisation,terrestrial and marine life stages,no,NA,no,no
 specialisation,within-stage dependent habitats + condition,NA,NA,coral reefs,NA

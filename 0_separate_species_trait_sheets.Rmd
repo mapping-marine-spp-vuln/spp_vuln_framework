@@ -1,5 +1,5 @@
 ---
-title: "Process species trait spreadsheets"
+title: "Clean species trait workbook"
 author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
 output: 
   html_document:
@@ -48,14 +48,23 @@ clean_up_mess <- function(df) {
     distinct()
 }
 
-clean_trait <- function(x) {
-  ### First: remove numeric commas
-  y <- str_replace_all(x, '(?<=[0-9]),(?=[0-9])', '') %>%
+clean_trait <- function(x, drop_parens = TRUE) {
+  ### replace egg-layer (unattended) to drop parens:
+  y <- str_replace(x, '\\(unattended\\)', 'unattended')
+
+  ### drop parens if needed
+  if(drop_parens) {
+    y <- y %>%
+      str_replace_all('\\((.+?)\\)', '')
+  }  
+  ### then drop internal numeric commas and proceed from there
+  y <- str_replace_all(y, '(?<=[0-9]),(?=[0-9])', '') %>%
     ### then: drop all non-alphanumeric and a few key punctuation:
     str_replace_all('[^0-9a-zA-Z<>,;\\-\\.\\(\\)/ ]', '') %>% 
     ### lower case; do it after dropping any weird non-ascii characters:
     tolower() %>% 
     str_trim() %>%
+    str_replace_all(' +', ' ') %>% ### drop multi spaces
     str_replace_all('n/a', 'na') %>%
     ### convert remaining commas and slashes to semicolons:
     str_replace_all('[,/]', ';') %>%
@@ -72,12 +81,12 @@ clean_trait <- function(x) {
 }
 ```
 
-Process Nat's key to create a final key
+Process Nat's key to create a final key.  Add an "unknown" value for all traits, to catch explicitly stated unknown values.
 
 ```{r}
-traitvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/cat_val_key_tidyish.xlsx')) %>%
+traitvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/cat_val_key_tidy.xlsx')) %>%
   janitor::clean_names() %>%
-  select(category, trait, trait_value = cat_vals) %>%
+  select(category, trait, trait_value = trait_vals) %>%
   filter(!(is.na(category) & is.na(trait))) %>%
   fill(category, .direction = 'down') %>%
   mutate(category = tolower(category), 
@@ -86,7 +95,8 @@ traitvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/cat_val_key_tidyish.
   
 
 traitvals_df_prehabs <- traitvals_df_raw %>%
-  mutate(trait_value = str_split(trait_value, pattern = ';')) %>%
+  mutate(trait_value = paste0(trait_value, ';unknown'),
+         trait_value = str_split(trait_value, pattern = ';')) %>%
   unnest(trait_value) %>%
   ### trim whitespace, replace the temporary slash fixes
   mutate(trait_value = str_trim(trait_value)) %>%
@@ -120,14 +130,6 @@ write_csv(traitvals_df_valid, '_data/trait_vals_valid.csv')
 
 Read in Excel sheets one at a time, convert to long format, bind into a single dataframe with minimal processing.
 
-Set up path and sheetnames
-
-```{r}
-raw_file <- here('_raw_data/xlsx/master_all_taxa_trait_data.xlsx')
-
-sheetnames <- readxl::excel_sheets(raw_file)
-```
-
 First, check headers to make sure there's not taxonomic information in multiple rows.  The first row of each sheet should be blank, as most sheets have a space before the first category ("Movement").  Even without this space, "Movement" should not have any values of its own, so still blank.
 
 ```{r}
@@ -141,6 +143,10 @@ check_headers <- function(f, s) {
            val = as.character(val))
   return(df)
 }
+
+raw_file <- here('_raw_data/xlsx/master_all_taxa_trait_data.xlsx')
+
+sheetnames <- readxl::excel_sheets(raw_file)
 
 hdr_check <- lapply(sheetnames, FUN = function(s) check_headers(raw_file, s)) %>%
   bind_rows() %>%
@@ -196,13 +202,16 @@ process_sheet <- function(f, s) {
 raw_data_df <- lapply(sheetnames, FUN = function(s) process_sheet(raw_file, s)) %>%
   bind_rows() %>%
   ### fix typos and minor fixes:
-  mutate(trait_value = str_replace_all(trait_value, 'demerssal', 'demersal'),
+  mutate(trait_value = str_replace_all(trait_value, 'unkown', 'unknown'),
+         trait_value = str_replace_all(trait_value, 'demerssal', 'demersal'),
          trait_value = str_replace_all(trait_value, 'esturary', 'estuary'),
          trait_value = str_replace_all(trait_value, 'interntidal', 'intertidal'),
          trait_value = str_replace_all(trait_value, 'lentgh', 'length'),
          trait_value = str_replace_all(trait_value, 'this sp,', 'this sp.'),
          trait = str_replace_all(trait, '\\(pld\\)$', '(pld) exposure'))
 
+x <- raw_data_df %>%
+  select(trait_value) %>% distinct()
 ```
 
 Check raw data against valid category values.
@@ -258,6 +267,7 @@ spp_data_mobility <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
+spp_data_mobility$trait_val_clean %>% table()
 ```
 
 ``` {r clean up depth traits}
@@ -273,6 +283,7 @@ spp_data_depth <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
+spp_data_depth$trait_val_clean %>% table()
 ```
 
 ``` {r clean up thermal sensitivity traits}
@@ -280,17 +291,20 @@ spp_data_depth <- raw_data_df %>%
 spp_data_thermal1 <- raw_data_df %>%
   filter(str_detect(trait, 'thermal - sensitivity to ocean warming')) %>%
   rowwise() %>%
-  mutate(trait_num = str_extract_all(trait_value, '[0-9]+') %>% unlist() %>% as.integer() %>% max(),
-         trait_num = min(floor(trait_num / 5) * 5, 30),
+  mutate(trait_num = str_extract_all(trait_value, '[0-9]+')) %>%
+  unnest(trait_num) %>%
+  group_by(category, trait, trait_value, spp_gp, sheet) %>% 
+  summarize(trait_num = max(as.integer(trait_num), na.rm = TRUE)) %>%
+  mutate(trait_num = floor(trait_num / 5) * 5,
+         trait_num = ifelse(trait_num > 30, 30, trait_num),
          trait_num = ifelse(is.infinite(trait_num), NA, trait_num)) %>%
-  ungroup() %>%
   mutate(tmp = ifelse(!is.na(trait_num), paste0(trait_num, 'c'),
-                                tolower(trait_value))) %>%
+                      tolower(trait_value))) %>%
   mutate(trait_val_clean = ifelse(str_detect(tmp, 'broad|low sensitivity'), 
                                   '30c', tmp)) %>%
   clean_up_mess()
 
-# spp_data_thermal1$trait_val_clean %>% unique()
+spp_data_thermal1$trait_val_clean %>% table()
 
 ### heat spike values are yes/no
 spp_data_thermal2 <- raw_data_df %>%
@@ -304,8 +318,9 @@ spp_data_thermal2 <- raw_data_df %>%
   mutate(trait_val_clean = str_replace_all(tmp, '[^a-z0-9]+', '_')) %>%
   clean_up_mess()
 
-# spp_data_thermal2$trait_val_clean %>% table()
+spp_data_thermal2$trait_val_clean %>% table()
 
+spp_data_thermal <- bind_rows(spp_data_thermal1, spp_data_thermal2)
 ```
 
 ``` {r clean up pH traits}
@@ -316,24 +331,26 @@ ph_vals <- traitvals_df_valid %>%
 ### ph values are <7.4|7.5-7.7|7.8-8.2
 spp_data_ph <- raw_data_df %>%
   filter(trait == 'ph') %>%
-  ### fix a typo:
-  mutate(trait_value = str_replace(trait_value, '(?<=\\d),(?=\\d)', '.')) %>%
+  mutate(tmp1 = str_replace_all(trait_value, '\\(.+\\)', ''),
+         tmp1 = str_split(tmp1, ';|,')) %>%
+  unnest(tmp1) %>%
   ### get mean - find into which category the mean falls
   rowwise() %>%
-  mutate(trait_mean = str_extract_all(trait_value, '[0-9.]+') %>% unlist() %>% as.numeric() %>% mean(),
+  mutate(trait_mean = str_extract_all(tmp1, '[0-9.]+') %>% unlist() %>% as.numeric() %>% mean(),
          trait_mean = ifelse(is.infinite(trait_mean), NA, trait_mean)) %>%
   ungroup() %>%
-  mutate(tmp = case_when(is.na(trait_mean) ~ tolower(trait_value),
+  mutate(tmp = case_when(is.na(trait_mean) ~ tolower(tmp1),
                          trait_mean < 7.5 ~ '<7.4',
                          trait_mean < 7.8 ~ '7.5-7.7',
                          TRUE ~ '7.8-8.2')) %>%
   mutate(tmp = case_when(str_detect(tmp, 'broad|not sensitive') ~ '<7.4', 
                          str_detect(tmp, 'narrow')              ~ '7.8-8.2',
-                                    TRUE                        ~ tmp)) %>%
+                         str_detect(tmp, 'no|not directly')     ~ '<7.4', ### assume broad
+                         TRUE                                   ~ tmp)) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
-# spp_data_ph$trait_val_clean %>% table()
+spp_data_ph$trait_val_clean %>% table()
 ```
 
 ``` {r clean up biomineral traits}
@@ -349,9 +366,12 @@ spp_data_biomin1 <- raw_data_df %>%
                          str_detect(tmp, 'calcium carbonate') ~ 'external',
                          str_detect(tmp, biomin1_vals) ~ str_extract_all(tmp, biomin1_vals) %>% 
                                   unlist() %>% paste0(collapse = ';'),
-                         TRUE ~ NA_character_)) %>%
+                         str_detect(tmp, '^no') ~ 'none',
+                         TRUE ~ tmp)) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
+
+spp_data_biomin1$trait_val_clean %>% table()
 
 biomin2_vals <- traitvals_df_valid %>%
   filter(trait == 'biomineral') %>%
@@ -368,6 +388,8 @@ spp_data_biomin2 <- raw_data_df %>%
                          TRUE ~ NA_character_)) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
+
+spp_data_biomin2$trait_val_clean %>% table()
 
 spp_data_biomin <- bind_rows(spp_data_biomin1, spp_data_biomin2)
 ```
@@ -395,6 +417,8 @@ spp_data_bodysize <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
+spp_data_bodysize$trait_val_clean %>% table()
+
 ```
 
 ``` {r clean up fecundity}
@@ -402,7 +426,7 @@ spp_data_bodysize <- raw_data_df %>%
 ### identify the span, then assign categories within that span. UGH
 
 fecund_lims <- traitvals_df_valid %>%
-  filter(trait == 'fecundity') %>%
+  filter(trait == 'fecundity' & trait_value != 'unknown') %>%
   rowwise() %>%
   mutate(vals = str_extract_all(trait_value, '[0-9]+'),
          fmin = as.integer(vals[1]), 
@@ -458,6 +482,8 @@ spp_data_fecund <- raw_data_df %>%
   select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
   distinct()
 
+spp_data_fecund$trait_val_clean %>% table()
+
 ```
 
 ``` {r clean up global pop size}
@@ -465,9 +491,9 @@ spp_data_fecund <- raw_data_df %>%
 ### identify the span, then assign categories within that span. UGH
 
 pop_lims <- traitvals_df_valid %>%
-  filter(trait == 'global population size') %>%
-  mutate(trait_value = str_replace_all(trait_value, 'k', '000'),
-         trait_value = str_replace_all(trait_value, 'm', '000000')) %>%
+  filter(trait == 'global population size' & trait_value != 'unknown') %>%
+  mutate(trait_value = str_replace_all(trait_value, '(?<=[0-9])k', '000'),
+         trait_value = str_replace_all(trait_value, '(?<=[0-9])m', '000000')) %>%
   rowwise() %>%
   mutate(vals = str_extract_all(trait_value, '[0-9]+'),
          fmin = as.integer(vals[1]), 
@@ -490,15 +516,23 @@ pop_lims <- traitvals_df_valid %>%
   distinct()
   
 
-spp_data_pop <- raw_data_df %>%
+spp_data_pop1 <- raw_data_df %>%
   filter(trait == 'global population size') %>%
   filter(!is.na(trait_value)) %>%
   rowwise() %>%
-  mutate(tmp = clean_trait(trait_value),
-         tmp = str_replace_all(tmp, '(?<=[0-9])k', '000'),
-         tmp = str_replace_all(tmp, '(?<=[0-9])m', '000000'),
-         tmp = str_split(tmp, ';')) %>%
+  mutate(tmp = str_split(clean_trait(trait_value), ';')) %>%
   unnest(tmp) %>%
+  mutate(tmp = str_replace_all(tmp, '(?<=[0-9])k', '000'),
+         tmp = str_replace_all(tmp, '(?<=[0-9])m', '000000'),
+         tmp = str_replace_all(tmp, 'unsure|data deficient', 'unknown'))
+
+spp_data_pop2 <- spp_data_pop1 %>%
+  filter(str_detect(tmp, 'unknown')) %>%
+  mutate(trait_val_clean = 'unknown') %>%
+  clean_up_mess()
+
+spp_data_pop3 <- spp_data_pop1 %>%
+  filter(!str_detect(tmp, 'unknown')) %>%
   group_by(spp_gp, sheet) %>%
   mutate(tmp_sep = 1:n()) %>%
   rowwise() %>%
@@ -528,7 +562,9 @@ spp_data_pop <- raw_data_df %>%
          trait_val_clean = str_replace_all(trait_val_clean, '000(?=[^0-9])|000$', 'k'),
          trait_val_clean = str_replace_all(trait_val_clean, '<1k', '<1000'))
 
-x <- spp_data_pop %>% select(trait_value, trait_val_clean) %>% distinct()
+spp_data_pop <- bind_rows(spp_data_pop2, spp_data_pop3)
+
+spp_data_pop$trait_val_clean %>% table()
 
 ```
 
@@ -537,7 +573,7 @@ x <- spp_data_pop %>% select(trait_value, trait_val_clean) %>% distinct()
 ### identify the span, then assign categories within that span. UGH
 
 age_lims <- traitvals_df_valid %>%
-  filter(trait == 'max age') %>%
+  filter(trait == 'max age' & trait_value != 'unknown') %>%
   rowwise() %>%
   mutate(vals = str_extract_all(trait_value, '[0-9]+'),
          fmin = as.integer(vals[1]), 
@@ -568,7 +604,15 @@ spp_data_age <- raw_data_df %>%
          tmp = clean_trait(tmp),
          tmp = str_replace_all(tmp, '3month', '0.25'),
          tmp = str_split(tmp, ';')) %>%
-  unnest(tmp) %>%
+  unnest(tmp) 
+
+spp_data_age1 <- spp_data_age %>%
+  filter(str_detect(tmp, 'unknown|little known')) %>%
+  mutate(trait_val_clean = 'unknown') %>%
+  clean_up_mess()
+
+spp_data_age2 <- spp_data_age %>%
+  filter(!str_detect(tmp, 'unknown|little known')) %>%
   group_by(spp_gp, sheet) %>%
   mutate(tmp_sep = 1:n()) %>%
   rowwise() %>%
@@ -594,16 +638,50 @@ spp_data_age <- raw_data_df %>%
   select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
   distinct()
 
-x <- spp_data_age %>% select(trait_value, trait_val_clean) %>% distinct()
+spp_data_age <- bind_rows(spp_data_age1, spp_data_age2)
+spp_data_age$trait_val_clean %>% table()
 
 ```
+
+``` {r clean up reprod strategy}
+### Here, extract numerics from the string, use the min and max values to
+### identify the span, then assign categories within that span. UGH
+
+reprod_strategy_vals <- traitvals_df_valid %>%
+  filter(trait == 'reproductive strategy') %>%
+  .$trait_value %>% paste0(collapse = '|')
+# "sexual dioecious|sexual hermaphrodite|asexual|colonial|unknown"
+
+spp_data_reprod_strategy <- raw_data_df %>%
+  filter(trait == 'reproductive strategy') %>%
+  filter(!is.na(trait_value)) %>%
+  rowwise() %>%
+  mutate(tmp = str_replace_all(trait_value, '.+:', ''),
+         tmp = clean_trait(tmp),
+         tmp = str_split(tmp, ';| and | or |/')) %>%
+  unnest(tmp) %>%
+  mutate(tmp = case_when(str_detect(tmp, 'dioec') ~ 'sexual dioecious',
+                         str_detect(tmp, 'herma?ph') ~ 'sexual hermaphrodite',
+                         str_detect(tmp, 'asexual') ~ 'asexual',
+                         str_detect(tmp, 'sexual(?!=( dio| herm))') ~ 'sexual dioecious;sexual hermaphrodite',
+                         str_detect(tmp, 'heteromorphic') ~ 'asexual;sexual dioecious;sexual hermaphrodite',
+                         TRUE ~ tmp)) %>%
+  mutate(trait_val_clean = str_split(tmp, ';')) %>%
+  unnest(trait_val_clean) %>%
+  clean_up_mess()
+
+
+spp_data_reprod_strategy$trait_val_clean %>% table()
+
+```
+
 
 ``` {r clean up gen time}
 ### Here, extract numerics from the string, use the min and max values to
 ### identify the span, then assign categories within that span. UGH
 
 gen_time_lims <- traitvals_df_valid %>%
-  filter(trait == 'age to 1st reproduction/generation time') %>%
+  filter(trait == 'age to 1st reproduction/generation time' & trait_value != 'unknown') %>%
   rowwise() %>%
   mutate(vals = str_extract_all(trait_value, '[0-9]+'),
          fmin = as.integer(vals[1]), 
@@ -630,11 +708,18 @@ spp_data_gen_time <- raw_data_df %>%
   filter(trait == 'age to 1st reproduction/generation time') %>%
   filter(!is.na(trait_value)) %>%
   rowwise() %>%
-  mutate(tmp = str_replace_all(trait_value, '\\(.*\\)', ''),
-         tmp = str_replace_all(tmp, '.+:', ''),
+  mutate(tmp = str_replace_all(trait_value, '.+:', ''),
          tmp = clean_trait(tmp),
          tmp = str_split(tmp, ';')) %>%
-  unnest(tmp) %>%
+  unnest(tmp) 
+
+spp_data_gen_time1 <- spp_data_gen_time %>%
+  filter(str_detect(tmp, 'unknown')) %>%
+  mutate(trait_val_clean = 'unknown') %>%
+  clean_up_mess()
+
+spp_data_gen_time2 <- spp_data_gen_time %>%
+  filter(!str_detect(tmp, 'unknown')) %>%
   group_by(spp_gp, sheet) %>%
   mutate(tmp_sep = 1:n()) %>%
   rowwise() %>%
@@ -660,7 +745,9 @@ spp_data_gen_time <- raw_data_df %>%
   select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
   distinct()
 
-x <- spp_data_gen_time %>% select(trait_value, trait_val_clean) %>% distinct()
+spp_data_gen_time <- bind_rows(spp_data_gen_time1, spp_data_gen_time2)
+
+spp_data_gen_time$trait_val_clean %>% table()
 
 y <- spp_data_gen_time %>%
   filter(str_detect(trait_value, 'meter|feet|foot'))
@@ -671,7 +758,7 @@ y <- spp_data_gen_time %>%
 ### identify the span, then assign categories within that span. UGH
 
 reprod_lims <- traitvals_df_valid %>%
-  filter(trait == 'lifetime # reproductive opportunities') %>%
+  filter(trait == 'lifetime # reproductive opportunities' & trait_value != 'unknown') %>%
   rowwise() %>%
   mutate(vals = str_extract_all(trait_value, '[0-9]+'),
          fmin = as.integer(vals[1]), 
@@ -695,14 +782,22 @@ reprod_lims <- traitvals_df_valid %>%
   filter(!(trait_value == '51-100' & fmin == 100))
   
 
-spp_data_reprod <- raw_data_df %>%
+spp_data_reprod_opps <- raw_data_df %>%
   filter(trait == 'lifetime # reproductive opportunities') %>%
   filter(!is.na(trait_value)) %>%
   rowwise() %>%
   mutate(tmp = clean_trait(trait_value),
          tmp = str_replace_all(tmp, '\\(.+\\)', ''),
          tmp = str_split(tmp, ';')) %>%
-  unnest(tmp) %>%
+  unnest(tmp) 
+
+spp_data_reprod1 <- spp_data_reprod_opps %>%
+  filter(str_detect(tmp, 'unknown')) %>%
+  mutate(trait_val_clean = 'unknown') %>%
+  clean_up_mess()
+
+spp_data_reprod2 <- spp_data_reprod_opps %>%
+  filter(!str_detect(tmp, 'unknown')) %>%
   group_by(spp_gp, sheet) %>%
   mutate(tmp_sep = 1:n()) %>%
   rowwise() %>%
@@ -728,8 +823,9 @@ spp_data_reprod <- raw_data_df %>%
   select(category, trait, trait_value, spp_gp, sheet, trait_val_clean) %>%
   distinct()
 
-x <- spp_data_reprod %>% select(trait_value, trait_val_clean) %>% distinct()
+spp_data_reprod_opps <- bind_rows(spp_data_reprod1, spp_data_reprod2)
 
+spp_data_reprod_opps$trait_val_clean %>% table()
 ```
 
 ``` {r clean up number of sites}
@@ -756,7 +852,38 @@ spp_data_nsite <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp1)) %>%
   clean_up_mess()
 
-x <- spp_data_nsite$trait_val_clean %>% unique()
+spp_data_nsite$trait_val_clean %>% table()
+
+```
+
+``` {r clean up eoo}
+eoo_vals <- traitvals_df_valid %>%
+  filter(trait == 'eoo (range)') %>%
+  .$trait_value %>% paste0(collapse = '|')
+### [1] "<99"        "100-4999"   "5000-19999" ">20000"     "unknown"   
+
+spp_data_eoo <- raw_data_df %>%
+  filter(trait == 'eoo (range)') %>%
+  mutate(tmp = str_replace_all(trait_value, ' to ', '-'),
+         tmp = str_replace_all(tmp, '20,000\\?', '>20000'),
+         tmp = clean_trait(tmp),
+         tmp = str_replace_all(tmp, 'km2', ''),
+         tmp = str_replace_all(tmp, '38n-72n', '>20000'),
+         tmp = str_replace(tmp, '<100', '<99'),
+         tmp = str_replace(tmp, '-5000', '-4999'),
+         tmp = str_replace(tmp, '-20000', '-19999')) %>%
+  mutate(tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  mutate(trait_val_clean = str_extract_all(tmp, eoo_vals)) %>%
+  unnest(trait_val_clean) %>%
+  clean_up_mess()
+
+
+
+  # mutate(trait_val_clean = clean_trait(tmp1)) %>%
+  # clean_up_mess()
+
+spp_data_eoo$trait_val_clean %>% table()
 
 ```
 
@@ -771,16 +898,18 @@ pressure_vals <- traitvals_df_valid %>%
 spp_data_prs <- raw_data_df %>%
   filter(trait == 'extreme pressure wave sensitive structures') %>%
   filter(!is.na(trait_value)) %>%
-  mutate(tmp = str_replace_all(trait_value, 'sensitivity', ''),
+  mutate(tmp = str_replace_all(trait_value, 'sensiti?vity', ''),
          tmp = clean_trait(tmp),
          tmp = case_when(tmp == 'probably'      ~ 'medium',
                          tmp == 'probably not'  ~ 'low',
                          str_detect(tmp, 'yes') ~ 'high',
-                         str_detect(tmp, 'no')  ~ 'none',
-                         str_detect(tmp, 'lung|gas bladder') ~ 'low',
-                         TRUE ~ NA_character_)) %>%
+                         str_detect(tmp, '^no')  ~ 'none',
+                         str_detect(tmp, 'lung|pneumatocyst') ~ 'low',
+                         TRUE ~ tmp)) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
+
+spp_data_prs$trait_val_clean %>% table()
   
 ```
 
@@ -793,7 +922,7 @@ parent_vals <- traitvals_df_valid %>%
   unnest(tmp) %>%
   mutate(tmp = str_replace_all(tmp, '[^a-z]', '')) %>%
   arrange(desc(tmp)) ### to get unattended to match first!
-# "live birth/egg care" "spawner" "egg-layer" "egg-layer (unattended)"
+# "live birth/egg care" "spawner" "egg-layer" "egg-layer unattended"
 parent_match <- parent_vals$tmp %>% paste0(collapse = '|')
 
 spp_data_parent <- raw_data_df %>%
@@ -807,7 +936,52 @@ spp_data_parent <- raw_data_df %>%
   left_join(parent_vals, by = 'tmp') %>%
   clean_up_mess()
   
-x <- spp_data_parent %>% select(trait_value, trait_val_clean) %>% distinct()
+spp_data_parent$trait_val_clean %>% table()
+```
+
+``` {r clean up dissolved oxygen}
+do_vals <- traitvals_df_valid %>% 
+  filter(trait == 'dissolved oxygen') %>%
+  .$trait_value %>% paste0(collapse = '|')
+# "low tolerance|medium tolerance|high tolerance|air breathers|unknown"
+
+spp_data_do <- raw_data_df %>%
+  filter(trait == 'dissolved oxygen') %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(tmp = clean_trait(trait_value, drop_parens = FALSE),
+         tmp = str_replace(tmp, 'air.?breathers?', 'air breathers'),
+         tmp = ifelse(str_detect(tmp, 'air breathers'), 'air breathers', tmp), 
+           ### override all others if air breather
+         tmp = str_replace(tmp, 'narrow', 'low'),
+         tmp = str_replace(tmp, 'broad', 'high tolerance'),
+         tmp = str_replace(tmp, 'medium$', 'medium tolerance')) %>%
+  mutate(trait_val_clean = str_extract_all(tmp, do_vals)) %>%
+  clean_up_mess()
+  
+spp_data_do$trait_val_clean %>% table()
+```
+
+``` {r clean up pld}
+pld_vals <- traitvals_df_valid %>% 
+  filter(trait == 'planktonic larval duration (pld) exposure') %>%
+  .$trait_value %>% paste0(collapse = '|')
+# "<1day|<1week|<1month|<4months|4months-1yr|>1yr|not larvae|unknown"
+
+spp_data_pld <- raw_data_df %>%
+  filter(trait == 'planktonic larval duration (pld) exposure') %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(tmp = str_split(trait_value, ';| or |/')) %>%
+  unnest(tmp) %>%
+  mutate(tmp = clean_trait(tmp),
+         tmp = str_replace_all(tmp, 'not? larva?e', 'not larvae'),
+         tmp = str_replace_all(tmp, ' to ', '-'),
+         tmp = str_replace_all(tmp, 'year', 'yr'),
+         tmp = str_replace_all(tmp, 'days-weeks', '<1month')) %>%
+  mutate(trait_val_clean = str_extract_all(tmp, pld_vals)) %>%
+  unnest(trait_val_clean) %>%
+  clean_up_mess()
+  
+spp_data_pld$trait_val_clean %>% table()
 ```
 
 ### combine into a relatively clean df
@@ -816,18 +990,23 @@ x <- spp_data_parent %>% select(trait_value, trait_val_clean) %>% distinct()
 
 cleaned_traits <- c('zone', 'adult mobility', 
                     'fecundity',
+                    'planktonic larval duration (pld) exposure',
+                    'reproductive strategy',
                     'parental investment',
                     'global population size',
                     'max age',
-                    'depth (min/max)', 'ph',
+                    'depth (min/max)',
                     'number of sites',
                     'number of sites, incl. terrestrial wetlands',
+                    'eoo (range)',
                     'age to 1st reproduction/generation time',
                     'lifetime # reproductive opportunities',
                     'thermal - sensitivity to ocean warming - max temps tolerated',
                     'thermal - sensitivity to heat spikes/heat waves',
                     'extreme pressure wave sensitive structures',
                     'adult body mass/body size',
+                    'ph',
+                    'dissolved oxygen',
                     'biomineral',
                     'calcium carbonate structure location')
 
@@ -838,8 +1017,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_zones) %>%
   bind_rows(spp_data_mobility) %>%
   bind_rows(spp_data_depth) %>%
-  bind_rows(spp_data_thermal1) %>%
-  bind_rows(spp_data_thermal2) %>%
+  bind_rows(spp_data_thermal) %>%
   bind_rows(spp_data_ph) %>%
   bind_rows(spp_data_biomin) %>%
   bind_rows(spp_data_bodysize) %>%
@@ -847,8 +1025,12 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_pop) %>%
   bind_rows(spp_data_prs) %>%
   bind_rows(spp_data_gen_time) %>%
-  bind_rows(spp_data_reprod) %>%
+  bind_rows(spp_data_reprod_opps) %>%
+  bind_rows(spp_data_reprod_strategy) %>%
   bind_rows(spp_data_nsite) %>%
+  bind_rows(spp_data_eoo) %>%
+  bind_rows(spp_data_pld) %>%
+  bind_rows(spp_data_do) %>%
   bind_rows(spp_data_parent) %>%
   bind_rows(spp_data_age) %>%
   ### split and unnest, trim and clean:
