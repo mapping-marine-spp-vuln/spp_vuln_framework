@@ -8,12 +8,12 @@ crustacea_arthropods,biophysical traits,calcium carbonate structure stages,bytho
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",bythograea thermydron,yes-night vision,9
 crustacea_arthropods,specialisation,across-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
-crustacea_arthropods,biophysical traits,calcium carbonate structure stages,mictyris platychelus,both-unsure,9
-crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",mictyris platychelus,yes-light,9
-crustacea_arthropods,specialisation,across-stage dependent habitats + condition,mictyris platychelus,estuary,9
-crustacea_arthropods,specialisation,across-stage dependent habitats + condition,mictyris platychelus,intertidal,9
-crustacea_arthropods,specialisation,within-stage dependent habitats + condition,mictyris platychelus,estuary,9
-crustacea_arthropods,specialisation,within-stage dependent habitats + condition,mictyris platychelus,intertidal,9
+crustacea_arthropods,biophysical traits,calcium carbonate structure stages,mictyris platycheles,both-unsure,9
+crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",mictyris platycheles,yes-light,9
+crustacea_arthropods,specialisation,across-stage dependent habitats + condition,mictyris platycheles,estuary,9
+crustacea_arthropods,specialisation,across-stage dependent habitats + condition,mictyris platycheles,intertidal,9
+crustacea_arthropods,specialisation,within-stage dependent habitats + condition,mictyris platycheles,estuary,9
+crustacea_arthropods,specialisation,within-stage dependent habitats + condition,mictyris platycheles,intertidal,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),nymphon australe,none,9
 crustacea_arthropods,biophysical traits,flight,nymphon australe,none,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",nymphon australe,none,9
@@ -31,18 +31,18 @@ crustacea_arthropods,specialisation,within-stage dependent habitats + condition,
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,paralithodes camtschaticus,both-unsure,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",paralithodes camtschaticus,yes-light,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,paralithodes camtschaticus,kelp forest-hide for first year of life here,9
-crustacea_arthropods,biophysical traits,communication requirement (sound),peneaus,none,9
-crustacea_arthropods,biophysical traits,flight,peneaus,none,9
-crustacea_arthropods,biophysical traits,respiration structures,peneaus,filter feeding,9
-crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,peneaus,none,9
-crustacea_arthropods,foraging range,sub-population dependence on particular sites,peneaus,none,9
-crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,peneaus,character(0),9
-crustacea_arthropods,physiological tolerance breadths,salinity,peneaus,1o to 32o,9
-crustacea_arthropods,r (reproductive traits),feeding larva (post-hatching metamorphosis),peneaus,yes,9
-crustacea_arthropods,specialisation,air-sea interface,peneaus,none,9
-crustacea_arthropods,specialisation,dependent interspecific interactions,peneaus,none,9
-crustacea_arthropods,specialisation,extreme diet specialization,peneaus,none,9
-crustacea_arthropods,specialisation,light dependence,peneaus,none,9
+crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus,none,9
+crustacea_arthropods,biophysical traits,flight,penaeus,none,9
+crustacea_arthropods,biophysical traits,respiration structures,penaeus,filter feeding,9
+crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus,none,9
+crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus,none,9
+crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus,character(0),9
+crustacea_arthropods,physiological tolerance breadths,salinity,penaeus,1o to 32o,9
+crustacea_arthropods,r (reproductive traits),feeding larva (post-hatching metamorphosis),penaeus,yes,9
+crustacea_arthropods,specialisation,air-sea interface,penaeus,none,9
+crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus,none,9
+crustacea_arthropods,specialisation,extreme diet specialization,penaeus,none,9
+crustacea_arthropods,specialisation,light dependence,penaeus,none,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonum,none,9
 crustacea_arthropods,biophysical traits,flight,pycnogonum,none,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",pycnogonum,none,9
@@ -111,8 +111,8 @@ echinoderms,specialisation,extreme diet specialization,eupentacta quinquesemita,
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),evechinus chloroticus,senstive,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,evechinus chloroticus,no,100
 echinoderms,specialisation,extreme diet specialization,florometra serratissima,specialists,100
-echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris  erythrogramma,rock intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris crassispina,rock intertidal,100
+echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris erythrogramma,rock intertidal,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris tuberculata,feding,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris tuberculata,rock intertidal,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),holopneustes purpurascens,senstive,100
@@ -138,11 +138,11 @@ echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if on
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra oriens,non-feeding larvae,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),mesocentrotus franciscanus,senstive,100
 echinoderms,specialisation,extreme diet specialization,molpadia intermedia,specalist,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",odonaster validus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),odonaster validus,feeding larvae,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,odonaster validus,no,100
-echinoderms,specialisation,within-stage dependent habitats + condition,odonaster validus,rock reef,100
-echinoderms,specialisation,within-stage dependent habitats + condition,odonaster validus,rock intertidal,100
+echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",odontaster validus,no,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),odontaster validus,feeding larvae,100
+echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,odontaster validus,no,100
+echinoderms,specialisation,within-stage dependent habitats + condition,odontaster validus,rock reef,100
+echinoderms,specialisation,within-stage dependent habitats + condition,odontaster validus,rock intertidal,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiopholis aculeata,feeding larvae,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiura sarsi,feeding larvae,100
 echinoderms,specialisation,extreme diet specialization,oxycomanthus japonicus,specialists,100
@@ -180,140 +180,427 @@ echinoderms,physiological tolerance breadths,sensitivity to wave energy (physica
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,psammechinus miliaris,no,100
 echinoderms,specialisation,extreme diet specialization,psolus chitonoides,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,psolus chitonoides,subtital soft bottom,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",pynopodia helianthoides,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pynopodia helianthoides,feeding larvae,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pynopodia helianthoides,no,100
-echinoderms,specialisation,within-stage dependent habitats + condition,pynopodia helianthoides,rock reef,100
-echinoderms,specialisation,within-stage dependent habitats + condition,pynopodia helianthoides,rock intertidal,100
-echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),stronglyocentrotus pallidus,senstive,100
-echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),stronglyocentrotus purpuratus,senstive,100
+echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",pycnopodia helianthoides,no,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pycnopodia helianthoides,feeding larvae,100
+echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pycnopodia helianthoides,no,100
+echinoderms,specialisation,within-stage dependent habitats + condition,pycnopodia helianthoides,rock reef,100
+echinoderms,specialisation,within-stage dependent habitats + condition,pycnopodia helianthoides,rock intertidal,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus droebachiensis,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus fragilis,senstive,100
 echinoderms,specialisation,within-stage dependent habitats + condition,strongylocentrotus fragilis,deep sea,100
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,surface waters,128
-elasmobranchs,r (reproductive traits),are there sub-populations?,anacanthobatidae,possibly,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,hard slop,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,deep seamount,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,hard slop,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,deep seamount,128
-elasmobranchs,biophysical traits,"navigation requirements (sound or light, or magnetic)",carcharhinidae...7,magnetic possibly,128
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,carcharhinidae...7,possibly,128
-elasmobranchs,foraging range,sub-population dependence on particular sites,carcharhinidae...7,possibly,128
-elasmobranchs,r (reproductive traits),can the sex ratio be altered by a stressor?,carcharhinidae...7,probably no,128
-elasmobranchs,r (reproductive traits),post-birth/hatching maternal dependence,carcharhinidae...7,none,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharhinidae...7,mangroves,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharhinidae...7,estuaries,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae...7,coral reefs,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae...7,mangroves,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae...7,seagrass beds,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae...7,sand flats,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae...7,estuaries,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharhinidae...8,deep soft bottom,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae...8,deep soft bottom,128
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carcharhinus leucas,few,128
-elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,large for adults,128
-elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,small for juveniles,128
-elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),carcharhinus leucas,no larvae,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,etmopteridae,deep seamount,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,etmopteridae,deep seamount,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,glaucostegidae,mangroce,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,glaucostegidae,mangroce,128
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",glyphis,few,128
-elasmobranchs,foraging range,"if one/few, size",glyphis,large for adults,128
-elasmobranchs,foraging range,"if one/few, size",glyphis,small for juveniles,128
-elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),glyphis,no larvae,128
-elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesieliidae,possibly,128
-elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,hexanchiformes,deep sea mounts,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,hexanchiformes,deep sea mounts,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,himantura,estuary,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,himantura,estuary,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,hypanus,estuary,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,hypanus,estuary,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,rocky reefs,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,rocky reefs,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,surface waters,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,rocky reefs,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,surface waters,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,rocky reefs,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,leptocharias smithii,deep seamount,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,leptocharias smithii,deep seamount,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,maculabatis,estuary,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,maculabatis,estuary,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,megachasma pelagios,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,megachasma pelagios,pelagic,128
-elasmobranchs,r (reproductive traits),can the sex ratio be altered by a stressor?,narcinidae,possibly,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pateobatis,estuary,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pateobatis,estuary,128
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",pristidae...5,few,128
-elasmobranchs,foraging range,"if one/few, size",pristidae...5,large for adults,128
-elasmobranchs,foraging range,"if one/few, size",pristidae...5,small for juveniles,128
-elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),pristidae...5,no larvae,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pristiophoridae,deep seamount,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pristiophoridae,deep seamount,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,proscyllidae,deep hard benthic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,proscyllidae,deep hard benthic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudotriakidae,deep seamount,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudotriakidae,deep seamount,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,rhincodon typus,pelagic,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,rhincodon typus,pelagic,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinidae,mangroce,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinidae,mangroce,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinobatidae,mangroce,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinobatidae,mangroce,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosidae,deep seamount,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosidae,deep seamount,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosus microcephalus,deep seamount,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosus microcephalus,deep seamount,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,taeniurops,estuary,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,taeniurops,estuary,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,trygonorrhinidae,mangroce,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,trygonorrhinidae,mangroce,128
-elasmobranchs,specialisation,across-stage dependent habitats + condition,urogymnus,estuary,128
-elasmobranchs,specialisation,within-stage dependent habitats + condition,urogymnus,estuary,128
+echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus pallidus,senstive,100
+echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus purpuratus,senstive,100
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,surface waters,126
+elasmobranchs,r (reproductive traits),are there sub-populations?,anacanthobatidae,possibly,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,hard slop,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,deep seamount,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,hard slop,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,deep seamount,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharhinidae,deep soft bottom,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae,deep soft bottom,126
+elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carcharhinus leucas,few,126
+elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,large for adults,126
+elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,small for juveniles,126
+elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),carcharhinus leucas,no larvae,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,etmopteridae,deep seamount,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,etmopteridae,deep seamount,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,glaucostegidae,mangroce,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,glaucostegidae,mangroce,126
+elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",glyphis,few,126
+elasmobranchs,foraging range,"if one/few, size",glyphis,large for adults,126
+elasmobranchs,foraging range,"if one/few, size",glyphis,small for juveniles,126
+elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),glyphis,no larvae,126
+elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiellidae,possibly,126
+elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,hexanchiformes,deep sea mounts,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,hexanchiformes,deep sea mounts,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,himantura,estuary,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,himantura,estuary,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,hypanus,estuary,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,hypanus,estuary,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,rocky reefs,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,rocky reefs,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,surface waters,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,rocky reefs,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,surface waters,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,rocky reefs,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,leptocharias smithii,deep seamount,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,leptocharias smithii,deep seamount,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,maculabatis,estuary,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,maculabatis,estuary,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,megachasma pelagios,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,megachasma pelagios,pelagic,126
+elasmobranchs,r (reproductive traits),can the sex ratio be altered by a stressor?,narcinidae,possibly,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pateobatis,estuary,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pateobatis,estuary,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pristiophoridae,deep seamount,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pristiophoridae,deep seamount,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,proscylliidae,deep hard benthic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,proscylliidae,deep hard benthic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudotriakidae,deep seamount,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudotriakidae,deep seamount,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,rhincodon typus,pelagic,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,rhincodon typus,pelagic,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinidae,mangroce,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinidae,mangroce,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinobatidae,mangroce,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinobatidae,mangroce,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosidae,deep seamount,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosidae,deep seamount,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosus microcephalus,deep seamount,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosus microcephalus,deep seamount,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,taeniurops,estuary,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,taeniurops,estuary,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,trygonorrhinidae,mangroce,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,trygonorrhinidae,mangroce,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,urogymnus,estuary,126
+elasmobranchs,specialisation,within-stage dependent habitats + condition,urogymnus,estuary,126
+fish,r (reproductive traits),feeding larva (post-hatching metamorphosis),acanthochromis polyacanthus,hatch as small feeding juveniles,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
+fish,specialisation,across-stage dependent habitats + condition,acanthochromis polyacanthus,coral reefs all stages,115
+fish,specialisation,within-stage dependent habitats + condition,acanthochromis polyacanthus,coral reefs all stages,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",acanthurus dussumieri,no,115
+fish,foraging range,"if one/few, size",acanthurus dussumieri,many,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthurus dussumieri,nil,115
+fish,specialisation,across-stage dependent habitats + condition,acanthurus dussumieri,rocky to coral reef,115
+fish,specialisation,within-stage dependent habitats + condition,acanthurus dussumieri,rocky to coral reef,115
+fish,biophysical traits,maximum depth,acromycter perturbator,1318,115
+fish,biophysical traits,minimum depth,acromycter perturbator,787,115
+fish,biophysical traits,communication requirement (sound),amphiprion akindynos,n0,115
+fish,r (reproductive traits),can the sex ratio be altered by a stressor?,amphiprion akindynos,yes-if female dies a male takes over and becomes female,115
+fish,specialisation,across-stage dependent habitats + condition,amphiprion akindynos,coral reef-anemone,115
+fish,specialisation,within-stage dependent habitats + condition,amphiprion akindynos,coral reef-anemone,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",anguilla australis,few,115
+fish,physiological tolerance breadths,salinity,anguilla australis,catadromous,115
+fish,physiological tolerance breadths,salinity,anguilla australis,sw-fw-sw,115
+fish,physiological tolerance breadths,sensitivity to wave energy (physical forcing),anguilla australis,no,115
+fish,r (reproductive traits),are there sub-populations?,anguilla australis,by river,115
+fish,specialisation,across-stage dependent habitats + condition,anguilla australis,catadromous,115
+fish,specialisation,across-stage dependent habitats + condition,anguilla australis,sw-fw-sw,115
+fish,specialisation,terrestrial and marine life stages,anguilla australis,fw,115
+fish,specialisation,terrestrial and marine life stages,anguilla australis,sw,115
+fish,specialisation,within-stage dependent habitats + condition,anguilla australis,catadromous,115
+fish,specialisation,within-stage dependent habitats + condition,anguilla australis,sw-fw-sw,115
+fish,biophysical traits,maximum depth,apterichtus kendalli,400,115
+fish,biophysical traits,minimum depth,apterichtus kendalli,3,115
+fish,biophysical traits,maximum depth,ariosoma selenops,549,115
+fish,biophysical traits,minimum depth,ariosoma selenops,22,115
+fish,biophysical traits,maximum depth,asarcenchelys longimanus,300,115
+fish,biophysical traits,minimum depth,asarcenchelys longimanus,0,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",balistoides viridescens,no,115
+fish,foraging range,"if one/few, size",balistoides viridescens,many,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,balistoides viridescens,nil,115
+fish,specialisation,across-stage dependent habitats + condition,balistoides viridescens,intereefal sediments,115
+fish,specialisation,within-stage dependent habitats + condition,balistoides viridescens,intereefal sediments,115
+fish,biophysical traits,maximum depth,bathycongrus retrotinctus,450,115
+fish,biophysical traits,minimum depth,bathycongrus retrotinctus,150,115
+fish,biophysical traits,maximum depth,bathycongrus vicinalis,503,115
+fish,biophysical traits,minimum depth,bathycongrus vicinalis,101,115
+fish,biophysical traits,maximum depth,bathyuroconger vicinus,1318,115
+fish,biophysical traits,minimum depth,bathyuroconger vicinus,120,115
+fish,r (reproductive traits),feeding larva (post-hatching metamorphosis),brachionichthys hirsutus,no larvae,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,brachionichthys hirsutus,week-month,115
+fish,specialisation,across-stage dependent habitats + condition,brachionichthys hirsutus,estuarine-restricted,115
+fish,specialisation,within-stage dependent habitats + condition,brachionichthys hirsutus,estuarine-restricted,115
+fish,biophysical traits,maximum depth,brachysomophis longipinnis,50,115
+fish,biophysical traits,minimum depth,brachysomophis longipinnis,0,115
+fish,biophysical traits,maximum depth,callechelys bitaeniata,30,115
+fish,biophysical traits,minimum depth,callechelys bitaeniata,0,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carapus bermudensi,no,115
+fish,foraging range,"if one/few, size",carapus bermudensi,many,115
+fish,specialisation,across-stage dependent habitats + condition,carapus bermudensi,sea cucumber,115
+fish,specialisation,across-stage dependent habitats + condition,carapus bermudensi,reef,115
+fish,specialisation,dependent interspecific interactions,carapus bermudensi,yes-sea cucumbers,115
+fish,specialisation,within-stage dependent habitats + condition,carapus bermudensi,sea cucumber,115
+fish,specialisation,within-stage dependent habitats + condition,carapus bermudensi,reef,115
+fish,specialisation,across-stage dependent habitats + condition,cephalopholis cyanostigma,live coral caves,115
+fish,specialisation,within-stage dependent habitats + condition,cephalopholis cyanostigma,live coral caves,115
+fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",cetoscarus bicolor,suncompass in family,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cetoscarus bicolor,no,115
+fish,foraging range,"if one/few, size",cetoscarus bicolor,many,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,cetoscarus bicolor,nil,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,champsocephalus gunnari,nil,115
+fish,specialisation,across-stage dependent habitats + condition,champsocephalus gunnari,deep,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",chanos chanos,few,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,chanos chanos,nil,115
+fish,specialisation,across-stage dependent habitats + condition,chanos chanos,fw to marine,115
+fish,specialisation,within-stage dependent habitats + condition,chanos chanos,fw to marine,115
+fish,biophysical traits,maximum depth,chlopsis kazuko,100,115
+fish,biophysical traits,minimum depth,chlopsis kazuko,50,115
+fish,biophysical traits,maximum depth,cirripectes alleni,15,115
+fish,biophysical traits,minimum depth,cirripectes alleni,1,115
+fish,specialisation,across-stage dependent habitats + condition,cirripectes alleni,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,cirripectes alleni,subtidal hard bottom,115
+fish,biophysical traits,maximum depth,cirripectes filamentosus,20,115
+fish,biophysical traits,minimum depth,cirripectes filamentosus,0,115
+fish,specialisation,across-stage dependent habitats + condition,cirripectes filamentosus,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,cirripectes filamentosus,subtidal hard bottom,115
+fish,specialisation,across-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
+fish,specialisation,extreme diet specialization,clupea harengus,no,115
+fish,specialisation,within-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
+fish,biophysical traits,maximum depth,coloconger japonicus,760,115
+fish,biophysical traits,minimum depth,coloconger japonicus,750,115
+fish,biophysical traits,maximum depth,conger verreauxi,500,115
+fish,biophysical traits,minimum depth,conger verreauxi,0,115
+fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",conger verreauxi,vertical migrator,115
+fish,biophysical traits,maximum depth,congriscus maldivensis,820,115
+fish,biophysical traits,minimum depth,congriscus maldivensis,354,115
+fish,biophysical traits,maximum depth,crossosalarias macrospilus,25,115
+fish,biophysical traits,minimum depth,crossosalarias macrospilus,1,115
+fish,specialisation,across-stage dependent habitats + condition,crossosalarias macrospilus,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,crossosalarias macrospilus,subtidal hard bottom,115
+fish,biophysical traits,maximum depth,derichthys serpentinus,2000,115
+fish,biophysical traits,minimum depth,derichthys serpentinus,500,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,dissostichus eleginoides,nil,115
+fish,specialisation,across-stage dependent habitats + condition,dissostichus eleginoides,deep,115
+fish,specialisation,within-stage dependent habitats + condition,dissostichus eleginoides,shallow to deep,115
+fish,biophysical traits,maximum depth,ecsenius trilineatus,10,115
+fish,biophysical traits,minimum depth,ecsenius trilineatus,1,115
+fish,specialisation,across-stage dependent habitats + condition,ecsenius trilineatus,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,ecsenius trilineatus,subtidal hard bottom,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",encheliophis gracilis,no,115
+fish,foraging range,"if one/few, size",encheliophis gracilis,many,115
+fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
+fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,starfish,115
+fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,reef,115
+fish,specialisation,dependent interspecific interactions,encheliophis gracilis,yes-sea cucumbers,115
+fish,specialisation,dependent interspecific interactions,encheliophis gracilis,starfish,115
+fish,specialisation,extreme diet specialization,encheliophis gracilis,specialist-gonads and respiotatory tree of host,115
+fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
+fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,starfish,115
+fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,reef,115
+fish,biophysical traits,maximum depth,enchelycore schismatorhynchus,20,115
+fish,biophysical traits,minimum depth,enchelycore schismatorhynchus,0,115
+fish,specialisation,across-stage dependent habitats + condition,enchelycore schismatorhynchus,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,enchelycore schismatorhynchus,subtidal hard bottom,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,engraulis ringens,nil,115
+fish,specialisation,across-stage dependent habitats + condition,engraulis ringens,pelagic neritic,115
+fish,specialisation,extreme diet specialization,engraulis ringens,but 98diatoms,115
+fish,specialisation,within-stage dependent habitats + condition,engraulis ringens,pelagic neritic,115
+fish,biophysical traits,maximum depth,entomacrodus macrospilus,8,115
+fish,biophysical traits,minimum depth,entomacrodus macrospilus,0,115
+fish,specialisation,across-stage dependent habitats + condition,entomacrodus macrospilus,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,entomacrodus macrospilus,subtidal hard bottom,115
+fish,biophysical traits,maximum depth,entomacrodus stellifer,5,115
+fish,biophysical traits,minimum depth,entomacrodus stellifer,0,115
+fish,specialisation,across-stage dependent habitats + condition,entomacrodus stellifer,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,entomacrodus stellifer,subtidal hard bottom,115
+fish,foraging range,"if one/few, size",epinephelus itajara,yes,115
+fish,specialisation,across-stage dependent habitats + condition,epinephelus itajara,live coral caves,115
+fish,specialisation,within-stage dependent habitats + condition,epinephelus itajara,inshore,115
+fish,specialisation,within-stage dependent habitats + condition,epinephelus itajara,mangroves then reef,115
+fish,specialisation,across-stage dependent habitats + condition,epinephelus lanceolatus,inshore coral reef,115
+fish,specialisation,across-stage dependent habitats + condition,epinephelus lanceolatus,live coral caves,115
+fish,specialisation,within-stage dependent habitats + condition,epinephelus lanceolatus,inshore,115
+fish,specialisation,within-stage dependent habitats + condition,epinephelus lanceolatus,mangroves then reef,115
+fish,biophysical traits,maximum depth,eptatretus cirrhatus,1100,115
+fish,biophysical traits,minimum depth,eptatretus cirrhatus,1,115
+fish,physiological tolerance breadths,salinity,eptatretus cirrhatus,32-34parts per thousand,115
+fish,r (reproductive traits),can the sex ratio be altered by a stressor?,eptatretus cirrhatus,probably,115
+fish,biophysical traits,maximum depth,eptatretus mendozai,1100,115
+fish,biophysical traits,minimum depth,eptatretus mendozai,720,115
+fish,physiological tolerance breadths,salinity,eptatretus mendozai,32-34parts per thousand,115
+fish,r (reproductive traits),can the sex ratio be altered by a stressor?,eptatretus mendozai,probably,115
+fish,biophysical traits,maximum depth,ethadophis akkistikos,60,115
+fish,biophysical traits,minimum depth,ethadophis akkistikos,30,115
+fish,biophysical traits,maximum depth,ethadophis merenda,0,115
+fish,biophysical traits,minimum depth,ethadophis merenda,0,115
+fish,specialisation,extreme diet specialization,eviota sigillata,no,115
+fish,biophysical traits,maximum depth,facciolella karreri,2000,115
+fish,biophysical traits,minimum depth,facciolella karreri,700,115
+fish,specialisation,across-stage dependent habitats + condition,forsterygion varium,rocky reefs,115
+fish,specialisation,within-stage dependent habitats + condition,forsterygion varium,rocky reefs,115
+fish,specialisation,across-stage dependent habitats + condition,gadus morhua,deep habitats,115
+fish,specialisation,within-stage dependent habitats + condition,gadus morhua,shallow to deeper habitats,115
+fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",galaxias brevipinnis,olfaction-yes,115
+fish,foraging range,sub-population dependence on particular sites,galaxias brevipinnis,only for spawning,115
+fish,specialisation,across-stage dependent habitats + condition,galaxias brevipinnis,adults fw,115
+fish,specialisation,within-stage dependent habitats + condition,galaxias brevipinnis,larvae in sw,115
+fish,specialisation,extreme diet specialization,gobiodon citrinus,no,115
+fish,specialisation,extreme diet specialization,gobiodon histrio,no,115
+fish,biophysical traits,maximum depth,gorgasia maculata,48,115
+fish,biophysical traits,minimum depth,gorgasia maculata,25,115
+fish,specialisation,within-stage dependent habitats + condition,gymnothorax javanicus,intertidal move to deeper reef,115
+fish,biophysical traits,maximum depth,heteroconger klausewitzi,30,115
+fish,biophysical traits,minimum depth,heteroconger klausewitzi,5,115
+fish,biophysical traits,maximum depth,heteroconger taylori,10,115
+fish,biophysical traits,minimum depth,heteroconger taylori,0,115
+fish,specialisation,across-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
+fish,specialisation,within-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
+fish,specialisation,within-stage dependent habitats + condition,hippoglossus stenolepis,nearshore to deeper,115
+fish,specialisation,across-stage dependent habitats + condition,hoplostethus atlanticus,deep sea mount,115
+fish,biophysical traits,maximum depth,hypleurochilus bananensis,0,115
+fish,biophysical traits,minimum depth,hypleurochilus bananensis,0,115
+fish,biophysical traits,maximum depth,hypsoblennius striatus,5,115
+fish,biophysical traits,minimum depth,hypsoblennius striatus,0,115
+fish,biophysical traits,maximum depth,kaupichthys brachychirus,43,115
+fish,biophysical traits,minimum depth,kaupichthys brachychirus,0,115
+fish,specialisation,across-stage dependent habitats + condition,lutjanus sebae,intereefal,115
+fish,specialisation,within-stage dependent habitats + condition,lutjanus sebae,estuaries,115
+fish,specialisation,within-stage dependent habitats + condition,lutjanus sebae,interreefal,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meuschenia scaber,no,115
+fish,foraging range,"if one/few, size",meuschenia scaber,many,115
+fish,physiological tolerance breadths,salinity,meuschenia scaber,euryhaline-brackish,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,meuschenia scaber,nil,115
+fish,specialisation,across-stage dependent habitats + condition,meuschenia scaber,inshore to rocky reef,115
+fish,specialisation,within-stage dependent habitats + condition,meuschenia scaber,inshore to rocky reef,115
+fish,biophysical traits,maximum depth,monopenchelys acuta,45,115
+fish,biophysical traits,minimum depth,monopenchelys acuta,13,115
+fish,specialisation,across-stage dependent habitats + condition,monopenchelys acuta,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,monopenchelys acuta,subtidal hard bottom,115
+fish,biophysical traits,maximum depth,moringua edwardsi,35,115
+fish,biophysical traits,minimum depth,moringua edwardsi,0,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",naso vlamingi,no,115
+fish,foraging range,"if one/few, size",naso vlamingi,many,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,naso vlamingi,nil,115
+fish,biophysical traits,maximum depth,nessorhamphus danae,1000,115
+fish,biophysical traits,minimum depth,nessorhamphus danae,290,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",notolabrus celidotus,no,115
+fish,foraging range,"if one/few, size",notolabrus celidotus,many,115
+fish,physiological tolerance breadths,salinity,notolabrus celidotus,euryhaline-brackish,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,notolabrus celidotus,nil,115
+fish,specialisation,across-stage dependent habitats + condition,notolabrus celidotus,inshore to rocky reef,115
+fish,specialisation,within-stage dependent habitats + condition,notolabrus celidotus,inshore to rocky reef,115
+fish,biophysical traits,maximum depth,omobranchus anolius,5,115
+fish,biophysical traits,minimum depth,omobranchus anolius,0,115
+fish,biophysical traits,maximum depth,omobranchus fasciolatus,3,115
+fish,biophysical traits,minimum depth,omobranchus fasciolatus,0,115
+fish,biophysical traits,maximum depth,omobranchus rotundiceps,0,115
+fish,biophysical traits,minimum depth,omobranchus rotundiceps,0,115
+fish,specialisation,across-stage dependent habitats + condition,omobranchus rotundiceps,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,omobranchus rotundiceps,subtidal hard bottom,115
+fish,foraging range,sub-population dependence on particular sites,oncorhynchus nerka,only for spawning,115
+fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,fw-ocean-fw,115
+fish,specialisation,within-stage dependent habitats + condition,oncorhynchus nerka,fw-ocean-fw,115
+fish,biophysical traits,maximum depth,ophichthus altipennis,40,115
+fish,biophysical traits,minimum depth,ophichthus altipennis,1,115
+fish,biophysical traits,maximum depth,ophichthus melanoporus,460,115
+fish,biophysical traits,minimum depth,ophichthus melanoporus,51,115
+fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",ophichthus melanoporus,vertical migrator,115
+fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",ostorhinchus doederleini,yes to all,115
+fish,specialisation,across-stage dependent habitats + condition,ostorhinchus doederleini,live coral caves,115
+fish,specialisation,light dependence,ostorhinchus doederleini,yes sun compass,115
+fish,specialisation,within-stage dependent habitats + condition,ostorhinchus doederleini,live coral caves,115
+fish,biophysical traits,maximum depth,parablennius parvicornis,2,115
+fish,biophysical traits,minimum depth,parablennius parvicornis,0,115
+fish,specialisation,extreme diet specialization,parablennius parvicornis,algae,115
+fish,biophysical traits,maximum depth,parablennius yatabei,5,115
+fish,biophysical traits,minimum depth,parablennius yatabei,0,115
+fish,specialisation,extreme diet specialization,parablennius yatabei,algae and detritus,115
+fish,biophysical traits,maximum depth,parablennius zvonimiri,12,115
+fish,biophysical traits,minimum depth,parablennius zvonimiri,0,115
+fish,specialisation,across-stage dependent habitats + condition,parablennius zvonimiri,subtidal hard bottom,115
+fish,specialisation,extreme diet specialization,parablennius zvonimiri,algae and detritus,115
+fish,specialisation,within-stage dependent habitats + condition,parablennius zvonimiri,subtidal hard bottom,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,parapercis colias,nil,115
+fish,biophysical traits,maximum depth,parenchelyurus hepburni,4,115
+fish,biophysical traits,minimum depth,parenchelyurus hepburni,1,115
+fish,specialisation,across-stage dependent habitats + condition,parma microlepis,rocky reef-barrens habitat,115
+fish,specialisation,within-stage dependent habitats + condition,parma microlepis,rocky reef-barrens habitat,115
+fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",plectropomus leopardus,yes-sound,115
+fish,foraging range,"if one/few, size",plectropomus leopardus,yes,115
+fish,specialisation,across-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
+fish,specialisation,within-stage dependent habitats + condition,plectropomus leopardus,shallow coral reef,115
+fish,specialisation,within-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
+fish,specialisation,across-stage dependent habitats + condition,pomacentrus coelestis,coral reef-rubble,115
+fish,specialisation,extreme diet specialization,pomacentrus coelestis,generalist-planktivore,115
+fish,specialisation,within-stage dependent habitats + condition,pomacentrus coelestis,coral reef-rubble,115
+fish,biophysical traits,maximum depth,praealticus dayi,0,115
+fish,biophysical traits,minimum depth,praealticus dayi,0,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",rexea solandri,few,115
+fish,biophysical traits,maximum depth,rhinomuraena quaesita,57,115
+fish,biophysical traits,minimum depth,rhinomuraena quaesita,1,115
+fish,biophysical traits,maximum depth,salarias ceramensis,30,115
+fish,biophysical traits,minimum depth,salarias ceramensis,1,115
+fish,specialisation,across-stage dependent habitats + condition,salarias ceramensis,subtidal hard bottom,115
+fish,specialisation,extreme diet specialization,salarias ceramensis,algae,115
+fish,specialisation,within-stage dependent habitats + condition,salarias ceramensis,subtidal hard bottom,115
+fish,specialisation,across-stage dependent habitats + condition,salarias fasciatus,shallow water,115
+fish,specialisation,within-stage dependent habitats + condition,salarias fasciatus,shallow water,115
+fish,biophysical traits,maximum depth,salarias sinuosus,5,115
+fish,biophysical traits,minimum depth,salarias sinuosus,0,115
+fish,specialisation,across-stage dependent habitats + condition,salarias sinuosus,subtidal hard bottom,115
+fish,specialisation,extreme diet specialization,salarias sinuosus,algae,115
+fish,specialisation,within-stage dependent habitats + condition,salarias sinuosus,subtidal hard bottom,115
+fish,biophysical traits,maximum depth,saurenchelys meteori,705,115
+fish,biophysical traits,minimum depth,saurenchelys meteori,696,115
+fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",scarus schlegeli,suncompass in family,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",scarus schlegeli,no,115
+fish,foraging range,"if one/few, size",scarus schlegeli,many,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,scarus schlegeli,nil,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",sebastes diploproa,no,115
+fish,foraging range,"if one/few, size",sebastes diploproa,many,115
+fish,r (reproductive traits),post-birth/hatching maternal dependence,sebastes diploproa,nil,115
+fish,biophysical traits,maximum depth,serrivomer lanceolatoides,2000,115
+fish,biophysical traits,minimum depth,serrivomer lanceolatoides,300,115
+fish,biophysical traits,maximum depth,simenchelys parasitica,2620,115
+fish,biophysical traits,minimum depth,simenchelys parasitica,136,115
+fish,biophysical traits,maximum depth,skythrenchelys zabra,180,115
+fish,biophysical traits,minimum depth,skythrenchelys zabra,1,115
+fish,specialisation,across-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
+fish,specialisation,extreme diet specialization,spratelloides delicatulus,no,115
+fish,specialisation,within-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
+fish,biophysical traits,maximum depth,synaphobranchus affinis,2400,115
+fish,biophysical traits,minimum depth,synaphobranchus affinis,290,115
+fish,biophysical traits,maximum depth,synaphobranchus kaupii,4800,115
+fish,biophysical traits,minimum depth,synaphobranchus kaupii,120,115
+fish,biophysical traits,maximum depth,synaphobranchus oregoni,1900,115
+fish,biophysical traits,minimum depth,synaphobranchus oregoni,512,115
+fish,biophysical traits,maximum depth,uropterygius fuscoguttatus,25,115
+fish,biophysical traits,minimum depth,uropterygius fuscoguttatus,3,115
+fish,biophysical traits,maximum depth,uropterygius wheeleri,20,115
+fish,biophysical traits,minimum depth,uropterygius wheeleri,0,115
+fish,specialisation,across-stage dependent habitats + condition,uropterygius wheeleri,subtidal hard bottom,115
+fish,specialisation,within-stage dependent habitats + condition,uropterygius wheeleri,subtidal hard bottom,115
+fish,biophysical traits,maximum depth,venefica tentaculata,500,115
+fish,biophysical traits,minimum depth,venefica tentaculata,100,115
+fish,biophysical traits,maximum depth,xenomystax trucidans,2326,115
+fish,biophysical traits,minimum depth,xenomystax trucidans,1010,115
+fish,biophysical traits,maximum depth,xestochilus nebulosus,42,115
+fish,biophysical traits,minimum depth,xestochilus nebulosus,2,115
 marine_mammals,specialisation,across-stage dependent habitats + condition,arctocephalus,continental shelf,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,arctocephalus,rocky intertidal-breeding and raising pups sea ice edge for antartic fur seal,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,balaena mysticetus,estuary,61
@@ -534,8 +821,9 @@ molluscs,specialisation,within-stage dependent habitats + condition,cerastoderma
 molluscs,biophysical traits,respiration structures,crassostrea virginica,filterfeeder,47
 molluscs,specialisation,within-stage dependent habitats + condition,crassostrea virginica,rock intertidal,47
 molluscs,specialisation,within-stage dependent habitats + condition,haliotis coccoradiata,rock intertidal,47
-molluscs,specialisation,within-stage dependent habitats + condition,haliotis kamschatkana,rock intertidal,47
+molluscs,specialisation,within-stage dependent habitats + condition,haliotis kamtschatkana,rock intertidal,47
 molluscs,specialisation,within-stage dependent habitats + condition,haliotis rubra,rock intertidal,47
+molluscs,specialisation,within-stage dependent habitats + condition,lunella undulata,rock intertidal,47
 molluscs,biophysical traits,respiration structures,magallana gigas,filterfeeder,47
 molluscs,specialisation,within-stage dependent habitats + condition,magallana gigas,rock intertidal,47
 molluscs,biophysical traits,respiration structures,magallana hongkongensis,filterfeeder,47
@@ -550,8 +838,8 @@ molluscs,biophysical traits,respiration structures,mytilus edulis,filterfeeder,4
 molluscs,specialisation,within-stage dependent habitats + condition,mytilus edulis,rock intertidal,47
 molluscs,biophysical traits,respiration structures,mytilus galloprovincialis,filterfeeder,47
 molluscs,specialisation,within-stage dependent habitats + condition,mytilus galloprovincialis,rock intertidal,47
-molluscs,biophysical traits,respiration structures,mytilus trossolus,filterfeeder,47
-molluscs,specialisation,within-stage dependent habitats + condition,mytilus trossolus,rock intertidal,47
+molluscs,biophysical traits,respiration structures,mytilus trossulus,filterfeeder,47
+molluscs,specialisation,within-stage dependent habitats + condition,mytilus trossulus,rock intertidal,47
 molluscs,biophysical traits,respiration structures,ostrea angasi,filterfeeder,47
 molluscs,specialisation,within-stage dependent habitats + condition,ostrea angasi,benthic,47
 molluscs,biophysical traits,respiration structures,ostrea edulis,filterfeeder,47
@@ -580,7 +868,6 @@ molluscs,specialisation,within-stage dependent habitats + condition,saccostrea g
 molluscs,biophysical traits,respiration structures,siliqua patula,filterfeeder,47
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,benthic,47
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,soft sediment,47
-molluscs,specialisation,within-stage dependent habitats + condition,subninella undulata,rock intertidal,47
 molluscs,specialisation,within-stage dependent habitats + condition,tectura scutum,rock intertidal,47
 molluscs,specialisation,within-stage dependent habitats + condition,tegula funebralis,rock intertidal,47
 molluscs,specialisation,within-stage dependent habitats + condition,tenguella marginalba,rock intertidal,47
@@ -620,313 +907,10 @@ plants_algae,biophysical traits,respiration structures,posidonia australis,no,4
 plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),posidonia australis,yes,4
 plants_algae,specialisation,air-sea interface,posidonia australis,yes-although not sure what this really means-propagules float,4
 polychaetes,biophysical traits,respiration structures,sabellidae,filter feeder,4
-reef_fish,r (reproductive traits),feeding larva (post-hatching metamorphosis),acanthochromis polyacanthus,hatch as small feeding juveniles,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
-reef_fish,specialisation,across-stage dependent habitats + condition,acanthochromis polyacanthus,coral reefs all stages,115
-reef_fish,specialisation,within-stage dependent habitats + condition,acanthochromis polyacanthus,coral reefs all stages,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",acanthurus dusumieri,no,115
-reef_fish,foraging range,"if one/few, size",acanthurus dusumieri,many,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthurus dusumieri,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,acanthurus dusumieri,rocky to coral reef,115
-reef_fish,specialisation,within-stage dependent habitats + condition,acanthurus dusumieri,rocky to coral reef,115
-reef_fish,biophysical traits,maximum depth,acromycter perturbator,1318,115
-reef_fish,biophysical traits,minimum depth,acromycter perturbator,787,115
-reef_fish,biophysical traits,communication requirement (sound),amphiprion akindynos,n0,115
-reef_fish,r (reproductive traits),can the sex ratio be altered by a stressor?,amphiprion akindynos,yes-if female dies a male takes over and becomes female,115
-reef_fish,specialisation,across-stage dependent habitats + condition,amphiprion akindynos,coral reef-anemone,115
-reef_fish,specialisation,within-stage dependent habitats + condition,amphiprion akindynos,coral reef-anemone,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",anguilla australis,few,115
-reef_fish,physiological tolerance breadths,salinity,anguilla australis,catadromous,115
-reef_fish,physiological tolerance breadths,salinity,anguilla australis,sw-fw-sw,115
-reef_fish,physiological tolerance breadths,sensitivity to wave energy (physical forcing),anguilla australis,no,115
-reef_fish,r (reproductive traits),are there sub-populations?,anguilla australis,by river,115
-reef_fish,specialisation,across-stage dependent habitats + condition,anguilla australis,catadromous,115
-reef_fish,specialisation,across-stage dependent habitats + condition,anguilla australis,sw-fw-sw,115
-reef_fish,specialisation,terrestrial and marine life stages,anguilla australis,fw,115
-reef_fish,specialisation,terrestrial and marine life stages,anguilla australis,sw,115
-reef_fish,specialisation,within-stage dependent habitats + condition,anguilla australis,catadromous,115
-reef_fish,specialisation,within-stage dependent habitats + condition,anguilla australis,sw-fw-sw,115
-reef_fish,biophysical traits,maximum depth,apterichtus kendalli,400,115
-reef_fish,biophysical traits,minimum depth,apterichtus kendalli,3,115
-reef_fish,biophysical traits,maximum depth,ariosoma selenops,549,115
-reef_fish,biophysical traits,minimum depth,ariosoma selenops,22,115
-reef_fish,biophysical traits,maximum depth,asarcenchelys longimanus,300,115
-reef_fish,biophysical traits,minimum depth,asarcenchelys longimanus,0,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",balistoides viridescens,no,115
-reef_fish,foraging range,"if one/few, size",balistoides viridescens,many,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,balistoides viridescens,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,balistoides viridescens,intereefal sediments,115
-reef_fish,specialisation,within-stage dependent habitats + condition,balistoides viridescens,intereefal sediments,115
-reef_fish,biophysical traits,maximum depth,bathycongrus retrotinctus,450,115
-reef_fish,biophysical traits,minimum depth,bathycongrus retrotinctus,150,115
-reef_fish,biophysical traits,maximum depth,bathycongrus vicinalis,503,115
-reef_fish,biophysical traits,minimum depth,bathycongrus vicinalis,101,115
-reef_fish,biophysical traits,maximum depth,bathyuroconger vicinus,1318,115
-reef_fish,biophysical traits,minimum depth,bathyuroconger vicinus,120,115
-reef_fish,r (reproductive traits),feeding larva (post-hatching metamorphosis),brachionichthys hirsutus,no larvae,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,brachionichthys hirsutus,week-month,115
-reef_fish,specialisation,across-stage dependent habitats + condition,brachionichthys hirsutus,estuarine-restricted,115
-reef_fish,specialisation,within-stage dependent habitats + condition,brachionichthys hirsutus,estuarine-restricted,115
-reef_fish,biophysical traits,maximum depth,brachysomophis longipinnis,50,115
-reef_fish,biophysical traits,minimum depth,brachysomophis longipinnis,0,115
-reef_fish,biophysical traits,maximum depth,callechelys bitaeniata,30,115
-reef_fish,biophysical traits,minimum depth,callechelys bitaeniata,0,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carapus bermudensi,no,115
-reef_fish,foraging range,"if one/few, size",carapus bermudensi,many,115
-reef_fish,specialisation,across-stage dependent habitats + condition,carapus bermudensi,sea cucumber,115
-reef_fish,specialisation,across-stage dependent habitats + condition,carapus bermudensi,reef,115
-reef_fish,specialisation,dependent interspecific interactions,carapus bermudensi,yes-sea cucumbers,115
-reef_fish,specialisation,within-stage dependent habitats + condition,carapus bermudensi,sea cucumber,115
-reef_fish,specialisation,within-stage dependent habitats + condition,carapus bermudensi,reef,115
-reef_fish,specialisation,across-stage dependent habitats + condition,cephalopholis cyanostogmata,live coral caves,115
-reef_fish,specialisation,within-stage dependent habitats + condition,cephalopholis cyanostogmata,live coral caves,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,champsocephalus gunnari,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,champsocephalus gunnari,deep,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",chanos chanos,few,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,chanos chanos,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,chanos chanos,fw to marine,115
-reef_fish,specialisation,within-stage dependent habitats + condition,chanos chanos,fw to marine,115
-reef_fish,biophysical traits,maximum depth,chlopsis kazuko,100,115
-reef_fish,biophysical traits,minimum depth,chlopsis kazuko,50,115
-reef_fish,biophysical traits,maximum depth,cirripectes alleni,15,115
-reef_fish,biophysical traits,minimum depth,cirripectes alleni,1,115
-reef_fish,specialisation,across-stage dependent habitats + condition,cirripectes alleni,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,cirripectes alleni,subtidal hard bottom,115
-reef_fish,biophysical traits,maximum depth,cirripectes filamentosus,20,115
-reef_fish,biophysical traits,minimum depth,cirripectes filamentosus,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,cirripectes filamentosus,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,cirripectes filamentosus,subtidal hard bottom,115
-reef_fish,specialisation,across-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
-reef_fish,specialisation,extreme diet specialization,clupea harengus,no,115
-reef_fish,specialisation,within-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
-reef_fish,biophysical traits,maximum depth,coloconger japonicus,760,115
-reef_fish,biophysical traits,minimum depth,coloconger japonicus,750,115
-reef_fish,biophysical traits,maximum depth,conger verreauxi,500,115
-reef_fish,biophysical traits,minimum depth,conger verreauxi,0,115
-reef_fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",conger verreauxi,vertical migrator,115
-reef_fish,biophysical traits,maximum depth,congriscus maldivensis,820,115
-reef_fish,biophysical traits,minimum depth,congriscus maldivensis,354,115
-reef_fish,biophysical traits,maximum depth,crossosalarias macrospilus,25,115
-reef_fish,biophysical traits,minimum depth,crossosalarias macrospilus,1,115
-reef_fish,specialisation,across-stage dependent habitats + condition,crossosalarias macrospilus,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,crossosalarias macrospilus,subtidal hard bottom,115
-reef_fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",ctenoscarus bicolor,suncompass in family,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",ctenoscarus bicolor,no,115
-reef_fish,foraging range,"if one/few, size",ctenoscarus bicolor,many,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,ctenoscarus bicolor,nil,115
-reef_fish,biophysical traits,maximum depth,derichthys serpentinus,2000,115
-reef_fish,biophysical traits,minimum depth,derichthys serpentinus,500,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,dissostichus eleginoides,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,dissostichus eleginoides,deep,115
-reef_fish,specialisation,within-stage dependent habitats + condition,dissostichus eleginoides,shallow to deep,115
-reef_fish,biophysical traits,maximum depth,ecsenius trilineatus,10,115
-reef_fish,biophysical traits,minimum depth,ecsenius trilineatus,1,115
-reef_fish,specialisation,across-stage dependent habitats + condition,ecsenius trilineatus,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,ecsenius trilineatus,subtidal hard bottom,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",encheliophis gracilis,no,115
-reef_fish,foraging range,"if one/few, size",encheliophis gracilis,many,115
-reef_fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
-reef_fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,starfish,115
-reef_fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,reef,115
-reef_fish,specialisation,dependent interspecific interactions,encheliophis gracilis,yes-sea cucumbers,115
-reef_fish,specialisation,dependent interspecific interactions,encheliophis gracilis,starfish,115
-reef_fish,specialisation,extreme diet specialization,encheliophis gracilis,specialist-gonads and respiotatory tree of host,115
-reef_fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
-reef_fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,starfish,115
-reef_fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,reef,115
-reef_fish,biophysical traits,maximum depth,enchelycore schismatorhynchus,20,115
-reef_fish,biophysical traits,minimum depth,enchelycore schismatorhynchus,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,enchelycore schismatorhynchus,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,enchelycore schismatorhynchus,subtidal hard bottom,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,engraulis ringens,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,engraulis ringens,pelagic neritic,115
-reef_fish,specialisation,extreme diet specialization,engraulis ringens,but 98diatoms,115
-reef_fish,specialisation,within-stage dependent habitats + condition,engraulis ringens,pelagic neritic,115
-reef_fish,biophysical traits,maximum depth,entomacrodus macrospilus,8,115
-reef_fish,biophysical traits,minimum depth,entomacrodus macrospilus,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,entomacrodus macrospilus,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,entomacrodus macrospilus,subtidal hard bottom,115
-reef_fish,biophysical traits,maximum depth,entomacrodus stellifer,5,115
-reef_fish,biophysical traits,minimum depth,entomacrodus stellifer,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,entomacrodus stellifer,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,entomacrodus stellifer,subtidal hard bottom,115
-reef_fish,foraging range,"if one/few, size",epinephelus itajara,yes,115
-reef_fish,specialisation,across-stage dependent habitats + condition,epinephelus itajara,live coral caves,115
-reef_fish,specialisation,within-stage dependent habitats + condition,epinephelus itajara,inshore,115
-reef_fish,specialisation,within-stage dependent habitats + condition,epinephelus itajara,mangroves then reef,115
-reef_fish,specialisation,across-stage dependent habitats + condition,epinephelus lanceolatus,inshore coral reef,115
-reef_fish,specialisation,across-stage dependent habitats + condition,epinephelus lanceolatus,live coral caves,115
-reef_fish,specialisation,within-stage dependent habitats + condition,epinephelus lanceolatus,inshore,115
-reef_fish,specialisation,within-stage dependent habitats + condition,epinephelus lanceolatus,mangroves then reef,115
-reef_fish,biophysical traits,maximum depth,eptatretus cirrhatus,1100,115
-reef_fish,biophysical traits,minimum depth,eptatretus cirrhatus,1,115
-reef_fish,physiological tolerance breadths,salinity,eptatretus cirrhatus,32-34parts per thousand,115
-reef_fish,r (reproductive traits),can the sex ratio be altered by a stressor?,eptatretus cirrhatus,probably,115
-reef_fish,biophysical traits,maximum depth,eptatretus mendozai,1100,115
-reef_fish,biophysical traits,minimum depth,eptatretus mendozai,720,115
-reef_fish,physiological tolerance breadths,salinity,eptatretus mendozai,32-34parts per thousand,115
-reef_fish,r (reproductive traits),can the sex ratio be altered by a stressor?,eptatretus mendozai,probably,115
-reef_fish,biophysical traits,maximum depth,ethadophis akkistikos,60,115
-reef_fish,biophysical traits,minimum depth,ethadophis akkistikos,30,115
-reef_fish,biophysical traits,maximum depth,ethadophis merenda,0,115
-reef_fish,biophysical traits,minimum depth,ethadophis merenda,0,115
-reef_fish,specialisation,extreme diet specialization,eviota sigillata,no,115
-reef_fish,biophysical traits,maximum depth,facciolella karreri,2000,115
-reef_fish,biophysical traits,minimum depth,facciolella karreri,700,115
-reef_fish,specialisation,across-stage dependent habitats + condition,forsterygion varium,rocky reefs,115
-reef_fish,specialisation,within-stage dependent habitats + condition,forsterygion varium,rocky reefs,115
-reef_fish,specialisation,across-stage dependent habitats + condition,gadus mohua,deep habitats,115
-reef_fish,specialisation,within-stage dependent habitats + condition,gadus mohua,shallow to deeper habitats,115
-reef_fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",galaxias brevipinnis,olfaction-yes,115
-reef_fish,foraging range,sub-population dependence on particular sites,galaxias brevipinnis,only for spawning,115
-reef_fish,specialisation,across-stage dependent habitats + condition,galaxias brevipinnis,adults fw,115
-reef_fish,specialisation,within-stage dependent habitats + condition,galaxias brevipinnis,larvae in sw,115
-reef_fish,specialisation,extreme diet specialization,gobiodon citrinus,no,115
-reef_fish,specialisation,extreme diet specialization,gobiodon histro,no,115
-reef_fish,biophysical traits,maximum depth,gorgasia maculata,48,115
-reef_fish,biophysical traits,minimum depth,gorgasia maculata,25,115
-reef_fish,specialisation,within-stage dependent habitats + condition,gymnothoraxjavanicus,intertidal move to deeper reef,115
-reef_fish,biophysical traits,maximum depth,heteroconger klausewitzi,30,115
-reef_fish,biophysical traits,minimum depth,heteroconger klausewitzi,5,115
-reef_fish,biophysical traits,maximum depth,heteroconger taylori,10,115
-reef_fish,biophysical traits,minimum depth,heteroconger taylori,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
-reef_fish,specialisation,within-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
-reef_fish,specialisation,within-stage dependent habitats + condition,hippoglossus stenolepis,nearshore to deeper,115
-reef_fish,specialisation,across-stage dependent habitats + condition,hoplostethus atlanticus,deep sea mount,115
-reef_fish,biophysical traits,maximum depth,hypleurochilus bananensis,0,115
-reef_fish,biophysical traits,minimum depth,hypleurochilus bananensis,0,115
-reef_fish,biophysical traits,maximum depth,hypsoblennius striatus,5,115
-reef_fish,biophysical traits,minimum depth,hypsoblennius striatus,0,115
-reef_fish,biophysical traits,maximum depth,kaupichthys brachychirus,43,115
-reef_fish,biophysical traits,minimum depth,kaupichthys brachychirus,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,lutjanus sebae,intereefal,115
-reef_fish,specialisation,within-stage dependent habitats + condition,lutjanus sebae,estuaries,115
-reef_fish,specialisation,within-stage dependent habitats + condition,lutjanus sebae,interreefal,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meuschenia scaber,no,115
-reef_fish,foraging range,"if one/few, size",meuschenia scaber,many,115
-reef_fish,physiological tolerance breadths,salinity,meuschenia scaber,euryhaline-brackish,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,meuschenia scaber,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,meuschenia scaber,inshore to rocky reef,115
-reef_fish,specialisation,within-stage dependent habitats + condition,meuschenia scaber,inshore to rocky reef,115
-reef_fish,biophysical traits,maximum depth,monopenchelys acuta,45,115
-reef_fish,biophysical traits,minimum depth,monopenchelys acuta,13,115
-reef_fish,specialisation,across-stage dependent habitats + condition,monopenchelys acuta,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,monopenchelys acuta,subtidal hard bottom,115
-reef_fish,biophysical traits,maximum depth,moringua edwardsi,35,115
-reef_fish,biophysical traits,minimum depth,moringua edwardsi,0,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",naso vlamingi,no,115
-reef_fish,foraging range,"if one/few, size",naso vlamingi,many,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,naso vlamingi,nil,115
-reef_fish,biophysical traits,maximum depth,nessorhamphus danae,1000,115
-reef_fish,biophysical traits,minimum depth,nessorhamphus danae,290,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",notolabrus celidotus,no,115
-reef_fish,foraging range,"if one/few, size",notolabrus celidotus,many,115
-reef_fish,physiological tolerance breadths,salinity,notolabrus celidotus,euryhaline-brackish,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,notolabrus celidotus,nil,115
-reef_fish,specialisation,across-stage dependent habitats + condition,notolabrus celidotus,inshore to rocky reef,115
-reef_fish,specialisation,within-stage dependent habitats + condition,notolabrus celidotus,inshore to rocky reef,115
-reef_fish,biophysical traits,maximum depth,omobranchus anolius,5,115
-reef_fish,biophysical traits,minimum depth,omobranchus anolius,0,115
-reef_fish,biophysical traits,maximum depth,omobranchus fasciolatus,3,115
-reef_fish,biophysical traits,minimum depth,omobranchus fasciolatus,0,115
-reef_fish,biophysical traits,maximum depth,omobranchus rotundiceps,0,115
-reef_fish,biophysical traits,minimum depth,omobranchus rotundiceps,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,omobranchus rotundiceps,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,omobranchus rotundiceps,subtidal hard bottom,115
-reef_fish,foraging range,sub-population dependence on particular sites,oncorhynchus nerka,only for spawning,115
-reef_fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,fw-ocean-fw,115
-reef_fish,specialisation,within-stage dependent habitats + condition,oncorhynchus nerka,fw-ocean-fw,115
-reef_fish,biophysical traits,maximum depth,ophichthus altipennis,40,115
-reef_fish,biophysical traits,minimum depth,ophichthus altipennis,1,115
-reef_fish,biophysical traits,maximum depth,ophichthus melanoporus,460,115
-reef_fish,biophysical traits,minimum depth,ophichthus melanoporus,51,115
-reef_fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",ophichthus melanoporus,vertical migrator,115
-reef_fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",osterhinchus doederleini,yes to all,115
-reef_fish,specialisation,across-stage dependent habitats + condition,osterhinchus doederleini,live coral caves,115
-reef_fish,specialisation,light dependence,osterhinchus doederleini,yes sun compass,115
-reef_fish,specialisation,within-stage dependent habitats + condition,osterhinchus doederleini,live coral caves,115
-reef_fish,biophysical traits,maximum depth,parablennius parvicornis,2,115
-reef_fish,biophysical traits,minimum depth,parablennius parvicornis,0,115
-reef_fish,specialisation,extreme diet specialization,parablennius parvicornis,algae,115
-reef_fish,biophysical traits,maximum depth,parablennius yatabei,5,115
-reef_fish,biophysical traits,minimum depth,parablennius yatabei,0,115
-reef_fish,specialisation,extreme diet specialization,parablennius yatabei,algae and detritus,115
-reef_fish,biophysical traits,maximum depth,parablennius zvonimiri,12,115
-reef_fish,biophysical traits,minimum depth,parablennius zvonimiri,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,parablennius zvonimiri,subtidal hard bottom,115
-reef_fish,specialisation,extreme diet specialization,parablennius zvonimiri,algae and detritus,115
-reef_fish,specialisation,within-stage dependent habitats + condition,parablennius zvonimiri,subtidal hard bottom,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,parapercis colias,nil,115
-reef_fish,biophysical traits,maximum depth,parenchelyurus hepburni,4,115
-reef_fish,biophysical traits,minimum depth,parenchelyurus hepburni,1,115
-reef_fish,specialisation,across-stage dependent habitats + condition,parma microlepis,rocky reef-barrens habitat,115
-reef_fish,specialisation,within-stage dependent habitats + condition,parma microlepis,rocky reef-barrens habitat,115
-reef_fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",plectropomus leopardus,yes-sound,115
-reef_fish,foraging range,"if one/few, size",plectropomus leopardus,yes,115
-reef_fish,specialisation,across-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
-reef_fish,specialisation,within-stage dependent habitats + condition,plectropomus leopardus,shallow coral reef,115
-reef_fish,specialisation,within-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
-reef_fish,specialisation,across-stage dependent habitats + condition,pomacentrus coelestis,coral reef-rubble,115
-reef_fish,specialisation,extreme diet specialization,pomacentrus coelestis,generalist-planktivore,115
-reef_fish,specialisation,within-stage dependent habitats + condition,pomacentrus coelestis,coral reef-rubble,115
-reef_fish,biophysical traits,maximum depth,praealticus dayi,0,115
-reef_fish,biophysical traits,minimum depth,praealticus dayi,0,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",rexea solandri,few,115
-reef_fish,biophysical traits,maximum depth,rhinomuraena quaesita,57,115
-reef_fish,biophysical traits,minimum depth,rhinomuraena quaesita,1,115
-reef_fish,biophysical traits,maximum depth,salarias ceramensis,30,115
-reef_fish,biophysical traits,minimum depth,salarias ceramensis,1,115
-reef_fish,specialisation,across-stage dependent habitats + condition,salarias ceramensis,subtidal hard bottom,115
-reef_fish,specialisation,extreme diet specialization,salarias ceramensis,algae,115
-reef_fish,specialisation,within-stage dependent habitats + condition,salarias ceramensis,subtidal hard bottom,115
-reef_fish,specialisation,across-stage dependent habitats + condition,salarias fasciatus,shallow water,115
-reef_fish,specialisation,within-stage dependent habitats + condition,salarias fasciatus,shallow water,115
-reef_fish,biophysical traits,maximum depth,salarias sinuosus,5,115
-reef_fish,biophysical traits,minimum depth,salarias sinuosus,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,salarias sinuosus,subtidal hard bottom,115
-reef_fish,specialisation,extreme diet specialization,salarias sinuosus,algae,115
-reef_fish,specialisation,within-stage dependent habitats + condition,salarias sinuosus,subtidal hard bottom,115
-reef_fish,biophysical traits,maximum depth,saurenchelys meteori,705,115
-reef_fish,biophysical traits,minimum depth,saurenchelys meteori,696,115
-reef_fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",scarus schlegeri,suncompass in family,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",scarus schlegeri,no,115
-reef_fish,foraging range,"if one/few, size",scarus schlegeri,many,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,scarus schlegeri,nil,115
-reef_fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",sebastes diploproa,no,115
-reef_fish,foraging range,"if one/few, size",sebastes diploproa,many,115
-reef_fish,r (reproductive traits),post-birth/hatching maternal dependence,sebastes diploproa,nil,115
-reef_fish,biophysical traits,maximum depth,serrivomer lanceolatoides,2000,115
-reef_fish,biophysical traits,minimum depth,serrivomer lanceolatoides,300,115
-reef_fish,biophysical traits,maximum depth,simenchelys parasitica,2620,115
-reef_fish,biophysical traits,minimum depth,simenchelys parasitica,136,115
-reef_fish,biophysical traits,maximum depth,skythrenchelys zabra,180,115
-reef_fish,biophysical traits,minimum depth,skythrenchelys zabra,1,115
-reef_fish,specialisation,across-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
-reef_fish,specialisation,extreme diet specialization,spratelloides delicatulus,no,115
-reef_fish,specialisation,within-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
-reef_fish,biophysical traits,maximum depth,synaphobranchus affinis,2400,115
-reef_fish,biophysical traits,minimum depth,synaphobranchus affinis,290,115
-reef_fish,biophysical traits,maximum depth,synaphobranchus kaupii,4800,115
-reef_fish,biophysical traits,minimum depth,synaphobranchus kaupii,120,115
-reef_fish,biophysical traits,maximum depth,synaphobranchus oregoni,1900,115
-reef_fish,biophysical traits,minimum depth,synaphobranchus oregoni,512,115
-reef_fish,biophysical traits,maximum depth,uropterygius fuscoguttatus,25,115
-reef_fish,biophysical traits,minimum depth,uropterygius fuscoguttatus,3,115
-reef_fish,biophysical traits,maximum depth,uropterygius wheeleri,20,115
-reef_fish,biophysical traits,minimum depth,uropterygius wheeleri,0,115
-reef_fish,specialisation,across-stage dependent habitats + condition,uropterygius wheeleri,subtidal hard bottom,115
-reef_fish,specialisation,within-stage dependent habitats + condition,uropterygius wheeleri,subtidal hard bottom,115
-reef_fish,biophysical traits,maximum depth,venefica tentaculata,500,115
-reef_fish,biophysical traits,minimum depth,venefica tentaculata,100,115
-reef_fish,biophysical traits,maximum depth,xenomystax trucidans,2326,115
-reef_fish,biophysical traits,minimum depth,xenomystax trucidans,1010,115
-reef_fish,biophysical traits,maximum depth,xestochilus nebulosus,42,115
-reef_fish,biophysical traits,minimum depth,xestochilus nebulosus,2,115
-reptiles,foraging range,"if one/few, size",acrchordus,few,16
-reptiles,physiological tolerance breadths,salinity,acrchordus,broad,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),acrchordus,no,16
-reptiles,specialisation,extreme diet specialization,acrchordus,no,16
+reptiles,foraging range,"if one/few, size",acrochordus,few,16
+reptiles,physiological tolerance breadths,salinity,acrochordus,broad,16
+reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),acrochordus,no,16
+reptiles,specialisation,extreme diet specialization,acrochordus,no,16
 reptiles,biophysical traits,calcium carbonate structure stages,amblyrhynchus cristatus,no,16
 reptiles,r (reproductive traits),can the sex ratio be altered by a stressor?,amblyrhynchus cristatus,no larva,16
 reptiles,specialisation,across-stage dependent habitats + condition,caretta caretta,continental shelf,16
@@ -975,28 +959,57 @@ reptiles,foraging range,"if one/few, size",parahydrophis,few,16
 reptiles,physiological tolerance breadths,salinity,parahydrophis,broad,16
 reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),parahydrophis,no,16
 reptiles,specialisation,extreme diet specialization,parahydrophis,no,16
-seabirds,biophysical traits,calcium carbonate structure stages,alcidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,anatidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,aphrodroma;bulweria;daption;halobaena;pachyptila;pagodroma;pelecanoides;thalassoica,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,ardenna;calonectris;fulmarus;macronectes;precellaria;puffinus,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,creagrus;rissa;pagophila;xema;chroicocephalus;hydrocoloeus;rhodostethia;leucophaeus;ichthyaetus;larus,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,diomedeidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,fregatidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,gaviidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,gelochelidon;hydroprogne;thalasseus;sternula;onychoprion;sterna;chlidonias;phaetusa;larosterna,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,hydrobatidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,oceanitidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,pelecanidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,phaethontidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,phalacrocoracidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,podicipedidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,pseudobulweria,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,pterodroma,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,scolopacidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,spheniscidae,egg,21
-seabirds,biophysical traits,respiration structures,spheniscidae,lung,21
-seabirds,biophysical traits,calcium carbonate structure stages,stercorariidae,egg,21
-seabirds,biophysical traits,calcium carbonate structure stages,sulidae,egg,21
+seabirds,biophysical traits,calcium carbonate structure stages,alcidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,anatidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,aphrodroma,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,ardenna,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,bulweria,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,calonectris,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,chlidonias,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,chroicocephalus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,creagrus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,daption,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,diomedeidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,fregatidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,fulmarus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,gaviidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,gelochelidon,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,halobaena,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,hydrobatidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,hydrocoloeus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,hydroprogne,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,ichthyaetus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,larosterna,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,larus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,leucophaeus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,macronectes,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,oceanitidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,onychoprion,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,pachyptila,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,pagodroma,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,pagophila,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,pelecanidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,pelecanoides,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,phaethontidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,phaetusa,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,phalacrocoracidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,podicipedidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,procellaria,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,pseudobulweria,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,pterodroma,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,puffinus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,rhodostethia,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,rissa,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,scolopacidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,spheniscidae,egg,50
+seabirds,biophysical traits,respiration structures,spheniscidae,lung,50
+seabirds,biophysical traits,calcium carbonate structure stages,stercorariidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,sterna,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,sternula,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,sulidae,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,thalasseus,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,thalassoica,egg,50
+seabirds,biophysical traits,calcium carbonate structure stages,xema,egg,50
 sponges,biophysical traits,calcium carbonate structure stages,demospongiae,no,1
 sponges,biophysical traits,"navigation requirements (sound or light, or magnetic)",demospongiae,larval navigation def by light,1
 sponges,biophysical traits,"navigation requirements (sound or light, or magnetic)",demospongiae,sound unknown,1

@@ -1,0 +1,172 @@
+---
+title: "Expand taxonomic groups from expert data"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+library(taxize)
+```
+
+# Summary
+
+From the taxonomic names given by the taxon experts, expand both upward and downward to create an all-inclusive marine species list.
+
+Use the `taxize` package:
+
+* `taxize::classification()` to get the entire taxonomic hierarchy of a given taxon ID.
+* `taxize::children()` to get immediate taxonomic children for a given taxon
+* `taxize::downstream()` to get names down to a specified rank, e.g., getting all species in a family.
+
+```{r}
+### create a function to break up large species lists into chunks,
+### saving to tmp, in case of breaks in internet connectivity
+classify_chunks <- function(spp_gps, chunk_size = 20, db = 'worms', overwrite = FALSE) {
+  ### spp_gps is a character vector
+  n_chunks <- ceiling(length(spp_gps) / chunk_size)
+  tmpstem <- here('tmp/taxize_classification_all_%s.csv')
+  if(overwrite == TRUE) {
+    unlink(here('tmp/taxize_classification_all_*.csv'))
+  }
+  for(i in 1:n_chunks) { ### i <- 1
+    message('Processing chunk ', i, ' of ', n_chunks)
+    indices <- c(1 + chunk_size * (i - 1), min(length(spp_gps), chunk_size * i))
+    chunk_file <- sprintf(tmpstem, paste0(indices, collapse = '_'))
+    if(!file.exists(chunk_file)) {
+      tmp_gps <- spp_gps[indices[1]:indices[2]]
+      
+      chunk_results <- classification(tmp_gps, db = db)
+      
+      chunk_check <- sapply(chunk_results, is.data.frame)
+      chunk_ok <- chunk_results[chunk_check]
+      
+      chunk_df <- bind_rows(chunk_ok, .id = 'spp_gp') 
+
+      error_results <- chunk_results[!chunk_check]
+      if(length(error_results) > 0) {
+        message('chunk ', i, ' returned ', length(error_results),
+                ' errors out of ', length(tmp_gps))
+        chunk_errors <- data.frame(spp_gp = names(error_results),
+                                   error = TRUE)
+        chunk_df <- chunk_df %>%
+          bind_rows(chunk_errors)
+      }
+    
+      write_csv(chunk_df, chunk_file)
+    }
+  }
+  
+  tmp_files <- list.files(here('tmp'), pattern = sprintf('taxize_classification_all'),
+                          full.names = TRUE)
+  
+  results_all <- lapply(tmp_files, 
+                        FUN = function(f) {
+                          read_csv(f, col_types = cols(.default = 'c'))
+                        }) %>%
+    bind_rows() %>%
+    mutate(error = ifelse(is.na(error), FALSE, error),
+           error = as.logical(error))
+  return(results_all)
+}
+
+```
+
+## Match up taxonomic info from experts to names in taxonomic databases.
+
+Using `taxize::classification()`, check each taxonomic name against databases of taxonomic info to get the full upstream classification.  
+
+Order of search:
+
+* WORMS (left 38 unmatched out of 789 checked - nautilus spp still need to be disaggregated)
+* NCBI (left 14 still unmatched)
+* GBIF (left 6 still unmatched)
+* EOL (found the rest - NOTE: this was not a preferred db because some names had extra info, e.g. citation)
+
+```{r}
+# spp_traits <- read_csv('_data/spp_traits_valid.csv') %>%
+#   filter(!str_detect(spp_gp, 'large eggs|small eggs'))
+
+### This queries for all species
+# # spp_gps <- spp_traits %>%
+# #   select(taxon, spp_gp) %>%
+# #   mutate(name = tolower(spp_gp)) %>%
+# #   .$spp_gp %>% unique()
+# # 
+# # y <- classify_chunks(spp_gps)
+# # 
+# # write_csv(y, here('int/taxize_results_all.csv'))
+
+### this can be iterated to fill gaps.  
+
+# y <- read_csv(here('int/taxize_results_all.csv')) %>%
+#   filter(spp_gp %in% spp_traits$spp_gp) %>%
+#   left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
+# 
+# yy <- spp_traits %>%
+#   filter(!spp_gp %in% y$spp_gp) %>%
+#   .$spp_gp %>% unique()
+# spp_gps_error <- y %>%
+#   filter(error) %>%
+#   .$spp_gp %>% unique()
+# 
+# db = 'eol'
+# z <- classify_chunks(c(yy, spp_gps_error), db = db, overwrite = TRUE) %>%
+#   mutate(db = db)
+# z %>% filter(error) %>% .$spp_gp %>% n_distinct() 
+# # z_eol
+# ### 38 still unmatched with WORMS; 14 still unmatched with NCBI or 10 unmatched with EOL
+# 
+# zz <- y %>%
+#   filter(!error) %>%
+#   bind_rows(z %>% mutate(id = as.numeric(id))) %>%
+#   select(-taxon)
+# 
+# write_csv(zz, here('int/taxize_results_all.csv'))
+
+
+# z <- taxize::downstream('Octopodidae', downto = 'genus', db = 'worms')
+```
+
+Filter to just the "main" ranks, and then at each of these above species, get downstream species.
+
+```{r}
+taxa_raw <- read_csv(here('int/taxize_results_all.csv'))
+
+ranks <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
+
+taxa_lvls <- taxa_raw %>%
+  mutate(name = tolower(name),
+         rank = tolower(rank),
+         rank = factor(rank, levels = ranks)) %>%
+  filter(!is.na(rank))
+
+```
+
+### Genus match
+
+```{r}
+genus_all <- taxa_lvls %>%
+  filter(rank == 'genus') %>%
+  .$name %>% unique() ### 513 genuses
+
+
+  
+```
+
