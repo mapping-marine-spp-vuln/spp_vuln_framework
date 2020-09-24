@@ -1,5 +1,5 @@
 ---
-title: "Match vulnerability scores to the species level"
+title: "Match vulnerability scores to AquaMap and IUCN species"
 author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
 output: 
   html_document:
@@ -34,9 +34,16 @@ From the calculated vulnerability for species groups across taxa, assign vulnera
 
 ## Read in taxonomic info from IUCN and AquaMaps
 
-These are currently borrowed from other projects.  Would want to get fresh copies as part of this project.  For each of these datasets, we need to standardize the taxonomic classifications to improve matching, e.g. whether to use _elasmobranchii_ vs. _chondricthyes_.  We do this by checking species names using `taxize::classification()` to get the full classification.  
+___These are currently borrowed from other projects.  Would want to get fresh copies as part of this project.___  
 
-For those that don't match at the species level, we will go back to the genus level to complete matches.
+For each of these datasets, we will attempt classification matching two ways, on both ends -
+
+* unmodified dataset taxonomic ranks (e.g. what AM and IUCN say the species are, and what species experts say)
+* `taxize`d versions of AquaMaps and IUCN as well as `taxize`d versions of the species expert classifications.
+
+Standardizing the taxonomic classifications should improve matching, e.g. whether to use _elasmobranchii_ vs. _chondricthyes_.  For AquaMaps and IUCN, we do this by checking species names using `taxize::classification()` to get the full classification.  For species expert names, we may need to get more clever since we don't necessarily know what level is provided.
+
+For those that don't match at the species level, we will go back to the genus, family, or order level to complete matches.
 
 ```{r}
 ### create a function to break up large species lists into chunks,
@@ -90,6 +97,12 @@ iucn_spp <- read_csv(here('_raw_data/spp_info_from_api_2020-1.csv')) %>%
   filter(iucn_sid %in% marine_spp$iucn_sid) %>%
   filter(iucn_sid %in% comp_spp$iucn_sid)
 
+raw_results_iucn <- iucn_spp %>%
+  select(-category, species = sciname) %>%
+  gather(rank, name, kingdom:species) %>%
+  mutate(name = tolower(name),
+         dataset = 'iucn_raw')
+
 taxize_results_iucn_file <- here('int/taxize_results_iucn.csv')
 if(!file.exists(taxize_results_iucn_file)) {
   iucn_taxize <- iucn_spp %>%
@@ -106,12 +119,29 @@ if(!file.exists(taxize_results_iucn_file)) {
   
   write_csv(taxize_results, taxize_results_iucn_file)
 }
+
+taxize_results_iucn <- read_csv(taxize_results_iucn_file) %>%
+  mutate(name = tolower(name),
+         dataset = 'iucn_taxize')
+
+iucn_spp_ranks <- raw_results_iucn %>%
+  bind_rows(taxize_results_iucn) 
+
+iucn_check <- iucn_spp_ranks %>%
+  group_by(iucn_sid, rank) %>%
+  mutate(no_diff = first(name) == last(name))
 ```
 
 ```{r am_spp}
 am_spp <- read_csv(here('_raw_data/speciesoccursum.csv')) %>%
   janitor::clean_names() %>%
   mutate(sciname = paste(genus, species))
+
+raw_results_am <- am_spp %>%
+  select(am_sid = speciesid, kingdom:family, genus, species = sciname) %>%
+  gather(rank, name, kingdom:species) %>%
+  mutate(name = tolower(name),
+         dataset = 'am_raw')
 
 taxize_results_am_file <- here('int/taxize_results_am.csv')
 if(!file.exists(taxize_results_am_file)) {
@@ -126,77 +156,22 @@ if(!file.exists(taxize_results_am_file)) {
   
   write_csv(taxize_results, taxize_results_am_file)
 }
+
+taxize_results_am <- read_csv(taxize_results_am_file) %>%
+  mutate(name = tolower(name),
+         dataset = 'am_taxize') 
+
+am_spp_ranks <- raw_results_am %>%
+  bind_rows(taxize_results_am) 
+
+am_check <- am_spp_ranks %>%
+  group_by(am_sid, rank) %>%
+  mutate(no_diff = first(name) == last(name))
 ```
-
-## Check matches
-
-Join the taxize results to the original AquaMaps and IUCN species lists.  If the species binomial from taxize does not match that in IUCN or AquaMaps, overwrite with the appropriate name from AquaMaps or IUCN.  These are probably synonyms where taxize returns a different name than used by AquaMaps or IUCN.  Overwriting with the name from the datasets will allow for proper matching.
-
-```{r clean up names}
-tx_am_results <- read_csv(taxize_results_am_file)
-tx_iucn_results <- read_csv(taxize_results_iucn_file)
-
-tx_am <- am_spp %>% 
-  select(am_sid = speciesid, iucn_sid = iucn_id, sciname) %>%
-  left_join(tx_am_results, by = 'am_sid') %>%
-  mutate(name = ifelse(tolower(name) != tolower(sciname) & rank == 'species', sciname, name),
-         name = tolower(name)) %>%
-  rename(name_am = name, sciname_am = sciname)
-
-tx_iucn <- iucn_spp %>%
-  select(iucn_sid, sciname) %>%
-  left_join(tx_iucn_results, by = 'iucn_sid') %>%
-  mutate(name = ifelse(tolower(name) != tolower(sciname) & rank == 'species', sciname, name),
-         name = tolower(name)) %>%
-  rename(name_iucn = name, sciname_iucn = sciname)
-```
-
-### Mismatches of names when joining by IUCN species ID
-
-These may indicate that AquaMaps has listed the wrong IUCN species ID, or that one dataset uses a different synonym than the other.  
-
-``` {r}
-
-overlap_by_iucn_sid <- tx_am %>%
-  inner_join(tx_iucn, by = c('iucn_sid', 'rank')) %>%
-  mutate(name_match = name_am == name_iucn)
-
-mismatch <- overlap_by_iucn_sid %>%
-  group_by(iucn_sid, am_sid) %>%
-  filter(any(!name_match)) %>%
-  distinct()
-
-DT::datatable(mismatch)
-```
-
-### Check matches by name only
-
-``` {r}
-
-overlap_by_name <- tx_am %>%
-  filter(rank == 'species') %>%
-  inner_join(tx_iucn %>% filter(rank == 'species'), by = c('name_am' = 'name_iucn'))
-
-```
-
-### Check unmatched species
-
-```{r}
-unmatched_iucn <- iucn_spp %>%
-  filter(!iucn_sid %in% tx_iucn_results$iucn_sid)
-### 2134 species not matched
-unmatched_am <- am_spp %>%
-  filter(!speciesid %in% tx_am_results$am_sid)
-### 9983 species not matched
-```
-
-There are `r n_distinct(unmatched_iucn$iucn_sid)` IUCN species and `r n_distinct(unmatched_am$speciesid)` AquaMaps species that did not match the taxonomic classification step.
-
-These species can perhaps be matched to traits using genus values, or perhaps a taxonomic synonyms search can identify misnamed species.
 
 ## Read in vulnerability and classify
 
-These vulnerability scores are calculated in the `calculate_spp_vuln.Rmd` script.  Join these to the IUCN and AquaMaps species by various ranks.
+These vulnerability scores are calculated in the `calculate_spp_vuln.Rmd` script.  Join these to the IUCN and AquaMaps species by various ranks.  Here we drop all the scores, just matching the names themselves.
 
 ```{r}
 spp_vuln <- read_csv(here('_output/spp_gp_vulnerability.csv'))
@@ -215,8 +190,7 @@ Note the number of matched species for each sheet from the traits workbook; note
 
 ``` {r check against AquaMaps}
 
-traits_vs_am <- tx_am %>% 
-  rename(name = name_am) %>%
+traits_vs_am <- am_spp_ranks %>%
   full_join(spp_gps, by = 'name')
             
 traits_match_am <- traits_vs_am %>%
@@ -226,8 +200,10 @@ traits_match_am <- traits_vs_am %>%
   mutate(rank = factor(rank, levels = ranks)) %>%
   group_by(am_sid) %>%
   filter(as.numeric(rank) == max(as.numeric(rank))) %>%
+  select(am_sid, match_name = name, match_rank = rank, taxon, spp_gp, dataset) %>%
+  group_by(am_sid) %>%
+  filter(n() == 1 | dataset == 'am_raw') %>%
   ungroup() %>%
-  select(am_sid, match_name = name, match_rank = rank, taxon, spp_gp) %>%
   left_join(am_spp %>%
               select(am_sid = speciesid, sciname, comname = f_bname), by = c('am_sid'))
 
@@ -239,14 +215,18 @@ traits_match_am_sum <- traits_match_am %>%
             n_fam_match = sum(match_rank == 'family', na.rm = TRUE),
             n_class_match = sum(match_rank == 'class', na.rm = TRUE))
 knitr::kable(traits_match_am_sum)
+
+n_tot_am <- traits_match_am$am_sid %>% n_distinct()
 ```
+
+In total, there are `r n_tot_am` species matched in the AquaMaps dataset.
 
 #### in spp traits, unmatched in AquaMaps
 
 ```{r}
 traits_unmatch_am <- traits_vs_am %>%
   group_by(spp_gp) %>%
-  filter(!any(!is.na(rank))) %>%
+  filter(all(is.na(rank))) %>%
   ungroup() %>%
   select(taxon, spp_gp) %>%
   arrange(taxon, spp_gp)
@@ -287,8 +267,7 @@ Note the number of matched species for each sheet from the traits workbook; note
 
 ``` {r check against IUCN}
 
-traits_vs_iucn <- tx_iucn %>% 
-  rename(name = name_iucn) %>%
+traits_vs_iucn <- iucn_spp_ranks %>%
   full_join(spp_gps, by = 'name')
 
 traits_match_iucn <- traits_vs_iucn %>%
@@ -298,8 +277,10 @@ traits_match_iucn <- traits_vs_iucn %>%
   mutate(rank = factor(rank, levels = ranks)) %>%
   group_by(iucn_sid) %>%
   filter(as.numeric(rank) == max(as.numeric(rank))) %>%
+  select(iucn_sid, matched_name = name, matched_rank = rank, taxon, spp_gp, dataset) %>%
+  group_by(iucn_sid) %>%
+  filter(n() == 1 | dataset == 'iucn_raw') %>%
   ungroup() %>%
-  select(iucn_sid, matched_name = name, matched_rank = rank, taxon, spp_gp) %>%
   left_join(iucn_spp %>%
               select(iucn_sid, sciname), by = c('iucn_sid'))
 
@@ -311,14 +292,26 @@ traits_match_iucn_sum <- traits_match_iucn %>%
             n_fam_match = sum(matched_rank == 'family', na.rm = TRUE),
             n_class_match = sum(matched_rank == 'class', na.rm = TRUE))
 knitr::kable(traits_match_iucn_sum)
+
+n_tot_iucn <- traits_match_iucn$iucn_sid %>% n_distinct()
+
+n_tot_am_iucn <- traits_match_iucn %>% 
+  select(iucn_sid, sciname) %>%
+  full_join(traits_match_am %>% select(am_sid, sciname),
+            by = 'sciname') %>%
+  .$sciname %>% n_distinct()
 ```
+
+In total, there are `r n_tot_iucn` species matched in the IUCN dataset.
+
+Combined with AquaMaps, we can assign traits to `r n_tot_am_iucn` distinct species.
 
 #### in spp traits, unmatched in IUCN
 
 ```{r}
 traits_unmatch_iucn <- traits_vs_iucn %>%
   group_by(spp_gp) %>%
-  filter(!any(!is.na(rank))) %>%
+  filter(all(is.na(rank))) %>%
   ungroup() %>%
   select(taxon, spp_gp) %>%
   arrange(taxon, spp_gp)
@@ -351,8 +344,15 @@ DT::datatable(iucn_unmatch_traits_sum)
 
 ```
 
+#### How many species from experts are not matched in either data set?
 ```{r}
+
 traits_unmatch_all <- bind_rows(traits_unmatch_am, traits_unmatch_iucn) %>%
   distinct()
+
+knitr::kable(traits_unmatch_all %>% group_by(taxon) %>% summarize(n_spp_gps = n_distinct(spp_gp)))
+
+DT::datatable(traits_unmatch_all)
+
 ```
 

@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Tue Sep 22 13:52:29 2020 by ohara" />
+<meta name="author" content="Compiled on Thu Sep 24 08:28:16 2020 by ohara" />
 
 
 <title>Clean species trait workbook</title>
@@ -1658,7 +1658,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Clean species trait workbook</h1>
-<h4 class="author"><em>Compiled on Tue Sep 22 13:52:29 2020 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Thu Sep 24 08:28:16 2020 by ohara</em></h4>
 
 </div>
 
@@ -1889,7 +1889,7 @@ div.tocify {
 <a class="sourceLine" id="cb7-26" title="26">spp_data_mobility<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##      horizontal migrator          mobile resident nearly sessile/sedentary 
-##                       78                      549                       15 
+##                       77                      548                       15 
 ##                  nomadic                  passive                  sessile 
 ##                       12                        1                       57 
 ##                  unknown        vertical migrator 
@@ -1930,7 +1930,7 @@ div.tocify {
 <a class="sourceLine" id="cb11-18" title="18">spp_data_thermal1<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ## 10c 15c 20c 25c 30c  5c 
-##  71  78  44  79 181  83</code></pre>
+##  71  78  44  79 180  83</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">### heat spike values are yes/no</span></a>
 <a class="sourceLine" id="cb13-2" title="2">spp_data_thermal2 &lt;-<span class="st"> </span>raw_data_df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb13-3" title="3"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(trait, <span class="st">&#39;thermal - sensitivity to heat spikes&#39;</span>)) <span class="op">%&gt;%</span></a>
@@ -1958,7 +1958,7 @@ div.tocify {
 ##                cold_temperate_to_subantarctic_waters 
 ##                                                    1 
 ##                                                   no 
-##                                                  430 
+##                                                  428 
 ##                            polar_to_temperate_waters 
 ##                                                    1 
 ##                       sub_arctic_to_temperate_waters 
@@ -2001,7 +2001,7 @@ div.tocify {
 <a class="sourceLine" id="cb16-27" title="27">spp_data_ph<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##    &lt;7.4 7.8-8.2 
-##     288     446</code></pre>
+##     286     446</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">biomin1_vals &lt;-<span class="st"> </span>traitvals_df_valid <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="st">  </span><span class="kw">filter</span>(trait <span class="op">==</span><span class="st"> &#39;calcium carbonate structure location&#39;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb18-3" title="3"><span class="st">  </span>.<span class="op">$</span>trait_value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">paste0</span>(<span class="dt">collapse =</span> <span class="st">&#39;|&#39;</span>)</a>
@@ -2024,7 +2024,7 @@ div.tocify {
 ##              external external with a cover     external;internal 
 ##                    32                   219                     1 
 ##              internal                  none 
-##                   299                   217</code></pre>
+##                   299                   215</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">biomin2_vals &lt;-<span class="st"> </span>traitvals_df_valid <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb20-2" title="2"><span class="st">  </span><span class="kw">filter</span>(trait <span class="op">==</span><span class="st"> &#39;biomineral&#39;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb20-3" title="3"><span class="st">  </span>.<span class="op">$</span>trait_value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">paste0</span>(<span class="dt">collapse =</span> <span class="st">&#39;|&#39;</span>)</a>
@@ -2077,9 +2077,9 @@ div.tocify {
 <a class="sourceLine" id="cb23-23" title="23">spp_data_bodysize<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##               &gt;1000mm            0.5mm-49mm 0.5mm-49mm;50mm-999mm 
-##                   145                    95                     2 
+##                   144                    95                     2 
 ##            50mm-999mm    50mm-999mm;&gt;1000mm               unknown 
-##                   457                    67                     4</code></pre>
+##                   457                    66                     4</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="co">### Here, extract numerics from the string, use the min and max values to</span></a>
 <a class="sourceLine" id="cb25-2" title="2"><span class="co">### identify the span, then assign categories within that span. UGH</span></a>
 <a class="sourceLine" id="cb25-3" title="3"></a>
@@ -2143,9 +2143,9 @@ div.tocify {
 <a class="sourceLine" id="cb25-61" title="61">spp_data_fecund<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##         &lt;1     &gt;10000        1-2      10-20   100-1000 1000-10000        2-5 
-##         77        256         52         18        213         69         59 
+##         77        256         51         18        213         69         58 
 ##      20-50       5-10     50-100 
-##         15         45         37</code></pre>
+##         15         43         37</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="co">### Here, extract numerics from the string, use the min and max values to</span></a>
 <a class="sourceLine" id="cb27-2" title="2"><span class="co">### identify the span, then assign categories within that span. UGH</span></a>
 <a class="sourceLine" id="cb27-3" title="3"></a>
@@ -2226,7 +2226,7 @@ div.tocify {
 <a class="sourceLine" id="cb27-78" title="78">spp_data_pop<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##    &lt;1000      &gt;1m  100k-1m 10k-100k   1k-10k  unknown 
-##        4      433      138       69       44      136</code></pre>
+##        4      433      138       69       44      134</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="co">### Here, extract numerics from the string, use the min and max values to</span></a>
 <a class="sourceLine" id="cb29-2" title="2"><span class="co">### identify the span, then assign categories within that span. UGH</span></a>
 <a class="sourceLine" id="cb29-3" title="3"></a>
@@ -2300,7 +2300,7 @@ div.tocify {
 <a class="sourceLine" id="cb29-71" title="71">spp_data_age<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##    &lt;3months     &gt;100yrs      1-5yrs    10-20yrs   20-100yrs 3months-1yr 
-##           1          10         120          95         144         112 
+##           1          10         120          94         142         112 
 ##     5-10yrs     unknown 
 ##         104         194</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co">### Here, extract numerics from the string, use the min and max values to</span></a>
@@ -2333,7 +2333,7 @@ div.tocify {
 <a class="sourceLine" id="cb31-28" title="28">spp_data_reprod_strategy<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##              asexual                   na     sexual dioecious 
-##                    5                    1                  706 
+##                    5                    1                  704 
 ## sexual hermaphrodite 
 ##                  109</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co">### Here, extract numerics from the string, use the min and max values to</span></a>
@@ -2409,7 +2409,7 @@ div.tocify {
 <a class="sourceLine" id="cb33-71" title="71">spp_data_gen_time<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##     &lt;1yr   &gt;20yrs   1-5yrs 10-20yrs  5-10yrs  unknown 
-##      177       12      330       52       99      120</code></pre>
+##      177       12      330       50       98      120</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">y &lt;-<span class="st"> </span>spp_data_gen_time <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb35-2" title="2"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(trait_value, <span class="st">&#39;meter|feet|foot&#39;</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co">### Here, extract numerics from the string, use the min and max values to</span></a>
@@ -2486,7 +2486,7 @@ div.tocify {
 <a class="sourceLine" id="cb36-72" title="72">spp_data_reprod_opps<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##    &gt;100       1   11-25    2-10   26-50  51-100 unknown 
-##      15     264     127     121      76      21     188</code></pre>
+##      15     264     127     120      75      21     188</code></pre>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co">### Here, sub in reasonable values.  If aggregates but uncertain, assign</span></a>
 <a class="sourceLine" id="cb38-2" title="2"><span class="co">### all aggregation values and let the code find the mean value. UGH</span></a>
 <a class="sourceLine" id="cb38-3" title="3"></a>
@@ -2513,7 +2513,7 @@ div.tocify {
 <a class="sourceLine" id="cb38-24" title="24">spp_data_nsite<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ## does not aggregate                few               many                one 
-##                976                103                282                 33</code></pre>
+##                975                103                280                 33</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1">eoo_vals &lt;-<span class="st"> </span>traitvals_df_valid <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb40-2" title="2"><span class="st">  </span><span class="kw">filter</span>(trait <span class="op">==</span><span class="st"> &#39;eoo (range)&#39;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb40-3" title="3"><span class="st">  </span>.<span class="op">$</span>trait_value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">paste0</span>(<span class="dt">collapse =</span> <span class="st">&#39;|&#39;</span>)</a>
@@ -2543,7 +2543,7 @@ div.tocify {
 <a class="sourceLine" id="cb40-27" title="27">spp_data_eoo<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##        &lt;99     &gt;20000   100-4999 5000-19999    unknown 
-##         41        703         17         15          1</code></pre>
+##         41        701         17         15          1</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co">### Lungs don&#39;t seem to be particularly sensitive to high power sonar;</span></a>
 <a class="sourceLine" id="cb42-2" title="2"><span class="co">### guessing gas bladders as well.  Assign low sensitivity.</span></a>
 <a class="sourceLine" id="cb42-3" title="3"></a>
@@ -2568,7 +2568,7 @@ div.tocify {
 <a class="sourceLine" id="cb42-22" title="22">spp_data_prs<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##    high     low  medium    none unknown 
-##     267     106      59     193     107</code></pre>
+##     266     106      58     193     107</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co">### create a super clean version to match str_extracted values</span></a>
 <a class="sourceLine" id="cb44-2" title="2">parent_vals &lt;-<span class="st"> </span>traitvals_df_valid <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb44-3" title="3"><span class="st">  </span><span class="kw">filter</span>(trait <span class="op">==</span><span class="st"> &#39;parental investment&#39;</span>) <span class="op">%&gt;%</span></a>
@@ -2594,7 +2594,7 @@ div.tocify {
 <a class="sourceLine" id="cb44-23" title="23">spp_data_parent<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##            egg-layer egg-layer unattended  live birth/egg care 
-##                   11                  187                  337 
+##                   11                  187                  335 
 ##              spawner 
 ##                  240</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">do_vals &lt;-<span class="st"> </span>traitvals_df_valid <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -2618,9 +2618,9 @@ div.tocify {
 <a class="sourceLine" id="cb46-19" title="19">spp_data_do<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##    air breathers     character(0)   high tolerance    low tolerance 
-##               99                1              221              303 
+##               99                1              220              303 
 ## medium tolerance          unknown 
-##              113               30</code></pre>
+##              112               30</code></pre>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">pld_vals &lt;-<span class="st"> </span>traitvals_df_valid <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span><span class="kw">filter</span>(trait <span class="op">==</span><span class="st"> &#39;planktonic larval duration (pld) exposure&#39;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb48-3" title="3"><span class="st">  </span>.<span class="op">$</span>trait_value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">paste0</span>(<span class="dt">collapse =</span> <span class="st">&#39;|&#39;</span>)</a>
@@ -2645,7 +2645,7 @@ div.tocify {
 ##       &lt;1day     &lt;1month      &lt;1week    &lt;4months        &gt;1yr 4months-1yr 
 ##           2         126          16         169          43          18 
 ##  not larvae     unknown 
-##         391          12</code></pre>
+##         389          12</code></pre>
 </div>
 <div id="combine-into-a-relatively-clean-df" class="section level3">
 <h3><span class="header-section-number">3.0.2</span> combine into a relatively clean df</h3>
@@ -2704,23 +2704,25 @@ div.tocify {
 <h3><span class="header-section-number">3.0.3</span> write out clean species group sheets. NOTE: After running, set this to eval = FALSE to avoid overwriting later manual edits</h3>
 <p>Here we need to recombine multiple trait vals into one line, separate using a semicolon for easy splitting later.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">spp_data_out &lt;-<span class="st"> </span>spp_data_clean <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_gp =</span> <span class="kw">tolower</span>(spp_gp)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">trait_val_orig =</span> trait_value) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(category, trait, sheet, spp_gp, trait_val_orig) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">trait_val_clean =</span> <span class="kw">paste0</span>(trait_val_clean, <span class="dt">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-6" title="6"><span class="st">  </span><span class="kw">ungroup</span>()</a>
-<a class="sourceLine" id="cb51-7" title="7"></a>
-<a class="sourceLine" id="cb51-8" title="8">sheets &lt;-<span class="st"> </span>spp_data_out<span class="op">$</span>sheet <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>()</a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_gp =</span> <span class="kw">tolower</span>(spp_gp),</a>
+<a class="sourceLine" id="cb51-3" title="3">         <span class="dt">spp_gp =</span> <span class="kw">str_split</span>(spp_gp, <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-4" title="4"><span class="st">  </span><span class="kw">unnest</span>(spp_gp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">trait_val_orig =</span> trait_value) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-6" title="6"><span class="st">  </span><span class="kw">group_by</span>(category, trait, sheet, spp_gp, trait_val_orig) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-7" title="7"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">trait_val_clean =</span> <span class="kw">paste0</span>(trait_val_clean, <span class="dt">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-8" title="8"><span class="st">  </span><span class="kw">ungroup</span>()</a>
 <a class="sourceLine" id="cb51-9" title="9"></a>
-<a class="sourceLine" id="cb51-10" title="10"><span class="cf">for</span>(s <span class="cf">in</span> sheets) { <span class="co">### s &lt;- sheets[1]</span></a>
-<a class="sourceLine" id="cb51-11" title="11">  spp_gp_data &lt;-<span class="st"> </span>spp_data_out <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-12" title="12"><span class="st">    </span><span class="kw">filter</span>(sheet <span class="op">==</span><span class="st"> </span>s) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-13" title="13"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>trait_val_orig, <span class="op">-</span>sheet) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-14" title="14"><span class="st">    </span><span class="kw">spread</span>(spp_gp, trait_val_clean)</a>
-<a class="sourceLine" id="cb51-15" title="15">  </a>
-<a class="sourceLine" id="cb51-16" title="16">  fstem &lt;-<span class="st"> </span><span class="kw">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_%s.csv&#39;</span>)</a>
-<a class="sourceLine" id="cb51-17" title="17">  <span class="kw">write_csv</span>(spp_gp_data, <span class="kw">sprintf</span>(fstem, s))</a>
-<a class="sourceLine" id="cb51-18" title="18">}</a></code></pre></div>
+<a class="sourceLine" id="cb51-10" title="10">sheets &lt;-<span class="st"> </span>spp_data_out<span class="op">$</span>sheet <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>()</a>
+<a class="sourceLine" id="cb51-11" title="11"></a>
+<a class="sourceLine" id="cb51-12" title="12"><span class="cf">for</span>(s <span class="cf">in</span> sheets) { <span class="co">### s &lt;- sheets[1]</span></a>
+<a class="sourceLine" id="cb51-13" title="13">  spp_gp_data &lt;-<span class="st"> </span>spp_data_out <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-14" title="14"><span class="st">    </span><span class="kw">filter</span>(sheet <span class="op">==</span><span class="st"> </span>s) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-15" title="15"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>trait_val_orig, <span class="op">-</span>sheet) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-16" title="16"><span class="st">    </span><span class="kw">spread</span>(spp_gp, trait_val_clean)</a>
+<a class="sourceLine" id="cb51-17" title="17">  </a>
+<a class="sourceLine" id="cb51-18" title="18">  fstem &lt;-<span class="st"> </span><span class="kw">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_%s.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb51-19" title="19">  <span class="kw">write_csv</span>(spp_gp_data, <span class="kw">sprintf</span>(fstem, s))</a>
+<a class="sourceLine" id="cb51-20" title="20">}</a></code></pre></div>
 </div>
 </div>
 
