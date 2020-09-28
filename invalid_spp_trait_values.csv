@@ -190,114 +190,118 @@ echinoderms,physiological tolerance breadths,sensitivity to wave energy (physica
 echinoderms,specialisation,within-stage dependent habitats + condition,strongylocentrotus fragilis,deep sea,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus pallidus,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus purpuratus,senstive,100
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,surface waters,126
-elasmobranchs,r (reproductive traits),are there sub-populations?,anacanthobatidae,possibly,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,hard slop,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,deep seamount,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,hard slop,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,deep seamount,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharhinidae,deep soft bottom,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae,deep soft bottom,126
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carcharhinus leucas,few,126
-elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,large for adults,126
-elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,small for juveniles,126
-elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),carcharhinus leucas,no larvae,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,etmopteridae,deep seamount,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,etmopteridae,deep seamount,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,glaucostegidae,mangroce,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,glaucostegidae,mangroce,126
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",glyphis,few,126
-elasmobranchs,foraging range,"if one/few, size",glyphis,large for adults,126
-elasmobranchs,foraging range,"if one/few, size",glyphis,small for juveniles,126
-elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),glyphis,no larvae,126
-elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiellidae,possibly,126
-elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,hexanchiformes,deep sea mounts,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,hexanchiformes,deep sea mounts,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,himantura,estuary,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,himantura,estuary,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,hypanus,estuary,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,hypanus,estuary,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,rocky reefs,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,rocky reefs,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,surface waters,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,rocky reefs,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,surface waters,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,rocky reefs,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,leptocharias smithii,deep seamount,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,leptocharias smithii,deep seamount,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,maculabatis,estuary,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,maculabatis,estuary,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,megachasma pelagios,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,megachasma pelagios,pelagic,126
-elasmobranchs,r (reproductive traits),can the sex ratio be altered by a stressor?,narcinidae,possibly,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pateobatis,estuary,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pateobatis,estuary,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pristiophoridae,deep seamount,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pristiophoridae,deep seamount,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,proscylliidae,deep hard benthic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,proscylliidae,deep hard benthic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudotriakidae,deep seamount,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudotriakidae,deep seamount,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,rhincodon typus,pelagic,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,rhincodon typus,pelagic,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinidae,mangroce,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinidae,mangroce,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinobatidae,mangroce,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinobatidae,mangroce,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosidae,deep seamount,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosidae,deep seamount,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosus microcephalus,deep seamount,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosus microcephalus,deep seamount,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,taeniurops,estuary,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,taeniurops,estuary,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,trygonorrhinidae,mangroce,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,trygonorrhinidae,mangroce,126
-elasmobranchs,specialisation,across-stage dependent habitats + condition,urogymnus,estuary,126
-elasmobranchs,specialisation,within-stage dependent habitats + condition,urogymnus,estuary,126
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias pelagicus,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias pelagicus,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias superciliosus,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias superciliosus,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,alopias vulpinus,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,alopias vulpinus,surface waters,129
+elasmobranchs,r (reproductive traits),are there sub-populations?,anacanthobatidae,possibly,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,hard slop,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,apristurus,deep seamount,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,hard slop,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,apristurus,deep seamount,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharhinidae,deep soft bottom,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharhinidae,deep soft bottom,129
+elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carcharhinus leucas,few,129
+elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,large for adults,129
+elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,small for juveniles,129
+elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),carcharhinus leucas,no larvae,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,carcharodon carcharias,rocky reefs,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,cetorhinus maximus,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,cetorhinus maximus,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,ctenacis,deep hard benthic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,ctenacis,deep hard benthic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,eridacnis,deep hard benthic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,eridacnis,deep hard benthic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,etmopteridae,deep seamount,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,etmopteridae,deep seamount,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,glaucostegidae,mangroce,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,glaucostegidae,mangroce,129
+elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",glyphis,few,129
+elasmobranchs,foraging range,"if one/few, size",glyphis,large for adults,129
+elasmobranchs,foraging range,"if one/few, size",glyphis,small for juveniles,129
+elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),glyphis,no larvae,129
+elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiellidae,possibly,129
+elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,hexanchiformes,deep sea mounts,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,hexanchiformes,deep sea mounts,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,hexatrygon bickelli,rhard shelf,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,himantura,estuary,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,himantura,estuary,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,hypanus,estuary,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,hypanus,estuary,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus oxyrinchus,rocky reefs,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,isurus paucus,rocky reefs,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,isurus paucus,rocky reefs,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna ditropis,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna ditropis,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,surface waters,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,lamna nasus,rocky reefs,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,surface waters,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,lamna nasus,rocky reefs,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,leptocharias smithii,deep seamount,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,leptocharias smithii,deep seamount,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,maculabatis,estuary,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,maculabatis,estuary,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,megachasma pelagios,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,megachasma pelagios,pelagic,129
+elasmobranchs,r (reproductive traits),can the sex ratio be altered by a stressor?,narcinidae,possibly,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pateobatis,estuary,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pateobatis,estuary,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pristiophoridae,deep seamount,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pristiophoridae,deep seamount,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,proscyllium,deep hard benthic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,proscyllium,deep hard benthic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudocarcharias kamoharai,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pseudotriakidae,deep seamount,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pseudotriakidae,deep seamount,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,pteroplatytrygon violacea,mid-water,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,rhincodon typus,pelagic,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,rhincodon typus,pelagic,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinidae,mangroce,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinidae,mangroce,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,rhinobatidae,mangroce,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,rhinobatidae,mangroce,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosidae,deep seamount,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosidae,deep seamount,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,somniosus microcephalus,deep seamount,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,somniosus microcephalus,deep seamount,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,taeniurops,estuary,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,taeniurops,estuary,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,trygonorrhinidae,mangroce,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,trygonorrhinidae,mangroce,129
+elasmobranchs,specialisation,across-stage dependent habitats + condition,urogymnus,estuary,129
+elasmobranchs,specialisation,within-stage dependent habitats + condition,urogymnus,estuary,129
 fish,r (reproductive traits),feeding larva (post-hatching metamorphosis),acanthochromis polyacanthus,hatch as small feeding juveniles,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
 fish,specialisation,across-stage dependent habitats + condition,acanthochromis polyacanthus,coral reefs all stages,115
