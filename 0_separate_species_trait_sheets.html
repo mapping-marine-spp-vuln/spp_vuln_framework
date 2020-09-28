@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Thu Sep 24 08:28:16 2020 by ohara" />
+<meta name="author" content="Compiled on Sun Sep 27 17:41:03 2020 by ohara" />
 
 
 <title>Clean species trait workbook</title>
@@ -1658,7 +1658,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Clean species trait workbook</h1>
-<h4 class="author"><em>Compiled on Thu Sep 24 08:28:16 2020 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Sun Sep 27 17:41:03 2020 by ohara</em></h4>
 
 </div>
 
@@ -2704,25 +2704,30 @@ div.tocify {
 <h3><span class="header-section-number">3.0.3</span> write out clean species group sheets. NOTE: After running, set this to eval = FALSE to avoid overwriting later manual edits</h3>
 <p>Here we need to recombine multiple trait vals into one line, separate using a semicolon for easy splitting later.</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">spp_data_out &lt;-<span class="st"> </span>spp_data_clean <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_gp =</span> <span class="kw">tolower</span>(spp_gp),</a>
-<a class="sourceLine" id="cb51-3" title="3">         <span class="dt">spp_gp =</span> <span class="kw">str_split</span>(spp_gp, <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-4" title="4"><span class="st">  </span><span class="kw">unnest</span>(spp_gp) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">trait_val_orig =</span> trait_value) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-6" title="6"><span class="st">  </span><span class="kw">group_by</span>(category, trait, sheet, spp_gp, trait_val_orig) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-7" title="7"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">trait_val_clean =</span> <span class="kw">paste0</span>(trait_val_clean, <span class="dt">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-8" title="8"><span class="st">  </span><span class="kw">ungroup</span>()</a>
-<a class="sourceLine" id="cb51-9" title="9"></a>
-<a class="sourceLine" id="cb51-10" title="10">sheets &lt;-<span class="st"> </span>spp_data_out<span class="op">$</span>sheet <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>()</a>
-<a class="sourceLine" id="cb51-11" title="11"></a>
-<a class="sourceLine" id="cb51-12" title="12"><span class="cf">for</span>(s <span class="cf">in</span> sheets) { <span class="co">### s &lt;- sheets[1]</span></a>
-<a class="sourceLine" id="cb51-13" title="13">  spp_gp_data &lt;-<span class="st"> </span>spp_data_out <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-14" title="14"><span class="st">    </span><span class="kw">filter</span>(sheet <span class="op">==</span><span class="st"> </span>s) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-15" title="15"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>trait_val_orig, <span class="op">-</span>sheet) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb51-16" title="16"><span class="st">    </span><span class="kw">spread</span>(spp_gp, trait_val_clean)</a>
-<a class="sourceLine" id="cb51-17" title="17">  </a>
-<a class="sourceLine" id="cb51-18" title="18">  fstem &lt;-<span class="st"> </span><span class="kw">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_%s.csv&#39;</span>)</a>
-<a class="sourceLine" id="cb51-19" title="19">  <span class="kw">write_csv</span>(spp_gp_data, <span class="kw">sprintf</span>(fstem, s))</a>
-<a class="sourceLine" id="cb51-20" title="20">}</a></code></pre></div>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">filter</span>(trait_val_clean <span class="op">!=</span><span class="st"> &#39;&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_gp =</span> <span class="kw">tolower</span>(spp_gp),</a>
+<a class="sourceLine" id="cb51-4" title="4">         <span class="dt">spp_gp =</span> <span class="kw">str_split</span>(spp_gp, <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-5" title="5"><span class="st">  </span><span class="kw">unnest</span>(spp_gp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-6" title="6"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">trait_val_orig =</span> trait_value) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-7" title="7"><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-8" title="8"><span class="st">  </span><span class="kw">group_by</span>(category, trait, sheet, spp_gp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-9" title="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trait_val_orig =</span> <span class="kw">paste0</span>(trait_val_orig, <span class="dt">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-10" title="10"><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-11" title="11"><span class="st">  </span><span class="kw">group_by</span>(category, trait, sheet, spp_gp, trait_val_orig) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-12" title="12"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">trait_val_clean =</span> <span class="kw">paste0</span>(trait_val_clean, <span class="dt">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-13" title="13"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb51-14" title="14"></a>
+<a class="sourceLine" id="cb51-15" title="15">sheets &lt;-<span class="st"> </span>spp_data_out<span class="op">$</span>sheet <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">unique</span>()</a>
+<a class="sourceLine" id="cb51-16" title="16"></a>
+<a class="sourceLine" id="cb51-17" title="17"><span class="cf">for</span>(s <span class="cf">in</span> sheets) { <span class="co">### s &lt;- sheets[1]</span></a>
+<a class="sourceLine" id="cb51-18" title="18">  spp_gp_data &lt;-<span class="st"> </span>spp_data_out <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-19" title="19"><span class="st">    </span><span class="kw">filter</span>(sheet <span class="op">==</span><span class="st"> </span>s) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-20" title="20"><span class="st">    </span><span class="kw">select</span>(<span class="op">-</span>trait_val_orig, <span class="op">-</span>sheet) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-21" title="21"><span class="st">    </span><span class="kw">spread</span>(spp_gp, trait_val_clean)</a>
+<a class="sourceLine" id="cb51-22" title="22">  </a>
+<a class="sourceLine" id="cb51-23" title="23">  fstem &lt;-<span class="st"> </span><span class="kw">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_%s.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb51-24" title="24">  <span class="kw">write_csv</span>(spp_gp_data, <span class="kw">sprintf</span>(fstem, s))</a>
+<a class="sourceLine" id="cb51-25" title="25">}</a></code></pre></div>
 </div>
 </div>
 
