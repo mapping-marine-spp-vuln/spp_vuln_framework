@@ -92,12 +92,13 @@ clean_traitvals <- function(df) {
 assign_rank_scores <- function(x) {
   y <- tolower(as.character(x))
   z <- case_when(!is.na(as.numeric(x)) ~ as.numeric(x),
+                 str_detect(y, '^na')  ~ NA_real_,
                  str_detect(y, '^n')   ~ 0.00, ### none, NA, no
                  str_detect(y, '^lo')  ~ 0.33,
                  str_detect(y, '^med') ~ 0.67,
                  str_detect(y, '^hi')  ~ 1.00,
                  str_detect(y, '^y')   ~ 1.00, ### yes
-                 TRUE                  ~ 0) ### basically NA
+                 TRUE                  ~ NA_real_) ### basically NA
   return(z)
 }
 ```
@@ -141,14 +142,13 @@ str_sens_trait_scores <- bind_rows(sens_traits_list) %>%
   mutate(sens_score = ifelse(is.na(sens_score), 0, sens_score)) %>%
   filter(!is.na(trait))
 
-### To score for a species/stressor combo, first average the score for
-### each trait (e.g. if multiple values were noted, just give the average)
-### then sum across all traits
+### To score for a species/stressor combo, first resolve multiple mutually
+### exclusive trait values (using trait_prob) then sum across all traits
 spp_sens <- spp_traits %>%
   left_join(str_sens_trait_scores, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor)) %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
-  summarize(sens_score = mean(sens_score, na.rm = TRUE)) %>%
+  summarize(sens_score = sum(sens_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
   summarize(sens_score = sum(sens_score, na.rm = TRUE)) %>%
   ungroup()
