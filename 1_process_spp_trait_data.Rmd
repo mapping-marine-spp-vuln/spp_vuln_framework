@@ -58,11 +58,17 @@ spp_data_raw <- lapply(spp_csvs, FUN = process_csv) %>%
 
 ```
 
-Get the valid trait values from the key and bind with the noted traits to compare validity.
+Get the valid trait values from the key and bind with the noted traits to compare validity.  For non-mutually-exclusive traits, if a species or group has multiple values noted, calculate a probability of each value.  For example, if fecundity for a genus is scored as "<1, 1-2, 2-5" score it as if a species in that genus has a 33.3% probability of any particular value.
 
 ``` {r}
 
 traitvals_valid <- read_csv('_data/trait_vals_valid.csv')
+
+non_mut_excl <- c('adult_mobility', 'biomineral', 
+                  'calcium_carbonate_structure_location', 
+                  'depth_min_max', 'respiration_structures', 
+                  'across_stage_dependent_habitats_condition', 
+                  'within_stage_dependent_habitats_condition', 'zone')
 
 spp_validcheck <- spp_data_raw %>%
   left_join(traitvals_valid %>% 
@@ -87,7 +93,10 @@ spp_valid <- spp_validcheck %>%
          trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_'),
          trait    = str_replace_all(trait, '^_|_$', '')) %>%
   mutate(spp_gp = str_replace_all(spp_gp, '\\(|\\)', ''),
-         spp_gp = str_replace_all(spp_gp, '\\n', ' '))
+         spp_gp = str_replace_all(spp_gp, '\\n', ' ')) %>%
+  group_by(trait, spp_gp) %>%
+  mutate(trait_prob = ifelse(trait %in% non_mut_excl, 1, 1/n_distinct(trait_value))) %>%
+  ungroup()
 
 # spp_valid$spp_gp %>% n_distinct()
 
