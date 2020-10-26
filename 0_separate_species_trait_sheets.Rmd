@@ -222,7 +222,9 @@ Check raw data against valid category values.
 * Split trait values on semicolons to separate multiple cell values; then unnest and str_trim.
 
 
-### clean up troublesome traits
+## clean up troublesome traits
+
+### zone
 
 ```{r clean up zone traits}
 traitvals_df_clean <- read_csv('_data/trait_vals_valid.csv') %>%
@@ -240,6 +242,8 @@ spp_data_zones <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 ```
+
+### adult mobility
 
 ``` {r clean up mobility traits}
 mob_vals <- traitvals_df_valid %>%
@@ -270,6 +274,8 @@ spp_data_mobility <- raw_data_df %>%
 spp_data_mobility$trait_val_clean %>% table()
 ```
 
+### depth (min/max)
+
 ``` {r clean up depth traits}
 depth_vals <- traitvals_df_valid %>%
   filter(trait == 'depth (min/max)') %>%
@@ -285,6 +291,10 @@ spp_data_depth <- raw_data_df %>%
 
 spp_data_depth$trait_val_clean %>% table()
 ```
+
+### thermal sensitivity
+
+#### Ocean warming:
 
 ``` {r clean up thermal sensitivity traits}
 ### ocean warming values are 5°C-10-15-20-25-30°C
@@ -306,6 +316,11 @@ spp_data_thermal1 <- raw_data_df %>%
 
 spp_data_thermal1$trait_val_clean %>% table()
 
+```
+
+#### Heat spikes:
+
+``` {r}
 ### heat spike values are yes/no
 spp_data_thermal2 <- raw_data_df %>%
   filter(str_detect(trait, 'thermal - sensitivity to heat spikes')) %>%
@@ -322,6 +337,8 @@ spp_data_thermal2$trait_val_clean %>% table()
 
 spp_data_thermal <- bind_rows(spp_data_thermal1, spp_data_thermal2)
 ```
+
+### pH
 
 ``` {r clean up pH traits}
 ph_vals <- traitvals_df_valid %>%
@@ -353,6 +370,10 @@ spp_data_ph <- raw_data_df %>%
 spp_data_ph$trait_val_clean %>% table()
 ```
 
+### biomineral
+
+#### structure location
+
 ``` {r clean up biomineral traits}
 biomin1_vals <- traitvals_df_valid %>%
   filter(trait == 'calcium carbonate structure location') %>%
@@ -372,7 +393,11 @@ spp_data_biomin1 <- raw_data_df %>%
   clean_up_mess()
 
 spp_data_biomin1$trait_val_clean %>% table()
+```
 
+#### biomineral
+
+```{r}
 biomin2_vals <- traitvals_df_valid %>%
   filter(trait == 'biomineral') %>%
   .$trait_value %>% paste0(collapse = '|')
@@ -393,6 +418,8 @@ spp_data_biomin2$trait_val_clean %>% table()
 
 spp_data_biomin <- bind_rows(spp_data_biomin1, spp_data_biomin2)
 ```
+
+### body size
 
 ``` {r clean up body size}
 bodysize_vals <- traitvals_df_valid %>%
@@ -420,6 +447,8 @@ spp_data_bodysize <- raw_data_df %>%
 spp_data_bodysize$trait_val_clean %>% table()
 
 ```
+
+### fecundity
 
 ``` {r clean up fecundity}
 ### Here, extract numerics from the string, use the min and max values to
@@ -485,6 +514,8 @@ spp_data_fecund <- raw_data_df %>%
 spp_data_fecund$trait_val_clean %>% table()
 
 ```
+
+### global pop size
 
 ``` {r clean up global pop size}
 ### Here, extract numerics from the string, use the min and max values to
@@ -568,6 +599,8 @@ spp_data_pop$trait_val_clean %>% table()
 
 ```
 
+### max age
+
 ``` {r clean up max age}
 ### Here, extract numerics from the string, use the min and max values to
 ### identify the span, then assign categories within that span. UGH
@@ -643,6 +676,8 @@ spp_data_age$trait_val_clean %>% table()
 
 ```
 
+### reproductive strategy
+
 ``` {r clean up reprod strategy}
 ### Here, extract numerics from the string, use the min and max values to
 ### identify the span, then assign categories within that span. UGH
@@ -675,6 +710,7 @@ spp_data_reprod_strategy$trait_val_clean %>% table()
 
 ```
 
+### age to first reproduction/generation time
 
 ``` {r clean up gen time}
 ### Here, extract numerics from the string, use the min and max values to
@@ -753,6 +789,8 @@ y <- spp_data_gen_time %>%
   filter(str_detect(trait_value, 'meter|feet|foot'))
 ```
 
+### lifetime reproductive opportunities
+
 ``` {r clean up lifetime reprod opps}
 ### Here, extract numerics from the string, use the min and max values to
 ### identify the span, then assign categories within that span. UGH
@@ -828,6 +866,8 @@ spp_data_reprod_opps <- bind_rows(spp_data_reprod1, spp_data_reprod2)
 spp_data_reprod_opps$trait_val_clean %>% table()
 ```
 
+### number of sites
+
 ``` {r clean up number of sites}
 ### Here, sub in reasonable values.  If aggregates but uncertain, assign
 ### all aggregation values and let the code find the mean value. UGH
@@ -855,6 +895,8 @@ spp_data_nsite <- raw_data_df %>%
 spp_data_nsite$trait_val_clean %>% table()
 
 ```
+
+### extent of occurrence
 
 ``` {r clean up eoo}
 eoo_vals <- traitvals_df_valid %>%
@@ -887,6 +929,8 @@ spp_data_eoo$trait_val_clean %>% table()
 
 ```
 
+### pressure sensitive structures
+
 ``` {r clean up pressure sensitive structures}
 ### Lungs don't seem to be particularly sensitive to high power sonar;
 ### guessing gas bladders as well.  Assign low sensitivity.
@@ -912,6 +956,8 @@ spp_data_prs <- raw_data_df %>%
 spp_data_prs$trait_val_clean %>% table()
   
 ```
+
+### parental investment
 
 ``` {r clean up parental investment}
 ### create a super clean version to match str_extracted values
@@ -939,6 +985,8 @@ spp_data_parent <- raw_data_df %>%
 spp_data_parent$trait_val_clean %>% table()
 ```
 
+### dissolved oxygen
+
 ``` {r clean up dissolved oxygen}
 do_vals <- traitvals_df_valid %>% 
   filter(trait == 'dissolved oxygen') %>%
@@ -960,6 +1008,8 @@ spp_data_do <- raw_data_df %>%
   
 spp_data_do$trait_val_clean %>% table()
 ```
+
+### planktonic larval duration
 
 ``` {r clean up pld}
 pld_vals <- traitvals_df_valid %>% 
@@ -984,7 +1034,56 @@ spp_data_pld <- raw_data_df %>%
 spp_data_pld$trait_val_clean %>% table()
 ```
 
-### combine into a relatively clean df
+### habitats
+
+```{r clean up habitats}
+hab_vals_raw <- readxl::read_excel('_raw_data/xlsx/hab_list.xlsx', sheet = 'habitat_list') %>%
+  mutate(hab_type = tolower(hab_type))
+
+hab_vals <- hab_vals_raw %>% 
+  .$hab_type %>% 
+  paste0(collapse = '|')
+
+spp_data_habs <- raw_data_df %>%
+  filter(str_detect(trait, 'dependent habitats')) %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(tmp = str_split(trait_value, ';| or |/|,|-')) %>%
+  unnest(tmp) %>%
+  filter(tmp != '') %>%
+  mutate(tmp = clean_trait(tmp),
+         tmp = str_replace_all(tmp, 'soft benthic', 'soft bottom'),
+         tmp = ifelse(str_detect(tmp, 'inter?reef'), 'subtidal soft bottom;deep soft bottom', tmp),
+           ### assume "interreefal" refers to sediment
+         tmp = ifelse(tmp %in% c('sea ice', 'ice edge'), 'sea ice edge', tmp),
+         tmp = ifelse(str_detect(tmp, 'estuar'), 'estuary', tmp),
+         valid = str_detect(tmp, hab_vals)) %>%
+  rowwise() %>%
+  mutate(trait_val_clean = str_extract_all(tmp, hab_vals),
+         trait_val_clean = ifelse(is_empty(trait_val_clean), tmp, trait_val_clean)) %>%
+  unnest(trait_val_clean) %>%
+  clean_up_mess()
+
+```
+
+#### valid habitats
+
+```{r}
+spp_data_habs %>%
+  filter(trait_val_clean %in% hab_vals_raw$hab_type) %>%
+  .$trait_val_clean %>%
+  table()
+```
+
+#### unmatched habitats
+
+```{r}
+spp_data_habs %>%
+  filter(!trait_val_clean %in% hab_vals_raw$hab_type) %>%
+  .$trait_val_clean %>%
+  table()
+```
+
+## combine into a relatively clean df
 
 ``` {r}
 
@@ -1008,7 +1107,9 @@ cleaned_traits <- c('zone', 'adult mobility',
                     'ph',
                     'dissolved oxygen',
                     'biomineral',
-                    'calcium carbonate structure location')
+                    'calcium carbonate structure location',
+                    'within-stage dependent habitats + condition',
+                    'across-stage dependent habitats + condition')
 
 spp_data_clean <- raw_data_df %>%
   filter(!trait %in% cleaned_traits) %>%
@@ -1033,6 +1134,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_do) %>%
   bind_rows(spp_data_parent) %>%
   bind_rows(spp_data_age) %>%
+  bind_rows(spp_data_habs) %>%
   ### split and unnest, trim and clean:
   mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%
   unnest(trait_val_clean)
@@ -1041,8 +1143,7 @@ x <- spp_data_clean %>% select(trait, trait_value, trait_val_clean) %>% distinct
 
 ```
 
-### write out clean species group sheets.  NOTE: After running, set this to eval = FALSE to avoid overwriting later manual edits 
-
+## write out clean species group sheets
 
 Here we need to recombine multiple trait vals into one line, separate using a semicolon for easy splitting later.
 
