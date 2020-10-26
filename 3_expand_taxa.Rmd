@@ -43,7 +43,8 @@ Use the `taxize` package:
 ```{r}
 ### create a function to break up large species lists into chunks,
 ### saving to tmp, in case of breaks in internet connectivity
-classify_chunks <- function(spp_gps, chunk_size = 20, db = 'worms', overwrite = FALSE) {
+classify_chunks <- function(spp_gps, chunk_size = 20, 
+                            db = 'worms', overwrite = FALSE) {
   ### spp_gps is a character vector
   n_chunks <- ceiling(length(spp_gps) / chunk_size)
   tmpstem <- here('tmp/taxize_classification_all_%s.csv')
@@ -57,7 +58,7 @@ classify_chunks <- function(spp_gps, chunk_size = 20, db = 'worms', overwrite = 
     if(!file.exists(chunk_file)) {
       tmp_gps <- spp_gps[indices[1]:indices[2]]
       
-      chunk_results <- taxize::classification(tmp_gps, db = db, rows = 1)
+      chunk_results <- taxize::classification(tmp_gps, db = db)
       
       chunk_check <- sapply(chunk_results, is.data.frame)
       chunk_ok <- chunk_results[chunk_check]
@@ -126,15 +127,16 @@ spp_traits <- read_csv('_data/spp_traits_valid.csv')
 spp_traits <- read_csv('_data/spp_traits_valid.csv')
 
 ### This queries for all species
-# spp_gps <- spp_traits %>%
-#   select(taxon, spp_gp) %>%
-#   mutate(name = tolower(spp_gp)) %>%
-#   .$spp_gp %>% unique()
+db_api <- 'worms'
+spp_gps <- spp_traits %>%
+  select(taxon, spp_gp) %>%
+  mutate(name = tolower(spp_gp)) %>%
+  .$spp_gp %>% unique()
+
+y <- classify_chunks(spp_gps, db = db_api) %>%
+  mutate(db = db_api)
 # 
-# y <- classify_chunks(spp_gps, db = 'worms') %>%
-#   mutate(db = 'gbif')
-# 
-# write_csv(y, here('int/taxize_results_all.csv'))
+write_csv(y, here('int/taxize_results_all.csv'))
 ```
 
 ``` {r iteration, eval = FALSE}
@@ -142,30 +144,30 @@ spp_traits <- read_csv('_data/spp_traits_valid.csv')
 ### Note: For GBIF seems to fail often when searching for genus/family name.
 ### Try downstreaming to species level then searching again.
 
-y <- read_csv(here('int/taxize_results_all.csv')) %>%
-  filter(spp_gp %in% spp_traits$spp_gp) %>%
-  left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
-
-### any new groups?
-yy <- spp_traits %>%
-  filter(!spp_gp %in% y$spp_gp) %>%
-  .$spp_gp %>% unique()
-spp_gps_error <- y %>%
-  filter(error | is.na(id)) %>%
-  .$spp_gp %>% unique()
-
-db = 'ncbi'
-z <- classify_chunks(c(yy, spp_gps_error), db = db, overwrite = TRUE) %>%
-  mutate(db = db)
-
-z %>% filter(error) %>% .$spp_gp %>% n_distinct()
-
-zz <- y %>%
-  filter(!error) %>%
-  bind_rows(z %>% mutate(id = as.numeric(id))) %>%
-  select(-taxon)
-
-write_csv(zz, here('int/taxize_results_all.csv'))
+# y <- read_csv(here('int/taxize_results_all.csv')) %>%
+#   filter(spp_gp %in% spp_traits$spp_gp) %>%
+#   left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
+# 
+# ### any new groups?
+# yy <- spp_traits %>%
+#   filter(!spp_gp %in% y$spp_gp) %>%
+#   .$spp_gp %>% unique()
+# spp_gps_error <- y %>%
+#   filter(error | is.na(id)) %>%
+#   .$spp_gp %>% unique()
+# 
+# db = 'ncbi'
+# z <- classify_chunks(c(yy, spp_gps_error), db = db, overwrite = TRUE) %>%
+#   mutate(db = db)
+# 
+# z %>% filter(error) %>% .$spp_gp %>% n_distinct()
+# 
+# zz <- y %>%
+#   filter(!error) %>%
+#   bind_rows(z %>% mutate(id = as.numeric(id))) %>%
+#   select(-taxon)
+# 
+# write_csv(zz, here('int/taxize_results_all.csv'))
 
 ```
 
@@ -179,41 +181,32 @@ From the classes in WoRMS under each kingdom, get downstream information for eac
 
 ```{r}
 
-get_problematic_taxa <- function() {
-  ### It seems at the class and order level (at least), WoRMS is fucked up:
-  ### isMarine flags should be set to 1 for marine taxa, but many are NULL.
-  ### Get the classes and orders appearing in our traits data and use these to
-  ### change the marine_only argument to FALSE for these problematic orders.
-  problem_taxa <- c('fish', 'reptiles', 'elasmobranchs', 'cephalopods',
-                    'seabirds', 'plants_algae', 'molluscs', 'marine_mammals', 
-                    'echinoderms', 'crustacea_arthropods')
-  taxa_key <- read_csv(here('_data/spp_traits_valid.csv')) %>%
-    select(taxon, spp_gp) %>%
-    distinct()
-  rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
-  fix_probs <- read_csv(here('int/taxize_results_all.csv')) %>%
-    left_join(taxa_key, by = 'spp_gp') %>%
-    filter(taxon %in% problem_taxa) %>%
-    mutate(rank = factor(tolower(rank), levels = rank_lvls))
-  ffffffuuuuuu <- fix_probs  %>%
-    filter(!is.na(rank) & rank %in% c('class', 'order', 'family')) %>%
-    .$name %>% 
-    unique() %>%
-    tolower()
-  return(ffffffuuuuuu)
+check_status <- function(check_ids) {
+  check_ids <- check_ids[!is.na(check_ids)]
+  n_chunks <- ceiling(length(check_ids) / 50)
+  records_list <- vector('list', length = n_chunks)
+  for(i in 1:n_chunks) {
+    indices <- ((i-1)*50 + 1):min(i*50, length(check_ids))
+    ids_chunk <- check_ids[indices]
+    ids_param <- paste0('aphiaids[]=', ids_chunk, collapse = '&')
+    records_url <- paste0('https://www.marinespecies.org/rest/AphiaRecordsByAphiaIDs?', ids_param)
+    records_list[[i]] <- jsonlite::fromJSON(records_url) %>%
+      select(id = AphiaID, sciname = scientificname, status) %>%
+      distinct()
+  }
+  records_df <- records_list %>% 
+    bind_rows()
+  return(records_df)
 }
 
 get_downstream <- function(gp_df, db = 'worms', 
                            downto, downfrom, 
-                           namestem, id_type = 'id') {
-  ### NOTE: in WoRMS some names have multiple IDs.  Use name to 
+                           namestem) {
   gp_df <- gp_df %>%
     mutate(name = str_trim(tolower(name))) %>%
     arrange(name) %>%
     filter(!is.na(name))
   names <- gp_df$name %>% unique()
-  
-  ffffffuuuuuu <- get_problematic_taxa()
   
   for(pname in names) {
     ### pname <- names[1]
@@ -222,34 +215,50 @@ get_downstream <- function(gp_df, db = 'worms',
       ids   <- gp_df$id[gp_df$name == pname]
       
       tx_out_df <- data.frame() ### blank one
-      for(id in ids) {
+      for(id in ids) { ### id <- ids[1]
         message('Processing ', downfrom, ' ', pname, ' - ', id)
-        marine_only <- ifelse(tolower(pname) %in% ffffffuuuuuu,
-                              FALSE, TRUE)
-        id_tx_out <- downstream(sci_id = ifelse(id_type == 'name', pname, id), 
-                                db = db, downto = downto, marine_only = marine_only)
+        id_tx_out <- downstream(sci_id = id, db = db, downto = downto, 
+                                marine_only = TRUE)
         id_tx_out <- id_tx_out[[1]] ### extract dataframe from 1-element list
         if(nrow(id_tx_out) == 0) {
-          id_tx_out <- data.frame(parent = NA, id = NA)
+          id_tx_out <- data.frame(parent = pname, id = NA_real_)
         }
         tx_out_df <- bind_rows(tx_out_df, id_tx_out)
       }
       message('...Found ', n_distinct(tx_out_df$name), ' instances for ', pname)
+      
+      if(sum(!is.na(tx_out_df$id)) > 0) {
+        ### check all returned downstream IDs for "accepted" status
+        checked_ids <- check_status(tx_out_df$id)
+        valid_ids <- checked_ids %>%
+          filter(tolower(status) == 'accepted')
+        message('...of these, ', n_distinct(valid_ids$id), ' instances are "accepted"')
+        tx_out_df <- tx_out_df %>%
+          filter(id %in% valid_ids$id)
+      }
       
       tx_out_df <- tx_out_df %>%
         mutate(parent = pname, parent_level = downfrom)
       write_csv(tx_out_df, tmp_file)
     }
   }
-  tmp_files <- list.files(here('tmp'), pattern = sprintf('%s_%s_.+.csv', namestem, db),
+  tmp_files <- list.files(here('tmp'),
+                          pattern = sprintf('%s_%s_.+.csv', namestem, db),
                           full.names = TRUE)
   
-  tx_out_all <- parallel::mclapply(tmp_files, read_csv) %>%
+  tx_out_all <- parallel::mclapply(tmp_files, 
+                                   FUN = function(f) {
+                                     asdf <- read_csv(f) %>%
+                                       mutate(id = as.numeric(id))
+                                     }, mc.cores = 16) %>%
     bind_rows() %>%
-    mutate_if(is.character, tolower)
+    mutate_if(is.character, tolower) %>%
+    distinct()
   
   return(tx_out_all)
 }
+
+
 ```
 
 ```{r get phylum from kingdom}
@@ -268,7 +277,9 @@ if(!file.exists(p_from_k_file)) {
     ungroup() %>%
     arrange(n_gps)
   
-  p_from_k_df <- get_downstream(kingdom_all_df, 
+  gp_df <- kingdom_all_df
+  
+  p_from_k_df <- get_downstream(gp_df, 
                                 downto = 'phylum', downfrom = 'kingdom', 
                                 namestem = 'p_from_k')
 
