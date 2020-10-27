@@ -413,13 +413,13 @@ sens_strs <- spp_sens$stressor %>% unique()
 adcap_strs <- spp_adcap_spec$stressor %>% unique()
 
 if(!all(exp_strs %in% sens_strs) | !all(sens_strs %in% exp_strs)) {
-  stop('Mismatch between exposure traits and sensitivity traits!')
+  stop('Mismatch between stressors in exposure traits and sensitivity traits!')
 }
 if(!all(adcap_strs %in% sens_strs) | !all(sens_strs %in% adcap_strs)) {
-  stop('Mismatch between ad cap traits and sensitivity traits!')
+  stop('Mismatch between stressors in ad cap traits and sensitivity traits!')
 }
 if(!all(exp_strs %in% adcap_strs) | !all(adcap_strs %in% exp_strs)) {
-  stop('Mismatch between exposure traits and ad cap traits!')
+  stop('Mismatch between stressors in exposure traits and ad cap traits!')
 }
 ```
 
