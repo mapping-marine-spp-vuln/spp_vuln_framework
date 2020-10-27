@@ -98,30 +98,15 @@ classify_chunks <- function(spp_gps, chunk_size = 20,
 
 # Methods
 
-## Match up taxonomic info from experts to names in taxonomic databases.
+## Match up taxonomic info from experts to names in WoRMS taxonomic database.
 
-Using `taxize::classification()`, check each taxonomic name against databases of taxonomic info to get the full upstream classification.  We do this twice: once for NCBI to get upstream ID numbers for the downstreaming process, and once iterating to catch all species in the expert trait data.
+Using `taxize::classification()`, check each taxonomic name against the WoRMS database of taxonomic info to get the full upstream classification.  We do this twice: once for WoRMS to get upstream ID numbers for the downstreaming process, and once iterating to catch all species in the expert trait data.
 
 Order of search for the iterative process:
 * WoRMS (left 38 unmatched out of 841)
 * NCBI (left 15 still unmatched out of 841)
 * GBIF (left 4 down)
 * EOL (found the rest - NOTE: this was not a preferred db because some names had extra info, e.g. citation)
-
-```{r NCBI only, eval = FALSE}
-spp_traits <- read_csv('_data/spp_traits_valid.csv')
-
-### This queries for all species
-# spp_gps <- spp_traits %>%
-#   select(taxon, spp_gp) %>%
-#   mutate(name = tolower(spp_gp)) %>%
-#   .$spp_gp %>% unique()
-# 
-# y <- classify_chunks(spp_gps, db = 'worms') %>%
-#   mutate(db = 'ncbi')
-# 
-# write_csv(y, here('int/taxize_results_ncbi.csv'))
-```
 
 ```{r WoRMS starting point, eval = FALSE}
 spp_traits <- read_csv('_data/spp_traits_valid.csv')

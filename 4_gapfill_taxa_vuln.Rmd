@@ -22,6 +22,7 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
 source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+library(taxize)
 
 ```
 
@@ -42,12 +43,18 @@ Using taxonomic trees from WoRMS and the `taxize` package, we will try gapfillin
 Grab data from each rank (kingdom --> phylum, phylum --> class, class --> order, etc.) and assemble into a long dataframe.  Long format will be easier to match trait-scored species to, since all ranks will be in the "name" column.  But wide format will be easier for keeping track of the structure of each species' classification.
 
 ``` {r}
-p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv'))
-c_from_p <- read_csv(here('int/class_from_phylum_worms.csv'))
-o_from_c <- read_csv(here('int/order_from_class_worms.csv'))
-f_from_o <- read_csv(here('int/family_from_order_worms.csv'))
-g_from_f <- read_csv(here('int/genus_from_family_worms.csv'))
-s_from_g <- read_csv(here('int/species_from_genus_worms.csv'))
+p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv')) %>%
+  filter(!is.na(id))
+c_from_p <- read_csv(here('int/class_from_phylum_worms.csv')) %>%
+  filter(!is.na(id))
+o_from_c <- read_csv(here('int/order_from_class_worms.csv')) %>%
+  filter(!is.na(id))
+f_from_o <- read_csv(here('int/family_from_order_worms.csv')) %>%
+  filter(!is.na(id))
+g_from_f <- read_csv(here('int/genus_from_family_worms.csv')) %>%
+  filter(!is.na(id))
+s_from_g <- read_csv(here('int/species_from_genus_worms.csv')) %>%
+  filter(!is.na(id))
 
 rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
 
@@ -56,27 +63,26 @@ spp_df_long <- bind_rows(s_from_g, g_from_f, f_from_o, o_from_c, c_from_p, p_fro
   mutate(rank = factor(rank, levels = rank_lvls)) %>%
   filter(!is.na(name))
 
-if(!file.exists(full_class_file <- here('_data/spp_complete_classifications_worms.csv'))) {
+full_class_file <- here('_data/spp_complete_classifications_worms.csv')
+if(!file.exists(full_class_file)) {
   ### write this out; this can be used to recreate full classifications later
   write_csv(spp_df_long, full_class_file)
 }
 
 ### create wide for complete classification for each species
-spp_df_wide <- p_from_k %>%
-  select(kingdom = parent) %>%
-  distinct() %>%
-  left_join(p_from_k %>% select(parent, phylum = name), 
-            by = c('kingdom' = 'parent')) %>%
-  left_join(c_from_p %>% select(parent, class = name), 
-            by = c('phylum' = 'parent')) %>%
-  left_join(o_from_c %>% select(parent, order = name), 
-            by = c('class' = 'parent')) %>%
-  left_join(f_from_o %>% select(parent, family = name), 
-            by = c('order' = 'parent')) %>%
-  left_join(g_from_f %>% select(parent, genus = name),
-            by = c('family' = 'parent')) %>%
-  left_join(s_from_g %>% select(parent, species = name), 
-            by = c('genus' = 'parent')) %>%
+spp_df_wide <- s_from_g %>%
+  select(genus = parent, species = name) %>%
+  left_join(g_from_f %>% select(family = parent, genus = name), 
+            by = c('genus')) %>%
+  left_join(f_from_o %>% select(order = parent, family = name), 
+            by = c('family')) %>%
+  left_join(o_from_c %>% select(class = parent, order = name), 
+            by = c('order')) %>%
+  left_join(c_from_p %>% select(phylum = parent, class = name), 
+            by = c('class')) %>%
+  left_join(p_from_k %>% select(kingdom = parent, phylum = name),
+            by = c('phylum')) %>%
+  select(kingdom, phylum, class, order, family, genus, species) %>%
   distinct()
 
 ### then make that long, but keeping structure for each species - maybe?
@@ -98,17 +104,60 @@ matched_df <- spp_df_long %>%
   inner_join(spp_gp_vuln, by = c('name' = 'spp_gp')) %>%
   mutate(match = rank)
 # matched_df$rank %>% unique() # species genus   family  class
+```
+
+``` {r identify unmatched species problems}
+check_status <- function(check_ids) {
+  check_ids <- check_ids[!is.na(check_ids)]
+  n_chunks <- ceiling(length(check_ids) / 50)
+  records_list <- vector('list', length = n_chunks)
+  for(i in 1:n_chunks) {
+    indices <- ((i-1)*50 + 1):min(i*50, length(check_ids))
+    ids_chunk <- check_ids[indices]
+    ids_param <- paste0('aphiaids[]=', ids_chunk, collapse = '&')
+    records_url <- paste0('https://www.marinespecies.org/rest/AphiaRecordsByAphiaIDs?', ids_param)
+    records_list[[i]] <- jsonlite::fromJSON(records_url) %>%
+      select(id = AphiaID, sciname = scientificname, status) %>%
+      distinct()
+  }
+  records_df <- records_list %>% 
+    bind_rows()
+  return(records_df)
+}
 
 unmatched_df <- spp_gp_vuln %>%
   filter(!spp_gp %in% matched_df$name) %>%
   select(taxon, spp_gp) %>%
   distinct()
 
+check_class_list <- classification(unmatched_df$spp_gp, db = 'worms') %>%
+  setNames(unmatched_df$spp_gp)
+check_class_df <- check_class_list[!is.na(check_class_list)] %>%
+  bind_rows(.id = 'spp_gp_orig') %>%
+  mutate_if(is.character, tolower)
+check_accepted_df <- check_status(check_class_df$id) %>%
+  mutate(sciname = tolower(sciname))
+
+unmatch_check_df <- unmatched_df %>%
+  mutate(found = !is.na(check_class_list)) %>%
+  left_join(check_class_df, by = c('spp_gp' = 'name')) %>%
+  left_join(check_accepted_df, by = c('spp_gp' = 'sciname', 'id'))
 ```
 
 ### Unmatched spp groups with scored traits:
 
-`r DT::datatable(unmatched_df)`
+`r DT::datatable(unmatch_check_df)`
+
+* Problems where a taxon is found, and accepted, may mean error in the `downstream` call.  Check the various `X_from_X.csv` dataframes to figure out where this taxon is being dropped.
+* problems where a taxon is found, but not accepted (or not a main rank), may indicate species where an alternate name will fix the issue.
+    * many of these have been identified and fixed in the original traits xlsx, with notes of expert-provided name
+* problems where a taxon is not found may indicate typos, non-standard spellings, or species not yet in WoRMS
+    * many of these have been identified and fixed in the original traits xlsx, with notes of expert-provided name
+
+Specific problems:
+
+* _Cellana tramoserica_ upstream has no "order" rank.
+* _Ostrea angasi_ seems legit but not recognized in WoRMS.
 
 ## Expand classification for matched species
 
@@ -205,19 +254,20 @@ knitr::kable(bind_rows(rank_gapfill_potential))
   
 ```
 
-NOTE: the numbers increase as you go up in rank because there are many species (> 13,000!) classified into multiple higher-level ranks, so they get double counted.
+NOTE: the numbers increase as you go up in rank because there are many species (> 13,000!) classified into multiple higher-level ranks, so they get double counted.  
+
+#### Here are the duplicates:
 
 ``` {r}
-knitr::kable(show_dupes(spp_df_wide %>% 
+DT::datatable(x <- show_dupes(spp_df_wide %>% 
                           filter(!is.na(species)), 'species') %>% 
-               arrange(species) %>% 
-               head(20))
+               arrange(species))
 ```
 
-
+### create gapfill dataframes
 ``` {r}
 gen_fill <- match_vuln_df %>%
-  filter(genus == 'meridiastra') %>%
+  # filter(genus == 'meridiastra') %>%
   group_by(kingdom, phylum, class, order, family, genus, stressor, taxon) %>%
   summarize(n_known_spp = n_distinct(species),
             mean_vuln = mean(vuln),
