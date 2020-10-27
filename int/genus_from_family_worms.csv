@@ -6961,7 +6961,11 @@ NA,NA,NA,ceratoperidiniaceae,family
 106128,chelonibia,genus,chelonibiidae,family
 733075,emersonius,genus,chelonibiidae,family
 739447,protochelonibia,genus,chelonibiidae,family
+137066,caretta,genus,cheloniidae,family
+137067,chelonia,genus,cheloniidae,family
+137068,eretmochelys,genus,cheloniidae,family
 1457381,halichelys,genus,cheloniidae,family
+137069,lepidochelys,genus,cheloniidae,family
 343617,natator,genus,cheloniidae,family
 1456119,thalassochelys,genus,cheloniidae,family
 431269,nippochelura,genus,cheluridae,family
@@ -7042,6 +7046,12 @@ NA,NA,NA,ceratoperidiniaceae,family
 267311,chiropsoides,genus,chiropsalmidae,family
 847847,meteorona,genus,chiropsellidae,family
 1298837,heteroptychus,genus,chirostylidae,family
+341408,asperoteuthis,genus,chiroteuthidae,family
+137777,chiroteuthis,genus,chiroteuthidae,family
+341415,chiroteuthoides,genus,chiroteuthidae,family
+238741,grimalditeuthis,genus,chiroteuthidae,family
+238752,planctoteuthis,genus,chiroteuthidae,family
+341461,tankaia,genus,chiroteuthidae,family
 NA,NA,NA,chitonellidae,family
 1375955,oochiton,genus,chitonidae,family
 346964,chitonophilus,genus,chitonophilidae,family
