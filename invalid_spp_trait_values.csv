@@ -77,10 +77,10 @@ cephalopods,specialisation,across-stage dependent habitats + condition,alloteuth
 cephalopods,specialisation,within-stage dependent habitats + condition,alloteuthis,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,alloteuthis,hard shelf,302
 cephalopods,specialisation,within-stage dependent habitats + condition,alloteuthis,soft shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,alluroteuthis antarctica,deep water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,alluroteuthis antarctica,surface water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,alluroteuthis antarctica,deep water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,alluroteuthis antarctica,surface water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,alluroteuthis antarcticus,deep water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,alluroteuthis antarcticus,surface water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,alluroteuthis antarcticus,deep water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,alluroteuthis antarcticus,surface water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,ameloctopus litoralis,intertidal mud,302
 cephalopods,specialisation,across-stage dependent habitats + condition,ameloctopus litoralis,rocky intertidal,302
 cephalopods,specialisation,within-stage dependent habitats + condition,ameloctopus litoralis,intertidal mud,302
@@ -315,14 +315,14 @@ cephalopods,specialisation,across-stage dependent habitats + condition,callistoc
 cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus alpheus,subtidal soft bottom,302
 cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus alpheus,hard shelf,302
 cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus alpheus,soft shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatus,subtidal soft bottom,302
-cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatus,surface water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatus,hard shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatus,soft shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatus,subtidal soft bottom,302
-cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatus,surface water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatus,hard shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatus,soft shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatis,subtidal soft bottom,302
+cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatis,surface water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatis,hard shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus aspilosomatis,soft shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatis,subtidal soft bottom,302
+cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatis,surface water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatis,hard shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,callistoctopus aspilosomatis,soft shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus dierythraeus,subtidal soft bottom,302
 cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus dierythraeus,hard shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,callistoctopus dierythraeus,soft shelf,302
@@ -417,12 +417,12 @@ cephalopods,specialisation,across-stage dependent habitats + condition,cistopus 
 cephalopods,specialisation,within-stage dependent habitats + condition,cistopus indicus,subtidal soft bottom,302
 cephalopods,specialisation,within-stage dependent habitats + condition,cistopus indicus,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,cistopus indicus,soft shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,cistopus platinoides,subtidal soft bottom,302
-cephalopods,specialisation,across-stage dependent habitats + condition,cistopus platinoides,surface water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,cistopus platinoides,soft shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,cistopus platinoides,subtidal soft bottom,302
-cephalopods,specialisation,within-stage dependent habitats + condition,cistopus platinoides,surface water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,cistopus platinoides,soft shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,cistopus platinoidus,subtidal soft bottom,302
+cephalopods,specialisation,across-stage dependent habitats + condition,cistopus platinoidus,surface water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,cistopus platinoidus,soft shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,cistopus platinoidus,subtidal soft bottom,302
+cephalopods,specialisation,within-stage dependent habitats + condition,cistopus platinoidus,surface water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,cistopus platinoidus,soft shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,cistopus taiwanicus,subtidal soft bottom,302
 cephalopods,specialisation,across-stage dependent habitats + condition,cistopus taiwanicus,surface water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,cistopus taiwanicus,soft shelf,302
@@ -649,8 +649,8 @@ cephalopods,specialisation,across-stage dependent habitats + condition,heterolol
 cephalopods,specialisation,within-stage dependent habitats + condition,heterololigo bleekeri,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,heterololigo bleekeri,hard shelf,302
 cephalopods,specialisation,within-stage dependent habitats + condition,heterololigo bleekeri,soft shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,heteroteuthidinae,deep water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,heteroteuthidinae,deep water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,heteroteuthinae,deep water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,heteroteuthinae,deep water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,histioteuthis,deep water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,histioteuthis,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,histioteuthis,deep water,302
@@ -689,14 +689,14 @@ cephalopods,specialisation,across-stage dependent habitats + condition,leachia,d
 cephalopods,specialisation,across-stage dependent habitats + condition,leachia,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,leachia,deep water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,leachia,surface water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,lepidoteuthis grimaldi,deep water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,lepidoteuthis grimaldi,surface water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,lepidoteuthis grimaldi,deep water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,lepidoteuthis grimaldi,surface water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,liguriella podopthalma,deep water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,liguriella podopthalma,surface water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,liguriella podopthalma,deep water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,liguriella podopthalma,surface water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,lepidoteuthis grimaldii,deep water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,lepidoteuthis grimaldii,surface water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,lepidoteuthis grimaldii,deep water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,lepidoteuthis grimaldii,surface water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,liguriella podophthalma,deep water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,liguriella podophthalma,surface water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,liguriella podophthalma,deep water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,liguriella podophthalma,surface water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,liocranchia,deep water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,liocranchia,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,liocranchia,deep water,302
@@ -713,12 +713,12 @@ cephalopods,specialisation,across-stage dependent habitats + condition,loliolus 
 cephalopods,specialisation,within-stage dependent habitats + condition,loliolus (loliolus),surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,loliolus (loliolus),hard shelf,302
 cephalopods,specialisation,within-stage dependent habitats + condition,loliolus (loliolus),soft shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,loliolus nipponololigo,surface water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,loliolus nipponololigo,hard shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,loliolus nipponololigo,soft shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,loliolus nipponololigo,surface water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,loliolus nipponololigo,hard shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,loliolus nipponololigo,soft shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,loliolus (nipponololigo),surface water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,loliolus (nipponololigo),hard shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,loliolus (nipponololigo),soft shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,loliolus (nipponololigo),surface water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,loliolus (nipponololigo),hard shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,loliolus (nipponololigo),soft shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,lolliguncula,surface water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,lolliguncula,hard shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,lolliguncula,soft shelf,302
@@ -977,6 +977,14 @@ cephalopods,specialisation,within-stage dependent habitats + condition,octopus,s
 cephalopods,specialisation,within-stage dependent habitats + condition,octopus,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,octopus,hard shelf,302
 cephalopods,specialisation,within-stage dependent habitats + condition,octopus,soft shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,octopus bimaculatus,subtidal soft bottom,302
+cephalopods,specialisation,across-stage dependent habitats + condition,octopus bimaculatus,surface water,302
+cephalopods,specialisation,across-stage dependent habitats + condition,octopus bimaculatus,hard shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,octopus bimaculatus,soft shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,octopus bimaculatus,subtidal soft bottom,302
+cephalopods,specialisation,within-stage dependent habitats + condition,octopus bimaculatus,surface water,302
+cephalopods,specialisation,within-stage dependent habitats + condition,octopus bimaculatus,hard shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,octopus bimaculatus,soft shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,octopus bimaculoides,subtidal soft bottom,302
 cephalopods,specialisation,across-stage dependent habitats + condition,octopus bimaculoides,hard shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,octopus bimaculoides,soft shelf,302
@@ -1043,14 +1051,6 @@ cephalopods,specialisation,within-stage dependent habitats + condition,octopus t
 cephalopods,specialisation,within-stage dependent habitats + condition,octopus tetricus,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,octopus tetricus,hard shelf,302
 cephalopods,specialisation,within-stage dependent habitats + condition,octopus tetricus,soft shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,octopus vimaculatus,subtidal soft bottom,302
-cephalopods,specialisation,across-stage dependent habitats + condition,octopus vimaculatus,surface water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,octopus vimaculatus,hard shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,octopus vimaculatus,soft shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,octopus vimaculatus,subtidal soft bottom,302
-cephalopods,specialisation,within-stage dependent habitats + condition,octopus vimaculatus,surface water,302
-cephalopods,specialisation,within-stage dependent habitats + condition,octopus vimaculatus,hard shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,octopus vimaculatus,soft shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,octopus vulgaris,subtidal soft bottom,302
 cephalopods,specialisation,across-stage dependent habitats + condition,octopus vulgaris,surface water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,octopus vulgaris,hard shelf,302
@@ -1363,14 +1363,14 @@ cephalopods,specialisation,across-stage dependent habitats + condition,taonius,d
 cephalopods,specialisation,across-stage dependent habitats + condition,taonius,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,taonius,deep water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,taonius,surface water,302
-cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrus,hard slope,302
-cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrus,soft slope,302
-cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrus,hard shelf,302
-cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrus,soft shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrus,hard slope,302
-cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrus,soft slope,302
-cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrus,hard shelf,302
-cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrus,soft shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrhus,hard slope,302
+cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrhus,soft slope,302
+cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrhus,hard shelf,302
+cephalopods,specialisation,across-stage dependent habitats + condition,tetracheledone spinicirrhus,soft shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrhus,hard slope,302
+cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrhus,soft slope,302
+cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrhus,hard shelf,302
+cephalopods,specialisation,within-stage dependent habitats + condition,tetracheledone spinicirrhus,soft shelf,302
 cephalopods,specialisation,across-stage dependent habitats + condition,teuthowenia,deep water,302
 cephalopods,specialisation,across-stage dependent habitats + condition,teuthowenia,surface water,302
 cephalopods,specialisation,within-stage dependent habitats + condition,teuthowenia,deep water,302
@@ -1564,9 +1564,9 @@ echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,amphipholis squamata,yes-live birth,100
 echinoderms,specialisation,across-stage dependent habitats + condition,amphipholis squamata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,amphipholis squamata,rocky intertidal,100
-echinoderms,specialisation,across-stage dependent habitats + condition,anneissia japonica ,surface water,100
-echinoderms,specialisation,extreme diet specialization,anneissia japonica ,specialists,100
-echinoderms,specialisation,within-stage dependent habitats + condition,anneissia japonica ,rocky reef,100
+echinoderms,specialisation,across-stage dependent habitats + condition,anneissia japonica,surface water,100
+echinoderms,specialisation,extreme diet specialization,anneissia japonica,specialists,100
+echinoderms,specialisation,within-stage dependent habitats + condition,anneissia japonica,rocky reef,100
 echinoderms,specialisation,across-stage dependent habitats + condition,antedon mediterranea,surface water,100
 echinoderms,specialisation,extreme diet specialization,antedon mediterranea,specialists,100
 echinoderms,specialisation,within-stage dependent habitats + condition,antedon mediterranea,rocky reef,100
@@ -1704,17 +1704,17 @@ echinoderms,specialisation,within-stage dependent habitats + condition,heliocida
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),holopneustes purpurascens,senstive,100
 echinoderms,specialisation,across-stage dependent habitats + condition,holopneustes purpurascens,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,holopneustes purpurascens,rocky reef,100
-echinoderms,specialisation,across-stage dependent habitats + condition,holothuria atra,surface water,100
-echinoderms,specialisation,extreme diet specialization,holothuria atra,specalist,100
-echinoderms,specialisation,within-stage dependent habitats + condition,holothuria atra,subtidal soft bottom,100
-echinoderms,specialisation,across-stage dependent habitats + condition,holothuria forskali,surface water,100
-echinoderms,specialisation,extreme diet specialization,holothuria forskali,specalist,100
-echinoderms,specialisation,within-stage dependent habitats + condition,holothuria forskali,rocky reef,100
-echinoderms,specialisation,within-stage dependent habitats + condition,holothuria forskali,subtidal soft bottom,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria scabra,feeding auricularia and non feedig doliolaria,100
-echinoderms,specialisation,across-stage dependent habitats + condition,holothuria scabra,surface water,100
-echinoderms,specialisation,extreme diet specialization,holothuria scabra,specalist,100
-echinoderms,specialisation,within-stage dependent habitats + condition,holothuria scabra,subtidal soft bottom,100
+echinoderms,specialisation,across-stage dependent habitats + condition,holothuria (halodeima) atra,surface water,100
+echinoderms,specialisation,extreme diet specialization,holothuria (halodeima) atra,specalist,100
+echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (halodeima) atra,subtidal soft bottom,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (metriatyla) scabra,feeding auricularia and non feedig doliolaria,100
+echinoderms,specialisation,across-stage dependent habitats + condition,holothuria (metriatyla) scabra,surface water,100
+echinoderms,specialisation,extreme diet specialization,holothuria (metriatyla) scabra,specalist,100
+echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (metriatyla) scabra,subtidal soft bottom,100
+echinoderms,specialisation,across-stage dependent habitats + condition,holothuria (panningothuria) forskali,surface water,100
+echinoderms,specialisation,extreme diet specialization,holothuria (panningothuria) forskali,specalist,100
+echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (panningothuria) forskali,rocky reef,100
+echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (panningothuria) forskali,subtidal soft bottom,100
 echinoderms,specialisation,across-stage dependent habitats + condition,leptopentacta elongata,surface water,100
 echinoderms,specialisation,extreme diet specialization,leptopentacta elongata,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,leptopentacta elongata,subtidal soft bottom,100
@@ -3551,13 +3551,13 @@ fish,biophysical traits,maximum depth,callechelys bitaeniata,30,115
 fish,biophysical traits,minimum depth,callechelys bitaeniata,0,115
 fish,specialisation,across-stage dependent habitats + condition,callechelys bitaeniata,subtidal soft bottom,115
 fish,specialisation,within-stage dependent habitats + condition,callechelys bitaeniata,subtidal soft bottom,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carapus bermudensi,no,115
-fish,foraging range,"if one/few, size",carapus bermudensi,many,115
-fish,specialisation,across-stage dependent habitats + condition,carapus bermudensi,sea cucumber,115
-fish,specialisation,across-stage dependent habitats + condition,carapus bermudensi,reef,115
-fish,specialisation,dependent interspecific interactions,carapus bermudensi,yes-sea cucumbers,115
-fish,specialisation,within-stage dependent habitats + condition,carapus bermudensi,sea cucumber,115
-fish,specialisation,within-stage dependent habitats + condition,carapus bermudensi,reef,115
+fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carapus bermudensis,no,115
+fish,foraging range,"if one/few, size",carapus bermudensis,many,115
+fish,specialisation,across-stage dependent habitats + condition,carapus bermudensis,sea cucumber,115
+fish,specialisation,across-stage dependent habitats + condition,carapus bermudensis,reef,115
+fish,specialisation,dependent interspecific interactions,carapus bermudensis,yes-sea cucumbers,115
+fish,specialisation,within-stage dependent habitats + condition,carapus bermudensis,sea cucumber,115
+fish,specialisation,within-stage dependent habitats + condition,carapus bermudensis,reef,115
 fish,specialisation,across-stage dependent habitats + condition,cephalopholis cyanostigma,coral reef,115
 fish,specialisation,across-stage dependent habitats + condition,cephalopholis cyanostigma,live coral caves,115
 fish,specialisation,within-stage dependent habitats + condition,cephalopholis cyanostigma,coral reef,115
@@ -3620,8 +3620,8 @@ fish,specialisation,across-stage dependent habitats + condition,congriscus maldi
 fish,specialisation,across-stage dependent habitats + condition,congriscus maldivensis,soft slope,115
 fish,specialisation,within-stage dependent habitats + condition,congriscus maldivensis,deep water,115
 fish,specialisation,within-stage dependent habitats + condition,congriscus maldivensis,soft slope,115
-fish,specialisation,across-stage dependent habitats + condition,corphaena hippurus,surface water,115
-fish,specialisation,within-stage dependent habitats + condition,corphaena hippurus,surface water,115
+fish,specialisation,across-stage dependent habitats + condition,coryphaena hippurus,surface water,115
+fish,specialisation,within-stage dependent habitats + condition,coryphaena hippurus,surface water,115
 fish,biophysical traits,maximum depth,crossosalarias macrospilus,25,115
 fish,biophysical traits,minimum depth,crossosalarias macrospilus,1,115
 fish,specialisation,across-stage dependent habitats + condition,crossosalarias macrospilus,subtidal hard bottom,115
@@ -4505,10 +4505,10 @@ molluscs,specialisation,within-stage dependent habitats + condition,mercenaria m
 molluscs,biophysical traits,respiration structures,mimachlamys asperrima,filterfeeder,47
 molluscs,specialisation,across-stage dependent habitats + condition,mimachlamys asperrima,surface water,47
 molluscs,specialisation,within-stage dependent habitats + condition,mimachlamys asperrima,benthic,47
-molluscs,biophysical traits,respiration structures,mytilus californiensis,filterfeeder,47
-molluscs,specialisation,across-stage dependent habitats + condition,mytilus californiensis,surface water,47
-molluscs,specialisation,within-stage dependent habitats + condition,mytilus californiensis,rocky intertidal,47
-molluscs,specialisation,within-stage dependent habitats + condition,mytilus californiensis,rocky reef,47
+molluscs,biophysical traits,respiration structures,mytilus californianus,filterfeeder,47
+molluscs,specialisation,across-stage dependent habitats + condition,mytilus californianus,surface water,47
+molluscs,specialisation,within-stage dependent habitats + condition,mytilus californianus,rocky intertidal,47
+molluscs,specialisation,within-stage dependent habitats + condition,mytilus californianus,rocky reef,47
 molluscs,biophysical traits,respiration structures,mytilus edulis,filterfeeder,47
 molluscs,specialisation,across-stage dependent habitats + condition,mytilus edulis,surface water,47
 molluscs,specialisation,within-stage dependent habitats + condition,mytilus edulis,rocky intertidal,47
@@ -4572,16 +4572,16 @@ molluscs,specialisation,within-stage dependent habitats + condition,tegula funeb
 molluscs,specialisation,across-stage dependent habitats + condition,tenguella marginalba,surface water,47
 molluscs,specialisation,within-stage dependent habitats + condition,tenguella marginalba,rocky intertidal,47
 molluscs,specialisation,within-stage dependent habitats + condition,tenguella marginalba,rocky reef,47
+molluscs,biophysical traits,respiration structures,trichomya hirsuta,filterfeeder,47
+molluscs,specialisation,across-stage dependent habitats + condition,trichomya hirsuta,surface water,47
+molluscs,specialisation,within-stage dependent habitats + condition,trichomya hirsuta,rocky intertidal,47
+molluscs,specialisation,within-stage dependent habitats + condition,trichomya hirsuta,rocky reef,47
 molluscs,biophysical traits,respiration structures,tridacna gigas,filterfeeder,47
 molluscs,specialisation,across-stage dependent habitats + condition,tridacna gigas,surface water,47
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna gigas,benthic,47
 molluscs,biophysical traits,respiration structures,tridacna maxima,filterfeeder,47
 molluscs,specialisation,across-stage dependent habitats + condition,tridacna maxima,surface water,47
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna maxima,benthic,47
-molluscs,biophysical traits,respiration structures,trychomya hirsuta,filterfeeder,47
-molluscs,specialisation,across-stage dependent habitats + condition,trychomya hirsuta,surface water,47
-molluscs,specialisation,within-stage dependent habitats + condition,trychomya hirsuta,rocky intertidal,47
-molluscs,specialisation,within-stage dependent habitats + condition,trychomya hirsuta,rocky reef,47
 molluscs,specialisation,across-stage dependent habitats + condition,turbo militaris,surface water,47
 molluscs,specialisation,within-stage dependent habitats + condition,turbo militaris,rocky intertidal,47
 molluscs,specialisation,within-stage dependent habitats + condition,turbo militaris,rocky reef,47
