@@ -92,8 +92,7 @@ spp_valid <- spp_validcheck %>%
          category = str_replace_all(category, '^_|_$', ''),
          trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_'),
          trait    = str_replace_all(trait, '^_|_$', '')) %>%
-  mutate(spp_gp = str_replace_all(spp_gp, '\\(|\\)', ''),
-         spp_gp = str_replace_all(spp_gp, '\\n', ' ')) %>%
+  mutate(spp_gp = str_replace_all(spp_gp, '\\n', ' ')) %>%
   group_by(trait, spp_gp) %>%
   mutate(trait_prob = ifelse(trait %in% non_mut_excl, 1, 1/n_distinct(trait_value))) %>%
   ungroup()
