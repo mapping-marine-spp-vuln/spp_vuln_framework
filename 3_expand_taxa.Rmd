@@ -102,11 +102,8 @@ classify_chunks <- function(spp_gps, chunk_size = 20,
 
 Using `taxize::classification()`, check each taxonomic name against the WoRMS database of taxonomic info to get the full upstream classification.  We do this twice: once for WoRMS to get upstream ID numbers for the downstreaming process, and once iterating to catch all species in the expert trait data.
 
-Order of search for the iterative process:
-* WoRMS (left 38 unmatched out of 841)
-* NCBI (left 15 still unmatched out of 841)
-* GBIF (left 4 down)
-* EOL (found the rest - NOTE: this was not a preferred db because some names had extra info, e.g. citation)
+Note that in running `classification()` occasionally a name will have multiple ID numbers, at which point the script pauses for user input.  Carefully check the data frame and choose the line number with the "accepted" version of the taxon, usually line 1.  NOTE: Rossia has two "accepted" lines - the older one, line 2, is cephalopods (choose this one), the newer one (line 1, do not choose) is some kind of fossil chromista genus.  Note that sometimes the line numbers are out of sequence! arghhhh.
+
 
 ```{r WoRMS starting point, eval = FALSE}
 spp_traits <- read_csv('_data/spp_traits_valid.csv')
@@ -128,31 +125,59 @@ write_csv(y, here('int/taxize_results_all.csv'))
 ### this can be iterated to fill gaps.  
 ### Note: For GBIF seems to fail often when searching for genus/family name.
 ### Try downstreaming to species level then searching again.
+db_api <- 'worms'
 
-# y <- read_csv(here('int/taxize_results_all.csv')) %>%
-#   filter(spp_gp %in% spp_traits$spp_gp) %>%
-#   left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
-# 
-# ### any new groups?
-# yy <- spp_traits %>%
-#   filter(!spp_gp %in% y$spp_gp) %>%
-#   .$spp_gp %>% unique()
-# spp_gps_error <- y %>%
-#   filter(error | is.na(id)) %>%
-#   .$spp_gp %>% unique()
-# 
-# db = 'ncbi'
-# z <- classify_chunks(c(yy, spp_gps_error), db = db, overwrite = TRUE) %>%
-#   mutate(db = db)
-# 
-# z %>% filter(error) %>% .$spp_gp %>% n_distinct()
-# 
-# zz <- y %>%
-#   filter(!error) %>%
-#   bind_rows(z %>% mutate(id = as.numeric(id))) %>%
-#   select(-taxon)
-# 
-# write_csv(zz, here('int/taxize_results_all.csv'))
+spp_traits <- read_csv('_data/spp_traits_valid.csv')
+
+y <- read_csv(here('int/taxize_results_all.csv')) %>%
+  filter(spp_gp %in% spp_traits$spp_gp) %>%
+  left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
+
+### any new groups?
+yy <- spp_traits %>%
+  filter(!spp_gp %in% y$spp_gp) %>%
+  .$spp_gp %>% unique()
+spp_gps_error <- y %>%
+  filter(error | is.na(id)) %>%
+  .$spp_gp %>% unique()
+
+z <- classify_chunks(c(yy, spp_gps_error), db = db_api, overwrite = TRUE) %>%
+  mutate(db = db_api)
+
+z %>% filter(error) %>% .$spp_gp %>% n_distinct()
+
+zz <- y %>%
+  filter(!error) %>%
+  bind_rows(z %>% mutate(id = as.numeric(id))) %>%
+  select(-taxon)
+
+write_csv(zz, here('int/taxize_results_all.csv'))
+
+```
+
+#### unmatched spp groups
+
+After manual fixes, WoRMS still leaves 4 unmatched out of 848 species groups, but these are duplicated elsewhere in the data e.g. Ardenna was formerly within Puffinus which is in the seabirds data (in the same category).
+
+```{r}
+spp_traits <- read_csv('_data/spp_traits_valid.csv')
+
+y <- read_csv(here('int/taxize_results_all.csv')) %>%
+  filter(spp_gp %in% spp_traits$spp_gp) %>%
+  left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
+
+### any new groups?
+yy <- spp_traits %>%
+  filter(!spp_gp %in% y$spp_gp) %>%
+  .$spp_gp %>% unique()
+if(!is_empty(yy)) stop ('New taxa detected that have not been classified!')
+
+spp_gps_error <- y %>%
+  filter(error | is.na(id)) %>%
+  select(spp_gp, taxon) %>%
+  distinct()
+
+knitr::kable(spp_gps_error)
 
 ```
 
@@ -358,38 +383,23 @@ if(!file.exists(s_from_g_file)) {
 
 ## compare numbers of species
 
-How many species? how many genera? etc.  Since some of the downstream calls may have non-marine taxa (e.g. mammals), use the parent values where possible? since only parents represented in the species groups are tested, we know they are marine.
+How many species? how many genera? etc.
 
 ```{r}
-p_from_k <- read_csv(p_from_k_file)
-c_from_p <- read_csv(c_from_p_file)
-o_from_c <- read_csv(o_from_c_file)
-f_from_o <- read_csv(f_from_o_file)
-g_from_f <- read_csv(s_from_g_file)
 s_from_g <- read_csv(s_from_g_file)
-spp <- s_from_g$name %>% n_distinct()   ### 345617
-gen <- s_from_g$parent %>% n_distinct() ### 345617
-fam <- g_from_f$parent %>% n_distinct() ### 3437
-ord <- f_from_o$parent %>% n_distinct() ### 662
-cls <- o_from_c$parent %>% n_distinct() ### 158
-
-```
-
-This method captures `r spp` species in `r gen` genera in `r fam` families, in `r ord` orders, in `r cls` classes.  Note some of these have multiple ID numbers.  In the trait data from our taxa experts, how many species can we match directly?
-
-```{r}
-s_from_g <- read_csv(s_from_g_file) %>% select(-id) %>% distinct()
-g_from_f <- read_csv(g_from_f_file) %>% select(-id) %>% distinct()
-f_from_o <- read_csv(f_from_o_file) %>% select(-id) %>% distinct()
-o_from_c <- read_csv(o_from_c_file) %>% select(-id) %>% distinct()
-c_from_p <- read_csv(c_from_p_file) %>% select(-id) %>% distinct()
-p_from_k <- read_csv(p_from_k_file) %>% select(-id) %>% distinct()
+g_from_f <- read_csv(g_from_f_file)
+f_from_o <- read_csv(f_from_o_file)
+o_from_c <- read_csv(o_from_c_file)
+c_from_p <- read_csv(c_from_p_file)
+p_from_k <- read_csv(p_from_k_file)
 
 rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
+
 all_df <- bind_rows(s_from_g, g_from_f, f_from_o, o_from_c, c_from_p, p_from_k) %>%
   mutate(rank = factor(rank, levels = rank_lvls)) %>%
-  filter(!is.na(name))
-
+  filter(!is.na(name)) %>%
+  select(-id) %>%
+  distinct()
 
 all_ranks_sum <- all_df %>%
   group_by(rank) %>%
@@ -401,13 +411,12 @@ knitr::kable(all_ranks_sum)
 
 ### Potential species matched at different levels
 
-These are species whose traits we can infer directly from data given to us by our taxon experts, at different levels.  Note, half the matches are related to class-level traits - and the only class-level traits we were given are from Demospongiae, so most of our current matches are sponges.
+These are species whose traits we can infer directly from data given to us by our taxon experts, at different levels.  Note, half the matches are related to class-level traits - and the only class-level traits we were given are from Demospongiae, so many of our current direct matches are sponges.
 
 ``` {r}
 trait_spp_gps <- read_csv(here('_data/spp_traits_valid.csv')) %>%
   select(taxon, spp_gp) %>%
   distinct()
-
 
 kng_df <- all_df %>%
   filter(parent_level == 'kingdom') %>%
@@ -491,7 +500,7 @@ knitr::kable(match_summary)
 
 ### Traits-species groups still unmatched
 
-These are species groups with traits given to us by the taxon experts, that are not currently matching up with data from WoRMS.  Many of these are likely due to errors in the WoRMS database, e.g. `isMarine` flag is incorrect, which will hopefully be resolved by WoRMS quickly.
+These are species groups with traits given to us by the taxon experts, that are not currently matching up with data from WoRMS.
 
 ``` {r}
 traits_unmatched <- trait_spp_gps %>%
