@@ -97,11 +97,12 @@ spp_df_wide <- s_from_g %>%
 Loading the traits data, and match to the long-format species classifications.  Then join these together sequentially by each level.
 
 ``` {r match up}
-
+spp_traits  <- read_csv(here('_data/spp_traits_valid.csv'))
 spp_gp_vuln <- read_csv(here('_output/spp_gp_vulnerability.csv'))
 
 matched_df <- spp_df_long %>%
-  inner_join(spp_gp_vuln, by = c('name' = 'spp_gp')) %>%
+  inner_join(spp_traits, by = c('name' = 'spp_gp')) %>%
+  # inner_join(spp_gp_vuln, by = c('name' = 'spp_gp')) %>%
   mutate(match = rank)
 # matched_df$rank %>% unique() # species genus   family  class
 ```
@@ -125,7 +126,7 @@ check_status <- function(check_ids) {
   return(records_df)
 }
 
-unmatched_df <- spp_gp_vuln %>%
+unmatched_df <- spp_traits %>%
   filter(!spp_gp %in% matched_df$name) %>%
   select(taxon, spp_gp) %>%
   distinct()
