@@ -24,10 +24,10 @@ ds_check <- function(id, downto) {
     mutate(status = check_status(id))
 }
 
+taxize::downstream('loliolus', db = 'worms', downto = 'species')[[1]]
 
-test_spp <- 'planctoteuthis'
-classification(test_spp, db = 'worms')[[1]]
+classification('aetobatus', db = 'worms', marine_only = TRUE)[[1]]
 
 # 13 Balaenoptera        Genus       137013
 # 14 Balaenoptera brydei Species     242603
-(ds_check(11767, 'genus'))
+(check_status(196114))
