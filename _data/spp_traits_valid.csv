@@ -27040,84 +27040,46 @@ molluscs,specialisation,dependent_interspecific_interactions,aeolidia papillosa,
 molluscs,specialisation,extreme_diet_specialization,aeolidia papillosa,generalist,47,1
 molluscs,specialisation,light_dependence,aeolidia papillosa,no,47,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,aeolidia papillosa,no,47,1
-molluscs,biophysical_traits,adult_body_mass_body_size,anadara trapezia...22,50mm-999mm,47,1
-molluscs,biophysical_traits,biomineral,anadara trapezia...22,aragonite,47,1
-molluscs,biophysical_traits,calcium_carbonate_structure_location,anadara trapezia...22,external with a cover,47,1
-molluscs,biophysical_traits,calcium_carbonate_structure_stages,anadara trapezia...22,adult,47,0.5
-molluscs,biophysical_traits,calcium_carbonate_structure_stages,anadara trapezia...22,larvae,47,0.5
-molluscs,biophysical_traits,communication_requirement_sound,anadara trapezia...22,no,47,1
-molluscs,biophysical_traits,extreme_pressure_wave_sensitive_structures,anadara trapezia...22,none,47,1
-molluscs,biophysical_traits,flight,anadara trapezia...22,no,47,1
-molluscs,biophysical_traits,navigation_requirements_sound_or_light_or_magnetic,anadara trapezia...22,no,47,1
-molluscs,biophysical_traits,respiration_structures,anadara trapezia...22,gills,47,1
-molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,anadara trapezia...22,does not aggregate,47,1
-molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,anadara trapezia...22,does not aggregate,47,1
-molluscs,movement,adult_mobility,anadara trapezia...22,sessile,47,1
-molluscs,movement,planktonic_larval_duration_pld_exposure,anadara trapezia...22,<1month,47,1
-molluscs,physiological_tolerance_breadths,dissolved_oxygen,anadara trapezia...22,medium tolerance,47,1
-molluscs,physiological_tolerance_breadths,ph,anadara trapezia...22,7.8-8.2,47,1
-molluscs,physiological_tolerance_breadths,salinity,anadara trapezia...22,stenohaline,47,1
-molluscs,physiological_tolerance_breadths,sensitivity_to_wave_energy_physical_forcing,anadara trapezia...22,not sensitive,47,1
-molluscs,physiological_tolerance_breadths,thermal_sensitivity_to_heat_spikes_heat_waves,anadara trapezia...22,no,47,1
-molluscs,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,anadara trapezia...22,30c,47,1
-molluscs,r_reproductive_traits,age_to_1st_reproduction_generation_time,anadara trapezia...22,1-5yrs,47,1
-molluscs,r_reproductive_traits,are_there_sub_populations,anadara trapezia...22,yes,47,1
-molluscs,r_reproductive_traits,can_the_sex_ratio_be_altered_by_a_stressor,anadara trapezia...22,yes,47,1
-molluscs,r_reproductive_traits,fecundity,anadara trapezia...22,>10000,47,1
-molluscs,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,anadara trapezia...22,feeding,47,1
-molluscs,r_reproductive_traits,global_population_size,anadara trapezia...22,>1m,47,1
-molluscs,r_reproductive_traits,lifetime_reproductive_opportunities,anadara trapezia...22,unknown,47,1
-molluscs,r_reproductive_traits,max_age,anadara trapezia...22,unknown,47,1
-molluscs,r_reproductive_traits,parental_investment,anadara trapezia...22,spawner,47,1
-molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,anadara trapezia...22,na,47,1
-molluscs,r_reproductive_traits,reproductive_strategy,anadara trapezia...22,sexual hermaphrodite,47,1
-molluscs,spatial_scale_of_species,depth_min_max,anadara trapezia...22,epipelagic,47,1
-molluscs,spatial_scale_of_species,eoo_range,anadara trapezia...22,>20000,47,1
-molluscs,spatial_scale_of_species,zone,anadara trapezia...22,benthic,47,1
-molluscs,specialisation,air_sea_interface,anadara trapezia...22,no,47,1
-molluscs,specialisation,dependent_interspecific_interactions,anadara trapezia...22,no,47,1
-molluscs,specialisation,extreme_diet_specialization,anadara trapezia...22,generalist,47,1
-molluscs,specialisation,light_dependence,anadara trapezia...22,no,47,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,anadara trapezia...22,no,47,1
-molluscs,biophysical_traits,adult_body_mass_body_size,anadara trapezia...50,50mm-999mm,47,1
-molluscs,biophysical_traits,biomineral,anadara trapezia...50,aragonite,47,1
-molluscs,biophysical_traits,calcium_carbonate_structure_location,anadara trapezia...50,external with a cover,47,1
-molluscs,biophysical_traits,calcium_carbonate_structure_stages,anadara trapezia...50,adult,47,0.5
-molluscs,biophysical_traits,calcium_carbonate_structure_stages,anadara trapezia...50,larvae,47,0.5
-molluscs,biophysical_traits,communication_requirement_sound,anadara trapezia...50,no,47,1
-molluscs,biophysical_traits,extreme_pressure_wave_sensitive_structures,anadara trapezia...50,none,47,1
-molluscs,biophysical_traits,flight,anadara trapezia...50,no,47,1
-molluscs,biophysical_traits,navigation_requirements_sound_or_light_or_magnetic,anadara trapezia...50,no,47,1
-molluscs,biophysical_traits,respiration_structures,anadara trapezia...50,gills,47,1
-molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,anadara trapezia...50,does not aggregate,47,1
-molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,anadara trapezia...50,does not aggregate,47,1
-molluscs,movement,adult_mobility,anadara trapezia...50,sessile,47,1
-molluscs,movement,planktonic_larval_duration_pld_exposure,anadara trapezia...50,<1month,47,1
-molluscs,physiological_tolerance_breadths,dissolved_oxygen,anadara trapezia...50,medium tolerance,47,1
-molluscs,physiological_tolerance_breadths,ph,anadara trapezia...50,7.8-8.2,47,1
-molluscs,physiological_tolerance_breadths,salinity,anadara trapezia...50,stenohaline,47,1
-molluscs,physiological_tolerance_breadths,sensitivity_to_wave_energy_physical_forcing,anadara trapezia...50,not sensitive,47,1
-molluscs,physiological_tolerance_breadths,thermal_sensitivity_to_heat_spikes_heat_waves,anadara trapezia...50,no,47,1
-molluscs,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,anadara trapezia...50,30c,47,1
-molluscs,r_reproductive_traits,age_to_1st_reproduction_generation_time,anadara trapezia...50,1-5yrs,47,1
-molluscs,r_reproductive_traits,are_there_sub_populations,anadara trapezia...50,yes,47,1
-molluscs,r_reproductive_traits,can_the_sex_ratio_be_altered_by_a_stressor,anadara trapezia...50,yes,47,1
-molluscs,r_reproductive_traits,fecundity,anadara trapezia...50,>10000,47,1
-molluscs,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,anadara trapezia...50,feeding,47,1
-molluscs,r_reproductive_traits,global_population_size,anadara trapezia...50,>1m,47,1
-molluscs,r_reproductive_traits,lifetime_reproductive_opportunities,anadara trapezia...50,unknown,47,1
-molluscs,r_reproductive_traits,max_age,anadara trapezia...50,unknown,47,1
-molluscs,r_reproductive_traits,parental_investment,anadara trapezia...50,spawner,47,1
-molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,anadara trapezia...50,na,47,1
-molluscs,r_reproductive_traits,reproductive_strategy,anadara trapezia...50,sexual hermaphrodite,47,1
-molluscs,spatial_scale_of_species,depth_min_max,anadara trapezia...50,epipelagic,47,1
-molluscs,spatial_scale_of_species,eoo_range,anadara trapezia...50,>20000,47,1
-molluscs,spatial_scale_of_species,zone,anadara trapezia...50,benthic,47,1
-molluscs,specialisation,air_sea_interface,anadara trapezia...50,no,47,1
-molluscs,specialisation,dependent_interspecific_interactions,anadara trapezia...50,no,47,1
-molluscs,specialisation,extreme_diet_specialization,anadara trapezia...50,generalist,47,1
-molluscs,specialisation,light_dependence,anadara trapezia...50,no,47,1
-molluscs,specialisation,terrestrial_and_marine_life_stages,anadara trapezia...50,no,47,1
+molluscs,biophysical_traits,adult_body_mass_body_size,anadara trapezia,50mm-999mm,47,1
+molluscs,biophysical_traits,biomineral,anadara trapezia,aragonite,47,1
+molluscs,biophysical_traits,calcium_carbonate_structure_location,anadara trapezia,external with a cover,47,1
+molluscs,biophysical_traits,calcium_carbonate_structure_stages,anadara trapezia,adult,47,0.5
+molluscs,biophysical_traits,calcium_carbonate_structure_stages,anadara trapezia,larvae,47,0.5
+molluscs,biophysical_traits,communication_requirement_sound,anadara trapezia,no,47,1
+molluscs,biophysical_traits,extreme_pressure_wave_sensitive_structures,anadara trapezia,none,47,1
+molluscs,biophysical_traits,flight,anadara trapezia,no,47,1
+molluscs,biophysical_traits,navigation_requirements_sound_or_light_or_magnetic,anadara trapezia,no,47,1
+molluscs,biophysical_traits,respiration_structures,anadara trapezia,gills,47,1
+molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,anadara trapezia,does not aggregate,47,1
+molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,anadara trapezia,does not aggregate,47,1
+molluscs,movement,adult_mobility,anadara trapezia,sessile,47,1
+molluscs,movement,planktonic_larval_duration_pld_exposure,anadara trapezia,<1month,47,1
+molluscs,physiological_tolerance_breadths,dissolved_oxygen,anadara trapezia,medium tolerance,47,1
+molluscs,physiological_tolerance_breadths,ph,anadara trapezia,7.8-8.2,47,1
+molluscs,physiological_tolerance_breadths,salinity,anadara trapezia,stenohaline,47,1
+molluscs,physiological_tolerance_breadths,sensitivity_to_wave_energy_physical_forcing,anadara trapezia,not sensitive,47,1
+molluscs,physiological_tolerance_breadths,thermal_sensitivity_to_heat_spikes_heat_waves,anadara trapezia,no,47,1
+molluscs,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,anadara trapezia,30c,47,1
+molluscs,r_reproductive_traits,age_to_1st_reproduction_generation_time,anadara trapezia,1-5yrs,47,1
+molluscs,r_reproductive_traits,are_there_sub_populations,anadara trapezia,yes,47,1
+molluscs,r_reproductive_traits,can_the_sex_ratio_be_altered_by_a_stressor,anadara trapezia,yes,47,1
+molluscs,r_reproductive_traits,fecundity,anadara trapezia,>10000,47,1
+molluscs,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,anadara trapezia,feeding,47,1
+molluscs,r_reproductive_traits,global_population_size,anadara trapezia,>1m,47,1
+molluscs,r_reproductive_traits,lifetime_reproductive_opportunities,anadara trapezia,unknown,47,1
+molluscs,r_reproductive_traits,max_age,anadara trapezia,unknown,47,1
+molluscs,r_reproductive_traits,parental_investment,anadara trapezia,spawner,47,1
+molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,anadara trapezia,na,47,1
+molluscs,r_reproductive_traits,reproductive_strategy,anadara trapezia,sexual hermaphrodite,47,1
+molluscs,spatial_scale_of_species,depth_min_max,anadara trapezia,epipelagic,47,1
+molluscs,spatial_scale_of_species,eoo_range,anadara trapezia,>20000,47,1
+molluscs,spatial_scale_of_species,zone,anadara trapezia,benthic,47,1
+molluscs,specialisation,air_sea_interface,anadara trapezia,no,47,1
+molluscs,specialisation,dependent_interspecific_interactions,anadara trapezia,no,47,1
+molluscs,specialisation,extreme_diet_specialization,anadara trapezia,generalist,47,1
+molluscs,specialisation,light_dependence,anadara trapezia,no,47,1
+molluscs,specialisation,terrestrial_and_marine_life_stages,anadara trapezia,no,47,1
 molluscs,biophysical_traits,adult_body_mass_body_size,aplysia californica,50mm-999mm,47,1
 molluscs,biophysical_traits,biomineral,aplysia californica,calcite,47,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,aplysia californica,none,47,1
