@@ -1,0 +1,27 @@
+---
+title: "Untitled"
+author: "Casey O'Hara"
+date: "10/27/2020"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We will try a calculation for vulnerability $V$ of species $i$ to stressor $j$ that basically looks like this:
+
+$$\text{sensitivity score } S_{i,j} = \mathbf{s}_j^T \mathbf{t}_i$$
+based on a vector $\mathbf{s}_j$ of trait-based sensitivity to stressor $j$, and vector $\mathbf{t}_i$ of traits of species $i$;
+
+$$\text{specific adaptive capacity score } K_{i,j} = \mathbf{k}_j^T \mathbf{t}_i$$
+based on vector $\mathbf{k}_j$ of trait-based specific adaptive capacity to stressor $j$;
+$$\text{general adaptive capacity score } G_{i} = \mathbf{g}^T \mathbf{t}_i$$
+based on vector $\mathbf{g}$ of trait-based general adaptive capacity; 
+
+$$\text{exposure potential modifier } E_{i,j} = \begin{cases} 1 \text{ when }\mathbf{e}_j^T \mathbf{t}_i > 0\\ 0 \text{ else} \end{cases}$$
+based on vector $\mathbf{e}_j$ of trait-based presence of stressor $j$ (i.e. depth zones and ocean zones in which stressor occurs).
+
+$$\text{vulnerability } V_{i,j} = \frac{S_{i,j} / {S_j}'}{1 + G_i/ {G}' + K_{i,j}/ {K_j}'} \times E_{i,j}$$
