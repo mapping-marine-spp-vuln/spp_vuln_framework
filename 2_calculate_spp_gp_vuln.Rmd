@@ -27,13 +27,13 @@ source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
 
 # Summary
 
-Read in Excel spreadsheets of taxonomic traits filled in by taxon experts.  Process into a long/tidy format with checks on validity of category values.  Identify categories that were assigned non-valid values.
+Read in taxonomic traits filled in by taxon experts and cleaned in prior scripts.  Combine with coded sensitivity, adaptive capacity, and exposure from stressor-trait sheets to calculate vulnerability.
 
 # Data
 
-`_raw_data/all_taxa_trait_data.xlsx` is the raw workbook prepared by Nathalie Butt from the various submissions of the taxa-group experts.  This has been processed and cleaned to `_data/spp_traits_valid.csv`.
+`_raw_data/xlsx/master_all_taxa_trait_data.xlsx` is the raw workbook prepared by Nathalie Butt from the various submissions of the taxa-group experts.  This has been processed and cleaned to `_data/spp_traits_valid.csv`.  See earlier scripts in the process.
 
-`excel_files/trait_stressor_sens_tidy.xlsx` is a workbook with each sheet indicating a stressor, and sensitivity scores for each trait with respect to that stressor.
+`trait_stressor_rankings/final_scores_all_stressors_traits.xlsx` is a workbook with each sheet indicating sensitivity or adaptive capacity; columns in each sheet indicate stressors, and rows indicate traits.
 
 # Methods
 
@@ -41,7 +41,7 @@ Read in Excel spreadsheets of taxonomic traits filled in by taxon experts.  Proc
 
 Set up a function to consistently clean trait values.  Trait values in the species trait file are already cleaned and adjusted in many cases to get around mismatches; they are generally lower case, no punctuation except for greater/less than signs.
 
-This function also cleans up category and trait names for consistency.  All lower case, punctuation and spaces replaced with underscores.  Again, the species trait file is already cleaned in this manner.
+This function also cleans up category and trait names for consistency.  All lower case, punctuation and spaces replaced with underscores.  The species trait file is already cleaned in this manner.
 ```{r}
 clean_traitnames <- function(df, overwrite_clean_col = FALSE) {
   df <- df %>% 
@@ -110,43 +110,34 @@ spp_traits <- read_csv('_data/spp_traits_valid.csv')
 ```
 
 ```{r}
-trait_str_sens_files <- list.files(here('trait_stressor_rankings'), 
-                                    pattern = 'trait_stressor_sens',
-                                    full.names = TRUE)
+str_trait_f <- here('trait_stressor_rankings',
+                    'final_scores_all_stressors_traits.xlsx')
+str_trait_shts <- readxl::excel_sheets(str_trait_f)
+```
 
-sens_traits_list <- vector('list', length = length(trait_str_sens_files)) %>%
-  setNames(trait_str_sens_files)
+``` {r}
+sens_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'sensitivity') 
 
-for(f in trait_str_sens_files) {
-  layers <- readxl::excel_sheets(f)
+sens_traits_df <- sens_traits_raw %>%
+  janitor::clean_names() %>%
+  gather(stressor, sens_score, -category, -trait, -trait_value) %>%
+  mutate(sens_score_orig = as.character(sens_score),
+         sens_score = assign_rank_scores(sens_score)) %>%
+  clean_traitnames() %>%
+  clean_traitvals() %>%
+  ### drop these - going into other categories - we'll change the sheets later
+  filter(!is.na(category)) 
   
-  sens_trait_scores <- lapply(layers,
-        FUN = function(l) { # l <- layers[1]
-          df <- readxl::read_excel(f, sheet = l) %>%
-            mutate(stressor = tolower(l),
-                   sens_score_orig = as.character(sens_score),
-                   sens_score = assign_rank_scores(sens_score))
-          return(df)
-        }) %>%
-    bind_rows() %>%
-    clean_traitnames() %>%
-    clean_traitvals() %>%
-    ### drop these - going into other categories - we'll change the sheets later
-    filter(!str_detect(category, 'spatial_scale|breeding_nesting|foraging_range')) 
-  
-  sens_traits_list[[f]] <- sens_trait_scores
-}
-
-str_sens_trait_scores <- bind_rows(sens_traits_list) %>%
+str_sens_trait_scores <- sens_traits_df %>%
   select(category, trait, trait_value, sens_score, stressor) %>%
   mutate(sens_score = ifelse(is.na(sens_score), 0, sens_score)) %>%
   filter(!is.na(trait))
 
 ### To score for a species/stressor combo, first resolve multiple mutually
 ### exclusive trait values (using trait_prob) then sum across all traits
-spp_sens <- spp_traits %>%
-  left_join(str_sens_trait_scores, by = c('category', 'trait', 'trait_value')) %>%
-  filter(!is.na(stressor)) %>%
+spp_sens <- str_sens_trait_scores %>%
+  left_join(spp_traits, by = c('category', 'trait', 'trait_value')) %>%
+  filter(!is.na(stressor) & !is.na(taxon)) %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
   summarize(sens_score = sum(sens_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
@@ -161,17 +152,22 @@ Unmatched traits between sensitivity scoring sheets and species trait sheets:
 ```{r}
 x <- spp_traits %>% select(category, trait, trait_value) %>% distinct()
 y <- str_sens_trait_scores %>% select(category, trait, trait_value) %>% distinct()
-
-x$trait[!x$trait %in% y$trait] %>% unique()
-y$trait[!y$trait %in% x$trait] %>% unique()
 ```
+
+These traits are in the species-trait scoring sheets but not found in the sensitivity trait scores (should be adaptive capacity/exposure traits only):
+
+`r x$trait[!x$trait %in% y$trait] %>% unique()`
+
+These traits are in the trait-sensitivity scoring sheet but not found in the species scoring (need to be scored for species):
+
+`r y$trait[!y$trait %in% x$trait] %>% unique()`
 
 ### Sensitivity by species group and stressor
 
 ```{r}
 p <- ggplot(spp_sens, aes(x = stressor, y = sens_score)) +
-  geom_jitter(size = 1, alpha = .6) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+  geom_jitter(size = 1, alpha = .6, height = .1) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5, size = 6)) +
   facet_wrap(~ taxon)
 
 ggsave(here('figs/spp_sens_scores.png'), height = 6, width = 6, dpi = 300)
@@ -183,7 +179,7 @@ knitr::include_graphics(here('figs/spp_sens_scores.png'))
 ```{r}
 top_3_sens <- spp_sens %>%
   group_by(taxon, stressor) %>%
-  summarize(sens_score = mean(sens_score)) %>%
+  summarize(sens_score = mean(sens_score) %>% round(3)) %>%
   arrange(desc(sens_score)) %>%
   group_by(taxon) %>%
   filter(sens_score >= nth(sens_score, 3))
@@ -196,9 +192,11 @@ DT::datatable(top_3_sens)
 General adaptive capacity traits are basically related to the overall population's resilience in the face of a threat.  Large extents of occurrence, large population sizes, presence of multiple subpopulations, and reproductive strategies fall into this category.
 
 ``` {r}
-adcap_gen_traits_file <- here('trait_stressor_rankings/trait_stressor_adcap_general.xlsx')
+adcap_gen_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'gen_adcap') 
 
-adcap_gen_traits <- readxl::read_excel(adcap_gen_traits_file) %>%
+
+adcap_gen_traits <- adcap_gen_traits_raw %>%
+  select(category, trait, trait_value, adcap_score) %>%
   # filter(trait != 'max age' & trait != 'if one/few, size') %>%
   mutate(adcap_score_orig = as.character(adcap_score),
          adcap_score = assign_rank_scores(adcap_score)) %>%
@@ -222,17 +220,20 @@ Unmatched traits between general adaptive capacity scoring sheet and species tra
 ```{r}
 x <- spp_traits %>% select(category, trait, trait_value) %>% distinct()
 y <- adcap_gen_traits %>% select(category, trait, trait_value) %>% distinct()
-
-x$trait[!x$trait %in% y$trait] %>% unique()
-y$trait[!y$trait %in% x$trait] %>% unique()
 ```
+
+Traits in species-trait sheets not in general adcap scores:
+`r x$trait[!x$trait %in% y$trait] %>% unique()`
+
+Traits in general adcap scores but not in spp traits:
+`r y$trait[!y$trait %in% x$trait] %>% unique()`
 
 ```{r}
 p <- ggplot(spp_adcap_gen, aes(x = taxon, y = adcap_gen_score)) +
-  geom_jitter(size = 1, alpha = .6, width = .2) +
+  geom_jitter(size = 1, alpha = .6, width = .2, height = .2) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5))
 
-ggsave(here('figs/spp_adcap_gen_scores.png'), height = 6, width = 6, dpi = 300)
+ggsave(here('figs/spp_adcap_gen_scores.png'), height = 6, width = 4, dpi = 300)
 
 knitr::include_graphics(here('figs/spp_adcap_gen_scores.png'))
 ```
@@ -247,33 +248,18 @@ knitr::include_graphics(here('figs/spp_adcap_gen_scores.png'))
 Specific adaptive capacity traits are basically related to an organism's ability to avoid or mitigate exposure, primarily through movement and larval dispersal.
 
 ``` {r}
-adcap_spec_traits_files <- list.files(here('trait_stressor_rankings'), 
-                                    pattern = 'trait_stressor_adcap_spec',
-                                    full.names = TRUE)
+adcap_spec_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'spec_adcap') %>%
+  filter(!str_detect(category, 'spatial_scale')) ### drop exposure traits
 
-adcap_spec_traits_list <- vector('list', length = length(adcap_spec_traits_files)) %>%
-  setNames(adcap_spec_traits_files)
-
-for(f in adcap_spec_traits_files) {
-  layers <- readxl::excel_sheets(f)
-  spec_traits <- lapply(layers,
-          FUN = function(l) { # l <- layers[1]
-            df <- readxl::read_excel(f, sheet = l) %>%
-              mutate(stressor = tolower(l),
-                     adcap_score_orig = as.character(adcap_score),
-                     adcap_score = assign_rank_scores(adcap_score))
-            return(df)
-          }) %>%
-    bind_rows() %>%
-    clean_traitnames() %>%
-    clean_traitvals() %>%
-    filter(!str_detect(category, 'spatial_scale')) ### drop exposure traits
+adcap_spec_traits <- adcap_spec_traits_raw %>%
+  janitor::clean_names() %>%
+  gather(stressor, adcap_score, -category, -trait, -trait_value) %>%
+  mutate(adcap_score_orig = as.character(adcap_score),
+         adcap_score = assign_rank_scores(adcap_score)) %>%
+  clean_traitnames() %>%
+  clean_traitvals() %>%
+  filter(!is.na(trait))
   
-  adcap_spec_traits_list[[f]] <- spec_traits
-}
-
-adcap_spec_traits <- bind_rows(adcap_spec_traits_list)
-
 spp_adcap_spec <- spp_traits %>%
   left_join(adcap_spec_traits, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor)) %>%
@@ -297,17 +283,23 @@ Unmatched traits between specific adaptive capacity scoring sheet and species tr
 ```{r}
 x <- spp_traits %>% select(category, trait, trait_value) %>% distinct()
 y <- adcap_spec_traits %>% select(category, trait, trait_value) %>% distinct()
-
-x$trait[!x$trait %in% y$trait] %>% unique()
-y$trait[!y$trait %in% x$trait] %>% unique()
 ```
+
+Traits in species-trait sheets, not in specific adaptive capacity scores:
+
+`r x$trait[!x$trait %in% y$trait] %>% unique()`
+
+Traits in specific ad cap scores, not in spp-traits:
+
+`r y$trait[!y$trait %in% x$trait] %>% unique()`
+
 
 ### specific adaptive capacity by stressor and species group
 
 ```{r}
 p <- ggplot(spp_adcap_spec, aes(x = stressor, y = adcap_spec_score)) +
-  geom_jitter(size = 1, alpha = .6, width = .2, height = .05) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+  geom_jitter(size = 1, alpha = .6, width = .2, height = .1) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5, size = 6)) +
   facet_wrap( ~ taxon)
 
 ggsave(here('figs/spp_adcap_spec_scores.png'), height = 6, width = 6, dpi = 300)
@@ -334,46 +326,34 @@ DT::datatable(top_3_adcap)
 Exposure potential modifier checks whether the depth and oceanic zones of the stressor match with the depth and oceanic zones of the species.  These fall into the "spatial scale" category with the exception of EOO.
 
 ```{r}
-exp_traits_files <- list.files(here('trait_stressor_rankings'), 
-                                    pattern = 'trait_stressor_adcap_spec',
-                                    full.names = TRUE)
 
-exp_traits_list <- vector('list', length = length(exp_traits_files)) %>%
-  setNames(exp_traits_files)
+exp_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'spec_adcap') %>%
+  filter(str_detect(tolower(category), 'spatial.scale')) ### include only exposure traits
 
-for(f in exp_traits_files) {
-  layers <- readxl::excel_sheets(f)
-  str_exp <- lapply(layers,
-          FUN = function(l) { # l <- layers[1]
-            df <- readxl::read_excel(f, sheet = l) %>%
-              mutate(stressor = tolower(l),
-                     adcap_score_orig = as.character(adcap_score),
-                     adcap_score = assign_rank_scores(adcap_score))
-            return(df)
-          }) %>%
-    bind_rows() %>%
-    clean_traitnames() %>%
-    rename(exposure = adcap_score) %>%
-    filter(str_detect(category, 'spatial_scale')) ### include only exposure traits
-  
-  exp_traits_list[[f]] <- str_exp
-}
-  
-str_exposure <- bind_rows(exp_traits_list)
+exp_traits <- exp_traits_raw %>%
+  janitor::clean_names() %>%
+  gather(stressor, exp_score, -category, -trait, -trait_value) %>%
+  mutate(exp_score_orig = as.character(exp_score),
+         exp_score = assign_rank_scores(exp_score)) %>%
+  clean_traitnames()
 
 spp_exposure <- spp_traits %>%
-  left_join(str_exposure, by = c('category', 'trait', 'trait_value')) %>%
+  left_join(exp_traits, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor)) %>%
   group_by(spp_gp, stressor, taxon) %>%
-  summarize(exposure_mod = as.integer(sum(exposure, na.rm = TRUE) > 0)) %>%
+  summarize(exposure_mod = as.integer(sum(exp_score, na.rm = TRUE) > 0)) %>%
   ungroup()  %>%
   arrange(stressor, taxon)
   
 non_exposures <- spp_exposure %>% 
-  filter(exposure_mod == 0) %>% 
   group_by(taxon, stressor) %>% 
-  summarize(n_spp_gps = n_distinct(spp_gp)) %>%
-  arrange(stressor, desc(n_spp_gps))
+  mutate(n_gps = n_distinct(spp_gp)) %>%
+  filter(exposure_mod == 0) %>% 
+  summarize(n_gps_no_exp = n_distinct(spp_gp),
+            n_gps = first(n_gps),
+            pct_no_exp = round(n_gps_no_exp / n_gps, 3)) %>%
+  arrange(stressor, desc(n_gps_no_exp)) %>%
+  ungroup()
 ```
 
 ### These species are not listed as potential exposure to these stressors: 
@@ -517,7 +497,8 @@ ggplot(spp_vuln_summary, aes(x = stressor, color = component, group = component)
 - fix navigation requirements (light, sound, magnetic) into separate rows where appropriate
     - e.g. cetaceans navigate by sound; birds/turtles/sharks maybe by magnetic; turtles by light?
     - this has to be done on the species trait sheet level.
-- get traits for wayyyy more species
+- get traits for more species
     - where are the rest of the corals?
-    - more fish please
+    - more fish?
     - extract some values from FishBase and SealifeBase perhaps
+    - note these can be gapfilled but more info at spp level = better
