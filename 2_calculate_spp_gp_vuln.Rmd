@@ -110,8 +110,8 @@ spp_traits <- read_csv('_data/spp_traits_valid.csv')
 ```
 
 ```{r}
-str_trait_f <- here('trait_stressor_rankings',
-                    'final_scores_all_stressors_traits.xlsx')
+str_trait_f <- here('_raw_data/xlsx',
+                    'stressors_traits_scored.xlsx')
 str_trait_shts <- readxl::excel_sheets(str_trait_f)
 ```
 
