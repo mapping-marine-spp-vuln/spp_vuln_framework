@@ -25,14 +25,14 @@ r (reproductive traits),age to 1st reproduction/generation time,unknown,1-5yrs,5
 r (reproductive traits),are there sub-populations?,yes,yes,NA,NA,yes,NA,NA,yes,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,unknown,unknown,no,yes,unknown,yes,no,unknown,unknown
 r (reproductive traits),fecundity,NA,>10000,100-1000,10-20;20-50;50-100,>10000,>10000,10-20;20-50;50-100,>10000,>10000
-r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding,feeding,yes,yes,feeding,yes,yes,feeding,feeding
+r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding calcifier,feeding calcifier,feeding non-calcifier,feeding calcifier,feeding calcifier,feeding calcifier,feeding non-calcifier,feeding calcifier,feeding calcifier
 r (reproductive traits),global population size,>1m,>1m,<1000;1k-10k,100k-1m;>1m,>1m,100k-1m;>1m,1k-10k,>1m,>1m
 r (reproductive traits),lifetime # reproductive opportunities,unknown,2-10,26-50,2-10,11-25,>100,11-25,2-10,unknown
 r (reproductive traits),max age,1-5yrs,1-5yrs,NA,NA,20-100yrs,NA,NA,1-5yrs,1-5yrs
 r (reproductive traits),parental investment,egg-layer,spawner,live birth/egg care,live birth/egg care,live birth/egg care,live birth/egg care,live birth/egg care,spawner,egg-layer
 r (reproductive traits),post-birth/hatching parental dependence,na,na,NA,NA,<week,NA,NA,na,na
 r (reproductive traits),reproductive strategy,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious
-spatial scale of species,depth (min/max),epipelagic;mesopelagic,NA,NA,NA,NA,NA,NA,epipelagic;mesopelagic,NA
+spatial scale of species,depth (min/max),epipelagic;mesopelagic,atmosphere,NA,atmosphere,atmosphere,NA,NA,epipelagic;mesopelagic;atmosphere,NA
 spatial scale of species,eoo (range),<99,<99,>20000,100-4999,<99,>20000,<99,<99,<99
 spatial scale of species,zone,demersal,intertidal,benthic,intertidal,intertidal,demersal,benthic,intertidal,benthic
 specialisation,across-stage dependent habitats + condition,deep hard bottom;hydrothermal vents,estuary;mangrove;intertidal mud;beach,NA,NA,intertidal mud;beach,NA,NA,intertidal mud;mangrove;estuary,coral reef

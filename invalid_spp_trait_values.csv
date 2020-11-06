@@ -761,6 +761,7 @@ cephalopods,specialisation,across-stage dependent habitats + condition,lycoteuth
 cephalopods,specialisation,across-stage dependent habitats + condition,lycoteuthis,surface water,311
 cephalopods,specialisation,within-stage dependent habitats + condition,lycoteuthis,deep water,311
 cephalopods,specialisation,within-stage dependent habitats + condition,lycoteuthis,surface water,311
+cephalopods,r (reproductive traits),feeding larva (post-hatching metamorphosis),macrotritopus,feeding,311
 cephalopods,specialisation,across-stage dependent habitats + condition,macrotritopus,subtidal soft bottom,311
 cephalopods,specialisation,across-stage dependent habitats + condition,macrotritopus,surface water,311
 cephalopods,specialisation,across-stage dependent habitats + condition,macrotritopus,hard shelf,311
@@ -1533,12 +1534,10 @@ crustacea_arthropods,biophysical traits,flight,nymphon australe,none,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",nymphon australe,none,9
 crustacea_arthropods,biophysical traits,respiration structures,nymphon australe,skin or cuticle,9
 crustacea_arthropods,physiological tolerance breadths,salinity,nymphon australe,narrow,9
-crustacea_arthropods,r (reproductive traits),feeding larva (post-hatching metamorphosis),nymphon australe,yes,9
 crustacea_arthropods,specialisation,extreme diet specialization,nymphon australe,yes,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,nymphon australe,deep soft bottom,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,palaemon elegans,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,9
 crustacea_arthropods,physiological tolerance breadths,salinity,palaemon elegans,broad,9
-crustacea_arthropods,r (reproductive traits),feeding larva (post-hatching metamorphosis),palaemon elegans,yes,9
 crustacea_arthropods,specialisation,extreme diet specialization,palaemon elegans,no-broadly omniverous,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,palaemon elegans,subtidal soft bottom,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,palaemon elegans,rocky reef,9
@@ -1556,7 +1555,6 @@ crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fis
 crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus,none,9
 crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus,character(0),9
 crustacea_arthropods,physiological tolerance breadths,salinity,penaeus,1o to 32o,9
-crustacea_arthropods,r (reproductive traits),feeding larva (post-hatching metamorphosis),penaeus,yes,9
 crustacea_arthropods,specialisation,air-sea interface,penaeus,none,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus,none,9
 crustacea_arthropods,specialisation,extreme diet specialization,penaeus,none,9
@@ -1566,7 +1564,6 @@ crustacea_arthropods,biophysical traits,flight,pycnogonum,none,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",pycnogonum,none,9
 crustacea_arthropods,biophysical traits,respiration structures,pycnogonum,skin or cuticle,9
 crustacea_arthropods,physiological tolerance breadths,salinity,pycnogonum,narrow,9
-crustacea_arthropods,r (reproductive traits),feeding larva (post-hatching metamorphosis),pycnogonum,yes,9
 crustacea_arthropods,specialisation,extreme diet specialization,pycnogonum,yes,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,pycnogonum,rocky intertidal,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,pycnogonum,coral reef,9
@@ -1584,125 +1581,150 @@ crustacea_arthropods,specialisation,dependent interspecific interactions,trapezi
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,coral,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,trapezia flavopunctata,coral reef,9
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",acanthaster,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),acanthaster,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),acanthaster,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,acanthaster,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,acanthaster,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,acanthaster,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),actinopyga echinites,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,actinopyga echinites,surface water,100
 echinoderms,specialisation,extreme diet specialization,actinopyga echinites,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,actinopyga echinites,subtidal soft bottom,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),amphiodia occidentalis,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),amphiodia occidentalis,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,amphiodia occidentalis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,amphiodia occidentalis,subtidal soft bottom,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),amphipholis squamata,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,amphipholis squamata,yes-live birth,100
 echinoderms,specialisation,across-stage dependent habitats + condition,amphipholis squamata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,amphipholis squamata,rocky intertidal,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),anneissia japonica,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,anneissia japonica,surface water,100
 echinoderms,specialisation,extreme diet specialization,anneissia japonica,specialists,100
 echinoderms,specialisation,within-stage dependent habitats + condition,anneissia japonica,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),antedon mediterranea,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,antedon mediterranea,surface water,100
 echinoderms,specialisation,extreme diet specialization,antedon mediterranea,specialists,100
 echinoderms,specialisation,within-stage dependent habitats + condition,antedon mediterranea,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),aporometra wilsoni,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,aporometra wilsoni,surface water,100
 echinoderms,specialisation,dependent interspecific interactions,aporometra wilsoni,yes-sargassum cystophora,100
 echinoderms,specialisation,extreme diet specialization,aporometra wilsoni,specialists,100
 echinoderms,specialisation,within-stage dependent habitats + condition,aporometra wilsoni,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),apostichopus californicus,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,apostichopus californicus,surface water,100
 echinoderms,specialisation,extreme diet specialization,apostichopus californicus,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,apostichopus californicus,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,apostichopus californicus,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),apostichopus japonicus,feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,apostichopus japonicus,surface water,100
 echinoderms,specialisation,extreme diet specialization,apostichopus japonicus,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,apostichopus japonicus,subtidal soft bottom,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",aquilonastra burtoni,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),aquilonastra burtoni,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),aquilonastra burtoni,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,aquilonastra burtoni,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,aquilonastra burtoni,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,aquilonastra burtoni,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,aquilonastra burtoni,rocky reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),arachnoides placenta,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),arachnoides placenta,feeding-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,arachnoides placenta,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,arachnoides placenta,surface water,100
 echinoderms,specialisation,extreme diet specialization,arachnoides placenta,generalists,100
 echinoderms,specialisation,within-stage dependent habitats + condition,arachnoides placenta,beach,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",asterias rubens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterias rubens,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterias rubens,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,asterias rubens,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,asterias rubens,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,asterias rubens,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,asterias rubens,rocky intertidal,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina gibbosa,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,asterina gibbosa,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,asterina gibbosa,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",asterina phylactica,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina phylactica,no larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina phylactica,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,asterina phylactica,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,asterina phylactica,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",asterina stellifera,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina stellifera,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina stellifera,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,asterina stellifera,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,asterina stellifera,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),australostichopus mollis,feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,australostichopus mollis,surface water,100
 echinoderms,specialisation,extreme diet specialization,australostichopus mollis,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,australostichopus mollis,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,australostichopus mollis,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma brevipes,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,breviturma brevipes,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,breviturma brevipes,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma dentata,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,breviturma dentata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,breviturma dentata,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma doederleini,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,breviturma doederleini,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,breviturma doederleini,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma longispina,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,breviturma longispina,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,breviturma longispina,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma pica,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,breviturma pica,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,breviturma pica,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma pusilla,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,breviturma pusilla,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,breviturma pusilla,coral reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),brisaster latifrons,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),brisaster latifrons,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,brisaster latifrons,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,brisaster latifrons,subtidal soft bottom,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),centrostephanus rodgersii,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,centrostephanus rodgersii,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,centrostephanus rodgersii,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cryptasterina hystera,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina hystera,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina hystera,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina hystera,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,cryptasterina hystera,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cryptasterina hystera,rocky intertidal,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cryptasterina pacifica,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina pacifica,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina pacifica,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina pacifica,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,cryptasterina pacifica,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cryptasterina pacifica,rocky intertidal,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cryptasterina pentagona,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina pentagona,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina pentagona,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina pentagona,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,cryptasterina pentagona,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cryptasterina pentagona,rocky intertidal,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria frondosa,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,cucumaria frondosa,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria frondosa,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria frondosa,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria miniata,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,cucumaria miniata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria miniata,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria miniata,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria piperata,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,cucumaria piperata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria piperata,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria piperata,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria pseudocurata,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,cucumaria pseudocurata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria pseudocurata,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,cucumaria pseudocurata,rocky reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),dendraster excentricus,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),dendraster excentricus,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,dendraster excentricus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,dendraster excentricus,subtidal soft bottom,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema antillarum,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),diadema antillarum,feeding-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,diadema antillarum,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,diadema antillarum,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,diadema antillarum,coral reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema savignyi,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),diadema savignyi,feeding-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,diadema savignyi,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,diadema savignyi,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,diadema savignyi,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,diadema savignyi,coral reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema setosum,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),diadema setosum,feeding-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,diadema setosum,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,diadema setosum,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,diadema setosum,coral reef,100
@@ -1712,43 +1734,53 @@ echinoderms,specialisation,across-stage dependent habitats + condition,echinocar
 echinoderms,specialisation,extreme diet specialization,echinocardium cordatum,generalists,100
 echinoderms,specialisation,within-stage dependent habitats + condition,echinocardium cordatum,beach,100
 echinoderms,specialisation,within-stage dependent habitats + condition,echinocardium cordatum,subtidal soft bottom,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),eupentacta quinquesemita,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,eupentacta quinquesemita,surface water,100
 echinoderms,specialisation,extreme diet specialization,eupentacta quinquesemita,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,eupentacta quinquesemita,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,eupentacta quinquesemita,rocky reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),evechinus chloroticus,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),evechinus chloroticus,feeding-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,evechinus chloroticus,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,evechinus chloroticus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,evechinus chloroticus,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),florometra serratissima,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,florometra serratissima,surface water,100
 echinoderms,specialisation,extreme diet specialization,florometra serratissima,specialists,100
 echinoderms,specialisation,within-stage dependent habitats + condition,florometra serratissima,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),gorgonocephalus eucnemis,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,gorgonocephalus eucnemis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,gorgonocephalus eucnemis,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris crassispina,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,heliocidaris crassispina,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris crassispina,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris crassispina,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris erythrogramma,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,heliocidaris erythrogramma,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris erythrogramma,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris erythrogramma,rocky reef,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris tuberculata,feding,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris tuberculata,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,heliocidaris tuberculata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris tuberculata,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,heliocidaris tuberculata,rocky reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),holopneustes purpurascens,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holopneustes purpurascens,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,holopneustes purpurascens,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,holopneustes purpurascens,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (halodeima) atra,feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,holothuria (halodeima) atra,surface water,100
 echinoderms,specialisation,extreme diet specialization,holothuria (halodeima) atra,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (halodeima) atra,subtidal soft bottom,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (metriatyla) scabra,feeding auricularia and non feedig doliolaria,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (metriatyla) scabra,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,holothuria (metriatyla) scabra,surface water,100
 echinoderms,specialisation,extreme diet specialization,holothuria (metriatyla) scabra,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (metriatyla) scabra,subtidal soft bottom,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (panningothuria) forskali,feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,holothuria (panningothuria) forskali,surface water,100
 echinoderms,specialisation,extreme diet specialization,holothuria (panningothuria) forskali,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (panningothuria) forskali,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,holothuria (panningothuria) forskali,subtidal soft bottom,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),leptopentacta elongata,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,leptopentacta elongata,surface water,100
 echinoderms,specialisation,extreme diet specialization,leptopentacta elongata,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,leptopentacta elongata,subtidal soft bottom,100
@@ -1756,34 +1788,36 @@ echinoderms,specialisation,across-stage dependent habitats + condition,leptosyna
 echinoderms,specialisation,extreme diet specialization,leptosynapta clarki,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,leptosynapta clarki,intertidal mud,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),loxechinus albus,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),loxechinus albus,feeding-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,loxechinus albus,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,loxechinus albus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,loxechinus albus,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra atyphoida,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra atyphoida,non-feeding larae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra atyphoida,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,meridiastra atyphoida,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,meridiastra atyphoida,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra calcar,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra calcar,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra calcar,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,meridiastra calcar,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,meridiastra calcar,rocky intertidal,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra gunnii,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra gunnii,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra gunnii,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,meridiastra gunnii,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,meridiastra gunnii,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra mortenseni,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra mortenseni,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra mortenseni,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,meridiastra mortenseni,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,meridiastra mortenseni,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra occidens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra occidens,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra occidens,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,meridiastra occidens,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,meridiastra occidens,rocky intertidal,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra oriens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra oriens,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra oriens,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,meridiastra oriens,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,meridiastra oriens,rocky intertidal,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),mesocentrotus franciscanus,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),mesocentrotus franciscanus,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,mesocentrotus franciscanus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,mesocentrotus franciscanus,rocky reef,100
 echinoderms,specialisation,across-stage dependent habitats + condition,molpadia intermedia,surface water,100
@@ -1791,130 +1825,161 @@ echinoderms,specialisation,extreme diet specialization,molpadia intermedia,speca
 echinoderms,specialisation,within-stage dependent habitats + condition,molpadia intermedia,deep soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,molpadia intermedia,subtidal soft bottom,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",odontaster validus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),odontaster validus,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),odontaster validus,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,odontaster validus,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,odontaster validus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,odontaster validus,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,odontaster validus,rocky intertidal,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma aethiops,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiocoma aethiops,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiocoma aethiops,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma echinata,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiocoma echinata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiocoma echinata,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma erinaceus,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiocoma erinaceus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiocoma erinaceus,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma scolopendrina,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiocoma scolopendrina,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiocoma scolopendrina,rocky intertidal,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocomella alexandri,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiocomella alexandri,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiocomella alexandri,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocomella ophiactoides,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiocomella ophiactoides,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiocomella ophiactoides,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocomella pumila,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiocomella pumila,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiocomella pumila,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix annulosa,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix annulosa,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix annulosa,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix caryophyllata,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix caryophyllata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix caryophyllata,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix elegans,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix elegans,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix elegans,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix endeani,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix endeani,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix endeani,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix janualis,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix janualis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix janualis,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix macroplaca,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix macroplaca,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix macroplaca,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix marshallensis,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix marshallensis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix marshallensis,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix mixta,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix mixta,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix mixta,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix occidentalis,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix occidentalis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix occidentalis,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix pictum,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix pictum,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix pictum,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix venosa,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix venosa,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix venosa,coral reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix wendtii,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiomastix wendtii,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiomastix wendtii,coral reef,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiopholis aculeata,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiopholis aculeata,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiopholis aculeata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiopholis aculeata,rocky reef,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiura sarsii,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiura sarsii,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,ophiura sarsii,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,ophiura sarsii,subtidal soft bottom,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",parvulastra exigua,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra exigua,non-feeding larvae in the benthos,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra exigua,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra exigua,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,parvulastra exigua,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,parvulastra exigua,rocky intertidal,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",parvulastra parvivipara,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra parvivipara,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra parvivipara,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra parvivipara,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,parvulastra parvivipara,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,parvulastra parvivipara,rocky intertidal,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",parvulastra vivipara,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra vivipara,non-feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra vivipara,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra vivipara,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,parvulastra vivipara,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,parvulastra vivipara,rocky intertidal,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria chilensis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria chilensis,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria chilensis,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,patiria chilensis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,patiria chilensis,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria miniata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria miniata,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria miniata,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,patiria miniata,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,patiria miniata,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria pectinifera,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria pectinifera,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria pectinifera,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,patiria pectinifera,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,patiria pectinifera,rocky reef,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiriella regularis,no,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiriella regularis,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,patiriella regularis,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,patiriella regularis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,patiriella regularis,rocky intertidal,100
 echinoderms,specialisation,within-stage dependent habitats + condition,patiriella regularis,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pentamera populifera,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,pentamera populifera,surface water,100
 echinoderms,specialisation,extreme diet specialization,pentamera populifera,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,pentamera populifera,subtidal soft bottom,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",pisaster ochraceus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pisaster ochraceus,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pisaster ochraceus,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pisaster ochraceus,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,pisaster ochraceus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,pisaster ochraceus,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,pisaster ochraceus,rocky intertidal,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),psammechinus miliaris,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),psammechinus miliaris,feeding-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,psammechinus miliaris,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,psammechinus miliaris,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,psammechinus miliaris,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pseudocnus lubricus,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,pseudocnus lubricus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,pseudocnus lubricus,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,pseudocnus lubricus,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),psolidium bullatum,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,psolidium bullatum,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,psolidium bullatum,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,psolidium bullatum,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),psolus chitonoides,non-feeding-non-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,psolus chitonoides,surface water,100
 echinoderms,specialisation,extreme diet specialization,psolus chitonoides,specalist,100
 echinoderms,specialisation,within-stage dependent habitats + condition,psolus chitonoides,subtidal soft bottom,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",pycnopodia helianthoides,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pycnopodia helianthoides,feeding larvae,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pycnopodia helianthoides,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pycnopodia helianthoides,no,100
 echinoderms,specialisation,across-stage dependent habitats + condition,pycnopodia helianthoides,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,pycnopodia helianthoides,rocky reef,100
 echinoderms,specialisation,within-stage dependent habitats + condition,pycnopodia helianthoides,rocky intertidal,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus droebachiensis,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus droebachiensis,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,strongylocentrotus droebachiensis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,strongylocentrotus droebachiensis,rocky reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus fragilis,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus fragilis,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,strongylocentrotus fragilis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,strongylocentrotus fragilis,subtidal soft bottom,100
 echinoderms,specialisation,within-stage dependent habitats + condition,strongylocentrotus fragilis,deep soft bottom,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus pallidus,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus pallidus,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,strongylocentrotus pallidus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,strongylocentrotus pallidus,rocky reef,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus purpuratus,senstive,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus purpuratus,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,strongylocentrotus purpuratus,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,strongylocentrotus purpuratus,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),tripneustes gratilla,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,tripneustes gratilla,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,tripneustes gratilla,rocky reef,100
+echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),tripneustes kermadecensis,feeding-calcifier,100
 echinoderms,specialisation,across-stage dependent habitats + condition,tripneustes kermadecensis,surface water,100
 echinoderms,specialisation,within-stage dependent habitats + condition,tripneustes kermadecensis,rocky reef,100
 elasmobranchs,specialisation,across-stage dependent habitats + condition,aetobatus,coral reef,135
@@ -3587,7 +3652,6 @@ elasmobranchs,specialisation,within-stage dependent habitats + condition,zearaja
 elasmobranchs,specialisation,within-stage dependent habitats + condition,zearaja maugeana,rocky reef,135
 elasmobranchs,specialisation,within-stage dependent habitats + condition,zearaja maugeana,hard shelf,135
 elasmobranchs,specialisation,within-stage dependent habitats + condition,zearaja maugeana,soft shelf,135
-fish,r (reproductive traits),feeding larva (post-hatching metamorphosis),acanthochromis polyacanthus,hatch as small feeding juveniles,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
 fish,specialisation,across-stage dependent habitats + condition,acanthochromis polyacanthus,coral reef,115
 fish,specialisation,within-stage dependent habitats + condition,acanthochromis polyacanthus,coral reef,115
@@ -4576,6 +4640,7 @@ molluscs,specialisation,within-stage dependent habitats + condition,aplysia vacc
 molluscs,biophysical traits,respiration structures,argopecten irradians,filterfeeder,46
 molluscs,specialisation,across-stage dependent habitats + condition,argopecten irradians,surface water,46
 molluscs,specialisation,within-stage dependent habitats + condition,argopecten irradians,benthic,46
+molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),austrocochlea porcata,feeding,46
 molluscs,specialisation,across-stage dependent habitats + condition,austrocochlea porcata,surface water,46
 molluscs,specialisation,within-stage dependent habitats + condition,austrocochlea porcata,rocky intertidal,46
 molluscs,specialisation,within-stage dependent habitats + condition,austrocochlea porcata,rocky reef,46
@@ -4611,6 +4676,7 @@ molluscs,specialisation,within-stage dependent habitats + condition,haliotis rub
 molluscs,specialisation,across-stage dependent habitats + condition,lottia scutum,surface water,46
 molluscs,specialisation,within-stage dependent habitats + condition,lottia scutum,rocky intertidal,46
 molluscs,specialisation,within-stage dependent habitats + condition,lottia scutum,rocky reef,46
+molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),lunella undulata,feeding,46
 molluscs,specialisation,across-stage dependent habitats + condition,lunella undulata,surface water,46
 molluscs,specialisation,within-stage dependent habitats + condition,lunella undulata,rocky intertidal,46
 molluscs,specialisation,within-stage dependent habitats + condition,lunella undulata,rocky reef,46
@@ -4739,7 +4805,6 @@ plants_algae,specialisation,air-sea interface,posidonia australis,yes-although n
 polychaetes,biophysical traits,respiration structures,sabellidae,filter feeder,4
 reptiles,foraging range,"if one/few, size",acrochordus,few,16
 reptiles,physiological tolerance breadths,salinity,acrochordus,broad,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),acrochordus,no,16
 reptiles,specialisation,across-stage dependent habitats + condition,acrochordus,seagrass,16
 reptiles,specialisation,across-stage dependent habitats + condition,acrochordus,intertidal mud,16
 reptiles,specialisation,across-stage dependent habitats + condition,acrochordus,mangrove,16
@@ -4780,7 +4845,6 @@ reptiles,specialisation,within-stage dependent habitats + condition,chelonia myd
 reptiles,specialisation,within-stage dependent habitats + condition,chelonia mydas,surface water,16
 reptiles,specialisation,within-stage dependent habitats + condition,chelonia mydas,beach,16
 reptiles,specialisation,within-stage dependent habitats + condition,chelonia mydas,continental shelf,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),crocodylus acutus,no,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus acutus,hatchling maternal dependence,16
 reptiles,specialisation,across-stage dependent habitats + condition,crocodylus acutus,mangrove,16
 reptiles,specialisation,across-stage dependent habitats + condition,crocodylus acutus,beach,16
@@ -4790,7 +4854,6 @@ reptiles,specialisation,within-stage dependent habitats + condition,crocodylus a
 reptiles,specialisation,within-stage dependent habitats + condition,crocodylus acutus,beach,16
 reptiles,specialisation,within-stage dependent habitats + condition,crocodylus acutus,intertidal mud,16
 reptiles,specialisation,within-stage dependent habitats + condition,crocodylus acutus,rocky intertidal,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),crocodylus porosus,no,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus porosus,hatchling maternal dependence,16
 reptiles,specialisation,across-stage dependent habitats + condition,crocodylus porosus,mangrove,16
 reptiles,specialisation,across-stage dependent habitats + condition,crocodylus porosus,beach,16
@@ -4811,7 +4874,6 @@ reptiles,specialisation,within-stage dependent habitats + condition,dermochelys 
 reptiles,specialisation,within-stage dependent habitats + condition,dermochelys coriacea,continental shelf,16
 reptiles,foraging range,"if one/few, size",elapidae,few,16
 reptiles,physiological tolerance breadths,salinity,elapidae,broad,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),elapidae,no,16
 reptiles,specialisation,across-stage dependent habitats + condition,elapidae,coral reef,16
 reptiles,specialisation,across-stage dependent habitats + condition,elapidae,seagrass,16
 reptiles,specialisation,across-stage dependent habitats + condition,elapidae,intertidal mud,16
@@ -4826,7 +4888,6 @@ reptiles,specialisation,within-stage dependent habitats + condition,elapidae,man
 reptiles,specialisation,within-stage dependent habitats + condition,elapidae,subtidal soft bottom,16
 reptiles,foraging range,"if one/few, size",ephalophis,few,16
 reptiles,physiological tolerance breadths,salinity,ephalophis,broad,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),ephalophis,no,16
 reptiles,specialisation,across-stage dependent habitats + condition,ephalophis,seagrass,16
 reptiles,specialisation,across-stage dependent habitats + condition,ephalophis,intertidal mud,16
 reptiles,specialisation,across-stage dependent habitats + condition,ephalophis,mangrove,16
@@ -4850,7 +4911,6 @@ reptiles,specialisation,within-stage dependent habitats + condition,eretmochelys
 reptiles,specialisation,within-stage dependent habitats + condition,eretmochelys imbricata,continental shelf,16
 reptiles,foraging range,"if one/few, size",hydrelaps,few,16
 reptiles,physiological tolerance breadths,salinity,hydrelaps,broad,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),hydrelaps,no,16
 reptiles,specialisation,across-stage dependent habitats + condition,hydrelaps,seagrass,16
 reptiles,specialisation,across-stage dependent habitats + condition,hydrelaps,intertidal mud,16
 reptiles,specialisation,across-stage dependent habitats + condition,hydrelaps,mangrove,16
@@ -4865,7 +4925,6 @@ reptiles,specialisation,within-stage dependent habitats + condition,hydrelaps,su
 reptiles,specialisation,within-stage dependent habitats + condition,hydrelaps,salt marsh,16
 reptiles,foraging range,"if one/few, size",laticauda,few,16
 reptiles,physiological tolerance breadths,salinity,laticauda,broad,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),laticauda,no,16
 reptiles,specialisation,across-stage dependent habitats + condition,laticauda,coral reef,16
 reptiles,specialisation,across-stage dependent habitats + condition,laticauda,rocky reef,16
 reptiles,specialisation,across-stage dependent habitats + condition,laticauda,rocky intertidal,16
@@ -4903,7 +4962,6 @@ reptiles,specialisation,within-stage dependent habitats + condition,natator depr
 reptiles,specialisation,within-stage dependent habitats + condition,natator depressa,continental shelf,16
 reptiles,foraging range,"if one/few, size",parahydrophis,few,16
 reptiles,physiological tolerance breadths,salinity,parahydrophis,broad,16
-reptiles,r (reproductive traits),feeding larva (post-hatching metamorphosis),parahydrophis,no,16
 reptiles,specialisation,across-stage dependent habitats + condition,parahydrophis,seagrass,16
 reptiles,specialisation,across-stage dependent habitats + condition,parahydrophis,intertidal mud,16
 reptiles,specialisation,across-stage dependent habitats + condition,parahydrophis,mangrove,16
@@ -5303,8 +5361,7 @@ sponges,biophysical traits,"navigation requirements (sound or light, or magnetic
 sponges,biophysical traits,respiration structures,demospongiae,filter feeding-used for gas exchange as well as acquisition of nutrients and expulsion of waste and of gamates or larvae,1
 sponges,physiological tolerance breadths,sensitivity to wave energy (physical forcing),demospongiae,sensitive can lead to fragmentation of adults,1
 sponges,r (reproductive traits),can the sex ratio be altered by a stressor?,demospongiae,probably no,1
-sponges,r (reproductive traits),feeding larva (post-hatching metamorphosis),demospongiae,non-feeding larvae metamorphosis,1
+sponges,r (reproductive traits),feeding larva (post-hatching metamorphosis),demospongiae,non-feeding non-calcifiers,1
 sponges,specialisation,light dependence,demospongiae,well yes,1
 sponges,specialisation,light dependence,demospongiae,because circadian rhythms entrained by light,1
 sponges,specialisation,light dependence,demospongiae,with effacts on multiple physiological factors,1
-sponges,specialisation,terrestrial and marine life stages,demospongiae,marine only,1

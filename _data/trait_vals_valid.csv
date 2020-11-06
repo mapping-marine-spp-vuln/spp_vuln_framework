@@ -63,8 +63,10 @@ r (reproductive traits),post-birth/hatching parental dependence,week-month
 r (reproductive traits),post-birth/hatching parental dependence,<week
 r (reproductive traits),post-birth/hatching parental dependence,na
 r (reproductive traits),post-birth/hatching parental dependence,unknown
-r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding
-r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding
+r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding calcifier
+r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding non-calcifier
+r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding calcifier
+r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding non-calcifier
 r (reproductive traits),feeding larva (post-hatching metamorphosis),no larva
 r (reproductive traits),feeding larva (post-hatching metamorphosis),na
 r (reproductive traits),feeding larva (post-hatching metamorphosis),unknown

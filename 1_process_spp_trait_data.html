@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Tue Oct 27 16:08:07 2020 by ohara" />
+<meta name="author" content="Compiled on Fri Nov 6 09:45:33 2020 by ohara" />
 
 
 <title>Process species trait data</title>
@@ -1287,21 +1287,21 @@ window.initializeCodeFolding = function(show) {
 
     // create a collapsable div to wrap the code in
     var div = $('<div class="collapse r-code-collapse"></div>');
-    show = (show || $(this).hasClass('fold-show')) && !$(this).hasClass('fold-hide');
-    if (show) div.addClass('in');
+    var showThis = (show || $(this).hasClass('fold-show')) && !$(this).hasClass('fold-hide');
+    if (showThis) div.addClass('in');
     var id = 'rcode-643E0F36' + currentIndex++;
     div.attr('id', id);
     $(this).before(div);
     $(this).detach().appendTo(div);
 
     // add a show code button right above
-    var showCodeText = $('<span>' + (show ? 'Hide' : 'Code') + '</span>');
+    var showCodeText = $('<span>' + (showThis ? 'Hide' : 'Code') + '</span>');
     var showCodeButton = $('<button type="button" class="btn btn-default btn-xs code-folding-btn pull-right"></button>');
     showCodeButton.append(showCodeText);
     showCodeButton
         .attr('data-toggle', 'collapse')
         .attr('data-target', '#' + id)
-        .attr('aria-expanded', show)
+        .attr('aria-expanded', showThis)
         .attr('aria-controls', id);
 
     var buttonRow = $('<div class="row"></div>');
@@ -1322,22 +1322,6 @@ window.initializeCodeFolding = function(show) {
   });
 
 }
-</script>
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
 </script>
 <script>(function() {
   // If window.HTMLWidgets is already defined, then use it; otherwise create a
@@ -2422,7 +2406,7 @@ HTMLWidgets.widget({
     if (data.caption) $table.prepend(data.caption);
 
     if (!data.selection) data.selection = {
-      mode: 'none', selected: null, target: 'row'
+      mode: 'none', selected: null, target: 'row', selectable: null
     };
     if (HTMLWidgets.shinyMode && data.selection.mode !== 'none' &&
         data.selection.target === 'row+column') {
@@ -2750,6 +2734,12 @@ HTMLWidgets.widget({
             // to avoid problems like 3.423/100 -> 0.034230000000000003
             return (x / scale).toFixed(d);
           };
+          var slider_min = function() {
+            return filter.noUiSlider('options').range.min;
+          };
+          var slider_max = function() {
+            return filter.noUiSlider('options').range.max;
+          };
           $input.on({
             focus: function() {
               $x0.show().trigger('show');
@@ -2772,7 +2762,7 @@ HTMLWidgets.widget({
               $x0.hide().trigger('hide');
             },
             input: function() {
-              if ($input.val() === '') filter.val([r1, r2]);
+              if ($input.val() === '') filter.val([slider_min(), slider_max()]);
             },
             change: function() {
               var v = $input.val().replace(/\s/g, '');
@@ -2782,8 +2772,8 @@ HTMLWidgets.widget({
                 $input.parent().addClass('has-error');
                 return;
               }
-              if (v[0] === '') v[0] = r1;
-              if (v[1] === '') v[1] = r2;
+              if (v[0] === '') v[0] = slider_min();
+              if (v[1] === '') v[1] = slider_max();
               $input.parent().removeClass('has-error');
               // treat date as UTC time at midnight
               var strTime = function(x) {
@@ -2799,8 +2789,8 @@ HTMLWidgets.widget({
                 v[0] = strTime(v[0]);
                 v[1] = strTime(v[1]);
               }
-              if (v[0] != r1) v[0] *= scale;
-              if (v[1] != r2) v[1] *= scale;
+              if (v[0] != slider_min()) v[0] *= scale;
+              if (v[1] != slider_max()) v[1] *= scale;
               filter.val(v);
             }
           });
@@ -2854,7 +2844,7 @@ HTMLWidgets.widget({
           var updateSlider = function(e) {
             var val = filter.val();
             // turn off filter if in full range
-            $td.data('filter', val[0] > r1 || val[1] < r2);
+            $td.data('filter', val[0] > slider_min() || val[1] < slider_max());
             var v1 = formatDate(val[0]), v2 = formatDate(val[1]), ival;
             if ($td.data('filter')) {
               ival = v1 + ' ... ' + v2;
@@ -3092,7 +3082,7 @@ HTMLWidgets.widget({
       id = el.id + '_' + id;
       if (type) id = id + ':' + type;
       // do not update if the new value is the same as old value
-      if (event !== 'cell_edit' && shinyData.hasOwnProperty(id) && shinyData[id] === JSON.stringify(value))
+      if (event !== 'cell_edit' && !/_clicked$/.test(event) && shinyData.hasOwnProperty(id) && shinyData[id] === JSON.stringify(value))
         return;
       shinyData[id] = JSON.stringify(value);
       if (HTMLWidgets.shinyMode && Shiny.setInputValue) {
@@ -3149,6 +3139,14 @@ HTMLWidgets.widget({
       return {row: info.row, col: info.column};
     }
 
+    var cleanSelectedValues = function() {
+      changeInput('rows_selected', []);
+      changeInput('columns_selected', []);
+      changeInput('cells_selected', transposeArray2D([]), 'shiny.matrix');
+    }
+    // #828 we should clean the selection on the server-side when the table reloads
+    cleanSelectedValues();
+
     // a flag to indicates if select extension is initialized or not
     var flagSelectExt = table.settings()[0]._select !== undefined;
     // the Select extension should only be used in the client mode and
@@ -3184,20 +3182,29 @@ HTMLWidgets.widget({
     }
 
     var selMode = data.selection.mode, selTarget = data.selection.target;
+    var selDisable = data.selection.selectable === false;
     if (inArray(selMode, ['single', 'multiple'])) {
       var selClass = inArray(data.style, ['bootstrap', 'bootstrap4']) ? 'active' : 'selected';
-      var selected = data.selection.selected, selected1, selected2;
       // selected1: row indices; selected2: column indices
-      if (selected === null) {
-        selected1 = selected2 = [];
-      } else if (selTarget === 'row') {
-        selected1 = $.makeArray(selected);
-      } else if (selTarget === 'column') {
-        selected2 = $.makeArray(selected);
-      } else if (selTarget === 'row+column') {
-        selected1 = $.makeArray(selected.rows);
-        selected2 = $.makeArray(selected.cols);
+      var initSel = function(x) {
+        if (x === null || typeof x === 'boolean' || selTarget === 'cell') {
+          return {rows: [], cols: []};
+        } else if (selTarget === 'row') {
+          return {rows: $.makeArray(x), cols: []};
+        } else if (selTarget === 'column') {
+          return {rows: [], cols: $.makeArray(x)};
+        } else if (selTarget === 'row+column') {
+          return {rows: $.makeArray(x.rows), cols: $.makeArray(x.cols)};
+        }
       }
+      var selected = data.selection.selected;
+      var selected1 = initSel(selected).rows, selected2 = initSel(selected).cols;
+      // selectable should contain either all positive or all non-positive values, not both
+      // positive values indicate "selectable" while non-positive values means "nonselectable"
+      // the assertion is performed on R side. (only column indicides could be zero which indicates
+      // the row name)
+      var selectable = data.selection.selectable;
+      var selectable1 = initSel(selectable).rows, selectable2 = initSel(selectable).cols;
 
       // After users reorder the rows or filter the table, we cannot use the table index
       // directly. Instead, we need this function to find out the rows between the two clicks.
@@ -3220,15 +3227,56 @@ HTMLWidgets.widget({
       // row, column, or cell selection
       var lastClickedRow;
       if (inArray(selTarget, ['row', 'row+column'])) {
+        // Get the current selected rows. It will also
+        // update the selected1's value based on the current row selection state
+        // Note we can't put this function inside selectRows() directly,
+        // the reason is method.selectRows() will override selected1's value but this
+        // function will add rows to selected1 (keep the existing selection), which is
+        // inconsistent with column and cell selection.
         var selectedRows = function() {
           var rows = table.rows('.' + selClass);
           var idx = rows.indexes().toArray();
-          if (!server) return addOne(idx);
+          if (!server) {
+            selected1 = addOne(idx);
+            return selected1;
+          }
           idx = idx.map(function(i) {
             return DT_rows_current[i];
           });
           selected1 = selMode === 'multiple' ? unique(selected1.concat(idx)) : idx;
           return selected1;
+        }
+        // Change selected1's value based on selectable1, then refresh the row state
+        var onlyKeepSelectableRows = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected1 = [];
+            return;
+          }
+          if (selectable1.length === 0) return;
+          var nonselectable = selectable1[0] <= 0;
+          if (nonselectable) {
+            // should make selectable1 positive
+            selected1 = $(selected1).not(selectable1.map(function(i) { return -i; })).get();
+          } else {
+            selected1 = $(selected1).filter(selectable1).get();
+          }
+        }
+        // Change selected1's value based on selectable1, then
+        // refresh the row selection state according to values in selected1
+        var selectRows = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableRows();
+          table.$('tr.' + selClass).removeClass(selClass);
+          if (selected1.length === 0) return;
+          if (server) {
+            table.rows({page: 'current'}).every(function() {
+              if (inArray(DT_rows_current[this.index()], selected1)) {
+                $(this.node()).addClass(selClass);
+              }
+            });
+          } else {
+            var selected0 = selected1.map(function(i) { return i - 1; });
+            $(table.rows(selected0).nodes()).addClass(selClass);
+          }
         }
         table.on('mousedown.dt', 'tbody tr', function(e) {
           var $this = $(this), thisRow = table.row(this);
@@ -3281,33 +3329,21 @@ HTMLWidgets.widget({
             // remove id from selected1 since its class .selected has been removed
             if (inArray(id, selected1)) selected1.splice($.inArray(id, selected1), 1);
           }
-          changeInput('rows_selected', selectedRows());
-          changeInput('row_last_clicked', serverRowIndex(thisRow.index()));
+          selectedRows(); // update selected1's value based on selClass
+          selectRows(false); // only keep the selectable rows
+          changeInput('rows_selected', selected1);
+          changeInput('row_last_clicked', serverRowIndex(thisRow.index()), null, null, {priority: 'event'});
           lastClickedRow = serverRowIndex(thisRow.index());
         });
-        changeInput('rows_selected', selected1);
-        var selectRows = function() {
-          table.$('tr.' + selClass).removeClass(selClass);
-          if (selected1.length === 0) return;
-          if (server) {
-            table.rows({page: 'current'}).every(function() {
-              if (inArray(DT_rows_current[this.index()], selected1)) {
-                $(this.node()).addClass(selClass);
-              }
-            });
-          } else {
-            var selected0 = selected1.map(function(i) { return i - 1; });
-            $(table.rows(selected0).nodes()).addClass(selClass);
-          }
-        }
-        selectRows();  // in case users have specified pre-selected rows
+        selectRows(false);  // in case users have specified pre-selected rows
         // restore selected rows after the table is redrawn (e.g. sort/search/page);
         // client-side tables will preserve the selections automatically; for
         // server-side tables, we have to *real* row indices are in `selected1`
-        if (server) table.on('draw.dt', selectRows);
-        methods.selectRows = function(selected) {
+        changeInput('rows_selected', selected1);
+        if (server) table.on('draw.dt', function(e) { selectRows(false); });
+        methods.selectRows = function(selected, ignoreSelectable) {
           selected1 = $.makeArray(selected);
-          selectRows();
+          selectRows(ignoreSelectable);
           changeInput('rows_selected', selected1);
         }
       }
@@ -3315,6 +3351,34 @@ HTMLWidgets.widget({
       if (inArray(selTarget, ['column', 'row+column'])) {
         if (selTarget === 'row+column') {
           $(table.columns().footer()).css('cursor', 'pointer');
+        }
+        // update selected2's value based on selectable2
+        var onlyKeepSelectableCols = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected2 = [];
+            return;
+          }
+          if (selectable2.length === 0) return;
+          var nonselectable = selectable2[0] <= 0;
+          if (nonselectable) {
+            // need to make selectable2 positive
+            selected2 = $(selected2).not(selectable2.map(function(i) { return -i; })).get();
+          } else {
+            selected2 = $(selected2).filter(selectable2).get();
+          }
+        }
+        // update selected2 and then
+        // refresh the col selection state according to values in selected2
+        var selectCols = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableCols();
+          // if selected2 is not a valide index (e.g., larger than the column number)
+          // table.columns(selected2) will fail and result in a blank table
+          // this is different from the table.rows(), where the out-of-range indexes
+          // doesn't affect at all
+          selected2 = $(selected2).filter(table.columns().indexes()).get();
+          table.columns().nodes().flatten().to$().removeClass(selClass);
+          if (selected2.length > 0)
+            table.columns(selected2).nodes().flatten().to$().addClass(selClass);
         }
         var callback = function() {
           var colIdx = selTarget === 'column' ? table.cell(this).index().column :
@@ -3329,6 +3393,7 @@ HTMLWidgets.widget({
             thisCol.addClass(selClass);
             selected2 = selMode === 'single' ? [colIdx] : unique(selected2.concat([colIdx]));
           }
+          selectCols(false); // update selected2 based on selectable
           changeInput('columns_selected', selected2);
         }
         if (selTarget === 'column') {
@@ -3336,49 +3401,51 @@ HTMLWidgets.widget({
         } else {
           $(table.table().footer()).on('click.dt', 'tr th', callback);
         }
+        selectCols(false);  // in case users have specified pre-selected columns
         changeInput('columns_selected', selected2);
-        var selectCols = function() {
-          table.columns().nodes().flatten().to$().removeClass(selClass);
-          if (selected2.length > 0)
-            table.columns(selected2).nodes().flatten().to$().addClass(selClass);
-        }
-        selectCols();  // in case users have specified pre-selected columns
-        if (server) table.on('draw.dt', selectCols);
-        methods.selectColumns = function(selected) {
+        if (server) table.on('draw.dt', function(e) { selectCols(false); });
+        methods.selectColumns = function(selected, ignoreSelectable) {
           selected2 = $.makeArray(selected);
-          selectCols();
+          selectCols(ignoreSelectable);
           changeInput('columns_selected', selected2);
         }
       }
 
       if (selTarget === 'cell') {
-        var selected3;
-        if (selected === null) {
-          selected3 = [];
-        } else {
-          selected3 = selected;
-        }
-        var findIndex = function(ij) {
-          for (var i = 0; i < selected3.length; i++) {
-            if (ij[0] === selected3[i][0] && ij[1] === selected3[i][1]) return i;
+        var selected3 = [], selectable3 = [];
+        if (selected !== null) selected3 = selected;
+        if (selectable !== null && typeof selectable !== 'boolean') selectable3 = selectable;
+        var findIndex = function(ij, sel) {
+          for (var i = 0; i < sel.length; i++) {
+            if (ij[0] === sel[i][0] && ij[1] === sel[i][1]) return i;
           }
           return -1;
         }
-        table.on('click.dt', 'tbody td', function() {
-          var $this = $(this), info = tweakCellIndex(table.cell(this));
-          if ($this.hasClass(selClass)) {
-            $this.removeClass(selClass);
-            selected3.splice(findIndex([info.row, info.col]), 1);
-          } else {
-            if (selMode === 'single') $(table.cells().nodes()).removeClass(selClass);
-            $this.addClass(selClass);
-            selected3 = selMode === 'single' ? [[info.row, info.col]] :
-              unique(selected3.concat([[info.row, info.col]]));
+         // Change selected3's value based on selectable3, then refresh the cell state
+        var onlyKeepSelectableCells = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected3 = [];
+            return;
           }
-          changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
-        });
-        changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
-        var selectCells = function() {
+          if (selectable3.length === 0) return;
+          var nonselectable = selectable3[0][0] <= 0;
+          var out = [];
+          if (nonselectable) {
+            selected3.map(function(ij) {
+              // should make selectable3 positive
+              if (findIndex([-ij[0], -ij[1]], selectable3) === -1) { out.push(ij); }
+            });
+          } else {
+            selected3.map(function(ij) {
+              if (findIndex(ij, selectable3) > -1) { out.push(ij); }
+            });
+          }
+          selected3 = out;
+        }
+        // Change selected3's value based on selectable3, then
+        // refresh the cell selection state according to values in selected3
+        var selectCells = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableCells();
           table.$('td.' + selClass).removeClass(selClass);
           if (selected3.length === 0) return;
           if (server) {
@@ -3393,11 +3460,27 @@ HTMLWidgets.widget({
             });
           }
         };
-        selectCells();  // in case users have specified pre-selected columns
-        if (server) table.on('draw.dt', selectCells);
-        methods.selectCells = function(selected) {
+        table.on('click.dt', 'tbody td', function() {
+          var $this = $(this), info = tweakCellIndex(table.cell(this));
+          if ($this.hasClass(selClass)) {
+            $this.removeClass(selClass);
+            selected3.splice(findIndex([info.row, info.col], selected3), 1);
+          } else {
+            if (selMode === 'single') $(table.cells().nodes()).removeClass(selClass);
+            $this.addClass(selClass);
+            selected3 = selMode === 'single' ? [[info.row, info.col]] :
+              unique(selected3.concat([[info.row, info.col]]));
+          }
+          selectCells(false); // must call this to update selected3 based on selectable3
+          changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
+        });
+        selectCells(false);  // in case users have specified pre-selected columns
+        changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
+
+        if (server) table.on('draw.dt', function(e) { selectCells(false); });
+        methods.selectCells = function(selected, ignoreSelectable) {
           selected3 = selected ? selected : [];
-          selectCells();
+          selectCells(ignoreSelectable);
           changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
         }
       }
@@ -3449,7 +3532,7 @@ HTMLWidgets.widget({
     }
     // the current cell clicked on
     table.on('click.dt', 'tbody td', function() {
-      changeInput('cell_clicked', cellInfo(this));
+      changeInput('cell_clicked', cellInfo(this), null, null, {priority: 'event'});
     })
     changeInput('cell_clicked', {});
 
@@ -3458,7 +3541,7 @@ HTMLWidgets.widget({
       if (this.className === '') e.stopPropagation();
     });
 
-    methods.addRow = function(data, rowname) {
+    methods.addRow = function(data, rowname, resetPaging) {
       var data0 = table.row(0).data(), n = data0.length, d = n - data.length;
       if (d === 1) {
         data = rowname.concat(data)
@@ -3467,7 +3550,7 @@ HTMLWidgets.widget({
         console.log(data0);
         throw 'New data must be of the same length as current data (' + n + ')';
       };
-      table.row.add(data).draw();
+      table.row.add(data).draw(resetPaging);
     }
 
     methods.updateSearch = function(keywords) {
@@ -3813,12 +3896,77 @@ In here, put in a link to repo and website?
 [Citation policy](https://github.com/OHI-Science/ohiprep/releases)
 -->
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      a.sourceLine { display: inline-block; line-height: 1.25; }
+  a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+  a.sourceLine:empty { height: 1.2em; }
+  .sourceCode { overflow: visible; }
+  code.sourceCode { white-space: pre; position: relative; }
+  div.sourceCode { margin: 1em 0; }
+  pre.sourceCode { margin: 0; }
+  @media screen {
+  div.sourceCode { overflow: auto; }
+  }
+  @media print {
+  code.sourceCode { white-space: pre-wrap; }
+  a.sourceLine { text-indent: -1em; padding-left: 1em; }
+  }
+  pre.numberSource a.sourceLine
+    { position: relative; left: -4em; }
+  pre.numberSource a.sourceLine::before
+    { content: attr(title);
+      position: relative; left: -1em; text-align: right; vertical-align: baseline;
+      border: none; pointer-events: all; display: inline-block;
+      -webkit-touch-callout: none; -webkit-user-select: none;
+      -khtml-user-select: none; -moz-user-select: none;
+      -ms-user-select: none; user-select: none;
+      padding: 0 4px; width: 4em;
+      color: #aaaaaa;
+    }
+  pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+  div.sourceCode
+    {  }
+  @media screen {
+  a.sourceLine::before { text-decoration: underline; }
+  }
+  code span.al { color: #ff0000; } /* Alert */
+  code span.an { color: #008000; } /* Annotation */
+  code span.at { } /* Attribute */
+  code span.bu { } /* BuiltIn */
+  code span.cf { color: #0000ff; } /* ControlFlow */
+  code span.ch { color: #008080; } /* Char */
+  code span.cn { } /* Constant */
+  code span.co { color: #008000; } /* Comment */
+  code span.cv { color: #008000; } /* CommentVar */
+  code span.do { color: #008000; } /* Documentation */
+  code span.er { color: #ff0000; font-weight: bold; } /* Error */
+  code span.ex { } /* Extension */
+  code span.im { } /* Import */
+  code span.in { color: #008000; } /* Information */
+  code span.kw { color: #0000ff; } /* Keyword */
+  code span.op { } /* Operator */
+  code span.ot { color: #ff4000; } /* Other */
+  code span.pp { color: #ff4000; } /* Preprocessor */
+  code span.sc { color: #008080; } /* SpecialChar */
+  code span.ss { color: #008080; } /* SpecialString */
+  code span.st { color: #008080; } /* String */
+  code span.va { } /* Variable */
+  code span.vs { color: #008080; } /* VerbatimString */
+  code span.wa { color: #008000; font-weight: bold; } /* Warning */
+    </style>
+
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -3828,16 +3976,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -3846,9 +3992,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; } /* Alert */
 code span.an { color: #008000; } /* Annotation */
@@ -4133,15 +4279,15 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Process species trait data</h1>
-<h4 class="author"><em>Compiled on Tue Oct 27 16:08:07 2020 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Fri Nov 6 09:45:33 2020 by ohara</em></h4>
 
 </div>
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">fig.width =</span> <span class="dv">6</span>, <span class="dt">fig.height =</span> <span class="dv">4</span>, <span class="dt">fig.path =</span> <span class="st">&#39;figs/&#39;</span>,</span>
-<span id="cb1-2"><a href="#cb1-2"></a>                      <span class="dt">echo =</span> <span class="ot">TRUE</span>, <span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/oharac/src/master/R/common.R&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">fig.width =</span> <span class="dv">6</span>, <span class="dt">fig.height =</span> <span class="dv">4</span>, <span class="dt">fig.path =</span> <span class="st">&#39;figs/&#39;</span>,</a>
+<a class="sourceLine" id="cb1-2" title="2">                      <span class="dt">echo =</span> <span class="ot">TRUE</span>, <span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/oharac/src/master/R/common.R&#39;</span>)</a></code></pre></div>
 <div id="summary" class="section level1">
 <h1><span class="header-section-number">1</span> Summary</h1>
 <p>Read in Excel spreadsheets of taxonomic traits filled in by taxon experts. Process into a long/tidy format with checks on validity of category values. Identify categories that were assigned non-valid values.</p>
@@ -4153,84 +4299,84 @@ div.tocify {
 <div id="methods" class="section level1">
 <h1><span class="header-section-number">3</span> Methods</h1>
 <p>Read in csvs one at a time, convert to long format, bind into a single dataframe with minimal processing.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>spp_csvs &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="kw">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs&#39;</span>), </span>
-<span id="cb2-2"><a href="#cb2-2"></a>                       <span class="dt">pattern =</span> <span class="st">&#39;spp_traits&#39;</span>,</span>
-<span id="cb2-3"><a href="#cb2-3"></a>                       <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a>taxa &lt;-<span class="st"> </span><span class="kw">basename</span>(spp_csvs) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_replace_all</span>(<span class="st">&#39;spp_traits_|.csv&#39;</span>, <span class="st">&#39;&#39;</span>)</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>process_csv &lt;-<span class="st"> </span><span class="cf">function</span>(f) { <span class="co">### f &lt;- spp_csvs[1]</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a>  x &lt;-<span class="st"> </span><span class="kw">read_csv</span>(f) <span class="op">%&gt;%</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="st">    </span><span class="kw">gather</span>(spp_gp, trait_value, <span class="op">-</span>category, <span class="op">-</span>trait)</span>
-<span id="cb2-10"><a href="#cb2-10"></a>}</span>
-<span id="cb2-11"><a href="#cb2-11"></a></span>
-<span id="cb2-12"><a href="#cb2-12"></a>spp_data_raw &lt;-<span class="st"> </span><span class="kw">lapply</span>(spp_csvs, <span class="dt">FUN =</span> process_csv) <span class="op">%&gt;%</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="st">  </span><span class="kw">setNames</span>(taxa) <span class="op">%&gt;%</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="st">  </span><span class="kw">bind_rows</span>(<span class="dt">.id =</span> <span class="st">&#39;taxon&#39;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trait_value =</span> <span class="kw">str_split</span>(trait_value, <span class="dt">pattern =</span> <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="st">  </span><span class="kw">unnest</span>(trait_value)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">spp_csvs &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="kw">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs&#39;</span>), </a>
+<a class="sourceLine" id="cb2-2" title="2">                       <span class="dt">pattern =</span> <span class="st">&#39;spp_traits&#39;</span>,</a>
+<a class="sourceLine" id="cb2-3" title="3">                       <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-4" title="4"></a>
+<a class="sourceLine" id="cb2-5" title="5">taxa &lt;-<span class="st"> </span><span class="kw">basename</span>(spp_csvs) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">str_replace_all</span>(<span class="st">&#39;spp_traits_|.csv&#39;</span>, <span class="st">&#39;&#39;</span>)</a>
+<a class="sourceLine" id="cb2-6" title="6"></a>
+<a class="sourceLine" id="cb2-7" title="7">process_csv &lt;-<span class="st"> </span><span class="cf">function</span>(f) { <span class="co">### f &lt;- spp_csvs[1]</span></a>
+<a class="sourceLine" id="cb2-8" title="8">  x &lt;-<span class="st"> </span><span class="kw">read_csv</span>(f) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="st">    </span><span class="kw">gather</span>(spp_gp, trait_value, <span class="op">-</span>category, <span class="op">-</span>trait)</a>
+<a class="sourceLine" id="cb2-10" title="10">}</a>
+<a class="sourceLine" id="cb2-11" title="11"></a>
+<a class="sourceLine" id="cb2-12" title="12">spp_data_raw &lt;-<span class="st"> </span><span class="kw">lapply</span>(spp_csvs, <span class="dt">FUN =</span> process_csv) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="st">  </span><span class="kw">setNames</span>(taxa) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="st">  </span><span class="kw">bind_rows</span>(<span class="dt">.id =</span> <span class="st">&#39;taxon&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trait_value =</span> <span class="kw">str_split</span>(trait_value, <span class="dt">pattern =</span> <span class="st">&#39;;&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="st">  </span><span class="kw">unnest</span>(trait_value)</a></code></pre></div>
 <p>Get the valid trait values from the key and bind with the noted traits to compare validity. For non-mutually-exclusive traits, if a species or group has multiple values noted, calculate a probability of each value. For example, if fecundity for a genus is scored as “&lt;1, 1-2, 2-5” score it as if a species in that genus has a 33.3% probability of any particular value.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>traitvals_valid &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;_data/trait_vals_valid.csv&#39;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>non_mut_excl &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;adult_mobility&#39;</span>, <span class="st">&#39;biomineral&#39;</span>, </span>
-<span id="cb3-4"><a href="#cb3-4"></a>                  <span class="st">&#39;calcium_carbonate_structure_location&#39;</span>, </span>
-<span id="cb3-5"><a href="#cb3-5"></a>                  <span class="st">&#39;depth_min_max&#39;</span>, <span class="st">&#39;respiration_structures&#39;</span>, </span>
-<span id="cb3-6"><a href="#cb3-6"></a>                  <span class="st">&#39;across_stage_dependent_habitats_condition&#39;</span>, </span>
-<span id="cb3-7"><a href="#cb3-7"></a>                  <span class="st">&#39;within_stage_dependent_habitats_condition&#39;</span>, <span class="st">&#39;zone&#39;</span>)</span>
-<span id="cb3-8"><a href="#cb3-8"></a></span>
-<span id="cb3-9"><a href="#cb3-9"></a>spp_validcheck &lt;-<span class="st"> </span>spp_data_raw <span class="op">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="st">  </span><span class="kw">left_join</span>(traitvals_valid <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="st">              </span><span class="kw">mutate</span>(<span class="dt">valid =</span> <span class="ot">TRUE</span>), <span class="co">### add flag to detect unmatched values</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a>            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;category&#39;</span>, <span class="st">&#39;trait&#39;</span>, <span class="st">&#39;trait_value&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(spp_gp)) <span class="op">%&gt;%</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="st">  </span><span class="kw">filter</span>(trait_value <span class="op">!=</span><span class="st"> &#39;&#39;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="st">  </span><span class="kw">group_by</span>(taxon) <span class="op">%&gt;%</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n_spp_gps =</span> <span class="kw">n_distinct</span>(spp_gp))</span>
-<span id="cb3-17"><a href="#cb3-17"></a></span>
-<span id="cb3-18"><a href="#cb3-18"></a>spp_invalid &lt;-<span class="st"> </span>spp_validcheck <span class="op">%&gt;%</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(valid)) <span class="op">%&gt;%</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="st">  </span><span class="kw">filter</span>(trait_value <span class="op">!=</span><span class="st"> &#39;na&#39;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>valid)</span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="kw">write_csv</span>(spp_invalid, <span class="st">&#39;invalid_spp_trait_values.csv&#39;</span>)</span>
-<span id="cb3-23"><a href="#cb3-23"></a></span>
-<span id="cb3-24"><a href="#cb3-24"></a>spp_valid &lt;-<span class="st"> </span>spp_validcheck <span class="op">%&gt;%</span></span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="st">  </span><span class="kw">filter</span>(valid) <span class="op">%&gt;%</span></span>
-<span id="cb3-26"><a href="#cb3-26"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>valid) <span class="op">%&gt;%</span></span>
-<span id="cb3-27"><a href="#cb3-27"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">category =</span> <span class="kw">str_replace_all</span>(category, <span class="st">&#39;[^A-Za-z0-9]+&#39;</span>, <span class="st">&#39;_&#39;</span>),</span>
-<span id="cb3-28"><a href="#cb3-28"></a>         <span class="dt">category =</span> <span class="kw">str_replace_all</span>(category, <span class="st">&#39;^_|_$&#39;</span>, <span class="st">&#39;&#39;</span>),</span>
-<span id="cb3-29"><a href="#cb3-29"></a>         <span class="dt">trait    =</span> <span class="kw">str_replace_all</span>(trait, <span class="st">&#39;[^A-Za-z0-9]+&#39;</span>, <span class="st">&#39;_&#39;</span>),</span>
-<span id="cb3-30"><a href="#cb3-30"></a>         <span class="dt">trait    =</span> <span class="kw">str_replace_all</span>(trait, <span class="st">&#39;^_|_$&#39;</span>, <span class="st">&#39;&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_gp =</span> <span class="kw">str_replace_all</span>(spp_gp, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">n&#39;</span>, <span class="st">&#39; &#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a><span class="st">  </span><span class="kw">group_by</span>(trait, spp_gp) <span class="op">%&gt;%</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trait_prob =</span> <span class="kw">ifelse</span>(trait <span class="op">%in%</span><span class="st"> </span>non_mut_excl, <span class="dv">1</span>, <span class="dv">1</span><span class="op">/</span><span class="kw">n_distinct</span>(trait_value))) <span class="op">%&gt;%</span></span>
-<span id="cb3-34"><a href="#cb3-34"></a><span class="st">  </span><span class="kw">ungroup</span>()</span>
-<span id="cb3-35"><a href="#cb3-35"></a></span>
-<span id="cb3-36"><a href="#cb3-36"></a><span class="co"># spp_valid$spp_gp %&gt;% n_distinct()</span></span>
-<span id="cb3-37"><a href="#cb3-37"></a></span>
-<span id="cb3-38"><a href="#cb3-38"></a><span class="kw">write_csv</span>(spp_valid, <span class="st">&#39;_data/spp_traits_valid.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">traitvals_valid &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;_data/trait_vals_valid.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2"></a>
+<a class="sourceLine" id="cb3-3" title="3">non_mut_excl &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;adult_mobility&#39;</span>, <span class="st">&#39;biomineral&#39;</span>, </a>
+<a class="sourceLine" id="cb3-4" title="4">                  <span class="st">&#39;calcium_carbonate_structure_location&#39;</span>, </a>
+<a class="sourceLine" id="cb3-5" title="5">                  <span class="st">&#39;depth_min_max&#39;</span>, <span class="st">&#39;respiration_structures&#39;</span>, </a>
+<a class="sourceLine" id="cb3-6" title="6">                  <span class="st">&#39;across_stage_dependent_habitats_condition&#39;</span>, </a>
+<a class="sourceLine" id="cb3-7" title="7">                  <span class="st">&#39;within_stage_dependent_habitats_condition&#39;</span>, <span class="st">&#39;zone&#39;</span>)</a>
+<a class="sourceLine" id="cb3-8" title="8"></a>
+<a class="sourceLine" id="cb3-9" title="9">spp_validcheck &lt;-<span class="st"> </span>spp_data_raw <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-10" title="10"><span class="st">  </span><span class="kw">left_join</span>(traitvals_valid <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-11" title="11"><span class="st">              </span><span class="kw">mutate</span>(<span class="dt">valid =</span> <span class="ot">TRUE</span>), <span class="co">### add flag to detect unmatched values</span></a>
+<a class="sourceLine" id="cb3-12" title="12">            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;category&#39;</span>, <span class="st">&#39;trait&#39;</span>, <span class="st">&#39;trait_value&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-13" title="13"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(spp_gp)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-14" title="14"><span class="st">  </span><span class="kw">filter</span>(trait_value <span class="op">!=</span><span class="st"> &#39;&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="st">  </span><span class="kw">group_by</span>(taxon) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">n_spp_gps =</span> <span class="kw">n_distinct</span>(spp_gp))</a>
+<a class="sourceLine" id="cb3-17" title="17"></a>
+<a class="sourceLine" id="cb3-18" title="18">spp_invalid &lt;-<span class="st"> </span>spp_validcheck <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-19" title="19"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(valid)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-20" title="20"><span class="st">  </span><span class="kw">filter</span>(trait_value <span class="op">!=</span><span class="st"> &#39;na&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-21" title="21"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>valid)</a>
+<a class="sourceLine" id="cb3-22" title="22"><span class="kw">write_csv</span>(spp_invalid, <span class="st">&#39;invalid_spp_trait_values.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb3-23" title="23"></a>
+<a class="sourceLine" id="cb3-24" title="24">spp_valid &lt;-<span class="st"> </span>spp_validcheck <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-25" title="25"><span class="st">  </span><span class="kw">filter</span>(valid) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-26" title="26"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>valid) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-27" title="27"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">category =</span> <span class="kw">str_replace_all</span>(category, <span class="st">&#39;[^A-Za-z0-9]+&#39;</span>, <span class="st">&#39;_&#39;</span>),</a>
+<a class="sourceLine" id="cb3-28" title="28">         <span class="dt">category =</span> <span class="kw">str_replace_all</span>(category, <span class="st">&#39;^_|_$&#39;</span>, <span class="st">&#39;&#39;</span>),</a>
+<a class="sourceLine" id="cb3-29" title="29">         <span class="dt">trait    =</span> <span class="kw">str_replace_all</span>(trait, <span class="st">&#39;[^A-Za-z0-9]+&#39;</span>, <span class="st">&#39;_&#39;</span>),</a>
+<a class="sourceLine" id="cb3-30" title="30">         <span class="dt">trait    =</span> <span class="kw">str_replace_all</span>(trait, <span class="st">&#39;^_|_$&#39;</span>, <span class="st">&#39;&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-31" title="31"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_gp =</span> <span class="kw">str_replace_all</span>(spp_gp, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">n&#39;</span>, <span class="st">&#39; &#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-32" title="32"><span class="st">  </span><span class="kw">group_by</span>(trait, spp_gp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-33" title="33"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trait_prob =</span> <span class="kw">ifelse</span>(trait <span class="op">%in%</span><span class="st"> </span>non_mut_excl, <span class="dv">1</span>, <span class="dv">1</span><span class="op">/</span><span class="kw">n_distinct</span>(trait_value))) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-34" title="34"><span class="st">  </span><span class="kw">ungroup</span>()</a>
+<a class="sourceLine" id="cb3-35" title="35"></a>
+<a class="sourceLine" id="cb3-36" title="36"><span class="co"># spp_valid$spp_gp %&gt;% n_distinct()</span></a>
+<a class="sourceLine" id="cb3-37" title="37"></a>
+<a class="sourceLine" id="cb3-38" title="38"><span class="kw">write_csv</span>(spp_valid, <span class="st">&#39;_data/spp_traits_valid.csv&#39;</span>)</a></code></pre></div>
 <p>There are 856 distinct species/species groups accounted for with at least some valid trait codes.</p>
 <div id="matched-traits---count-of-spp-with-matched-trait-values-by-trait" class="section level4">
 <h4><span class="header-section-number">3.0.0.1</span> Matched traits - count of spp with matched trait values by trait</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x &lt;-<span class="st"> </span>spp_valid <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="st">              </span><span class="kw">group_by</span>(trait, taxon) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="st">              </span><span class="kw">summarize</span>(<span class="dt">n_matches =</span> <span class="kw">n</span>(),</span>
-<span id="cb4-4"><a href="#cb4-4"></a>                        <span class="dt">n_spp_gps =</span> <span class="kw">first</span>(n_spp_gps),</span>
-<span id="cb4-5"><a href="#cb4-5"></a>                        <span class="dt">pct_match =</span> <span class="dv">100</span> <span class="op">*</span><span class="st"> </span>n_matches <span class="op">/</span><span class="st"> </span>n_spp_gps) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="st">              </span><span class="kw">arrange</span>(taxon, <span class="kw">desc</span>(pct_match))</span>
-<span id="cb4-7"><a href="#cb4-7"></a>DT<span class="op">::</span><span class="kw">datatable</span>(x)</span></code></pre></div>
-<div id="htmlwidget-c21517b2b4bd9179cd30" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c21517b2b4bd9179cd30">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","357","358","359","360","361","362","363","364","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","412","413","414","415","416","417","418","419","420","421","422","423","424","425","426","427","428","429","430","431","432","433","434","435","436","437","438","439","440","441","442","443","444","445","446","447","448","449","450","451","452","453","454","455","456","457","458","459","460","461","462","463","464","465","466"],["zone","depth_min_max","fecundity","planktonic_larval_duration_pld_exposure","feeding_larva_post_hatching_metamorphosis","eoo_range","adult_mobility","age_to_1st_reproduction_generation_time","air_sea_interface","are_there_sub_populations","biomineral","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","flight","global_population_size","lifetime_reproductive_opportunities","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","ph","post_birth_hatching_parental_dependence","reproductive_strategy","respiration_structures","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","max_age","parental_investment","adult_body_mass_body_size","if_one_few_size","sub_population_dependence_on_particular_sites","planktonic_larval_duration_pld_exposure","age_to_1st_reproduction_generation_time","adult_body_mass_body_size","adult_mobility","air_sea_interface","are_there_sub_populations","biomineral","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","fecundity","feeding_larva_post_hatching_metamorphosis","flight","global_population_size","lifetime_reproductive_opportunities","light_dependence","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","parental_investment","ph","post_birth_hatching_parental_dependence","reproductive_strategy","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","zone","respiration_structures","adult_mobility","biomineral","fecundity","global_population_size","adult_body_mass_body_size","calcium_carbonate_structure_location","sub_population_dependence_on_particular_sites","age_to_1st_reproduction_generation_time","can_the_sex_ratio_be_altered_by_a_stressor","eoo_range","lifetime_reproductive_opportunities","number_of_sites","parental_investment","ph","planktonic_larval_duration_pld_exposure","reproductive_strategy","zone","air_sea_interface","dissolved_oxygen","extreme_pressure_wave_sensitive_structures","light_dependence","number_of_sites_incl_terrestrial_wetlands","dependent_interspecific_interactions","respiration_structures","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","communication_requirement_sound","flight","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","are_there_sub_populations","extreme_diet_specialization","feeding_larva_post_hatching_metamorphosis","if_one_few_size","max_age","post_birth_hatching_parental_dependence","salinity","calcium_carbonate_structure_stages","depth_min_max","navigation_requirements_sound_or_light_or_magnetic","respiration_structures","global_population_size","planktonic_larval_duration_pld_exposure","reproductive_strategy","adult_body_mass_body_size","adult_mobility","air_sea_interface","biomineral","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","communication_requirement_sound","dissolved_oxygen","extreme_pressure_wave_sensitive_structures","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","ph","salinity","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","dependent_interspecific_interactions","eoo_range","lifetime_reproductive_opportunities","parental_investment","age_to_1st_reproduction_generation_time","are_there_sub_populations","depth_min_max","fecundity","max_age","zone","sensitivity_to_wave_energy_physical_forcing","extreme_diet_specialization","can_the_sex_ratio_be_altered_by_a_stressor","feeding_larva_post_hatching_metamorphosis","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","sub_population_dependence_on_particular_sites","adult_body_mass_body_size","fecundity","adult_mobility","zone","parental_investment","global_population_size","age_to_1st_reproduction_generation_time","air_sea_interface","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites_incl_terrestrial_wetlands","ph","planktonic_larval_duration_pld_exposure","reproductive_strategy","respiration_structures","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","can_the_sex_ratio_be_altered_by_a_stressor","feeding_larva_post_hatching_metamorphosis","are_there_sub_populations","max_age","lifetime_reproductive_opportunities","number_of_sites","if_one_few_size","sub_population_dependence_on_particular_sites","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","depth_min_max","zone","reproductive_strategy","sub_population_dependence_on_particular_sites","number_of_sites","lifetime_reproductive_opportunities","max_age","adult_body_mass_body_size","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","dissolved_oxygen","eoo_range","extreme_pressure_wave_sensitive_structures","parental_investment","ph","planktonic_larval_duration_pld_exposure","respiration_structures","thermal_sensitivity_to_heat_spikes_heat_waves","adult_mobility","age_to_1st_reproduction_generation_time","biomineral","communication_requirement_sound","fecundity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","dependent_interspecific_interactions","feeding_larva_post_hatching_metamorphosis","flight","are_there_sub_populations","can_the_sex_ratio_be_altered_by_a_stressor","salinity","navigation_requirements_sound_or_light_or_magnetic","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","extreme_diet_specialization","air_sea_interface","light_dependence","depth_min_max","number_of_sites_incl_terrestrial_wetlands","global_population_size","if_one_few_size","within_stage_dependent_habitats_condition","across_stage_dependent_habitats_condition","zone","age_to_1st_reproduction_generation_time","global_population_size","adult_mobility","lifetime_reproductive_opportunities","max_age","reproductive_strategy","adult_body_mass_body_size","air_sea_interface","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","communication_requirement_sound","dissolved_oxygen","parental_investment","planktonic_larval_duration_pld_exposure","respiration_structures","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","fecundity","flight","eoo_range","are_there_sub_populations","salinity","sub_population_dependence_on_particular_sites","extreme_diet_specialization","post_birth_hatching_parental_dependence","feeding_larva_post_hatching_metamorphosis","navigation_requirements_sound_or_light_or_magnetic","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","number_of_sites","number_of_sites_incl_terrestrial_wetlands","depth_min_max","thermal_sensitivity_to_heat_spikes_heat_waves","ph","dependent_interspecific_interactions","extreme_pressure_wave_sensitive_structures","light_dependence","can_the_sex_ratio_be_altered_by_a_stressor","if_one_few_size","biomineral","calcium_carbonate_structure_stages","zone","adult_body_mass_body_size","adult_mobility","age_to_1st_reproduction_generation_time","air_sea_interface","are_there_sub_populations","biomineral","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","fecundity","feeding_larva_post_hatching_metamorphosis","flight","global_population_size","lifetime_reproductive_opportunities","light_dependence","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","ph","planktonic_larval_duration_pld_exposure","post_birth_hatching_parental_dependence","reproductive_strategy","respiration_structures","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","parental_investment","depth_min_max","if_one_few_size","sub_population_dependence_on_particular_sites","fecundity","reproductive_strategy","global_population_size","lifetime_reproductive_opportunities","zone","adult_body_mass_body_size","adult_mobility","age_to_1st_reproduction_generation_time","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dissolved_oxygen","extreme_pressure_wave_sensitive_structures","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","parental_investment","ph","sub_population_dependence_on_particular_sites","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","are_there_sub_populations","biomineral","calcium_carbonate_structure_stages","depth_min_max","eoo_range","max_age","planktonic_larval_duration_pld_exposure","salinity","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","dependent_interspecific_interactions","if_one_few_size","post_birth_hatching_parental_dependence","sensitivity_to_wave_energy_physical_forcing","air_sea_interface","lifetime_reproductive_opportunities","fecundity","feeding_larva_post_hatching_metamorphosis","adult_body_mass_body_size","adult_mobility","age_to_1st_reproduction_generation_time","extreme_diet_specialization","max_age","planktonic_larval_duration_pld_exposure","post_birth_hatching_parental_dependence","reproductive_strategy","parental_investment","fecundity","sub_population_dependence_on_particular_sites","zone","parental_investment","global_population_size","if_one_few_size","number_of_sites_incl_terrestrial_wetlands","adult_body_mass_body_size","age_to_1st_reproduction_generation_time","air_sea_interface","calcium_carbonate_structure_location","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","flight","lifetime_reproductive_opportunities","light_dependence","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","ph","reproductive_strategy","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","calcium_carbonate_structure_stages","can_the_sex_ratio_be_altered_by_a_stressor","extreme_pressure_wave_sensitive_structures","respiration_structures","are_there_sub_populations","post_birth_hatching_parental_dependence","thermal_sensitivity_to_heat_spikes_heat_waves","adult_mobility","planktonic_larval_duration_pld_exposure","salinity","depth_min_max","feeding_larva_post_hatching_metamorphosis","extreme_diet_specialization","global_population_size","number_of_sites","lifetime_reproductive_opportunities","zone","max_age","sub_population_dependence_on_particular_sites","adult_mobility","adult_body_mass_body_size","fecundity","age_to_1st_reproduction_generation_time","eoo_range","post_birth_hatching_parental_dependence","depth_min_max","air_sea_interface","are_there_sub_populations","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","feeding_larva_post_hatching_metamorphosis","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites_incl_terrestrial_wetlands","parental_investment","ph","planktonic_larval_duration_pld_exposure","reproductive_strategy","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","respiration_structures","global_population_size","reproductive_strategy","adult_body_mass_body_size","age_to_1st_reproduction_generation_time","zone","adult_mobility","air_sea_interface","biomineral","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","depth_min_max","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","fecundity","flight","lifetime_reproductive_opportunities","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","parental_investment","planktonic_larval_duration_pld_exposure","post_birth_hatching_parental_dependence","salinity","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated"],["cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges"],[640,516,327,327,325,312,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,310,310,309,31,31,8,6,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,15,14,12,12,10,10,10,9,9,9,9,9,9,9,9,9,9,8,8,8,8,8,7,7,7,6,6,6,6,5,5,5,5,5,5,5,4,4,2,130,129,103,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99,99,99,99,97,97,97,94,94,88,84,80,76,70,43,24,190,172,154,151,141,138,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,134,133,130,129,127,17,6,4,2,1,177,156,141,126,121,117,115,115,115,115,115,115,115,115,115,115,115,114,114,114,114,114,114,114,113,113,113,112,111,110,108,107,103,96,96,73,69,67,66,5,1,78,67,66,63,63,63,62,61,61,61,61,61,61,61,61,61,61,61,60,60,59,57,56,56,52,51,46,43,42,41,41,40,32,28,27,27,27,25,4,2,88,55,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,45,40,16,16,8,8,7,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,2,2,2,2,1,8,5,5,4,4,4,4,4,4,4,4,3,30,30,27,19,18,17,17,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,15,15,15,15,14,14,14,11,10,10,8,8,3,194,161,130,125,103,100,92,86,79,77,63,63,51,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,49,3,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[205.787781350482,165.916398713826,105.144694533762,105.144694533762,104.501607717042,100.32154340836,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99.6784565916399,99.6784565916399,99.3569131832797,9.96784565916399,9.96784565916399,200,150,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,75,166.666666666667,155.555555555556,133.333333333333,133.333333333333,111.111111111111,111.111111111111,111.111111111111,100,100,100,100,100,100,100,100,100,100,88.8888888888889,88.8888888888889,88.8888888888889,88.8888888888889,88.8888888888889,77.7777777777778,77.7777777777778,77.7777777777778,66.6666666666667,66.6666666666667,66.6666666666667,66.6666666666667,55.5555555555556,55.5555555555556,55.5555555555556,55.5555555555556,55.5555555555556,55.5555555555556,55.5555555555556,44.4444444444444,44.4444444444444,22.2222222222222,130,129,103,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99,99,99,99,97,97,97,94,94,88,84,80,76,70,43,24,140.740740740741,127.407407407407,114.074074074074,111.851851851852,104.444444444444,102.222222222222,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99.2592592592593,98.5185185185185,96.2962962962963,95.5555555555556,94.0740740740741,12.5925925925926,4.44444444444444,2.96296296296296,1.48148148148148,0.740740740740741,153.913043478261,135.652173913043,122.608695652174,109.565217391304,105.217391304348,101.739130434783,100,100,100,100,100,100,100,100,100,100,100,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,98.2608695652174,98.2608695652174,98.2608695652174,97.3913043478261,96.5217391304348,95.6521739130435,93.9130434782609,93.0434782608696,89.5652173913043,83.4782608695652,83.4782608695652,63.4782608695652,60,58.2608695652174,57.3913043478261,4.34782608695652,0.869565217391304,127.868852459016,109.83606557377,108.196721311475,103.27868852459,103.27868852459,103.27868852459,101.639344262295,100,100,100,100,100,100,100,100,100,100,100,98.3606557377049,98.3606557377049,96.7213114754098,93.4426229508197,91.8032786885246,91.8032786885246,85.2459016393443,83.6065573770492,75.4098360655738,70.4918032786885,68.8524590163934,67.2131147540984,67.2131147540984,65.5737704918033,52.4590163934426,45.9016393442623,44.2622950819672,44.2622950819672,44.2622950819672,40.9836065573771,6.55737704918033,3.27868852459016,191.304347826087,119.565217391304,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,97.8260869565217,86.9565217391304,34.7826086956522,34.7826086956522,200,200,175,125,125,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,75,75,75,75,75,75,75,75,75,75,50,50,50,50,25,200,125,125,100,100,100,100,100,100,100,100,75,187.5,187.5,168.75,118.75,112.5,106.25,106.25,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,93.75,93.75,93.75,93.75,87.5,87.5,87.5,68.75,62.5,62.5,50,50,18.75,388,322,260,250,206,200,184,172,158,154,126,126,102,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,98,300,300,200,200,200,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>trait<\/th>\n      <th>taxon<\/th>\n      <th>n_matches<\/th>\n      <th>n_spp_gps<\/th>\n      <th>pct_match<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">x &lt;-<span class="st"> </span>spp_valid <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="st">              </span><span class="kw">group_by</span>(trait, taxon) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="st">              </span><span class="kw">summarize</span>(<span class="dt">n_matches =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb4-4" title="4">                        <span class="dt">n_spp_gps =</span> <span class="kw">first</span>(n_spp_gps),</a>
+<a class="sourceLine" id="cb4-5" title="5">                        <span class="dt">pct_match =</span> <span class="dv">100</span> <span class="op">*</span><span class="st"> </span>n_matches <span class="op">/</span><span class="st"> </span>n_spp_gps) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="st">              </span><span class="kw">arrange</span>(taxon, <span class="kw">desc</span>(pct_match))</a>
+<a class="sourceLine" id="cb4-7" title="7">DT<span class="op">::</span><span class="kw">datatable</span>(x)</a></code></pre></div>
+<div id="htmlwidget-ae235706640e9273cd2d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ae235706640e9273cd2d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150","151","152","153","154","155","156","157","158","159","160","161","162","163","164","165","166","167","168","169","170","171","172","173","174","175","176","177","178","179","180","181","182","183","184","185","186","187","188","189","190","191","192","193","194","195","196","197","198","199","200","201","202","203","204","205","206","207","208","209","210","211","212","213","214","215","216","217","218","219","220","221","222","223","224","225","226","227","228","229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","249","250","251","252","253","254","255","256","257","258","259","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","275","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","334","335","336","337","338","339","340","341","342","343","344","345","346","347","348","349","350","351","352","353","354","355","356","357","358","359","360","361","362","363","364","365","366","367","368","369","370","371","372","373","374","375","376","377","378","379","380","381","382","383","384","385","386","387","388","389","390","391","392","393","394","395","396","397","398","399","400","401","402","403","404","405","406","407","408","409","410","411","412","413","414","415","416","417","418","419","420","421","422","423","424","425","426","427","428","429","430","431","432","433","434","435","436","437","438","439","440","441","442","443","444","445","446","447","448","449","450","451","452","453","454","455","456","457","458","459","460","461","462","463","464","465","466"],["zone","depth_min_max","fecundity","planktonic_larval_duration_pld_exposure","feeding_larva_post_hatching_metamorphosis","eoo_range","adult_mobility","age_to_1st_reproduction_generation_time","air_sea_interface","are_there_sub_populations","biomineral","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","flight","global_population_size","lifetime_reproductive_opportunities","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","ph","post_birth_hatching_parental_dependence","reproductive_strategy","respiration_structures","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","max_age","parental_investment","adult_body_mass_body_size","if_one_few_size","sub_population_dependence_on_particular_sites","planktonic_larval_duration_pld_exposure","age_to_1st_reproduction_generation_time","adult_body_mass_body_size","adult_mobility","air_sea_interface","are_there_sub_populations","biomineral","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","fecundity","feeding_larva_post_hatching_metamorphosis","flight","global_population_size","lifetime_reproductive_opportunities","light_dependence","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","parental_investment","ph","post_birth_hatching_parental_dependence","reproductive_strategy","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","zone","respiration_structures","adult_mobility","biomineral","fecundity","global_population_size","adult_body_mass_body_size","calcium_carbonate_structure_location","sub_population_dependence_on_particular_sites","age_to_1st_reproduction_generation_time","can_the_sex_ratio_be_altered_by_a_stressor","eoo_range","feeding_larva_post_hatching_metamorphosis","lifetime_reproductive_opportunities","number_of_sites","parental_investment","ph","planktonic_larval_duration_pld_exposure","reproductive_strategy","zone","air_sea_interface","dissolved_oxygen","extreme_pressure_wave_sensitive_structures","light_dependence","number_of_sites_incl_terrestrial_wetlands","dependent_interspecific_interactions","respiration_structures","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","communication_requirement_sound","flight","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","are_there_sub_populations","extreme_diet_specialization","if_one_few_size","max_age","post_birth_hatching_parental_dependence","salinity","calcium_carbonate_structure_stages","depth_min_max","navigation_requirements_sound_or_light_or_magnetic","respiration_structures","global_population_size","planktonic_larval_duration_pld_exposure","reproductive_strategy","adult_body_mass_body_size","adult_mobility","air_sea_interface","biomineral","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","communication_requirement_sound","dissolved_oxygen","extreme_pressure_wave_sensitive_structures","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","ph","salinity","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","dependent_interspecific_interactions","eoo_range","lifetime_reproductive_opportunities","parental_investment","age_to_1st_reproduction_generation_time","are_there_sub_populations","depth_min_max","fecundity","max_age","zone","sensitivity_to_wave_energy_physical_forcing","extreme_diet_specialization","can_the_sex_ratio_be_altered_by_a_stressor","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","sub_population_dependence_on_particular_sites","feeding_larva_post_hatching_metamorphosis","adult_body_mass_body_size","fecundity","adult_mobility","zone","parental_investment","global_population_size","age_to_1st_reproduction_generation_time","air_sea_interface","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites_incl_terrestrial_wetlands","ph","planktonic_larval_duration_pld_exposure","reproductive_strategy","respiration_structures","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","can_the_sex_ratio_be_altered_by_a_stressor","feeding_larva_post_hatching_metamorphosis","are_there_sub_populations","max_age","lifetime_reproductive_opportunities","number_of_sites","if_one_few_size","sub_population_dependence_on_particular_sites","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","depth_min_max","zone","reproductive_strategy","sub_population_dependence_on_particular_sites","number_of_sites","lifetime_reproductive_opportunities","max_age","adult_body_mass_body_size","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","dissolved_oxygen","eoo_range","extreme_pressure_wave_sensitive_structures","parental_investment","ph","planktonic_larval_duration_pld_exposure","respiration_structures","thermal_sensitivity_to_heat_spikes_heat_waves","adult_mobility","age_to_1st_reproduction_generation_time","biomineral","communication_requirement_sound","fecundity","feeding_larva_post_hatching_metamorphosis","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","dependent_interspecific_interactions","flight","are_there_sub_populations","can_the_sex_ratio_be_altered_by_a_stressor","salinity","navigation_requirements_sound_or_light_or_magnetic","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","extreme_diet_specialization","air_sea_interface","light_dependence","depth_min_max","number_of_sites_incl_terrestrial_wetlands","global_population_size","if_one_few_size","within_stage_dependent_habitats_condition","across_stage_dependent_habitats_condition","zone","age_to_1st_reproduction_generation_time","global_population_size","adult_mobility","lifetime_reproductive_opportunities","max_age","reproductive_strategy","adult_body_mass_body_size","air_sea_interface","calcium_carbonate_structure_location","calcium_carbonate_structure_stages","communication_requirement_sound","dissolved_oxygen","parental_investment","planktonic_larval_duration_pld_exposure","respiration_structures","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","fecundity","flight","eoo_range","are_there_sub_populations","salinity","sub_population_dependence_on_particular_sites","extreme_diet_specialization","post_birth_hatching_parental_dependence","feeding_larva_post_hatching_metamorphosis","navigation_requirements_sound_or_light_or_magnetic","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","number_of_sites","number_of_sites_incl_terrestrial_wetlands","depth_min_max","thermal_sensitivity_to_heat_spikes_heat_waves","ph","dependent_interspecific_interactions","extreme_pressure_wave_sensitive_structures","light_dependence","can_the_sex_ratio_be_altered_by_a_stressor","if_one_few_size","biomineral","calcium_carbonate_structure_stages","zone","adult_body_mass_body_size","adult_mobility","age_to_1st_reproduction_generation_time","air_sea_interface","are_there_sub_populations","biomineral","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","fecundity","flight","global_population_size","lifetime_reproductive_opportunities","light_dependence","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","ph","planktonic_larval_duration_pld_exposure","post_birth_hatching_parental_dependence","reproductive_strategy","respiration_structures","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","parental_investment","feeding_larva_post_hatching_metamorphosis","depth_min_max","if_one_few_size","sub_population_dependence_on_particular_sites","fecundity","reproductive_strategy","global_population_size","lifetime_reproductive_opportunities","zone","adult_body_mass_body_size","adult_mobility","age_to_1st_reproduction_generation_time","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dissolved_oxygen","extreme_pressure_wave_sensitive_structures","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","number_of_sites_incl_terrestrial_wetlands","parental_investment","ph","sub_population_dependence_on_particular_sites","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","are_there_sub_populations","biomineral","calcium_carbonate_structure_stages","depth_min_max","eoo_range","max_age","planktonic_larval_duration_pld_exposure","salinity","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","dependent_interspecific_interactions","if_one_few_size","post_birth_hatching_parental_dependence","sensitivity_to_wave_energy_physical_forcing","air_sea_interface","lifetime_reproductive_opportunities","fecundity","feeding_larva_post_hatching_metamorphosis","adult_body_mass_body_size","adult_mobility","age_to_1st_reproduction_generation_time","extreme_diet_specialization","max_age","planktonic_larval_duration_pld_exposure","post_birth_hatching_parental_dependence","reproductive_strategy","parental_investment","fecundity","sub_population_dependence_on_particular_sites","zone","parental_investment","global_population_size","if_one_few_size","number_of_sites_incl_terrestrial_wetlands","adult_body_mass_body_size","age_to_1st_reproduction_generation_time","air_sea_interface","calcium_carbonate_structure_location","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","eoo_range","feeding_larva_post_hatching_metamorphosis","flight","lifetime_reproductive_opportunities","light_dependence","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","ph","reproductive_strategy","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_ocean_warming_max_temps_tolerated","calcium_carbonate_structure_stages","can_the_sex_ratio_be_altered_by_a_stressor","extreme_pressure_wave_sensitive_structures","respiration_structures","are_there_sub_populations","post_birth_hatching_parental_dependence","thermal_sensitivity_to_heat_spikes_heat_waves","adult_mobility","planktonic_larval_duration_pld_exposure","salinity","depth_min_max","extreme_diet_specialization","global_population_size","number_of_sites","lifetime_reproductive_opportunities","zone","max_age","sub_population_dependence_on_particular_sites","adult_mobility","adult_body_mass_body_size","fecundity","age_to_1st_reproduction_generation_time","eoo_range","post_birth_hatching_parental_dependence","depth_min_max","air_sea_interface","are_there_sub_populations","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","dissolved_oxygen","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","feeding_larva_post_hatching_metamorphosis","flight","light_dependence","navigation_requirements_sound_or_light_or_magnetic","number_of_sites_incl_terrestrial_wetlands","parental_investment","ph","planktonic_larval_duration_pld_exposure","reproductive_strategy","salinity","sensitivity_to_wave_energy_physical_forcing","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","respiration_structures","global_population_size","reproductive_strategy","adult_body_mass_body_size","age_to_1st_reproduction_generation_time","zone","adult_mobility","air_sea_interface","biomineral","calcium_carbonate_structure_location","can_the_sex_ratio_be_altered_by_a_stressor","communication_requirement_sound","dependent_interspecific_interactions","depth_min_max","eoo_range","extreme_diet_specialization","extreme_pressure_wave_sensitive_structures","fecundity","flight","lifetime_reproductive_opportunities","max_age","navigation_requirements_sound_or_light_or_magnetic","number_of_sites","parental_investment","planktonic_larval_duration_pld_exposure","post_birth_hatching_parental_dependence","salinity","terrestrial_and_marine_life_stages","thermal_sensitivity_to_heat_spikes_heat_waves","thermal_sensitivity_to_ocean_warming_max_temps_tolerated"],["cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","corals","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","echinoderms","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","elasmobranchs","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","fish","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","marine_mammals","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","molluscs","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","plants_algae","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","polychaetes","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","reptiles","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","seabirds","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges","sponges"],[640,516,327,327,324,312,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,310,310,309,31,31,8,6,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,15,14,12,12,10,10,10,9,9,9,9,9,9,9,9,9,9,9,8,8,8,8,8,7,7,7,6,6,6,6,5,5,5,5,5,5,4,4,2,130,129,103,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99,99,99,99,97,97,97,94,94,88,84,80,76,43,24,2,190,172,154,151,141,138,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,134,133,130,129,127,17,6,4,2,1,177,156,141,126,121,117,115,115,115,115,115,115,115,115,115,115,115,114,114,114,114,114,114,114,114,113,113,112,111,110,108,107,103,96,96,73,69,67,66,5,1,78,67,66,63,63,63,62,61,61,61,61,61,61,61,61,61,61,61,60,60,59,57,56,56,52,51,46,43,42,41,41,40,32,28,27,27,27,25,4,2,88,55,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,45,44,40,16,16,8,8,7,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,2,2,2,2,1,8,5,5,4,4,4,4,4,4,4,4,3,30,30,27,19,18,17,17,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,15,15,15,15,14,14,14,11,10,10,8,3,194,161,130,125,103,100,92,86,79,77,63,63,51,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,49,3,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,311,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,135,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,115,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,61,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,46,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[205.787781350482,165.916398713826,105.144694533762,105.144694533762,104.180064308682,100.32154340836,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99.6784565916399,99.6784565916399,99.3569131832797,9.96784565916399,9.96784565916399,200,150,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,75,166.666666666667,155.555555555556,133.333333333333,133.333333333333,111.111111111111,111.111111111111,111.111111111111,100,100,100,100,100,100,100,100,100,100,100,88.8888888888889,88.8888888888889,88.8888888888889,88.8888888888889,88.8888888888889,77.7777777777778,77.7777777777778,77.7777777777778,66.6666666666667,66.6666666666667,66.6666666666667,66.6666666666667,55.5555555555556,55.5555555555556,55.5555555555556,55.5555555555556,55.5555555555556,55.5555555555556,44.4444444444444,44.4444444444444,22.2222222222222,130,129,103,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99,99,99,99,97,97,97,94,94,88,84,80,76,43,24,2,140.740740740741,127.407407407407,114.074074074074,111.851851851852,104.444444444444,102.222222222222,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,99.2592592592593,98.5185185185185,96.2962962962963,95.5555555555556,94.0740740740741,12.5925925925926,4.44444444444444,2.96296296296296,1.48148148148148,0.740740740740741,153.913043478261,135.652173913043,122.608695652174,109.565217391304,105.217391304348,101.739130434783,100,100,100,100,100,100,100,100,100,100,100,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,99.1304347826087,98.2608695652174,98.2608695652174,97.3913043478261,96.5217391304348,95.6521739130435,93.9130434782609,93.0434782608696,89.5652173913043,83.4782608695652,83.4782608695652,63.4782608695652,60,58.2608695652174,57.3913043478261,4.34782608695652,0.869565217391304,127.868852459016,109.83606557377,108.196721311475,103.27868852459,103.27868852459,103.27868852459,101.639344262295,100,100,100,100,100,100,100,100,100,100,100,98.3606557377049,98.3606557377049,96.7213114754098,93.4426229508197,91.8032786885246,91.8032786885246,85.2459016393443,83.6065573770492,75.4098360655738,70.4918032786885,68.8524590163934,67.2131147540984,67.2131147540984,65.5737704918033,52.4590163934426,45.9016393442623,44.2622950819672,44.2622950819672,44.2622950819672,40.9836065573771,6.55737704918033,3.27868852459016,191.304347826087,119.565217391304,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,97.8260869565217,95.6521739130435,86.9565217391304,34.7826086956522,34.7826086956522,200,200,175,125,125,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,75,75,75,75,75,75,75,75,75,75,50,50,50,50,25,200,125,125,100,100,100,100,100,100,100,100,75,187.5,187.5,168.75,118.75,112.5,106.25,106.25,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,93.75,93.75,93.75,93.75,87.5,87.5,87.5,68.75,62.5,62.5,50,18.75,388,322,260,250,206,200,184,172,158,154,126,126,102,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,98,300,300,200,200,200,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>trait<\/th>\n      <th>taxon<\/th>\n      <th>n_matches<\/th>\n      <th>n_spp_gps<\/th>\n      <th>pct_match<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="trouble-spots---count-of-spp-with-mismatched-trait-values-by-trait" class="section level4">
 <h4><span class="header-section-number">3.0.0.2</span> Trouble spots - count of spp with mismatched trait values by trait</h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>DT<span class="op">::</span><span class="kw">datatable</span>(spp_invalid <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="st">                </span><span class="kw">group_by</span>(trait, taxon) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="st">                </span><span class="kw">summarize</span>(<span class="dt">n_mismatches =</span> <span class="kw">n</span>(),</span>
-<span id="cb5-4"><a href="#cb5-4"></a>                          <span class="dt">n_spp_gps =</span> <span class="kw">first</span>(n_spp_gps),</span>
-<span id="cb5-5"><a href="#cb5-5"></a>                          <span class="dt">pct_mismatch =</span> <span class="dv">100</span> <span class="op">*</span><span class="st"> </span>n_mismatches <span class="op">/</span><span class="st"> </span>n_spp_gps) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="st">                </span><span class="kw">arrange</span>(<span class="kw">desc</span>(pct_mismatch), taxon))</span></code></pre></div>
-<div id="htmlwidget-0b2174b0c3e874878231" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0b2174b0c3e874878231">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102"],["within-stage dependent habitats + condition","across-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","light dependence","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","navigation requirements (sound or light, or magnetic)","within-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","air-sea interface","within-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","across-stage dependent habitats + condition","feeding larva (post-hatching metamorphosis)","respiration structures","calcium carbonate structure stages","calcium carbonate structure stages","can the sex ratio be altered by a stressor?","feeding larva (post-hatching metamorphosis)","respiration structures","sensitivity to wave energy (physical forcing)","terrestrial and marine life stages","extreme diet specialization","navigation requirements (sound or light, or magnetic)","salinity","sensitivity to wave energy (physical forcing)","sub-population dependence on particular sites","respiration structures","calcium carbonate structure stages","maximum depth","minimum depth","extreme diet specialization","feeding larva (post-hatching metamorphosis)","extreme diet specialization","feeding larva (post-hatching metamorphosis)","salinity","navigation requirements (sound or light, or magnetic)","if one/few, size","salinity","communication requirement (sound)","dependent interspecific interactions","flight","respiration structures","sub-population dependence on particular sites","feeding larva (post-hatching metamorphosis)","respiration structures","are there sub-populations?","calcium carbonate structure stages","dependent interspecific interactions","within-stage dependent habitats + condition","respiration structures","feeding larva (post-hatching metamorphosis)","if one/few, size","post-birth/hatching maternal dependence","if one/few, size","extreme diet specialization","post-birth/hatching parental dependence","thermal - sensitivity to heat spikes/heat waves","sensitivity to wave energy (physical forcing)","extreme diet specialization","post-birth/hatching maternal dependence","post-birth/hatching parental dependence","extreme diet specialization","air-sea interface","dissolved oxygen","light dependence","calcium carbonate structure stages","can the sex ratio be altered by a stressor?","navigation requirements (sound or light, or magnetic)","salinity","are there sub-populations?","salinity","sub-population dependence on particular sites","if one/few, size","are there sub-populations?","can the sex ratio be altered by a stressor?","if one/few, size","can the sex ratio be altered by a stressor?","dependent interspecific interactions","respiration structures","feeding larva (post-hatching metamorphosis)","sub-population dependence on particular sites","terrestrial and marine life stages","dependent interspecific interactions","flight","feeding larva (post-hatching metamorphosis)","dependent interspecific interactions","are there sub-populations?","communication requirement (sound)","light dependence","sensitivity to wave energy (physical forcing)","can the sex ratio be altered by a stressor?"],["elasmobranchs","elasmobranchs","reptiles","reptiles","seabirds","seabirds","sponges","marine_mammals","marine_mammals","cephalopods","cephalopods","corals","sponges","crustacea_arthropods","molluscs","fish","fish","crustacea_arthropods","plants_algae","echinoderms","corals","echinoderms","molluscs","plants_algae","plants_algae","seabirds","sponges","sponges","sponges","sponges","sponges","sponges","reptiles","crustacea_arthropods","plants_algae","plants_algae","plants_algae","molluscs","crustacea_arthropods","fish","fish","plants_algae","reptiles","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","marine_mammals","reptiles","reptiles","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","echinoderms","corals","plants_algae","plants_algae","plants_algae","plants_algae","polychaetes","marine_mammals","echinoderms","echinoderms","fish","echinoderms","marine_mammals","marine_mammals","echinoderms","marine_mammals","fish","reptiles","fish","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","reptiles","reptiles","fish","fish","marine_mammals","marine_mammals","marine_mammals","elasmobranchs","elasmobranchs","marine_mammals","marine_mammals","fish","fish","seabirds","fish","fish","fish","marine_mammals","marine_mammals","elasmobranchs","echinoderms","fish","fish","fish","fish","elasmobranchs"],[829,827,74,68,165,165,3,165,151,750,750,8,2,17,77,184,184,12,5,123,4,100,46,4,4,50,1,1,1,1,1,1,13,7,3,3,3,30,5,60,60,2,8,4,4,4,24,6,6,3,3,3,3,3,29,1,1,1,1,1,1,15,24,22,25,19,10,10,16,8,15,2,13,1,1,1,1,1,7,6,3,3,3,6,5,2,2,3,3,1,2,2,2,1,1,2,1,1,1,1,1,1],[135,135,16,16,50,50,1,61,61,311,311,4,1,9,46,115,115,9,4,100,4,100,46,4,4,50,1,1,1,1,1,1,16,9,4,4,4,46,9,115,115,4,16,9,9,9,61,16,16,9,9,9,9,9,100,4,4,4,4,4,4,61,100,100,115,100,61,61,100,61,115,16,115,9,9,9,16,16,115,115,61,61,61,135,135,61,61,115,115,50,115,115,115,61,61,135,100,115,115,115,115,135],[614.074074074074,612.592592592593,462.5,425,330,330,300,270.491803278689,247.540983606557,241.157556270096,241.157556270096,200,200,188.888888888889,167.391304347826,160,160,133.333333333333,125,123,100,100,100,100,100,100,100,100,100,100,100,100,81.25,77.7777777777778,75,75,75,65.2173913043478,55.5555555555556,52.1739130434783,52.1739130434783,50,50,44.4444444444444,44.4444444444444,44.4444444444444,39.344262295082,37.5,37.5,33.3333333333333,33.3333333333333,33.3333333333333,33.3333333333333,33.3333333333333,29,25,25,25,25,25,25,24.5901639344262,24,22,21.7391304347826,19,16.3934426229508,16.3934426229508,16,13.1147540983607,13.0434782608696,12.5,11.304347826087,11.1111111111111,11.1111111111111,11.1111111111111,6.25,6.25,6.08695652173913,5.21739130434783,4.91803278688525,4.91803278688525,4.91803278688525,4.44444444444444,3.7037037037037,3.27868852459016,3.27868852459016,2.60869565217391,2.60869565217391,2,1.73913043478261,1.73913043478261,1.73913043478261,1.63934426229508,1.63934426229508,1.48148148148148,1,0.869565217391304,0.869565217391304,0.869565217391304,0.869565217391304,0.740740740740741]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>trait<\/th>\n      <th>taxon<\/th>\n      <th>n_mismatches<\/th>\n      <th>n_spp_gps<\/th>\n      <th>pct_mismatch<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">DT<span class="op">::</span><span class="kw">datatable</span>(spp_invalid <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="st">                </span><span class="kw">group_by</span>(trait, taxon) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">                </span><span class="kw">summarize</span>(<span class="dt">n_mismatches =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb5-4" title="4">                          <span class="dt">n_spp_gps =</span> <span class="kw">first</span>(n_spp_gps),</a>
+<a class="sourceLine" id="cb5-5" title="5">                          <span class="dt">pct_mismatch =</span> <span class="dv">100</span> <span class="op">*</span><span class="st"> </span>n_mismatches <span class="op">/</span><span class="st"> </span>n_spp_gps) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="st">                </span><span class="kw">arrange</span>(<span class="kw">desc</span>(pct_mismatch), taxon))</a></code></pre></div>
+<div id="htmlwidget-3b7012d92d8f18d627f4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3b7012d92d8f18d627f4">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101"],["within-stage dependent habitats + condition","across-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","light dependence","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","navigation requirements (sound or light, or magnetic)","within-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","air-sea interface","within-stage dependent habitats + condition","within-stage dependent habitats + condition","across-stage dependent habitats + condition","across-stage dependent habitats + condition","feeding larva (post-hatching metamorphosis)","respiration structures","calcium carbonate structure stages","calcium carbonate structure stages","can the sex ratio be altered by a stressor?","feeding larva (post-hatching metamorphosis)","respiration structures","sensitivity to wave energy (physical forcing)","feeding larva (post-hatching metamorphosis)","extreme diet specialization","navigation requirements (sound or light, or magnetic)","salinity","sensitivity to wave energy (physical forcing)","sub-population dependence on particular sites","respiration structures","calcium carbonate structure stages","maximum depth","minimum depth","extreme diet specialization","extreme diet specialization","salinity","navigation requirements (sound or light, or magnetic)","if one/few, size","salinity","communication requirement (sound)","dependent interspecific interactions","flight","respiration structures","sub-population dependence on particular sites","respiration structures","are there sub-populations?","calcium carbonate structure stages","dependent interspecific interactions","within-stage dependent habitats + condition","respiration structures","feeding larva (post-hatching metamorphosis)","if one/few, size","post-birth/hatching maternal dependence","if one/few, size","extreme diet specialization","post-birth/hatching parental dependence","thermal - sensitivity to heat spikes/heat waves","sensitivity to wave energy (physical forcing)","extreme diet specialization","post-birth/hatching maternal dependence","post-birth/hatching parental dependence","extreme diet specialization","air-sea interface","dissolved oxygen","light dependence","calcium carbonate structure stages","can the sex ratio be altered by a stressor?","navigation requirements (sound or light, or magnetic)","salinity","are there sub-populations?","salinity","sub-population dependence on particular sites","if one/few, size","feeding larva (post-hatching metamorphosis)","are there sub-populations?","can the sex ratio be altered by a stressor?","if one/few, size","can the sex ratio be altered by a stressor?","dependent interspecific interactions","respiration structures","sub-population dependence on particular sites","terrestrial and marine life stages","dependent interspecific interactions","flight","feeding larva (post-hatching metamorphosis)","dependent interspecific interactions","are there sub-populations?","communication requirement (sound)","feeding larva (post-hatching metamorphosis)","light dependence","sensitivity to wave energy (physical forcing)","can the sex ratio be altered by a stressor?","feeding larva (post-hatching metamorphosis)"],["elasmobranchs","elasmobranchs","reptiles","reptiles","seabirds","seabirds","sponges","marine_mammals","marine_mammals","cephalopods","cephalopods","corals","sponges","crustacea_arthropods","molluscs","fish","fish","crustacea_arthropods","plants_algae","echinoderms","corals","echinoderms","molluscs","plants_algae","plants_algae","seabirds","sponges","sponges","sponges","sponges","sponges","echinoderms","reptiles","crustacea_arthropods","plants_algae","plants_algae","plants_algae","molluscs","crustacea_arthropods","fish","fish","plants_algae","crustacea_arthropods","crustacea_arthropods","marine_mammals","reptiles","reptiles","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","corals","plants_algae","plants_algae","plants_algae","plants_algae","polychaetes","marine_mammals","echinoderms","echinoderms","fish","echinoderms","marine_mammals","marine_mammals","echinoderms","marine_mammals","fish","reptiles","fish","crustacea_arthropods","crustacea_arthropods","crustacea_arthropods","reptiles","reptiles","fish","fish","marine_mammals","marine_mammals","marine_mammals","elasmobranchs","molluscs","elasmobranchs","marine_mammals","marine_mammals","fish","fish","seabirds","fish","fish","marine_mammals","marine_mammals","elasmobranchs","echinoderms","fish","fish","fish","fish","fish","elasmobranchs","cephalopods"],[829,827,74,68,165,165,3,165,151,750,750,8,2,17,77,184,184,12,5,123,4,100,46,4,4,50,1,1,1,1,1,97,13,7,3,3,3,30,5,60,60,2,4,4,24,6,6,3,3,3,3,3,1,1,1,1,1,1,15,24,22,25,19,10,10,16,8,15,2,13,1,1,1,1,1,7,6,3,3,3,6,2,5,2,2,3,3,1,2,2,1,1,2,1,1,1,1,1,1,1,1],[135,135,16,16,50,50,1,61,61,311,311,4,1,9,46,115,115,9,4,100,4,100,46,4,4,50,1,1,1,1,1,100,16,9,4,4,4,46,9,115,115,4,9,9,61,16,16,9,9,9,9,9,4,4,4,4,4,4,61,100,100,115,100,61,61,100,61,115,16,115,9,9,9,16,16,115,115,61,61,61,135,46,135,61,61,115,115,50,115,115,61,61,135,100,115,115,115,115,115,135,311],[614.074074074074,612.592592592593,462.5,425,330,330,300,270.491803278689,247.540983606557,241.157556270096,241.157556270096,200,200,188.888888888889,167.391304347826,160,160,133.333333333333,125,123,100,100,100,100,100,100,100,100,100,100,100,97,81.25,77.7777777777778,75,75,75,65.2173913043478,55.5555555555556,52.1739130434783,52.1739130434783,50,44.4444444444444,44.4444444444444,39.344262295082,37.5,37.5,33.3333333333333,33.3333333333333,33.3333333333333,33.3333333333333,33.3333333333333,25,25,25,25,25,25,24.5901639344262,24,22,21.7391304347826,19,16.3934426229508,16.3934426229508,16,13.1147540983607,13.0434782608696,12.5,11.304347826087,11.1111111111111,11.1111111111111,11.1111111111111,6.25,6.25,6.08695652173913,5.21739130434783,4.91803278688525,4.91803278688525,4.91803278688525,4.44444444444444,4.34782608695652,3.7037037037037,3.27868852459016,3.27868852459016,2.60869565217391,2.60869565217391,2,1.73913043478261,1.73913043478261,1.63934426229508,1.63934426229508,1.48148148148148,1,0.869565217391304,0.869565217391304,0.869565217391304,0.869565217391304,0.869565217391304,0.740740740740741,0.321543408360129]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>trait<\/th>\n      <th>taxon<\/th>\n      <th>n_mismatches<\/th>\n      <th>n_spp_gps<\/th>\n      <th>pct_mismatch<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 

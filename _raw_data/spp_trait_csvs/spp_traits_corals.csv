@@ -22,7 +22,7 @@ r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs;5-
 r (reproductive traits),are there sub-populations?,yes,yes,yes,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,no,no,no,no
 r (reproductive traits),fecundity,1000-10000,1000-10000,1000-10000,1000-10000
-r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding,non-feeding,non-feeding,non-feeding
+r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding non-calcifier,non-feeding non-calcifier,non-feeding non-calcifier,non-feeding non-calcifier
 r (reproductive traits),global population size,100k-1m,10k-100k,100k-1m,100k-1m
 r (reproductive traits),lifetime # reproductive opportunities,51-100,51-100,>100,>100
 r (reproductive traits),max age,20-100yrs,20-100yrs,10-20yrs,>100yrs

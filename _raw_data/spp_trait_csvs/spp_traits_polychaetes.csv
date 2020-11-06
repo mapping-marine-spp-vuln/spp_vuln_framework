@@ -5,7 +5,7 @@ movement,adult mobility,mobile resident,mobile resident,sessile,sessile
 movement,planktonic larval duration (pld) exposure,<1month,<1month,<1month,<1month
 r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs,1-5yrs,1-5yrs
 r (reproductive traits),fecundity,100-1000,1000-10000,5-10;1000-10000,1000-10000
-r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding,feeding,feeding,feeding;non-feeding
+r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding non-calcifier,feeding non-calcifier,feeding non-calcifier,feeding non-calcifier;non-feeding non-calcifier
 r (reproductive traits),lifetime # reproductive opportunities,1;2-10,1;2-10,1;2-10,1;2-10
 r (reproductive traits),max age,1-5yrs,1-5yrs,1-5yrs,1-5yrs
 r (reproductive traits),parental investment,spawner,spawner,spawner,NA
