@@ -18,7 +18,7 @@ physiological tolerance breadths,thermal - sensitivity to ocean warming - max te
 r (reproductive traits),age to 1st reproduction/generation time,<1yr;1-5yrs
 r (reproductive traits),can the sex ratio be altered by a stressor?,unknown;probably no
 r (reproductive traits),fecundity,100-1000
-r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding larvae metamorphosis
+r (reproductive traits),feeding larva (post-hatching metamorphosis),non-feeding non-calcifiers
 r (reproductive traits),global population size,unknown;<1000;1k-10k
 r (reproductive traits),lifetime # reproductive opportunities,>100
 r (reproductive traits),max age,1-5yrs
@@ -32,4 +32,4 @@ specialisation,air-sea interface,no
 specialisation,dependent interspecific interactions,yes
 specialisation,extreme diet specialization,generalist
 specialisation,light dependence,well yes;because circadian rhythms entrained by light;with effacts on multiple physiological factors
-specialisation,terrestrial and marine life stages,no;marine only
+specialisation,terrestrial and marine life stages,no

@@ -32,7 +32,7 @@ r (reproductive traits),max age,>100yrs,NA,5-10yrs,>100yrs
 r (reproductive traits),parental investment,spawner,spawner,spawner,spawner
 r (reproductive traits),post-birth/hatching parental dependence,na,NA,NA,na
 r (reproductive traits),reproductive strategy,sexual hermaphrodite,asexual;sexual dioecious;sexual hermaphrodite,sexual dioecious;sexual hermaphrodite;asexual,sexual hermaphrodite
-spatial scale of species,depth (min/max),epipelagic,NA,epipelagic,epipelagic
+spatial scale of species,depth (min/max),epipelagic,NA,epipelagic;atmosphere,epipelagic
 spatial scale of species,eoo (range),>20000,<99,NA,5000-19999
 spatial scale of species,zone,benthic,benthic,intertidal;benthic,benthic
 specialisation,air-sea interface,yes-although not sure what this really means-propagules float,yes;canopy at sea surface,no sensitive;thrives in high wave action--reef crest,yes-although not sure what this really means-propagules float

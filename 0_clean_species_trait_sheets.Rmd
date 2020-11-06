@@ -84,7 +84,7 @@ clean_trait <- function(x, drop_parens = TRUE) {
 Process Nat's key to create a final key.  Add an "unknown" value for all traits, to catch explicitly stated unknown values.
 
 ```{r}
-traitvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/cat_val_key_tidy.xlsx')) %>%
+traitvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/trait_val_key.xlsx')) %>%
   janitor::clean_names() %>%
   select(category, trait, trait_value = trait_vals) %>%
   filter(!(is.na(category) & is.na(trait))) %>%
@@ -276,6 +276,14 @@ spp_data_mobility$trait_val_clean %>% table()
 
 ### depth (min/max)
 
+Add atmosphere zone (exposure to air, for air temp and similar stressors that act out of water) for species who:
+
+* inhabit intertidal zone
+* have terrestrial/marine dependent habitats
+* have flight
+
+Note, this catches a few fish, molluscs, elasmobranchs, etc; but this seems OK as intertidal waters are likely highly affected by air temperature, e.g. in tidepools.
+
 ``` {r clean up depth traits}
 depth_vals <- traitvals_df_valid %>%
   filter(trait == 'depth (min/max)') %>%
@@ -289,7 +297,41 @@ spp_data_depth <- raw_data_df %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
 
+### add atmosphere category
+spp_intertidal <- spp_data_zones %>%
+  filter(trait_val_clean == 'intertidal') %>%
+  select(spp_gp, sheet) %>%
+  distinct()
+spp_terr_marine <- raw_data_df %>%
+  filter(str_detect(trait, 'terrestrial and marine')) %>%
+  filter(str_detect(tolower(trait_value), '^y')) %>%
+  select(spp_gp, sheet) %>%
+  distinct()
+spp_flight <- raw_data_df %>%
+  filter(str_detect(trait, 'flight')) %>%
+  filter(str_detect(tolower(trait_value), '^y')) %>%
+  select(spp_gp, sheet) %>%
+  distinct()
+spp_atm <- bind_rows(spp_flight, spp_intertidal, spp_terr_marine) %>%
+  distinct()
+  
+spp_data_atm <- spp_atm %>%
+  mutate(category = 'spatial scale of species',
+         trait    = 'depth (min/max)',
+         trait_val_clean = 'atmosphere')
+
+spp_data_depth <- spp_data_depth %>%
+  bind_rows(spp_data_atm)
+
 spp_data_depth$trait_val_clean %>% table()
+```
+
+```{r}
+x <- spp_data_depth %>%
+  filter(trait_val_clean == 'atmosphere') %>%
+  group_by(sheet) %>%
+  summarize(n_spp = n_distinct(spp_gp))
+knitr::kable(x)
 ```
 
 ### thermal sensitivity
