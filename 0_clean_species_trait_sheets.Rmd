@@ -108,20 +108,21 @@ traitvals_df_prehabs <- traitvals_df_raw %>%
 ### semicolon separator.  Set to lower case.
 habs <- readxl::read_excel(here('_raw_data/xlsx/hab_list.xlsx')) %>%
   janitor::clean_names() %>%
-  .$habitat_types %>%
+  .$hab_type %>%
   tolower() %>%
   paste(collapse = ';')
     
 ### Separate out habitat rows, attach valid habitats, bind back to original.
 traitvals_hab <- traitvals_df_prehabs %>%
-  filter(str_detect(trait_value, 'habitat')) %>%
+  filter(str_detect(trait, 'dependent habitats')) %>%
   mutate(trait_value = habs,
          trait_value = str_split(habs, pattern = ';')) %>%
-  unnest(trait_value)
+  unnest(trait_value) %>%
+  distinct()
   
 
 traitvals_df_valid <- traitvals_df_prehabs %>%
-  filter(!str_detect(trait_value, 'habitat')) %>%
+  filter(!str_detect(trait, 'dependent habitats')) %>%
   bind_rows(traitvals_hab) %>%
   rename(trait_value = trait_value)
 
@@ -1093,7 +1094,7 @@ spp_data_habs <- raw_data_df %>%
   unnest(tmp) %>%
   filter(tmp != '') %>%
   mutate(tmp = clean_trait(tmp),
-         tmp = str_replace_all(tmp, 'soft benthic', 'soft bottom'),
+         tmp = str_replace_all(tmp, 'soft benthic|soft sediment', 'soft bottom'),
          tmp = ifelse(str_detect(tmp, 'inter?reef'), 'subtidal soft bottom;deep soft bottom', tmp),
            ### assume "interreefal" refers to sediment
          tmp = ifelse(tmp %in% c('sea ice', 'ice edge'), 'sea ice edge', tmp),
