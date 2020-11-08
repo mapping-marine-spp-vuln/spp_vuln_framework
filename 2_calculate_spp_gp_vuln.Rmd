@@ -125,7 +125,6 @@ sens_traits_df <- sens_traits_raw %>%
          sens_score = assign_rank_scores(sens_score)) %>%
   clean_traitnames() %>%
   clean_traitvals() %>%
-  ### drop these - going into other categories - we'll change the sheets later
   filter(!is.na(category)) 
   
 str_sens_trait_scores <- sens_traits_df %>%
@@ -354,6 +353,49 @@ non_exposures <- spp_exposure %>%
             pct_no_exp = round(n_gps_no_exp / n_gps, 3)) %>%
   arrange(stressor, desc(n_gps_no_exp)) %>%
   ungroup()
+
+null_exposures <- spp_traits %>%
+  select(spp_gp, taxon) %>%
+  anti_join(spp_exposure, by = c('spp_gp', 'taxon')) %>%
+  distinct()
+```
+
+### These species are not listed as potential exposure to these stressors: 
+
+`r DT::datatable(non_exposures)`
+
+Note: this is exposure potential only, based on overlap between species presence and stressor presence - nothing about sensitivity or actual exposure.  Check that these logic out.
+
+### These species drop out of the exposure potential calculation
+
+Check the spp traits for these species to identify proper assignment of at least one depth zone or ocean zone.
+
+`r DT::datatable(null_exposures)`
+
+
+## Determine habitats for habitat loss/degradation stressor
+
+Habitat loss and degradation can be considered as an exposure variable, in the same way as potential exposure above.  However, in this case, we consider only one stressor.  
+
+Questions to consider that will affect scoring/weighting:
+
+### Is there an actionable difference between across-stage and within-stage dependence?
+    
+* Multiple habitats in the "within-stage" category seems to suggest that a species can move among habitats therefore being less sensitive to degradation of one habitat in its range.  This is a "parallel habitats" interpretation.
+    * However, some species may depend on various habitats in a "series habitat" interpretation, e.g., birds that depend on one habitat type for nesting/breeding, another type for forage, and a third for stopovers in migration.  In this case, harm to any would present a bottleneck.
+* Multiple habitats in the "across-stage" category seem to indicate a "series" interpretation - e.g., a fish species whose larvae grow in mangroves, then adults move to reefs.
+    * However, stages could survive in multiple habitats (e.g., parallel).
+* Because the trait category is not well defined, we cannot systematically distinguish between series and parallel interpretations for either across- or within-stage dependence.
+* A series interpretation would sum the vulnerabilities; a parallel interpretation would take an average.  Which is most conservative?  Parallel would communicate the less alarming results, and has the advantage that it also avoids overweighting based on the number of habitats scored.
+
+To score this we will simply lump together all unique listed habitats, regardless of within- or across-stage.  This simplifies things so we can simply calculate the habitat degradation vulnerability as normal, and append the habitat name onto the hab loss/degradation stressor name...
+
+```{r}
+spp_dep_habs <- spp_traits %>%
+  filter(str_detect(trait, 'dependent_habitats')) %>%
+  mutate(stressor = 'habitat_loss_degradation') %>%
+  select(spp_gp, stressor, hab = trait_value) %>%
+  distinct()
 ```
 
 ### These species are not listed as potential exposure to these stressors: 
@@ -408,6 +450,7 @@ spp_vulnerability <- spp_sens %>%
   left_join(spp_adcap_gen, by = c('taxon', 'spp_gp')) %>%
   left_join(spp_adcap_spec, by = c('taxon', 'spp_gp', 'stressor')) %>%
   left_join(spp_exposure, by = c('taxon', 'spp_gp', 'stressor')) %>%
+  left_join(spp_dep_habs, by = c('spp_gp', 'stressor')) %>%
   ### fix NAs
   mutate(adcap_spec_score = ifelse(is.na(adcap_spec_score), 0, adcap_spec_score),
          exposure_mod     = ifelse(is.na(exposure_mod), 1, exposure_mod)) %>%
@@ -429,8 +472,6 @@ spp_vulnerability <- spp_sens %>%
   ### mash 'em all together
   mutate(vuln = sens_rescale / (1 + adcap_gen_rescale + adcap_spec_rescale) * exposure_mod)
 
-x <- spp_vulnerability %>%
-  filter(taxon == 'reef_fish')
 write_csv(spp_vulnerability, here('_output/spp_gp_vulnerability.csv'))
 ```
 
@@ -438,7 +479,8 @@ write_csv(spp_vulnerability, here('_output/spp_gp_vulnerability.csv'))
 
 ``` {r}
 
-vuln_plot <- ggplot(spp_vulnerability, aes(x = stressor, y = vuln)) +
+vuln_plot <- ggplot(spp_vulnerability %>% select(-hab) %>% distinct(), 
+                    aes(x = stressor, y = vuln)) +
   ggtheme_plot() +
   geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
@@ -446,7 +488,8 @@ vuln_plot <- ggplot(spp_vulnerability, aes(x = stressor, y = vuln)) +
   facet_wrap(~ taxon) +
   labs(title = 'rescale using max reference point')
 
-ggsave(plot = vuln_plot, filename = here('figs/vuln_plot.png'), width = 8, height = 8, dpi = 300)
+ggsave(plot = vuln_plot, filename = here('figs/vuln_plot.png'), 
+       width = 8, height = 8, dpi = 300)
 knitr::include_graphics(here('figs/vuln_plot.png'))
 
 ```
@@ -454,6 +497,7 @@ knitr::include_graphics(here('figs/vuln_plot.png'))
 ### Vulnerability to top three stressors by taxon
 ```{r}
 top_3_vuln <- spp_vulnerability %>%
+  select(-hab) %>% distinct() %>%
   group_by(taxon, stressor) %>%
   summarize(vuln = mean(vuln)) %>%
   group_by(taxon) %>%

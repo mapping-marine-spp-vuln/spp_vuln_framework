@@ -116,8 +116,6 @@ specialisation,air-sea interface,floating
 specialisation,air-sea interface,yes
 specialisation,air-sea interface,no
 specialisation,air-sea interface,unknown
-specialisation,within-stage dependent habitats + condition,unknown
-specialisation,across-stage dependent habitats + condition,unknown
 specialisation,terrestrial and marine life stages,yes
 specialisation,terrestrial and marine life stages,no
 specialisation,terrestrial and marine life stages,unknown
@@ -216,5 +214,55 @@ biophysical traits,respiration structures,diffusion
 biophysical traits,respiration structures,pneumatophores
 biophysical traits,respiration structures,filter feeders
 biophysical traits,respiration structures,unknown
-specialisation,within-stage dependent habitats + condition,
-specialisation,across-stage dependent habitats + condition,
+specialisation,within-stage dependent habitats + condition,deep water
+specialisation,within-stage dependent habitats + condition,subtidal soft bottom
+specialisation,within-stage dependent habitats + condition,subtidal hard bottom
+specialisation,within-stage dependent habitats + condition,hard slope
+specialisation,within-stage dependent habitats + condition,kelp forest
+specialisation,within-stage dependent habitats + condition,deep hard bottom
+specialisation,within-stage dependent habitats + condition,deep seamount
+specialisation,within-stage dependent habitats + condition,deep soft bottom
+specialisation,within-stage dependent habitats + condition,soft slope
+specialisation,within-stage dependent habitats + condition,beach
+specialisation,within-stage dependent habitats + condition,surface water
+specialisation,within-stage dependent habitats + condition,suspension feeder reef
+specialisation,within-stage dependent habitats + condition,rocky reef
+specialisation,within-stage dependent habitats + condition,hard shelf
+specialisation,within-stage dependent habitats + condition,soft shelf
+specialisation,within-stage dependent habitats + condition,coral reef
+specialisation,within-stage dependent habitats + condition,seagrass
+specialisation,within-stage dependent habitats + condition,intertidal mud
+specialisation,within-stage dependent habitats + condition,rocky intertidal
+specialisation,within-stage dependent habitats + condition,salt marsh
+specialisation,within-stage dependent habitats + condition,mangrove
+specialisation,within-stage dependent habitats + condition,sea ice edge
+specialisation,within-stage dependent habitats + condition,estuary
+specialisation,within-stage dependent habitats + condition,pelagic
+specialisation,within-stage dependent habitats + condition,coastal
+specialisation,within-stage dependent habitats + condition,continental shelf
+specialisation,across-stage dependent habitats + condition,deep water
+specialisation,across-stage dependent habitats + condition,subtidal soft bottom
+specialisation,across-stage dependent habitats + condition,subtidal hard bottom
+specialisation,across-stage dependent habitats + condition,hard slope
+specialisation,across-stage dependent habitats + condition,kelp forest
+specialisation,across-stage dependent habitats + condition,deep hard bottom
+specialisation,across-stage dependent habitats + condition,deep seamount
+specialisation,across-stage dependent habitats + condition,deep soft bottom
+specialisation,across-stage dependent habitats + condition,soft slope
+specialisation,across-stage dependent habitats + condition,beach
+specialisation,across-stage dependent habitats + condition,surface water
+specialisation,across-stage dependent habitats + condition,suspension feeder reef
+specialisation,across-stage dependent habitats + condition,rocky reef
+specialisation,across-stage dependent habitats + condition,hard shelf
+specialisation,across-stage dependent habitats + condition,soft shelf
+specialisation,across-stage dependent habitats + condition,coral reef
+specialisation,across-stage dependent habitats + condition,seagrass
+specialisation,across-stage dependent habitats + condition,intertidal mud
+specialisation,across-stage dependent habitats + condition,rocky intertidal
+specialisation,across-stage dependent habitats + condition,salt marsh
+specialisation,across-stage dependent habitats + condition,mangrove
+specialisation,across-stage dependent habitats + condition,sea ice edge
+specialisation,across-stage dependent habitats + condition,estuary
+specialisation,across-stage dependent habitats + condition,pelagic
+specialisation,across-stage dependent habitats + condition,coastal
+specialisation,across-stage dependent habitats + condition,continental shelf
