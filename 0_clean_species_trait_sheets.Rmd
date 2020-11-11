@@ -296,7 +296,7 @@ spp_data_depth <- raw_data_df %>%
 
 ### add atmosphere category
 spp_sessile <- spp_data_mobility %>%
-  filter(str_detect(trait_val_clean, 'sessile')) %>%
+  filter(trait_val_clean == 'sessile') %>%
   select(spp_gp, sheet) %>%
   distinct()
   

@@ -19206,6 +19206,7 @@ elasmobranchs,r_reproductive_traits,max_age,carcharhinus leucas,10-20yrs,135,0.5
 elasmobranchs,r_reproductive_traits,max_age,carcharhinus leucas,20-100yrs,135,0.5
 elasmobranchs,r_reproductive_traits,parental_investment,carcharhinus leucas,live birth/egg care,135,1
 elasmobranchs,r_reproductive_traits,reproductive_strategy,carcharhinus leucas,sexual dioecious,135,1
+elasmobranchs,spatial_scale_of_species,depth_min_max,carcharhinus leucas,atmosphere,135,1
 elasmobranchs,spatial_scale_of_species,eoo_range,carcharhinus leucas,>20000,135,1
 elasmobranchs,spatial_scale_of_species,zone,carcharhinus leucas,intertidal,135,1
 elasmobranchs,spatial_scale_of_species,zone,carcharhinus leucas,neritic,135,1
@@ -20346,6 +20347,7 @@ elasmobranchs,r_reproductive_traits,max_age,glyphis,10-20yrs,135,0.5
 elasmobranchs,r_reproductive_traits,max_age,glyphis,20-100yrs,135,0.5
 elasmobranchs,r_reproductive_traits,parental_investment,glyphis,live birth/egg care,135,1
 elasmobranchs,r_reproductive_traits,reproductive_strategy,glyphis,sexual dioecious,135,1
+elasmobranchs,spatial_scale_of_species,depth_min_max,glyphis,atmosphere,135,1
 elasmobranchs,spatial_scale_of_species,eoo_range,glyphis,>20000,135,1
 elasmobranchs,spatial_scale_of_species,zone,glyphis,intertidal,135,1
 elasmobranchs,spatial_scale_of_species,zone,glyphis,neritic,135,1
@@ -26533,6 +26535,7 @@ fish,r_reproductive_traits,max_age,exocoetus volitans,10-20yrs,115,1
 fish,r_reproductive_traits,parental_investment,exocoetus volitans,egg-layer,115,1
 fish,r_reproductive_traits,reproductive_strategy,exocoetus volitans,sexual dioecious,115,1
 fish,spatial_scale_of_species,depth_min_max,exocoetus volitans,epipelagic,115,1
+fish,spatial_scale_of_species,depth_min_max,exocoetus volitans,atmosphere,115,1
 fish,spatial_scale_of_species,eoo_range,exocoetus volitans,>20000,115,1
 fish,spatial_scale_of_species,zone,exocoetus volitans,neritic,115,1
 fish,spatial_scale_of_species,zone,exocoetus volitans,oceanic,115,1
@@ -29297,6 +29300,7 @@ marine_mammals,r_reproductive_traits,max_age,arctocephalus,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,arctocephalus,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,post_birth_hatching_parental_dependence,arctocephalus,month-year,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,arctocephalus,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,arctocephalus,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,arctocephalus,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,arctocephalus,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,arctocephalus,oceanic,61,1
@@ -29683,6 +29687,7 @@ marine_mammals,r_reproductive_traits,max_age,callorhinus,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,callorhinus,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,post_birth_hatching_parental_dependence,callorhinus,month-year,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,callorhinus,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,callorhinus,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,callorhinus,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,callorhinus,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,callorhinus,oceanic,61,1
@@ -30114,6 +30119,7 @@ marine_mammals,r_reproductive_traits,lifetime_reproductive_opportunities,eumetop
 marine_mammals,r_reproductive_traits,max_age,eumetopias,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,eumetopias,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,eumetopias,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,eumetopias,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,eumetopias,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,eumetopias,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,eumetopias,oceanic,61,1
@@ -30806,6 +30812,7 @@ marine_mammals,r_reproductive_traits,lifetime_reproductive_opportunities,neophoc
 marine_mammals,r_reproductive_traits,max_age,neophoca,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,neophoca,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,neophoca,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,neophoca,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,neophoca,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,neophoca,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,neophoca,oceanic,61,1
@@ -30850,6 +30857,7 @@ marine_mammals,r_reproductive_traits,max_age,odobenus rosmarus,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,odobenus rosmarus,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,post_birth_hatching_parental_dependence,odobenus rosmarus,>year,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,odobenus rosmarus,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,odobenus rosmarus,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,odobenus rosmarus,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,odobenus rosmarus,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,odobenus rosmarus,oceanic,61,1
@@ -30933,6 +30941,7 @@ marine_mammals,r_reproductive_traits,lifetime_reproductive_opportunities,otaria,
 marine_mammals,r_reproductive_traits,max_age,otaria,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,otaria,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,otaria,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,otaria,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,otaria,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,otaria,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,otaria,oceanic,61,1
@@ -31012,6 +31021,7 @@ marine_mammals,r_reproductive_traits,lifetime_reproductive_opportunities,phocarc
 marine_mammals,r_reproductive_traits,max_age,phocarctos,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,phocarctos,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,phocarctos,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,phocarctos,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,phocarctos,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,phocarctos,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,phocarctos,oceanic,61,1
@@ -31056,6 +31066,7 @@ marine_mammals,r_reproductive_traits,max_age,phocidae,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,phocidae,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,post_birth_hatching_parental_dependence,phocidae,month-year,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,phocidae,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,phocidae,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,phocidae,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,phocidae,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,phocidae,oceanic,61,1
@@ -31559,6 +31570,7 @@ marine_mammals,r_reproductive_traits,lifetime_reproductive_opportunities,zalophu
 marine_mammals,r_reproductive_traits,max_age,zalophus,20-100yrs,61,1
 marine_mammals,r_reproductive_traits,parental_investment,zalophus,live birth/egg care,61,1
 marine_mammals,r_reproductive_traits,reproductive_strategy,zalophus,sexual dioecious,61,1
+marine_mammals,spatial_scale_of_species,depth_min_max,zalophus,atmosphere,61,1
 marine_mammals,spatial_scale_of_species,eoo_range,zalophus,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,zalophus,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,zalophus,oceanic,61,1
@@ -32176,6 +32188,7 @@ molluscs,r_reproductive_traits,parental_investment,crassostrea virginica,spawner
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,crassostrea virginica,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,crassostrea virginica,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,crassostrea virginica,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,crassostrea virginica,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,crassostrea virginica,>20000,46,1
 molluscs,spatial_scale_of_species,zone,crassostrea virginica,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,crassostrea virginica,benthic,46,1
@@ -32435,6 +32448,7 @@ molluscs,r_reproductive_traits,parental_investment,magallana gigas,spawner,46,1
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,magallana gigas,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,magallana gigas,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,magallana gigas,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,magallana gigas,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,magallana gigas,>20000,46,1
 molluscs,spatial_scale_of_species,zone,magallana gigas,intertidal,46,1
 molluscs,specialisation,across_stage_dependent_habitats_condition,magallana gigas,surface water,46,1
@@ -32477,6 +32491,7 @@ molluscs,r_reproductive_traits,parental_investment,magallana hongkongensis,spawn
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,magallana hongkongensis,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,magallana hongkongensis,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,magallana hongkongensis,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,magallana hongkongensis,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,magallana hongkongensis,>20000,46,1
 molluscs,spatial_scale_of_species,zone,magallana hongkongensis,intertidal,46,1
 molluscs,specialisation,across_stage_dependent_habitats_condition,magallana hongkongensis,surface water,46,1
@@ -32599,6 +32614,7 @@ molluscs,r_reproductive_traits,parental_investment,mytilus californianus,spawner
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,mytilus californianus,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,mytilus californianus,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,mytilus californianus,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,mytilus californianus,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,mytilus californianus,>20000,46,1
 molluscs,spatial_scale_of_species,zone,mytilus californianus,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,mytilus californianus,benthic,46,1
@@ -32642,6 +32658,7 @@ molluscs,r_reproductive_traits,parental_investment,mytilus edulis,spawner,46,1
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,mytilus edulis,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,mytilus edulis,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,mytilus edulis,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,mytilus edulis,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,mytilus edulis,>20000,46,1
 molluscs,spatial_scale_of_species,zone,mytilus edulis,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,mytilus edulis,benthic,46,1
@@ -32685,6 +32702,7 @@ molluscs,r_reproductive_traits,parental_investment,mytilus galloprovincialis,spa
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,mytilus galloprovincialis,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,mytilus galloprovincialis,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,mytilus galloprovincialis,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,mytilus galloprovincialis,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,mytilus galloprovincialis,>20000,46,1
 molluscs,spatial_scale_of_species,zone,mytilus galloprovincialis,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,mytilus galloprovincialis,benthic,46,1
@@ -32728,6 +32746,7 @@ molluscs,r_reproductive_traits,parental_investment,mytilus trossulus,spawner,46,
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,mytilus trossulus,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,mytilus trossulus,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,mytilus trossulus,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,mytilus trossulus,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,mytilus trossulus,>20000,46,1
 molluscs,spatial_scale_of_species,zone,mytilus trossulus,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,mytilus trossulus,benthic,46,1
@@ -32771,6 +32790,7 @@ molluscs,r_reproductive_traits,parental_investment,ostrea angasi,spawner,46,1
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,ostrea angasi,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,ostrea angasi,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,ostrea angasi,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,ostrea angasi,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,ostrea angasi,>20000,46,1
 molluscs,spatial_scale_of_species,zone,ostrea angasi,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,ostrea angasi,benthic,46,1
@@ -32812,6 +32832,7 @@ molluscs,r_reproductive_traits,parental_investment,ostrea edulis,spawner,46,1
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,ostrea edulis,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,ostrea edulis,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,ostrea edulis,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,ostrea edulis,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,ostrea edulis,>20000,46,1
 molluscs,spatial_scale_of_species,zone,ostrea edulis,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,ostrea edulis,benthic,46,1
@@ -32855,6 +32876,7 @@ molluscs,r_reproductive_traits,parental_investment,ostrea lurida,spawner,46,1
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,ostrea lurida,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,ostrea lurida,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,ostrea lurida,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,ostrea lurida,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,ostrea lurida,>20000,46,1
 molluscs,spatial_scale_of_species,zone,ostrea lurida,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,ostrea lurida,benthic,46,1
@@ -33221,6 +33243,7 @@ molluscs,r_reproductive_traits,parental_investment,saccostrea glomerata,spawner,
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,saccostrea glomerata,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,saccostrea glomerata,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,saccostrea glomerata,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,saccostrea glomerata,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,saccostrea glomerata,>20000,46,1
 molluscs,spatial_scale_of_species,zone,saccostrea glomerata,intertidal,46,1
 molluscs,specialisation,across_stage_dependent_habitats_condition,saccostrea glomerata,surface water,46,1
@@ -33390,6 +33413,7 @@ molluscs,r_reproductive_traits,parental_investment,trichomya hirsuta,spawner,46,
 molluscs,r_reproductive_traits,post_birth_hatching_parental_dependence,trichomya hirsuta,na,46,1
 molluscs,r_reproductive_traits,reproductive_strategy,trichomya hirsuta,sexual hermaphrodite,46,1
 molluscs,spatial_scale_of_species,depth_min_max,trichomya hirsuta,epipelagic,46,1
+molluscs,spatial_scale_of_species,depth_min_max,trichomya hirsuta,atmosphere,46,1
 molluscs,spatial_scale_of_species,eoo_range,trichomya hirsuta,>20000,46,1
 molluscs,spatial_scale_of_species,zone,trichomya hirsuta,intertidal,46,1
 molluscs,spatial_scale_of_species,zone,trichomya hirsuta,benthic,46,1
@@ -33623,6 +33647,7 @@ plants_algae,r_reproductive_traits,reproductive_strategy,porolithon,sexual dioec
 plants_algae,r_reproductive_traits,reproductive_strategy,porolithon,sexual hermaphrodite,4,0.3333333333333333
 plants_algae,r_reproductive_traits,reproductive_strategy,porolithon,asexual,4,0.3333333333333333
 plants_algae,spatial_scale_of_species,depth_min_max,porolithon,epipelagic,4,1
+plants_algae,spatial_scale_of_species,depth_min_max,porolithon,atmosphere,4,1
 plants_algae,spatial_scale_of_species,zone,porolithon,intertidal,4,1
 plants_algae,spatial_scale_of_species,zone,porolithon,benthic,4,1
 plants_algae,specialisation,light_dependence,porolithon,yes,4,1
@@ -33737,6 +33762,7 @@ polychaetes,spatial_scale_of_species,depth_min_max,sabellidae,bathypelagic,4,1
 polychaetes,spatial_scale_of_species,depth_min_max,sabellidae,abyssopelagic,4,1
 polychaetes,spatial_scale_of_species,depth_min_max,sabellidae,hadopelagic,4,1
 polychaetes,spatial_scale_of_species,depth_min_max,sabellidae,unknown,4,1
+polychaetes,spatial_scale_of_species,depth_min_max,sabellidae,atmosphere,4,1
 polychaetes,spatial_scale_of_species,zone,sabellidae,intertidal,4,1
 polychaetes,spatial_scale_of_species,zone,sabellidae,neritic,4,1
 polychaetes,spatial_scale_of_species,zone,sabellidae,oceanic,4,1
@@ -33763,6 +33789,7 @@ polychaetes,spatial_scale_of_species,depth_min_max,terebellidae,bathypelagic,4,1
 polychaetes,spatial_scale_of_species,depth_min_max,terebellidae,abyssopelagic,4,1
 polychaetes,spatial_scale_of_species,depth_min_max,terebellidae,hadopelagic,4,1
 polychaetes,spatial_scale_of_species,depth_min_max,terebellidae,unknown,4,1
+polychaetes,spatial_scale_of_species,depth_min_max,terebellidae,atmosphere,4,1
 polychaetes,spatial_scale_of_species,zone,terebellidae,intertidal,4,1
 polychaetes,spatial_scale_of_species,zone,terebellidae,neritic,4,1
 polychaetes,spatial_scale_of_species,zone,terebellidae,oceanic,4,1
@@ -33804,6 +33831,7 @@ reptiles,r_reproductive_traits,max_age,acrochordus,5-10yrs,16,1
 reptiles,r_reproductive_traits,parental_investment,acrochordus,live birth/egg care,16,1
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,acrochordus,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,acrochordus,sexual dioecious,16,1
+reptiles,spatial_scale_of_species,depth_min_max,acrochordus,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,acrochordus,100-4999,16,1
 reptiles,spatial_scale_of_species,zone,acrochordus,intertidal,16,1
 reptiles,spatial_scale_of_species,zone,acrochordus,benthic,16,1
@@ -33857,6 +33885,7 @@ reptiles,r_reproductive_traits,parental_investment,amblyrhynchus cristatus,egg-l
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,amblyrhynchus cristatus,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,amblyrhynchus cristatus,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,amblyrhynchus cristatus,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,amblyrhynchus cristatus,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,amblyrhynchus cristatus,5000-19999,16,1
 reptiles,spatial_scale_of_species,zone,amblyrhynchus cristatus,intertidal,16,1
 reptiles,specialisation,across_stage_dependent_habitats_condition,amblyrhynchus cristatus,rocky intertidal,16,1
@@ -33902,6 +33931,7 @@ reptiles,r_reproductive_traits,parental_investment,caretta caretta,egg-layer,16,
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,caretta caretta,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,caretta caretta,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,caretta caretta,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,caretta caretta,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,caretta caretta,>20000,16,1
 reptiles,spatial_scale_of_species,zone,caretta caretta,neritic,16,1
 reptiles,spatial_scale_of_species,zone,caretta caretta,oceanic,16,1
@@ -33949,6 +33979,7 @@ reptiles,r_reproductive_traits,parental_investment,chelonia mydas,egg-layer,16,1
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,chelonia mydas,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,chelonia mydas,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,chelonia mydas,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,chelonia mydas,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,chelonia mydas,>20000,16,1
 reptiles,spatial_scale_of_species,zone,chelonia mydas,neritic,16,1
 reptiles,spatial_scale_of_species,zone,chelonia mydas,oceanic,16,1
@@ -33992,6 +34023,7 @@ reptiles,r_reproductive_traits,lifetime_reproductive_opportunities,crocodylus ac
 reptiles,r_reproductive_traits,max_age,crocodylus acutus,20-100yrs,16,1
 reptiles,r_reproductive_traits,parental_investment,crocodylus acutus,live birth/egg care,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,crocodylus acutus,sexual dioecious,16,1
+reptiles,spatial_scale_of_species,depth_min_max,crocodylus acutus,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,crocodylus acutus,>20000,16,1
 reptiles,spatial_scale_of_species,zone,crocodylus acutus,intertidal,16,1
 reptiles,specialisation,across_stage_dependent_habitats_condition,crocodylus acutus,mangrove,16,1
@@ -34035,6 +34067,7 @@ reptiles,r_reproductive_traits,lifetime_reproductive_opportunities,crocodylus po
 reptiles,r_reproductive_traits,max_age,crocodylus porosus,20-100yrs,16,1
 reptiles,r_reproductive_traits,parental_investment,crocodylus porosus,live birth/egg care,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,crocodylus porosus,sexual dioecious,16,1
+reptiles,spatial_scale_of_species,depth_min_max,crocodylus porosus,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,crocodylus porosus,>20000,16,1
 reptiles,spatial_scale_of_species,zone,crocodylus porosus,intertidal,16,1
 reptiles,specialisation,across_stage_dependent_habitats_condition,crocodylus porosus,mangrove,16,1
@@ -34083,6 +34116,7 @@ reptiles,r_reproductive_traits,parental_investment,dermochelys coriacea,egg-laye
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,dermochelys coriacea,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,dermochelys coriacea,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,dermochelys coriacea,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,dermochelys coriacea,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,dermochelys coriacea,>20000,16,1
 reptiles,spatial_scale_of_species,zone,dermochelys coriacea,neritic,16,1
 reptiles,spatial_scale_of_species,zone,dermochelys coriacea,oceanic,16,1
@@ -34180,6 +34214,7 @@ reptiles,r_reproductive_traits,parental_investment,ephalophis,live birth/egg car
 reptiles,r_reproductive_traits,parental_investment,ephalophis,egg-layer unattended,16,0.5
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,ephalophis,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,ephalophis,sexual dioecious,16,1
+reptiles,spatial_scale_of_species,depth_min_max,ephalophis,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,ephalophis,100-4999,16,1
 reptiles,spatial_scale_of_species,zone,ephalophis,intertidal,16,1
 reptiles,spatial_scale_of_species,zone,ephalophis,benthic,16,1
@@ -34230,6 +34265,7 @@ reptiles,r_reproductive_traits,parental_investment,eretmochelys imbricata,egg-la
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,eretmochelys imbricata,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,eretmochelys imbricata,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,eretmochelys imbricata,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,eretmochelys imbricata,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,eretmochelys imbricata,>20000,16,1
 reptiles,spatial_scale_of_species,zone,eretmochelys imbricata,neritic,16,1
 reptiles,spatial_scale_of_species,zone,eretmochelys imbricata,oceanic,16,1
@@ -34279,6 +34315,7 @@ reptiles,r_reproductive_traits,parental_investment,hydrelaps,live birth/egg care
 reptiles,r_reproductive_traits,parental_investment,hydrelaps,egg-layer unattended,16,0.5
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,hydrelaps,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,hydrelaps,sexual dioecious,16,1
+reptiles,spatial_scale_of_species,depth_min_max,hydrelaps,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,hydrelaps,100-4999,16,1
 reptiles,spatial_scale_of_species,zone,hydrelaps,intertidal,16,1
 reptiles,spatial_scale_of_species,zone,hydrelaps,benthic,16,1
@@ -34329,6 +34366,7 @@ reptiles,r_reproductive_traits,max_age,laticauda,10-20yrs,16,1
 reptiles,r_reproductive_traits,parental_investment,laticauda,egg-layer unattended,16,1
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,laticauda,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,laticauda,sexual dioecious,16,1
+reptiles,spatial_scale_of_species,depth_min_max,laticauda,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,laticauda,<99,16,1
 reptiles,spatial_scale_of_species,zone,laticauda,benthic,16,1
 reptiles,specialisation,across_stage_dependent_habitats_condition,laticauda,coral reef,16,1
@@ -34379,6 +34417,7 @@ reptiles,r_reproductive_traits,parental_investment,lepidochelys kempii,egg-layer
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,lepidochelys kempii,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,lepidochelys kempii,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,lepidochelys kempii,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,lepidochelys kempii,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,lepidochelys kempii,>20000,16,1
 reptiles,spatial_scale_of_species,zone,lepidochelys kempii,neritic,16,1
 reptiles,spatial_scale_of_species,zone,lepidochelys kempii,oceanic,16,1
@@ -34426,6 +34465,7 @@ reptiles,r_reproductive_traits,parental_investment,lepidochelys olivacea,egg-lay
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,lepidochelys olivacea,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,lepidochelys olivacea,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,lepidochelys olivacea,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,lepidochelys olivacea,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,lepidochelys olivacea,>20000,16,1
 reptiles,spatial_scale_of_species,zone,lepidochelys olivacea,neritic,16,1
 reptiles,spatial_scale_of_species,zone,lepidochelys olivacea,oceanic,16,1
@@ -34473,6 +34513,7 @@ reptiles,r_reproductive_traits,parental_investment,natator depressa,egg-layer,16
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,natator depressa,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,natator depressa,sexual dioecious,16,1
 reptiles,spatial_scale_of_species,depth_min_max,natator depressa,epipelagic,16,1
+reptiles,spatial_scale_of_species,depth_min_max,natator depressa,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,natator depressa,>20000,16,1
 reptiles,spatial_scale_of_species,zone,natator depressa,neritic,16,1
 reptiles,spatial_scale_of_species,zone,natator depressa,oceanic,16,1
@@ -34519,6 +34560,7 @@ reptiles,r_reproductive_traits,parental_investment,parahydrophis,live birth/egg 
 reptiles,r_reproductive_traits,parental_investment,parahydrophis,egg-layer unattended,16,0.5
 reptiles,r_reproductive_traits,post_birth_hatching_parental_dependence,parahydrophis,na,16,1
 reptiles,r_reproductive_traits,reproductive_strategy,parahydrophis,sexual dioecious,16,1
+reptiles,spatial_scale_of_species,depth_min_max,parahydrophis,atmosphere,16,1
 reptiles,spatial_scale_of_species,eoo_range,parahydrophis,100-4999,16,1
 reptiles,spatial_scale_of_species,zone,parahydrophis,intertidal,16,1
 reptiles,spatial_scale_of_species,zone,parahydrophis,benthic,16,1
@@ -34579,6 +34621,7 @@ seabirds,r_reproductive_traits,parental_investment,alcidae,live birth/egg care,5
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,alcidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,alcidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,alcidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,alcidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,alcidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,alcidae,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,alcidae,neritic,50,1
@@ -34639,6 +34682,7 @@ seabirds,r_reproductive_traits,parental_investment,anatidae,live birth/egg care,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,anatidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,anatidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,anatidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,anatidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,anatidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,anatidae,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,anatidae,neritic,50,1
@@ -34692,6 +34736,7 @@ seabirds,r_reproductive_traits,parental_investment,aphrodroma,live birth/egg car
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,aphrodroma,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,aphrodroma,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,aphrodroma,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,aphrodroma,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,aphrodroma,>20000,50,1
 seabirds,spatial_scale_of_species,zone,aphrodroma,neritic,50,1
 seabirds,spatial_scale_of_species,zone,aphrodroma,oceanic,50,1
@@ -34745,6 +34790,7 @@ seabirds,r_reproductive_traits,parental_investment,ardenna,live birth/egg care,5
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,ardenna,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,ardenna,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,ardenna,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,ardenna,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,ardenna,>20000,50,1
 seabirds,spatial_scale_of_species,zone,ardenna,neritic,50,1
 seabirds,spatial_scale_of_species,zone,ardenna,oceanic,50,1
@@ -34796,6 +34842,7 @@ seabirds,r_reproductive_traits,parental_investment,bulweria,live birth/egg care,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,bulweria,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,bulweria,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,bulweria,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,bulweria,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,bulweria,>20000,50,1
 seabirds,spatial_scale_of_species,zone,bulweria,neritic,50,1
 seabirds,spatial_scale_of_species,zone,bulweria,oceanic,50,1
@@ -34849,6 +34896,7 @@ seabirds,r_reproductive_traits,parental_investment,calonectris,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,calonectris,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,calonectris,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,calonectris,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,calonectris,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,calonectris,>20000,50,1
 seabirds,spatial_scale_of_species,zone,calonectris,neritic,50,1
 seabirds,spatial_scale_of_species,zone,calonectris,oceanic,50,1
@@ -34903,6 +34951,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,chlidonia
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,chlidonias,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,chlidonias,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,chlidonias,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,chlidonias,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,chlidonias,>20000,50,1
 seabirds,spatial_scale_of_species,zone,chlidonias,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,chlidonias,neritic,50,1
@@ -34962,6 +35011,7 @@ seabirds,r_reproductive_traits,parental_investment,chroicocephalus,live birth/eg
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,chroicocephalus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,chroicocephalus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,chroicocephalus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,chroicocephalus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,chroicocephalus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,chroicocephalus,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,chroicocephalus,neritic,50,1
@@ -35023,6 +35073,7 @@ seabirds,r_reproductive_traits,parental_investment,creagrus,live birth/egg care,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,creagrus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,creagrus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,creagrus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,creagrus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,creagrus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,creagrus,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,creagrus,neritic,50,1
@@ -35081,6 +35132,7 @@ seabirds,r_reproductive_traits,parental_investment,daption,live birth/egg care,5
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,daption,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,daption,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,daption,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,daption,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,daption,>20000,50,1
 seabirds,spatial_scale_of_species,zone,daption,neritic,50,1
 seabirds,spatial_scale_of_species,zone,daption,oceanic,50,1
@@ -35129,6 +35181,7 @@ seabirds,r_reproductive_traits,parental_investment,diomedeidae,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,diomedeidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,diomedeidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,diomedeidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,diomedeidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,diomedeidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,diomedeidae,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,diomedeidae,neritic,50,1
@@ -35182,6 +35235,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,fregatida
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,fregatidae,>year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,fregatidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,fregatidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,fregatidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,fregatidae,<99,50,0.5
 seabirds,spatial_scale_of_species,eoo_range,fregatidae,>20000,50,0.5
 seabirds,spatial_scale_of_species,zone,fregatidae,neritic,50,1
@@ -35238,6 +35292,7 @@ seabirds,r_reproductive_traits,parental_investment,fulmarus,live birth/egg care,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,fulmarus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,fulmarus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,fulmarus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,fulmarus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,fulmarus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,fulmarus,neritic,50,1
 seabirds,spatial_scale_of_species,zone,fulmarus,oceanic,50,1
@@ -35293,6 +35348,7 @@ seabirds,r_reproductive_traits,parental_investment,gaviidae,live birth/egg care,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,gaviidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,gaviidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,gaviidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,gaviidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,gaviidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,gaviidae,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,gaviidae,neritic,50,1
@@ -35349,6 +35405,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,gelocheli
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,gelochelidon,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,gelochelidon,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,gelochelidon,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,gelochelidon,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,gelochelidon,>20000,50,1
 seabirds,spatial_scale_of_species,zone,gelochelidon,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,gelochelidon,neritic,50,1
@@ -35405,6 +35462,7 @@ seabirds,r_reproductive_traits,parental_investment,halobaena,live birth/egg care
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,halobaena,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,halobaena,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,halobaena,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,halobaena,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,halobaena,>20000,50,1
 seabirds,spatial_scale_of_species,zone,halobaena,neritic,50,1
 seabirds,spatial_scale_of_species,zone,halobaena,oceanic,50,1
@@ -35456,6 +35514,7 @@ seabirds,r_reproductive_traits,parental_investment,hydrobatidae,live birth/egg c
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,hydrobatidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,hydrobatidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,hydrobatidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,hydrobatidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,hydrobatidae,100-4999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,hydrobatidae,5000-19999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,hydrobatidae,>20000,50,0.3333333333333333
@@ -35512,6 +35571,7 @@ seabirds,r_reproductive_traits,parental_investment,hydrocoloeus,live birth/egg c
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,hydrocoloeus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,hydrocoloeus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,hydrocoloeus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,hydrocoloeus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,hydrocoloeus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,hydrocoloeus,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,hydrocoloeus,neritic,50,1
@@ -35573,6 +35633,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,hydroprog
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,hydroprogne,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,hydroprogne,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,hydroprogne,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,hydroprogne,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,hydroprogne,>20000,50,1
 seabirds,spatial_scale_of_species,zone,hydroprogne,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,hydroprogne,neritic,50,1
@@ -35632,6 +35693,7 @@ seabirds,r_reproductive_traits,parental_investment,ichthyaetus,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,ichthyaetus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,ichthyaetus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,ichthyaetus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,ichthyaetus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,ichthyaetus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,ichthyaetus,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,ichthyaetus,neritic,50,1
@@ -35693,6 +35755,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,larostern
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,larosterna,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,larosterna,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,larosterna,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,larosterna,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,larosterna,>20000,50,1
 seabirds,spatial_scale_of_species,zone,larosterna,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,larosterna,neritic,50,1
@@ -35752,6 +35815,7 @@ seabirds,r_reproductive_traits,parental_investment,larus,live birth/egg care,50,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,larus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,larus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,larus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,larus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,larus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,larus,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,larus,neritic,50,1
@@ -35813,6 +35877,7 @@ seabirds,r_reproductive_traits,parental_investment,leucophaeus,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,leucophaeus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,leucophaeus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,leucophaeus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,leucophaeus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,leucophaeus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,leucophaeus,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,leucophaeus,neritic,50,1
@@ -35873,6 +35938,7 @@ seabirds,r_reproductive_traits,parental_investment,macronectes,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,macronectes,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,macronectes,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,macronectes,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,macronectes,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,macronectes,>20000,50,1
 seabirds,spatial_scale_of_species,zone,macronectes,neritic,50,1
 seabirds,spatial_scale_of_species,zone,macronectes,oceanic,50,1
@@ -35924,6 +35990,7 @@ seabirds,r_reproductive_traits,parental_investment,oceanitidae,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,oceanitidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,oceanitidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,oceanitidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,oceanitidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,oceanitidae,100-4999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,oceanitidae,5000-19999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,oceanitidae,>20000,50,0.3333333333333333
@@ -35980,6 +36047,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,onychopri
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,onychoprion,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,onychoprion,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,onychoprion,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,onychoprion,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,onychoprion,>20000,50,1
 seabirds,spatial_scale_of_species,zone,onychoprion,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,onychoprion,neritic,50,1
@@ -36036,6 +36104,7 @@ seabirds,r_reproductive_traits,parental_investment,pachyptila,live birth/egg car
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,pachyptila,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,pachyptila,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,pachyptila,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,pachyptila,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,pachyptila,>20000,50,1
 seabirds,spatial_scale_of_species,zone,pachyptila,neritic,50,1
 seabirds,spatial_scale_of_species,zone,pachyptila,oceanic,50,1
@@ -36087,6 +36156,7 @@ seabirds,r_reproductive_traits,parental_investment,pagodroma,live birth/egg care
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,pagodroma,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,pagodroma,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,pagodroma,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,pagodroma,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,pagodroma,>20000,50,1
 seabirds,spatial_scale_of_species,zone,pagodroma,neritic,50,1
 seabirds,spatial_scale_of_species,zone,pagodroma,oceanic,50,1
@@ -36141,6 +36211,7 @@ seabirds,r_reproductive_traits,parental_investment,pagophila,live birth/egg care
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,pagophila,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,pagophila,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,pagophila,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,pagophila,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,pagophila,>20000,50,1
 seabirds,spatial_scale_of_species,zone,pagophila,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,pagophila,neritic,50,1
@@ -36201,6 +36272,7 @@ seabirds,r_reproductive_traits,parental_investment,pelecanidae,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,pelecanidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,pelecanidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,pelecanidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,pelecanidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,pelecanidae,100-4999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,pelecanidae,5000-19999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,pelecanidae,>20000,50,0.3333333333333333
@@ -36261,6 +36333,7 @@ seabirds,r_reproductive_traits,parental_investment,pelecanoides,live birth/egg c
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,pelecanoides,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,pelecanoides,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,pelecanoides,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,pelecanoides,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,pelecanoides,>20000,50,1
 seabirds,spatial_scale_of_species,zone,pelecanoides,neritic,50,1
 seabirds,spatial_scale_of_species,zone,pelecanoides,oceanic,50,1
@@ -36313,6 +36386,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,phaethont
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,phaethontidae,>year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,phaethontidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,phaethontidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,phaethontidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,phaethontidae,<99,50,0.5
 seabirds,spatial_scale_of_species,eoo_range,phaethontidae,>20000,50,0.5
 seabirds,spatial_scale_of_species,zone,phaethontidae,neritic,50,1
@@ -36370,6 +36444,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,phaetusa,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,phaetusa,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,phaetusa,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,phaetusa,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,phaetusa,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,phaetusa,>20000,50,1
 seabirds,spatial_scale_of_species,zone,phaetusa,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,phaetusa,neritic,50,1
@@ -36428,6 +36503,7 @@ seabirds,r_reproductive_traits,parental_investment,phalacrocoracidae,live birth/
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,phalacrocoracidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,phalacrocoracidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,phalacrocoracidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,phalacrocoracidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,phalacrocoracidae,100-4999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,phalacrocoracidae,5000-19999,50,0.3333333333333333
 seabirds,spatial_scale_of_species,eoo_range,phalacrocoracidae,>20000,50,0.3333333333333333
@@ -36492,6 +36568,7 @@ seabirds,r_reproductive_traits,parental_investment,podicipedidae,live birth/egg 
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,podicipedidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,podicipedidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,podicipedidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,podicipedidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,podicipedidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,podicipedidae,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,podicipedidae,neritic,50,1
@@ -36547,6 +36624,7 @@ seabirds,r_reproductive_traits,parental_investment,procellaria,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,procellaria,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,procellaria,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,procellaria,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,procellaria,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,procellaria,>20000,50,1
 seabirds,spatial_scale_of_species,zone,procellaria,neritic,50,1
 seabirds,spatial_scale_of_species,zone,procellaria,oceanic,50,1
@@ -36600,6 +36678,7 @@ seabirds,r_reproductive_traits,parental_investment,pseudobulweria,live birth/egg
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,pseudobulweria,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,pseudobulweria,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,pseudobulweria,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,pseudobulweria,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,pseudobulweria,>20000,50,1
 seabirds,spatial_scale_of_species,zone,pseudobulweria,neritic,50,1
 seabirds,spatial_scale_of_species,zone,pseudobulweria,oceanic,50,1
@@ -36653,6 +36732,7 @@ seabirds,r_reproductive_traits,parental_investment,pterodroma,live birth/egg car
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,pterodroma,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,pterodroma,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,pterodroma,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,pterodroma,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,pterodroma,>20000,50,1
 seabirds,spatial_scale_of_species,zone,pterodroma,neritic,50,1
 seabirds,spatial_scale_of_species,zone,pterodroma,oceanic,50,1
@@ -36706,6 +36786,7 @@ seabirds,r_reproductive_traits,parental_investment,puffinus,live birth/egg care,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,puffinus,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,puffinus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,puffinus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,puffinus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,puffinus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,puffinus,neritic,50,1
 seabirds,spatial_scale_of_species,zone,puffinus,oceanic,50,1
@@ -36760,6 +36841,7 @@ seabirds,r_reproductive_traits,parental_investment,rhodostethia,live birth/egg c
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,rhodostethia,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,rhodostethia,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,rhodostethia,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,rhodostethia,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,rhodostethia,>20000,50,1
 seabirds,spatial_scale_of_species,zone,rhodostethia,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,rhodostethia,neritic,50,1
@@ -36821,6 +36903,7 @@ seabirds,r_reproductive_traits,parental_investment,rissa,live birth/egg care,50,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,rissa,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,rissa,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,rissa,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,rissa,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,rissa,>20000,50,1
 seabirds,spatial_scale_of_species,zone,rissa,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,rissa,neritic,50,1
@@ -36871,6 +36954,7 @@ seabirds,r_reproductive_traits,parental_investment,scolopacidae,live birth/egg c
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,scolopacidae,week-month,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,scolopacidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,scolopacidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,scolopacidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,scolopacidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,scolopacidae,neritic,50,1
 seabirds,spatial_scale_of_species,zone,scolopacidae,oceanic,50,1
@@ -36926,6 +37010,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,sphenisci
 seabirds,r_reproductive_traits,reproductive_strategy,spheniscidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,spheniscidae,epipelagic,50,1
 seabirds,spatial_scale_of_species,depth_min_max,spheniscidae,mesopelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,spheniscidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,spheniscidae,<99,50,0.25
 seabirds,spatial_scale_of_species,eoo_range,spheniscidae,100-4999,50,0.25
 seabirds,spatial_scale_of_species,eoo_range,spheniscidae,5000-19999,50,0.25
@@ -36986,6 +37071,7 @@ seabirds,r_reproductive_traits,parental_investment,stercorariidae,live birth/egg
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,stercorariidae,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,stercorariidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,stercorariidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,stercorariidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,stercorariidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,stercorariidae,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,stercorariidae,neritic,50,1
@@ -37041,6 +37127,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,sterna,we
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,sterna,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,sterna,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,sterna,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,sterna,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,sterna,>20000,50,1
 seabirds,spatial_scale_of_species,zone,sterna,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,sterna,neritic,50,1
@@ -37100,6 +37187,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,sternula,
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,sternula,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,sternula,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,sternula,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,sternula,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,sternula,>20000,50,1
 seabirds,spatial_scale_of_species,zone,sternula,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,sternula,neritic,50,1
@@ -37155,6 +37243,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,sulidae,m
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,sulidae,>year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,sulidae,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,sulidae,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,sulidae,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,sulidae,>20000,50,1
 seabirds,spatial_scale_of_species,zone,sulidae,neritic,50,1
 seabirds,spatial_scale_of_species,zone,sulidae,oceanic,50,1
@@ -37211,6 +37300,7 @@ seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,thalasseu
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,thalasseus,month-year,50,0.5
 seabirds,r_reproductive_traits,reproductive_strategy,thalasseus,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,thalasseus,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,thalasseus,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,thalasseus,>20000,50,1
 seabirds,spatial_scale_of_species,zone,thalasseus,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,thalasseus,neritic,50,1
@@ -37267,6 +37357,7 @@ seabirds,r_reproductive_traits,parental_investment,thalassoica,live birth/egg ca
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,thalassoica,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,thalassoica,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,thalassoica,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,thalassoica,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,thalassoica,>20000,50,1
 seabirds,spatial_scale_of_species,zone,thalassoica,neritic,50,1
 seabirds,spatial_scale_of_species,zone,thalassoica,oceanic,50,1
@@ -37321,6 +37412,7 @@ seabirds,r_reproductive_traits,parental_investment,xema,live birth/egg care,50,1
 seabirds,r_reproductive_traits,post_birth_hatching_parental_dependence,xema,month-year,50,1
 seabirds,r_reproductive_traits,reproductive_strategy,xema,sexual dioecious,50,1
 seabirds,spatial_scale_of_species,depth_min_max,xema,epipelagic,50,1
+seabirds,spatial_scale_of_species,depth_min_max,xema,atmosphere,50,1
 seabirds,spatial_scale_of_species,eoo_range,xema,>20000,50,1
 seabirds,spatial_scale_of_species,zone,xema,intertidal,50,1
 seabirds,spatial_scale_of_species,zone,xema,neritic,50,1
