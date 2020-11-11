@@ -179,7 +179,6 @@ echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix wendtii,feeding-calcifier,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiopholis aculeata,feeding-calcifier,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiura sarsii,feeding-calcifier,100
-echinoderms,spatial scale of species,depth (min/max),ophiura sarsii,atmosphere,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",parvulastra exigua,no,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra exigua,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra exigua,no,100
@@ -228,14 +227,12 @@ elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if 
 elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,large for adults,135
 elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,small for juveniles,135
 elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),carcharhinus leucas,no larvae,135
-elasmobranchs,spatial scale of species,depth (min/max),carcharhinus leucas,atmosphere,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,cruriraja,possibly,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,fenestraja,possibly,135
 elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",glyphis,few,135
 elasmobranchs,foraging range,"if one/few, size",glyphis,large for adults,135
 elasmobranchs,foraging range,"if one/few, size",glyphis,small for juveniles,135
 elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),glyphis,no larvae,135
-elasmobranchs,spatial scale of species,depth (min/max),glyphis,atmosphere,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiella,possibly,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,135
 elasmobranchs,r (reproductive traits),can the sex ratio be altered by a stressor?,narcinidae,possibly,135
@@ -372,7 +369,6 @@ fish,biophysical traits,minimum depth,ethadophis merenda,0,115
 fish,specialisation,across-stage dependent habitats + condition,ethadophis merenda,unknown,115
 fish,specialisation,within-stage dependent habitats + condition,ethadophis merenda,unknown,115
 fish,specialisation,extreme diet specialization,eviota sigillata,no,115
-fish,spatial scale of species,depth (min/max),exocoetus volitans,atmosphere,115
 fish,biophysical traits,maximum depth,facciolella karreri,2000,115
 fish,biophysical traits,minimum depth,facciolella karreri,700,115
 fish,specialisation,across-stage dependent habitats + condition,gadus morhua,deep habitats,115
@@ -506,7 +502,6 @@ fish,biophysical traits,maximum depth,xenomystax trucidans,2326,115
 fish,biophysical traits,minimum depth,xenomystax trucidans,1010,115
 fish,biophysical traits,maximum depth,xestochilus nebulosus,42,115
 fish,biophysical traits,minimum depth,xestochilus nebulosus,2,115
-marine_mammals,spatial scale of species,depth (min/max),arctocephalus,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,arctocephalus,breeding and raising pups,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,arctocephalus,for antartic fur seal,61
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,filter feed and eat zooplankton,61
@@ -519,7 +514,6 @@ marine_mammals,r (reproductive traits),are there sub-populations?,balaenoptera b
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,balaenoptera borealis,8_18_degrees_celcius_don_t_go_into_polar_icy_water_c,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,balaenoptera physalus,temperate_subpolar_waters,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,berardius bairdii,sub_arctic_to_temperate_waters,61
-marine_mammals,spatial scale of species,depth (min/max),callorhinus,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,callorhinus,breeding and raising pups,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,callorhinus,for antartic fur seal,61
 marine_mammals,biophysical traits,"navigation requirements (sound or light, or magnetic)",cephalorhynchus hectori,yes-sound and light,61
@@ -546,7 +540,6 @@ marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat sp
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,little known,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,but estimated to be long,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eumetopias,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,spatial scale of species,depth (min/max),eumetopias,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,eumetopias,breeding and raising pups,61
 marine_mammals,biophysical traits,"navigation requirements (sound or light, or magnetic)",feresa attenuata,yes-sound and light,61
 marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),feresa attenuata,not larvae,61
@@ -573,23 +566,18 @@ marine_mammals,r (reproductive traits),are there sub-populations?,mesoplodon ste
 marine_mammals,specialisation,across-stage dependent habitats + condition,monodon monoceros,fjords,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,monodon monoceros,fjords,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,neophoca,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,spatial scale of species,depth (min/max),neophoca,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,neophoca,breeding and raising pups,61
-marine_mammals,spatial scale of species,depth (min/max),odobenus rosmarus,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,odobenus rosmarus,breeding and raising pups,61
 marine_mammals,biophysical traits,"navigation requirements (sound or light, or magnetic)",orcinus orca,yes-sound and light,61
 marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),orcinus orca,not larvae,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,otaria,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,spatial scale of species,depth (min/max),otaria,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,otaria,breeding and raising pups,61
 marine_mammals,biophysical traits,"navigation requirements (sound or light, or magnetic)",peponocephala electra,yes-sound and light,61
 marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),peponocephala electra,not larvae,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,peponocephala electra,continental shelves,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,peponocephala electra,continental shelves,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,phocarctos,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,spatial scale of species,depth (min/max),phocarctos,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,phocarctos,breeding and raising pups,61
-marine_mammals,spatial scale of species,depth (min/max),phocidae,atmosphere,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,phocoena sinus,one,61
 marine_mammals,specialisation,dependent interspecific interactions,phocoena sinus,one,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,physeter macrocephalus,many,61
@@ -626,7 +614,6 @@ marine_mammals,biophysical traits,"navigation requirements (sound or light, or m
 marine_mammals,r (reproductive traits),can the sex ratio be altered by a stressor?,ursus maritimus,yes-sex-selective hunting,61
 marine_mammals,specialisation,extreme diet specialization,ursus maritimus,no,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,zalophus,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,spatial scale of species,depth (min/max),zalophus,atmosphere,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,zalophus,breeding and raising pups,61
 molluscs,biophysical traits,respiration structures,acesta excavata,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,acesta excavata,benthic,46
@@ -637,43 +624,27 @@ molluscs,specialisation,within-stage dependent habitats + condition,anadara trap
 molluscs,biophysical traits,respiration structures,argopecten irradians,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,argopecten irradians,benthic,46
 molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),austrocochlea porcata,feeding,46
-molluscs,spatial scale of species,depth (min/max),austrocochlea porcata,atmosphere,46
 molluscs,biophysical traits,respiration structures,bankia setacea,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,submerged timber,46
-molluscs,spatial scale of species,depth (min/max),cellana tramoserica,atmosphere,46
 molluscs,biophysical traits,respiration structures,cerastoderma edule,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,cerastoderma edule,benthic,46
 molluscs,biophysical traits,respiration structures,crassostrea virginica,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),crassostrea virginica,atmosphere,46
-molluscs,spatial scale of species,depth (min/max),haliotis coccoradiata,atmosphere,46
-molluscs,spatial scale of species,depth (min/max),haliotis kamtschatkana,atmosphere,46
-molluscs,spatial scale of species,depth (min/max),haliotis rubra,atmosphere,46
 molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),lunella undulata,feeding,46
-molluscs,spatial scale of species,depth (min/max),lunella undulata,atmosphere,46
 molluscs,biophysical traits,respiration structures,magallana gigas,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),magallana gigas,atmosphere,46
 molluscs,biophysical traits,respiration structures,magallana hongkongensis,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),magallana hongkongensis,atmosphere,46
 molluscs,biophysical traits,respiration structures,mercenaria mercenaria,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,mercenaria mercenaria,benthic,46
 molluscs,biophysical traits,respiration structures,mimachlamys asperrima,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,mimachlamys asperrima,benthic,46
 molluscs,biophysical traits,respiration structures,mytilus californianus,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),mytilus californianus,atmosphere,46
 molluscs,biophysical traits,respiration structures,mytilus edulis,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),mytilus edulis,atmosphere,46
 molluscs,biophysical traits,respiration structures,mytilus galloprovincialis,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),mytilus galloprovincialis,atmosphere,46
 molluscs,biophysical traits,respiration structures,mytilus trossulus,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),mytilus trossulus,atmosphere,46
 molluscs,biophysical traits,respiration structures,ostrea angasi,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),ostrea angasi,atmosphere,46
 molluscs,specialisation,within-stage dependent habitats + condition,ostrea angasi,benthic,46
 molluscs,biophysical traits,respiration structures,ostrea edulis,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),ostrea edulis,atmosphere,46
 molluscs,biophysical traits,respiration structures,ostrea lurida,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),ostrea lurida,atmosphere,46
 molluscs,biophysical traits,respiration structures,panopea generosa,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,panopea generosa,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,panopea generosa,soft bottom,46
@@ -692,18 +663,14 @@ molluscs,biophysical traits,respiration structures,plebidonax deltoides,filterfe
 molluscs,specialisation,within-stage dependent habitats + condition,plebidonax deltoides,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,plebidonax deltoides,soft bottom,46
 molluscs,biophysical traits,respiration structures,saccostrea glomerata,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),saccostrea glomerata,atmosphere,46
 molluscs,biophysical traits,respiration structures,siliqua patula,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,soft bottom,46
-molluscs,spatial scale of species,depth (min/max),tenguella marginalba,atmosphere,46
 molluscs,biophysical traits,respiration structures,trichomya hirsuta,filterfeeder,46
-molluscs,spatial scale of species,depth (min/max),trichomya hirsuta,atmosphere,46
 molluscs,biophysical traits,respiration structures,tridacna gigas,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna gigas,benthic,46
 molluscs,biophysical traits,respiration structures,tridacna maxima,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna maxima,benthic,46
-molluscs,spatial scale of species,depth (min/max),turbo militaris,atmosphere,46
 plants_algae,biophysical traits,respiration structures,avicennia marina,pnuemataphores,4
 plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),avicennia marina,yes,4
 plants_algae,specialisation,air-sea interface,avicennia marina,yes-although not sure what this really means-propagules float,4
@@ -724,7 +691,6 @@ plants_algae,physiological tolerance breadths,sensitivity to wave energy (physic
 plants_algae,physiological tolerance breadths,sensitivity to wave energy (physical forcing),porolithon,thrives in high wave action--reef crest,4
 plants_algae,r (reproductive traits),are there sub-populations?,porolithon,likely,4
 plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),porolithon,yes,4
-plants_algae,spatial scale of species,depth (min/max),porolithon,atmosphere,4
 plants_algae,specialisation,air-sea interface,porolithon,no sensitive,4
 plants_algae,specialisation,air-sea interface,porolithon,thrives in high wave action--reef crest,4
 plants_algae,specialisation,dependent interspecific interactions,porolithon,examples of strong interactions but not clear if universal or needed for survival,4
@@ -732,156 +698,87 @@ plants_algae,specialisation,extreme diet specialization,porolithon,no,4
 plants_algae,biophysical traits,respiration structures,posidonia australis,no,4
 plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),posidonia australis,yes,4
 plants_algae,specialisation,air-sea interface,posidonia australis,yes-although not sure what this really means-propagules float,4
-polychaetes,spatial scale of species,depth (min/max),nephtyidae,atmosphere,4
-polychaetes,spatial scale of species,depth (min/max),nereididae,atmosphere,4
 polychaetes,biophysical traits,respiration structures,sabellidae,filter feeder,4
-polychaetes,spatial scale of species,depth (min/max),sabellidae,atmosphere,4
-polychaetes,spatial scale of species,depth (min/max),terebellidae,atmosphere,4
 reptiles,foraging range,"if one/few, size",acrochordus,few,16
 reptiles,physiological tolerance breadths,salinity,acrochordus,broad,16
-reptiles,spatial scale of species,depth (min/max),acrochordus,atmosphere,16
 reptiles,specialisation,extreme diet specialization,acrochordus,no,16
 reptiles,biophysical traits,calcium carbonate structure stages,amblyrhynchus cristatus,no,16
 reptiles,r (reproductive traits),can the sex ratio be altered by a stressor?,amblyrhynchus cristatus,no larva,16
-reptiles,spatial scale of species,depth (min/max),amblyrhynchus cristatus,atmosphere,16
-reptiles,spatial scale of species,depth (min/max),caretta caretta,atmosphere,16
 reptiles,specialisation,extreme diet specialization,caretta caretta,no,16
-reptiles,spatial scale of species,depth (min/max),chelonia mydas,atmosphere,16
 reptiles,specialisation,extreme diet specialization,chelonia mydas,no,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus acutus,hatchling maternal dependence,16
-reptiles,spatial scale of species,depth (min/max),crocodylus acutus,atmosphere,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus porosus,hatchling maternal dependence,16
-reptiles,spatial scale of species,depth (min/max),crocodylus porosus,atmosphere,16
-reptiles,spatial scale of species,depth (min/max),dermochelys coriacea,atmosphere,16
 reptiles,specialisation,extreme diet specialization,dermochelys coriacea,no,16
 reptiles,foraging range,"if one/few, size",elapidae,few,16
 reptiles,physiological tolerance breadths,salinity,elapidae,broad,16
 reptiles,specialisation,extreme diet specialization,elapidae,mixed,16
 reptiles,foraging range,"if one/few, size",ephalophis,few,16
 reptiles,physiological tolerance breadths,salinity,ephalophis,broad,16
-reptiles,spatial scale of species,depth (min/max),ephalophis,atmosphere,16
 reptiles,specialisation,extreme diet specialization,ephalophis,no,16
-reptiles,spatial scale of species,depth (min/max),eretmochelys imbricata,atmosphere,16
 reptiles,specialisation,extreme diet specialization,eretmochelys imbricata,yes,16
 reptiles,foraging range,"if one/few, size",hydrelaps,few,16
 reptiles,physiological tolerance breadths,salinity,hydrelaps,broad,16
-reptiles,spatial scale of species,depth (min/max),hydrelaps,atmosphere,16
 reptiles,specialisation,extreme diet specialization,hydrelaps,no,16
 reptiles,foraging range,"if one/few, size",laticauda,few,16
 reptiles,physiological tolerance breadths,salinity,laticauda,broad,16
-reptiles,spatial scale of species,depth (min/max),laticauda,atmosphere,16
 reptiles,specialisation,extreme diet specialization,laticauda,yes,16
-reptiles,spatial scale of species,depth (min/max),lepidochelys kempii,atmosphere,16
 reptiles,specialisation,extreme diet specialization,lepidochelys kempii,no,16
-reptiles,spatial scale of species,depth (min/max),lepidochelys olivacea,atmosphere,16
 reptiles,specialisation,extreme diet specialization,lepidochelys olivacea,no,16
-reptiles,spatial scale of species,depth (min/max),natator depressa,atmosphere,16
 reptiles,specialisation,extreme diet specialization,natator depressa,no,16
 reptiles,foraging range,"if one/few, size",parahydrophis,few,16
 reptiles,physiological tolerance breadths,salinity,parahydrophis,broad,16
-reptiles,spatial scale of species,depth (min/max),parahydrophis,atmosphere,16
 reptiles,specialisation,extreme diet specialization,parahydrophis,no,16
 seabirds,biophysical traits,calcium carbonate structure stages,alcidae,egg,50
-seabirds,spatial scale of species,depth (min/max),alcidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,anatidae,egg,50
-seabirds,spatial scale of species,depth (min/max),anatidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,aphrodroma,egg,50
-seabirds,spatial scale of species,depth (min/max),aphrodroma,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,ardenna,egg,50
-seabirds,spatial scale of species,depth (min/max),ardenna,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,bulweria,egg,50
-seabirds,spatial scale of species,depth (min/max),bulweria,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,calonectris,egg,50
-seabirds,spatial scale of species,depth (min/max),calonectris,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,chlidonias,egg,50
-seabirds,spatial scale of species,depth (min/max),chlidonias,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,chroicocephalus,egg,50
-seabirds,spatial scale of species,depth (min/max),chroicocephalus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,creagrus,egg,50
-seabirds,spatial scale of species,depth (min/max),creagrus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,daption,egg,50
-seabirds,spatial scale of species,depth (min/max),daption,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,diomedeidae,egg,50
-seabirds,spatial scale of species,depth (min/max),diomedeidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,fregatidae,egg,50
-seabirds,spatial scale of species,depth (min/max),fregatidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,fulmarus,egg,50
-seabirds,spatial scale of species,depth (min/max),fulmarus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,gaviidae,egg,50
-seabirds,spatial scale of species,depth (min/max),gaviidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,gelochelidon,egg,50
-seabirds,spatial scale of species,depth (min/max),gelochelidon,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,halobaena,egg,50
-seabirds,spatial scale of species,depth (min/max),halobaena,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,hydrobatidae,egg,50
-seabirds,spatial scale of species,depth (min/max),hydrobatidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,hydrocoloeus,egg,50
-seabirds,spatial scale of species,depth (min/max),hydrocoloeus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,hydroprogne,egg,50
-seabirds,spatial scale of species,depth (min/max),hydroprogne,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,ichthyaetus,egg,50
-seabirds,spatial scale of species,depth (min/max),ichthyaetus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,larosterna,egg,50
-seabirds,spatial scale of species,depth (min/max),larosterna,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,larus,egg,50
-seabirds,spatial scale of species,depth (min/max),larus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,leucophaeus,egg,50
-seabirds,spatial scale of species,depth (min/max),leucophaeus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,macronectes,egg,50
-seabirds,spatial scale of species,depth (min/max),macronectes,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,oceanitidae,egg,50
-seabirds,spatial scale of species,depth (min/max),oceanitidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,onychoprion,egg,50
-seabirds,spatial scale of species,depth (min/max),onychoprion,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,pachyptila,egg,50
-seabirds,spatial scale of species,depth (min/max),pachyptila,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,pagodroma,egg,50
-seabirds,spatial scale of species,depth (min/max),pagodroma,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,pagophila,egg,50
-seabirds,spatial scale of species,depth (min/max),pagophila,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,pelecanidae,egg,50
-seabirds,spatial scale of species,depth (min/max),pelecanidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,pelecanoides,egg,50
-seabirds,spatial scale of species,depth (min/max),pelecanoides,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,phaethontidae,egg,50
-seabirds,spatial scale of species,depth (min/max),phaethontidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,phaetusa,egg,50
-seabirds,spatial scale of species,depth (min/max),phaetusa,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,phalacrocoracidae,egg,50
-seabirds,spatial scale of species,depth (min/max),phalacrocoracidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,podicipedidae,egg,50
-seabirds,spatial scale of species,depth (min/max),podicipedidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,procellaria,egg,50
-seabirds,spatial scale of species,depth (min/max),procellaria,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,pseudobulweria,egg,50
-seabirds,spatial scale of species,depth (min/max),pseudobulweria,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,pterodroma,egg,50
-seabirds,spatial scale of species,depth (min/max),pterodroma,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,puffinus,egg,50
-seabirds,spatial scale of species,depth (min/max),puffinus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,rhodostethia,egg,50
-seabirds,spatial scale of species,depth (min/max),rhodostethia,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,rissa,egg,50
-seabirds,spatial scale of species,depth (min/max),rissa,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,scolopacidae,egg,50
-seabirds,spatial scale of species,depth (min/max),scolopacidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,spheniscidae,egg,50
 seabirds,biophysical traits,respiration structures,spheniscidae,lung,50
-seabirds,spatial scale of species,depth (min/max),spheniscidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,stercorariidae,egg,50
-seabirds,spatial scale of species,depth (min/max),stercorariidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,sterna,egg,50
-seabirds,spatial scale of species,depth (min/max),sterna,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,sternula,egg,50
-seabirds,spatial scale of species,depth (min/max),sternula,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,sulidae,egg,50
-seabirds,spatial scale of species,depth (min/max),sulidae,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,thalasseus,egg,50
-seabirds,spatial scale of species,depth (min/max),thalasseus,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,thalassoica,egg,50
-seabirds,spatial scale of species,depth (min/max),thalassoica,atmosphere,50
 seabirds,biophysical traits,calcium carbonate structure stages,xema,egg,50
-seabirds,spatial scale of species,depth (min/max),xema,atmosphere,50
 sponges,biophysical traits,calcium carbonate structure stages,demospongiae,no,1
 sponges,biophysical traits,"navigation requirements (sound or light, or magnetic)",demospongiae,larval navigation def by light,1
 sponges,biophysical traits,"navigation requirements (sound or light, or magnetic)",demospongiae,sound unknown,1

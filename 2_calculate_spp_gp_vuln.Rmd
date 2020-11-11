@@ -479,17 +479,17 @@ plot_df <- spp_vulnerability %>% select(-hab) %>% distinct()
 
 taxa <- plot_df$taxon %>% unique()
                 
-for(t in taxa) { # t <- taxa[1]
+for(t in taxa) { # t <- taxa[3]
   t_vuln <- plot_df %>%
     filter(taxon == t)
-  mean_str_vuln <- plot_df %>%
+  mean_str_vuln <- t_vuln %>%
     group_by(stressor) %>%
     summarize(vuln = mean(vuln))
-  mean_tot_vuln <- plot_df %>%
+  mean_tot_vuln <- t_vuln %>%
     summarize(vuln = mean(vuln))
   
   
-  vuln_plot <- ggplot(spp_vulnerability %>% select(-hab) %>% distinct(), 
+  vuln_plot <- ggplot(t_vuln, 
                       aes(x = stressor, y = vuln)) +
     ggtheme_plot(base_size = 12) +
     geom_hline(data = mean_tot_vuln, aes(yintercept = vuln), color = 'red') +

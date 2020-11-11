@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Sun Nov 8 17:30:34 2020 by ohara" />
+<meta name="author" content="Compiled on Wed Nov 11 11:29:04 2020 by ohara" />
 
 
 <title>Clean species trait workbook</title>
@@ -1723,7 +1723,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Clean species trait workbook</h1>
-<h4 class="author"><em>Compiled on Sun Nov 8 17:30:34 2020 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Wed Nov 11 11:29:04 2020 by ohara</em></h4>
 
 </div>
 
@@ -1865,39 +1865,38 @@ div.tocify {
 <a class="sourceLine" id="cb5-14" title="14">  df_cleaned &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="st">    </span><span class="kw">mutate_if</span>(is.character, tolower) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">trait =</span> <span class="kw">ifelse</span>(<span class="kw">is.na</span>(sub_category), category, sub_category),</a>
-<a class="sourceLine" id="cb5-17" title="17">           <span class="co"># trait = tolower(trait),</span></a>
-<a class="sourceLine" id="cb5-18" title="18">           <span class="co"># category = tolower(category),</span></a>
-<a class="sourceLine" id="cb5-19" title="19">           <span class="dt">category =</span> <span class="kw">ifelse</span>(category <span class="op">==</span><span class="st"> &#39;light dependence&#39;</span>, <span class="st">&#39;specialisation&#39;</span>, category),</a>
-<a class="sourceLine" id="cb5-20" title="20">             <span class="co">### fill in below the &quot;physiological tolerance breadths&quot; category</span></a>
-<a class="sourceLine" id="cb5-21" title="21">           <span class="dt">category =</span> <span class="kw">ifelse</span>(<span class="op">!</span>category <span class="op">%in%</span><span class="st"> </span>categories, <span class="ot">NA</span>, category)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-22" title="22"><span class="st">    </span><span class="kw">fill</span>(category, <span class="dt">.direction =</span> <span class="st">&#39;down&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-23" title="23"><span class="st">    </span><span class="kw">select</span>(category, trait, spp_gp, trait_value) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-24" title="24"><span class="st">    </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(trait)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-25" title="25"><span class="st">      </span><span class="co">### drops rows with no trait listed</span></a>
-<a class="sourceLine" id="cb5-26" title="26"><span class="st">    </span><span class="kw">filter</span>(trait <span class="op">!=</span><span class="st"> </span>category) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-27" title="27"><span class="st">      </span><span class="co">### drops category headings in the traits column</span></a>
-<a class="sourceLine" id="cb5-28" title="28"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">sheet =</span> s)</a>
-<a class="sourceLine" id="cb5-29" title="29">  </a>
-<a class="sourceLine" id="cb5-30" title="30">  <span class="kw">return</span>(df_cleaned)</a>
-<a class="sourceLine" id="cb5-31" title="31">}</a>
-<a class="sourceLine" id="cb5-32" title="32"></a>
-<a class="sourceLine" id="cb5-33" title="33"></a>
-<a class="sourceLine" id="cb5-34" title="34">raw_data_df &lt;-<span class="st"> </span><span class="kw">lapply</span>(sheetnames, </a>
-<a class="sourceLine" id="cb5-35" title="35">                      <span class="dt">FUN =</span> <span class="cf">function</span>(s) {</a>
-<a class="sourceLine" id="cb5-36" title="36">                        <span class="kw">process_sheet</span>(raw_file, s)</a>
-<a class="sourceLine" id="cb5-37" title="37">                      }) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-38" title="38"><span class="st">  </span><span class="kw">bind_rows</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-39" title="39"><span class="st">  </span><span class="co">### fix typos and minor fixes:</span></a>
-<a class="sourceLine" id="cb5-40" title="40"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;unkown&#39;</span>, <span class="st">&#39;unknown&#39;</span>),</a>
-<a class="sourceLine" id="cb5-41" title="41">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;demerssal&#39;</span>, <span class="st">&#39;demersal&#39;</span>),</a>
-<a class="sourceLine" id="cb5-42" title="42">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;esturary&#39;</span>, <span class="st">&#39;estuary&#39;</span>),</a>
-<a class="sourceLine" id="cb5-43" title="43">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;interntidal&#39;</span>, <span class="st">&#39;intertidal&#39;</span>),</a>
-<a class="sourceLine" id="cb5-44" title="44">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;lentgh&#39;</span>, <span class="st">&#39;length&#39;</span>),</a>
-<a class="sourceLine" id="cb5-45" title="45">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;this sp,&#39;</span>, <span class="st">&#39;this sp.&#39;</span>),</a>
-<a class="sourceLine" id="cb5-46" title="46">         <span class="dt">trait =</span> <span class="kw">str_replace_all</span>(trait, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">(pld</span><span class="ch">\\</span><span class="st">)$&#39;</span>, <span class="st">&#39;(pld) exposure&#39;</span>))</a>
-<a class="sourceLine" id="cb5-47" title="47"></a>
-<a class="sourceLine" id="cb5-48" title="48">x &lt;-<span class="st"> </span>raw_data_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb5-49" title="49"><span class="st">  </span><span class="kw">select</span>(trait_value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb5-17" title="17">           <span class="dt">category =</span> <span class="kw">ifelse</span>(category <span class="op">==</span><span class="st"> &#39;light dependence&#39;</span>, <span class="st">&#39;specialisation&#39;</span>, category),</a>
+<a class="sourceLine" id="cb5-18" title="18">             <span class="co">### fill in below the &quot;physiological tolerance breadths&quot; category</span></a>
+<a class="sourceLine" id="cb5-19" title="19">           <span class="dt">category =</span> <span class="kw">ifelse</span>(<span class="op">!</span>category <span class="op">%in%</span><span class="st"> </span>categories, <span class="ot">NA</span>, category)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-20" title="20"><span class="st">    </span><span class="kw">fill</span>(category, <span class="dt">.direction =</span> <span class="st">&#39;down&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="st">    </span><span class="kw">select</span>(category, trait, spp_gp, trait_value) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-22" title="22"><span class="st">    </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(trait)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-23" title="23"><span class="st">      </span><span class="co">### drops rows with no trait listed</span></a>
+<a class="sourceLine" id="cb5-24" title="24"><span class="st">    </span><span class="kw">filter</span>(trait <span class="op">!=</span><span class="st"> </span>category) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-25" title="25"><span class="st">      </span><span class="co">### drops category headings in the traits column</span></a>
+<a class="sourceLine" id="cb5-26" title="26"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">sheet =</span> s)</a>
+<a class="sourceLine" id="cb5-27" title="27">  </a>
+<a class="sourceLine" id="cb5-28" title="28">  <span class="kw">return</span>(df_cleaned)</a>
+<a class="sourceLine" id="cb5-29" title="29">}</a>
+<a class="sourceLine" id="cb5-30" title="30"></a>
+<a class="sourceLine" id="cb5-31" title="31"></a>
+<a class="sourceLine" id="cb5-32" title="32">raw_data_df &lt;-<span class="st"> </span><span class="kw">lapply</span>(sheetnames, </a>
+<a class="sourceLine" id="cb5-33" title="33">                      <span class="dt">FUN =</span> <span class="cf">function</span>(s) {</a>
+<a class="sourceLine" id="cb5-34" title="34">                        <span class="kw">process_sheet</span>(raw_file, s)</a>
+<a class="sourceLine" id="cb5-35" title="35">                      }) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-36" title="36"><span class="st">  </span><span class="kw">bind_rows</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-37" title="37"><span class="st">  </span><span class="co">### fix typos and minor fixes:</span></a>
+<a class="sourceLine" id="cb5-38" title="38"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;unkown&#39;</span>, <span class="st">&#39;unknown&#39;</span>),</a>
+<a class="sourceLine" id="cb5-39" title="39">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;demerssal&#39;</span>, <span class="st">&#39;demersal&#39;</span>),</a>
+<a class="sourceLine" id="cb5-40" title="40">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;esturary&#39;</span>, <span class="st">&#39;estuary&#39;</span>),</a>
+<a class="sourceLine" id="cb5-41" title="41">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;interntidal&#39;</span>, <span class="st">&#39;intertidal&#39;</span>),</a>
+<a class="sourceLine" id="cb5-42" title="42">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;lentgh&#39;</span>, <span class="st">&#39;length&#39;</span>),</a>
+<a class="sourceLine" id="cb5-43" title="43">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;neary sessile&#39;</span>, <span class="st">&#39;nearly sessile&#39;</span>),</a>
+<a class="sourceLine" id="cb5-44" title="44">         <span class="dt">trait_value =</span> <span class="kw">str_replace_all</span>(trait_value, <span class="st">&#39;this sp,&#39;</span>, <span class="st">&#39;this sp.&#39;</span>),</a>
+<a class="sourceLine" id="cb5-45" title="45">         <span class="dt">trait =</span> <span class="kw">str_replace_all</span>(trait, <span class="st">&#39;</span><span class="ch">\\</span><span class="st">(pld</span><span class="ch">\\</span><span class="st">)$&#39;</span>, <span class="st">&#39;(pld) exposure&#39;</span>))</a>
+<a class="sourceLine" id="cb5-46" title="46"></a>
+<a class="sourceLine" id="cb5-47" title="47">x &lt;-<span class="st"> </span>raw_data_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb5-48" title="48"><span class="st">  </span><span class="kw">select</span>(trait_value) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">distinct</span>()</a></code></pre></div>
 <p>Check raw data against valid category values.</p>
 <ul>
 <li>Set all values to lower case to avoid case sensitivity.</li>
@@ -1946,7 +1945,7 @@ div.tocify {
 <a class="sourceLine" id="cb7-14" title="14">         <span class="dt">tmp =</span> <span class="kw">str_replace_all</span>(tmp, <span class="st">&#39;vertic[a-z]+&#39;</span>, <span class="st">&#39;vertical&#39;</span>),</a>
 <a class="sourceLine" id="cb7-15" title="15">         <span class="dt">tmp =</span> <span class="kw">str_replace_all</span>(tmp, <span class="st">&#39;migrat[a-z]+&#39;</span>, <span class="st">&#39;migrator&#39;</span>),</a>
 <a class="sourceLine" id="cb7-16" title="16">         <span class="dt">tmp =</span> <span class="kw">str_replace_all</span>(tmp, <span class="st">&#39;residen[a-z]+&#39;</span>, <span class="st">&#39;resident&#39;</span>),</a>
-<a class="sourceLine" id="cb7-17" title="17">         <span class="dt">tmp =</span> <span class="kw">str_replace_all</span>(tmp, <span class="st">&#39;sedentary&#39;</span>, <span class="st">&#39;nearly sessile/sedentary&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-17" title="17">         <span class="dt">tmp =</span> <span class="kw">str_replace_all</span>(tmp, <span class="st">&#39;nearly sessile|sedentary&#39;</span>, <span class="st">&#39;nearly sessile/sedentary&#39;</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb7-18" title="18"><span class="st">  </span><span class="co"># mutate(tmp = ifelse(str_detect(tmp, mob_vals),</span></a>
 <a class="sourceLine" id="cb7-19" title="19"><span class="st">  </span><span class="co">#                                 str_extract_all(tmp, mob_vals),</span></a>
 <a class="sourceLine" id="cb7-20" title="20"><span class="st">  </span><span class="co">#                                 tmp)) %&gt;%</span></a>
@@ -1958,9 +1957,9 @@ div.tocify {
 <a class="sourceLine" id="cb7-26" title="26">spp_data_mobility<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ##      horizontal migrator          mobile resident nearly sessile/sedentary 
-##                       77                      548                       15 
+##                       77                      548                       31 
 ##                  nomadic                  passive                  sessile 
-##                       12                        1                       56 
+##                       12                        1                       40 
 ##                  unknown        vertical migrator 
 ##                        3                       96</code></pre>
 </div>
@@ -1968,11 +1967,10 @@ div.tocify {
 <h3><span class="header-section-number">3.1.3</span> depth (min/max)</h3>
 <p>Add atmosphere zone (exposure to air, for air temp and similar stressors that act out of water) for species who:</p>
 <ul>
-<li>inhabit intertidal zone</li>
+<li>inhabit intertidal zone AND are sessile e.g. anemones, mussels, barnacles, etc. but NOT fish, cephs, etc that can track the tides</li>
 <li>have terrestrial/marine dependent habitats</li>
 <li>have flight</li>
 </ul>
-<p>Note, this catches a few fish, molluscs, elasmobranchs, etc; but this seems OK as intertidal waters are likely highly affected by air temperature, e.g. in tidepools.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">depth_vals &lt;-<span class="st"> </span>traitvals_df_valid <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw">filter</span>(trait <span class="op">==</span><span class="st"> &#39;depth (min/max)&#39;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span>.<span class="op">$</span>trait_value <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">paste0</span>(<span class="dt">collapse =</span> <span class="st">&#39;|&#39;</span>)</a>
@@ -1987,35 +1985,41 @@ div.tocify {
 <a class="sourceLine" id="cb9-12" title="12"><span class="st">  </span><span class="kw">clean_up_mess</span>()</a>
 <a class="sourceLine" id="cb9-13" title="13"></a>
 <a class="sourceLine" id="cb9-14" title="14"><span class="co">### add atmosphere category</span></a>
-<a class="sourceLine" id="cb9-15" title="15">spp_intertidal &lt;-<span class="st"> </span>spp_data_zones <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-16" title="16"><span class="st">  </span><span class="kw">filter</span>(trait_val_clean <span class="op">==</span><span class="st"> &#39;intertidal&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-15" title="15">spp_sessile &lt;-<span class="st"> </span>spp_data_mobility <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="st">  </span><span class="kw">filter</span>(trait_val_clean <span class="op">==</span><span class="st"> &#39;sessile&#39;</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-17" title="17"><span class="st">  </span><span class="kw">select</span>(spp_gp, sheet) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-18" title="18"><span class="st">  </span><span class="kw">distinct</span>()</a>
-<a class="sourceLine" id="cb9-19" title="19">spp_terr_marine &lt;-<span class="st"> </span>raw_data_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-20" title="20"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(trait, <span class="st">&#39;terrestrial and marine&#39;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(<span class="kw">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-22" title="22"><span class="st">  </span><span class="kw">select</span>(spp_gp, sheet) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-23" title="23"><span class="st">  </span><span class="kw">distinct</span>()</a>
-<a class="sourceLine" id="cb9-24" title="24">spp_flight &lt;-<span class="st"> </span>raw_data_df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-25" title="25"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(trait, <span class="st">&#39;flight&#39;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-26" title="26"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(<span class="kw">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-27" title="27"><span class="st">  </span><span class="kw">select</span>(spp_gp, sheet) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-28" title="28"><span class="st">  </span><span class="kw">distinct</span>()</a>
-<a class="sourceLine" id="cb9-29" title="29">spp_atm &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(spp_flight, spp_intertidal, spp_terr_marine) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-30" title="30"><span class="st">  </span><span class="kw">distinct</span>()</a>
-<a class="sourceLine" id="cb9-31" title="31">  </a>
-<a class="sourceLine" id="cb9-32" title="32">spp_data_atm &lt;-<span class="st"> </span>spp_atm <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-33" title="33"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">category =</span> <span class="st">&#39;spatial scale of species&#39;</span>,</a>
-<a class="sourceLine" id="cb9-34" title="34">         <span class="dt">trait    =</span> <span class="st">&#39;depth (min/max)&#39;</span>,</a>
-<a class="sourceLine" id="cb9-35" title="35">         <span class="dt">trait_val_clean =</span> <span class="st">&#39;atmosphere&#39;</span>)</a>
-<a class="sourceLine" id="cb9-36" title="36"></a>
-<a class="sourceLine" id="cb9-37" title="37">spp_data_depth &lt;-<span class="st"> </span>spp_data_depth <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-38" title="38"><span class="st">  </span><span class="kw">bind_rows</span>(spp_data_atm)</a>
-<a class="sourceLine" id="cb9-39" title="39"></a>
-<a class="sourceLine" id="cb9-40" title="40">spp_data_depth<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb9-19" title="19">  </a>
+<a class="sourceLine" id="cb9-20" title="20">spp_intertidal &lt;-<span class="st"> </span>spp_data_zones <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-21" title="21"><span class="st">  </span><span class="kw">filter</span>(spp_gp <span class="op">%in%</span><span class="st"> </span>spp_sessile<span class="op">$</span>spp_gp) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="st">  </span><span class="kw">filter</span>(trait_val_clean <span class="op">==</span><span class="st"> &#39;intertidal&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="st">  </span><span class="kw">select</span>(spp_gp, sheet) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-24" title="24"><span class="st">  </span><span class="kw">distinct</span>()</a>
+<a class="sourceLine" id="cb9-25" title="25">spp_terr_marine &lt;-<span class="st"> </span>raw_data_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-26" title="26"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(trait, <span class="st">&#39;terrestrial and marine&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-27" title="27"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(<span class="kw">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-28" title="28"><span class="st">  </span><span class="kw">select</span>(spp_gp, sheet) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-29" title="29"><span class="st">  </span><span class="kw">distinct</span>()</a>
+<a class="sourceLine" id="cb9-30" title="30">spp_flight &lt;-<span class="st"> </span>raw_data_df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-31" title="31"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(trait, <span class="st">&#39;flight&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-32" title="32"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">str_detect</span>(<span class="kw">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-33" title="33"><span class="st">  </span><span class="kw">select</span>(spp_gp, sheet) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-34" title="34"><span class="st">  </span><span class="kw">distinct</span>()</a>
+<a class="sourceLine" id="cb9-35" title="35">spp_atm &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(spp_flight, spp_intertidal, spp_terr_marine) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-36" title="36"><span class="st">  </span><span class="kw">distinct</span>()</a>
+<a class="sourceLine" id="cb9-37" title="37">  </a>
+<a class="sourceLine" id="cb9-38" title="38">spp_data_atm &lt;-<span class="st"> </span>spp_atm <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-39" title="39"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">category =</span> <span class="st">&#39;spatial scale of species&#39;</span>,</a>
+<a class="sourceLine" id="cb9-40" title="40">         <span class="dt">trait    =</span> <span class="st">&#39;depth (min/max)&#39;</span>,</a>
+<a class="sourceLine" id="cb9-41" title="41">         <span class="dt">trait_val_clean =</span> <span class="st">&#39;atmosphere&#39;</span>)</a>
+<a class="sourceLine" id="cb9-42" title="42"></a>
+<a class="sourceLine" id="cb9-43" title="43">spp_data_depth &lt;-<span class="st"> </span>spp_data_depth <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-44" title="44"><span class="st">  </span><span class="kw">bind_rows</span>(spp_data_atm)</a>
+<a class="sourceLine" id="cb9-45" title="45"></a>
+<a class="sourceLine" id="cb9-46" title="46">spp_data_depth<span class="op">$</span>trait_val_clean <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">table</span>()</a></code></pre></div>
 <pre><code>## .
 ## abyssopelagic    atmosphere  bathypelagic    epipelagic   hadopelagic 
-##            18           109           143           439             4 
+##            18            63           143           439             4 
 ##   mesopelagic       unknown 
 ##           233             5</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">x &lt;-<span class="st"> </span>spp_data_depth <span class="op">%&gt;%</span></a>
@@ -2032,20 +2036,12 @@ div.tocify {
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">crustacea_arthropods</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">echinoderms</td>
-<td align="right">7</td>
-</tr>
-<tr class="odd">
 <td align="left">elasmobranchs</td>
 <td align="right">2</td>
 </tr>
 <tr class="even">
 <td align="left">fish</td>
-<td align="right">19</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="left">marine_mammals</td>
@@ -2053,7 +2049,7 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">molluscs</td>
-<td align="right">27</td>
+<td align="right">12</td>
 </tr>
 <tr class="odd">
 <td align="left">plants_algae</td>
@@ -2061,7 +2057,7 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">polychaetes</td>
-<td align="right">4</td>
+<td align="right">2</td>
 </tr>
 <tr class="odd">
 <td align="left">reptiles</td>

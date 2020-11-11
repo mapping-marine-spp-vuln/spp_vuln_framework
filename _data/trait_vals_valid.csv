@@ -156,6 +156,7 @@ spatial scale of species,eoo (range),100-4999
 spatial scale of species,eoo (range),5000-19999
 spatial scale of species,eoo (range),>20000
 spatial scale of species,eoo (range),unknown
+spatial scale of species,depth (min/max),atmosphere
 spatial scale of species,depth (min/max),epipelagic
 spatial scale of species,depth (min/max),mesopelagic
 spatial scale of species,depth (min/max),bathypelagic
