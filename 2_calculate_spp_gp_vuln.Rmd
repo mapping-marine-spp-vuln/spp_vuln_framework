@@ -472,20 +472,42 @@ write_csv(spp_vulnerability, here('_output/spp_gp_vulnerability.csv'))
 
 ### Vulnerability by spp group and stressor
 
-``` {r}
+``` {r, results = 'asis'}
 
-vuln_plot <- ggplot(spp_vulnerability %>% select(-hab) %>% distinct(), 
-                    aes(x = stressor, y = vuln)) +
-  ggtheme_plot() +
-  geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
-        strip.background = element_rect(fill = 'grey90')) +
-  facet_wrap(~ taxon) +
-  labs(title = 'rescale using max reference point')
+spp_vulnerability <- read_csv('_output/spp_gp_vulnerability.csv')
+plot_df <- spp_vulnerability %>% select(-hab) %>% distinct()
 
-ggsave(plot = vuln_plot, filename = here('figs/vuln_plot.png'), 
-       width = 8, height = 8, dpi = 300)
-knitr::include_graphics(here('figs/vuln_plot.png'))
+taxa <- plot_df$taxon %>% unique()
+                
+for(t in taxa) { # t <- taxa[1]
+  t_vuln <- plot_df %>%
+    filter(taxon == t)
+  mean_str_vuln <- plot_df %>%
+    group_by(stressor) %>%
+    summarize(vuln = mean(vuln))
+  mean_tot_vuln <- plot_df %>%
+    summarize(vuln = mean(vuln))
+  
+  
+  vuln_plot <- ggplot(spp_vulnerability %>% select(-hab) %>% distinct(), 
+                      aes(x = stressor, y = vuln)) +
+    ggtheme_plot(base_size = 12) +
+    geom_hline(data = mean_tot_vuln, aes(yintercept = vuln), color = 'red') +
+    geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
+    geom_point(data = mean_str_vuln, 
+               shape = 21, size = 3, 
+               alpha = 1, color = 'yellow', fill = 'red') +
+    ylim(0, 1) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
+          strip.background = element_rect(fill = 'grey90')) +
+    labs(title = paste0('Vulnerability: ', t))
+  
+  plotfile <- sprintf('figs/vuln_plot_%s.png', t)
+  ggsave(plot = vuln_plot, filename = plotfile, 
+         width = 8, height = 8, dpi = 300)
+  cat(sprintf('![](%s)\n', plotfile))
+}
+# knitr::include_graphics(here('figs/vuln_plot.png'))
 
 ```
 
@@ -500,35 +522,6 @@ top_3_vuln <- spp_vulnerability %>%
   filter(vuln >= nth(vuln, 3))
 
 knitr::kable(top_3_vuln)
-```
-
-## examine components by taxon and stressor
-
-```{r, eval = FALSE}
-spp_vuln_summary <- spp_vulnerability %>%
-  group_by(taxon, stressor) %>%
-  summarize(n_spp = n_distinct(spp_gp),
-            sens_mean = mean(sens_rescale),
-            sens_sd   = sd(sens_rescale),
-            gen_mean  = mean(adcap_gen_rescale),
-            gen_sd    = sd(adcap_gen_rescale),
-            spec_mean = mean(adcap_spec_rescale),
-            spec_sd   = sd(adcap_spec_rescale)) %>%
-  ungroup() %>%
-  gather(component1, mean, ends_with('mean')) %>%
-  gather(component2, sd, ends_with('sd')) %>%
-  filter(str_sub(component1, 1, 4) == str_sub(component2, 1, 4)) %>%
-  mutate(component = str_replace(component1, '_mean', '')) %>%
-  select(-component1, -component2)
-            
-ggplot(spp_vuln_summary, aes(x = stressor, color = component, group = component)) +
-  ggtheme_plot() +
-  geom_point(aes(y = mean), position = position_dodge(width = .8)) +
-  geom_linerange(aes(ymin = mean - sd, ymax = mean + sd),
-                 position = position_dodge(width = .8)) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
-        strip.background = element_rect(fill = 'grey90')) +
-  facet_wrap(~ taxon, scales = 'free_y')
 ```
 
 # TO DO

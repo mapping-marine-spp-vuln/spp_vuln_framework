@@ -14602,7 +14602,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,anneissia japonica,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,anneissia japonica,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,anneissia japonica,does not aggregate,100,1
-echinoderms,movement,adult_mobility,anneissia japonica,sessile,100,1
+echinoderms,movement,adult_mobility,anneissia japonica,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,anneissia japonica,<1week,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,anneissia japonica,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,anneissia japonica,7.8-8.2,100,1
@@ -14638,7 +14638,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,antedon mediterranea,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,antedon mediterranea,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,antedon mediterranea,does not aggregate,100,1
-echinoderms,movement,adult_mobility,antedon mediterranea,sessile,100,1
+echinoderms,movement,adult_mobility,antedon mediterranea,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,antedon mediterranea,<1week,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,antedon mediterranea,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,antedon mediterranea,7.8-8.2,100,1
@@ -14673,7 +14673,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,aporometra wilsoni,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,aporometra wilsoni,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,aporometra wilsoni,does not aggregate,100,1
-echinoderms,movement,adult_mobility,aporometra wilsoni,sessile,100,1
+echinoderms,movement,adult_mobility,aporometra wilsoni,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,aporometra wilsoni,<1week,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,aporometra wilsoni,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,aporometra wilsoni,7.8-8.2,100,1
@@ -15873,7 +15873,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,florometra serratissima,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,florometra serratissima,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,florometra serratissima,does not aggregate,100,1
-echinoderms,movement,adult_mobility,florometra serratissima,sessile,100,1
+echinoderms,movement,adult_mobility,florometra serratissima,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,florometra serratissima,<1week,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,florometra serratissima,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,florometra serratissima,7.8-8.2,100,1
@@ -16219,7 +16219,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,leptopentacta elongata,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,leptopentacta elongata,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,leptopentacta elongata,does not aggregate,100,1
-echinoderms,movement,adult_mobility,leptopentacta elongata,sessile,100,1
+echinoderms,movement,adult_mobility,leptopentacta elongata,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,leptopentacta elongata,<4months,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,leptopentacta elongata,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,leptopentacta elongata,7.8-8.2,100,1
@@ -16584,7 +16584,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,molpadia intermedia,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,molpadia intermedia,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,molpadia intermedia,does not aggregate,100,1
-echinoderms,movement,adult_mobility,molpadia intermedia,sessile,100,1
+echinoderms,movement,adult_mobility,molpadia intermedia,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,molpadia intermedia,<1week,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,molpadia intermedia,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,molpadia intermedia,7.8-8.2,100,1
@@ -17894,7 +17894,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,psolidium bullatum,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,psolidium bullatum,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,psolidium bullatum,does not aggregate,100,1
-echinoderms,movement,adult_mobility,psolidium bullatum,sessile,100,1
+echinoderms,movement,adult_mobility,psolidium bullatum,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,psolidium bullatum,<1month,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,psolidium bullatum,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,psolidium bullatum,7.8-8.2,100,1
@@ -17933,7 +17933,7 @@ echinoderms,biophysical_traits,navigation_requirements_sound_or_light_or_magneti
 echinoderms,biophysical_traits,respiration_structures,psolus chitonoides,diffusion,100,1
 echinoderms,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,psolus chitonoides,does not aggregate,100,1
 echinoderms,foraging_range,number_of_sites_incl_terrestrial_wetlands,psolus chitonoides,does not aggregate,100,1
-echinoderms,movement,adult_mobility,psolus chitonoides,sessile,100,1
+echinoderms,movement,adult_mobility,psolus chitonoides,nearly sessile/sedentary,100,1
 echinoderms,movement,planktonic_larval_duration_pld_exposure,psolus chitonoides,<4months,100,1
 echinoderms,physiological_tolerance_breadths,dissolved_oxygen,psolus chitonoides,low tolerance,100,1
 echinoderms,physiological_tolerance_breadths,ph,psolus chitonoides,7.8-8.2,100,1
@@ -31906,7 +31906,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,austrocochlea porcata,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,austrocochlea porcata,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,austrocochlea porcata,yes,46,1
-molluscs,movement,adult_mobility,austrocochlea porcata,sessile,46,1
+molluscs,movement,adult_mobility,austrocochlea porcata,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,austrocochlea porcata,<1month,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,austrocochlea porcata,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,austrocochlea porcata,7.8-8.2,46,1
@@ -32075,7 +32075,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,cellana tramoserica,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,cellana tramoserica,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,cellana tramoserica,yes,46,1
-molluscs,movement,adult_mobility,cellana tramoserica,sessile,46,1
+molluscs,movement,adult_mobility,cellana tramoserica,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,cellana tramoserica,<1month,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,cellana tramoserica,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,cellana tramoserica,7.8-8.2,46,1
@@ -32201,7 +32201,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,haliotis coccoradiata,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,haliotis coccoradiata,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,haliotis coccoradiata,yes,46,1
-molluscs,movement,adult_mobility,haliotis coccoradiata,sessile,46,1
+molluscs,movement,adult_mobility,haliotis coccoradiata,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,haliotis coccoradiata,<1week,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,haliotis coccoradiata,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,haliotis coccoradiata,7.8-8.2,46,1
@@ -32244,7 +32244,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,haliotis kamtschatkana,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,haliotis kamtschatkana,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,haliotis kamtschatkana,yes,46,1
-molluscs,movement,adult_mobility,haliotis kamtschatkana,sessile,46,1
+molluscs,movement,adult_mobility,haliotis kamtschatkana,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,haliotis kamtschatkana,<1month,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,haliotis kamtschatkana,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,haliotis kamtschatkana,7.8-8.2,46,1
@@ -32288,7 +32288,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,haliotis rubra,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,haliotis rubra,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,haliotis rubra,yes,46,1
-molluscs,movement,adult_mobility,haliotis rubra,sessile,46,1
+molluscs,movement,adult_mobility,haliotis rubra,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,haliotis rubra,<1month,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,haliotis rubra,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,haliotis rubra,7.8-8.2,46,1
@@ -32375,7 +32375,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,lunella undulata,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,lunella undulata,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,lunella undulata,yes,46,1
-molluscs,movement,adult_mobility,lunella undulata,sessile,46,1
+molluscs,movement,adult_mobility,lunella undulata,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,lunella undulata,<1month,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,lunella undulata,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,lunella undulata,7.8-8.2,46,1
@@ -33329,7 +33329,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,tenguella marginalba,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,tenguella marginalba,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,tenguella marginalba,yes,46,1
-molluscs,movement,adult_mobility,tenguella marginalba,sessile,46,1
+molluscs,movement,adult_mobility,tenguella marginalba,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,tenguella marginalba,<1month,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,tenguella marginalba,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,tenguella marginalba,7.8-8.2,46,1
@@ -33495,7 +33495,7 @@ molluscs,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_s
 molluscs,foraging_range,if_one_few_size,turbo militaris,small,46,1
 molluscs,foraging_range,number_of_sites_incl_terrestrial_wetlands,turbo militaris,does not aggregate,46,1
 molluscs,foraging_range,sub_population_dependence_on_particular_sites,turbo militaris,yes,46,1
-molluscs,movement,adult_mobility,turbo militaris,sessile,46,1
+molluscs,movement,adult_mobility,turbo militaris,nearly sessile/sedentary,46,1
 molluscs,movement,planktonic_larval_duration_pld_exposure,turbo militaris,<1month,46,1
 molluscs,physiological_tolerance_breadths,dissolved_oxygen,turbo militaris,medium tolerance,46,1
 molluscs,physiological_tolerance_breadths,ph,turbo militaris,7.8-8.2,46,1

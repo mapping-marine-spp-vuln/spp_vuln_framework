@@ -7,7 +7,6 @@ crustacea_arthropods,specialisation,across-stage dependent habitats + condition,
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,mictyris platycheles,both-unsure,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",mictyris platycheles,yes-light,9
-crustacea_arthropods,spatial scale of species,depth (min/max),mictyris platycheles,atmosphere,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),nymphon australe,none,9
 crustacea_arthropods,biophysical traits,flight,nymphon australe,none,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",nymphon australe,none,9
@@ -16,11 +15,9 @@ crustacea_arthropods,physiological tolerance breadths,salinity,nymphon australe,
 crustacea_arthropods,specialisation,extreme diet specialization,nymphon australe,yes,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,palaemon elegans,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,9
 crustacea_arthropods,physiological tolerance breadths,salinity,palaemon elegans,broad,9
-crustacea_arthropods,spatial scale of species,depth (min/max),palaemon elegans,atmosphere,9
 crustacea_arthropods,specialisation,extreme diet specialization,palaemon elegans,no-broadly omniverous,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,paralithodes camtschaticus,both-unsure,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",paralithodes camtschaticus,yes-light,9
-crustacea_arthropods,spatial scale of species,depth (min/max),paralithodes camtschaticus,atmosphere,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,paralithodes camtschaticus,hide for first year of life here,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus,none,9
 crustacea_arthropods,biophysical traits,flight,penaeus,none,9
@@ -41,7 +38,6 @@ crustacea_arthropods,physiological tolerance breadths,salinity,pycnogonum,narrow
 crustacea_arthropods,specialisation,extreme diet specialization,pycnogonum,yes,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,scylla serrata,both-unsure,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",scylla serrata,yes-light,9
-crustacea_arthropods,spatial scale of species,depth (min/max),scylla serrata,atmosphere,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,scylla serrata,during planktonic stage,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,trapezia flavopunctata,both-unsure,9
 crustacea_arthropods,biophysical traits,"navigation requirements (sound or light, or magnetic)",trapezia flavopunctata,yes-light,9
@@ -128,11 +124,8 @@ echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),
 echinoderms,specialisation,extreme diet specialization,florometra serratissima,specialists,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),gorgonocephalus eucnemis,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris crassispina,feeding-calcifier,100
-echinoderms,spatial scale of species,depth (min/max),heliocidaris crassispina,atmosphere,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris erythrogramma,non-feeding-non-calcifier,100
-echinoderms,spatial scale of species,depth (min/max),heliocidaris erythrogramma,atmosphere,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris tuberculata,feeding-calcifier,100
-echinoderms,spatial scale of species,depth (min/max),heliocidaris tuberculata,atmosphere,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),holopneustes purpurascens,senstive,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holopneustes purpurascens,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (halodeima) atra,feeding-non-calcifier,100
@@ -140,7 +133,6 @@ echinoderms,specialisation,extreme diet specialization,holothuria (halodeima) at
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (metriatyla) scabra,feeding-calcifier,100
 echinoderms,specialisation,extreme diet specialization,holothuria (metriatyla) scabra,specalist,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (panningothuria) forskali,feeding-non-calcifier,100
-echinoderms,spatial scale of species,depth (min/max),holothuria (panningothuria) forskali,atmosphere,100
 echinoderms,specialisation,extreme diet specialization,holothuria (panningothuria) forskali,specalist,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),leptopentacta elongata,non-feeding-non-calcifier,100
 echinoderms,specialisation,extreme diet specialization,leptopentacta elongata,specalist,100
@@ -199,10 +191,8 @@ echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra vivipara,no,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria chilensis,no,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria chilensis,non-feeding-non-calcifier,100
-echinoderms,spatial scale of species,depth (min/max),patiria chilensis,atmosphere,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria miniata,no,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria miniata,non-feeding-non-calcifier,100
-echinoderms,spatial scale of species,depth (min/max),patiria miniata,atmosphere,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria pectinifera,no,100
 echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria pectinifera,non-feeding-non-calcifier,100
 echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiriella regularis,no,100
@@ -322,10 +312,8 @@ fish,biophysical traits,maximum depth,chlopsis kazuko,100,115
 fish,biophysical traits,minimum depth,chlopsis kazuko,50,115
 fish,biophysical traits,maximum depth,cirripectes alleni,15,115
 fish,biophysical traits,minimum depth,cirripectes alleni,1,115
-fish,spatial scale of species,depth (min/max),cirripectes alleni,atmosphere,115
 fish,biophysical traits,maximum depth,cirripectes filamentosus,20,115
 fish,biophysical traits,minimum depth,cirripectes filamentosus,0,115
-fish,spatial scale of species,depth (min/max),cirripectes filamentosus,atmosphere,115
 fish,specialisation,across-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
 fish,specialisation,extreme diet specialization,clupea harengus,no,115
 fish,specialisation,within-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
@@ -338,7 +326,6 @@ fish,biophysical traits,maximum depth,congriscus maldivensis,820,115
 fish,biophysical traits,minimum depth,congriscus maldivensis,354,115
 fish,biophysical traits,maximum depth,crossosalarias macrospilus,25,115
 fish,biophysical traits,minimum depth,crossosalarias macrospilus,1,115
-fish,spatial scale of species,depth (min/max),crossosalarias macrospilus,atmosphere,115
 fish,biophysical traits,maximum depth,derichthys serpentinus,2000,115
 fish,biophysical traits,minimum depth,derichthys serpentinus,500,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,dissostichus eleginoides,nil,115
@@ -346,7 +333,6 @@ fish,specialisation,across-stage dependent habitats + condition,dissostichus ele
 fish,specialisation,within-stage dependent habitats + condition,dissostichus eleginoides,shallow to deep,115
 fish,biophysical traits,maximum depth,ecsenius trilineatus,10,115
 fish,biophysical traits,minimum depth,ecsenius trilineatus,1,115
-fish,spatial scale of species,depth (min/max),ecsenius trilineatus,atmosphere,115
 fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",encheliophis gracilis,no,115
 fish,foraging range,"if one/few, size",encheliophis gracilis,many,115
 fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
@@ -364,10 +350,8 @@ fish,r (reproductive traits),post-birth/hatching maternal dependence,engraulis r
 fish,specialisation,extreme diet specialization,engraulis ringens,but 98diatoms,115
 fish,biophysical traits,maximum depth,entomacrodus macrospilus,8,115
 fish,biophysical traits,minimum depth,entomacrodus macrospilus,0,115
-fish,spatial scale of species,depth (min/max),entomacrodus macrospilus,atmosphere,115
 fish,biophysical traits,maximum depth,entomacrodus stellifer,5,115
 fish,biophysical traits,minimum depth,entomacrodus stellifer,0,115
-fish,spatial scale of species,depth (min/max),entomacrodus stellifer,atmosphere,115
 fish,foraging range,"if one/few, size",epinephelus itajara,yes,115
 fish,specialisation,across-stage dependent habitats + condition,epinephelus itajara,live coral caves,115
 fish,specialisation,within-stage dependent habitats + condition,epinephelus itajara,inshore,115
@@ -413,10 +397,8 @@ fish,specialisation,within-stage dependent habitats + condition,hoplostethus atl
 fish,specialisation,within-stage dependent habitats + condition,hygophum proximum,unknown,115
 fish,biophysical traits,maximum depth,hypleurochilus bananensis,0,115
 fish,biophysical traits,minimum depth,hypleurochilus bananensis,0,115
-fish,spatial scale of species,depth (min/max),hypleurochilus bananensis,atmosphere,115
 fish,biophysical traits,maximum depth,hypsoblennius striatus,5,115
 fish,biophysical traits,minimum depth,hypsoblennius striatus,0,115
-fish,spatial scale of species,depth (min/max),hypsoblennius striatus,atmosphere,115
 fish,biophysical traits,maximum depth,kaupichthys brachychirus,43,115
 fish,biophysical traits,minimum depth,kaupichthys brachychirus,0,115
 fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meuschenia scaber,no,115
@@ -438,13 +420,10 @@ fish,physiological tolerance breadths,salinity,notolabrus celidotus,euryhaline-b
 fish,r (reproductive traits),post-birth/hatching maternal dependence,notolabrus celidotus,nil,115
 fish,biophysical traits,maximum depth,omobranchus anolius,5,115
 fish,biophysical traits,minimum depth,omobranchus anolius,0,115
-fish,spatial scale of species,depth (min/max),omobranchus anolius,atmosphere,115
 fish,biophysical traits,maximum depth,omobranchus fasciolatus,3,115
 fish,biophysical traits,minimum depth,omobranchus fasciolatus,0,115
-fish,spatial scale of species,depth (min/max),omobranchus fasciolatus,atmosphere,115
 fish,biophysical traits,maximum depth,omobranchus rotundiceps,0,115
 fish,biophysical traits,minimum depth,omobranchus rotundiceps,0,115
-fish,spatial scale of species,depth (min/max),omobranchus rotundiceps,atmosphere,115
 fish,foraging range,sub-population dependence on particular sites,oncorhynchus nerka,only for spawning,115
 fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,fw,115
 fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,ocean,115
@@ -461,20 +440,16 @@ fish,specialisation,light dependence,ostorhinchus doederleini,yes sun compass,11
 fish,specialisation,within-stage dependent habitats + condition,ostorhinchus doederleini,live coral caves,115
 fish,biophysical traits,maximum depth,parablennius parvicornis,2,115
 fish,biophysical traits,minimum depth,parablennius parvicornis,0,115
-fish,spatial scale of species,depth (min/max),parablennius parvicornis,atmosphere,115
 fish,specialisation,extreme diet specialization,parablennius parvicornis,algae,115
 fish,biophysical traits,maximum depth,parablennius yatabei,5,115
 fish,biophysical traits,minimum depth,parablennius yatabei,0,115
-fish,spatial scale of species,depth (min/max),parablennius yatabei,atmosphere,115
 fish,specialisation,extreme diet specialization,parablennius yatabei,algae and detritus,115
 fish,biophysical traits,maximum depth,parablennius zvonimiri,12,115
 fish,biophysical traits,minimum depth,parablennius zvonimiri,0,115
-fish,spatial scale of species,depth (min/max),parablennius zvonimiri,atmosphere,115
 fish,specialisation,extreme diet specialization,parablennius zvonimiri,algae and detritus,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,parapercis colias,nil,115
 fish,biophysical traits,maximum depth,parenchelyurus hepburni,4,115
 fish,biophysical traits,minimum depth,parenchelyurus hepburni,1,115
-fish,spatial scale of species,depth (min/max),parenchelyurus hepburni,atmosphere,115
 fish,specialisation,across-stage dependent habitats + condition,parma microlepis,barrens habitat,115
 fish,specialisation,within-stage dependent habitats + condition,parma microlepis,barrens habitat,115
 fish,biophysical traits,"navigation requirements (sound or light, or magnetic)",plectropomus leopardus,yes-sound,115
@@ -486,19 +461,16 @@ fish,specialisation,extreme diet specialization,pomacentrus coelestis,generalist
 fish,specialisation,within-stage dependent habitats + condition,pomacentrus coelestis,rubble,115
 fish,biophysical traits,maximum depth,praealticus dayi,0,115
 fish,biophysical traits,minimum depth,praealticus dayi,0,115
-fish,spatial scale of species,depth (min/max),praealticus dayi,atmosphere,115
 fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",rexea solandri,few,115
 fish,biophysical traits,maximum depth,rhinomuraena quaesita,57,115
 fish,biophysical traits,minimum depth,rhinomuraena quaesita,1,115
 fish,biophysical traits,maximum depth,salarias ceramensis,30,115
 fish,biophysical traits,minimum depth,salarias ceramensis,1,115
-fish,spatial scale of species,depth (min/max),salarias ceramensis,atmosphere,115
 fish,specialisation,extreme diet specialization,salarias ceramensis,algae,115
 fish,specialisation,across-stage dependent habitats + condition,salarias fasciatus,shallow water,115
 fish,specialisation,within-stage dependent habitats + condition,salarias fasciatus,shallow water,115
 fish,biophysical traits,maximum depth,salarias sinuosus,5,115
 fish,biophysical traits,minimum depth,salarias sinuosus,0,115
-fish,spatial scale of species,depth (min/max),salarias sinuosus,atmosphere,115
 fish,specialisation,extreme diet specialization,salarias sinuosus,algae,115
 fish,biophysical traits,maximum depth,saurenchelys meteori,705,115
 fish,biophysical traits,minimum depth,saurenchelys meteori,696,115
@@ -660,11 +632,8 @@ molluscs,biophysical traits,respiration structures,acesta excavata,filterfeeder,
 molluscs,specialisation,within-stage dependent habitats + condition,acesta excavata,benthic,46
 molluscs,biophysical traits,respiration structures,adamussium colbecki,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,adamussium colbecki,benthic,46
-molluscs,spatial scale of species,depth (min/max),aeolidia papillosa,atmosphere,46
 molluscs,biophysical traits,respiration structures,anadara trapezia,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,anadara trapezia,benthic,46
-molluscs,spatial scale of species,depth (min/max),aplysia californica,atmosphere,46
-molluscs,spatial scale of species,depth (min/max),aplysia vaccaria,atmosphere,46
 molluscs,biophysical traits,respiration structures,argopecten irradians,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,argopecten irradians,benthic,46
 molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),austrocochlea porcata,feeding,46
@@ -672,8 +641,6 @@ molluscs,spatial scale of species,depth (min/max),austrocochlea porcata,atmosphe
 molluscs,biophysical traits,respiration structures,bankia setacea,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,submerged timber,46
-molluscs,spatial scale of species,depth (min/max),cadlina luteomarginata,atmosphere,46
-molluscs,spatial scale of species,depth (min/max),calliostoma ligatum,atmosphere,46
 molluscs,spatial scale of species,depth (min/max),cellana tramoserica,atmosphere,46
 molluscs,biophysical traits,respiration structures,cerastoderma edule,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,cerastoderma edule,benthic,46
@@ -682,7 +649,6 @@ molluscs,spatial scale of species,depth (min/max),crassostrea virginica,atmosphe
 molluscs,spatial scale of species,depth (min/max),haliotis coccoradiata,atmosphere,46
 molluscs,spatial scale of species,depth (min/max),haliotis kamtschatkana,atmosphere,46
 molluscs,spatial scale of species,depth (min/max),haliotis rubra,atmosphere,46
-molluscs,spatial scale of species,depth (min/max),lottia scutum,atmosphere,46
 molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),lunella undulata,feeding,46
 molluscs,spatial scale of species,depth (min/max),lunella undulata,atmosphere,46
 molluscs,biophysical traits,respiration structures,magallana gigas,filterfeeder,46
@@ -730,7 +696,6 @@ molluscs,spatial scale of species,depth (min/max),saccostrea glomerata,atmospher
 molluscs,biophysical traits,respiration structures,siliqua patula,filterfeeder,46
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,soft bottom,46
-molluscs,spatial scale of species,depth (min/max),tegula funebralis,atmosphere,46
 molluscs,spatial scale of species,depth (min/max),tenguella marginalba,atmosphere,46
 molluscs,biophysical traits,respiration structures,trichomya hirsuta,filterfeeder,46
 molluscs,spatial scale of species,depth (min/max),trichomya hirsuta,atmosphere,46
