@@ -102,7 +102,7 @@ spp_gp_vuln <- read_csv(here('_output/spp_gp_vulnerability.csv'))
 
 matched_df <- spp_df_long %>%
   inner_join(spp_traits, by = c('name' = 'spp_gp')) %>%
-  # inner_join(spp_gp_vuln, by = c('name' = 'spp_gp')) %>%
+  inner_join(spp_gp_vuln, by = c('name' = 'spp_gp', 'taxon')) %>%
   mutate(match = rank)
 # matched_df$rank %>% unique() # species genus   family  class
 ```
@@ -168,7 +168,7 @@ Identify the rank at which each spp group matched, and disambiguate spp gps that
 match_ranks <- c('phylum', 'class', 'order', 'family', 'genus', 'species')
 rank_partitions <- vector('list', length = length(match_ranks)) %>%
   setNames(match_ranks)
-for(r in match_ranks) {
+for(r in match_ranks) { # r <- match_ranks[1]
   rank_partitions[[r]] <- matched_df %>%
     filter(rank == r) %>%
     select(!!paste0('match_', r) := match, !!r := name, 
@@ -359,7 +359,8 @@ Strip the higher ranks for file size; save out.
 vuln_all_spp <- match_vuln_df %>%
   mutate(gapfill = 'none') %>%
   bind_rows(gapfill_gen, gapfill_fam, gapfill_ord, gapfill_cls) %>%
-  # select(-kingdom, -phylum, -class, -order, -family, -genus) %>%
+  mutate(vuln = ifelse(is.na(vuln), mean_vuln, vuln)) %>%
+  select(-mean_vuln) %>%
   distinct()
 
 ### write big-ass .csv

@@ -200,6 +200,7 @@ raw_data_df <- lapply(sheetnames,
          trait_value = str_replace_all(trait_value, 'esturary', 'estuary'),
          trait_value = str_replace_all(trait_value, 'interntidal', 'intertidal'),
          trait_value = str_replace_all(trait_value, 'lentgh', 'length'),
+         trait_value = str_replace_all(trait_value, 'neary sessile', 'nearly sessile'),
          trait_value = str_replace_all(trait_value, 'this sp,', 'this sp.'),
          trait = str_replace_all(trait, '\\(pld\\)$', '(pld) exposure'))
 
@@ -259,7 +260,7 @@ spp_data_mobility <- raw_data_df %>%
          tmp = str_replace_all(tmp, 'vertic[a-z]+', 'vertical'),
          tmp = str_replace_all(tmp, 'migrat[a-z]+', 'migrator'),
          tmp = str_replace_all(tmp, 'residen[a-z]+', 'resident'),
-         tmp = str_replace_all(tmp, 'sedentary', 'nearly sessile/sedentary')) %>%
+         tmp = str_replace_all(tmp, 'nearly sessile|sedentary', 'nearly sessile/sedentary')) %>%
   # mutate(tmp = ifelse(str_detect(tmp, mob_vals),
   #                                 str_extract_all(tmp, mob_vals),
   #                                 tmp)) %>%
@@ -275,11 +276,9 @@ spp_data_mobility$trait_val_clean %>% table()
 
 Add atmosphere zone (exposure to air, for air temp and similar stressors that act out of water) for species who:
 
-* inhabit intertidal zone
+* inhabit intertidal zone AND are sessile e.g. anemones, mussels, barnacles, etc. but NOT fish, cephs, etc that can track the tides
 * have terrestrial/marine dependent habitats
 * have flight
-
-Note, this catches a few fish, molluscs, elasmobranchs, etc; but this seems OK as intertidal waters are likely highly affected by air temperature, e.g. in tidepools.
 
 ``` {r clean up depth traits}
 depth_vals <- traitvals_df_valid %>%
@@ -296,7 +295,13 @@ spp_data_depth <- raw_data_df %>%
   clean_up_mess()
 
 ### add atmosphere category
+spp_sessile <- spp_data_mobility %>%
+  filter(str_detect(trait_val_clean, 'sessile')) %>%
+  select(spp_gp, sheet) %>%
+  distinct()
+  
 spp_intertidal <- spp_data_zones %>%
+  filter(spp_gp %in% spp_sessile$spp_gp) %>%
   filter(trait_val_clean == 'intertidal') %>%
   select(spp_gp, sheet) %>%
   distinct()
