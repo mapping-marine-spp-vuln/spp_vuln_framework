@@ -145,7 +145,7 @@ check_headers <- function(f, s) {
   return(df)
 }
 
-raw_file <- here('_raw_data/xlsx/master_all_taxa_trait_data.xlsx')
+raw_file <- here('_raw_data/xlsx/species_traits_all.xlsx')
 
 sheetnames <- readxl::excel_sheets(raw_file)
 
@@ -165,16 +165,6 @@ process_sheet <- function(f, s) {
   ### read in to get "valid" categories
   categories <- read_csv('_data/trait_vals_valid.csv') %>%
     .$category %>% unique()
-  
-  ### this should no longer be necessary - spp traits xlsx is fixed
-  # swap_colnames <- c('cephalopods' = 1, 'reef_other_fish' = 1, 'molluscs' = 1, 'fish_Beth' = 2)
-  # if(s %in% names(swap_colnames)) {
-  #   ### problematic spp sheets - taxonomic info in second line of csv
-  #   spp_names <- df_raw[swap_colnames[s], ] %>% as.character()
-  #   spp_names[1:3] <- c('category', 'sub_category', 'category units')
-  #   df_raw <- df_raw %>%
-  #     setNames(spp_names)
-  # }
     
   df <- df_raw %>%
     gather(spp_gp, trait_value, -c(1:3)) %>%
@@ -182,9 +172,8 @@ process_sheet <- function(f, s) {
     select(-category_units)
   
   df_cleaned <- df %>%
+    mutate_if(is.character, tolower) %>%
     mutate(trait = ifelse(is.na(sub_category), category, sub_category),
-           trait = tolower(trait),
-           category = tolower(category),
            category = ifelse(category == 'light dependence', 'specialisation', category),
              ### fill in below the "physiological tolerance breadths" category
            category = ifelse(!category %in% categories, NA, category)) %>%
@@ -200,7 +189,10 @@ process_sheet <- function(f, s) {
 }
 
 
-raw_data_df <- lapply(sheetnames, FUN = function(s) process_sheet(raw_file, s)) %>%
+raw_data_df <- lapply(sheetnames, 
+                      FUN = function(s) {
+                        process_sheet(raw_file, s)
+                      }) %>%
   bind_rows() %>%
   ### fix typos and minor fixes:
   mutate(trait_value = str_replace_all(trait_value, 'unkown', 'unknown'),
@@ -237,8 +229,12 @@ zone_vals <- traitvals_df_valid %>%
 
 spp_data_zones <- raw_data_df %>%
   filter(trait == 'zone') %>%
+  mutate(trait_value = str_replace(trait_value, 'benthopelagic', 'pelagic;benthic'),
+         trait_value = str_replace(trait_value, 'pelagic', 'neritic;oceanic'),
+         trait_value = str_replace(trait_value, 'coastal', 'neritic'),
+         trait_value = str_replace(trait_value, 'range across all', zone_vals)) %>%
   ### fix misspelling:
-  mutate(tmp = str_extract_all(tolower(trait_value), zone_vals)) %>%
+  mutate(tmp = str_extract_all(trait_value, zone_vals)) %>%
   unnest(tmp) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
@@ -292,8 +288,9 @@ depth_vals <- traitvals_df_valid %>%
 
 spp_data_depth <- raw_data_df %>%
   filter(trait == 'depth (min/max)') %>%
-  mutate(tmp = str_replace_all(tolower(trait_value), '[^a-z0-9 ]+', ';')) %>%
-  mutate(tmp = str_extract_all(tmp, depth_vals)) %>%
+  mutate(trait_value = str_replace(trait_value, 'range across all', depth_vals),
+         tmp = str_replace_all(tolower(trait_value), '[^a-z0-9 ]+', ';'),
+         tmp = str_extract_all(tmp, depth_vals)) %>%
   unnest(tmp) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
