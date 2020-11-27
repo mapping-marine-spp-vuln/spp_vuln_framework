@@ -134,9 +134,11 @@ str_sens_trait_scores <- sens_traits_df %>%
 
 ### To score for a species/stressor combo, first resolve multiple mutually
 ### exclusive trait values (using trait_prob) then sum across all traits
-spp_sens <- str_sens_trait_scores %>%
+spp_sens_raw <- str_sens_trait_scores %>%
   left_join(spp_traits, by = c('category', 'trait', 'trait_value')) %>%
-  filter(!is.na(stressor) & !is.na(taxon)) %>%
+  filter(!is.na(stressor) & !is.na(taxon)) 
+
+spp_sens <- spp_sens_raw %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
   summarize(sens_score = sum(sens_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
@@ -162,6 +164,18 @@ These traits are in the trait-sensitivity scoring sheet but not found in the spe
 `r y$trait[!y$trait %in% x$trait] %>% unique()`
 
 ### Sensitivity by species group and stressor
+
+```{r}
+### check odd sensitivities
+noise <- spp_sens_raw %>%
+  filter(stressor == 'noise_pollution') %>%
+  filter(taxon %in% c('sponges', 'seabirds', 'plants_algae')) %>%
+  filter(sens_score != 0)
+
+light <- spp_sens_raw %>%
+  filter(trait == 'light_dependence') %>%
+  filter(stressor == 'light_pollution')
+```
 
 ```{r}
 p <- ggplot(spp_sens, aes(x = stressor, y = sens_score)) +
@@ -233,7 +247,7 @@ p <- ggplot(spp_adcap_gen, aes(x = taxon, y = adcap_gen_score)) +
   geom_jitter(size = 1, alpha = .6, width = .2, height = .2) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5))
 
-ggsave(here('figs/spp_adcap_gen_scores.png'), height = 6, width = 4, dpi = 300)
+ggsave(here('figs/spp_adcap_gen_scores.png'), height = 4, width = 4, dpi = 300)
 
 knitr::include_graphics(here('figs/spp_adcap_gen_scores.png'))
 ```
