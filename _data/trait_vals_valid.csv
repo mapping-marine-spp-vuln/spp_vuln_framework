@@ -156,12 +156,12 @@ spatial scale of species,eoo (range),100-4999
 spatial scale of species,eoo (range),5000-19999
 spatial scale of species,eoo (range),>20000
 spatial scale of species,eoo (range),unknown
-spatial scale of species,depth (min/max),atmosphere
 spatial scale of species,depth (min/max),epipelagic
 spatial scale of species,depth (min/max),mesopelagic
 spatial scale of species,depth (min/max),bathypelagic
 spatial scale of species,depth (min/max),abyssopelagic
 spatial scale of species,depth (min/max),hadopelagic
+spatial scale of species,depth (min/max),atmosphere
 spatial scale of species,depth (min/max),unknown
 spatial scale of species,zone,intertidal
 spatial scale of species,zone,neritic
@@ -200,9 +200,15 @@ biophysical traits,flight,unknown
 biophysical traits,communication requirement (sound),yes
 biophysical traits,communication requirement (sound),no
 biophysical traits,communication requirement (sound),unknown
-biophysical traits,"navigation requirements (sound or light, or magnetic)",yes
-biophysical traits,"navigation requirements (sound or light, or magnetic)",no
-biophysical traits,"navigation requirements (sound or light, or magnetic)",unknown
+biophysical traits,navigation requirements (sound),yes
+biophysical traits,navigation requirements (sound),no
+biophysical traits,navigation requirements (sound),unknown
+biophysical traits,navigation requirements (light),yes
+biophysical traits,navigation requirements (light),no
+biophysical traits,navigation requirements (light),unknown
+biophysical traits,navigation requirements (magnetic),yes
+biophysical traits,navigation requirements (magnetic),no
+biophysical traits,navigation requirements (magnetic),unknown
 biophysical traits,extreme pressure wave sensitive structures,high
 biophysical traits,extreme pressure wave sensitive structures,medium
 biophysical traits,extreme pressure wave sensitive structures,low

@@ -174,7 +174,7 @@ process_sheet <- function(f, s) {
   df_cleaned <- df %>%
     mutate_if(is.character, tolower) %>%
     mutate(trait = ifelse(is.na(sub_category), category, sub_category),
-           category = ifelse(category == 'light dependence', 'specialisation', category),
+           category = ifelse(category == 'photosynthetic', 'specialisation', category),
              ### fill in below the "physiological tolerance breadths" category
            category = ifelse(!category %in% categories, NA, category)) %>%
     fill(category, .direction = 'down') %>%
@@ -321,6 +321,7 @@ spp_atm <- bind_rows(spp_flight, spp_intertidal, spp_terr_marine) %>%
 spp_data_atm <- spp_atm %>%
   mutate(category = 'spatial scale of species',
          trait    = 'depth (min/max)',
+         trait_value = '(sessile AND intertidal) OR flight OR marine/terrestrial', 
          trait_val_clean = 'atmosphere')
 
 spp_data_depth <- spp_data_depth %>%
@@ -335,6 +336,18 @@ x <- spp_data_depth %>%
   group_by(sheet) %>%
   summarize(n_spp = n_distinct(spp_gp))
 knitr::kable(x)
+```
+
+### photosynthetic
+
+``` {r clean up photosynthetic traits}
+spp_data_photo <- raw_data_df %>%
+  filter(trait == 'photosynthetic') %>%
+  mutate(trait_val_clean = ifelse(str_detect(trait_value, '^y'), 'yes', 'no')) %>%
+  clean_up_mess()
+
+spp_data_photo$trait_val_clean %>% table()
+
 ```
 
 ### thermal sensitivity
@@ -1079,6 +1092,32 @@ spp_data_pld <- raw_data_df %>%
 spp_data_pld$trait_val_clean %>% table()
 ```
 
+### Navigation requirements
+
+``` {r clean up nav reqts}
+nav_vals <- c('light', 'sound', 'magnetic', 'unknown', 'no(ne)?', 'other') %>%
+  paste0(collapse = '|')
+
+spp_data_nav <- raw_data_df %>%
+  filter(str_detect(trait, '^navigation')) %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(tmp = str_split(trait_value, ';| or |/')) %>%
+  unnest(tmp) %>%
+  mutate(tmp = clean_trait(tmp),
+         trait_val_clean = str_extract_all(tmp, nav_vals)) %>%
+  unnest(trait_val_clean) %>%
+  clean_up_mess()
+  
+spp_data_nav$trait_val_clean %>% table()
+
+trait_stem <- 'navigation requirements (%s)'
+spp_data_nav_separated <- spp_data_nav %>%
+  filter(trait_val_clean %in% c('light', 'sound', 'magnetic')) %>%
+  mutate(trait = sprintf(trait_stem, trait_val_clean),
+         trait_val_clean = 'yes')
+  
+```
+
 ### habitats
 
 ```{r clean up habitats}
@@ -1150,11 +1189,13 @@ cleaned_traits <- c('zone', 'adult mobility',
                     'extreme pressure wave sensitive structures',
                     'adult body mass/body size',
                     'ph',
+                    'photosynthetic',
                     'dissolved oxygen',
                     'biomineral',
                     'calcium carbonate structure location',
                     'within-stage dependent habitats + condition',
-                    'across-stage dependent habitats + condition')
+                    'across-stage dependent habitats + condition',
+                    'navigation requirements (sound or light, or magnetic)')
 
 spp_data_clean <- raw_data_df %>%
   filter(!trait %in% cleaned_traits) %>%
@@ -1165,6 +1206,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_depth) %>%
   bind_rows(spp_data_thermal) %>%
   bind_rows(spp_data_ph) %>%
+  bind_rows(spp_data_photo) %>%
   bind_rows(spp_data_biomin) %>%
   bind_rows(spp_data_bodysize) %>%
   bind_rows(spp_data_fecund) %>%
@@ -1179,6 +1221,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_do) %>%
   bind_rows(spp_data_parent) %>%
   bind_rows(spp_data_age) %>%
+  bind_rows(spp_data_nav_separated) %>%
   bind_rows(spp_data_habs) %>%
   ### split and unnest, trim and clean:
   mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%

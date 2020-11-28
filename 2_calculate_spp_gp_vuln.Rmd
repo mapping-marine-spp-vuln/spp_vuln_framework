@@ -463,26 +463,34 @@ spp_vulnerability <- spp_sens %>%
   ### fix NAs
   mutate(adcap_spec_score = ifelse(is.na(adcap_spec_score), 0, adcap_spec_score),
          exposure_mod     = ifelse(is.na(exposure_mod), 1, exposure_mod)) %>%
+  rename(adcap_spec_raw = adcap_spec_score, adcap_gen_raw = adcap_gen_score, sens_raw = sens_score) %>%
   ### calculate means.  General adcap is overall; specific adcap and sensitivity are by stressor
   group_by(stressor) %>%
-  mutate(max_adcap_spec = max(adcap_spec_score),
-         max_sens = max(sens_score)) %>%
+  mutate(max_adcap_spec = max(adcap_spec_raw),
+         max_sens = max(sens_raw)) %>%
   ungroup() %>%
-  mutate(max_adcap_gen = max(adcap_gen_score)) %>%
+  mutate(max_adcap_gen = max(adcap_gen_raw)) %>%
   ### rescale components
-  mutate(sens_rescale = sens_score / max_sens,
-         adcap_gen_rescale = adcap_gen_score / max_adcap_gen,
-         adcap_spec_rescale = adcap_spec_score / max_adcap_spec) %>%
+  mutate(sens_rescale = sens_raw / max_sens,
+         adcap_gen_rescale = adcap_gen_raw / max_adcap_gen,
+         adcap_spec_rescale = adcap_spec_raw / max_adcap_spec) %>%
   ### note any stressors with zero for max (e.g. adcap for entanglement),
   ### will result in a NaN - convert the rescaled score to zero
   mutate(sens_rescale = ifelse(is.na(sens_rescale), 0, sens_rescale),
          adcap_gen_rescale = ifelse(is.na(adcap_gen_rescale), 0, adcap_gen_rescale),
          adcap_spec_rescale = ifelse(is.na(adcap_spec_rescale), 0, adcap_spec_rescale)) %>%
   ### mash 'em all together
-  mutate(vuln = sens_rescale / (1 + adcap_gen_rescale + adcap_spec_rescale) * exposure_mod)
+  mutate(vuln = (sens_rescale / (1 + adcap_gen_rescale + adcap_spec_rescale)) * exposure_mod)
 
-write_csv(spp_vulnerability, here('_output/spp_gp_vulnerability.csv'))
+spp_vuln_rescale <- spp_vulnerability %>%
+  select(-starts_with('max')) %>%
+  ungroup() %>%
+  mutate(vuln_raw = vuln,
+         vuln = vuln_raw / max(vuln_raw))
+  
+write_csv(spp_vuln_rescale, here('_output/spp_gp_vulnerability.csv'))
 ```
+
 
 ### Vulnerability by spp group and stressor
 
@@ -525,6 +533,24 @@ for(t in taxa) { # t <- taxa[3]
 
 ```
 
+### Vulnerability by stressor across all taxa
+```{r}
+str_mean_vuln <- plot_df %>%
+  group_by(stressor) %>%
+  summarize(vuln = mean(vuln, na.rm = TRUE))
+all_mean_vuln <- plot_df %>%
+  summarize(vuln = mean(vuln, na.rm = TRUE))
+ggplot(plot_df, aes(x = stressor, y = vuln)) +
+  ggtheme_plot(base_size = 12) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+  geom_hline(data = all_mean_vuln, aes(yintercept = vuln), color = 'red') +
+  geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
+  geom_point(data = str_mean_vuln, 
+             shape = 21, size = 3, 
+             alpha = 1, color = 'yellow', fill = 'red') +
+  ylim(0, 1)
+```
+
 ### Vulnerability to top three stressors by taxon
 ```{r}
 top_3_vuln <- spp_vulnerability %>%
@@ -538,13 +564,3 @@ top_3_vuln <- spp_vulnerability %>%
 knitr::kable(top_3_vuln)
 ```
 
-# TO DO
-
-- fix navigation requirements (light, sound, magnetic) into separate rows where appropriate
-    - e.g. cetaceans navigate by sound; birds/turtles/sharks maybe by magnetic; turtles by light?
-    - this has to be done on the species trait sheet level.
-- get traits for more species
-    - where are the rest of the corals?
-    - more fish?
-    - extract some values from FishBase and SealifeBase perhaps
-    - note these can be gapfilled but more info at spp level = better

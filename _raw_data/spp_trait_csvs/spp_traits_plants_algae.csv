@@ -6,7 +6,6 @@ biophysical traits,calcium carbonate structure stages,none,none,calcification af
 biophysical traits,communication requirement (sound),no,no,no,no
 biophysical traits,extreme pressure wave sensitive structures,high,low,none,high
 biophysical traits,flight,no,no,no,no
-biophysical traits,"navigation requirements (sound or light, or magnetic)",no,no,no,no
 biophysical traits,respiration structures,pnuemataphores,no,no,no
 breeding/nesting range/number of spawning aggregations (fish),number of sites,many,one,does not aggregate,many
 breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,no,possibly,possibly,no
@@ -38,6 +37,6 @@ spatial scale of species,zone,benthic,benthic,intertidal;benthic,benthic
 specialisation,air-sea interface,yes-although not sure what this really means-propagules float,yes;canopy at sea surface,no sensitive;thrives in high wave action--reef crest,yes-although not sure what this really means-propagules float
 specialisation,dependent interspecific interactions,no,NA,examples of strong interactions but not clear if universal or needed for survival,no
 specialisation,extreme diet specialization,na,no,no,na
-specialisation,light dependence,yes,yes,yes,yes
+specialisation,photosynthetic,yes,yes,yes,yes
 specialisation,terrestrial and marine life stages,no,NA,no,no
 specialisation,within-stage dependent habitats + condition,NA,NA,coral reef,NA

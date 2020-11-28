@@ -11,6 +11,6 @@ r (reproductive traits),max age,1-5yrs,1-5yrs,1-5yrs,1-5yrs
 r (reproductive traits),parental investment,spawner,spawner,spawner,NA
 r (reproductive traits),post-birth/hatching parental dependence,na,na,na,na
 r (reproductive traits),reproductive strategy,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious
-spatial scale of species,depth (min/max),epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;unknown,epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;unknown,epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;unknown;atmosphere,epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;unknown;atmosphere
+spatial scale of species,depth (min/max),epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;atmosphere;unknown,epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;atmosphere;unknown,epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;atmosphere;unknown,epipelagic;mesopelagic;bathypelagic;abyssopelagic;hadopelagic;atmosphere;unknown
 spatial scale of species,zone,intertidal;neritic;oceanic;pelagic;demersal;benthic;unknown,intertidal;neritic;oceanic;pelagic;demersal;benthic;unknown,intertidal;neritic;oceanic;pelagic;demersal;benthic;unknown,intertidal;neritic;oceanic;pelagic;demersal;benthic;unknown
 specialisation,extreme diet specialization,generalist,generalist,generalist,generalist

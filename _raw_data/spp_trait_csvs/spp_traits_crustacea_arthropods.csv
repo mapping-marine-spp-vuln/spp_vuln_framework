@@ -6,7 +6,7 @@ biophysical traits,calcium carbonate structure stages,both-unsure,both-unsure,no
 biophysical traits,communication requirement (sound),no,no,none,no,no,none,none,no,no
 biophysical traits,extreme pressure wave sensitive structures,low,low,none,NA,low,high,none,low,low
 biophysical traits,flight,no,no,none,no,no,none,none,no,no
-biophysical traits,"navigation requirements (sound or light, or magnetic)",yes-night vision,yes-light,none,yes,yes-light,yes,none,yes-light,yes-light
+biophysical traits,navigation requirements (light),yes,yes,NA,yes,yes,yes,NA,yes,yes
 biophysical traits,respiration structures,gills,gills,skin or cuticle,gills,gills,gills;filter feeding,skin or cuticle,gills,gills
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",NA,NA,NA,small,NA,large,very small,NA,NA
 breeding/nesting range/number of spawning aggregations (fish),number of sites,many,many,many,few,many,does not aggregate,few,many,many
@@ -39,6 +39,6 @@ specialisation,across-stage dependent habitats + condition,deep hard bottom;hydr
 specialisation,air-sea interface,yes,yes,no,no,yes,none,yes,yes,yes
 specialisation,dependent interspecific interactions,no,no,yes,no,no,none,yes,no,yes w;coral
 specialisation,extreme diet specialization,generalist,generalist,yes,no-broadly omniverous,generalist,none,yes,generalist,generalist
-specialisation,light dependence,no,no,no,no,no,none,no,no,no
+specialisation,photosynthetic,no,no,no,no,no,no,no,no,no
 specialisation,terrestrial and marine life stages,no,no,NA,no,no,NA,NA,no,no
 specialisation,within-stage dependent habitats + condition,deep hard bottom;hydrothermal vents,estuary;mangrove;intertidal mud;beach,deep soft bottom,subtidal soft bottom;rocky reef;rocky intertidal,kelp forest;hide for first year of life here,NA,rocky intertidal;coral reef,surface water;during planktonic stage,coral reef

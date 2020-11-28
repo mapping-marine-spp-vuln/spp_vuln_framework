@@ -5,7 +5,8 @@ biophysical traits,calcium carbonate structure stages,none,no,none,none,none,non
 biophysical traits,communication requirement (sound),no,no,no,no,yes,yes,no,no,no,no,no,no,no,no,no,no
 biophysical traits,extreme pressure wave sensitive structures,low,low,unknown,unknown,NA,low,unknown,low,low,unknown,low,low,unknown,unknown,unknown,low
 biophysical traits,flight,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
-biophysical traits,"navigation requirements (sound or light, or magnetic)",no,no,yes,yes,unknown,unknown,yes,unknown,no,yes,no,no,yes,yes,yes,no
+biophysical traits,navigation requirements (light),NA,NA,yes,yes,NA,NA,yes,NA,NA,yes,NA,NA,yes,yes,yes,NA
+biophysical traits,navigation requirements (magnetic),NA,NA,yes,yes,NA,NA,yes,NA,NA,yes,NA,NA,yes,yes,yes,NA
 biophysical traits,respiration structures,lungs,lungs,lungs,lungs,NA,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs,lungs
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",medium,small,na,na,NA,NA,na,medium,medium,na,medium,small,medium,na,na,medium
 breeding/nesting range/number of spawning aggregations (fish),number of sites,few,few,many,many,many,many,many,many,few,many,few,few,few,many,many,few
@@ -39,6 +40,6 @@ specialisation,across-stage dependent habitats + condition,seagrass;intertidal m
 specialisation,air-sea interface,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes
 specialisation,dependent interspecific interactions,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
 specialisation,extreme diet specialization,no,specialist,no,no,generalist,generalist,no,mixed,no,yes,no,yes,no,no,no,no
-specialisation,light dependence,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
+specialisation,photosynthetic,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no,no
 specialisation,terrestrial and marine life stages,yes,yes,yes,yes,yes,yes,yes,no,yes,yes,yes,yes,yes,yes,yes,yes
 specialisation,within-stage dependent habitats + condition,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh,rocky intertidal;hard shelf;surface water,surface water;deep water;beach;continental shelf,coral reef;seagrass;surface water;beach;continental shelf,mangrove;beach;intertidal mud;rocky intertidal,mangrove;beach;intertidal mud;rocky intertidal,surface water;deep water;beach;continental shelf,coral reef;seagrass;intertidal mud;mangrove;subtidal soft bottom,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh,coral reef;surface water;beach;continental shelf,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh,coral reef;rocky reef;rocky intertidal;subtidal soft bottom;beach,surface water;beach;continental shelf,surface water;deep water;beach;continental shelf,surface water;beach;continental shelf,seagrass;intertidal mud;mangrove;subtidal soft bottom;salt marsh
