@@ -14,6 +14,7 @@ movement,planktonic larval duration (pld) exposure,<4months
 movement,planktonic larval duration (pld) exposure,4months-1yr
 movement,planktonic larval duration (pld) exposure,>1yr
 movement,planktonic larval duration (pld) exposure,not larvae
+movement,planktonic larval duration (pld) exposure,holoplankton
 movement,planktonic larval duration (pld) exposure,unknown
 r (reproductive traits),reproductive strategy,sexual dioecious
 r (reproductive traits),reproductive strategy,sexual hermaphrodite
@@ -109,9 +110,9 @@ physiological tolerance breadths,sensitivity to wave energy (physical forcing),s
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),not sensitive
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),na
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),unknown
-specialisation,light dependence,yes
-specialisation,light dependence,no
-specialisation,light dependence,unknown
+specialisation,photosynthetic,yes
+specialisation,photosynthetic,no
+specialisation,photosynthetic,unknown
 specialisation,air-sea interface,floating
 specialisation,air-sea interface,yes
 specialisation,air-sea interface,no

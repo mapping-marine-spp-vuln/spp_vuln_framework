@@ -4,9 +4,9 @@ biophysical traits,biomineral,other,NA,high mg calcite,other
 biophysical traits,calcium carbonate structure location,none,none,external,none
 biophysical traits,calcium carbonate structure stages,none,none,calcification after germination and through adulthood,none
 biophysical traits,communication requirement (sound),no,no,no,no
-biophysical traits,extreme pressure wave sensitive structures,high,low,none,high
+biophysical traits,extreme pressure wave sensitive structures,none,none,none,none
 biophysical traits,flight,no,no,no,no
-biophysical traits,respiration structures,pnuemataphores,no,no,no
+biophysical traits,respiration structures,pneumatophores,no,no,no
 breeding/nesting range/number of spawning aggregations (fish),number of sites,many,one,does not aggregate,many
 breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,no,possibly,possibly,no
 foraging range,"if one/few, size",very small,NA,NA,very small
@@ -16,15 +16,14 @@ movement,adult mobility,sessile,passive,sessile,sessile
 movement,planktonic larval duration (pld) exposure,<1month,NA,<1week,<1month
 physiological tolerance breadths,dissolved oxygen,high tolerance,high tolerance,low tolerance,high tolerance
 physiological tolerance breadths,ph,<7.4,<7.4,7.8-8.2,<7.4
-physiological tolerance breadths,salinity,euryhaline,narrow;average marine,euryhaline;narrow,stenohaline
-physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive,easily dislodged by large waves,no sensitive;thrives in high wave action--reef crest,sensitive
+physiological tolerance breadths,salinity,euryhaline,stenohaline,euryhaline;narrow,stenohaline
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive,sensitive-easily dislodged by large waves,not sensitive;thrives in high wave action--reef crest,sensitive
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no,NA,no,yes
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c,20c,30c,20c
 r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,<1yr,<1yr,1-5yrs
 r (reproductive traits),are there sub-populations?,yes,NA,likely;unknown,yes
 r (reproductive traits),can the sex ratio be altered by a stressor?,no,no,unknown,no
 r (reproductive traits),fecundity,100-1000,1-2;2-5;5-10;<1,1000-10000;>10000,100-1000
-r (reproductive traits),feeding larva (post-hatching metamorphosis),yes,yes,yes,yes
 r (reproductive traits),global population size,100k-1m;>1m,100k-1m;>1m,>1m,100k-1m;>1m
 r (reproductive traits),lifetime # reproductive opportunities,>100,>100;1,>100,>100
 r (reproductive traits),max age,>100yrs,NA,5-10yrs,>100yrs

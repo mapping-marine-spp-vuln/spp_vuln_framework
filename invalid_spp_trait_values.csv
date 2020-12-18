@@ -1,343 +1,19 @@
 taxon,category,trait,spp_gp,trait_value,n_spp_gps
-cephalopods,specialisation,photosynthetic,abdopus,no,311
-cephalopods,specialisation,photosynthetic,abdopus abaculus,no,311
-cephalopods,specialisation,photosynthetic,abdopus aculeatus,no,311
-cephalopods,specialisation,photosynthetic,abdopus horridus,no,311
-cephalopods,specialisation,photosynthetic,abdopus tenebricus,no,311
-cephalopods,specialisation,photosynthetic,abdopus tonganus,no,311
-cephalopods,specialisation,photosynthetic,abdopus undulatus,no,311
-cephalopods,specialisation,photosynthetic,abralia,no,311
-cephalopods,specialisation,photosynthetic,abraliopsis,no,311
-cephalopods,specialisation,photosynthetic,adelieledone adelieana,no,311
-cephalopods,specialisation,photosynthetic,adelieledone piatkowski,no,311
-cephalopods,specialisation,photosynthetic,afrololigo mercatoris,no,311
-cephalopods,specialisation,photosynthetic,allonautilus,no,311
-cephalopods,specialisation,photosynthetic,alloteuthis,no,311
-cephalopods,specialisation,photosynthetic,alluroteuthis antarcticus,no,311
-cephalopods,specialisation,photosynthetic,ameloctopus litoralis,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus aegina,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus arenicola,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus burryi,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus exannulatus,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus fangsiao,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus kagoshimensis,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus marginatus,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus membranaceus,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus mototi,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus neglectus,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus ovulum,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus polyzenia,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus rex,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus robsoni,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus siamensis,no,311
-cephalopods,specialisation,photosynthetic,amphioctopus varunae,no,311
-cephalopods,specialisation,photosynthetic,amphitretidae,no,311
-cephalopods,specialisation,photosynthetic,amphorateuthis,no,311
-cephalopods,specialisation,photosynthetic,ancistrocheirus lesueurii,no,311
-cephalopods,specialisation,photosynthetic,ancistroteuthis lichtensteinii,no,311
-cephalopods,specialisation,photosynthetic,architeuthis dux,no,311
-cephalopods,specialisation,photosynthetic,argonauta,no,311
-cephalopods,specialisation,photosynthetic,asperoteuthis,no,311
-cephalopods,specialisation,photosynthetic,australiteuthis aldrichi,no,311
-cephalopods,specialisation,photosynthetic,austrorossia,no,311
-cephalopods,specialisation,photosynthetic,bathothauma lyromma,no,311
-cephalopods,specialisation,photosynthetic,bathypolypus arcticus,no,311
-cephalopods,specialisation,photosynthetic,bathypolypus bairdii,no,311
-cephalopods,specialisation,photosynthetic,bathypolypus ergasticus,no,311
-cephalopods,specialisation,photosynthetic,bathypolypus pugniger,no,311
-cephalopods,specialisation,photosynthetic,bathypolypus rubrostictus,no,311
-cephalopods,specialisation,photosynthetic,bathypolypus sponsalis,no,311
-cephalopods,specialisation,photosynthetic,bathypolypus valdiviae,no,311
-cephalopods,specialisation,photosynthetic,bathypurpurata profunda,no,311
-cephalopods,specialisation,photosynthetic,batoteuthis skolops,no,311
-cephalopods,specialisation,photosynthetic,bentheledone rotunda,no,311
-cephalopods,specialisation,photosynthetic,berryteuthis,no,311
-cephalopods,specialisation,photosynthetic,brachioteuthis,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus alpheus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus aspilosomatis,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus dierythraeus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus graptus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus lechenaultii,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus luteus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus macropus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus nocturnus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus ornatus,no,311
-cephalopods,specialisation,photosynthetic,callistoctopus rapanui,no,311
-cephalopods,specialisation,photosynthetic,chiroteuthis,no,311
-cephalopods,specialisation,photosynthetic,cirroctopus glacialis,no,311
-cephalopods,specialisation,photosynthetic,cirroteuthis muelleri,no,311
-cephalopods,specialisation,photosynthetic,cirrothauma magna,no,311
-cephalopods,specialisation,photosynthetic,cirrothauma murrayi,no,311
-cephalopods,specialisation,photosynthetic,cistopus,no,311
-cephalopods,specialisation,photosynthetic,cistopus chinensis,no,311
-cephalopods,specialisation,photosynthetic,cistopus indicus,no,311
-cephalopods,specialisation,photosynthetic,cistopus platinoidus,no,311
-cephalopods,specialisation,photosynthetic,cistopus taiwanicus,no,311
-cephalopods,specialisation,photosynthetic,cranchia scabra,no,311
-cephalopods,specialisation,photosynthetic,cryptoteuthis brevibracchiata,no,311
-cephalopods,specialisation,photosynthetic,cycloteuthis,no,311
-cephalopods,specialisation,photosynthetic,discoteuthis,no,311
-cephalopods,specialisation,photosynthetic,doryteuthis,no,311
-cephalopods,specialisation,photosynthetic,dosidicus gigas,no,311
-cephalopods,specialisation,photosynthetic,egea inermis,no,311
-cephalopods,specialisation,photosynthetic,eledone,no,311
-cephalopods,specialisation,photosynthetic,enoploteuthis,no,311
-cephalopods,specialisation,photosynthetic,enteroctopus dofleini,no,311
-cephalopods,specialisation,photosynthetic,enteroctopus magnificus,no,311
-cephalopods,specialisation,photosynthetic,enteroctopus megalocyathus,no,311
-cephalopods,specialisation,photosynthetic,euaxoctopus,no,311
-cephalopods,specialisation,photosynthetic,eucleoteuthis luminosa,no,311
-cephalopods,specialisation,photosynthetic,euprymna,no,311
-cephalopods,specialisation,photosynthetic,filippovia knipovitchi,no,311
-cephalopods,specialisation,photosynthetic,galiteuthis,no,311
-cephalopods,specialisation,photosynthetic,galiteuthis glacialis,no,311
-cephalopods,specialisation,photosynthetic,gonatopsis,no,311
-cephalopods,specialisation,photosynthetic,gonatopsis okutanii,no,311
-cephalopods,specialisation,photosynthetic,gonatus,no,311
-cephalopods,specialisation,photosynthetic,graneledone antarctica,no,311
-cephalopods,specialisation,photosynthetic,graneledone boreopacifica,no,311
-cephalopods,specialisation,photosynthetic,graneledone challengeri,no,311
-cephalopods,specialisation,photosynthetic,graneledone gonzalezi,no,311
-cephalopods,specialisation,photosynthetic,graneledone macrotyla,no,311
-cephalopods,specialisation,photosynthetic,graneledone taniwha,no,311
-cephalopods,specialisation,photosynthetic,graneledone verrucosa,no,311
-cephalopods,specialisation,photosynthetic,graneledone yamana,no,311
-cephalopods,specialisation,photosynthetic,grimalditeuthis,no,311
-cephalopods,specialisation,photosynthetic,grimpella thaumastocheir,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis abyssicola,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis bathynectes,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis boylei,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis challengeri,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis discoveryi,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis hippocrepium,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis innominata,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis meangensis,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis megaptera,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis pacifica,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis plena,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis tuftsi,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis umbellata,no,311
-cephalopods,specialisation,photosynthetic,grimpoteuthis wuelkeri,no,311
-cephalopods,specialisation,photosynthetic,haliphron,no,311
-cephalopods,specialisation,photosynthetic,hapalochlaena,no,311
-cephalopods,specialisation,photosynthetic,hapalochlaena lunulata,no,311
-cephalopods,specialisation,photosynthetic,helicocranchia,no,311
-cephalopods,specialisation,photosynthetic,heterololigo bleekeri,no,311
-cephalopods,specialisation,photosynthetic,heteroteuthis,no,311
-cephalopods,specialisation,photosynthetic,histioteuthis,no,311
-cephalopods,specialisation,photosynthetic,histoctopus,no,311
-cephalopods,specialisation,photosynthetic,hyaloteuthis pelagica,no,311
-cephalopods,specialisation,photosynthetic,idiosepius,no,311
-cephalopods,specialisation,photosynthetic,illex,no,311
-cephalopods,specialisation,photosynthetic,inioteuthis japonica,no,311
-cephalopods,specialisation,photosynthetic,iridoteuthis,no,311
-cephalopods,specialisation,photosynthetic,joubiniteuthis portieri,no,311
-cephalopods,specialisation,photosynthetic,lampadioteuthis megaleia,no,311
-cephalopods,specialisation,photosynthetic,leachia,no,311
-cephalopods,specialisation,photosynthetic,lepidoteuthis grimaldii,no,311
-cephalopods,specialisation,photosynthetic,liguriella podophthalma,no,311
-cephalopods,specialisation,photosynthetic,liocranchia,no,311
-cephalopods,specialisation,photosynthetic,loligo,no,311
-cephalopods,specialisation,photosynthetic,loliolus (loliolus) affinis,no,311
-cephalopods,specialisation,photosynthetic,loliolus (loliolus) hardwickei,no,311
-cephalopods,specialisation,photosynthetic,loliolus (nipponololigo) beka,no,311
-cephalopods,specialisation,photosynthetic,loliolus (nipponololigo) japonica,no,311
-cephalopods,specialisation,photosynthetic,loliolus (nipponololigo) sumatrensis,no,311
-cephalopods,specialisation,photosynthetic,loliolus (nipponololigo) uyii,no,311
-cephalopods,specialisation,photosynthetic,lolliguncula,no,311
-cephalopods,specialisation,photosynthetic,luteuthis dentatus,no,311
-cephalopods,specialisation,photosynthetic,luteuthis shuishi,no,311
-cephalopods,specialisation,photosynthetic,lycoteuthis,no,311
-cephalopods,r (reproductive traits),feeding larva (post-hatching metamorphosis),macrotritopus,feeding,311
-cephalopods,specialisation,photosynthetic,macrotritopus,no,311
-cephalopods,specialisation,photosynthetic,magnapinna,no,311
-cephalopods,specialisation,photosynthetic,martialia hyadesi,no,311
-cephalopods,specialisation,photosynthetic,mastigoteuthis,no,311
-cephalopods,specialisation,photosynthetic,megaleledone setebos,no,311
-cephalopods,specialisation,photosynthetic,megalocranchia,no,311
-cephalopods,specialisation,photosynthetic,mesonychoteuthis hamiltoni,no,311
-cephalopods,specialisation,photosynthetic,metasepia,no,311
-cephalopods,specialisation,photosynthetic,microeledone mangoldi,no,311
-cephalopods,specialisation,photosynthetic,moroteuthopsis,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus abruptus,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus berryi,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus bizikovi,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus canthylus,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus clyderoperi,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus eureka,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus hokkaidensis,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus januarii,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus johnsonianus,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus karubar,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus leioderma,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus levis,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus longibrachus,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus normani,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus oregonae,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus oregonensis,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus profundorum,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus pseudonymus,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus rigbyae,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus robustus,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus sibiricus,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus tangaroa,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus tegginmathae,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus thielei,no,311
-cephalopods,specialisation,photosynthetic,muusoctopus yaquinae,no,311
-cephalopods,specialisation,photosynthetic,narrowteuthis nesisi,no,311
-cephalopods,specialisation,photosynthetic,nautilus belauensis,no,311
-cephalopods,specialisation,photosynthetic,nautilus macromphalus,no,311
-cephalopods,specialisation,photosynthetic,nautilus pompilius,no,311
-cephalopods,specialisation,photosynthetic,nautilus repertus,no,311
-cephalopods,specialisation,photosynthetic,nautilus suluensis,no,311
-cephalopods,specialisation,photosynthetic,nectoteuthis,no,311
-cephalopods,specialisation,photosynthetic,nematolampas,no,311
-cephalopods,specialisation,photosynthetic,neorossia,no,311
-cephalopods,specialisation,photosynthetic,neoteuthis thielei,no,311
-cephalopods,specialisation,photosynthetic,notonykia,no,311
-cephalopods,specialisation,photosynthetic,nototeuthis dimegacotyle,no,311
-cephalopods,specialisation,photosynthetic,nototodarus,no,311
-cephalopods,specialisation,photosynthetic,nototodarus hawaiiensis,no,311
-cephalopods,specialisation,photosynthetic,octopoteuthis,no,311
-cephalopods,specialisation,photosynthetic,octopus,no,311
-cephalopods,specialisation,photosynthetic,octopus bimaculatus,no,311
-cephalopods,specialisation,photosynthetic,octopus bimaculoides,no,311
-cephalopods,specialisation,photosynthetic,octopus filosus,no,311
-cephalopods,specialisation,photosynthetic,octopus hubbsorum,no,311
-cephalopods,specialisation,photosynthetic,octopus hummelincki,no,311
-cephalopods,specialisation,photosynthetic,octopus insularis,no,311
-cephalopods,specialisation,photosynthetic,octopus maya,no,311
-cephalopods,specialisation,photosynthetic,octopus mimus,no,311
-cephalopods,specialisation,photosynthetic,octopus oculifer,no,311
-cephalopods,specialisation,photosynthetic,octopus tetricus,no,311
-cephalopods,specialisation,photosynthetic,octopus vulgaris,no,311
-cephalopods,specialisation,photosynthetic,ocythoe,no,311
-cephalopods,specialisation,photosynthetic,ommastrephes bartramii,no,311
-cephalopods,specialisation,photosynthetic,onychoteuthis,no,311
-cephalopods,specialisation,photosynthetic,onykia,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis agassizii,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis albatrossi,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis borealis,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis bruuni,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis californiana,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis calypso,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis chathamensis,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis depressa,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis dongshaensis,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis extensa,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis grimaldii,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis hardyi,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis japonica,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis massyae,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis medusoides,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis mero,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis persephone,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis philipii,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis pluto,no,311
-cephalopods,specialisation,photosynthetic,opisthoteuthis robsoni,no,311
-cephalopods,specialisation,photosynthetic,ornithoteuthis,no,311
-cephalopods,specialisation,photosynthetic,pareledone aequipapillae,no,311
-cephalopods,specialisation,photosynthetic,pareledone albimaculata,no,311
-cephalopods,specialisation,photosynthetic,pareledone aurata,no,311
-cephalopods,specialisation,photosynthetic,pareledone aurorae,no,311
-cephalopods,specialisation,photosynthetic,pareledone charcoti,no,311
-cephalopods,specialisation,photosynthetic,pareledone cornuta,no,311
-cephalopods,specialisation,photosynthetic,pareledone felix,no,311
-cephalopods,specialisation,photosynthetic,pareledone framensis,no,311
-cephalopods,specialisation,photosynthetic,pareledone harrissoni,no,311
-cephalopods,specialisation,photosynthetic,pareledone panchroma,no,311
-cephalopods,specialisation,photosynthetic,pareledone prydzensis,no,311
-cephalopods,specialisation,photosynthetic,pareledone serperastrata,no,311
-cephalopods,specialisation,photosynthetic,pareledone subtilis,no,311
-cephalopods,specialisation,photosynthetic,pareledone turqueti,no,311
-cephalopods,specialisation,photosynthetic,paroctopus,no,311
-cephalopods,specialisation,photosynthetic,pholidoteuthis,no,311
-cephalopods,specialisation,photosynthetic,pickfordiateuthis,no,311
-cephalopods,specialisation,photosynthetic,pickfordiateuthis pulchella,no,311
-cephalopods,specialisation,photosynthetic,planctoteuthis,no,311
-cephalopods,specialisation,photosynthetic,praealtus paralbida,no,311
-cephalopods,specialisation,photosynthetic,promachoteuthis,no,311
-cephalopods,specialisation,photosynthetic,psychroteuthis glacialis,no,311
-cephalopods,specialisation,photosynthetic,pteroctopus,no,311
-cephalopods,specialisation,photosynthetic,pterygioteuthis,no,311
-cephalopods,specialisation,photosynthetic,pyroteuthis,no,311
-cephalopods,specialisation,photosynthetic,robsonella fontaniana,no,311
-cephalopods,specialisation,photosynthetic,rondeletiola,no,311
-cephalopods,specialisation,photosynthetic,rossia,no,311
-cephalopods,specialisation,photosynthetic,sandalops melancholicus,no,311
-cephalopods,specialisation,photosynthetic,sasakiopus salebrosus,no,311
-cephalopods,specialisation,photosynthetic,scaeurgus,no,311
-cephalopods,specialisation,photosynthetic,selenoteuthis scintillans,no,311
-cephalopods,specialisation,photosynthetic,semirossia,no,311
-cephalopods,specialisation,photosynthetic,sepia,no,311
-cephalopods,specialisation,photosynthetic,sepia apama,no,311
-cephalopods,specialisation,photosynthetic,sepia bandensis,no,311
-cephalopods,specialisation,photosynthetic,sepia latimanus,no,311
-cephalopods,specialisation,photosynthetic,sepiadariidae,no,311
-cephalopods,specialisation,photosynthetic,sepiella,no,311
-cephalopods,specialisation,photosynthetic,sepietta,no,311
-cephalopods,specialisation,photosynthetic,sepiola,no,311
-cephalopods,specialisation,photosynthetic,sepiolina,no,311
-cephalopods,specialisation,photosynthetic,sepioteuthis,no,311
-cephalopods,specialisation,photosynthetic,slosarczykovia circumantarctica,no,311
-cephalopods,specialisation,photosynthetic,spirula spirula,no,311
-cephalopods,specialisation,photosynthetic,stauroteuthis gilchristi,no,311
-cephalopods,specialisation,photosynthetic,stauroteuthis syrtensis,no,311
-cephalopods,specialisation,photosynthetic,sthenoteuthis,no,311
-cephalopods,specialisation,photosynthetic,stigmatoteuthis,no,311
-cephalopods,specialisation,photosynthetic,stoloteuthis,no,311
-cephalopods,specialisation,photosynthetic,taningia danae,no,311
-cephalopods,specialisation,photosynthetic,taonius,no,311
-cephalopods,specialisation,photosynthetic,tetracheledone spinicirrhus,no,311
-cephalopods,specialisation,photosynthetic,teuthowenia,no,311
-cephalopods,specialisation,photosynthetic,thaumeledone brevis,no,311
-cephalopods,specialisation,photosynthetic,thaumeledone gunteri,no,311
-cephalopods,specialisation,photosynthetic,thaumeledone marshalli,no,311
-cephalopods,specialisation,photosynthetic,thaumeledone peninsulae,no,311
-cephalopods,specialisation,photosynthetic,thaumeledone zeiss,no,311
-cephalopods,specialisation,photosynthetic,thaumoctopus mimicus,no,311
-cephalopods,specialisation,photosynthetic,thysanoteuthis rhombus,no,311
-cephalopods,specialisation,photosynthetic,todarodes,no,311
-cephalopods,specialisation,photosynthetic,todaropsis eblanae,no,311
-cephalopods,specialisation,photosynthetic,tremoctopus,no,311
-cephalopods,specialisation,photosynthetic,uroteuthis,no,311
-cephalopods,specialisation,photosynthetic,uroteuthis (aestuariolus) noctiluca,no,311
-cephalopods,specialisation,photosynthetic,vampyroteuthis infernalis,no,311
-cephalopods,specialisation,photosynthetic,velodona togata,no,311
-cephalopods,specialisation,photosynthetic,vosseledone charrua,no,311
-cephalopods,specialisation,photosynthetic,vulcanoctopus hydrothermalis,no,311
-cephalopods,specialisation,photosynthetic,walvisteuthis,no,311
-cephalopods,specialisation,photosynthetic,watasenia scintillans,no,311
-cephalopods,specialisation,photosynthetic,wunderpus,no,311
 corals,biophysical traits,respiration structures,acropora,diffusiion,4
-corals,specialisation,photosynthetic,acropora,yes,4
-corals,specialisation,photosynthetic,diploastrea heliopora,yes,4
-corals,specialisation,photosynthetic,pocillopora,yes,4
-corals,specialisation,photosynthetic,porites,yes,4
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,bythograea thermydron,both-unsure,9
 crustacea_arthropods,specialisation,across-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
-crustacea_arthropods,specialisation,photosynthetic,bythograea thermydron,no,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,mictyris platycheles,both-unsure,9
-crustacea_arthropods,specialisation,photosynthetic,mictyris platycheles,no,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),nymphon australe,none,9
-crustacea_arthropods,biophysical traits,flight,nymphon australe,none,9
 crustacea_arthropods,biophysical traits,respiration structures,nymphon australe,skin or cuticle,9
 crustacea_arthropods,physiological tolerance breadths,salinity,nymphon australe,narrow,9
 crustacea_arthropods,specialisation,extreme diet specialization,nymphon australe,yes,9
-crustacea_arthropods,specialisation,photosynthetic,nymphon australe,no,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,palaemon elegans,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,9
 crustacea_arthropods,physiological tolerance breadths,salinity,palaemon elegans,broad,9
 crustacea_arthropods,specialisation,extreme diet specialization,palaemon elegans,no-broadly omniverous,9
-crustacea_arthropods,specialisation,photosynthetic,palaemon elegans,no,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,paralithodes camtschaticus,both-unsure,9
-crustacea_arthropods,specialisation,photosynthetic,paralithodes camtschaticus,no,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,paralithodes camtschaticus,hide for first year of life here,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus,none,9
-crustacea_arthropods,biophysical traits,flight,penaeus,none,9
-crustacea_arthropods,biophysical traits,respiration structures,penaeus,filter feeding,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus,none,9
 crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus,none,9
 crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus,character(0),9
@@ -345,465 +21,57 @@ crustacea_arthropods,physiological tolerance breadths,salinity,penaeus,1o to 32o
 crustacea_arthropods,specialisation,air-sea interface,penaeus,none,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus,none,9
 crustacea_arthropods,specialisation,extreme diet specialization,penaeus,none,9
-crustacea_arthropods,specialisation,photosynthetic,penaeus,no,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonum,none,9
-crustacea_arthropods,biophysical traits,flight,pycnogonum,none,9
 crustacea_arthropods,biophysical traits,respiration structures,pycnogonum,skin or cuticle,9
 crustacea_arthropods,physiological tolerance breadths,salinity,pycnogonum,narrow,9
 crustacea_arthropods,specialisation,extreme diet specialization,pycnogonum,yes,9
-crustacea_arthropods,specialisation,photosynthetic,pycnogonum,no,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,scylla serrata,both-unsure,9
-crustacea_arthropods,specialisation,photosynthetic,scylla serrata,no,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,scylla serrata,during planktonic stage,9
 crustacea_arthropods,biophysical traits,calcium carbonate structure stages,trapezia flavopunctata,both-unsure,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,yes w,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,coral,9
-crustacea_arthropods,specialisation,photosynthetic,trapezia flavopunctata,no,9
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",acanthaster,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),acanthaster,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,acanthaster,no,100
-echinoderms,specialisation,photosynthetic,acanthaster,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),actinopyga echinites,feeding-calcifier,100
-echinoderms,specialisation,extreme diet specialization,actinopyga echinites,specalist,100
-echinoderms,specialisation,photosynthetic,actinopyga echinites,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),amphiodia occidentalis,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,amphiodia occidentalis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),amphipholis squamata,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,amphipholis squamata,yes-live birth,100
-echinoderms,specialisation,photosynthetic,amphipholis squamata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),anneissia japonica,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,anneissia japonica,specialists,100
-echinoderms,specialisation,photosynthetic,anneissia japonica,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),antedon mediterranea,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,antedon mediterranea,specialists,100
-echinoderms,specialisation,photosynthetic,antedon mediterranea,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),aporometra wilsoni,non-feeding-non-calcifier,100
 echinoderms,specialisation,dependent interspecific interactions,aporometra wilsoni,yes-sargassum cystophora,100
-echinoderms,specialisation,extreme diet specialization,aporometra wilsoni,specialists,100
-echinoderms,specialisation,photosynthetic,aporometra wilsoni,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),apostichopus californicus,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,apostichopus californicus,specalist,100
-echinoderms,specialisation,photosynthetic,apostichopus californicus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),apostichopus japonicus,feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,apostichopus japonicus,specalist,100
-echinoderms,specialisation,photosynthetic,apostichopus japonicus,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",aquilonastra burtoni,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),aquilonastra burtoni,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,aquilonastra burtoni,no,100
-echinoderms,specialisation,photosynthetic,aquilonastra burtoni,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),arachnoides placenta,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),arachnoides placenta,feeding-calcifier,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,arachnoides placenta,no,100
-echinoderms,specialisation,extreme diet specialization,arachnoides placenta,generalists,100
-echinoderms,specialisation,photosynthetic,arachnoides placenta,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",asterias rubens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterias rubens,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,asterias rubens,no,100
-echinoderms,specialisation,photosynthetic,asterias rubens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina gibbosa,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,asterina gibbosa,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",asterina phylactica,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina phylactica,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,asterina phylactica,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",asterina stellifera,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),asterina stellifera,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,asterina stellifera,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),australostichopus mollis,feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,australostichopus mollis,specalist,100
-echinoderms,specialisation,photosynthetic,australostichopus mollis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma brevipes,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,breviturma brevipes,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma dentata,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,breviturma dentata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma doederleini,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,breviturma doederleini,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma longispina,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,breviturma longispina,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma pica,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,breviturma pica,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),breviturma pusilla,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,breviturma pusilla,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),brisaster latifrons,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),brisaster latifrons,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,brisaster latifrons,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),centrostephanus rodgersii,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,centrostephanus rodgersii,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cryptasterina hystera,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina hystera,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina hystera,no,100
-echinoderms,specialisation,photosynthetic,cryptasterina hystera,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cryptasterina pacifica,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina pacifica,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina pacifica,no,100
-echinoderms,specialisation,photosynthetic,cryptasterina pacifica,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cryptasterina pentagona,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cryptasterina pentagona,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina pentagona,no,100
-echinoderms,specialisation,photosynthetic,cryptasterina pentagona,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria frondosa,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,cucumaria frondosa,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria miniata,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,cucumaria miniata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria piperata,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,cucumaria piperata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),cucumaria pseudocurata,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,cucumaria pseudocurata,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),dendraster excentricus,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),dendraster excentricus,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,dendraster excentricus,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema antillarum,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),diadema antillarum,feeding-calcifier,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,diadema antillarum,no,100
-echinoderms,specialisation,photosynthetic,diadema antillarum,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema savignyi,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),diadema savignyi,feeding-calcifier,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,diadema savignyi,no,100
-echinoderms,specialisation,photosynthetic,diadema savignyi,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema setosum,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),diadema setosum,feeding-calcifier,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,diadema setosum,no,100
-echinoderms,specialisation,photosynthetic,diadema setosum,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),echinocardium cordatum,senstive,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,echinocardium cordatum,no,100
-echinoderms,specialisation,extreme diet specialization,echinocardium cordatum,generalists,100
-echinoderms,specialisation,photosynthetic,echinocardium cordatum,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),eupentacta quinquesemita,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,eupentacta quinquesemita,specalist,100
-echinoderms,specialisation,photosynthetic,eupentacta quinquesemita,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),evechinus chloroticus,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),evechinus chloroticus,feeding-calcifier,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,evechinus chloroticus,no,100
-echinoderms,specialisation,photosynthetic,evechinus chloroticus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),florometra serratissima,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,florometra serratissima,specialists,100
-echinoderms,specialisation,photosynthetic,florometra serratissima,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),gorgonocephalus eucnemis,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,gorgonocephalus eucnemis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris crassispina,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,heliocidaris crassispina,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris erythrogramma,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,heliocidaris erythrogramma,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),heliocidaris tuberculata,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,heliocidaris tuberculata,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),holopneustes purpurascens,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holopneustes purpurascens,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,holopneustes purpurascens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (halodeima) atra,feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,holothuria (halodeima) atra,specalist,100
-echinoderms,specialisation,photosynthetic,holothuria (halodeima) atra,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (metriatyla) scabra,feeding-calcifier,100
-echinoderms,specialisation,extreme diet specialization,holothuria (metriatyla) scabra,specalist,100
-echinoderms,specialisation,photosynthetic,holothuria (metriatyla) scabra,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),holothuria (panningothuria) forskali,feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,holothuria (panningothuria) forskali,specalist,100
-echinoderms,specialisation,photosynthetic,holothuria (panningothuria) forskali,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),leptopentacta elongata,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,leptopentacta elongata,specalist,100
-echinoderms,specialisation,photosynthetic,leptopentacta elongata,no,100
-echinoderms,specialisation,extreme diet specialization,leptosynapta clarki,specalist,100
-echinoderms,specialisation,photosynthetic,leptosynapta clarki,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),loxechinus albus,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),loxechinus albus,feeding-calcifier,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,loxechinus albus,no,100
-echinoderms,specialisation,photosynthetic,loxechinus albus,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra atyphoida,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra atyphoida,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,meridiastra atyphoida,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra calcar,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra calcar,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,meridiastra calcar,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra gunnii,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra gunnii,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,meridiastra gunnii,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra mortenseni,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra mortenseni,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,meridiastra mortenseni,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra occidens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra occidens,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,meridiastra occidens,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meridiastra oriens,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),meridiastra oriens,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,meridiastra oriens,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),mesocentrotus franciscanus,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),mesocentrotus franciscanus,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,mesocentrotus franciscanus,no,100
-echinoderms,specialisation,extreme diet specialization,molpadia intermedia,specalist,100
-echinoderms,specialisation,photosynthetic,molpadia intermedia,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",odontaster validus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),odontaster validus,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,odontaster validus,no,100
-echinoderms,specialisation,photosynthetic,odontaster validus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma aethiops,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiocoma aethiops,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma echinata,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiocoma echinata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma erinaceus,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiocoma erinaceus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocoma scolopendrina,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiocoma scolopendrina,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocomella alexandri,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiocomella alexandri,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocomella ophiactoides,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiocomella ophiactoides,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiocomella pumila,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiocomella pumila,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix annulosa,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix annulosa,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix caryophyllata,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix caryophyllata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix elegans,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix elegans,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix endeani,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix endeani,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix janualis,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix janualis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix macroplaca,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix macroplaca,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix marshallensis,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix marshallensis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix mixta,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix mixta,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix occidentalis,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix occidentalis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix pictum,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix pictum,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix venosa,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix venosa,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiomastix wendtii,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiomastix wendtii,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiopholis aculeata,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiopholis aculeata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),ophiura sarsii,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,ophiura sarsii,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",parvulastra exigua,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra exigua,non-feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra exigua,no,100
-echinoderms,specialisation,photosynthetic,parvulastra exigua,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",parvulastra parvivipara,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra parvivipara,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra parvivipara,no,100
-echinoderms,specialisation,photosynthetic,parvulastra parvivipara,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",parvulastra vivipara,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),parvulastra vivipara,no larvae,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra vivipara,no,100
-echinoderms,specialisation,photosynthetic,parvulastra vivipara,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria chilensis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria chilensis,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,patiria chilensis,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria miniata,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria miniata,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,patiria miniata,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiria pectinifera,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiria pectinifera,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,patiria pectinifera,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",patiriella regularis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),patiriella regularis,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,patiriella regularis,no,100
-echinoderms,specialisation,photosynthetic,patiriella regularis,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pentamera populifera,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,pentamera populifera,specalist,100
-echinoderms,specialisation,photosynthetic,pentamera populifera,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",pisaster ochraceus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pisaster ochraceus,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pisaster ochraceus,no,100
-echinoderms,specialisation,photosynthetic,pisaster ochraceus,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),psammechinus miliaris,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),psammechinus miliaris,feeding-calcifier,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,psammechinus miliaris,no,100
-echinoderms,specialisation,photosynthetic,psammechinus miliaris,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pseudocnus lubricus,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,pseudocnus lubricus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),psolidium bullatum,non-feeding-non-calcifier,100
-echinoderms,specialisation,photosynthetic,psolidium bullatum,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),psolus chitonoides,non-feeding-non-calcifier,100
-echinoderms,specialisation,extreme diet specialization,psolus chitonoides,specalist,100
-echinoderms,specialisation,photosynthetic,psolus chitonoides,no,100
-echinoderms,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",pycnopodia helianthoides,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),pycnopodia helianthoides,feeding-non-calcifier,100
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pycnopodia helianthoides,no,100
-echinoderms,specialisation,photosynthetic,pycnopodia helianthoides,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus droebachiensis,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus droebachiensis,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,strongylocentrotus droebachiensis,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus fragilis,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus fragilis,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,strongylocentrotus fragilis,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus pallidus,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus pallidus,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,strongylocentrotus pallidus,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus purpuratus,senstive,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),strongylocentrotus purpuratus,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,strongylocentrotus purpuratus,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),tripneustes gratilla,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,tripneustes gratilla,no,100
-echinoderms,r (reproductive traits),feeding larva (post-hatching metamorphosis),tripneustes kermadecensis,feeding-calcifier,100
-echinoderms,specialisation,photosynthetic,tripneustes kermadecensis,no,100
-elasmobranchs,specialisation,photosynthetic,aetobatus,no,135
-elasmobranchs,specialisation,photosynthetic,alopias pelagicus,no,135
-elasmobranchs,specialisation,photosynthetic,alopias superciliosus,no,135
-elasmobranchs,specialisation,photosynthetic,alopias vulpinus,no,135
-elasmobranchs,specialisation,photosynthetic,amblyraja,no,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,anacanthobatidae,possibly,135
-elasmobranchs,specialisation,photosynthetic,anacanthobatidae,no,135
-elasmobranchs,specialisation,photosynthetic,apristurus,no,135
-elasmobranchs,specialisation,photosynthetic,aptychotrema,no,135
-elasmobranchs,specialisation,photosynthetic,arhynchobatidae,no,135
-elasmobranchs,specialisation,photosynthetic,asymbolus,no,135
-elasmobranchs,specialisation,photosynthetic,atelomycterus,no,135
-elasmobranchs,specialisation,photosynthetic,aulohalaelurus,no,135
-elasmobranchs,specialisation,photosynthetic,bathyraja,no,135
-elasmobranchs,specialisation,photosynthetic,bathytoshia,no,135
-elasmobranchs,specialisation,photosynthetic,beringraja,no,135
-elasmobranchs,specialisation,photosynthetic,brachaeluridae,no,135
-elasmobranchs,specialisation,photosynthetic,breviraja,no,135
-elasmobranchs,specialisation,photosynthetic,brevitrygon,no,135
-elasmobranchs,specialisation,photosynthetic,bythaelurus,no,135
-elasmobranchs,specialisation,photosynthetic,carcharhinidae,no,135
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carcharhinus leucas,few,135
-elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,large for adults,135
-elasmobranchs,foraging range,"if one/few, size",carcharhinus leucas,small for juveniles,135
-elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),carcharhinus leucas,no larvae,135
-elasmobranchs,specialisation,photosynthetic,carcharhinus leucas,no,135
-elasmobranchs,specialisation,photosynthetic,carcharodon carcharias,no,135
-elasmobranchs,specialisation,photosynthetic,centrophoridae,no,135
-elasmobranchs,specialisation,photosynthetic,cephaloscyllium,no,135
-elasmobranchs,specialisation,photosynthetic,cephalurus cephalus,no,135
-elasmobranchs,specialisation,photosynthetic,cetorhinus maximus,no,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,cruriraja,possibly,135
-elasmobranchs,specialisation,photosynthetic,cruriraja,no,135
-elasmobranchs,specialisation,photosynthetic,ctenacis,no,135
-elasmobranchs,specialisation,photosynthetic,dactylobatus,no,135
-elasmobranchs,specialisation,photosynthetic,dalatiidae,no,135
-elasmobranchs,specialisation,photosynthetic,dasyatis,no,135
-elasmobranchs,specialisation,photosynthetic,dentiraja,no,135
-elasmobranchs,specialisation,photosynthetic,dipturus,no,135
-elasmobranchs,specialisation,photosynthetic,echinorhinus brucus,no,135
-elasmobranchs,specialisation,photosynthetic,echinorhinus cookei,no,135
-elasmobranchs,specialisation,photosynthetic,eridacnis,no,135
-elasmobranchs,specialisation,photosynthetic,etmopteridae,no,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,fenestraja,possibly,135
-elasmobranchs,specialisation,photosynthetic,fenestraja,no,135
-elasmobranchs,specialisation,photosynthetic,figaro,no,135
-elasmobranchs,specialisation,photosynthetic,fontitrygon,no,135
-elasmobranchs,specialisation,photosynthetic,galeocerdo cuvier,no,135
-elasmobranchs,specialisation,photosynthetic,galeorhinus galeus,no,135
-elasmobranchs,specialisation,photosynthetic,galeus,no,135
-elasmobranchs,specialisation,photosynthetic,ginglymostoma cirratum,no,135
-elasmobranchs,specialisation,photosynthetic,glaucostegidae,no,135
-elasmobranchs,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",glyphis,few,135
-elasmobranchs,foraging range,"if one/few, size",glyphis,large for adults,135
-elasmobranchs,foraging range,"if one/few, size",glyphis,small for juveniles,135
-elasmobranchs,r (reproductive traits),feeding larva (post-hatching metamorphosis),glyphis,no larvae,135
-elasmobranchs,specialisation,photosynthetic,glyphis,no,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiella,possibly,135
-elasmobranchs,specialisation,photosynthetic,gurgesiella,no,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,135
-elasmobranchs,specialisation,photosynthetic,gymnuridae,no,135
-elasmobranchs,specialisation,photosynthetic,halaelurus,no,135
-elasmobranchs,specialisation,photosynthetic,haploblepharus,no,135
-elasmobranchs,specialisation,photosynthetic,hemigaleidae,no,135
-elasmobranchs,specialisation,photosynthetic,hemiscylliidae,no,135
-elasmobranchs,specialisation,photosynthetic,hemitrygon,no,135
-elasmobranchs,specialisation,photosynthetic,heterodontidae,no,135
-elasmobranchs,specialisation,photosynthetic,hexanchiformes,no,135
-elasmobranchs,specialisation,photosynthetic,hexatrygon bickelli,no,135
-elasmobranchs,specialisation,photosynthetic,himantura,no,135
-elasmobranchs,specialisation,photosynthetic,holohalaelurus,no,135
-elasmobranchs,specialisation,photosynthetic,hongeo,no,135
-elasmobranchs,specialisation,photosynthetic,hypanus,no,135
-elasmobranchs,specialisation,photosynthetic,hypnos monopterygius,no,135
-elasmobranchs,specialisation,photosynthetic,isurus oxyrinchus,no,135
-elasmobranchs,specialisation,photosynthetic,isurus paucus,no,135
-elasmobranchs,specialisation,photosynthetic,lamna ditropis,no,135
-elasmobranchs,specialisation,photosynthetic,lamna nasus,no,135
-elasmobranchs,specialisation,photosynthetic,leptocharias smithii,no,135
-elasmobranchs,specialisation,photosynthetic,leucoraja,no,135
-elasmobranchs,specialisation,photosynthetic,maculabatis,no,135
-elasmobranchs,specialisation,photosynthetic,malacoraja,no,135
-elasmobranchs,specialisation,photosynthetic,manta,no,135
-elasmobranchs,specialisation,photosynthetic,megachasma pelagios,no,135
-elasmobranchs,specialisation,photosynthetic,megatrygon microps,no,135
-elasmobranchs,specialisation,photosynthetic,mitsukurina owstoni,no,135
-elasmobranchs,specialisation,photosynthetic,mobula,no,135
-elasmobranchs,specialisation,photosynthetic,mobula alfredi,no,135
-elasmobranchs,specialisation,photosynthetic,mobula birostris,no,135
-elasmobranchs,specialisation,photosynthetic,myliobatidae,no,135
-elasmobranchs,r (reproductive traits),can the sex ratio be altered by a stressor?,narcinidae,possibly,135
-elasmobranchs,specialisation,photosynthetic,narcinidae,no,135
-elasmobranchs,specialisation,photosynthetic,narkidae,no,135
-elasmobranchs,specialisation,photosynthetic,nebrius ferrugineus,no,135
-elasmobranchs,specialisation,photosynthetic,neoraja,no,135
-elasmobranchs,specialisation,photosynthetic,neotrygon,no,135
-elasmobranchs,specialisation,photosynthetic,notoraja,no,135
-elasmobranchs,specialisation,photosynthetic,odontaspididae,no,135
-elasmobranchs,specialisation,photosynthetic,okamejei,no,135
-elasmobranchs,specialisation,photosynthetic,orbiraja,no,135
-elasmobranchs,specialisation,photosynthetic,orectolobidae,no,135
-elasmobranchs,specialisation,photosynthetic,oxynotidae,no,135
-elasmobranchs,specialisation,photosynthetic,parascylliidae,no,135
-elasmobranchs,specialisation,photosynthetic,parmaturus,no,135
-elasmobranchs,specialisation,photosynthetic,pastinachus,no,135
-elasmobranchs,specialisation,photosynthetic,pateobatis,no,135
-elasmobranchs,specialisation,photosynthetic,pentanchus,no,135
-elasmobranchs,specialisation,photosynthetic,platyrhina,no,135
-elasmobranchs,specialisation,photosynthetic,platyrhinoidis,no,135
-elasmobranchs,specialisation,photosynthetic,plesiobatis daviesi,no,135
-elasmobranchs,specialisation,photosynthetic,poroderma,no,135
-elasmobranchs,specialisation,photosynthetic,prionace glauca,no,135
-elasmobranchs,specialisation,photosynthetic,pristidae,no,135
-elasmobranchs,specialisation,photosynthetic,pristiophoridae,no,135
-elasmobranchs,specialisation,photosynthetic,proscyllium,no,135
-elasmobranchs,specialisation,photosynthetic,pseudocarcharias kamoharai,no,135
-elasmobranchs,specialisation,photosynthetic,pseudotriakidae,no,135
 elasmobranchs,specialisation,across-stage dependent habitats + condition,pteroplatytrygon violacea,midwater,135
-elasmobranchs,specialisation,photosynthetic,pteroplatytrygon violacea,no,135
 elasmobranchs,specialisation,within-stage dependent habitats + condition,pteroplatytrygon violacea,midwater,135
-elasmobranchs,specialisation,photosynthetic,raja,no,135
-elasmobranchs,specialisation,photosynthetic,rajella,no,135
-elasmobranchs,specialisation,photosynthetic,rhina,no,135
-elasmobranchs,specialisation,photosynthetic,rhincodon typus,no,135
-elasmobranchs,specialisation,photosynthetic,rhinobatidae,no,135
-elasmobranchs,specialisation,photosynthetic,rhinoptera,no,135
-elasmobranchs,specialisation,photosynthetic,rhynchorhina,no,135
-elasmobranchs,specialisation,photosynthetic,rostroraja,no,135
-elasmobranchs,specialisation,photosynthetic,schroederichthys,no,135
-elasmobranchs,specialisation,photosynthetic,scyliorhinus,no,135
-elasmobranchs,specialisation,photosynthetic,somniosidae,no,135
-elasmobranchs,specialisation,photosynthetic,somniosus microcephalus,no,135
-elasmobranchs,specialisation,photosynthetic,sphyrnidae,no,135
-elasmobranchs,specialisation,photosynthetic,spiniraja whitleyi,no,135
-elasmobranchs,specialisation,photosynthetic,squalidae,no,135
-elasmobranchs,specialisation,photosynthetic,squatinidae,no,135
-elasmobranchs,specialisation,photosynthetic,stegostoma fasciatum,no,135
-elasmobranchs,specialisation,photosynthetic,taeniura,no,135
-elasmobranchs,specialisation,photosynthetic,taeniurops,no,135
-elasmobranchs,specialisation,photosynthetic,telatrygon,no,135
-elasmobranchs,specialisation,photosynthetic,torpedinidae,no,135
-elasmobranchs,specialisation,photosynthetic,triakidae,no,135
-elasmobranchs,specialisation,photosynthetic,triakis semifasciata,no,135
-elasmobranchs,specialisation,photosynthetic,trygonorrhina,no,135
-elasmobranchs,specialisation,photosynthetic,urogymnus,no,135
-elasmobranchs,specialisation,photosynthetic,urolophidae,no,135
-elasmobranchs,specialisation,photosynthetic,urotrygonidae,no,135
-elasmobranchs,specialisation,photosynthetic,zanobatus,no,135
-elasmobranchs,specialisation,photosynthetic,zapteryx,no,135
-elasmobranchs,specialisation,photosynthetic,zearaja,no,135
-elasmobranchs,specialisation,photosynthetic,zearaja maugeana,no,135
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
-fish,specialisation,photosynthetic,acanthochromis polyacanthus,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",acanthurus dussumieri,no,115
-fish,foraging range,"if one/few, size",acanthurus dussumieri,many,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthurus dussumieri,nil,115
-fish,specialisation,photosynthetic,acanthurus dussumieri,no,115
-fish,biophysical traits,maximum depth,acromycter perturbator,1318,115
-fish,biophysical traits,minimum depth,acromycter perturbator,787,115
-fish,specialisation,photosynthetic,acromycter perturbator,no,115
-fish,biophysical traits,communication requirement (sound),amphiprion akindynos,n0,115
-fish,r (reproductive traits),can the sex ratio be altered by a stressor?,amphiprion akindynos,yes-if female dies a male takes over and becomes female,115
 fish,specialisation,across-stage dependent habitats + condition,amphiprion akindynos,anemone,115
-fish,specialisation,photosynthetic,amphiprion akindynos,no,115
 fish,specialisation,within-stage dependent habitats + condition,amphiprion akindynos,anemone,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",anguilla australis,few,115
 fish,physiological tolerance breadths,salinity,anguilla australis,catadromous,115
 fish,physiological tolerance breadths,salinity,anguilla australis,sw-fw-sw,115
 fish,physiological tolerance breadths,sensitivity to wave energy (physical forcing),anguilla australis,no,115
@@ -811,356 +79,91 @@ fish,r (reproductive traits),are there sub-populations?,anguilla australis,by ri
 fish,specialisation,across-stage dependent habitats + condition,anguilla australis,catadromous,115
 fish,specialisation,across-stage dependent habitats + condition,anguilla australis,sw,115
 fish,specialisation,across-stage dependent habitats + condition,anguilla australis,fw,115
-fish,specialisation,photosynthetic,anguilla australis,no,115
 fish,specialisation,terrestrial and marine life stages,anguilla australis,fw,115
 fish,specialisation,terrestrial and marine life stages,anguilla australis,sw,115
 fish,specialisation,within-stage dependent habitats + condition,anguilla australis,catadromous,115
 fish,specialisation,within-stage dependent habitats + condition,anguilla australis,sw,115
 fish,specialisation,within-stage dependent habitats + condition,anguilla australis,fw,115
-fish,biophysical traits,maximum depth,apterichtus kendalli,400,115
-fish,biophysical traits,minimum depth,apterichtus kendalli,3,115
-fish,specialisation,photosynthetic,apterichtus kendalli,no,115
-fish,biophysical traits,maximum depth,ariosoma selenops,549,115
-fish,biophysical traits,minimum depth,ariosoma selenops,22,115
-fish,specialisation,photosynthetic,ariosoma selenops,no,115
-fish,biophysical traits,maximum depth,asarcenchelys longimanus,300,115
-fish,biophysical traits,minimum depth,asarcenchelys longimanus,0,115
-fish,specialisation,photosynthetic,asarcenchelys longimanus,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",balistoides viridescens,no,115
-fish,foraging range,"if one/few, size",balistoides viridescens,many,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,balistoides viridescens,nil,115
-fish,specialisation,photosynthetic,balistoides viridescens,no,115
-fish,biophysical traits,maximum depth,bathycongrus retrotinctus,450,115
-fish,biophysical traits,minimum depth,bathycongrus retrotinctus,150,115
-fish,specialisation,photosynthetic,bathycongrus retrotinctus,no,115
-fish,biophysical traits,maximum depth,bathycongrus vicinalis,503,115
-fish,biophysical traits,minimum depth,bathycongrus vicinalis,101,115
-fish,specialisation,photosynthetic,bathycongrus vicinalis,no,115
-fish,specialisation,photosynthetic,bathypterois grallator,no,115
 fish,specialisation,within-stage dependent habitats + condition,bathypterois grallator,unknown,115
-fish,biophysical traits,maximum depth,bathyuroconger vicinus,1318,115
-fish,biophysical traits,minimum depth,bathyuroconger vicinus,120,115
-fish,specialisation,photosynthetic,bathyuroconger vicinus,no,115
-fish,r (reproductive traits),feeding larva (post-hatching metamorphosis),brachionichthys hirsutus,no larvae,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,brachionichthys hirsutus,week-month,115
 fish,specialisation,across-stage dependent habitats + condition,brachionichthys hirsutus,restricted,115
-fish,specialisation,photosynthetic,brachionichthys hirsutus,no,115
 fish,specialisation,within-stage dependent habitats + condition,brachionichthys hirsutus,restricted,115
-fish,biophysical traits,maximum depth,brachysomophis longipinnis,50,115
-fish,biophysical traits,minimum depth,brachysomophis longipinnis,0,115
-fish,specialisation,photosynthetic,brachysomophis longipinnis,no,115
-fish,biophysical traits,maximum depth,callechelys bitaeniata,30,115
-fish,biophysical traits,minimum depth,callechelys bitaeniata,0,115
-fish,specialisation,photosynthetic,callechelys bitaeniata,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",carapus bermudensis,no,115
-fish,foraging range,"if one/few, size",carapus bermudensis,many,115
 fish,specialisation,across-stage dependent habitats + condition,carapus bermudensis,sea cucumber,115
 fish,specialisation,across-stage dependent habitats + condition,carapus bermudensis,reef,115
 fish,specialisation,dependent interspecific interactions,carapus bermudensis,yes-sea cucumbers,115
-fish,specialisation,photosynthetic,carapus bermudensis,no,115
 fish,specialisation,within-stage dependent habitats + condition,carapus bermudensis,sea cucumber,115
 fish,specialisation,within-stage dependent habitats + condition,carapus bermudensis,reef,115
 fish,specialisation,across-stage dependent habitats + condition,cephalopholis cyanostigma,live coral caves,115
-fish,specialisation,photosynthetic,cephalopholis cyanostigma,no,115
 fish,specialisation,within-stage dependent habitats + condition,cephalopholis cyanostigma,live coral caves,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",cetoscarus bicolor,no,115
-fish,foraging range,"if one/few, size",cetoscarus bicolor,many,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,cetoscarus bicolor,nil,115
-fish,specialisation,photosynthetic,cetoscarus bicolor,no,115
-fish,specialisation,photosynthetic,chaetodon auriga,no,115
-fish,specialisation,photosynthetic,chaetodon triangulum,no,115
-fish,specialisation,photosynthetic,chaetodon trifascialis,no,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,champsocephalus gunnari,nil,115
 fish,specialisation,across-stage dependent habitats + condition,champsocephalus gunnari,deep,115
-fish,specialisation,photosynthetic,champsocephalus gunnari,no,115
 fish,specialisation,within-stage dependent habitats + condition,champsocephalus gunnari,unknown,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",chanos chanos,few,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,chanos chanos,nil,115
 fish,specialisation,across-stage dependent habitats + condition,chanos chanos,fw to marine,115
-fish,specialisation,photosynthetic,chanos chanos,no,115
 fish,specialisation,within-stage dependent habitats + condition,chanos chanos,fw to marine,115
-fish,biophysical traits,maximum depth,chlopsis kazuko,100,115
-fish,biophysical traits,minimum depth,chlopsis kazuko,50,115
-fish,specialisation,photosynthetic,chlopsis kazuko,no,115
-fish,biophysical traits,maximum depth,cirripectes alleni,15,115
-fish,biophysical traits,minimum depth,cirripectes alleni,1,115
-fish,specialisation,photosynthetic,cirripectes alleni,no,115
-fish,biophysical traits,maximum depth,cirripectes filamentosus,20,115
-fish,biophysical traits,minimum depth,cirripectes filamentosus,0,115
-fish,specialisation,photosynthetic,cirripectes filamentosus,no,115
 fish,specialisation,across-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
-fish,specialisation,extreme diet specialization,clupea harengus,no,115
-fish,specialisation,photosynthetic,clupea harengus,no,115
 fish,specialisation,within-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
-fish,biophysical traits,maximum depth,coloconger japonicus,760,115
-fish,biophysical traits,minimum depth,coloconger japonicus,750,115
-fish,specialisation,photosynthetic,coloconger japonicus,no,115
-fish,biophysical traits,maximum depth,conger verreauxi,500,115
-fish,biophysical traits,minimum depth,conger verreauxi,0,115
-fish,specialisation,photosynthetic,conger verreauxi,no,115
-fish,biophysical traits,maximum depth,congriscus maldivensis,820,115
-fish,biophysical traits,minimum depth,congriscus maldivensis,354,115
-fish,specialisation,photosynthetic,congriscus maldivensis,no,115
-fish,specialisation,photosynthetic,coryphaena hippurus,no,115
-fish,biophysical traits,maximum depth,crossosalarias macrospilus,25,115
-fish,biophysical traits,minimum depth,crossosalarias macrospilus,1,115
-fish,specialisation,photosynthetic,crossosalarias macrospilus,no,115
-fish,biophysical traits,maximum depth,derichthys serpentinus,2000,115
-fish,biophysical traits,minimum depth,derichthys serpentinus,500,115
-fish,specialisation,photosynthetic,derichthys serpentinus,no,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,dissostichus eleginoides,nil,115
 fish,specialisation,across-stage dependent habitats + condition,dissostichus eleginoides,deep,115
-fish,specialisation,photosynthetic,dissostichus eleginoides,no,115
 fish,specialisation,within-stage dependent habitats + condition,dissostichus eleginoides,shallow to deep,115
-fish,biophysical traits,maximum depth,ecsenius trilineatus,10,115
-fish,biophysical traits,minimum depth,ecsenius trilineatus,1,115
-fish,specialisation,photosynthetic,ecsenius trilineatus,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",encheliophis gracilis,no,115
-fish,foraging range,"if one/few, size",encheliophis gracilis,many,115
 fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
 fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,starfish,115
 fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,reef,115
 fish,specialisation,dependent interspecific interactions,encheliophis gracilis,yes-sea cucumbers,115
 fish,specialisation,dependent interspecific interactions,encheliophis gracilis,starfish,115
 fish,specialisation,extreme diet specialization,encheliophis gracilis,specialist-gonads and respiotatory tree of host,115
-fish,specialisation,photosynthetic,encheliophis gracilis,no,115
 fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
 fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,starfish,115
 fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,reef,115
-fish,biophysical traits,maximum depth,enchelycore schismatorhynchus,20,115
-fish,biophysical traits,minimum depth,enchelycore schismatorhynchus,0,115
-fish,specialisation,photosynthetic,enchelycore schismatorhynchus,no,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,engraulis ringens,nil,115
 fish,specialisation,extreme diet specialization,engraulis ringens,but 98diatoms,115
-fish,specialisation,photosynthetic,engraulis ringens,no,115
-fish,biophysical traits,maximum depth,entomacrodus macrospilus,8,115
-fish,biophysical traits,minimum depth,entomacrodus macrospilus,0,115
-fish,specialisation,photosynthetic,entomacrodus macrospilus,no,115
-fish,biophysical traits,maximum depth,entomacrodus stellifer,5,115
-fish,biophysical traits,minimum depth,entomacrodus stellifer,0,115
-fish,specialisation,photosynthetic,entomacrodus stellifer,no,115
-fish,foraging range,"if one/few, size",epinephelus itajara,yes,115
 fish,specialisation,across-stage dependent habitats + condition,epinephelus itajara,live coral caves,115
-fish,specialisation,photosynthetic,epinephelus itajara,no,115
 fish,specialisation,within-stage dependent habitats + condition,epinephelus itajara,inshore,115
 fish,specialisation,across-stage dependent habitats + condition,epinephelus lanceolatus,live coral caves,115
-fish,specialisation,photosynthetic,epinephelus lanceolatus,no,115
 fish,specialisation,within-stage dependent habitats + condition,epinephelus lanceolatus,inshore,115
-fish,biophysical traits,maximum depth,eptatretus cirrhatus,1100,115
-fish,biophysical traits,minimum depth,eptatretus cirrhatus,1,115
 fish,physiological tolerance breadths,salinity,eptatretus cirrhatus,32-34parts per thousand,115
-fish,r (reproductive traits),can the sex ratio be altered by a stressor?,eptatretus cirrhatus,probably,115
-fish,specialisation,photosynthetic,eptatretus cirrhatus,no,115
-fish,biophysical traits,maximum depth,eptatretus mendozai,1100,115
-fish,biophysical traits,minimum depth,eptatretus mendozai,720,115
 fish,physiological tolerance breadths,salinity,eptatretus mendozai,32-34parts per thousand,115
-fish,r (reproductive traits),can the sex ratio be altered by a stressor?,eptatretus mendozai,probably,115
-fish,specialisation,photosynthetic,eptatretus mendozai,no,115
-fish,biophysical traits,maximum depth,ethadophis akkistikos,60,115
-fish,biophysical traits,minimum depth,ethadophis akkistikos,30,115
-fish,specialisation,photosynthetic,ethadophis akkistikos,no,115
-fish,biophysical traits,maximum depth,ethadophis merenda,0,115
-fish,biophysical traits,minimum depth,ethadophis merenda,0,115
 fish,specialisation,across-stage dependent habitats + condition,ethadophis merenda,unknown,115
-fish,specialisation,photosynthetic,ethadophis merenda,no,115
 fish,specialisation,within-stage dependent habitats + condition,ethadophis merenda,unknown,115
-fish,specialisation,extreme diet specialization,eviota sigillata,no,115
-fish,specialisation,photosynthetic,eviota sigillata,no,115
-fish,specialisation,photosynthetic,exocoetus volitans,no,115
-fish,biophysical traits,maximum depth,facciolella karreri,2000,115
-fish,biophysical traits,minimum depth,facciolella karreri,700,115
-fish,specialisation,photosynthetic,facciolella karreri,no,115
-fish,specialisation,photosynthetic,forsterygion varium,no,115
 fish,specialisation,across-stage dependent habitats + condition,gadus morhua,deep habitats,115
-fish,specialisation,photosynthetic,gadus morhua,no,115
 fish,specialisation,within-stage dependent habitats + condition,gadus morhua,shallow to deeper habitats,115
 fish,foraging range,sub-population dependence on particular sites,galaxias brevipinnis,only for spawning,115
 fish,specialisation,across-stage dependent habitats + condition,galaxias brevipinnis,adults fw,115
-fish,specialisation,photosynthetic,galaxias brevipinnis,no,115
 fish,specialisation,within-stage dependent habitats + condition,galaxias brevipinnis,larvae in sw,115
-fish,specialisation,extreme diet specialization,gobiodon citrinus,no,115
-fish,specialisation,photosynthetic,gobiodon citrinus,no,115
-fish,specialisation,extreme diet specialization,gobiodon histrio,no,115
-fish,specialisation,photosynthetic,gobiodon histrio,no,115
-fish,biophysical traits,maximum depth,gorgasia maculata,48,115
-fish,biophysical traits,minimum depth,gorgasia maculata,25,115
-fish,specialisation,photosynthetic,gorgasia maculata,no,115
-fish,specialisation,photosynthetic,gymnothorax javanicus,no,115
-fish,biophysical traits,maximum depth,heteroconger klausewitzi,30,115
-fish,biophysical traits,minimum depth,heteroconger klausewitzi,5,115
-fish,specialisation,photosynthetic,heteroconger klausewitzi,no,115
-fish,biophysical traits,maximum depth,heteroconger taylori,10,115
-fish,biophysical traits,minimum depth,heteroconger taylori,0,115
-fish,specialisation,photosynthetic,heteroconger taylori,no,115
 fish,specialisation,across-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
-fish,specialisation,photosynthetic,hippocampus abdominalis,no,115
 fish,specialisation,within-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
-fish,specialisation,photosynthetic,hippoglossus stenolepis,no,115
 fish,specialisation,within-stage dependent habitats + condition,hippoglossus stenolepis,nearshore to deeper,115
 fish,specialisation,across-stage dependent habitats + condition,hoplostethus atlanticus,deep sea mount,115
-fish,specialisation,photosynthetic,hoplostethus atlanticus,no,115
 fish,specialisation,within-stage dependent habitats + condition,hoplostethus atlanticus,unknown,115
-fish,specialisation,photosynthetic,hoplunnis schmidti,no,115
-fish,specialisation,photosynthetic,hygophum proximum,no,115
 fish,specialisation,within-stage dependent habitats + condition,hygophum proximum,unknown,115
-fish,biophysical traits,maximum depth,hypleurochilus bananensis,0,115
-fish,biophysical traits,minimum depth,hypleurochilus bananensis,0,115
-fish,specialisation,photosynthetic,hypleurochilus bananensis,no,115
-fish,biophysical traits,maximum depth,hypsoblennius striatus,5,115
-fish,biophysical traits,minimum depth,hypsoblennius striatus,0,115
-fish,specialisation,photosynthetic,hypsoblennius striatus,no,115
-fish,specialisation,photosynthetic,katsuwonus pelamis,no,115
-fish,biophysical traits,maximum depth,kaupichthys brachychirus,43,115
-fish,biophysical traits,minimum depth,kaupichthys brachychirus,0,115
-fish,specialisation,photosynthetic,kaupichthys brachychirus,no,115
-fish,specialisation,photosynthetic,lutjanus carponotatus,no,115
-fish,specialisation,photosynthetic,lutjanus sebae,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",meuschenia scaber,no,115
-fish,foraging range,"if one/few, size",meuschenia scaber,many,115
 fish,physiological tolerance breadths,salinity,meuschenia scaber,euryhaline-brackish,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,meuschenia scaber,nil,115
-fish,specialisation,photosynthetic,meuschenia scaber,no,115
-fish,biophysical traits,maximum depth,monopenchelys acuta,45,115
-fish,biophysical traits,minimum depth,monopenchelys acuta,13,115
-fish,specialisation,photosynthetic,monopenchelys acuta,no,115
-fish,biophysical traits,maximum depth,moringua edwardsi,35,115
-fish,biophysical traits,minimum depth,moringua edwardsi,0,115
-fish,specialisation,photosynthetic,moringua edwardsi,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",naso vlamingii,no,115
-fish,foraging range,"if one/few, size",naso vlamingii,many,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,naso vlamingii,nil,115
-fish,specialisation,photosynthetic,naso vlamingii,no,115
-fish,biophysical traits,maximum depth,nessorhamphus danae,1000,115
-fish,biophysical traits,minimum depth,nessorhamphus danae,290,115
-fish,specialisation,photosynthetic,nessorhamphus danae,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",notolabrus celidotus,no,115
-fish,foraging range,"if one/few, size",notolabrus celidotus,many,115
 fish,physiological tolerance breadths,salinity,notolabrus celidotus,euryhaline-brackish,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,notolabrus celidotus,nil,115
-fish,specialisation,photosynthetic,notolabrus celidotus,no,115
-fish,biophysical traits,maximum depth,omobranchus anolius,5,115
-fish,biophysical traits,minimum depth,omobranchus anolius,0,115
-fish,specialisation,photosynthetic,omobranchus anolius,no,115
-fish,biophysical traits,maximum depth,omobranchus fasciolatus,3,115
-fish,biophysical traits,minimum depth,omobranchus fasciolatus,0,115
-fish,specialisation,photosynthetic,omobranchus fasciolatus,no,115
-fish,biophysical traits,maximum depth,omobranchus rotundiceps,0,115
-fish,biophysical traits,minimum depth,omobranchus rotundiceps,0,115
-fish,specialisation,photosynthetic,omobranchus rotundiceps,no,115
 fish,foraging range,sub-population dependence on particular sites,oncorhynchus nerka,only for spawning,115
 fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,fw,115
 fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,ocean,115
-fish,specialisation,photosynthetic,oncorhynchus nerka,no,115
 fish,specialisation,within-stage dependent habitats + condition,oncorhynchus nerka,fw,115
 fish,specialisation,within-stage dependent habitats + condition,oncorhynchus nerka,ocean,115
-fish,biophysical traits,maximum depth,ophichthus altipennis,40,115
-fish,biophysical traits,minimum depth,ophichthus altipennis,1,115
-fish,specialisation,photosynthetic,ophichthus altipennis,no,115
-fish,biophysical traits,maximum depth,ophichthus melanoporus,460,115
-fish,biophysical traits,minimum depth,ophichthus melanoporus,51,115
-fish,specialisation,photosynthetic,ophichthus melanoporus,no,115
 fish,specialisation,across-stage dependent habitats + condition,ostorhinchus doederleini,live coral caves,115
-fish,specialisation,photosynthetic,ostorhinchus doederleini,no,115
 fish,specialisation,within-stage dependent habitats + condition,ostorhinchus doederleini,live coral caves,115
-fish,biophysical traits,maximum depth,parablennius parvicornis,2,115
-fish,biophysical traits,minimum depth,parablennius parvicornis,0,115
-fish,specialisation,extreme diet specialization,parablennius parvicornis,algae,115
-fish,specialisation,photosynthetic,parablennius parvicornis,no,115
-fish,biophysical traits,maximum depth,parablennius yatabei,5,115
-fish,biophysical traits,minimum depth,parablennius yatabei,0,115
-fish,specialisation,extreme diet specialization,parablennius yatabei,algae and detritus,115
-fish,specialisation,photosynthetic,parablennius yatabei,no,115
-fish,biophysical traits,maximum depth,parablennius zvonimiri,12,115
-fish,biophysical traits,minimum depth,parablennius zvonimiri,0,115
-fish,specialisation,extreme diet specialization,parablennius zvonimiri,algae and detritus,115
-fish,specialisation,photosynthetic,parablennius zvonimiri,no,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,parapercis colias,nil,115
-fish,specialisation,photosynthetic,parapercis colias,no,115
-fish,biophysical traits,maximum depth,parenchelyurus hepburni,4,115
-fish,biophysical traits,minimum depth,parenchelyurus hepburni,1,115
-fish,specialisation,photosynthetic,parenchelyurus hepburni,no,115
 fish,specialisation,across-stage dependent habitats + condition,parma microlepis,barrens habitat,115
-fish,specialisation,photosynthetic,parma microlepis,no,115
 fish,specialisation,within-stage dependent habitats + condition,parma microlepis,barrens habitat,115
-fish,specialisation,photosynthetic,phycodurus eques,no,115
-fish,foraging range,"if one/few, size",plectropomus leopardus,yes,115
 fish,specialisation,across-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
-fish,specialisation,photosynthetic,plectropomus leopardus,no,115
 fish,specialisation,within-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
 fish,specialisation,across-stage dependent habitats + condition,pomacentrus coelestis,rubble,115
 fish,specialisation,extreme diet specialization,pomacentrus coelestis,generalist-planktivore,115
-fish,specialisation,photosynthetic,pomacentrus coelestis,no,115
 fish,specialisation,within-stage dependent habitats + condition,pomacentrus coelestis,rubble,115
-fish,biophysical traits,maximum depth,praealticus dayi,0,115
-fish,biophysical traits,minimum depth,praealticus dayi,0,115
-fish,specialisation,photosynthetic,praealticus dayi,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",rexea solandri,few,115
-fish,specialisation,photosynthetic,rexea solandri,no,115
-fish,biophysical traits,maximum depth,rhinomuraena quaesita,57,115
-fish,biophysical traits,minimum depth,rhinomuraena quaesita,1,115
-fish,specialisation,photosynthetic,rhinomuraena quaesita,no,115
-fish,biophysical traits,maximum depth,salarias ceramensis,30,115
-fish,biophysical traits,minimum depth,salarias ceramensis,1,115
-fish,specialisation,extreme diet specialization,salarias ceramensis,algae,115
-fish,specialisation,photosynthetic,salarias ceramensis,no,115
 fish,specialisation,across-stage dependent habitats + condition,salarias fasciatus,shallow water,115
-fish,specialisation,photosynthetic,salarias fasciatus,no,115
 fish,specialisation,within-stage dependent habitats + condition,salarias fasciatus,shallow water,115
-fish,biophysical traits,maximum depth,salarias sinuosus,5,115
-fish,biophysical traits,minimum depth,salarias sinuosus,0,115
-fish,specialisation,extreme diet specialization,salarias sinuosus,algae,115
-fish,specialisation,photosynthetic,salarias sinuosus,no,115
-fish,specialisation,photosynthetic,saurenchelys fierasfer,no,115
-fish,biophysical traits,maximum depth,saurenchelys meteori,705,115
-fish,biophysical traits,minimum depth,saurenchelys meteori,696,115
-fish,specialisation,photosynthetic,saurenchelys meteori,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",scarus schlegeli,no,115
-fish,foraging range,"if one/few, size",scarus schlegeli,many,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,scarus schlegeli,nil,115
-fish,specialisation,photosynthetic,scarus schlegeli,no,115
-fish,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",sebastes diploproa,no,115
-fish,foraging range,"if one/few, size",sebastes diploproa,many,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,sebastes diploproa,nil,115
-fish,specialisation,photosynthetic,sebastes diploproa,no,115
-fish,biophysical traits,maximum depth,serrivomer lanceolatoides,2000,115
-fish,biophysical traits,minimum depth,serrivomer lanceolatoides,300,115
-fish,specialisation,photosynthetic,serrivomer lanceolatoides,no,115
-fish,biophysical traits,maximum depth,simenchelys parasitica,2620,115
-fish,biophysical traits,minimum depth,simenchelys parasitica,136,115
-fish,specialisation,photosynthetic,simenchelys parasitica,no,115
-fish,biophysical traits,maximum depth,skythrenchelys zabra,180,115
-fish,biophysical traits,minimum depth,skythrenchelys zabra,1,115
-fish,specialisation,photosynthetic,skythrenchelys zabra,no,115
 fish,specialisation,across-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
-fish,specialisation,extreme diet specialization,spratelloides delicatulus,no,115
-fish,specialisation,photosynthetic,spratelloides delicatulus,no,115
 fish,specialisation,within-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
-fish,biophysical traits,maximum depth,synaphobranchus affinis,2400,115
-fish,biophysical traits,minimum depth,synaphobranchus affinis,290,115
-fish,specialisation,photosynthetic,synaphobranchus affinis,no,115
-fish,biophysical traits,maximum depth,synaphobranchus kaupii,4800,115
-fish,biophysical traits,minimum depth,synaphobranchus kaupii,120,115
-fish,specialisation,photosynthetic,synaphobranchus kaupii,no,115
-fish,biophysical traits,maximum depth,synaphobranchus oregoni,1900,115
-fish,biophysical traits,minimum depth,synaphobranchus oregoni,512,115
-fish,specialisation,photosynthetic,synaphobranchus oregoni,no,115
-fish,specialisation,photosynthetic,thunnus maccoyii,no,115
-fish,biophysical traits,maximum depth,uropterygius fuscoguttatus,25,115
-fish,biophysical traits,minimum depth,uropterygius fuscoguttatus,3,115
-fish,specialisation,photosynthetic,uropterygius fuscoguttatus,no,115
-fish,biophysical traits,maximum depth,uropterygius wheeleri,20,115
-fish,biophysical traits,minimum depth,uropterygius wheeleri,0,115
-fish,specialisation,photosynthetic,uropterygius wheeleri,no,115
-fish,biophysical traits,maximum depth,venefica tentaculata,500,115
-fish,biophysical traits,minimum depth,venefica tentaculata,100,115
-fish,specialisation,photosynthetic,venefica tentaculata,no,115
-fish,biophysical traits,maximum depth,xenomystax trucidans,2326,115
-fish,biophysical traits,minimum depth,xenomystax trucidans,1010,115
-fish,specialisation,photosynthetic,xenomystax trucidans,no,115
-fish,biophysical traits,maximum depth,xestochilus nebulosus,42,115
-fish,biophysical traits,minimum depth,xestochilus nebulosus,2,115
-fish,specialisation,photosynthetic,xestochilus nebulosus,no,115
-marine_mammals,specialisation,photosynthetic,arctocephalus,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,arctocephalus,breeding and raising pups,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,arctocephalus,for antartic fur seal,61
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,filter feed and eat zooplankton,61
@@ -1173,46 +176,25 @@ marine_mammals,r (reproductive traits),are there sub-populations?,balaenoptera b
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,balaenoptera borealis,8_18_degrees_celcius_don_t_go_into_polar_icy_water_c,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,balaenoptera physalus,temperate_subpolar_waters,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,berardius bairdii,sub_arctic_to_temperate_waters,61
-marine_mammals,specialisation,photosynthetic,callorhinus,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,callorhinus,breeding and raising pups,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,callorhinus,for antartic fur seal,61
 marine_mammals,r (reproductive traits),are there sub-populations?,cephalorhynchus hectori,yes-new zealand and maui,61
-marine_mammals,specialisation,photosynthetic,cephalorhynchus hectori,no,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,delphinapterus leucas,fjords,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,delphinapterus leucas,fjords,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),delphinus,no larvae,61
-marine_mammals,specialisation,photosynthetic,delphinus,no,61
 marine_mammals,physiological tolerance breadths,salinity,dugong dugon,euryhalineprobably based on habitat types,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),dugong dugon,not larvae,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,dugong dugon,bays,61
 marine_mammals,specialisation,extreme diet specialization,dugong dugon,specialist-seagrass,61
-marine_mammals,specialisation,photosynthetic,dugong dugon,no,61
-marine_mammals,r (reproductive traits),can the sex ratio be altered by a stressor?,enhydra lutris,maybe pollution driving breeding female mortality,61
 marine_mammals,specialisation,extreme diet specialization,enhydra lutris,no,61
-marine_mammals,specialisation,photosynthetic,enhydra lutris,no,61
-marine_mammals,breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",eschrichtius robustus,yes,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,eschrichtius robustus,many,61
-marine_mammals,foraging range,"if one/few, size",eschrichtius robustus,yes,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena glacialis,8-17months,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,eubalaena japonica,polar_to_temperate_waters,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,little known,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,but estimated to be long,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eumetopias,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,photosynthetic,eumetopias,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,eumetopias,breeding and raising pups,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),feresa attenuata,not larvae,61
-marine_mammals,specialisation,photosynthetic,feresa attenuata,no,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),globicephala,not larvae,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,globicephala,continental shelves,61
-marine_mammals,specialisation,photosynthetic,globicephala,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,globicephala,continental shelves,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),grampus griseus,no larvae,61
-marine_mammals,specialisation,photosynthetic,grampus griseus,no,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),lagenorhynchus,no larvae,61
-marine_mammals,specialisation,photosynthetic,lagenorhynchus,no,61
 marine_mammals,physiological tolerance breadths,salinity,lagenorhynchus acutus,stenohaline-prefers low salinity,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),lissodelphis borealis,no larve,61
-marine_mammals,specialisation,photosynthetic,lissodelphis borealis,no,61
 marine_mammals,biophysical traits,flight,megaptera novaeangliae,none,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,megaptera novaeangliae,18_2_25_9_degrees,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,mesoplodon bidens,cold_temperate_to_subantarctic_waters,61
@@ -1225,340 +207,134 @@ marine_mammals,r (reproductive traits),are there sub-populations?,mesoplodon ste
 marine_mammals,specialisation,across-stage dependent habitats + condition,monodon monoceros,fjords,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,monodon monoceros,fjords,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,neophoca,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,photosynthetic,neophoca,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,neophoca,breeding and raising pups,61
-marine_mammals,specialisation,photosynthetic,odobenus rosmarus,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,odobenus rosmarus,breeding and raising pups,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),orcinus orca,not larvae,61
-marine_mammals,specialisation,photosynthetic,orcinus orca,no,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,otaria,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,photosynthetic,otaria,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,otaria,breeding and raising pups,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),peponocephala electra,not larvae,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,peponocephala electra,continental shelves,61
-marine_mammals,specialisation,photosynthetic,peponocephala electra,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,peponocephala electra,continental shelves,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,phocarctos,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,photosynthetic,phocarctos,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,phocarctos,breeding and raising pups,61
-marine_mammals,specialisation,photosynthetic,phocidae,no,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,phocoena sinus,one,61
 marine_mammals,specialisation,dependent interspecific interactions,phocoena sinus,one,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,physeter macrocephalus,many,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),pseudorca crassidens,no larvae,61
-marine_mammals,specialisation,photosynthetic,pseudorca crassidens,no,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),sousa chinensis taiwanensis,no larvae,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,sousa chinensis taiwanensis,near bays,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,sousa chinensis taiwanensis,large river mouths,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,sousa chinensis taiwanensis,some of these habitats are not included in the habitat list you gave me,61
-marine_mammals,specialisation,photosynthetic,sousa chinensis taiwanensis,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,sousa chinensis taiwanensis,near bays,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,sousa chinensis taiwanensis,large river mouths,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,sousa chinensis taiwanensis,some of these habitats are not included in the habitat list you gave me,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),stenella,no larvae,61
-marine_mammals,specialisation,photosynthetic,stenella,no,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),steno bredanensis,no larvae,61
-marine_mammals,specialisation,photosynthetic,steno bredanensis,no,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),trichechus manatus,not larvae,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,trichechus manatus,rivers,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,trichechus manatus,and canals,61
 marine_mammals,specialisation,extreme diet specialization,trichechus manatus,specialist-sea grass,61
-marine_mammals,specialisation,photosynthetic,trichechus manatus,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,trichechus manatus,rivers,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,trichechus manatus,and canals,61
 marine_mammals,physiological tolerance breadths,salinity,trichechus senegalensis,stenohaline-avoid salt water,61
-marine_mammals,r (reproductive traits),feeding larva (post-hatching metamorphosis),trichechus senegalensis,not larvae,61
 marine_mammals,specialisation,extreme diet specialization,trichechus senegalensis,specialist-vegetation,61
-marine_mammals,specialisation,photosynthetic,trichechus senegalensis,no,61
-marine_mammals,r (reproductive traits),can the sex ratio be altered by a stressor?,ursus maritimus,yes-sex-selective hunting,61
 marine_mammals,specialisation,extreme diet specialization,ursus maritimus,no,61
-marine_mammals,specialisation,photosynthetic,ursus maritimus,no,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,zalophus,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,photosynthetic,zalophus,no,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,zalophus,breeding and raising pups,61
-molluscs,biophysical traits,respiration structures,acesta excavata,filterfeeder,46
-molluscs,specialisation,photosynthetic,acesta excavata,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,acesta excavata,benthic,46
-molluscs,biophysical traits,respiration structures,adamussium colbecki,filterfeeder,46
-molluscs,specialisation,photosynthetic,adamussium colbecki,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,adamussium colbecki,benthic,46
-molluscs,specialisation,photosynthetic,aeolidia papillosa,no,46
-molluscs,biophysical traits,respiration structures,anadara trapezia,filterfeeder,46
-molluscs,specialisation,photosynthetic,anadara trapezia,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,anadara trapezia,benthic,46
-molluscs,specialisation,photosynthetic,aplysia californica,no,46
-molluscs,specialisation,photosynthetic,aplysia vaccaria,no,46
-molluscs,biophysical traits,respiration structures,argopecten irradians,filterfeeder,46
-molluscs,specialisation,photosynthetic,argopecten irradians,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,argopecten irradians,benthic,46
-molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),austrocochlea porcata,feeding,46
-molluscs,specialisation,photosynthetic,austrocochlea porcata,no,46
-molluscs,biophysical traits,respiration structures,bankia setacea,filterfeeder,46
-molluscs,specialisation,photosynthetic,bankia setacea,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,submerged timber,46
-molluscs,specialisation,photosynthetic,cadlina luteomarginata,no,46
-molluscs,specialisation,photosynthetic,calliostoma ligatum,no,46
-molluscs,specialisation,photosynthetic,cellana tramoserica,no,46
-molluscs,biophysical traits,respiration structures,cerastoderma edule,filterfeeder,46
-molluscs,specialisation,photosynthetic,cerastoderma edule,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,cerastoderma edule,benthic,46
-molluscs,biophysical traits,respiration structures,crassostrea virginica,filterfeeder,46
-molluscs,specialisation,photosynthetic,crassostrea virginica,no,46
-molluscs,specialisation,photosynthetic,haliotis coccoradiata,no,46
-molluscs,specialisation,photosynthetic,haliotis kamtschatkana,no,46
-molluscs,specialisation,photosynthetic,haliotis rubra,no,46
-molluscs,specialisation,photosynthetic,lottia scutum,no,46
-molluscs,r (reproductive traits),feeding larva (post-hatching metamorphosis),lunella undulata,feeding,46
-molluscs,specialisation,photosynthetic,lunella undulata,no,46
-molluscs,biophysical traits,respiration structures,magallana gigas,filterfeeder,46
-molluscs,specialisation,photosynthetic,magallana gigas,no,46
-molluscs,biophysical traits,respiration structures,magallana hongkongensis,filterfeeder,46
-molluscs,specialisation,photosynthetic,magallana hongkongensis,no,46
-molluscs,biophysical traits,respiration structures,mercenaria mercenaria,filterfeeder,46
-molluscs,specialisation,photosynthetic,mercenaria mercenaria,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,mercenaria mercenaria,benthic,46
-molluscs,biophysical traits,respiration structures,mimachlamys asperrima,filterfeeder,46
-molluscs,specialisation,photosynthetic,mimachlamys asperrima,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,mimachlamys asperrima,benthic,46
-molluscs,biophysical traits,respiration structures,mytilus californianus,filterfeeder,46
-molluscs,specialisation,photosynthetic,mytilus californianus,no,46
-molluscs,biophysical traits,respiration structures,mytilus edulis,filterfeeder,46
-molluscs,specialisation,photosynthetic,mytilus edulis,no,46
-molluscs,biophysical traits,respiration structures,mytilus galloprovincialis,filterfeeder,46
-molluscs,specialisation,photosynthetic,mytilus galloprovincialis,no,46
-molluscs,biophysical traits,respiration structures,mytilus trossulus,filterfeeder,46
-molluscs,specialisation,photosynthetic,mytilus trossulus,no,46
-molluscs,biophysical traits,respiration structures,ostrea angasi,filterfeeder,46
-molluscs,specialisation,photosynthetic,ostrea angasi,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,ostrea angasi,benthic,46
-molluscs,biophysical traits,respiration structures,ostrea edulis,filterfeeder,46
-molluscs,specialisation,photosynthetic,ostrea edulis,no,46
-molluscs,biophysical traits,respiration structures,ostrea lurida,filterfeeder,46
-molluscs,specialisation,photosynthetic,ostrea lurida,no,46
-molluscs,biophysical traits,respiration structures,panopea generosa,filterfeeder,46
-molluscs,specialisation,photosynthetic,panopea generosa,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,panopea generosa,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,panopea generosa,soft bottom,46
-molluscs,biophysical traits,respiration structures,pecten fumatus,filterfeeder,46
-molluscs,specialisation,photosynthetic,pecten fumatus,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,pecten fumatus,benthic,46
-molluscs,biophysical traits,respiration structures,pecten maximus,filterfeeder,46
-molluscs,specialisation,photosynthetic,pecten maximus,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,pecten maximus,benthic,46
-molluscs,biophysical traits,respiration structures,pinctada imbricata,filterfeeder,46
-molluscs,specialisation,photosynthetic,pinctada imbricata,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,pinctada imbricata,benthic,46
-molluscs,biophysical traits,respiration structures,pinctada maxima,filterfeeder,46
-molluscs,specialisation,photosynthetic,pinctada maxima,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,pinctada maxima,benthic,46
-molluscs,biophysical traits,respiration structures,pinna bicolor,filterfeeder,46
-molluscs,specialisation,photosynthetic,pinna bicolor,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,pinna bicolor,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,pinna bicolor,soft bottom,46
-molluscs,biophysical traits,respiration structures,plebidonax deltoides,filterfeeder,46
-molluscs,specialisation,photosynthetic,plebidonax deltoides,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,plebidonax deltoides,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,plebidonax deltoides,soft bottom,46
-molluscs,specialisation,photosynthetic,rochia nilotica,no,46
-molluscs,biophysical traits,respiration structures,saccostrea glomerata,filterfeeder,46
-molluscs,specialisation,photosynthetic,saccostrea glomerata,no,46
-molluscs,biophysical traits,respiration structures,siliqua patula,filterfeeder,46
-molluscs,specialisation,photosynthetic,siliqua patula,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,soft bottom,46
-molluscs,specialisation,photosynthetic,tegula funebralis,no,46
-molluscs,specialisation,photosynthetic,tenguella marginalba,no,46
-molluscs,biophysical traits,respiration structures,trichomya hirsuta,filterfeeder,46
-molluscs,specialisation,photosynthetic,trichomya hirsuta,no,46
-molluscs,biophysical traits,respiration structures,tridacna gigas,filterfeeder,46
-molluscs,specialisation,photosynthetic,tridacna gigas,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna gigas,benthic,46
-molluscs,biophysical traits,respiration structures,tridacna maxima,filterfeeder,46
-molluscs,specialisation,photosynthetic,tridacna maxima,no,46
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna maxima,benthic,46
-molluscs,specialisation,photosynthetic,turbo militaris,no,46
-plants_algae,biophysical traits,respiration structures,avicennia marina,pnuemataphores,4
-plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),avicennia marina,yes,4
 plants_algae,specialisation,air-sea interface,avicennia marina,yes-although not sure what this really means-propagules float,4
-plants_algae,specialisation,photosynthetic,avicennia marina,yes,4
 plants_algae,biophysical traits,respiration structures,macrocystis,no,4
 plants_algae,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,macrocystis,possibly,4
 plants_algae,foraging range,sub-population dependence on particular sites,macrocystis,possible local adaptation,4
-plants_algae,physiological tolerance breadths,salinity,macrocystis,narrow,4
-plants_algae,physiological tolerance breadths,salinity,macrocystis,average marine,4
-plants_algae,physiological tolerance breadths,sensitivity to wave energy (physical forcing),macrocystis,easily dislodged by large waves,4
-plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),macrocystis,yes,4
+plants_algae,physiological tolerance breadths,sensitivity to wave energy (physical forcing),macrocystis,sensitive-easily dislodged by large waves,4
 plants_algae,specialisation,air-sea interface,macrocystis,canopy at sea surface,4
 plants_algae,specialisation,extreme diet specialization,macrocystis,no,4
-plants_algae,specialisation,photosynthetic,macrocystis,yes,4
 plants_algae,biophysical traits,calcium carbonate structure stages,porolithon,calcification after germination and through adulthood,4
 plants_algae,biophysical traits,respiration structures,porolithon,no,4
 plants_algae,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,porolithon,possibly,4
 plants_algae,physiological tolerance breadths,salinity,porolithon,narrow,4
-plants_algae,physiological tolerance breadths,sensitivity to wave energy (physical forcing),porolithon,no sensitive,4
 plants_algae,physiological tolerance breadths,sensitivity to wave energy (physical forcing),porolithon,thrives in high wave action--reef crest,4
 plants_algae,r (reproductive traits),are there sub-populations?,porolithon,likely,4
-plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),porolithon,yes,4
 plants_algae,specialisation,air-sea interface,porolithon,no sensitive,4
 plants_algae,specialisation,air-sea interface,porolithon,thrives in high wave action--reef crest,4
 plants_algae,specialisation,dependent interspecific interactions,porolithon,examples of strong interactions but not clear if universal or needed for survival,4
 plants_algae,specialisation,extreme diet specialization,porolithon,no,4
-plants_algae,specialisation,photosynthetic,porolithon,yes,4
 plants_algae,biophysical traits,respiration structures,posidonia australis,no,4
-plants_algae,r (reproductive traits),feeding larva (post-hatching metamorphosis),posidonia australis,yes,4
 plants_algae,specialisation,air-sea interface,posidonia australis,yes-although not sure what this really means-propagules float,4
-plants_algae,specialisation,photosynthetic,posidonia australis,yes,4
-polychaetes,biophysical traits,respiration structures,sabellidae,filter feeder,4
-reptiles,foraging range,"if one/few, size",acrochordus,few,16
 reptiles,physiological tolerance breadths,salinity,acrochordus,broad,16
-reptiles,specialisation,extreme diet specialization,acrochordus,no,16
-reptiles,specialisation,photosynthetic,acrochordus,no,16
 reptiles,biophysical traits,calcium carbonate structure stages,amblyrhynchus cristatus,no,16
-reptiles,r (reproductive traits),can the sex ratio be altered by a stressor?,amblyrhynchus cristatus,no larva,16
-reptiles,specialisation,photosynthetic,amblyrhynchus cristatus,no,16
-reptiles,specialisation,extreme diet specialization,caretta caretta,no,16
-reptiles,specialisation,photosynthetic,caretta caretta,no,16
-reptiles,specialisation,extreme diet specialization,chelonia mydas,no,16
-reptiles,specialisation,photosynthetic,chelonia mydas,no,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus acutus,hatchling maternal dependence,16
-reptiles,specialisation,photosynthetic,crocodylus acutus,no,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus porosus,hatchling maternal dependence,16
-reptiles,specialisation,photosynthetic,crocodylus porosus,no,16
-reptiles,specialisation,extreme diet specialization,dermochelys coriacea,no,16
-reptiles,specialisation,photosynthetic,dermochelys coriacea,no,16
-reptiles,foraging range,"if one/few, size",elapidae,few,16
 reptiles,physiological tolerance breadths,salinity,elapidae,broad,16
-reptiles,specialisation,extreme diet specialization,elapidae,mixed,16
-reptiles,specialisation,photosynthetic,elapidae,no,16
-reptiles,foraging range,"if one/few, size",ephalophis,few,16
 reptiles,physiological tolerance breadths,salinity,ephalophis,broad,16
-reptiles,specialisation,extreme diet specialization,ephalophis,no,16
-reptiles,specialisation,photosynthetic,ephalophis,no,16
-reptiles,specialisation,extreme diet specialization,eretmochelys imbricata,yes,16
-reptiles,specialisation,photosynthetic,eretmochelys imbricata,no,16
-reptiles,foraging range,"if one/few, size",hydrelaps,few,16
 reptiles,physiological tolerance breadths,salinity,hydrelaps,broad,16
-reptiles,specialisation,extreme diet specialization,hydrelaps,no,16
-reptiles,specialisation,photosynthetic,hydrelaps,no,16
-reptiles,foraging range,"if one/few, size",laticauda,few,16
 reptiles,physiological tolerance breadths,salinity,laticauda,broad,16
-reptiles,specialisation,extreme diet specialization,laticauda,yes,16
-reptiles,specialisation,photosynthetic,laticauda,no,16
-reptiles,specialisation,extreme diet specialization,lepidochelys kempii,no,16
-reptiles,specialisation,photosynthetic,lepidochelys kempii,no,16
-reptiles,specialisation,extreme diet specialization,lepidochelys olivacea,no,16
-reptiles,specialisation,photosynthetic,lepidochelys olivacea,no,16
-reptiles,specialisation,extreme diet specialization,natator depressa,no,16
-reptiles,specialisation,photosynthetic,natator depressa,no,16
-reptiles,foraging range,"if one/few, size",parahydrophis,few,16
 reptiles,physiological tolerance breadths,salinity,parahydrophis,broad,16
-reptiles,specialisation,extreme diet specialization,parahydrophis,no,16
-reptiles,specialisation,photosynthetic,parahydrophis,no,16
 seabirds,biophysical traits,calcium carbonate structure stages,alcidae,egg,50
-seabirds,specialisation,photosynthetic,alcidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,anatidae,egg,50
-seabirds,specialisation,photosynthetic,anatidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,aphrodroma,egg,50
-seabirds,specialisation,photosynthetic,aphrodroma,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,ardenna,egg,50
-seabirds,specialisation,photosynthetic,ardenna,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,bulweria,egg,50
-seabirds,specialisation,photosynthetic,bulweria,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,calonectris,egg,50
-seabirds,specialisation,photosynthetic,calonectris,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,chlidonias,egg,50
-seabirds,specialisation,photosynthetic,chlidonias,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,chroicocephalus,egg,50
-seabirds,specialisation,photosynthetic,chroicocephalus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,creagrus,egg,50
-seabirds,specialisation,photosynthetic,creagrus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,daption,egg,50
-seabirds,specialisation,photosynthetic,daption,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,diomedeidae,egg,50
-seabirds,specialisation,photosynthetic,diomedeidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,fregatidae,egg,50
-seabirds,specialisation,photosynthetic,fregatidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,fulmarus,egg,50
-seabirds,specialisation,photosynthetic,fulmarus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,gaviidae,egg,50
-seabirds,specialisation,photosynthetic,gaviidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,gelochelidon,egg,50
-seabirds,specialisation,photosynthetic,gelochelidon,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,halobaena,egg,50
-seabirds,specialisation,photosynthetic,halobaena,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,hydrobatidae,egg,50
-seabirds,specialisation,photosynthetic,hydrobatidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,hydrocoloeus,egg,50
-seabirds,specialisation,photosynthetic,hydrocoloeus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,hydroprogne,egg,50
-seabirds,specialisation,photosynthetic,hydroprogne,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,ichthyaetus,egg,50
-seabirds,specialisation,photosynthetic,ichthyaetus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,larosterna,egg,50
-seabirds,specialisation,photosynthetic,larosterna,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,larus,egg,50
-seabirds,specialisation,photosynthetic,larus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,leucophaeus,egg,50
-seabirds,specialisation,photosynthetic,leucophaeus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,macronectes,egg,50
-seabirds,specialisation,photosynthetic,macronectes,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,oceanitidae,egg,50
-seabirds,specialisation,photosynthetic,oceanitidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,onychoprion,egg,50
-seabirds,specialisation,photosynthetic,onychoprion,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,pachyptila,egg,50
-seabirds,specialisation,photosynthetic,pachyptila,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,pagodroma,egg,50
-seabirds,specialisation,photosynthetic,pagodroma,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,pagophila,egg,50
-seabirds,specialisation,photosynthetic,pagophila,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,pelecanidae,egg,50
-seabirds,specialisation,photosynthetic,pelecanidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,pelecanoides,egg,50
-seabirds,specialisation,photosynthetic,pelecanoides,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,phaethontidae,egg,50
-seabirds,specialisation,photosynthetic,phaethontidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,phaetusa,egg,50
-seabirds,specialisation,photosynthetic,phaetusa,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,phalacrocoracidae,egg,50
-seabirds,specialisation,photosynthetic,phalacrocoracidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,podicipedidae,egg,50
-seabirds,specialisation,photosynthetic,podicipedidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,procellaria,egg,50
-seabirds,specialisation,photosynthetic,procellaria,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,pseudobulweria,egg,50
-seabirds,specialisation,photosynthetic,pseudobulweria,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,pterodroma,egg,50
-seabirds,specialisation,photosynthetic,pterodroma,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,puffinus,egg,50
-seabirds,specialisation,photosynthetic,puffinus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,rhodostethia,egg,50
-seabirds,specialisation,photosynthetic,rhodostethia,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,rissa,egg,50
-seabirds,specialisation,photosynthetic,rissa,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,scolopacidae,egg,50
-seabirds,specialisation,photosynthetic,scolopacidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,spheniscidae,egg,50
 seabirds,biophysical traits,respiration structures,spheniscidae,lung,50
-seabirds,specialisation,photosynthetic,spheniscidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,stercorariidae,egg,50
-seabirds,specialisation,photosynthetic,stercorariidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,sterna,egg,50
-seabirds,specialisation,photosynthetic,sterna,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,sternula,egg,50
-seabirds,specialisation,photosynthetic,sternula,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,sulidae,egg,50
-seabirds,specialisation,photosynthetic,sulidae,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,thalasseus,egg,50
-seabirds,specialisation,photosynthetic,thalasseus,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,thalassoica,egg,50
-seabirds,specialisation,photosynthetic,thalassoica,no,50
 seabirds,biophysical traits,calcium carbonate structure stages,xema,egg,50
-seabirds,specialisation,photosynthetic,xema,no,50
-sponges,biophysical traits,calcium carbonate structure stages,demospongiae,no,1
-sponges,biophysical traits,respiration structures,demospongiae,filter feeding-used for gas exchange as well as acquisition of nutrients and expulsion of waste and of gamates or larvae,1
-sponges,physiological tolerance breadths,sensitivity to wave energy (physical forcing),demospongiae,sensitive can lead to fragmentation of adults,1
-sponges,r (reproductive traits),can the sex ratio be altered by a stressor?,demospongiae,probably no,1
-sponges,r (reproductive traits),feeding larva (post-hatching metamorphosis),demospongiae,non-feeding non-calcifiers,1
-sponges,specialisation,photosynthetic,demospongiae,no,1
+sponges,biophysical traits,respiration structures,demospongiae,filter feeders and expulsion of waste and of gamates or larvae),1
