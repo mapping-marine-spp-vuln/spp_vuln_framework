@@ -1073,7 +1073,7 @@ spp_data_do$trait_val_clean %>% table()
 pld_vals <- traitvals_df_valid %>% 
   filter(trait == 'planktonic larval duration (pld) exposure') %>%
   .$trait_value %>% paste0(collapse = '|')
-# "<1day|<1week|<1month|<4months|4months-1yr|>1yr|not larvae|unknown"
+# "<1day|<1week|<1month|<4months|4months-1yr|>1yr|not larvae|holoplankton|unknown"
 
 spp_data_pld <- raw_data_df %>%
   filter(trait == 'planktonic larval duration (pld) exposure') %>%
@@ -1090,6 +1090,28 @@ spp_data_pld <- raw_data_df %>%
   clean_up_mess()
   
 spp_data_pld$trait_val_clean %>% table()
+```
+
+### feeding larva
+
+``` {r clean up feeding larvae}
+feeding_vals <- traitvals_df_valid %>% 
+  filter(trait == 'feeding larva (post-hatching metamorphosis)') %>%
+  .$trait_value %>% paste0(collapse = '|')
+# "feeding calcifier|feeding non-calcifier|non-feeding calcifier|non-feeding non-calcifier|no larva|na|unknown"
+
+spp_data_feeding <- raw_data_df %>%
+  filter(trait == 'feeding larva (post-hatching metamorphosis)') %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(tmp = str_split(trait_value, ';')) %>%
+  unnest(tmp) %>%
+  mutate(tmp = clean_trait(tmp),
+         tmp = str_replace_all(tmp, 'not? larva?e?', 'no larva')) %>%
+  mutate(trait_val_clean = str_extract_all(tmp, feeding_vals)) %>%
+  unnest(trait_val_clean) %>%
+  clean_up_mess()
+  
+spp_data_feeding$trait_val_clean %>% table()
 ```
 
 ### Navigation requirements
@@ -1174,6 +1196,7 @@ spp_data_habs %>%
 cleaned_traits <- c('zone', 'adult mobility', 
                     'fecundity',
                     'planktonic larval duration (pld) exposure',
+                    'feeding larva (post-hatching metamorphosis)',
                     'reproductive strategy',
                     'parental investment',
                     'global population size',
@@ -1218,6 +1241,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_nsite) %>%
   bind_rows(spp_data_eoo) %>%
   bind_rows(spp_data_pld) %>%
+  bind_rows(spp_data_feeding) %>%
   bind_rows(spp_data_do) %>%
   bind_rows(spp_data_parent) %>%
   bind_rows(spp_data_age) %>%
