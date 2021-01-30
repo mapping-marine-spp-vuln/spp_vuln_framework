@@ -2,7 +2,7 @@ category,trait,bythograea thermydron,mictyris platycheles,nymphon australe,palae
 biophysical traits,adult body mass/body size,50mm-999mm,0.5mm-49mm,0.5mm-49mm,0.5mm-49mm;50mm-999mm,50mm-999mm,50mm-999mm,0.5mm-49mm,50mm-999mm,50mm-999mm
 biophysical traits,biomineral,calcite;chitin/caco3 mix,calcite;chitin/caco3 mix,NA,aragonite;calcite;chitin/caco3 mix,calcite;chitin/caco3 mix,calcite,NA,calcite;chitin/caco3 mix,calcite;chitin/caco3 mix
 biophysical traits,calcium carbonate structure location,external,external,none,external;internal,external,external,none,external,external
-biophysical traits,calcium carbonate structure stages,both-unsure,both-unsure,none,both,both-unsure,both,none,both-unsure,both-unsure
+biophysical traits,calcium carbonate structure stages,both,both,none,both,both,both,none,both,both
 biophysical traits,communication requirement (sound),no,no,none,no,no,none,none,no,no
 biophysical traits,extreme pressure wave sensitive structures,low,low,none,NA,low,high,none,low,low
 biophysical traits,flight,no,no,no,no,no,no,no,no,no
@@ -18,7 +18,7 @@ movement,adult mobility,mobile resident,mobile resident,mobile resident;horizont
 movement,planktonic larval duration (pld) exposure,<1week,unknown,unknown,unknown,<4months,unknown,unknown,<1month,unknown
 physiological tolerance breadths,dissolved oxygen,high tolerance,air breathers,unknown,high tolerance,low tolerance,character(0),unknown,high tolerance,low tolerance
 physiological tolerance breadths,ph,<7.4,7.8-8.2,<7.4,<7.4,7.8-8.2,<7.4,<7.4,7.8-8.2,7.8-8.2
-physiological tolerance breadths,salinity,na,na,narrow,broad,na,1o to 32o,narrow,na,na
+physiological tolerance breadths,salinity,na,na,stenohaline,euryhaline,na,euryhaline,stenohaline,na,na
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),not sensitive,not sensitive,NA,na,not sensitive,NA,NA,not sensitive,not sensitive
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,25c,30c,NA,NA,10c,25c,10c,30c,25c
 r (reproductive traits),age to 1st reproduction/generation time,unknown,1-5yrs,5-10yrs,1-5yrs,5-10yrs,<1yr,1-5yrs,1-5yrs,1-5yrs
@@ -38,7 +38,7 @@ spatial scale of species,zone,demersal,intertidal,benthic,intertidal,intertidal,
 specialisation,across-stage dependent habitats + condition,deep hard bottom;hydrothermal vents,estuary;mangrove;intertidal mud;beach,NA,NA,intertidal mud;beach,NA,NA,intertidal mud;mangrove;estuary,coral reef
 specialisation,air-sea interface,yes,yes,no,no,yes,none,yes,yes,yes
 specialisation,dependent interspecific interactions,no,no,yes,no,no,none,yes,no,yes w;coral
-specialisation,extreme diet specialization,generalist,generalist,yes,no-broadly omniverous,generalist,none,yes,generalist,generalist
+specialisation,extreme diet specialization,generalist,generalist,specialist,generalist,generalist,generalist,specialist,generalist,generalist
 specialisation,photosynthetic,no,no,no,no,no,no,no,no,no
 specialisation,terrestrial and marine life stages,no,no,NA,no,no,NA,NA,no,no
 specialisation,within-stage dependent habitats + condition,deep hard bottom;hydrothermal vents,estuary;mangrove;intertidal mud;beach,deep soft bottom,subtidal soft bottom;rocky reef;rocky intertidal,kelp forest;hide for first year of life here,NA,rocky intertidal;coral reef,surface water;during planktonic stage,coral reef

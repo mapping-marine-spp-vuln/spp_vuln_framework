@@ -126,6 +126,12 @@ sens_traits_df <- sens_traits_raw %>%
   clean_traitnames() %>%
   clean_traitvals() %>%
   filter(!is.na(category)) 
+
+### write out traits that increase sensitivity
+x <- sens_traits_df %>% 
+  filter(sens_score > 0 & !is.na(sens_score)) %>%
+  arrange(stressor)
+write_csv(x, 'sens_traits_nonzero.csv')
   
 str_sens_trait_scores <- sens_traits_df %>%
   select(category, trait, trait_value, sens_score, stressor) %>%
@@ -136,7 +142,16 @@ str_sens_trait_scores <- sens_traits_df %>%
 ### exclusive trait values (using trait_prob) then sum across all traits
 spp_sens_raw <- str_sens_trait_scores %>%
   left_join(spp_traits, by = c('category', 'trait', 'trait_value')) %>%
-  filter(!is.na(stressor) & !is.na(taxon)) 
+  filter(!is.na(stressor) & !is.na(taxon)) %>%
+  select(-n_spp_gps)
+
+sd_fun <- function(s, p) {
+  if(all(p == 1)) return(NA)
+  
+  s_bar <- sum(s * p, na.rm = TRUE)
+  s_sd <- sqrt(sum((s - s_bar)^2) / (length(s) - 1))
+  return(s_sd)
+}
 
 spp_sens <- spp_sens_raw %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
@@ -208,7 +223,6 @@ General adaptive capacity traits are basically related to the overall population
 
 adcap_gen_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'gen_adcap') 
 
-
 adcap_gen_traits <- adcap_gen_traits_raw %>%
   select(category, trait, trait_value, adcap_score) %>%
   # filter(trait != 'max age' & trait != 'if one/few, size') %>%
@@ -217,30 +231,20 @@ adcap_gen_traits <- adcap_gen_traits_raw %>%
   clean_traitnames() %>%
   clean_traitvals()
 
-spp_adcap_gen <- spp_traits %>%
+spp_adcap_gen_raw <- spp_traits %>%
   left_join(adcap_gen_traits, by = c('category', 'trait', 'trait_value')) %>%
+  mutate(adcap_gen_score = ifelse(is.na(adcap_score), 0, adcap_score)) %>%
+  select(-n_spp_gps, -adcap_score, -adcap_score_orig)
+
+spp_adcap_gen <- spp_adcap_gen_raw %>%
+  group_by(spp_gp, taxon, trait) %>%
+  summarize(adcap_gen_score = sum(adcap_gen_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, taxon) %>%
-  summarize(adcap_gen_score = sum(adcap_score, na.rm = TRUE)) %>%
+  summarize(adcap_gen_score = sum(adcap_gen_score, na.rm = TRUE)) %>%
   ungroup()
-  
-# hist(spp_adcap_gen$adcap_gen_score)
 
 ```
 
-### Check matching
-
-Unmatched traits between general adaptive capacity scoring sheet and species trait sheets:
-
-```{r}
-x <- spp_traits %>% select(category, trait, trait_value) %>% distinct()
-y <- adcap_gen_traits %>% select(category, trait, trait_value) %>% distinct()
-```
-
-Traits in species-trait sheets not in general adcap scores:
-`r x$trait[!x$trait %in% y$trait] %>% unique()`
-
-Traits in general adcap scores but not in spp traits:
-`r y$trait[!y$trait %in% x$trait] %>% unique()`
 
 ```{r}
 p <- ggplot(spp_adcap_gen, aes(x = taxon, y = adcap_gen_score)) +
@@ -265,6 +269,14 @@ Specific adaptive capacity traits are basically related to an organism's ability
 adcap_spec_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'spec_adcap') %>%
   filter(!str_detect(category, 'spatial_scale')) ### drop exposure traits
 
+### Need to fix missing values for a trait:
+fix_trait_df <- data.frame(category = 'movement',
+                           trait = 'planktonic_larval_duration_pld_exposure',
+                           trait_value = 'not larvae')
+adcap_spec_traits_raw <- adcap_spec_traits_raw %>%
+  bind_rows(fix_trait_df)
+
+### now, clean up the result and assign scores
 adcap_spec_traits <- adcap_spec_traits_raw %>%
   janitor::clean_names() %>%
   gather(stressor, adcap_score, -category, -trait, -trait_value) %>%
@@ -273,14 +285,20 @@ adcap_spec_traits <- adcap_spec_traits_raw %>%
   clean_traitnames() %>%
   clean_traitvals() %>%
   filter(!is.na(trait))
-  
-spp_adcap_spec <- spp_traits %>%
+
+spp_adcap_spec_raw <- spp_traits %>%
   left_join(adcap_spec_traits, by = c('category', 'trait', 'trait_value')) %>%
+  mutate(adcap_spec_score = ifelse(is.na(adcap_score), 0, adcap_score)) %>%
   filter(!is.na(stressor)) %>%
+  select(-n_spp_gps, -adcap_score, -adcap_score_orig)
+
+spp_adcap_spec <- spp_adcap_spec_raw %>%
+  group_by(spp_gp, stressor, taxon, trait) %>%
+  summarize(adcap_spec_score = sum(adcap_spec_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
-  summarize(adcap_spec_score = sum(adcap_score, na.rm = TRUE)) %>%
+  summarize(adcap_spec_score = sum(adcap_spec_score, na.rm = TRUE)) %>%
   ungroup()
-  
+
 # hist(spp_adcap_spec$adcap_spec_score)
 # median(spp_adcap_spec$adcap_spec_score); mean(spp_adcap_spec$adcap_spec_score); sd(spp_adcap_spec$adcap_spec_score)
 adcap_spec_sum <- spp_adcap_spec %>%
@@ -288,6 +306,7 @@ adcap_spec_sum <- spp_adcap_spec %>%
   summarize(median = median(adcap_spec_score, na.rm = TRUE),
             mean   = mean(adcap_spec_score, na.rm = TRUE),
             sd     = sd(adcap_spec_score, na.rm = TRUE))
+
 ```
 
 ### Check matching
@@ -397,21 +416,37 @@ Questions to consider that will affect scoring/weighting:
 ### Is there an actionable difference between across-stage and within-stage dependence?
     
 * Multiple habitats in the "within-stage" category seems to suggest that a species can move among habitats therefore being less sensitive to degradation of one habitat in its range.  This is a "parallel habitats" interpretation.
-    * However, some species may depend on various habitats in a "series habitat" interpretation, e.g., birds that depend on one habitat type for nesting/breeding, another type for forage, and a third for stopovers in migration.  In this case, harm to any would present a bottleneck.
+    * However, some species may depend on various habitats in a "series habitat" interpretation, e.g., birds that as adults depend on one habitat type for nesting/breeding, another type for forage, and a third for stopovers in migration.  In this case, harm to any would present a bottleneck.
 * Multiple habitats in the "across-stage" category seem to indicate a "series" interpretation - e.g., a fish species whose larvae grow in mangroves, then adults move to reefs.
-    * However, stages could survive in multiple habitats (e.g., parallel).
+    * However, this could also indicate stages that could survive in multiple habitats (e.g., parallel).
 * Because the trait category is not well defined, we cannot systematically distinguish between series and parallel interpretations for either across- or within-stage dependence.
-* A series interpretation would sum the vulnerabilities; a parallel interpretation would take an average.  Which is most conservative?  Parallel would communicate the less alarming results, and has the advantage that it also avoids overweighting based on the number of habitats scored.
+* A series interpretation would sum the vulnerabilities; a parallel interpretation would take an average.  Which is most conservative?  Parallel has the advantage that it also avoids overweighting based on the number of habitats scored, but would communicate the less alarming results.
 
 To score this we will simply lump together all unique listed habitats, regardless of within- or across-stage.  This simplifies things so we can simply calculate the habitat degradation vulnerability as normal, and append the habitat name onto the hab loss/degradation stressor name...
 
 ```{r}
-spp_dep_habs <- spp_traits %>%
+spp_dep_habs_raw <- spp_traits %>%
   filter(str_detect(trait, 'dependent_habitats')) %>%
   mutate(stressor = 'habitat_loss_degradation') %>%
-  select(spp_gp, stressor, hab = trait_value) %>%
-  distinct()
+  select(taxon, spp_gp, trait, stressor, hab = trait_value) %>%
+  distinct() 
+
+taxon_check <- spp_dep_habs_raw %>%
+  group_by(taxon, spp_gp, trait) %>%
+  summarize(n_habs = n()) %>%
+  group_by(taxon, trait) %>%
+  summarize(mean_habs = mean(n_habs),
+            sd_habs = sd(n_habs)) %>%
+  arrange(desc(mean_habs))
+
+spp_dep_habs <- spp_dep_habs_raw %>%
+  group_by(taxon, spp_gp, stressor) %>%
+  summarize(sens_habs_raw = n_distinct(hab))
 ```
+
+### mean number of habitats per taxon:
+
+`r DT::datatable(taxon_check)`
 
 # Combine scores
 
@@ -454,12 +489,201 @@ if(!all(exp_strs %in% adcap_strs) | !all(adcap_strs %in% exp_strs)) {
 }
 ```
 
-```{r}
+## Calc vulnerability with Monte Carlo method
+
+Can't use SD to calculate variation in vulnerability score - a ratio of two (standard normal, identical variance) distributions is Cauchy and therefore has undefined SD.  This is probably more complex because probably not std normal and identical variance.  A Monte Carlo method can capture deviations of full calculation.
+
+Since the vulnerability is based on rescaled sensitivity and ad cap based on the max observed values, we need to identify reference values across the entire set of spp groups.  However, some spp are listed with multiple mututally exclusive trait values (thus the Monte Carlo).  For these spp, we will use the score based on an average across all traits.  This allows the Monte Carlo process to calculate the overall vulnerability as well as the variance for each spp.  It also ensures that the reference values are stable, not dependent on the sampling.
+
+```{r, eval = TRUE}
+
+spp_vuln_mean <- spp_sens %>%
+  left_join(spp_adcap_gen, by = c('taxon', 'spp_gp')) %>%
+  left_join(spp_adcap_spec, by = c('taxon', 'spp_gp', 'stressor'))
+
+ref_values <- spp_vuln_mean %>%
+  group_by(stressor) %>%
+  summarize(max_sens = max(sens_score, 1), 
+              ### the 1 ensures that stressors with very low scores don't get normalized by a low reference
+            max_adcap_gen = max(adcap_gen_score, 1),
+            max_adcap_spec = max(adcap_spec_score, 1))
+
+
+
+```
+
+``` {r combine sensitivity and adaptive capacity for deterministic spp}
+### Separate deterministic spp (all traits fixed) from those for Monte Carlo
+spp_sens_det <- spp_sens_raw %>%
+  group_by(spp_gp) %>%
+  filter(all(trait_prob == 1)) %>%
+  .$spp_gp %>% unique()
+
+spp_adcap_spec_det <- spp_adcap_spec_raw %>%
+  group_by(spp_gp) %>%
+  filter(all(trait_prob == 1)) %>%
+  .$spp_gp %>% unique()
+
+spp_adcap_gen_det <- spp_adcap_gen_raw %>%
+  group_by(spp_gp) %>%
+  filter(all(trait_prob == 1)) %>%
+  .$spp_gp %>% unique()
+
+spp_deterministic <- spp_sens_det[(spp_sens_det %in% spp_adcap_spec_det) & 
+                                    (spp_sens_det %in% spp_adcap_gen_det)]
+spp_vuln_det <- spp_vuln_mean %>%
+  filter(spp_gp %in% spp_deterministic)
+
+
+```
+
+```{r vulnerability calc helper functions}
+rescale_vals <- function(x) {
+  z <- x %>%
+    left_join(ref_values, by = 'stressor') %>%
+    mutate(sens_rescale = sens_score / max_sens,
+           adcap_gen_rescale  = adcap_gen_score / max_adcap_gen,
+           adcap_spec_rescale = adcap_spec_score / max_adcap_spec)
+  return(z)
+}
+calc_vuln <- function(x) {
+  zz <- x %>%
+    rescale_vals() %>%
+    mutate(vuln_raw = sens_rescale / (1 + adcap_gen_rescale + adcap_spec_rescale))
+  return(zz)
+}
+```
+
+``` {r use monte carlo approach to calc distribution of vulns for multi-trait spp gps}
+
+### For Monte Carlo spp, for each spp, loop N times and draw from pool of
+### possible traits.  The number of iterations should be determined by how many
+### possible combos for that spp group.  For most, only a handful.  But
+### for spheniscidae, thousands!
+
+spp_mc <- spp_sens %>%
+  filter(!spp_gp %in% spp_deterministic) %>%
+  .$spp_gp %>% unique()
+
+for(spp in spp_mc) {
+  ### spp <- spp_mc[1]
+  ### spp <- 'spheniscidae'
+  traits <- spp_traits %>%
+    filter(spp_gp == spp) %>%
+    select(-n_spp_gps)
+
+  ### separate out single and non-mutually-exclusive traits; include all values
+  traits_det <- traits %>%
+    filter(trait_prob == 1)
+  ### Identify mutually exclusive traits; tally up # of combos
+  trait_multi <- traits %>%
+    filter(trait_prob != 1) 
+  
+  n_combos <- trait_multi %>%
+    group_by(trait) %>%
+    summarize(n_vals = n()) %>%
+    ungroup() %>%
+    summarize(n_combos = prod(n_vals)) %>%
+    .$n_combos
+    
+  
+  # iters <- max(1000, n_combos * 2)
+  iters <- 1000
+  sample_list <- vector('list', length = iters)
+  
+  for(i in 1:iters) {
+    trait_sample <- trait_multi %>%
+      group_by(trait) %>%
+      slice_sample(n = 1) %>%
+      bind_rows(traits_det)
+      
+    
+    spp_sens_sample <- trait_sample %>%
+      left_join(spp_sens_raw %>% select(-trait_prob), 
+                by = c('taxon', 'category', 'trait', 'trait_value', 'spp_gp')) %>%
+      group_by(spp_gp, stressor, taxon) %>%
+      summarize(sens_score = sum(sens_score)) %>%
+      filter(!is.na(stressor))
+    spp_adcap_gen_sample <- trait_sample %>%
+      left_join(spp_adcap_gen_raw %>% select(-trait_prob), 
+                by = c('taxon', 'category', 'trait', 'trait_value', 'spp_gp')) %>%
+      group_by(spp_gp, taxon) %>%
+      summarize(adcap_gen_score = sum(adcap_gen_score))
+    spp_adcap_spec_sample <- trait_sample %>%
+      left_join(spp_adcap_spec_raw %>% select(-trait_prob),
+                by = c('taxon', 'category', 'trait', 'trait_value', 'spp_gp')) %>%
+      group_by(spp_gp, stressor, taxon) %>%
+      summarize(adcap_spec_score = sum(adcap_spec_score)) %>%
+      filter(!is.na(stressor))
+
+    spp_vuln_sample <- spp_sens_sample %>%
+      left_join(spp_adcap_gen_sample, by = c('taxon', 'spp_gp')) %>%
+      left_join(spp_adcap_spec_sample, by = c('taxon', 'spp_gp', 'stressor'))
+    
+    sample_list[[i]] <- spp_vuln_sample
+  }
+  
+### NEED TO SAVE MEAN/SD SENS SCORE, ADCAP GEN, ADCAP SPEC THEN CALC FROM THOSE?!
+  x <- bind_rows(sample_list)
+    
+    
+    group_by(taxon, spp_gp, stressor) %>%
+    summarize(max_sens = max(sens_score), 
+                mean_sens = mean(sens_score),
+                sd_sens = sd(sens_score),
+              max_adcap_gen = max(adcap_gen_score),
+                mean_acg = mean(adcap_gen_score),
+                sd_acg = sd(adcap_gen_score),
+              max_adcap_spec = max(adcap_spec_score),
+                mean_acs = mean(adcap_spec_score),
+                sd_acs = sd(adcap_spec_score))
+
+}
+
+
+%>%
+  left_join(spp_dep_habs, by = c('taxon', 'spp_gp', 'stressor')) %>%
+  ### fix NAs
+  mutate(adcap_spec_score = ifelse(is.na(adcap_spec_score), 0, adcap_spec_score),
+         exposure_mod     = ifelse(is.na(exposure_mod), 1, exposure_mod)) %>%
+  rename(adcap_spec_raw = adcap_spec_score, adcap_gen_raw = adcap_gen_score, sens_raw = sens_score) 
+
+%>%
+  ### calculate means.  General adcap is overall; specific adcap and sensitivity are by stressor
+  group_by(stressor) %>%
+  mutate(max_adcap_spec = max(adcap_spec_raw),
+         max_sens = max(sens_raw)) %>%
+  mutate(max_sens = ifelse(max_sens < 1, 1, max_sens)) %>%
+    ### don't normalize if max observed value is already low (less than 1)
+  ungroup() %>%
+  mutate(max_adcap_gen = max(adcap_gen_raw)) %>%
+  ### rescale components
+  mutate(sens_rescale = sens_raw / max_sens,
+         adcap_gen_rescale = adcap_gen_raw / max_adcap_gen,
+         adcap_spec_rescale = adcap_spec_raw / max_adcap_spec) %>%
+  ### note any stressors with zero for max (e.g. adcap for entanglement),
+  ### will result in a NaN - convert the rescaled score to zero
+  mutate(sens_rescale = ifelse(is.na(sens_rescale), 0, sens_rescale),
+         adcap_gen_rescale = ifelse(is.na(adcap_gen_rescale), 0, adcap_gen_rescale),
+         adcap_spec_rescale = ifelse(is.na(adcap_spec_rescale), 0, adcap_spec_rescale)) %>%
+  ### mash 'em all together
+  mutate(vuln = (sens_rescale / (1 + adcap_gen_rescale + adcap_spec_rescale)) * exposure_mod)
+
+spp_vuln_rescale <- spp_vulnerability %>%
+  select(-starts_with('max')) %>%
+  ungroup() %>%
+  mutate(vuln_raw = vuln,
+         vuln = vuln_raw / max(vuln_raw))
+  
+write_csv(spp_vuln_rescale, here('_output/spp_gp_vuln_w_distribution.csv'))
+```
+
+```{r, eval = FALSE}
 spp_vulnerability <- spp_sens %>%
   left_join(spp_adcap_gen, by = c('taxon', 'spp_gp')) %>%
   left_join(spp_adcap_spec, by = c('taxon', 'spp_gp', 'stressor')) %>%
   left_join(spp_exposure, by = c('taxon', 'spp_gp', 'stressor')) %>%
-  left_join(spp_dep_habs, by = c('spp_gp', 'stressor')) %>%
+  left_join(spp_dep_habs, by = c('taxon', 'spp_gp', 'stressor')) %>%
   ### fix NAs
   mutate(adcap_spec_score = ifelse(is.na(adcap_spec_score), 0, adcap_spec_score),
          exposure_mod     = ifelse(is.na(exposure_mod), 1, exposure_mod)) %>%
