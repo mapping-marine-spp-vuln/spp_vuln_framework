@@ -4,13 +4,13 @@ biophysical traits,biomineral,silicate
 biophysical traits,calcium carbonate structure location,none
 biophysical traits,calcium carbonate structure stages,none
 biophysical traits,communication requirement (sound),no
-biophysical traits,extreme pressure wave sensitive structures,medium
+biophysical traits,extreme pressure wave sensitive structures,low
 biophysical traits,flight,no
-biophysical traits,navigation requirements (light),yes
-biophysical traits,respiration structures,filter feeders and expulsion of waste and of gamates or larvae)
+biophysical traits,respiration structures,filter feeders
 breeding/nesting range/number of spawning aggregations (fish),number of sites,does not aggregate
 movement,adult mobility,sessile
 movement,planktonic larval duration (pld) exposure,<1day
+physiological tolerance breadths,ph,7.8-8.2
 physiological tolerance breadths,salinity,euryhaline
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no

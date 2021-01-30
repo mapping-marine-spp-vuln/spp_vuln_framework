@@ -1,33 +1,20 @@
 taxon,category,trait,spp_gp,trait_value,n_spp_gps
 corals,biophysical traits,respiration structures,acropora,diffusiion,4
-crustacea_arthropods,biophysical traits,calcium carbonate structure stages,bythograea thermydron,both-unsure,9
 crustacea_arthropods,specialisation,across-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
-crustacea_arthropods,biophysical traits,calcium carbonate structure stages,mictyris platycheles,both-unsure,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),nymphon australe,none,9
 crustacea_arthropods,biophysical traits,respiration structures,nymphon australe,skin or cuticle,9
-crustacea_arthropods,physiological tolerance breadths,salinity,nymphon australe,narrow,9
-crustacea_arthropods,specialisation,extreme diet specialization,nymphon australe,yes,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,palaemon elegans,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,9
-crustacea_arthropods,physiological tolerance breadths,salinity,palaemon elegans,broad,9
-crustacea_arthropods,specialisation,extreme diet specialization,palaemon elegans,no-broadly omniverous,9
-crustacea_arthropods,biophysical traits,calcium carbonate structure stages,paralithodes camtschaticus,both-unsure,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,paralithodes camtschaticus,hide for first year of life here,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus,none,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus,none,9
 crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus,none,9
 crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus,character(0),9
-crustacea_arthropods,physiological tolerance breadths,salinity,penaeus,1o to 32o,9
 crustacea_arthropods,specialisation,air-sea interface,penaeus,none,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus,none,9
-crustacea_arthropods,specialisation,extreme diet specialization,penaeus,none,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonum,none,9
 crustacea_arthropods,biophysical traits,respiration structures,pycnogonum,skin or cuticle,9
-crustacea_arthropods,physiological tolerance breadths,salinity,pycnogonum,narrow,9
-crustacea_arthropods,specialisation,extreme diet specialization,pycnogonum,yes,9
-crustacea_arthropods,biophysical traits,calcium carbonate structure stages,scylla serrata,both-unsure,9
 crustacea_arthropods,specialisation,within-stage dependent habitats + condition,scylla serrata,during planktonic stage,9
-crustacea_arthropods,biophysical traits,calcium carbonate structure stages,trapezia flavopunctata,both-unsure,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,yes w,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,coral,9
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,acanthaster,no,100
@@ -258,25 +245,9 @@ molluscs,specialisation,within-stage dependent habitats + condition,siliqua patu
 molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,soft bottom,46
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna gigas,benthic,46
 molluscs,specialisation,within-stage dependent habitats + condition,tridacna maxima,benthic,46
-plants_algae,specialisation,air-sea interface,avicennia marina,yes-although not sure what this really means-propagules float,4
-plants_algae,biophysical traits,respiration structures,macrocystis,no,4
-plants_algae,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,macrocystis,possibly,4
-plants_algae,foraging range,sub-population dependence on particular sites,macrocystis,possible local adaptation,4
-plants_algae,physiological tolerance breadths,sensitivity to wave energy (physical forcing),macrocystis,sensitive-easily dislodged by large waves,4
-plants_algae,specialisation,air-sea interface,macrocystis,canopy at sea surface,4
-plants_algae,specialisation,extreme diet specialization,macrocystis,no,4
 plants_algae,biophysical traits,calcium carbonate structure stages,porolithon,calcification after germination and through adulthood,4
-plants_algae,biophysical traits,respiration structures,porolithon,no,4
-plants_algae,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,porolithon,possibly,4
 plants_algae,physiological tolerance breadths,salinity,porolithon,narrow,4
-plants_algae,physiological tolerance breadths,sensitivity to wave energy (physical forcing),porolithon,thrives in high wave action--reef crest,4
 plants_algae,r (reproductive traits),are there sub-populations?,porolithon,likely,4
-plants_algae,specialisation,air-sea interface,porolithon,no sensitive,4
-plants_algae,specialisation,air-sea interface,porolithon,thrives in high wave action--reef crest,4
-plants_algae,specialisation,dependent interspecific interactions,porolithon,examples of strong interactions but not clear if universal or needed for survival,4
-plants_algae,specialisation,extreme diet specialization,porolithon,no,4
-plants_algae,biophysical traits,respiration structures,posidonia australis,no,4
-plants_algae,specialisation,air-sea interface,posidonia australis,yes-although not sure what this really means-propagules float,4
 reptiles,physiological tolerance breadths,salinity,acrochordus,broad,16
 reptiles,biophysical traits,calcium carbonate structure stages,amblyrhynchus cristatus,no,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus acutus,hatchling maternal dependence,16
@@ -286,55 +257,4 @@ reptiles,physiological tolerance breadths,salinity,ephalophis,broad,16
 reptiles,physiological tolerance breadths,salinity,hydrelaps,broad,16
 reptiles,physiological tolerance breadths,salinity,laticauda,broad,16
 reptiles,physiological tolerance breadths,salinity,parahydrophis,broad,16
-seabirds,biophysical traits,calcium carbonate structure stages,alcidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,anatidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,aphrodroma,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,ardenna,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,bulweria,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,calonectris,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,chlidonias,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,chroicocephalus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,creagrus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,daption,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,diomedeidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,fregatidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,fulmarus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,gaviidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,gelochelidon,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,halobaena,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,hydrobatidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,hydrocoloeus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,hydroprogne,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,ichthyaetus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,larosterna,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,larus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,leucophaeus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,macronectes,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,oceanitidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,onychoprion,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,pachyptila,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,pagodroma,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,pagophila,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,pelecanidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,pelecanoides,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,phaethontidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,phaetusa,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,phalacrocoracidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,podicipedidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,procellaria,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,pseudobulweria,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,pterodroma,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,puffinus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,rhodostethia,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,rissa,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,scolopacidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,spheniscidae,egg,50
 seabirds,biophysical traits,respiration structures,spheniscidae,lung,50
-seabirds,biophysical traits,calcium carbonate structure stages,stercorariidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,sterna,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,sternula,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,sulidae,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,thalasseus,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,thalassoica,egg,50
-seabirds,biophysical traits,calcium carbonate structure stages,xema,egg,50
-sponges,biophysical traits,respiration structures,demospongiae,filter feeders and expulsion of waste and of gamates or larvae),1

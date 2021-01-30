@@ -13452,6 +13452,7 @@ crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,bythograea the
 crustacea_arthropods,biophysical_traits,biomineral,bythograea thermydron,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,bythograea thermydron,chitin/caco3 mix,9,1
 crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,bythograea thermydron,external,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,bythograea thermydron,both,9,1
 crustacea_arthropods,biophysical_traits,communication_requirement_sound,bythograea thermydron,no,9,1
 crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,bythograea thermydron,low,9,1
 crustacea_arthropods,biophysical_traits,flight,bythograea thermydron,no,9,1
@@ -13491,6 +13492,7 @@ crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,mictyris platy
 crustacea_arthropods,biophysical_traits,biomineral,mictyris platycheles,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,mictyris platycheles,chitin/caco3 mix,9,1
 crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,mictyris platycheles,external,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,mictyris platycheles,both,9,1
 crustacea_arthropods,biophysical_traits,communication_requirement_sound,mictyris platycheles,no,9,1
 crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,mictyris platycheles,low,9,1
 crustacea_arthropods,biophysical_traits,flight,mictyris platycheles,no,9,1
@@ -13544,6 +13546,7 @@ crustacea_arthropods,movement,adult_mobility,nymphon australe,horizontal migrato
 crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,nymphon australe,unknown,9,1
 crustacea_arthropods,physiological_tolerance_breadths,dissolved_oxygen,nymphon australe,unknown,9,1
 crustacea_arthropods,physiological_tolerance_breadths,ph,nymphon australe,<7.4,9,1
+crustacea_arthropods,physiological_tolerance_breadths,salinity,nymphon australe,stenohaline,9,1
 crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,nymphon australe,5-10yrs,9,1
 crustacea_arthropods,r_reproductive_traits,fecundity,nymphon australe,100-1000,9,1
 crustacea_arthropods,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,nymphon australe,feeding non-calcifier,9,1
@@ -13556,6 +13559,7 @@ crustacea_arthropods,spatial_scale_of_species,eoo_range,nymphon australe,>20000,
 crustacea_arthropods,spatial_scale_of_species,zone,nymphon australe,benthic,9,1
 crustacea_arthropods,specialisation,air_sea_interface,nymphon australe,no,9,1
 crustacea_arthropods,specialisation,dependent_interspecific_interactions,nymphon australe,yes,9,1
+crustacea_arthropods,specialisation,extreme_diet_specialization,nymphon australe,specialist,9,1
 crustacea_arthropods,specialisation,photosynthetic,nymphon australe,no,9,1
 crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,nymphon australe,deep soft bottom,9,1
 crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,palaemon elegans,0.5mm-49mm,9,0.5
@@ -13578,6 +13582,7 @@ crustacea_arthropods,movement,adult_mobility,palaemon elegans,horizontal migrato
 crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,palaemon elegans,unknown,9,1
 crustacea_arthropods,physiological_tolerance_breadths,dissolved_oxygen,palaemon elegans,high tolerance,9,1
 crustacea_arthropods,physiological_tolerance_breadths,ph,palaemon elegans,<7.4,9,1
+crustacea_arthropods,physiological_tolerance_breadths,salinity,palaemon elegans,euryhaline,9,1
 crustacea_arthropods,physiological_tolerance_breadths,sensitivity_to_wave_energy_physical_forcing,palaemon elegans,na,9,1
 crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,palaemon elegans,1-5yrs,9,1
 crustacea_arthropods,r_reproductive_traits,fecundity,palaemon elegans,10-20,9,0.3333333333333333
@@ -13593,6 +13598,7 @@ crustacea_arthropods,spatial_scale_of_species,eoo_range,palaemon elegans,100-499
 crustacea_arthropods,spatial_scale_of_species,zone,palaemon elegans,intertidal,9,1
 crustacea_arthropods,specialisation,air_sea_interface,palaemon elegans,no,9,1
 crustacea_arthropods,specialisation,dependent_interspecific_interactions,palaemon elegans,no,9,1
+crustacea_arthropods,specialisation,extreme_diet_specialization,palaemon elegans,generalist,9,1
 crustacea_arthropods,specialisation,photosynthetic,palaemon elegans,no,9,1
 crustacea_arthropods,specialisation,terrestrial_and_marine_life_stages,palaemon elegans,no,9,1
 crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,palaemon elegans,subtidal soft bottom,9,1
@@ -13602,6 +13608,7 @@ crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,paralithodes c
 crustacea_arthropods,biophysical_traits,biomineral,paralithodes camtschaticus,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,paralithodes camtschaticus,chitin/caco3 mix,9,1
 crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,paralithodes camtschaticus,external,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,paralithodes camtschaticus,both,9,1
 crustacea_arthropods,biophysical_traits,communication_requirement_sound,paralithodes camtschaticus,no,9,1
 crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,paralithodes camtschaticus,low,9,1
 crustacea_arthropods,biophysical_traits,flight,paralithodes camtschaticus,no,9,1
@@ -13654,6 +13661,7 @@ crustacea_arthropods,movement,adult_mobility,penaeus,horizontal migrator,9,1
 crustacea_arthropods,movement,adult_mobility,penaeus,nomadic,9,1
 crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,penaeus,unknown,9,1
 crustacea_arthropods,physiological_tolerance_breadths,ph,penaeus,<7.4,9,1
+crustacea_arthropods,physiological_tolerance_breadths,salinity,penaeus,euryhaline,9,1
 crustacea_arthropods,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,penaeus,25c,9,1
 crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,penaeus,<1yr,9,1
 crustacea_arthropods,r_reproductive_traits,fecundity,penaeus,>10000,9,1
@@ -13665,6 +13673,7 @@ crustacea_arthropods,r_reproductive_traits,parental_investment,penaeus,live birt
 crustacea_arthropods,r_reproductive_traits,reproductive_strategy,penaeus,sexual dioecious,9,1
 crustacea_arthropods,spatial_scale_of_species,eoo_range,penaeus,>20000,9,1
 crustacea_arthropods,spatial_scale_of_species,zone,penaeus,demersal,9,1
+crustacea_arthropods,specialisation,extreme_diet_specialization,penaeus,generalist,9,1
 crustacea_arthropods,specialisation,photosynthetic,penaeus,no,9,1
 crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,pycnogonum,0.5mm-49mm,9,1
 crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,pycnogonum,none,9,1
@@ -13679,6 +13688,7 @@ crustacea_arthropods,movement,adult_mobility,pycnogonum,mobile resident,9,1
 crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,pycnogonum,unknown,9,1
 crustacea_arthropods,physiological_tolerance_breadths,dissolved_oxygen,pycnogonum,unknown,9,1
 crustacea_arthropods,physiological_tolerance_breadths,ph,pycnogonum,<7.4,9,1
+crustacea_arthropods,physiological_tolerance_breadths,salinity,pycnogonum,stenohaline,9,1
 crustacea_arthropods,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,pycnogonum,10c,9,1
 crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,pycnogonum,1-5yrs,9,1
 crustacea_arthropods,r_reproductive_traits,fecundity,pycnogonum,10-20,9,0.3333333333333333
@@ -13693,6 +13703,7 @@ crustacea_arthropods,spatial_scale_of_species,eoo_range,pycnogonum,<99,9,1
 crustacea_arthropods,spatial_scale_of_species,zone,pycnogonum,benthic,9,1
 crustacea_arthropods,specialisation,air_sea_interface,pycnogonum,yes,9,1
 crustacea_arthropods,specialisation,dependent_interspecific_interactions,pycnogonum,yes,9,1
+crustacea_arthropods,specialisation,extreme_diet_specialization,pycnogonum,specialist,9,1
 crustacea_arthropods,specialisation,photosynthetic,pycnogonum,no,9,1
 crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,pycnogonum,rocky intertidal,9,1
 crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,pycnogonum,coral reef,9,1
@@ -13700,6 +13711,7 @@ crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,scylla serrata
 crustacea_arthropods,biophysical_traits,biomineral,scylla serrata,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,scylla serrata,chitin/caco3 mix,9,1
 crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,scylla serrata,external,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,scylla serrata,both,9,1
 crustacea_arthropods,biophysical_traits,communication_requirement_sound,scylla serrata,no,9,1
 crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,scylla serrata,low,9,1
 crustacea_arthropods,biophysical_traits,flight,scylla serrata,no,9,1
@@ -13743,6 +13755,7 @@ crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,trapezia flavo
 crustacea_arthropods,biophysical_traits,biomineral,trapezia flavopunctata,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,trapezia flavopunctata,chitin/caco3 mix,9,1
 crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,trapezia flavopunctata,external,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,trapezia flavopunctata,both,9,1
 crustacea_arthropods,biophysical_traits,communication_requirement_sound,trapezia flavopunctata,no,9,1
 crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,trapezia flavopunctata,low,9,1
 crustacea_arthropods,biophysical_traits,flight,trapezia flavopunctata,no,9,1
@@ -18494,7 +18507,7 @@ elasmobranchs,specialisation,across_stage_dependent_habitats_condition,carcharod
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,carcharodon carcharias,rocky reef,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,carcharodon carcharias,soft slope,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,carcharodon carcharias,hard slope,135,1
-elasmobranchs,specialisation,air_sea_interface,carcharodon carcharias,no,135,1
+elasmobranchs,specialisation,air_sea_interface,carcharodon carcharias,yes,135,1
 elasmobranchs,specialisation,dependent_interspecific_interactions,carcharodon carcharias,no,135,1
 elasmobranchs,specialisation,extreme_diet_specialization,carcharodon carcharias,generalist,135,1
 elasmobranchs,specialisation,photosynthetic,carcharodon carcharias,no,135,1
@@ -18668,7 +18681,7 @@ elasmobranchs,spatial_scale_of_species,zone,cetorhinus maximus,oceanic,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,cetorhinus maximus,deep water,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,cetorhinus maximus,pelagic,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,cetorhinus maximus,surface water,135,1
-elasmobranchs,specialisation,air_sea_interface,cetorhinus maximus,no,135,1
+elasmobranchs,specialisation,air_sea_interface,cetorhinus maximus,yes,135,1
 elasmobranchs,specialisation,dependent_interspecific_interactions,cetorhinus maximus,yes,135,1
 elasmobranchs,specialisation,extreme_diet_specialization,cetorhinus maximus,specialist,135,1
 elasmobranchs,specialisation,photosynthetic,cetorhinus maximus,no,135,1
@@ -20789,7 +20802,7 @@ elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula al
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula alfredi,deep water,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula alfredi,soft shelf,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula alfredi,rocky reef,135,1
-elasmobranchs,specialisation,air_sea_interface,mobula alfredi,no,135,1
+elasmobranchs,specialisation,air_sea_interface,mobula alfredi,yes,135,1
 elasmobranchs,specialisation,dependent_interspecific_interactions,mobula alfredi,no,135,1
 elasmobranchs,specialisation,extreme_diet_specialization,mobula alfredi,generalist,135,1
 elasmobranchs,specialisation,photosynthetic,mobula alfredi,no,135,1
@@ -20840,7 +20853,7 @@ elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula bi
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula birostris,deep water,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula birostris,soft shelf,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,mobula birostris,rocky reef,135,1
-elasmobranchs,specialisation,air_sea_interface,mobula birostris,no,135,1
+elasmobranchs,specialisation,air_sea_interface,mobula birostris,yes,135,1
 elasmobranchs,specialisation,dependent_interspecific_interactions,mobula birostris,no,135,1
 elasmobranchs,specialisation,extreme_diet_specialization,mobula birostris,generalist,135,1
 elasmobranchs,specialisation,photosynthetic,mobula birostris,no,135,1
@@ -22243,7 +22256,7 @@ elasmobranchs,spatial_scale_of_species,zone,rhincodon typus,neritic,135,1
 elasmobranchs,spatial_scale_of_species,zone,rhincodon typus,oceanic,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,rhincodon typus,coral reef,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,rhincodon typus,pelagic,135,1
-elasmobranchs,specialisation,air_sea_interface,rhincodon typus,no,135,1
+elasmobranchs,specialisation,air_sea_interface,rhincodon typus,yes,135,1
 elasmobranchs,specialisation,dependent_interspecific_interactions,rhincodon typus,yes,135,1
 elasmobranchs,specialisation,extreme_diet_specialization,rhincodon typus,specialist,135,1
 elasmobranchs,specialisation,photosynthetic,rhincodon typus,no,135,1
@@ -32274,6 +32287,7 @@ plants_algae,r_reproductive_traits,reproductive_strategy,avicennia marina,sexual
 plants_algae,spatial_scale_of_species,depth_min_max,avicennia marina,epipelagic,4,1
 plants_algae,spatial_scale_of_species,eoo_range,avicennia marina,>20000,4,1
 plants_algae,spatial_scale_of_species,zone,avicennia marina,benthic,4,1
+plants_algae,specialisation,air_sea_interface,avicennia marina,yes,4,1
 plants_algae,specialisation,dependent_interspecific_interactions,avicennia marina,no,4,1
 plants_algae,specialisation,photosynthetic,avicennia marina,yes,4,1
 plants_algae,specialisation,terrestrial_and_marine_life_stages,avicennia marina,no,4,1
@@ -32283,12 +32297,16 @@ plants_algae,biophysical_traits,calcium_carbonate_structure_stages,macrocystis,n
 plants_algae,biophysical_traits,communication_requirement_sound,macrocystis,no,4,1
 plants_algae,biophysical_traits,extreme_pressure_wave_sensitive_structures,macrocystis,none,4,1
 plants_algae,biophysical_traits,flight,macrocystis,no,4,1
+plants_algae,biophysical_traits,respiration_structures,macrocystis,diffusion,4,1
 plants_algae,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,macrocystis,one,4,1
+plants_algae,breeding_nesting_range_number_of_spawning_aggregations_fish,sub_population_dependence_on_particular_sites,macrocystis,no,4,1
 plants_algae,foraging_range,number_of_sites_incl_terrestrial_wetlands,macrocystis,many,4,1
+plants_algae,foraging_range,sub_population_dependence_on_particular_sites,macrocystis,no,4,1
 plants_algae,movement,adult_mobility,macrocystis,passive,4,1
 plants_algae,physiological_tolerance_breadths,dissolved_oxygen,macrocystis,high tolerance,4,1
 plants_algae,physiological_tolerance_breadths,ph,macrocystis,<7.4,4,1
 plants_algae,physiological_tolerance_breadths,salinity,macrocystis,stenohaline,4,1
+plants_algae,physiological_tolerance_breadths,sensitivity_to_wave_energy_physical_forcing,macrocystis,sensitive,4,1
 plants_algae,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,macrocystis,20c,4,1
 plants_algae,r_reproductive_traits,age_to_1st_reproduction_generation_time,macrocystis,<1yr,4,1
 plants_algae,r_reproductive_traits,fecundity,macrocystis,1-2,4,0.25
@@ -32306,6 +32324,7 @@ plants_algae,r_reproductive_traits,reproductive_strategy,macrocystis,sexual herm
 plants_algae,spatial_scale_of_species,eoo_range,macrocystis,<99,4,1
 plants_algae,spatial_scale_of_species,zone,macrocystis,benthic,4,1
 plants_algae,specialisation,air_sea_interface,macrocystis,yes,4,1
+plants_algae,specialisation,dependent_interspecific_interactions,macrocystis,no,4,1
 plants_algae,specialisation,photosynthetic,macrocystis,yes,4,1
 plants_algae,biophysical_traits,adult_body_mass_body_size,porolithon,50mm-999mm,4,1
 plants_algae,biophysical_traits,biomineral,porolithon,high mg calcite,4,1
@@ -32313,7 +32332,9 @@ plants_algae,biophysical_traits,calcium_carbonate_structure_location,porolithon,
 plants_algae,biophysical_traits,communication_requirement_sound,porolithon,no,4,1
 plants_algae,biophysical_traits,extreme_pressure_wave_sensitive_structures,porolithon,none,4,1
 plants_algae,biophysical_traits,flight,porolithon,no,4,1
+plants_algae,biophysical_traits,respiration_structures,porolithon,diffusion,4,1
 plants_algae,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,porolithon,does not aggregate,4,1
+plants_algae,breeding_nesting_range_number_of_spawning_aggregations_fish,sub_population_dependence_on_particular_sites,porolithon,yes,4,1
 plants_algae,foraging_range,number_of_sites_incl_terrestrial_wetlands,porolithon,does not aggregate,4,1
 plants_algae,movement,adult_mobility,porolithon,sessile,4,1
 plants_algae,movement,planktonic_larval_duration_pld_exposure,porolithon,<1week,4,1
@@ -32338,6 +32359,8 @@ plants_algae,spatial_scale_of_species,depth_min_max,porolithon,epipelagic,4,1
 plants_algae,spatial_scale_of_species,depth_min_max,porolithon,atmosphere,4,1
 plants_algae,spatial_scale_of_species,zone,porolithon,intertidal,4,1
 plants_algae,spatial_scale_of_species,zone,porolithon,benthic,4,1
+plants_algae,specialisation,air_sea_interface,porolithon,no,4,1
+plants_algae,specialisation,dependent_interspecific_interactions,porolithon,yes,4,1
 plants_algae,specialisation,photosynthetic,porolithon,yes,4,1
 plants_algae,specialisation,terrestrial_and_marine_life_stages,porolithon,no,4,1
 plants_algae,specialisation,within_stage_dependent_habitats_condition,porolithon,coral reef,4,1
@@ -32348,6 +32371,7 @@ plants_algae,biophysical_traits,calcium_carbonate_structure_stages,posidonia aus
 plants_algae,biophysical_traits,communication_requirement_sound,posidonia australis,no,4,1
 plants_algae,biophysical_traits,extreme_pressure_wave_sensitive_structures,posidonia australis,none,4,1
 plants_algae,biophysical_traits,flight,posidonia australis,no,4,1
+plants_algae,biophysical_traits,respiration_structures,posidonia australis,diffusion,4,1
 plants_algae,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,posidonia australis,many,4,1
 plants_algae,breeding_nesting_range_number_of_spawning_aggregations_fish,sub_population_dependence_on_particular_sites,posidonia australis,no,4,1
 plants_algae,foraging_range,number_of_sites_incl_terrestrial_wetlands,posidonia australis,many,4,1
@@ -32373,6 +32397,7 @@ plants_algae,r_reproductive_traits,reproductive_strategy,posidonia australis,sex
 plants_algae,spatial_scale_of_species,depth_min_max,posidonia australis,epipelagic,4,1
 plants_algae,spatial_scale_of_species,eoo_range,posidonia australis,5000-19999,4,1
 plants_algae,spatial_scale_of_species,zone,posidonia australis,benthic,4,1
+plants_algae,specialisation,air_sea_interface,posidonia australis,yes,4,1
 plants_algae,specialisation,dependent_interspecific_interactions,posidonia australis,no,4,1
 plants_algae,specialisation,photosynthetic,posidonia australis,yes,4,1
 plants_algae,specialisation,terrestrial_and_marine_life_stages,posidonia australis,no,4,1
@@ -33248,7 +33273,8 @@ reptiles,specialisation,within_stage_dependent_habitats_condition,parahydrophis,
 reptiles,specialisation,within_stage_dependent_habitats_condition,parahydrophis,subtidal soft bottom,16,1
 reptiles,specialisation,within_stage_dependent_habitats_condition,parahydrophis,salt marsh,16,1
 seabirds,biophysical_traits,adult_body_mass_body_size,alcidae,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,alcidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,alcidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,alcidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,alcidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,alcidae,unknown,50,1
 seabirds,biophysical_traits,flight,alcidae,yes,50,1
@@ -33310,7 +33336,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,alcidae,rocky 
 seabirds,specialisation,within_stage_dependent_habitats_condition,alcidae,sea ice edge,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,anatidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,anatidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,anatidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,anatidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,anatidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,anatidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,anatidae,unknown,50,1
 seabirds,biophysical_traits,flight,anatidae,yes,50,1
@@ -33368,7 +33395,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,anatidae,surfa
 seabirds,specialisation,within_stage_dependent_habitats_condition,anatidae,deep water,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,anatidae,sea ice edge,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,aphrodroma,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,aphrodroma,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,aphrodroma,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,aphrodroma,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,aphrodroma,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,aphrodroma,unknown,50,1
 seabirds,biophysical_traits,flight,aphrodroma,yes,50,1
@@ -33422,7 +33450,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,aphrodroma,sur
 seabirds,specialisation,within_stage_dependent_habitats_condition,aphrodroma,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,ardenna,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,ardenna,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,ardenna,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,ardenna,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,ardenna,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,ardenna,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,ardenna,unknown,50,1
 seabirds,biophysical_traits,flight,ardenna,yes,50,1
@@ -33476,7 +33505,8 @@ seabirds,specialisation,terrestrial_and_marine_life_stages,ardenna,yes,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,ardenna,surface water,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,ardenna,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,bulweria,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,bulweria,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,bulweria,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,bulweria,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,bulweria,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,bulweria,unknown,50,1
 seabirds,biophysical_traits,flight,bulweria,yes,50,1
@@ -33530,7 +33560,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,bulweria,surfa
 seabirds,specialisation,within_stage_dependent_habitats_condition,bulweria,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,calonectris,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,calonectris,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,calonectris,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,calonectris,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,calonectris,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,calonectris,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,calonectris,unknown,50,1
 seabirds,biophysical_traits,flight,calonectris,yes,50,1
@@ -33585,7 +33616,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,calonectris,su
 seabirds,specialisation,within_stage_dependent_habitats_condition,calonectris,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,chlidonias,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,chlidonias,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,chlidonias,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,chlidonias,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,chlidonias,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,chlidonias,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,chlidonias,unknown,50,1
 seabirds,biophysical_traits,flight,chlidonias,yes,50,1
@@ -33646,7 +33678,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,chlidonias,bea
 seabirds,specialisation,within_stage_dependent_habitats_condition,chlidonias,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,chroicocephalus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,chroicocephalus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,chroicocephalus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,chroicocephalus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,chroicocephalus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,chroicocephalus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,chroicocephalus,unknown,50,1
 seabirds,biophysical_traits,flight,chroicocephalus,yes,50,1
@@ -33709,7 +33742,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,chroicocephalu
 seabirds,specialisation,within_stage_dependent_habitats_condition,chroicocephalus,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,creagrus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,creagrus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,creagrus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,creagrus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,creagrus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,creagrus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,creagrus,unknown,50,1
 seabirds,biophysical_traits,flight,creagrus,yes,50,1
@@ -33771,7 +33805,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,creagrus,beach
 seabirds,specialisation,within_stage_dependent_habitats_condition,creagrus,rocky intertidal,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,creagrus,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,daption,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,daption,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,daption,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,daption,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,daption,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,daption,unknown,50,1
 seabirds,biophysical_traits,flight,daption,yes,50,1
@@ -33824,7 +33859,8 @@ seabirds,specialisation,terrestrial_and_marine_life_stages,daption,yes,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,daption,surface water,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,daption,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,diomedeidae,>1000mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,diomedeidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,diomedeidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,diomedeidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,diomedeidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,diomedeidae,unknown,50,1
 seabirds,biophysical_traits,flight,diomedeidae,yes,50,1
@@ -33876,7 +33912,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,diomedeidae,su
 seabirds,specialisation,within_stage_dependent_habitats_condition,diomedeidae,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,fregatidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,fregatidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,fregatidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,fregatidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,fregatidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,fregatidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,fregatidae,unknown,50,1
 seabirds,biophysical_traits,flight,fregatidae,yes,50,1
@@ -33933,7 +33970,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,fregatidae,dee
 seabirds,specialisation,within_stage_dependent_habitats_condition,fregatidae,beach,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,fulmarus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,fulmarus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,fulmarus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,fulmarus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,fulmarus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,fulmarus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,fulmarus,unknown,50,1
 seabirds,biophysical_traits,flight,fulmarus,yes,50,1
@@ -33988,7 +34026,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,fulmarus,surfa
 seabirds,specialisation,within_stage_dependent_habitats_condition,fulmarus,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,gaviidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,gaviidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,gaviidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,gaviidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,gaviidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,gaviidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,gaviidae,unknown,50,1
 seabirds,biophysical_traits,flight,gaviidae,yes,50,1
@@ -34047,7 +34086,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,gaviidae,deep 
 seabirds,specialisation,within_stage_dependent_habitats_condition,gaviidae,sea ice edge,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,gelochelidon,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,gelochelidon,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,gelochelidon,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,gelochelidon,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,gelochelidon,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,gelochelidon,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,gelochelidon,unknown,50,1
 seabirds,biophysical_traits,flight,gelochelidon,yes,50,1
@@ -34107,7 +34147,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,gelochelidon,d
 seabirds,specialisation,within_stage_dependent_habitats_condition,gelochelidon,beach,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,gelochelidon,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,halobaena,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,halobaena,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,halobaena,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,halobaena,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,halobaena,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,halobaena,unknown,50,1
 seabirds,biophysical_traits,flight,halobaena,yes,50,1
@@ -34160,7 +34201,8 @@ seabirds,specialisation,terrestrial_and_marine_life_stages,halobaena,yes,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,halobaena,surface water,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,halobaena,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,hydrobatidae,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,hydrobatidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,hydrobatidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,hydrobatidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,hydrobatidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,hydrobatidae,unknown,50,1
 seabirds,biophysical_traits,flight,hydrobatidae,yes,50,1
@@ -34216,7 +34258,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,hydrobatidae,s
 seabirds,specialisation,within_stage_dependent_habitats_condition,hydrobatidae,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,hydrocoloeus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,hydrocoloeus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,hydrocoloeus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,hydrocoloeus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,hydrocoloeus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,hydrocoloeus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,hydrocoloeus,unknown,50,1
 seabirds,biophysical_traits,flight,hydrocoloeus,yes,50,1
@@ -34279,7 +34322,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,hydrocoloeus,r
 seabirds,specialisation,within_stage_dependent_habitats_condition,hydrocoloeus,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,hydroprogne,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,hydroprogne,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,hydroprogne,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,hydroprogne,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,hydroprogne,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,hydroprogne,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,hydroprogne,unknown,50,1
 seabirds,biophysical_traits,flight,hydroprogne,yes,50,1
@@ -34340,7 +34384,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,hydroprogne,be
 seabirds,specialisation,within_stage_dependent_habitats_condition,hydroprogne,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,ichthyaetus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,ichthyaetus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,ichthyaetus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,ichthyaetus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,ichthyaetus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,ichthyaetus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,ichthyaetus,unknown,50,1
 seabirds,biophysical_traits,flight,ichthyaetus,yes,50,1
@@ -34403,7 +34448,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,ichthyaetus,ro
 seabirds,specialisation,within_stage_dependent_habitats_condition,ichthyaetus,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,larosterna,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,larosterna,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,larosterna,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,larosterna,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,larosterna,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,larosterna,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,larosterna,unknown,50,1
 seabirds,biophysical_traits,flight,larosterna,yes,50,1
@@ -34464,7 +34510,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,larosterna,bea
 seabirds,specialisation,within_stage_dependent_habitats_condition,larosterna,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,larus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,larus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,larus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,larus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,larus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,larus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,larus,unknown,50,1
 seabirds,biophysical_traits,flight,larus,yes,50,1
@@ -34527,7 +34574,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,larus,rocky in
 seabirds,specialisation,within_stage_dependent_habitats_condition,larus,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,leucophaeus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,leucophaeus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,leucophaeus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,leucophaeus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,leucophaeus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,leucophaeus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,leucophaeus,unknown,50,1
 seabirds,biophysical_traits,flight,leucophaeus,yes,50,1
@@ -34590,7 +34638,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,leucophaeus,ro
 seabirds,specialisation,within_stage_dependent_habitats_condition,leucophaeus,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,macronectes,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,macronectes,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,macronectes,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,macronectes,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,macronectes,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,macronectes,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,macronectes,unknown,50,1
 seabirds,biophysical_traits,flight,macronectes,yes,50,1
@@ -34644,7 +34693,8 @@ seabirds,specialisation,terrestrial_and_marine_life_stages,macronectes,yes,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,macronectes,surface water,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,macronectes,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,oceanitidae,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,oceanitidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,oceanitidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,oceanitidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,oceanitidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,oceanitidae,unknown,50,1
 seabirds,biophysical_traits,flight,oceanitidae,yes,50,1
@@ -34700,7 +34750,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,oceanitidae,su
 seabirds,specialisation,within_stage_dependent_habitats_condition,oceanitidae,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,onychoprion,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,onychoprion,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,onychoprion,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,onychoprion,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,onychoprion,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,onychoprion,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,onychoprion,unknown,50,1
 seabirds,biophysical_traits,flight,onychoprion,yes,50,1
@@ -34760,7 +34811,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,onychoprion,de
 seabirds,specialisation,within_stage_dependent_habitats_condition,onychoprion,beach,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,onychoprion,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,pachyptila,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,pachyptila,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,pachyptila,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,pachyptila,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,pachyptila,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,pachyptila,unknown,50,1
 seabirds,biophysical_traits,flight,pachyptila,yes,50,1
@@ -34813,7 +34865,8 @@ seabirds,specialisation,terrestrial_and_marine_life_stages,pachyptila,yes,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,pachyptila,surface water,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,pachyptila,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,pagodroma,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,pagodroma,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,pagodroma,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,pagodroma,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,pagodroma,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,pagodroma,unknown,50,1
 seabirds,biophysical_traits,flight,pagodroma,yes,50,1
@@ -34867,7 +34920,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,pagodroma,surf
 seabirds,specialisation,within_stage_dependent_habitats_condition,pagodroma,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,pagophila,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,pagophila,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,pagophila,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,pagophila,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,pagophila,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,pagophila,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,pagophila,unknown,50,1
 seabirds,biophysical_traits,flight,pagophila,yes,50,1
@@ -34930,7 +34984,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,pagophila,rock
 seabirds,specialisation,within_stage_dependent_habitats_condition,pagophila,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,pelecanidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,pelecanidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,pelecanidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,pelecanidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,pelecanidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,pelecanidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,pelecanidae,unknown,50,1
 seabirds,biophysical_traits,flight,pelecanidae,yes,50,1
@@ -34993,7 +35048,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,pelecanidae,be
 seabirds,specialisation,within_stage_dependent_habitats_condition,pelecanidae,rocky intertidal,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,pelecanidae,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,pelecanoides,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,pelecanoides,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,pelecanoides,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,pelecanoides,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,pelecanoides,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,pelecanoides,unknown,50,1
 seabirds,biophysical_traits,flight,pelecanoides,yes,50,1
@@ -35047,7 +35103,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,pelecanoides,s
 seabirds,specialisation,within_stage_dependent_habitats_condition,pelecanoides,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,phaethontidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,phaethontidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,phaethontidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,phaethontidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,phaethontidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,phaethontidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,phaethontidae,unknown,50,1
 seabirds,biophysical_traits,flight,phaethontidae,yes,50,1
@@ -35104,7 +35161,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,phaethontidae,
 seabirds,specialisation,within_stage_dependent_habitats_condition,phaethontidae,beach,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,phaetusa,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,phaetusa,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,phaetusa,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,phaetusa,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,phaetusa,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,phaetusa,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,phaetusa,unknown,50,1
 seabirds,biophysical_traits,flight,phaetusa,yes,50,1
@@ -35165,7 +35223,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,phaetusa,beach
 seabirds,specialisation,within_stage_dependent_habitats_condition,phaetusa,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,phalacrocoracidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,phalacrocoracidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,phalacrocoracidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,phalacrocoracidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,phalacrocoracidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,phalacrocoracidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,phalacrocoracidae,unknown,50,1
 seabirds,biophysical_traits,flight,phalacrocoracidae,yes,50,1
@@ -35229,7 +35288,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,phalacrocoraci
 seabirds,specialisation,within_stage_dependent_habitats_condition,phalacrocoracidae,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,podicipedidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,podicipedidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,podicipedidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,podicipedidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,podicipedidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,podicipedidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,podicipedidae,unknown,50,1
 seabirds,biophysical_traits,flight,podicipedidae,yes,50,1
@@ -35288,7 +35348,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,podicipedidae,
 seabirds,specialisation,within_stage_dependent_habitats_condition,podicipedidae,sea ice edge,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,procellaria,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,procellaria,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,procellaria,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,procellaria,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,procellaria,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,procellaria,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,procellaria,unknown,50,1
 seabirds,biophysical_traits,flight,procellaria,yes,50,1
@@ -35343,7 +35404,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,procellaria,su
 seabirds,specialisation,within_stage_dependent_habitats_condition,procellaria,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,pseudobulweria,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,pseudobulweria,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,pseudobulweria,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,pseudobulweria,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,pseudobulweria,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,pseudobulweria,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,pseudobulweria,unknown,50,1
 seabirds,biophysical_traits,flight,pseudobulweria,yes,50,1
@@ -35398,7 +35460,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,pseudobulweria
 seabirds,specialisation,within_stage_dependent_habitats_condition,pseudobulweria,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,pterodroma,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,pterodroma,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,pterodroma,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,pterodroma,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,pterodroma,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,pterodroma,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,pterodroma,unknown,50,1
 seabirds,biophysical_traits,flight,pterodroma,yes,50,1
@@ -35453,7 +35516,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,pterodroma,sur
 seabirds,specialisation,within_stage_dependent_habitats_condition,pterodroma,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,puffinus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,puffinus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,puffinus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,puffinus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,puffinus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,puffinus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,puffinus,unknown,50,1
 seabirds,biophysical_traits,flight,puffinus,yes,50,1
@@ -35508,7 +35572,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,puffinus,surfa
 seabirds,specialisation,within_stage_dependent_habitats_condition,puffinus,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,rhodostethia,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,rhodostethia,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,rhodostethia,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,rhodostethia,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,rhodostethia,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,rhodostethia,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,rhodostethia,unknown,50,1
 seabirds,biophysical_traits,flight,rhodostethia,yes,50,1
@@ -35571,7 +35636,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,rhodostethia,r
 seabirds,specialisation,within_stage_dependent_habitats_condition,rhodostethia,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,rissa,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,rissa,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,rissa,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,rissa,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,rissa,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,rissa,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,rissa,unknown,50,1
 seabirds,biophysical_traits,flight,rissa,yes,50,1
@@ -35633,7 +35699,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,rissa,beach,50
 seabirds,specialisation,within_stage_dependent_habitats_condition,rissa,rocky intertidal,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,rissa,mangrove,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,scolopacidae,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,scolopacidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,scolopacidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,scolopacidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,scolopacidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,scolopacidae,unknown,50,1
 seabirds,biophysical_traits,flight,scolopacidae,yes,50,1
@@ -35679,7 +35746,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,scolopacidae,s
 seabirds,specialisation,within_stage_dependent_habitats_condition,scolopacidae,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,spheniscidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,spheniscidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,spheniscidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,spheniscidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,spheniscidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,spheniscidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,spheniscidae,unknown,50,1
 seabirds,biophysical_traits,flight,spheniscidae,no,50,1
@@ -35746,7 +35814,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,spheniscidae,b
 seabirds,specialisation,within_stage_dependent_habitats_condition,spheniscidae,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,stercorariidae,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,stercorariidae,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,stercorariidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,stercorariidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,stercorariidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,stercorariidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,stercorariidae,unknown,50,1
 seabirds,biophysical_traits,flight,stercorariidae,yes,50,1
@@ -35799,7 +35868,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,stercorariidae
 seabirds,specialisation,within_stage_dependent_habitats_condition,stercorariidae,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,sterna,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,sterna,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,sterna,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,sterna,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,sterna,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,sterna,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,sterna,unknown,50,1
 seabirds,biophysical_traits,flight,sterna,yes,50,1
@@ -35860,7 +35930,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,sterna,beach,5
 seabirds,specialisation,within_stage_dependent_habitats_condition,sterna,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,sternula,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,sternula,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,sternula,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,sternula,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,sternula,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,sternula,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,sternula,unknown,50,1
 seabirds,biophysical_traits,flight,sternula,yes,50,1
@@ -35920,7 +35991,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,sternula,deep 
 seabirds,specialisation,within_stage_dependent_habitats_condition,sternula,beach,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,sternula,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,sulidae,>1000mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,sulidae,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,sulidae,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,sulidae,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,sulidae,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,sulidae,unknown,50,1
 seabirds,biophysical_traits,flight,sulidae,yes,50,1
@@ -35975,7 +36047,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,sulidae,deep w
 seabirds,specialisation,within_stage_dependent_habitats_condition,sulidae,beach,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,thalasseus,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,thalasseus,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,thalasseus,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,thalasseus,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,thalasseus,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,thalasseus,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,thalasseus,unknown,50,1
 seabirds,biophysical_traits,flight,thalasseus,yes,50,1
@@ -36035,7 +36108,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,thalasseus,dee
 seabirds,specialisation,within_stage_dependent_habitats_condition,thalasseus,beach,50,1
 seabirds,specialisation,within_stage_dependent_habitats_condition,thalasseus,rocky intertidal,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,thalassoica,50mm-999mm,50,1
-seabirds,biophysical_traits,calcium_carbonate_structure_location,thalassoica,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,thalassoica,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,thalassoica,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,thalassoica,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,thalassoica,unknown,50,1
 seabirds,biophysical_traits,flight,thalassoica,yes,50,1
@@ -36089,7 +36163,8 @@ seabirds,specialisation,within_stage_dependent_habitats_condition,thalassoica,su
 seabirds,specialisation,within_stage_dependent_habitats_condition,thalassoica,deep water,50,1
 seabirds,biophysical_traits,adult_body_mass_body_size,xema,50mm-999mm,50,0.5
 seabirds,biophysical_traits,adult_body_mass_body_size,xema,>1000mm,50,0.5
-seabirds,biophysical_traits,calcium_carbonate_structure_location,xema,external,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_location,xema,none,50,1
+seabirds,biophysical_traits,calcium_carbonate_structure_stages,xema,none,50,1
 seabirds,biophysical_traits,communication_requirement_sound,xema,yes,50,1
 seabirds,biophysical_traits,extreme_pressure_wave_sensitive_structures,xema,unknown,50,1
 seabirds,biophysical_traits,flight,xema,yes,50,1
@@ -36156,12 +36231,13 @@ sponges,biophysical_traits,biomineral,demospongiae,silicate,1,1
 sponges,biophysical_traits,calcium_carbonate_structure_location,demospongiae,none,1,1
 sponges,biophysical_traits,calcium_carbonate_structure_stages,demospongiae,none,1,1
 sponges,biophysical_traits,communication_requirement_sound,demospongiae,no,1,1
-sponges,biophysical_traits,extreme_pressure_wave_sensitive_structures,demospongiae,medium,1,1
+sponges,biophysical_traits,extreme_pressure_wave_sensitive_structures,demospongiae,low,1,1
 sponges,biophysical_traits,flight,demospongiae,no,1,1
-sponges,biophysical_traits,navigation_requirements_light,demospongiae,yes,1,1
+sponges,biophysical_traits,respiration_structures,demospongiae,filter feeders,1,1
 sponges,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,demospongiae,does not aggregate,1,1
 sponges,movement,adult_mobility,demospongiae,sessile,1,1
 sponges,movement,planktonic_larval_duration_pld_exposure,demospongiae,<1day,1,1
+sponges,physiological_tolerance_breadths,ph,demospongiae,7.8-8.2,1,1
 sponges,physiological_tolerance_breadths,salinity,demospongiae,euryhaline,1,1
 sponges,physiological_tolerance_breadths,sensitivity_to_wave_energy_physical_forcing,demospongiae,sensitive,1,1
 sponges,physiological_tolerance_breadths,thermal_sensitivity_to_heat_spikes_heat_waves,demospongiae,no,1,1
