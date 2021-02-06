@@ -1,0 +1,207 @@
+---
+title: "Untitled"
+author: "Casey O'Hara"
+date: "2/5/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+\newcommand{\EE}{\mathbb E}
+
+Determine expected value of a sequence of observations, which are divided into two chunks:
+$$\mathbf z = {x_1, ..., x_m, y_1, ..., y_n}$$
+Later, the first chunk (x) will represent a bunch of observations without their own individual standard deviations, while the second chunk (y) will represent an observation with a standard deviation.
+\begin{align*}
+  \bar z = \EE[z] &= \frac{1}{n+m}\left[ \sum_{i=1}^m x_i + \sum_{j=1}^n y_j \right]\\
+    &= \frac{m}{n+m}\EE [x] + \frac{n}{n+m}\EE [y]
+\end{align*}
+where
+$$\EE[x] = \frac{1}{m} \sum_{i=1}^m x_i \quad \text{and} \quad \EE[y] = \frac{1}{n} \sum_{j=1}^n y_j$$
+
+Break down variance:
+\begin{align*}
+  \EE[(z - \bar z)^2] &= \frac{1}{n+m}\left[ \sum_{i=1}^m (x_i - \bar z)^2 + \sum_{j=1}^n (y_j - \bar z)^2 \right]\\
+    &= \frac{1}{n+m}\left[ \sum_{i=1}^m (x_i^2 - 2x_i \bar z + \bar z^2) + (\text{y terms}) \right]\\
+    &= \frac{1}{n+m}\left[ \sum_{i=1}^m (x_i^2 - 2x_i \bar z + \bar z^2) \right] + 
+        \frac{1}{n+m}(\text{y terms})
+\end{align*}
+
+### Expand terms
+
+Focusing on x terms for now, expand them:
+\begin{align*}
+  &= \frac{1}{n+m}\sum_{i=1}^m (x_i^2) - \frac{2\bar z}{n+m}\sum_{i=1}^m x_i  + 
+      \frac{m}{n+m}\bar z^2\\
+  &= \frac{m}{n+m}\EE[x^2] - \frac{2m}{n+m}\EE[x]\EE[z] + 
+      \frac{m}{n+m}E[z]^2 \\
+\end{align*}
+
+Pull out $\frac{m}{n+m}$ - don't forget to put it back! - and then expand out the $\EE[z]$ terms.  Let's also define  $\alpha_m = \frac{m}{n+m}$ and $\alpha_n = \frac{n}{n+m}$
+\begin{align*}
+  &= \EE[x^2] - 2\EE[x]\EE[z] + E[z]^2 \\
+  &= \EE[x^2] - 2\EE[x] (\alpha_m \EE[x] + \alpha_n\EE[y]) 
+      + (\alpha_m \EE[x] + \alpha_n \EE[y])^2\\
+  &= \EE[x^2] - (2\alpha_m \EE[x]^2 + 2\alpha_n \EE[x] \EE[y]) 
+      + (\alpha_m^2 \EE[x]^2 + \alpha_n^2 \EE[y]^2
+      + 2\alpha_m\alpha_n \EE[x]\EE[y])\\
+\end{align*}
+
+Now let's do the same for the y terms:
+\begin{align*}
+  &= \frac{1}{n+m}\sum_{j=1}^n (y_j^2) - \frac{2\bar z}{n+m}\sum_{j=1}^n y_j  + 
+      \frac{n}{n+m}\bar z^2\\
+  &= \frac{n}{n+m}\EE[y^2] - \frac{2n}{n+m}\EE[y]\EE[z] + 
+      \frac{n}{n+m}E[y]^2 \\
+  &= \alpha_n \EE[y^2] - 2\alpha_n \EE[y]\EE[z] + 
+      \alpha_n E[y]^2 \\
+\end{align*}
+
+By symmetry with the x terms, we can pull out the common $\alpha_n$ term here and find:
+\begin{align*}
+  &= \EE[y^2] - 2\EE[y]\EE[z] + E[z]^2 \\
+  &= \EE[y^2] - 2\EE[y] (\alpha_m \EE[x] + \alpha_n \EE[y]) 
+      + (\alpha_m \EE[x] + \alpha_n \EE[y])^2\\
+  &= \EE[y^2] - (2\alpha_m \EE[x]\EE[y] + 2\alpha_n \EE[y]^2) 
+      + (\alpha_m^2 \EE[x]^2 + \alpha_n^2 \EE[y]^2
+      + 2\alpha_n\alpha_m \EE[x]\EE[y])\\
+\end{align*}
+
+### Combine terms
+
+Reintroduce the $\alpha_m$ and $\alpha_n$ factors, add the x and y terms, and group common terms.
+\begin{align*}
+  \text{Var}(z) &= \alpha_n [\EE[y^2] - (2\alpha_m \EE[x]\EE[y] + 2\alpha_n \EE[y]^2) 
+      + (\alpha_m^2 \EE[x]^2 + \alpha_n^2 \EE[y]^2
+      + 2\alpha_n\alpha_m \EE[x]\EE[y]) ]\\
+    &\quad + \alpha_m [\EE[x^2] - (2\alpha_m \EE[x]^2 + 2\alpha_n \EE[x]\EE[y]) 
+      + (\alpha_m^2 \EE[x]^2 + \alpha_n^2 \EE[y]^2
+      + 2\alpha_m\alpha_n \EE[x]\EE[y])]\\
+  \Rightarrow \text{Var}(z) &= \alpha_m \EE[x^2] + \alpha_n \EE[y^2]\\
+    &\quad - 2\alpha_m\alpha_n\EE[x]\EE[y] - 2\alpha_n^2\EE[y]^2\\
+    &\quad - 2\alpha_m\alpha_n\EE[x]\EE[y] - 2\alpha_m^2\EE[x]^2\\
+    &\quad + \alpha_n\alpha_m^2\EE[x]^2 + \alpha_n^3\EE[y]^2 + 2\alpha_n^2\alpha_m\EE[x]\EE[y]\\
+    &\quad + \alpha_m^3\EE[x]^2 + \alpha_n^2\alpha_m\EE[y]^2 + 2\alpha_n\alpha_m^2\EE[x]\EE[y]
+\end{align*}
+
+Ugh!  Combine and simplify terms:
+\begin{align*}
+  \text{Var}(z) &= \alpha_m \EE[x^2] + \alpha_n \EE[y^2]\\
+    &\quad - 2\alpha_n^2\EE[y]^2 - 2\alpha_m^2\EE[x]^2\\
+    &\quad - 4\alpha_m\alpha_n\EE[x]\EE[y] + 2\alpha_n^2\alpha_m\EE[x]\EE[y] + 2\alpha_n\alpha_m^2\EE[x]\EE[y]\\
+    &\quad + \alpha_n\alpha_m^2\EE[x]^2 + \alpha_m^3\EE[x]^2\\
+    &\quad + \alpha_n^2\alpha_m\EE[y]^2 + \alpha_n^3\EE[y]^2\\
+  \Rightarrow  \text{Var}(z) &= \alpha_m \EE[x^2] + \alpha_n \EE[y^2] \\
+    &\quad - 2\alpha_n^2\EE[y]^2 - 2\alpha_m^2\EE[x]^2\\
+    &\quad + 2\alpha_m\alpha_n (\alpha_n + \alpha_m - 2)\EE[x]\EE[y] \\
+    &\quad + \alpha_m^2(\alpha_n + \alpha_m)\EE[x]^2\\
+    &\quad + \alpha_n^2(\alpha_m + \alpha_n)\EE[y]^2
+\end{align*}
+
+Noting that $\alpha_m + \alpha_n = 1$:
+\begin{align*}
+  \text{Var}(z) &= \alpha_m \EE[x^2] + \alpha_n \EE[y^2] \\
+    &\quad - 2\alpha_n^2\EE[y]^2 - 2\alpha_m^2\EE[x]^2\\
+    &\quad - 2\alpha_m\alpha_n \EE[x]\EE[y] \\
+    &\quad + \alpha_m^2\EE[x]^2 + \alpha_n^2\EE[y]^2\\
+  \Rightarrow \text{Var}(z) &= \alpha_m \EE[x^2] + \alpha_n \EE[y^2] \\
+    &\quad - (\alpha_m^2\EE[x]^2 + 2\alpha_m\alpha_n \EE[x]\EE[y] + \alpha_n^2\EE[y]^2)\\
+  \Rightarrow \text{Var}(z) &= \alpha_m (\EE[x^2] -\EE[x]^2 + \alpha_n\EE[x]^2)\\
+    &\quad + \alpha_n (\EE[y^2] - \EE[y]^2 + \alpha_m\EE[y]^2)\\
+    &\quad - 2\alpha_m\alpha_n \EE[x]\EE[y]\\
+  \Rightarrow \text{Var}(z) &= \alpha_m (\text{Var}(x) + \alpha_n\EE[x]^2)\\
+    &\quad + \alpha_n (\text{Var}(y) + \alpha_m\EE[y]^2)\\
+    &\quad - 2\alpha_m\alpha_n \EE[x]\EE[y]\\
+\end{align*}
+
+## Try it with two vectors
+```{r}
+set.seed(42)
+m <- sample(50:100, size = 1)
+n <- sample(50:100, size = 1)
+am <- m/(n+m); an <- n/(n+m)
+
+x <- rnorm(m, mean = 1, sd = .2)
+y <- rnorm(n, mean = 3, sd = .4)
+
+z <- c(x, y)
+
+# mean(x); mean(y) # 1.006503; 1.009409
+## [1] 1.002505
+## [1] 2.965291
+# sd(x); sd(y) #
+## [1] 0.2082249
+## [1] 0.3573423
+mean(z)  ### [1] 1.919894
+am*mean(x) + an*mean(y) ### [1] 1.919894
+
+calc_var <- function(x, y, sd_y = NULL) {
+  m <- length(x); n <- length(y)
+  am <- m/(n+m); an <- n/(m+n)
+  
+  z <- c(x, y)
+  Ez <- mean(z);  Ez2 <- mean(z^2)
+  Ex <- mean(x);  Ex2 <- mean(x^2)
+  Ey <- mean(y);  Ey2 <- mean(y^2)
+  if(is.null(sd_y)) {
+    if(length(y) == 1) stop('Length of y must be greater than 1, or else a sd_y supplied')
+    sd_y <- sqrt(var(y))
+    n_adj <- (n-1)/n
+  } else {
+    n_adj <- 1
+  }
+  
+  # result1 <- am*(Ex2 - Ex^2 + an*Ex^2) 
+  # result2 <- an*(Ey2 - Ey^2 + am*Ey^2) 
+  # result3 <- -2*am*an*Ex*Ey
+  result1 <- am*(var(x)*(m-1)/m + an*Ex^2) 
+  result2 <- an*(sd_y^2*n_adj + am*Ey^2) 
+  result3 <- -2*am*an*Ex*Ey
+
+  result <- result1+result2+result3
+  
+  unbiased <- result * (n+m)/(n+m-1)
+}
+(calc_var(x, y))
+var(z)
+```
+
+
+``` {r}
+set.seed(42)
+n_vec <- c(2:4, seq(5, 25, 2), seq(25, 100, 5))
+mu_x <- 3; sd_x <- 1
+mu_y <- 2; sd_y <- .7
+
+out_vec <- vector('numeric', length = length(n_vec))
+for(j in seq_along(n_vec)) {
+    
+  x <- rnorm(n = n_vec[j], mean = mu_x, sd = sd_x)
+  
+  iters <- 2.5e4
+  varvec <- vector('numeric', length = iters)
+  
+  for(i in 1:iters) {
+    y_sample <- rnorm(1, mean = mu_y, sd = sd_y)
+    var_z <- var(c(x, y_sample))
+    varvec[i] <- var_z
+  }
+  
+  qwer1 <- sqrt(mean(varvec)) # 1.089077
+  
+  qwer2 <- sqrt(calc_var(x, mu_y, sd_y = sd_y)) # 1.089035
+  qwerpctdiff <- (qwer2 - qwer1) / qwer1
+  out_vec[j] <- qwerpctdiff
+}
+
+df <- data.frame(n_x = n_vec, pct_diff = out_vec)
+
+ggplot(df, aes(x = n_x, y = pct_diff)) +
+  geom_line() +
+  geom_vline(xintercept = 5, color = 'red')
+```
+
