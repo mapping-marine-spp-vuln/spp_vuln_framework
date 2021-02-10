@@ -22,7 +22,7 @@ physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c,20c,30c,20c
 r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,<1yr,<1yr,1-5yrs
 r (reproductive traits),are there sub-populations?,yes,NA,likely;unknown,yes
-r (reproductive traits),can the sex ratio be altered by a stressor?,no,no,unknown,no
+r (reproductive traits),can the sex ratio be altered by temperature?,no,no,unknown,no
 r (reproductive traits),fecundity,100-1000,1-2;2-5;5-10;<1,1000-10000;>10000,100-1000
 r (reproductive traits),global population size,100k-1m;>1m,100k-1m;>1m,>1m,100k-1m;>1m
 r (reproductive traits),lifetime # reproductive opportunities,>100,>100;1,>100,>100

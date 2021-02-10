@@ -205,12 +205,20 @@ spp_sens_raw <- str_sens_trait_scores %>%
   left_join(spp_traits_hab_fixed, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor) & !is.na(taxon))
 
+spp_sens_biomass_removal <- spp_sens_raw %>%
+  select(taxon, spp_gp) %>%
+  distinct() %>%
+  mutate(stressor = 'biomass_removal',
+         sens_score = 1)
+
 spp_sens <- spp_sens_raw %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
   summarize(sens_score = sum(sens_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
   summarize(sens_score = sum(sens_score, na.rm = TRUE)) %>%
-  ungroup()
+  ungroup() %>%
+  bind_rows(spp_sens_biomass_removal)
+  
 ```
 
 ### Check matching
@@ -344,12 +352,19 @@ spp_adcap_spec_raw <- spp_traits %>%
   filter(!is.na(stressor)) %>%
   select(-n_spp_gps, -adcap_score, -adcap_score_orig)
 
+spp_adcap_spec_biomass_removal <- spp_adcap_spec_raw %>%
+  select(taxon, spp_gp) %>%
+  distinct() %>%
+  mutate(stressor = 'biomass_removal',
+         adcap_spec_score = 0)
+
 spp_adcap_spec <- spp_adcap_spec_raw %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
   summarize(adcap_spec_score = sum(adcap_spec_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
   summarize(adcap_spec_score = sum(adcap_spec_score, na.rm = TRUE)) %>%
-  ungroup()
+  ungroup() %>%
+  bind_rows(spp_adcap_spec_biomass_removal)
 
 # hist(spp_adcap_spec$adcap_spec_score)
 # median(spp_adcap_spec$adcap_spec_score); mean(spp_adcap_spec$adcap_spec_score); sd(spp_adcap_spec$adcap_spec_score)
@@ -422,14 +437,25 @@ exp_traits <- exp_traits_raw %>%
          exp_score = assign_rank_scores(exp_score)) %>%
   clean_traitnames()
 
-spp_exposure <- spp_traits %>%
+
+spp_exposure_raw <- spp_traits %>%
   full_join(exp_traits, by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(stressor)) %>%
   group_by(spp_gp, stressor, taxon) %>%
   summarize(exposure_mod = as.integer(sum(exp_score, na.rm = TRUE) > 0)) %>%
-  ungroup()  %>%
+  ungroup() %>%
   arrange(stressor, taxon)
   
+
+spp_exposure_biomass_removal <- spp_exposure_raw %>%
+  select(spp_gp, taxon) %>%
+  distinct() %>%
+  mutate(stressor = 'biomass_removal',
+         exposure_mod = 1)
+
+spp_exposure <- spp_exposure_raw %>%
+  bind_rows(spp_exposure_biomass_removal)
+
 non_exposures <- spp_exposure %>% 
   group_by(taxon, stressor) %>% 
   mutate(n_gps = n_distinct(spp_gp)) %>%
@@ -578,6 +604,8 @@ spp_scores_det <- spp_scores_mean %>%
 ### possible combos for that spp group.  For most, only a handful.  But
 ### for spheniscidae, thousands!
 
+set.seed(42)
+
 spp_mc <- spp_sens %>%
   filter(!spp_gp %in% spp_deterministic) %>%
   .$spp_gp %>% unique()
@@ -589,7 +617,8 @@ for(i in seq_along(spp_mc)) {
   spp <- spp_mc[i]
   traits <- spp_traits %>%
     filter(spp_gp == spp) %>%
-    select(-n_spp_gps)
+    select(-n_spp_gps) %>%
+    bind_rows(data.frame(trait = 'biomass_trait', trait_value = 'whatevs', trait_prob = 1))
   taxon <- traits$taxon[1]
 
   ### separate out single and non-mutually-exclusive traits; include all values
@@ -600,15 +629,20 @@ for(i in seq_along(spp_mc)) {
     filter(trait_prob != 1) 
   
   ### filter sens and adcap dfs out of the loop
-  sens_raw_tmp <- spp_sens_raw %>% 
+  sens_clean <- spp_sens_raw %>% 
     filter(spp_gp == spp) %>%
-    select(trait, trait_value, sens_score, stressor)
-  acg_raw_tmp <- spp_adcap_gen_raw %>% 
+    select(trait, trait_value, sens_score, stressor) %>%
+    bind_rows(data.frame(trait = 'biomass_trait', trait_value = 'whatevs',
+                         sens_score = 1, stressor = 'biomass_removal'))
+  acg_clean <- spp_adcap_gen_raw %>% 
     filter(spp_gp == spp) %>%
     select(trait, trait_value, adcap_gen_score)
-  acs_raw_tmp <- spp_adcap_spec_raw %>% 
+
+  acs_clean <- spp_adcap_spec_raw %>% 
     filter(spp_gp == spp) %>%
-    select(trait, trait_value, adcap_spec_score, stressor)
+    select(trait, trait_value, adcap_spec_score, stressor) %>%
+    bind_rows(data.frame(trait = 'biomass_trait', trait_value = 'whatevs',
+                         adcap_spec_score = 0, stressor = 'biomass_removal'))
   
   n_combos <- trait_multi %>%
     group_by(trait) %>%
@@ -617,7 +651,7 @@ for(i in seq_along(spp_mc)) {
     summarize(n_combos = prod(n_vals)) %>%
     .$n_combos
     
-  iters <- max(100, n_combos * 2)
+  iters <- max(100, n_combos * 4)
   message('Processing ', i, ' of ', length(spp_mc), ': ', spp, 
           ' (running ', iters, ' iterations for ', n_combos, ' permutations)')
   
@@ -627,17 +661,17 @@ for(i in seq_along(spp_mc)) {
           bind_rows(traits_det)
       
         spp_sens_sample <- trait_sample %>%
-          left_join(sens_raw_tmp, by = c('trait', 'trait_value')) %>%
+          inner_join(sens_clean, by = c('trait', 'trait_value')) %>%
           group_by(stressor) %>%
           summarize(sens_score = sum(sens_score)) %>%
           filter(!is.na(stressor))
         spp_adcap_spec_sample <- trait_sample %>%
-          left_join(acs_raw_tmp, by = c('trait', 'trait_value')) %>%
+          inner_join(acs_clean, by = c('trait', 'trait_value')) %>%
           group_by(stressor) %>%
           summarize(adcap_spec_score = sum(adcap_spec_score)) %>%
           filter(!is.na(stressor))
         spp_adcap_gen_sample <- trait_sample %>%
-          left_join(acg_raw_tmp, by = c('trait', 'trait_value')) %>%
+          inner_join(acg_clean, by = c('trait', 'trait_value')) %>%
           summarize(adcap_gen_score = sum(adcap_gen_score)) %>%
           .$adcap_gen_score
     

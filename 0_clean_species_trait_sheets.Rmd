@@ -84,16 +84,13 @@ clean_trait <- function(x, drop_parens = TRUE) {
 Process Nat's key to create a final key.  Add an "unknown" value for all traits, to catch explicitly stated unknown values.
 
 ```{r}
-traitvals_df_raw <- readxl::read_excel(here('_raw_data/xlsx/trait_val_key.xlsx')) %>%
-  janitor::clean_names() %>%
+traitvals_df_raw <- read_csv(here('_raw_data/trait_val_key.csv')) %>%
   select(category, trait, trait_value = trait_vals) %>%
   filter(!(is.na(category) & is.na(trait))) %>%
-  fill(category, .direction = 'down') %>%
   mutate(category = tolower(category), 
          trait = tolower(trait),
          trait_value = clean_trait(trait_value))
   
-
 traitvals_df_prehabs <- traitvals_df_raw %>%
   mutate(trait_value = paste0(trait_value, ';unknown'),
          trait_value = str_split(trait_value, pattern = ';')) %>%

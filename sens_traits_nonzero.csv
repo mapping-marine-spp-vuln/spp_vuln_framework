@@ -30,12 +30,6 @@ specialisation,air_sea_interface,yes,bycatch,1,high
 biophysical_traits,adult_body_mass_body_size,>1000mm,bycatch,1,high
 biophysical_traits,adult_body_mass_body_size,50mm-999mm,bycatch,1,high
 biophysical_traits,adult_body_mass_body_size,0.5mm-49mm,bycatch,0.33,low
-physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,15c,disease_pathogens,0.33,low
-physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,20c,disease_pathogens,0.33,low
-physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,25c,disease_pathogens,0.67,medium
-physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,30c,disease_pathogens,0.67,medium
-physiological_tolerance_breadths,thermal_sensitivity_to_heat_spikes_heat_waves,yes,disease_pathogens,0.33,low
-specialisation,dependent_interspecific_interactions,yes,disease_pathogens,0.67,medium
 specialisation,air_sea_interface,floating,entanglement_macroplastic,0.33,low
 specialisation,air_sea_interface,yes,entanglement_macroplastic,0.33,low
 biophysical_traits,adult_body_mass_body_size,>1000mm,entanglement_macroplastic,1,high
@@ -113,6 +107,7 @@ r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-calcifie
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-non-calcifiers,light_pollution,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-calcifiers,light_pollution,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-non-calcifiers,light_pollution,0.33,low
+specialisation,terrestrial_and_marine_life_stages,yes,light_pollution,0.67,medium
 biophysical_traits,navigation_requirements_light,yes,light_pollution,0.33,low
 biophysical_traits,communication_requirement_sound,yes,noise_pollution,1,high
 biophysical_traits,navigation_requirements_sound,yes,noise_pollution,1,high
@@ -250,16 +245,11 @@ specialisation,terrestrial_and_marine_life_stages,yes,storm_disturbance,0.33,low
 biophysical_traits,flight,yes,storm_disturbance,1,high
 biophysical_traits,communication_requirement_sound,yes,storm_disturbance,0.33,low
 biophysical_traits,navigation_requirements_sound,yes,storm_disturbance,0.33,low
-biophysical_traits,extreme_pressure_wave_sensitive_structures,high,storm_disturbance,0.67,medium
-biophysical_traits,extreme_pressure_wave_sensitive_structures,medium,storm_disturbance,0.33,low
-biophysical_traits,respiration_structures,lungs,storm_disturbance,0.67,medium
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-calcifiers,uv,0.67,medium
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-non-calcifiers,uv,0.67,medium
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-calcifiers,uv,0.67,medium
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-non-calcifiers,uv,0.67,medium
 specialisation,photosynthetic,yes,uv,0.67,medium
-specialisation,air_sea_interface,floating,uv,0.33,low
-specialisation,air_sea_interface,yes,uv,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-calcifiers,water_temp,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-non-calcifiers,water_temp,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-calcifiers,water_temp,1,high

@@ -1,0 +1,14 @@
+taxon,gapfill: class,gapfill: family,gapfill: genus,gapfill: order,match: class,match: family,match: genus,match: order,match: species
+cephalopods,10,33,19,2,NA,17,521,NA,220
+corals,5570,308,11,2796,NA,NA,282,NA,1
+crustacea_arthropods,19359,1425,353,12980,NA,NA,106,NA,7
+echinoderms,2596,2287,864,4299,NA,NA,2,NA,99
+elasmobranchs,NA,2,1,2,NA,626,563,6,34
+fish,1754,5341,1835,8625,NA,NA,NA,NA,115
+marine_mammals,2,70,23,10,NA,44,26,NA,46
+molluscs,15683,6042,925,22028,NA,NA,NA,NA,43
+plants_algae,8617,86,15,802,NA,NA,12,NA,2
+polychaetes,2476,NA,NA,5687,NA,1956,NA,NA,NA
+reptiles,NA,NA,NA,21,NA,64,13,NA,10
+seabirds,41,6,NA,88,NA,284,182,NA,NA
+sponges,NA,NA,NA,NA,7372,NA,NA,NA,NA

@@ -1,0 +1,47 @@
+category,trait,trait_vals
+Movement,adult mobility,sessile; nearly sessile/sedentary; passive; vertical migrator; mobile resident; horizontal migrator; nomadic
+Movement,planktonic larval duration (PLD) exposure,<1 day; <1 week; <1 month; <4 months; 4 months -1yr; >1yr; not larvae;holoplankton
+R (Reproductive Traits),reproductive strategy,sexual dioecious; sexual hermaphrodite; asexual; colonial
+R (Reproductive Traits),fecundity,"<1; 1-2; 2-5; 5-10; 10-20; 20-50; 50-100; 100-1000; 1000-10,000; >10,000"
+R (Reproductive Traits),lifetime # reproductive opportunities,1; 2-10; 11-25; 26-50; 51-100; >100
+R (Reproductive Traits),age to 1st reproduction/generation time,>20yrs; 10-20yrs; 5-10yrs; 1-5yrs; <1yr
+R (Reproductive Traits),max age,>100yrs; 20-100yrs; 10-20yrs; 5-10yrs; 1-5yrs; 3months-1yr; <3months
+R (Reproductive Traits),parental investment,live birth/ egg care; spawner; egg-layer; egg-layer (unattended)
+R (Reproductive Traits),post-birth/hatching parental dependence,>year; month-year; week-month; <week; NA
+R (Reproductive Traits),feeding larva (post-hatching metamorphosis),feeding calcifier; feeding non-calcifier; non-feeding calcifier; non-feeding non-calcifier; no larva; NA
+R (Reproductive Traits),global population size,<1000; 1K-10K; 10K-100K; 100K-1M; >1M
+R (Reproductive Traits),are there sub-populations?,yes; no
+R (Reproductive Traits),can the sex ratio be altered by temperature?,yes; no
+physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,5°C; 10°C; 15°C; 20°C; 25°C; 30°C
+physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,yes; no
+physiological tolerance breadths,salinity,stenohaline; euryhaline; NA
+physiological tolerance breadths,pH,<7.4; 7.5-7.7; 7.8-8.2
+physiological tolerance breadths,dissolved oxygen,low tolerance; medium tolerance; high tolerance; air breathers
+physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive; not sensitive; NA
+Specialisation,photosynthetic,yes; no
+Specialisation,air-sea interface,floating; yes; no
+Specialisation,within-stage dependent habitats + condition,habitat list
+Specialisation,across-stage dependent habitats + condition,habitat list
+Specialisation,terrestrial and marine life stages,yes; no
+Specialisation,extreme diet specialization,specialist; generalist
+Specialisation,dependent interspecific interactions,yes; no
+breeding/nesting range/number of spawning aggregations (fish),number of sites,one; few; many; does not aggregate
+breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",very small; small; medium; large
+breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,yes; no
+foraging range,"number of sites, incl. terrestrial wetlands",one; few; many; does not aggregate
+foraging range,"if one/few, size",very small; small; medium; large
+foraging range,sub-population dependence on particular sites,yes; no
+Spatial Scale of species,EOO (range),"<99; 100-4999; 5000-19,999; >20,000"
+Spatial Scale of species,depth (min/max),epipelagic; mesopelagic; bathypelagic; abyssopelagic; hadopelagic; atmosphere
+Spatial Scale of species,zone,intertidal; neritic; oceanic; pelagic; demersal; benthic
+Biophysical Traits,adult body mass/body size,>1000 mm; 50 mm-999 mm; 0.5mm-49 mm; <0.4 mm
+Biophysical Traits,calcium carbonate structure location,none; internal; external with a cover; external; in external protein matrix; in cellulose cell wall
+Biophysical Traits,calcium carbonate structure stages,none; larvae; adult; both
+Biophysical Traits,biomineral,aragonite; High Mg calcite; calcite; chitin/CaCO3 mix; silicate; other
+Biophysical Traits,flight,yes; no
+Biophysical Traits,communication requirement (sound),yes; no
+Biophysical Traits,navigation requirements (sound),yes; no
+Biophysical Traits,navigation requirements (light),yes; no
+Biophysical Traits,navigation requirements (magnetic),yes; no
+Biophysical Traits,extreme pressure wave sensitive structures,high; medium; low; none
+Biophysical Traits,respiration structures,lungs; gills; skin; diffusion; pneumatophores; filter feeders

@@ -24,7 +24,7 @@ physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c,30c
 r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs,>20yrs,>20yrs,10-20yrs,10-20yrs,10-20yrs,1-5yrs,1-5yrs,>20yrs,1-5yrs,1-5yrs,10-20yrs,10-20yrs,>20yrs,1-5yrs
 r (reproductive traits),are there sub-populations?,no,yes,yes,yes,NA,NA,yes,yes,yes,yes,yes,yes,no,yes,yes,yes
-r (reproductive traits),can the sex ratio be altered by a stressor?,yes,no larva,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes,yes
+r (reproductive traits),can the sex ratio be altered by temperature?,no,no,yes,yes,yes,yes,yes,no,no,yes,no,no,yes,yes,yes,no
 r (reproductive traits),fecundity,1-2;2-5;5-10,1-2;2-5;5-10,100-1000,100-1000,20-50,20-50,100-1000,1-2;2-5;5-10,1-2;2-5;5-10,100-1000,1-2;2-5;5-10,1-2;2-5;5-10,100-1000,100-1000,50-100,1-2;2-5;5-10
 r (reproductive traits),feeding larva (post-hatching metamorphosis),no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva,no larva
 r (reproductive traits),global population size,10k-100k,100k-1m,1k-10k;10k-100k,1k-10k;10k-100k,10k-100k,100k-1m,1k-10k;10k-100k,NA,NA,1k-10k;10k-100k,NA,NA,1k-10k;10k-100k,1k-10k;10k-100k,1k-10k;10k-100k,NA

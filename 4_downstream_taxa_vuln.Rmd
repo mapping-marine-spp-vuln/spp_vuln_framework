@@ -1,5 +1,5 @@
 ---
-title: "Gapfill taxa vulnerability"
+title: "Downstream taxa vulnerability"
 author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
 output: 
   html_document:
@@ -28,15 +28,13 @@ library(taxize)
 
 # Summary
 
-Using taxonomic trees from WoRMS and the `taxize` package, we will try gapfilling vulnerabilities for non-scored species.
+Using taxonomic trees from WoRMS and the `taxize` package, we will try filling vulnerabilities for downstream non-scored species.
 
 # Methods
 
 * Load species vulnerabilities for known species.  
 * Join the known species vulnerabilities to the expanded taxonomic list to get the full classification.
-* For vulnerabilities calculated at a non-species level, we will calculate distribution parameters and then trickle those down to the species level.
-    * For data given at the genus level (or above), this effectively automatically gapfills all species in the genus.
-    * repeat for higher levels
+* For vulnerabilities calculated at a non-species level, we will downfill those to the species level (e.g., we know family level traits therefore calculate vulnerability - assign to all non-specified species in that family).
 
 ## Assemble the taxonomic dataframe
 
@@ -92,17 +90,16 @@ spp_df_wide <- s_from_g %>%
 #   mutate(rank = factor(rank, levels = rank_lvls))
 ```
 
-## Match species with known traits to most specific rank
+## Match species with known vulnerability to most specific rank
 
-Loading the traits data, and match to the long-format species classifications.  Then join these together sequentially by each level.
+Loading the vulnerability data, and match to the long-format species classifications.  Then join these together sequentially by each level.
 
 ``` {r match up}
-spp_traits  <- read_csv(here('_data/spp_traits_valid.csv'))
-spp_gp_vuln <- read_csv(here('_output/spp_gp_vulnerability.csv'))
+spp_gp_vuln <- read_csv(here('_output/spp_gp_vuln_w_distribution.csv')) %>%
+  select(taxon, spp_gp, stressor, vuln, sd_vuln)
 
 matched_df <- spp_df_long %>%
-  inner_join(spp_traits, by = c('name' = 'spp_gp')) %>%
-  inner_join(spp_gp_vuln, by = c('name' = 'spp_gp', 'taxon')) %>%
+  inner_join(spp_gp_vuln, by = c('name' = 'spp_gp')) %>%
   mutate(match = rank)
 # matched_df$rank %>% unique() # species genus   family  class
 ```
@@ -126,7 +123,7 @@ check_status <- function(check_ids) {
   return(records_df)
 }
 
-unmatched_df <- spp_traits %>%
+unmatched_df <- spp_gp_vuln %>%
   filter(!spp_gp %in% matched_df$name) %>%
   select(taxon, spp_gp) %>%
   distinct()
@@ -163,6 +160,7 @@ Specific problems:
 ## Expand classification for matched species
 
 Identify the rank at which each spp group matched, and disambiguate spp gps that match at multiple ranks to identify the most specific rank. 
+
 ``` {r}
 ### Loop over matchable ranks to separate out the matched species by rank of match
 match_ranks <- c('phylum', 'class', 'order', 'family', 'genus', 'species')
@@ -172,7 +170,7 @@ for(r in match_ranks) { # r <- match_ranks[1]
   rank_partitions[[r]] <- matched_df %>%
     filter(rank == r) %>%
     select(!!paste0('match_', r) := match, !!r := name, 
-           stressor, vuln, contains('rescale'), taxon)
+           stressor, vuln, sd_vuln, taxon)
 }
 
 ### Expand matched species to get full classification
@@ -211,8 +209,31 @@ for(r in match_ranks) {
     filter(match_rank == r) %>%
     left_join(tmp_rank_part, by = c(r, 'match_rank'))
 }
-match_vuln_df <- bind_rows(match_vuln_list)
+
+match_vuln_df <- bind_rows(match_vuln_list) %>%
+  ### disambiguate rossia (chromista vs cephalopoda)
+  filter(!(taxon == 'cephalopods' & kingdom != 'animalia'))
+
+### Split into a species match table and vulnerability table, with an ID number
+### to facilitate later matching up
+match_spp <- match_vuln_df %>%
+  select(kingdom:species, taxon, match_rank) %>%
+  distinct() %>%
+  arrange(taxon, species) %>%
+  mutate(spp_id = 1:n())
+
+spp_vuln <- match_vuln_df %>%
+  select(species, taxon, stressor, vuln, sd_vuln) %>%
+  distinct() %>%
+  left_join(match_spp %>% select(taxon, species, spp_id), by = c('taxon', 'species')) %>%
+  mutate(vuln = round(vuln, 5), sd_vuln = round(sd_vuln, 5)) %>%
+  select(-taxon, -species) ### get these back by matching with spp_id
+
+write_csv(match_spp, here('int/spp_match_downfill.csv'))
+write_csv(spp_vuln,  here('int/vuln_downfill_only.csv'))
 ```
+
+### How many matched at each level?
 
 There are `r n_distinct(match_vuln_df$species)` (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):
 
@@ -222,164 +243,11 @@ knitr::kable(match_vuln_df %>%
                summarize(n_spp_matched = n_distinct(species)))
 ```
 
-### Potential for gapfilling at each rank
+### Taxonomic breakdown?
 
-For each rank, identify the taxa included in vulnerability data (e.g. which genera are included in our data, based on any match level).  Count the number of species known (from traits data), unknown but fillable (not specifically in traits data), and unknown and unfillable (no traits for that taxa).
-
-``` {r}
-rank_gapfill_potential <- vector('list', length = length(match_ranks) - 1) %>%
-  setNames(match_ranks[-6])
-for(r in match_ranks[-6]) { ### r <- 'class'
-  rank_spp_known <- match_vuln_df %>%
-    rename(tmp := !!r) %>%
-    group_by(tmp) %>%
-    summarize(n_spp_known = n_distinct(species)) %>%
-    ungroup() %>%
-    rename(!!r := tmp) 
-  rank_spp_all <- spp_df_wide %>%
-    rename(tmp := !!r) %>%
-    group_by(tmp) %>%
-    summarize(n_spp_all = n_distinct(species)) %>%
-    ungroup() %>%
-    rename(!!r := tmp) %>%
-    left_join(rank_spp_known, by = r) %>%
-    mutate(n_spp_fill = ifelse(is.na(n_spp_known), 0, n_spp_all - n_spp_known))
-  rank_gapfill_potential[[r]] <- rank_spp_all %>% 
-    summarize(n_spp_known = sum(n_spp_known, na.rm = TRUE),
-              n_spp_fill = sum(n_spp_fill),
-              n_spp_unknown = sum(n_spp_all) - n_spp_known - n_spp_fill,
-              n_spp_all = sum(n_spp_all),
-              rank = r)
-}
-knitr::kable(bind_rows(rank_gapfill_potential))
-  
-```
-
-NOTE: the numbers increase as you go up in rank because there are many species (> 13,000!) classified into multiple higher-level ranks, so they get double counted.  
-
-#### Here are the duplicates:
-
-``` {r}
-DT::datatable(x <- show_dupes(spp_df_wide %>% 
-                          filter(!is.na(species)), 'species') %>% 
-               arrange(species))
-```
-
-### create gapfill dataframes
-``` {r}
-gen_fill <- match_vuln_df %>%
-  # filter(genus == 'meridiastra') %>%
-  group_by(kingdom, phylum, class, order, family, genus, stressor, taxon) %>%
-  summarize(n_known_spp = n_distinct(species),
-            mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
-            med_vuln  = median(vuln),
-            skew_vuln = psych::skew(vuln, type = 2),
-            kurt_vuln = psych::kurtosi(vuln, type = 2),
-            bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'genus')
-  
-fam_fill <- match_vuln_df %>%
-  group_by(kingdom, phylum, class, order, family, stressor, taxon) %>%
-  summarize(n_known_spp = n_distinct(species),
-            mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
-            med_vuln  = median(vuln),
-            skew_vuln = moments::skewness(vuln),
-            kurt_vuln = moments::kurtosis(vuln),
-            bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'family')
-
-ord_fill <- match_vuln_df %>%
-  group_by(kingdom, phylum, class, order, stressor, taxon) %>%
-  summarize(n_known_spp = n_distinct(species),
-            mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
-            med_vuln  = median(vuln),
-            skew_vuln = moments::skewness(vuln),
-            kurt_vuln = moments::kurtosis(vuln),
-            bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'order')
- 
-cls_fill <- match_vuln_df %>%
-  group_by(kingdom, phylum, class, stressor, taxon) %>%
-  summarize(n_known_spp = n_distinct(species),
-            mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
-            med_vuln  = median(vuln),
-            skew_vuln = moments::skewness(vuln),
-            kurt_vuln = moments::kurtosis(vuln),
-            bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'class')
- 
-```
-    
-```{r gapfill}
-
-gapfill_gen <- spp_df_wide %>%
-  filter(!species %in% match_vuln_df$species) %>%
-  left_join(gen_fill, by = c('kingdom', 'phylum', 'class', 'order', 'family', 'genus')) %>%
-  filter(!is.na(gapfill))
-
-# gapfill_gen$species %>% n_distinct() ### 7021
-
-gapfill_fam <- spp_df_wide %>%
-  filter(!species %in% match_vuln_df$species) %>%
-  filter(!species %in% gapfill_gen$species) %>%
-  left_join(fam_fill, by = c('kingdom', 'phylum', 'class', 'order', 'family')) %>%
-  filter(!is.na(gapfill))
-# gapfill_fam$species %>% n_distinct() 
-### 28049 (family) + 7021 (genus) = 35070; should be 35709?
-
-gapfill_ord <- spp_df_wide %>%
-  filter(!species %in% match_vuln_df$species) %>%
-  filter(!species %in% gapfill_gen$species) %>%
-  filter(!species %in% gapfill_fam$species) %>%
-  left_join(ord_fill, by = c('kingdom', 'phylum', 'class', 'order')) %>%
-  filter(!is.na(gapfill))
-# gapfill_ord$species %>% n_distinct() 
-### 127759 (order) + 28049 + 7021 = 162869; should be 164880? or is that dupes?
-
-gapfill_cls <- spp_df_wide %>%
-  filter(!species %in% match_vuln_df$species) %>%
-  filter(!species %in% gapfill_gen$species) %>%
-  filter(!species %in% gapfill_fam$species) %>%
-  filter(!species %in% gapfill_ord$species) %>%
-  left_join(cls_fill, by = c('kingdom', 'phylum', 'class')) %>%
-  filter(!is.na(gapfill))
-# gapfill_cls$species %>% n_distinct() 
-### 53063 (class) + 127759 + 28049 + 7021 = 215892 (vs 219356)
-
-```
-
-## Combine matched and gapfilled traits
-
-Strip the higher ranks for file size; save out.
 ```{r}
-vuln_all_spp <- match_vuln_df %>%
-  mutate(gapfill = 'none') %>%
-  bind_rows(gapfill_gen, gapfill_fam, gapfill_ord, gapfill_cls) %>%
-  mutate(vuln = ifelse(is.na(vuln), mean_vuln, vuln)) %>%
-  select(-mean_vuln) %>%
-  distinct()
-
-### write big-ass .csv
-write_csv(vuln_all_spp, '~/git-annex/spp_vuln/vuln_all_spp_gapfilled.csv')
-```
-
-### Examine unmatched classes and orders
-
-These phyla, class, and orders are not able to be gapfilled by our current set of trait-scored species.
-```{r}
-unmatched <- spp_df_wide %>%
-  filter(!species %in% vuln_all_spp$species) %>%
-  group_by(kingdom, phylum, class, order) %>%
-  summarize(n_spp = n_distinct(species)) %>%
-  group_by(kingdom, phylum, class) %>%
-  mutate(n_spp_class = sum(n_spp)) %>%
-  group_by(kingdom, phylum) %>%
-  mutate(n_spp_phylum = sum(n_spp))
-
-DT::datatable(unmatched)
+knitr::kable(match_vuln_df %>%
+               group_by(taxon) %>%
+               summarize(n_spp_matched = n_distinct(species)))
 ```
 
