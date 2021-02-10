@@ -38,7 +38,7 @@ Using taxonomic trees from WoRMS and the `taxize` package, we will try filling v
 
 ## Load expanded vulnerability scores
 
-```{r}
+```{r load expanded vuln scores from script 4}
 match_spp <- read_csv(here('int/spp_match_downfill.csv'))
 spp_vuln  <- read_csv(here('int/vuln_downfill_only.csv'))
 
@@ -48,7 +48,7 @@ match_vuln_df <- match_spp %>%
 
 ## Assemble full spp table from WoRMS
 
-``` {r}
+``` {r assemble full spp taxonomic table from WoRMS}
 p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv')) %>%
   filter(!is.na(id))
 c_from_p <- read_csv(here('int/class_from_phylum_worms.csv')) %>%
@@ -96,7 +96,7 @@ spp_df_wide <- s_from_g %>%
 
 For each rank, identify the taxa included in vulnerability data (e.g. which genera are included in our data, based on any match level).  Count the number of species known (from vulnerability data), unknown but fillable (not specifically in vulnerability data), and unknown and unfillable (no vulnerability for that taxa).
 
-``` {r}
+``` {r gapfill potential by rank}
 
 taxa_match_df <- match_vuln_df %>%
   select(kingdom:species) %>%
@@ -161,7 +161,7 @@ For probabilistic taxa, we will do a Monte Carlo approach, sampling species from
 
 ### Deterministic taxa
 
-``` {r}
+``` {r identify deterministic taxa-stressor instances}
 
 gen_fill_det <- match_vuln_df %>%
   # filter(genus == 'meridiastra') %>%
@@ -648,7 +648,7 @@ n_distinct(c(cls_fill_det$class,
 ## Combine matched and gapfilled traits
 
 Strip the higher ranks for file size; save out.
-```{r}
+```{r combine gapfill value dataframes and save out}
 vuln_all_spp <- match_vuln_df %>%
   mutate(gapfill = 'none') %>%
   bind_rows(gen_fill_totes, fam_fill_totes, ord_fill_totes, cls_fill_totes) %>%
@@ -669,7 +669,7 @@ vuln_vals <- vuln_all_spp %>%
   left_join(vuln_tx %>% select(class:species, tx_id),
             by = c('class', 'order', 'family', 'genus', 'species')) %>%
   select(tx_id, stressor, vuln, sd_vuln, med_vuln) %>%
-  mutate(across(is.numeric, ~ round(., 5)))
+  mutate(across(where(is.numeric), ~ round(., 5)))
   
 ### write .csvs which can be joined using tx_id
 write_csv(vuln_vals, '~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_values.csv')
@@ -707,9 +707,9 @@ knitr::kable(cv_by_taxon)
 
 First let's use the vulnerability gapfilling to fill in species up to family or order level.
 
-```{r}
-vuln_vals <- read_csv('~/git-annex/spp_vuln/vuln_gapfill_values.csv')
-vuln_tx <- read_csv('~/git-annex/spp_vuln/vuln_gapfill_taxa.csv')
+```{r apply upstreamed gapfill values to downstream spp}
+vuln_vals <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_values.csv')
+vuln_tx <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_taxa.csv')
 vuln_df <- vuln_tx %>%
   left_join(vuln_vals, by = 'tx_id') %>%
   select(-tx_id, -n_known_spp, -n_prob) %>%
@@ -786,7 +786,7 @@ write_csv(vuln_gf_sd, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_sd.csv')
 
 Should be independent of stressor!
 
-```{r}
+```{r count of gapfill status by taxon}
 gf_count <- vuln_all_gf %>%
   group_by(taxon, gapfill, match_rank) %>%
   summarize(n_spp = n_distinct(species)) %>%
@@ -796,6 +796,7 @@ gf_count <- vuln_all_gf %>%
   select(taxon, val, n_spp) %>%
   spread(val, n_spp)
 knitr::kable(gf_count)
+write_csv(gf_count, here('_output/gapfill_count.csv'))
 ```
 
 ### Breakdown by taxon
@@ -859,7 +860,9 @@ if(!file.exists(tx_str_sum_outfile)) {
   }
   
   tx_str_summary <- tx_list %>%
-    bind_rows()
+    bind_rows() %>%
+    mutate(mean_vuln = round(mean_vuln, 5),
+           sd_vuln   = round(sd_vuln,))
   write_csv(tx_str_summary, tx_str_sum_outfile)
 }
 
