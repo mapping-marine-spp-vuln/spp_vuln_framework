@@ -23,7 +23,7 @@ physiological tolerance breadths,sensitivity to wave energy (physical forcing),n
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,25c,30c,NA,NA,10c,25c,10c,30c,25c
 r (reproductive traits),age to 1st reproduction/generation time,unknown,1-5yrs,5-10yrs,1-5yrs,5-10yrs,<1yr,1-5yrs,1-5yrs,1-5yrs
 r (reproductive traits),are there sub-populations?,yes,yes,NA,NA,yes,NA,NA,yes,yes
-r (reproductive traits),can the sex ratio be altered by a stressor?,unknown,unknown,no,yes,unknown,yes,no,unknown,unknown
+r (reproductive traits),can the sex ratio be altered by temperature?,unknown,unknown,no,no,unknown,no,no,unknown,unknown
 r (reproductive traits),fecundity,NA,>10000,100-1000,10-20;20-50;50-100,>10000,>10000,10-20;20-50;50-100,>10000,>10000
 r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding calcifier,feeding calcifier,feeding non-calcifier,feeding calcifier,feeding calcifier,feeding calcifier,feeding non-calcifier,feeding calcifier,feeding calcifier
 r (reproductive traits),global population size,>1m,>1m,<1000;1k-10k,100k-1m;>1m,>1m,100k-1m;>1m,1k-10k,>1m,>1m

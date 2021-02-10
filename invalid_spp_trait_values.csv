@@ -57,6 +57,7 @@ elasmobranchs,specialisation,across-stage dependent habitats + condition,pteropl
 elasmobranchs,specialisation,within-stage dependent habitats + condition,pteroplatytrygon violacea,midwater,135
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthurus dussumieri,nil,115
+fish,r (reproductive traits),can the sex ratio be altered by temperature?,amphiprion akindynos,yes-if female dies a male takes over and becomes female,115
 fish,specialisation,across-stage dependent habitats + condition,amphiprion akindynos,anemone,115
 fish,specialisation,within-stage dependent habitats + condition,amphiprion akindynos,anemone,115
 fish,physiological tolerance breadths,salinity,anguilla australis,catadromous,115
@@ -111,7 +112,9 @@ fish,specialisation,within-stage dependent habitats + condition,epinephelus itaj
 fish,specialisation,across-stage dependent habitats + condition,epinephelus lanceolatus,live coral caves,115
 fish,specialisation,within-stage dependent habitats + condition,epinephelus lanceolatus,inshore,115
 fish,physiological tolerance breadths,salinity,eptatretus cirrhatus,32-34parts per thousand,115
+fish,r (reproductive traits),can the sex ratio be altered by temperature?,eptatretus cirrhatus,probably,115
 fish,physiological tolerance breadths,salinity,eptatretus mendozai,32-34parts per thousand,115
+fish,r (reproductive traits),can the sex ratio be altered by temperature?,eptatretus mendozai,probably,115
 fish,specialisation,across-stage dependent habitats + condition,ethadophis merenda,unknown,115
 fish,specialisation,within-stage dependent habitats + condition,ethadophis merenda,unknown,115
 fish,specialisation,across-stage dependent habitats + condition,gadus morhua,deep habitats,115
@@ -171,6 +174,7 @@ marine_mammals,specialisation,within-stage dependent habitats + condition,delphi
 marine_mammals,physiological tolerance breadths,salinity,dugong dugon,euryhalineprobably based on habitat types,61
 marine_mammals,specialisation,across-stage dependent habitats + condition,dugong dugon,bays,61
 marine_mammals,specialisation,extreme diet specialization,dugong dugon,specialist-seagrass,61
+marine_mammals,r (reproductive traits),can the sex ratio be altered by temperature?,enhydra lutris,maybe pollution driving breeding female mortality,61
 marine_mammals,specialisation,extreme diet specialization,enhydra lutris,no,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,eschrichtius robustus,many,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena glacialis,8-17months,61
@@ -218,6 +222,7 @@ marine_mammals,specialisation,within-stage dependent habitats + condition,triche
 marine_mammals,specialisation,within-stage dependent habitats + condition,trichechus manatus,and canals,61
 marine_mammals,physiological tolerance breadths,salinity,trichechus senegalensis,stenohaline-avoid salt water,61
 marine_mammals,specialisation,extreme diet specialization,trichechus senegalensis,specialist-vegetation,61
+marine_mammals,r (reproductive traits),can the sex ratio be altered by temperature?,ursus maritimus,yes-sex-selective hunting,61
 marine_mammals,specialisation,extreme diet specialization,ursus maritimus,no,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,zalophus,month-year-exception that some australian sea lions can care for pup up to 3years,61
 marine_mammals,specialisation,within-stage dependent habitats + condition,zalophus,breeding and raising pups,61
@@ -257,4 +262,4 @@ reptiles,physiological tolerance breadths,salinity,ephalophis,broad,16
 reptiles,physiological tolerance breadths,salinity,hydrelaps,broad,16
 reptiles,physiological tolerance breadths,salinity,laticauda,broad,16
 reptiles,physiological tolerance breadths,salinity,parahydrophis,broad,16
-seabirds,biophysical traits,respiration structures,spheniscidae,lung,50
+sponges,r (reproductive traits),can the sex ratio be altered by temperature?,demospongiae,probably no,1

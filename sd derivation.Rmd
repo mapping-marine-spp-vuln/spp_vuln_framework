@@ -158,7 +158,7 @@ calc_var <- function(x, y, sd_y = NULL) {
   # result1 <- am*(Ex2 - Ex^2 + an*Ex^2) 
   # result2 <- an*(Ey2 - Ey^2 + am*Ey^2) 
   # result3 <- -2*am*an*Ex*Ey
-  result1 <- am*(var(x)*(m-1)/m + an*Ex^2) 
+  result1 <- am*(Ex2 - Ex^2 + an*Ex^2) 
   result2 <- an*(sd_y^2*n_adj + am*Ey^2) 
   result3 <- -2*am*an*Ex*Ey
 
@@ -203,5 +203,85 @@ df <- data.frame(n_x = n_vec, pct_diff = out_vec)
 ggplot(df, aes(x = n_x, y = pct_diff)) +
   geom_line() +
   geom_vline(xintercept = 5, color = 'red')
+```
+
+## What if multiple random spp
+
+What if x vec of deterministic vulns and y vec of random vulns with length > 1?
+
+Use three parallel vecs v, sd, and n.  Collapse non-NA/non-zero sd values into a single dist as y.
+
+```{r}
+set.seed(42)
+mu_x <- 3; sd_x <- 1
+mu_y <- 2; sd_y <- .7
+
+x <- rnorm(10, mu_x, sd_x)
+y <- rnorm(5, mu_y, sd_y)
+
+v <- c(x, y)
+sd_v <- c(rep(NA, 10), runif(5, .5, 1.5))
+n_v <- rpois(15, 1) %>% ifelse(. == 0, 1, .)
+
+calc_var2 <- function(v, sd_v, n_v) {
+  df <- data.frame(v, sd_v, n_v)
+  x <- df %>% 
+    filter(sd_v == 0 | is.na(sd_v)) %>%
+    uncount(n_v) %>%
+    .$v
+  y_df <- df %>% 
+    filter(sd_v > 0 & !is.na(sd_v)) %>%
+    uncount(n_v)
+  y <- y_df$v; sd_y <- y_df$sd_v
+  
+  asdf <- vector('numeric', length = 1000)
+  for(i in 1:1000) {
+    y_samp <- y_df %>%
+      rowwise() %>%
+      mutate(y = rnorm(1, v, sd_v))
+    asdf[i] <- var(y_samp$y)
+  }
+  y_mean <- mean(y_df$v)
+  y_var <- sqrt(sum(y_df$sd_v^2))
+  
+  result1 <- am*(Ex2 - Ex^2 + an*Ex^2) 
+  result2 <- an*(sd_y^2*n_adj + am*Ey^2) 
+  result3 <- -2*am*an*Ex*Ey
+
+  
+  #####
+  m <- length(x); n <- length(y)
+  am <- m/(n+m); an <- n/(m+n)
+  
+  z <- c(x, y)
+  Ez <- mean(z);  Ez2 <- mean(z^2)
+  Ex <- mean(x);  Ex2 <- mean(x^2)
+  Ey <- mean(y);  Ey2 <- mean(y^2)
+  if(is.null(sd_y)) {
+    if(length(y) == 1) stop('Length of y must be greater than 1, or else a sd_y supplied')
+    sd_y <- sqrt(var(y))
+    n_adj <- (n-1)/n
+  } else {
+    n_adj <- 1
+  }
+  
+  # result1 <- am*(Ex2 - Ex^2 + an*Ex^2) 
+  # result2 <- an*(Ey2 - Ey^2 + am*Ey^2) 
+  # result3 <- -2*am*an*Ex*Ey
+  result1 <- am*(Ex2 - Ex^2 + an*Ex^2) 
+  result2 <- an*(sd_y^2*n_adj + am*Ey^2) 
+  result3 <- -2*am*an*Ex*Ey
+
+  result <- result1+result2+result3
+  
+  unbiased <- result * (n+m)/(n+m-1)
+}
+(calc_var(x, y))
+var(z)
+
+
+var(y)
+
+
 ```
 

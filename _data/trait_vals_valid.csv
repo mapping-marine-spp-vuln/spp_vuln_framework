@@ -80,9 +80,9 @@ r (reproductive traits),global population size,unknown
 r (reproductive traits),are there sub-populations?,yes
 r (reproductive traits),are there sub-populations?,no
 r (reproductive traits),are there sub-populations?,unknown
-r (reproductive traits),can the sex ratio be altered by a stressor?,yes
-r (reproductive traits),can the sex ratio be altered by a stressor?,no
-r (reproductive traits),can the sex ratio be altered by a stressor?,unknown
+r (reproductive traits),can the sex ratio be altered by temperature?,yes
+r (reproductive traits),can the sex ratio be altered by temperature?,no
+r (reproductive traits),can the sex ratio be altered by temperature?,unknown
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,5c
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,10c
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,15c
