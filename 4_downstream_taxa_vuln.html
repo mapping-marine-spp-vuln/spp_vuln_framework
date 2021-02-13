@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Sun Feb 7 11:46:20 2021 by ohara" />
+<meta name="author" content="Compiled on Thu Feb 11 11:45:50 2021 by ohara" />
 
 
 <title>Downstream taxa vulnerability</title>
@@ -4133,7 +4133,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Downstream taxa vulnerability</h1>
-<h4 class="author"><em>Compiled on Sun Feb 7 11:46:20 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Thu Feb 11 11:45:50 2021 by ohara</em></h4>
 
 </div>
 
@@ -4141,8 +4141,11 @@ div.tocify {
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>knitr<span class="op">::</span>opts_chunk<span class="op">$</span><span class="kw">set</span>(<span class="dt">fig.width =</span> <span class="dv">6</span>, <span class="dt">fig.height =</span> <span class="dv">4</span>, <span class="dt">fig.path =</span> <span class="st">&#39;figs/&#39;</span>,</span>
 <span id="cb1-2"><a href="#cb1-2"></a>                      <span class="dt">echo =</span> <span class="ot">TRUE</span>, <span class="dt">message =</span> <span class="ot">FALSE</span>, <span class="dt">warning =</span> <span class="ot">FALSE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">source</span>(<span class="st">&#39;https://raw.githubusercontent.com/oharac/src/master/R/common.R&#39;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">library</span>(taxize)</span></code></pre></div>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">library</span>(oharac) <span class="co">### remotes::install_github(&#39;oharac/oharac&#39;)</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>oharac<span class="op">::</span><span class="kw">setup</span>()</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># source(&#39;https://raw.githubusercontent.com/oharac/src/master/R/common.R&#39;)</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">source</span>(<span class="kw">here</span>(<span class="st">&#39;common_fxns.R&#39;</span>))</span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">library</span>(taxize)</span></code></pre></div>
 <div id="summary" class="section level1">
 <h1><span class="header-section-number">1</span> Summary</h1>
 <p>Using taxonomic trees from WoRMS and the <code>taxize</code> package, we will try filling vulnerabilities for downstream non-scored species.</p>
@@ -4158,53 +4161,9 @@ div.tocify {
 <div id="assemble-the-taxonomic-dataframe" class="section level2">
 <h2><span class="header-section-number">2.1</span> Assemble the taxonomic dataframe</h2>
 <p>Grab data from each rank (kingdom –&gt; phylum, phylum –&gt; class, class –&gt; order, etc.) and assemble into a long dataframe. Long format will be easier to match trait-scored species to, since all ranks will be in the “name” column. But wide format will be easier for keeping track of the structure of each species’ classification.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>p_from_k &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&#39;int/phylum_from_kingdom_worms.csv&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(id))</span>
-<span id="cb2-3"><a href="#cb2-3"></a>c_from_p &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&#39;int/class_from_phylum_worms.csv&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(id))</span>
-<span id="cb2-5"><a href="#cb2-5"></a>o_from_c &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&#39;int/order_from_class_worms.csv&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(id))</span>
-<span id="cb2-7"><a href="#cb2-7"></a>f_from_o &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&#39;int/family_from_order_worms.csv&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(id))</span>
-<span id="cb2-9"><a href="#cb2-9"></a>g_from_f &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&#39;int/genus_from_family_worms.csv&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(id))</span>
-<span id="cb2-11"><a href="#cb2-11"></a>s_from_g &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&#39;int/species_from_genus_worms.csv&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(id))</span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a>rank_lvls &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;kingdom&#39;</span>, <span class="st">&#39;phylum&#39;</span>, <span class="st">&#39;class&#39;</span>, <span class="st">&#39;order&#39;</span>, <span class="st">&#39;family&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;species&#39;</span>)</span>
-<span id="cb2-15"><a href="#cb2-15"></a></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">### create long df to match at any level</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a>spp_df_long &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(s_from_g, g_from_f, f_from_o, o_from_c, c_from_p, p_from_k) <span class="op">%&gt;%</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rank =</span> <span class="kw">factor</span>(rank, <span class="dt">levels =</span> rank_lvls)) <span class="op">%&gt;%</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(name))</span>
-<span id="cb2-20"><a href="#cb2-20"></a></span>
-<span id="cb2-21"><a href="#cb2-21"></a>full_class_file &lt;-<span class="st"> </span><span class="kw">here</span>(<span class="st">&#39;_data/spp_complete_classifications_worms.csv&#39;</span>)</span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(full_class_file)) {</span>
-<span id="cb2-23"><a href="#cb2-23"></a>  <span class="co">### write this out; this can be used to recreate full classifications later</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a>  <span class="kw">write_csv</span>(spp_df_long, full_class_file)</span>
-<span id="cb2-25"><a href="#cb2-25"></a>}</span>
-<span id="cb2-26"><a href="#cb2-26"></a></span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="co">### create wide for complete classification for each species</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a>spp_df_wide &lt;-<span class="st"> </span>s_from_g <span class="op">%&gt;%</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="st">  </span><span class="kw">select</span>(<span class="dt">genus =</span> parent, <span class="dt">species =</span> name) <span class="op">%&gt;%</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="st">  </span><span class="kw">left_join</span>(g_from_f <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dt">family =</span> parent, <span class="dt">genus =</span> name), </span>
-<span id="cb2-31"><a href="#cb2-31"></a>            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;genus&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="st">  </span><span class="kw">left_join</span>(f_from_o <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dt">order =</span> parent, <span class="dt">family =</span> name), </span>
-<span id="cb2-33"><a href="#cb2-33"></a>            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;family&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-34"><a href="#cb2-34"></a><span class="st">  </span><span class="kw">left_join</span>(o_from_c <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dt">class =</span> parent, <span class="dt">order =</span> name), </span>
-<span id="cb2-35"><a href="#cb2-35"></a>            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;order&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-36"><a href="#cb2-36"></a><span class="st">  </span><span class="kw">left_join</span>(c_from_p <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dt">phylum =</span> parent, <span class="dt">class =</span> name), </span>
-<span id="cb2-37"><a href="#cb2-37"></a>            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;class&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-38"><a href="#cb2-38"></a><span class="st">  </span><span class="kw">left_join</span>(p_from_k <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="dt">kingdom =</span> parent, <span class="dt">phylum =</span> name),</span>
-<span id="cb2-39"><a href="#cb2-39"></a>            <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;phylum&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb2-40"><a href="#cb2-40"></a><span class="st">  </span><span class="kw">select</span>(kingdom, phylum, class, order, family, genus, species) <span class="op">%&gt;%</span></span>
-<span id="cb2-41"><a href="#cb2-41"></a><span class="st">  </span><span class="kw">distinct</span>()</span>
-<span id="cb2-42"><a href="#cb2-42"></a></span>
-<span id="cb2-43"><a href="#cb2-43"></a><span class="co">### then make that long, but keeping structure for each species - maybe?</span></span>
-<span id="cb2-44"><a href="#cb2-44"></a><span class="co"># spp_all_long &lt;- spp_df_wide %&gt;%</span></span>
-<span id="cb2-45"><a href="#cb2-45"></a><span class="co">#   mutate(spp = species) %&gt;%</span></span>
-<span id="cb2-46"><a href="#cb2-46"></a><span class="co">#   gather(rank, name, kingdom:species) %&gt;%</span></span>
-<span id="cb2-47"><a href="#cb2-47"></a><span class="co">#   mutate(rank = factor(rank, levels = rank_lvls))</span></span></code></pre></div>
+<p>Because we are dropping plants and algae, filter wide dataframe to just species in kingdom <em>Animalia</em>. This is done in the <code>assemble_worms()</code> function from <code>common_fxns.R</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>spp_all_wide &lt;-<span class="st"> </span><span class="kw">assemble_worms</span>(<span class="st">&#39;wide&#39;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>spp_all_long &lt;-<span class="st"> </span><span class="kw">assemble_worms</span>(<span class="st">&#39;long&#39;</span>)</span></code></pre></div>
 </div>
 <div id="match-species-with-known-vulnerability-to-most-specific-rank" class="section level2">
 <h2><span class="header-section-number">2.2</span> Match species with known vulnerability to most specific rank</h2>
@@ -4212,7 +4171,7 @@ div.tocify {
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>spp_gp_vuln &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="kw">here</span>(<span class="st">&#39;_output/spp_gp_vuln_w_distribution.csv&#39;</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="st">  </span><span class="kw">select</span>(taxon, spp_gp, stressor, vuln, sd_vuln)</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>matched_df &lt;-<span class="st"> </span>spp_df_long <span class="op">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>matched_df &lt;-<span class="st"> </span>spp_all_long <span class="op">%&gt;%</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="st">  </span><span class="kw">inner_join</span>(spp_gp_vuln, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;name&#39;</span> =<span class="st"> &#39;spp_gp&#39;</span>)) <span class="op">%&gt;%</span></span>
 <span id="cb3-6"><a href="#cb3-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">match =</span> rank)</span>
 <span id="cb3-7"><a href="#cb3-7"></a><span class="co"># matched_df$rank %&gt;% unique() # species genus   family  class</span></span></code></pre></div>
@@ -4241,18 +4200,20 @@ div.tocify {
 <span id="cb4-23"><a href="#cb4-23"></a></span>
 <span id="cb4-24"><a href="#cb4-24"></a>check_class_list &lt;-<span class="st"> </span><span class="kw">classification</span>(unmatched_df<span class="op">$</span>spp_gp, <span class="dt">db =</span> <span class="st">&#39;worms&#39;</span>) <span class="op">%&gt;%</span></span>
 <span id="cb4-25"><a href="#cb4-25"></a><span class="st">  </span><span class="kw">setNames</span>(unmatched_df<span class="op">$</span>spp_gp)</span></code></pre></div>
-<pre><code>## ══  17 queries  ══════════════
+<pre><code>## ══  19 queries  ══════════════
 ## ✓  Found:  taeniurops
 ## ✓  Found:  spiniraja whitleyi
 ## x  Not Found:  ardenna
+## ✓  Found:  chroicocephalus
 ## x  Not Found:  ichthyaetus
 ## ✓  Found:  thalasseus
 ## ✓  Found:  cellana tramoserica
-## ✓  Found:  ostrea angasi
-## ✓  Found:  oceanitidae
 ## ✓  Found:  lottia scutum
+## ✓  Found:  oceanitidae
+## ✓  Found:  ostrea angasi
 ## ✓  Found:  balaenoptera brydei
 ## ✓  Found:  bathytoshia
+## ✓  Found:  manta
 ## ✓  Found:  muusoctopus normani
 ## ✓  Found:  nautilus repertus
 ## x  Not Found:  nautilus suluensis
@@ -4261,8 +4222,8 @@ div.tocify {
 ## ✓  Found:  sousa chinensis taiwanensis
 ## ══  Results  ═════════════════
 ## 
-## ● Total: 17 
-## ● Found: 14 
+## ● Total: 19 
+## ● Found: 16 
 ## ● Not Found: 3</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>check_class_df &lt;-<span class="st"> </span>check_class_list[<span class="op">!</span><span class="kw">is.na</span>(check_class_list)] <span class="op">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="st">  </span><span class="kw">bind_rows</span>(<span class="dt">.id =</span> <span class="st">&#39;spp_gp_orig&#39;</span>) <span class="op">%&gt;%</span></span>
@@ -4276,8 +4237,8 @@ div.tocify {
 <span id="cb6-10"><a href="#cb6-10"></a><span class="st">  </span><span class="kw">left_join</span>(check_accepted_df, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;spp_gp&#39;</span> =<span class="st"> &#39;sciname&#39;</span>, <span class="st">&#39;id&#39;</span>))</span></code></pre></div>
 <div id="unmatched-spp-groups-with-scored-traits" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Unmatched spp groups with scored traits:</h3>
-<div id="htmlwidget-d78d86fc54bd9f05ea3d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d78d86fc54bd9f05ea3d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["elasmobranchs","elasmobranchs","seabirds","seabirds","seabirds","molluscs","molluscs","seabirds","molluscs","marine_mammals","elasmobranchs","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","marine_mammals"],["taeniurops","spiniraja whitleyi","ardenna","ichthyaetus","thalasseus","cellana tramoserica","ostrea angasi","oceanitidae","lottia scutum","balaenoptera brydei","bathytoshia","muusoctopus normani","nautilus repertus","nautilus suluensis","octopus filosus","semirossia","sousa chinensis taiwanensis"],[true,true,false,false,true,true,true,true,true,true,true,true,true,false,true,true,true],["taeniurops","spiniraja whitleyi",null,null,"thalasseus","cellana tramoserica","ostrea angasi","oceanitidae","lottia scutum","balaenoptera brydei","bathytoshia","muusoctopus normani","nautilus repertus",null,"octopus filosus","semirossia","sousa chinensis taiwanensis"],["genus","species",null,null,"genus","species","species","family","species","species","genus","species","species",null,"species","genus","subspecies"],[712240,712958,null,null,413038,325467,397159,136997,456605,242603,296132,527158,342237,null,341972,157035,853079],["unaccepted","accepted",null,null,"unaccepted","accepted","accepted","unaccepted","accepted","taxon inquirendum","unaccepted","unaccepted","taxon inquirendum",null,"unaccepted","accepted","accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c553e98d9ca9d2b7f806" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c553e98d9ca9d2b7f806">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["elasmobranchs","elasmobranchs","seabirds","seabirds","seabirds","seabirds","molluscs","molluscs","seabirds","molluscs","marine_mammals","elasmobranchs","elasmobranchs","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","marine_mammals"],["taeniurops","spiniraja whitleyi","ardenna","chroicocephalus","ichthyaetus","thalasseus","cellana tramoserica","lottia scutum","oceanitidae","ostrea angasi","balaenoptera brydei","bathytoshia","manta","muusoctopus normani","nautilus repertus","nautilus suluensis","octopus filosus","semirossia","sousa chinensis taiwanensis"],[true,true,false,true,false,true,true,true,true,true,true,true,true,true,true,false,true,true,true],["taeniurops","spiniraja whitleyi",null,"chroicocephalus",null,"thalasseus","cellana tramoserica","lottia scutum","oceanitidae","ostrea angasi","balaenoptera brydei","bathytoshia","manta","muusoctopus normani","nautilus repertus",null,"octopus filosus","semirossia","sousa chinensis taiwanensis"],["genus","species",null,"genus",null,"genus","species","species","family","species","species","genus","genus","species","species",null,"species","genus","subspecies"],[712240,712958,null,465357,null,413038,325467,456605,136997,397159,242603,296132,105755,527158,342237,null,341972,157035,853079],["unaccepted","accepted",null,"accepted",null,"unaccepted","accepted","accepted","unaccepted","accepted","taxon inquirendum","unaccepted","accepted","unaccepted","taxon inquirendum",null,"unaccepted","accepted","accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Problems where a taxon is found, and accepted, may mean error in the <code>downstream</code> call. Check the various <code>X_from_X.csv</code> dataframes to figure out where this taxon is being dropped.</li>
 <li>problems where a taxon is found, but not accepted (or not a main rank), may indicate species where an alternate name will fix the issue.
@@ -4301,76 +4262,86 @@ div.tocify {
 <p>Identify the rank at which each spp group matched, and disambiguate spp gps that match at multiple ranks to identify the most specific rank.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">### Loop over matchable ranks to separate out the matched species by rank of match</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>match_ranks &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;phylum&#39;</span>, <span class="st">&#39;class&#39;</span>, <span class="st">&#39;order&#39;</span>, <span class="st">&#39;family&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;species&#39;</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>rank_partitions &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="dt">length =</span> <span class="kw">length</span>(match_ranks)) <span class="op">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="st">  </span><span class="kw">setNames</span>(match_ranks)</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) { <span class="co"># r &lt;- match_ranks[1]</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  rank_partitions[[r]] &lt;-<span class="st"> </span>matched_df <span class="op">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="st">    </span><span class="kw">filter</span>(rank <span class="op">==</span><span class="st"> </span>r) <span class="op">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">!!</span><span class="kw">paste0</span>(<span class="st">&#39;match_&#39;</span>, r) <span class="op">:</span><span class="er">=</span><span class="st"> </span>match, <span class="op">!!</span><span class="dt">r :=</span> name, </span>
-<span id="cb7-9"><a href="#cb7-9"></a>           stressor, vuln, sd_vuln, taxon)</span>
-<span id="cb7-10"><a href="#cb7-10"></a>}</span>
-<span id="cb7-11"><a href="#cb7-11"></a></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">### Expand matched species to get full classification</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a>match_exp &lt;-<span class="st"> </span>spp_df_wide</span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
-<span id="cb7-15"><a href="#cb7-15"></a>  <span class="co">### r &lt;- &#39;class&#39;</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a>  tmp &lt;-<span class="st"> </span>rank_partitions[[r]] <span class="op">%&gt;%</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a><span class="st">    </span><span class="kw">select</span>(<span class="kw">contains</span>(<span class="st">&#39;match&#39;</span>), <span class="op">!!</span>r) <span class="op">%&gt;%</span></span>
-<span id="cb7-18"><a href="#cb7-18"></a><span class="st">    </span><span class="kw">distinct</span>()</span>
-<span id="cb7-19"><a href="#cb7-19"></a>  match_exp &lt;-<span class="st"> </span>match_exp <span class="op">%&gt;%</span></span>
-<span id="cb7-20"><a href="#cb7-20"></a><span class="st">    </span><span class="kw">left_join</span>(tmp, <span class="dt">by =</span> r)</span>
-<span id="cb7-21"><a href="#cb7-21"></a>}</span>
-<span id="cb7-22"><a href="#cb7-22"></a></span>
-<span id="cb7-23"><a href="#cb7-23"></a><span class="co">### Disambiguate expanded matches to the most specific rank available</span></span>
-<span id="cb7-24"><a href="#cb7-24"></a>match_exp_dis &lt;-<span class="st"> </span>match_exp <span class="op">%&gt;%</span></span>
-<span id="cb7-25"><a href="#cb7-25"></a><span class="st">  </span><span class="kw">gather</span>(key, match_rank, <span class="kw">starts_with</span>(<span class="st">&#39;match&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a><span class="st">  </span><span class="co">### filter unmatched species</span></span>
-<span id="cb7-27"><a href="#cb7-27"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(match_rank)) <span class="op">%&gt;%</span></span>
-<span id="cb7-28"><a href="#cb7-28"></a><span class="st">  </span><span class="co">### keep the most specific match level</span></span>
-<span id="cb7-29"><a href="#cb7-29"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">match_rank =</span> <span class="kw">factor</span>(match_rank, <span class="dt">levels =</span> rank_lvls)) <span class="op">%&gt;%</span></span>
-<span id="cb7-30"><a href="#cb7-30"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
-<span id="cb7-31"><a href="#cb7-31"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">as.integer</span>(match_rank) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">as.integer</span>(match_rank))) <span class="op">%&gt;%</span></span>
-<span id="cb7-32"><a href="#cb7-32"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
-<span id="cb7-33"><a href="#cb7-33"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>key) <span class="op">%&gt;%</span></span>
-<span id="cb7-34"><a href="#cb7-34"></a><span class="st">  </span><span class="kw">distinct</span>()</span>
-<span id="cb7-35"><a href="#cb7-35"></a></span>
-<span id="cb7-36"><a href="#cb7-36"></a><span class="co">### Loop over the matchable ranks again, to dice the expanded match and</span></span>
-<span id="cb7-37"><a href="#cb7-37"></a><span class="co">### join trait values by match rank.</span></span>
-<span id="cb7-38"><a href="#cb7-38"></a>match_vuln_list &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="dt">length =</span> <span class="kw">length</span>(match_ranks)) <span class="op">%&gt;%</span></span>
-<span id="cb7-39"><a href="#cb7-39"></a><span class="st">  </span><span class="kw">setNames</span>(match_ranks)</span>
-<span id="cb7-40"><a href="#cb7-40"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
-<span id="cb7-41"><a href="#cb7-41"></a>  <span class="co">### r &lt;- &#39;class&#39;</span></span>
-<span id="cb7-42"><a href="#cb7-42"></a>  tmp_rank_part &lt;-<span class="st"> </span>rank_partitions[[r]] <span class="op">%&gt;%</span></span>
-<span id="cb7-43"><a href="#cb7-43"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">match_rank :=</span> <span class="op">!!</span><span class="kw">paste0</span>(<span class="st">&#39;match_&#39;</span>, r))</span>
-<span id="cb7-44"><a href="#cb7-44"></a>  match_vuln_list[[r]] &lt;-<span class="st"> </span>match_exp_dis <span class="op">%&gt;%</span></span>
-<span id="cb7-45"><a href="#cb7-45"></a><span class="st">    </span><span class="kw">filter</span>(match_rank <span class="op">==</span><span class="st"> </span>r) <span class="op">%&gt;%</span></span>
-<span id="cb7-46"><a href="#cb7-46"></a><span class="st">    </span><span class="kw">left_join</span>(tmp_rank_part, <span class="dt">by =</span> <span class="kw">c</span>(r, <span class="st">&#39;match_rank&#39;</span>))</span>
-<span id="cb7-47"><a href="#cb7-47"></a>}</span>
-<span id="cb7-48"><a href="#cb7-48"></a></span>
-<span id="cb7-49"><a href="#cb7-49"></a>match_vuln_df &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(match_vuln_list) <span class="op">%&gt;%</span></span>
-<span id="cb7-50"><a href="#cb7-50"></a><span class="st">  </span><span class="co">### disambiguate rossia (chromista vs cephalopoda)</span></span>
-<span id="cb7-51"><a href="#cb7-51"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(taxon <span class="op">==</span><span class="st"> &#39;cephalopods&#39;</span> <span class="op">&amp;</span><span class="st"> </span>kingdom <span class="op">!=</span><span class="st"> &#39;animalia&#39;</span>))</span>
-<span id="cb7-52"><a href="#cb7-52"></a></span>
-<span id="cb7-53"><a href="#cb7-53"></a><span class="co">### Split into a species match table and vulnerability table, with an ID number</span></span>
-<span id="cb7-54"><a href="#cb7-54"></a><span class="co">### to facilitate later matching up</span></span>
-<span id="cb7-55"><a href="#cb7-55"></a>match_spp &lt;-<span class="st"> </span>match_vuln_df <span class="op">%&gt;%</span></span>
-<span id="cb7-56"><a href="#cb7-56"></a><span class="st">  </span><span class="kw">select</span>(kingdom<span class="op">:</span>species, taxon, match_rank) <span class="op">%&gt;%</span></span>
-<span id="cb7-57"><a href="#cb7-57"></a><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span></span>
-<span id="cb7-58"><a href="#cb7-58"></a><span class="st">  </span><span class="kw">arrange</span>(taxon, species) <span class="op">%&gt;%</span></span>
-<span id="cb7-59"><a href="#cb7-59"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())</span>
-<span id="cb7-60"><a href="#cb7-60"></a></span>
-<span id="cb7-61"><a href="#cb7-61"></a>spp_vuln &lt;-<span class="st"> </span>match_vuln_df <span class="op">%&gt;%</span></span>
-<span id="cb7-62"><a href="#cb7-62"></a><span class="st">  </span><span class="kw">select</span>(species, taxon, stressor, vuln, sd_vuln) <span class="op">%&gt;%</span></span>
-<span id="cb7-63"><a href="#cb7-63"></a><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span></span>
-<span id="cb7-64"><a href="#cb7-64"></a><span class="st">  </span><span class="kw">left_join</span>(match_spp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(taxon, species, spp_id), <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;species&#39;</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb7-65"><a href="#cb7-65"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vuln =</span> <span class="kw">round</span>(vuln, <span class="dv">5</span>), <span class="dt">sd_vuln =</span> <span class="kw">round</span>(sd_vuln, <span class="dv">5</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb7-66"><a href="#cb7-66"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>taxon, <span class="op">-</span>species) <span class="co">### get these back by matching with spp_id</span></span>
-<span id="cb7-67"><a href="#cb7-67"></a></span>
-<span id="cb7-68"><a href="#cb7-68"></a><span class="kw">write_csv</span>(match_spp, <span class="kw">here</span>(<span class="st">&#39;int/spp_match_downfill.csv&#39;</span>))</span>
-<span id="cb7-69"><a href="#cb7-69"></a><span class="kw">write_csv</span>(spp_vuln,  <span class="kw">here</span>(<span class="st">&#39;int/vuln_downfill_only.csv&#39;</span>))</span></code></pre></div>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>rank_partitions &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="dt">length =</span> <span class="kw">length</span>(match_ranks)) <span class="op">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="st">  </span><span class="kw">setNames</span>(match_ranks)</span>
+<span id="cb7-6"><a href="#cb7-6"></a></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) { <span class="co"># r &lt;- match_ranks[1]</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  rank_partitions[[r]] &lt;-<span class="st"> </span>matched_df <span class="op">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="st">    </span><span class="kw">filter</span>(rank <span class="op">==</span><span class="st"> </span>r) <span class="op">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="st">    </span><span class="kw">select</span>(<span class="op">!!</span><span class="kw">paste0</span>(<span class="st">&#39;match_&#39;</span>, r) <span class="op">:</span><span class="er">=</span><span class="st"> </span>match, <span class="op">!!</span><span class="dt">r :=</span> name, </span>
+<span id="cb7-11"><a href="#cb7-11"></a>           stressor, vuln, sd_vuln, taxon) <span class="op">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="st">    </span><span class="kw">distinct</span>()</span>
+<span id="cb7-13"><a href="#cb7-13"></a>}</span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">### Expand matched species to get full classification</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>match_exp &lt;-<span class="st"> </span>spp_all_wide</span>
+<span id="cb7-17"><a href="#cb7-17"></a></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
+<span id="cb7-19"><a href="#cb7-19"></a>  <span class="co">### r &lt;- &#39;class&#39;</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a>  tmp &lt;-<span class="st"> </span>rank_partitions[[r]] <span class="op">%&gt;%</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="st">    </span><span class="kw">select</span>(<span class="kw">contains</span>(<span class="st">&#39;match&#39;</span>), <span class="op">!!</span>r) <span class="op">%&gt;%</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a><span class="st">    </span><span class="kw">distinct</span>()</span>
+<span id="cb7-23"><a href="#cb7-23"></a>  match_exp &lt;-<span class="st"> </span>match_exp <span class="op">%&gt;%</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="st">    </span><span class="kw">left_join</span>(tmp, <span class="dt">by =</span> r)</span>
+<span id="cb7-25"><a href="#cb7-25"></a>}</span>
+<span id="cb7-26"><a href="#cb7-26"></a></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="co">### Disambiguate expanded matches to the most specific rank available</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a>match_exp_dis &lt;-<span class="st"> </span>match_exp <span class="op">%&gt;%</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="st">  </span><span class="kw">gather</span>(key, match_rank, <span class="kw">starts_with</span>(<span class="st">&#39;match&#39;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a><span class="st">  </span><span class="co">### filter unmatched species</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(match_rank)) <span class="op">%&gt;%</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a><span class="st">  </span><span class="co">### keep the most specific match level</span></span>
+<span id="cb7-33"><a href="#cb7-33"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">match_rank =</span> <span class="kw">factor</span>(match_rank, <span class="dt">levels =</span> match_ranks)) <span class="op">%&gt;%</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a><span class="st">  </span><span class="kw">group_by</span>(species) <span class="op">%&gt;%</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">as.integer</span>(match_rank) <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(<span class="kw">as.integer</span>(match_rank))) <span class="op">%&gt;%</span></span>
+<span id="cb7-36"><a href="#cb7-36"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-37"><a href="#cb7-37"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>key) <span class="op">%&gt;%</span></span>
+<span id="cb7-38"><a href="#cb7-38"></a><span class="st">  </span><span class="kw">distinct</span>()</span>
+<span id="cb7-39"><a href="#cb7-39"></a></span>
+<span id="cb7-40"><a href="#cb7-40"></a><span class="co">### Loop over the matchable ranks again, to dice the expanded match and</span></span>
+<span id="cb7-41"><a href="#cb7-41"></a><span class="co">### join trait values by match rank.</span></span>
+<span id="cb7-42"><a href="#cb7-42"></a>match_vuln_list &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="dt">length =</span> <span class="kw">length</span>(match_ranks)) <span class="op">%&gt;%</span></span>
+<span id="cb7-43"><a href="#cb7-43"></a><span class="st">  </span><span class="kw">setNames</span>(match_ranks)</span>
+<span id="cb7-44"><a href="#cb7-44"></a></span>
+<span id="cb7-45"><a href="#cb7-45"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
+<span id="cb7-46"><a href="#cb7-46"></a>  <span class="co">### r &lt;- &#39;class&#39;</span></span>
+<span id="cb7-47"><a href="#cb7-47"></a>  tmp_rank_part &lt;-<span class="st"> </span>rank_partitions[[r]] <span class="op">%&gt;%</span></span>
+<span id="cb7-48"><a href="#cb7-48"></a><span class="st">    </span><span class="kw">rename</span>(<span class="dt">match_rank :=</span> <span class="op">!!</span><span class="kw">paste0</span>(<span class="st">&#39;match_&#39;</span>, r))</span>
+<span id="cb7-49"><a href="#cb7-49"></a>  match_vuln_list[[r]] &lt;-<span class="st"> </span>match_exp_dis <span class="op">%&gt;%</span></span>
+<span id="cb7-50"><a href="#cb7-50"></a><span class="st">    </span><span class="kw">filter</span>(match_rank <span class="op">==</span><span class="st"> </span>r) <span class="op">%&gt;%</span></span>
+<span id="cb7-51"><a href="#cb7-51"></a><span class="st">    </span><span class="kw">left_join</span>(tmp_rank_part, <span class="dt">by =</span> <span class="kw">c</span>(r, <span class="st">&#39;match_rank&#39;</span>))</span>
+<span id="cb7-52"><a href="#cb7-52"></a>}</span>
+<span id="cb7-53"><a href="#cb7-53"></a></span>
+<span id="cb7-54"><a href="#cb7-54"></a>match_vuln_df &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(match_vuln_list) <span class="op">%&gt;%</span></span>
+<span id="cb7-55"><a href="#cb7-55"></a><span class="st">  </span><span class="co">### disambiguate pearl oysters</span></span>
+<span id="cb7-56"><a href="#cb7-56"></a><span class="st">  </span><span class="kw">filter</span>(genus <span class="op">!=</span><span class="st"> &#39;pinctada&#39;</span> <span class="op">|</span><span class="st"> </span>class <span class="op">==</span><span class="st"> &#39;bivalvia&#39;</span>)</span>
+<span id="cb7-57"><a href="#cb7-57"></a></span>
+<span id="cb7-58"><a href="#cb7-58"></a><span class="co"># dupes &lt;- match_vuln_df %&gt;%</span></span>
+<span id="cb7-59"><a href="#cb7-59"></a><span class="co">#   select(phylum:species, taxon) %&gt;%</span></span>
+<span id="cb7-60"><a href="#cb7-60"></a><span class="co">#   distinct() %&gt;%</span></span>
+<span id="cb7-61"><a href="#cb7-61"></a><span class="co">#   show_dupes(&#39;species&#39;)</span></span>
+<span id="cb7-62"><a href="#cb7-62"></a></span>
+<span id="cb7-63"><a href="#cb7-63"></a><span class="co">### Split into a species match table and vulnerability table, with an ID number</span></span>
+<span id="cb7-64"><a href="#cb7-64"></a><span class="co">### to facilitate later matching up</span></span>
+<span id="cb7-65"><a href="#cb7-65"></a>match_spp &lt;-<span class="st"> </span>match_vuln_df <span class="op">%&gt;%</span></span>
+<span id="cb7-66"><a href="#cb7-66"></a><span class="st">  </span><span class="kw">select</span>(phylum<span class="op">:</span>species, taxon, match_rank) <span class="op">%&gt;%</span></span>
+<span id="cb7-67"><a href="#cb7-67"></a><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-68"><a href="#cb7-68"></a><span class="st">  </span><span class="kw">arrange</span>(taxon, species) <span class="op">%&gt;%</span></span>
+<span id="cb7-69"><a href="#cb7-69"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">spp_id =</span> <span class="dv">1</span><span class="op">:</span><span class="kw">n</span>())</span>
+<span id="cb7-70"><a href="#cb7-70"></a></span>
+<span id="cb7-71"><a href="#cb7-71"></a>spp_vuln &lt;-<span class="st"> </span>match_vuln_df <span class="op">%&gt;%</span></span>
+<span id="cb7-72"><a href="#cb7-72"></a><span class="st">  </span><span class="kw">select</span>(species, taxon, stressor, vuln, sd_vuln) <span class="op">%&gt;%</span></span>
+<span id="cb7-73"><a href="#cb7-73"></a><span class="st">  </span><span class="kw">distinct</span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-74"><a href="#cb7-74"></a><span class="st">  </span><span class="kw">left_join</span>(match_spp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(taxon, species, spp_id), <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;species&#39;</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb7-75"><a href="#cb7-75"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">vuln =</span> <span class="kw">round</span>(vuln, <span class="dv">5</span>), <span class="dt">sd_vuln =</span> <span class="kw">round</span>(sd_vuln, <span class="dv">5</span>)) <span class="op">%&gt;%</span></span>
+<span id="cb7-76"><a href="#cb7-76"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>taxon, <span class="op">-</span>species) <span class="co">### get these back by matching with spp_id</span></span>
+<span id="cb7-77"><a href="#cb7-77"></a></span>
+<span id="cb7-78"><a href="#cb7-78"></a><span class="kw">write_csv</span>(match_spp, <span class="kw">here</span>(<span class="st">&#39;int/spp_match_downfill.csv&#39;</span>))</span>
+<span id="cb7-79"><a href="#cb7-79"></a><span class="kw">write_csv</span>(spp_vuln,  <span class="kw">here</span>(<span class="st">&#39;int/vuln_downfill_only.csv&#39;</span>))</span></code></pre></div>
 <div id="how-many-matched-at-each-level" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> How many matched at each level?</h3>
-<p>There are 12653 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
+<p>There are 12634 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>knitr<span class="op">::</span><span class="kw">kable</span>(match_vuln_df <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="st">               </span><span class="kw">group_by</span>(match_rank) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="st">               </span><span class="kw">summarize</span>(<span class="dt">n_spp_matched =</span> <span class="kw">n_distinct</span>(species)))</span></code></pre></div>
@@ -4392,15 +4363,15 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td align="left">family</td>
-<td align="right">2991</td>
+<td align="right">2986</td>
 </tr>
 <tr class="even">
 <td align="left">genus</td>
-<td align="right">1707</td>
+<td align="right">1695</td>
 </tr>
 <tr class="odd">
 <td align="left">species</td>
-<td align="right">577</td>
+<td align="right">575</td>
 </tr>
 </tbody>
 </table>
@@ -4451,22 +4422,18 @@ div.tocify {
 <td align="right">43</td>
 </tr>
 <tr class="odd">
-<td align="left">plants_algae</td>
-<td align="right">14</td>
+<td align="left">polychaetes</td>
+<td align="right">1955</td>
 </tr>
 <tr class="even">
-<td align="left">polychaetes</td>
-<td align="right">1956</td>
+<td align="left">reptiles</td>
+<td align="right">83</td>
 </tr>
 <tr class="odd">
-<td align="left">reptiles</td>
-<td align="right">87</td>
-</tr>
-<tr class="even">
 <td align="left">seabirds</td>
 <td align="right">466</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left">sponges</td>
 <td align="right">7372</td>
 </tr>

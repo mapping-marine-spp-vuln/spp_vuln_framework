@@ -21,7 +21,10 @@ output:
 knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
-source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
+# source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+source(here('common_fxns.R'))
 library(taxize)
 
 ```
@@ -40,54 +43,11 @@ Using taxonomic trees from WoRMS and the `taxize` package, we will try filling v
 
 Grab data from each rank (kingdom --> phylum, phylum --> class, class --> order, etc.) and assemble into a long dataframe.  Long format will be easier to match trait-scored species to, since all ranks will be in the "name" column.  But wide format will be easier for keeping track of the structure of each species' classification.
 
-``` {r}
-p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv')) %>%
-  filter(!is.na(id))
-c_from_p <- read_csv(here('int/class_from_phylum_worms.csv')) %>%
-  filter(!is.na(id))
-o_from_c <- read_csv(here('int/order_from_class_worms.csv')) %>%
-  filter(!is.na(id))
-f_from_o <- read_csv(here('int/family_from_order_worms.csv')) %>%
-  filter(!is.na(id))
-g_from_f <- read_csv(here('int/genus_from_family_worms.csv')) %>%
-  filter(!is.na(id))
-s_from_g <- read_csv(here('int/species_from_genus_worms.csv')) %>%
-  filter(!is.na(id))
+Because we are dropping plants and algae, filter wide dataframe to just species in kingdom _Animalia_.  This is done in the `assemble_worms()` function from `common_fxns.R`.
 
-rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
-
-### create long df to match at any level
-spp_df_long <- bind_rows(s_from_g, g_from_f, f_from_o, o_from_c, c_from_p, p_from_k) %>%
-  mutate(rank = factor(rank, levels = rank_lvls)) %>%
-  filter(!is.na(name))
-
-full_class_file <- here('_data/spp_complete_classifications_worms.csv')
-if(!file.exists(full_class_file)) {
-  ### write this out; this can be used to recreate full classifications later
-  write_csv(spp_df_long, full_class_file)
-}
-
-### create wide for complete classification for each species
-spp_df_wide <- s_from_g %>%
-  select(genus = parent, species = name) %>%
-  left_join(g_from_f %>% select(family = parent, genus = name), 
-            by = c('genus')) %>%
-  left_join(f_from_o %>% select(order = parent, family = name), 
-            by = c('family')) %>%
-  left_join(o_from_c %>% select(class = parent, order = name), 
-            by = c('order')) %>%
-  left_join(c_from_p %>% select(phylum = parent, class = name), 
-            by = c('class')) %>%
-  left_join(p_from_k %>% select(kingdom = parent, phylum = name),
-            by = c('phylum')) %>%
-  select(kingdom, phylum, class, order, family, genus, species) %>%
-  distinct()
-
-### then make that long, but keeping structure for each species - maybe?
-# spp_all_long <- spp_df_wide %>%
-#   mutate(spp = species) %>%
-#   gather(rank, name, kingdom:species) %>%
-#   mutate(rank = factor(rank, levels = rank_lvls))
+``` {r assemble full spp taxonomic table from WoRMS}
+spp_all_wide <- assemble_worms('wide')
+spp_all_long <- assemble_worms('long')
 ```
 
 ## Match species with known vulnerability to most specific rank
@@ -98,7 +58,7 @@ Loading the vulnerability data, and match to the long-format species classificat
 spp_gp_vuln <- read_csv(here('_output/spp_gp_vuln_w_distribution.csv')) %>%
   select(taxon, spp_gp, stressor, vuln, sd_vuln)
 
-matched_df <- spp_df_long %>%
+matched_df <- spp_all_long %>%
   inner_join(spp_gp_vuln, by = c('name' = 'spp_gp')) %>%
   mutate(match = rank)
 # matched_df$rank %>% unique() # species genus   family  class
@@ -164,17 +124,21 @@ Identify the rank at which each spp group matched, and disambiguate spp gps that
 ``` {r}
 ### Loop over matchable ranks to separate out the matched species by rank of match
 match_ranks <- c('phylum', 'class', 'order', 'family', 'genus', 'species')
+
 rank_partitions <- vector('list', length = length(match_ranks)) %>%
   setNames(match_ranks)
+
 for(r in match_ranks) { # r <- match_ranks[1]
   rank_partitions[[r]] <- matched_df %>%
     filter(rank == r) %>%
     select(!!paste0('match_', r) := match, !!r := name, 
-           stressor, vuln, sd_vuln, taxon)
+           stressor, vuln, sd_vuln, taxon) %>%
+    distinct()
 }
 
 ### Expand matched species to get full classification
-match_exp <- spp_df_wide
+match_exp <- spp_all_wide
+
 for(r in match_ranks) {
   ### r <- 'class'
   tmp <- rank_partitions[[r]] %>%
@@ -190,7 +154,7 @@ match_exp_dis <- match_exp %>%
   ### filter unmatched species
   filter(!is.na(match_rank)) %>%
   ### keep the most specific match level
-  mutate(match_rank = factor(match_rank, levels = rank_lvls)) %>%
+  mutate(match_rank = factor(match_rank, levels = match_ranks)) %>%
   group_by(species) %>%
   filter(as.integer(match_rank) == max(as.integer(match_rank))) %>%
   ungroup() %>%
@@ -201,6 +165,7 @@ match_exp_dis <- match_exp %>%
 ### join trait values by match rank.
 match_vuln_list <- vector('list', length = length(match_ranks)) %>%
   setNames(match_ranks)
+
 for(r in match_ranks) {
   ### r <- 'class'
   tmp_rank_part <- rank_partitions[[r]] %>%
@@ -211,13 +176,18 @@ for(r in match_ranks) {
 }
 
 match_vuln_df <- bind_rows(match_vuln_list) %>%
-  ### disambiguate rossia (chromista vs cephalopoda)
-  filter(!(taxon == 'cephalopods' & kingdom != 'animalia'))
+  ### disambiguate pearl oysters
+  filter(genus != 'pinctada' | class == 'bivalvia')
+
+# dupes <- match_vuln_df %>%
+#   select(phylum:species, taxon) %>%
+#   distinct() %>%
+#   show_dupes('species')
 
 ### Split into a species match table and vulnerability table, with an ID number
 ### to facilitate later matching up
 match_spp <- match_vuln_df %>%
-  select(kingdom:species, taxon, match_rank) %>%
+  select(phylum:species, taxon, match_rank) %>%
   distinct() %>%
   arrange(taxon, species) %>%
   mutate(spp_id = 1:n())

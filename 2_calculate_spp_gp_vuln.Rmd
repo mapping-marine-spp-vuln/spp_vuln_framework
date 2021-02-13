@@ -21,7 +21,8 @@ output:
 knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
-source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
 options(dplyr.summarise.inform = FALSE) 
 ```
 
@@ -104,10 +105,11 @@ assign_rank_scores <- function(x) {
 }
 ```
 
-Since the species trait file is already cleaned, DO NOT use the `clean_traitvals` function - it will overwrite the `trait_value` column.
+Since the species trait file is already cleaned, DO NOT use the `clean_traitvals` function - it will overwrite the `trait_value` column.  Here we will drop plants and algae as physiologies are so fundamentally different from animals.
 
 ```{r}
-spp_traits <- read_csv('_data/spp_traits_valid.csv')
+spp_traits <- read_csv('_data/spp_traits_valid.csv') %>%
+  filter(taxon != 'plants_algae')
 
 ```
 
@@ -746,7 +748,7 @@ for(t in taxa) { # t <- taxa[3]
   
   vuln_plot <- ggplot(t_vuln, 
                       aes(x = stressor, y = vuln)) +
-    ggtheme_plot(base_size = 12) +
+    theme_ohara(base_size = 12) +
     geom_hline(data = mean_tot_vuln, aes(yintercept = vuln), color = 'red') +
     geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
     geom_point(data = mean_str_vuln, 
@@ -774,7 +776,7 @@ str_mean_vuln <- plot_df %>%
 all_mean_vuln <- plot_df %>%
   summarize(vuln = mean(vuln, na.rm = TRUE))
 ggplot(plot_df, aes(x = stressor, y = vuln)) +
-  ggtheme_plot(base_size = 12) +
+  theme_ohara(base_size = 12) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
   geom_hline(data = all_mean_vuln, aes(yintercept = vuln), color = 'red') +
   geom_jitter(size = 1, alpha = .6, width = .2, height = .02) +
