@@ -21,7 +21,10 @@ output:
 knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
-source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
+source(here('common_fxns.R'))
+options(dplyr.summarise.inform = FALSE) 
 
 ```
 
@@ -48,48 +51,11 @@ match_vuln_df <- match_spp %>%
 
 ## Assemble full spp table from WoRMS
 
+Use the `assemble_worms()` function from `common_fxns.R`.
+
 ``` {r assemble full spp taxonomic table from WoRMS}
-p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv')) %>%
-  filter(!is.na(id))
-c_from_p <- read_csv(here('int/class_from_phylum_worms.csv')) %>%
-  filter(!is.na(id))
-o_from_c <- read_csv(here('int/order_from_class_worms.csv')) %>%
-  filter(!is.na(id))
-f_from_o <- read_csv(here('int/family_from_order_worms.csv')) %>%
-  filter(!is.na(id))
-g_from_f <- read_csv(here('int/genus_from_family_worms.csv')) %>%
-  filter(!is.na(id))
-s_from_g <- read_csv(here('int/species_from_genus_worms.csv')) %>%
-  filter(!is.na(id))
-
-rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
-
-### create long df to match at any level
-spp_df_long <- bind_rows(s_from_g, g_from_f, f_from_o, o_from_c, c_from_p, p_from_k) %>%
-  mutate(rank = factor(rank, levels = rank_lvls)) %>%
-  filter(!is.na(name))
-
-full_class_file <- here('_data/spp_complete_classifications_worms.csv')
-if(!file.exists(full_class_file)) {
-  ### write this out; this can be used to recreate full classifications later
-  write_csv(spp_df_long, full_class_file)
-}
-
-### create wide for complete classification for each species
-spp_df_wide <- s_from_g %>%
-  select(genus = parent, species = name) %>%
-  left_join(g_from_f %>% select(family = parent, genus = name), 
-            by = c('genus')) %>%
-  left_join(f_from_o %>% select(order = parent, family = name), 
-            by = c('family')) %>%
-  left_join(o_from_c %>% select(class = parent, order = name), 
-            by = c('order')) %>%
-  left_join(c_from_p %>% select(phylum = parent, class = name), 
-            by = c('class')) %>%
-  left_join(p_from_k %>% select(kingdom = parent, phylum = name),
-            by = c('phylum')) %>%
-  select(kingdom, phylum, class, order, family, genus, species) %>%
-  distinct()
+spp_all_wide <- assemble_worms('wide')
+spp_all_long <- assemble_worms('long')
 ```
 
 ### Potential for gapfill at each rank
@@ -99,22 +65,15 @@ For each rank, identify the taxa included in vulnerability data (e.g. which gene
 ``` {r gapfill potential by rank}
 
 taxa_match_df <- match_vuln_df %>%
-  select(kingdom:species) %>%
+  select(phylum:species) %>%
   distinct() %>%
   group_by(species) %>%
-  slice(1) %>% ### a couple of double-counted spp
   ungroup()
 
-taxa_all_wide <- spp_df_wide %>%
-  group_by(species) %>%
-  slice(1) %>%
-  ungroup()
 match_ranks <- c('phylum', 'class', 'order', 'family', 'genus', 'species')
 
 rank_gapfill_potential <- vector('list', length = length(match_ranks) - 1) %>%
   setNames(match_ranks[-6])
-
-
 
 for(r in match_ranks[-6]) { ### r <- 'phylum'
   rank_spp_known <- taxa_match_df %>%
@@ -123,7 +82,7 @@ for(r in match_ranks[-6]) { ### r <- 'phylum'
     summarize(n_spp_known = n_distinct(species)) %>%
     ungroup() %>%
     rename(!!r := tmp) 
-  rank_spp_all <- taxa_all_wide %>%
+  rank_spp_all <- spp_all_wide %>%
     rename(tmp := !!r) %>%
     group_by(tmp) %>%
     summarize(n_spp_all = n_distinct(species)) %>%
@@ -142,15 +101,6 @@ knitr::kable(bind_rows(rank_gapfill_potential))
   
 ```
 
-
-#### Occurrences of duplicated species names:
-
-``` {r}
-DT::datatable(show_dupes(spp_df_wide %>% 
-                                filter(!is.na(species)), 'species') %>% 
-                arrange(species))
-```
-
 ## create gapfill dataframes
 
 Calculate the mean based on all $n$ known species in the rank-level grouping.  This will be broken into taxa with all vulnerability scores deterministic (i.e., no species with a distribution around its vulnerability score) and probabilistic (i.e., one or more species has a distribution around its vulnerability score).
@@ -167,50 +117,50 @@ gen_fill_det <- match_vuln_df %>%
   # filter(genus == 'meridiastra') %>%
   group_by(class, order, family, genus, stressor, taxon) %>%
   filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
-  summarize(n_known_spp = n_distinct(species),
+  summarize(n_spp_known = n_distinct(species),
             mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
+            sd_vuln   = sd(vuln))
             # med_vuln  = median(vuln),
             # skew_vuln = psych::skew(vuln, type = 2),
             # kurt_vuln = psych::kurtosi(vuln, type = 2),
             # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'genus')
+            # gapfill = 'genus')
   
 fam_fill_det <- match_vuln_df %>%
   group_by(class, order, family, stressor, taxon) %>%
   filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
-  summarize(n_known_spp = n_distinct(species),
+  summarize(n_spp_known = n_distinct(species),
             mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
+            sd_vuln   = sd(vuln))
             # med_vuln  = median(vuln),
             # skew_vuln = moments::skewness(vuln),
             # kurt_vuln = moments::kurtosis(vuln),
             # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'family')
+            # gapfill = 'family')
 
 ord_fill_det <- match_vuln_df %>%
   group_by(class, order, stressor, taxon) %>%
   filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
-  summarize(n_known_spp = n_distinct(species),
+  summarize(n_spp_known = n_distinct(species),
             mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
+            sd_vuln   = sd(vuln))
             # med_vuln  = median(vuln),
             # skew_vuln = moments::skewness(vuln),
             # kurt_vuln = moments::kurtosis(vuln),
             # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'order')
+            # gapfill = 'order')
  
 cls_fill_det <- match_vuln_df %>%
   group_by(class, stressor, taxon) %>%
   filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
-  summarize(n_known_spp = n_distinct(species),
+  summarize(n_spp_known = n_distinct(species),
             mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln),
+            sd_vuln   = sd(vuln))
             # med_vuln  = median(vuln),
             # skew_vuln = moments::skewness(vuln),
             # kurt_vuln = moments::kurtosis(vuln),
             # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            gapfill = 'class')
+            # gapfill = 'class')
  
 ```
 
@@ -228,6 +178,25 @@ stressors <- match_vuln_df$stressor %>% unique() %>% sort()
 
 ```
 
+Let's also tally up the number of species in each rank-level group (e.g., # of species in a given genus or family).
+
+```{r count spp per rank group}
+count_ranks <- match_ranks[1:5]
+count_list <- vector('list', length = length(count_ranks)) %>%
+  setNames(count_ranks)
+for(rank in count_ranks) {
+  ### rank <- count_ranks[1]
+  rank_df <- spp_all_wide %>%
+    rename(name := !!rank) %>%
+    group_by(name) %>%
+    summarize(n_spp_total = n_distinct(species)) %>%
+    mutate(rank = rank) %>%
+    distinct()
+  count_list[[rank]] <- rank_df
+}
+count_df <- bind_rows(count_list)
+```
+
 #### Genus level
 
 ``` {r genus prob fill}
@@ -243,7 +212,7 @@ gen_fill_matchrank <- gen_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
 
 gen_fill_nondet_solo <- gen_fill_nondet %>%
@@ -253,15 +222,15 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
   
 ```
 
 ``` {r monte carlo for genus vuln dists}
-gen_fill_file <- '~/git-annex/spp_vuln/gen_fill_prob_results.csv'
+iters <- 10000
 
-iters <- 1000
+gen_fill_file <- here('int', sprintf('gen_fill_prob_results_%s.csv', iters))
 
 if(!file.exists(gen_fill_file)) {
   gen_fill_prob <- gen_fill_nondet %>%
@@ -284,21 +253,21 @@ if(!file.exists(gen_fill_file)) {
       mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
     
     message('Running ', iters, ' MC iterations for genus ', g)
-    tmp_list <- vector('list', length = iters)
-    for(i in 1:iters) { ### i <- 2
-      samp_df <- g_df %>%
-        rowwise() %>%
-        mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-        ungroup()
-      tmp_list[[i]] <- samp_df
-    }
+    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
+      FUN = function(i) { ### i <- 2
+        samp_df <- g_df %>%
+          rowwise() %>%
+          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
+          ungroup()
+        return(samp_df)
+      })
     mc_results_df <- tmp_list %>%
       bind_rows() %>%
       group_by(class, order, family, genus, stressor, taxon) %>%
       summarize(mean_vuln = mean(v),
                 sd_vuln = sd(v),
                 # med_vuln = median(v),
-                n_known_spp = n_distinct(species)) %>%
+                n_spp_known = n_distinct(species)) %>%
       ungroup()
     genera_list[[g]] <- mc_results_df
   }
@@ -315,23 +284,16 @@ combine all genus-level gapfill values:
 ```{r}
 gen_fill_prob_results <- read_csv(gen_fill_file)
 
+
 gen_fill_totes <- bind_rows(gen_fill_det,
                             gen_fill_matchrank,
                             gen_fill_nondet_solo,
                             gen_fill_prob_results) %>%
   select(-n_spp) %>%
-  mutate(gapfill = 'genus')
+  mutate(gapfill = 'genus') %>%
+  left_join(count_df, by = c('genus' = 'name', 'gapfill' = 'rank'))
 ```
 
-genus check:
-```{r}
-n_distinct(taxa_match_df$genus)
-n_distinct(c(gen_fill_det$genus,
-             gen_fill_matchrank$genus,
-             gen_fill_nondet_solo$genus,
-             gen_fill_prob_results$genus))
-
-```
 
 #### Family level
 
@@ -348,7 +310,7 @@ fam_fill_matchrank <- fam_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
 
 fam_fill_nondet_solo <- fam_fill_nondet %>%
@@ -358,12 +320,12 @@ fam_fill_nondet_solo <- fam_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
 ```
 
 ``` {r monte carlo for fam vuln dists}
-fam_fill_file <- '~/git-annex/spp_vuln/fam_fill_prob_results.csv'
+fam_fill_file <- here('int', sprintf('fam_fill_prob_results_%s.csv', iters))
 
 if(!file.exists(fam_fill_file)) {
   fam_fill_prob <- fam_fill_nondet %>%
@@ -386,21 +348,21 @@ if(!file.exists(fam_fill_file)) {
       mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
     
     message('Running ', iters, ' MC iterations for family ', f)
-    tmp_list <- vector('list', length = iters)
-    for(i in 1:iters) { ### i <- 2
-      samp_df <- f_df %>%
-        rowwise() %>%
-        mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-        ungroup()
-      tmp_list[[i]] <- samp_df
-    }
+    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
+      FUN = function(i) { ### i <- 2
+        samp_df <- f_df %>%
+          rowwise() %>%
+          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
+          ungroup()
+        return(samp_df)
+      })
     mc_results_df <- tmp_list %>%
       bind_rows() %>%
       group_by(class, order, family, stressor, taxon) %>%
       summarize(mean_vuln = mean(v),
                 sd_vuln = sd(v),
                 # med_vuln = median(v),
-                n_known_spp = n_distinct(species)) %>%
+                n_spp_known = n_distinct(species)) %>%
       ungroup()
     fam_list[[f]] <- mc_results_df
   }
@@ -423,18 +385,10 @@ fam_fill_totes <- bind_rows(fam_fill_det,
                             fam_fill_nondet_solo,
                             fam_fill_prob_results) %>%
   select(-n_spp) %>%
-  mutate(gapfill = 'family')
+  mutate(gapfill = 'family') %>%
+  left_join(count_df, by = c('family' = 'name', 'gapfill' = 'rank'))
 ```
 
-family check:
-```{r}
-n_distinct(taxa_match_df$family)
-n_distinct(c(fam_fill_det$family,
-             fam_fill_matchrank$family,
-             fam_fill_nondet_solo$family,
-             fam_fill_prob_results$family))
-
-```
 
 
 #### Order level
@@ -452,7 +406,7 @@ ord_fill_matchrank <- ord_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
 
 ord_fill_nondet_solo <- ord_fill_nondet %>%
@@ -462,12 +416,12 @@ ord_fill_nondet_solo <- ord_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
 ```
 
 ``` {r monte carlo for ord vuln dists}
-ord_fill_file <- '~/git-annex/spp_vuln/ord_fill_prob_results.csv'
+ord_fill_file <- here('int', sprintf('ord_fill_prob_results_%s.csv', iters))
 
 if(!file.exists(ord_fill_file)) {
   ord_fill_prob <- ord_fill_nondet %>%
@@ -490,21 +444,21 @@ if(!file.exists(ord_fill_file)) {
       mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
     
     message('Running ', iters, ' MC iterations for order ', o)
-    tmp_list <- vector('list', length = iters)
-    for(i in 1:iters) { ### i <- 2
-      samp_df <- o_df %>%
-        rowwise() %>%
-        mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-        ungroup()
-      tmp_list[[i]] <- samp_df
-    }
+    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
+      FUN = function(i) { ### i <- 2
+        samp_df <- o_df %>%
+          rowwise() %>%
+          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
+          ungroup()
+        return(samp_df)
+      })
     mc_results_df <- tmp_list %>%
       bind_rows() %>%
       group_by(class, order, stressor, taxon) %>%
       summarize(mean_vuln = mean(v),
                 sd_vuln = sd(v),
                 # med_vuln = median(v),
-                n_known_spp = n_distinct(species)) %>%
+                n_spp_known = n_distinct(species)) %>%
       ungroup()
     ord_list[[o]] <- mc_results_df
   }
@@ -527,21 +481,12 @@ ord_fill_totes <- bind_rows(ord_fill_det,
                             ord_fill_nondet_solo,
                             ord_fill_prob_results) %>%
   select(-n_spp) %>%
-  mutate(gapfill = 'order')
+  mutate(gapfill = 'order') %>%
+  left_join(count_df, by = c('order' = 'name', 'gapfill' = 'rank'))
 
 
 ```
 
-order check:
-```{r}
-
-n_distinct(taxa_match_df$order)
-n_distinct(c(ord_fill_det$order,
-             ord_fill_matchrank$order,
-             ord_fill_nondet_solo$order,
-             ord_fill_prob_results$order))
-
-```
 
 #### Class level
 
@@ -558,7 +503,7 @@ cls_fill_matchrank <- cls_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
 
 cls_fill_nondet_solo <- cls_fill_nondet %>%
@@ -568,12 +513,12 @@ cls_fill_nondet_solo <- cls_fill_nondet %>%
   summarize(mean_vuln = first(vuln), 
             # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
-            n_known_spp = n_distinct(species)) %>%
+            n_spp_known = n_distinct(species)) %>%
   ungroup()
 ```
 
 ``` {r monte carlo for cls vuln dists}
-cls_fill_file <- '~/git-annex/spp_vuln/cls_fill_prob_results.csv'
+cls_fill_file <- here('int', sprintf('cls_fill_prob_results_%s.csv', iters))
 
 if(!file.exists(cls_fill_file)) {
   cls_fill_prob <- cls_fill_nondet %>%
@@ -596,21 +541,21 @@ if(!file.exists(cls_fill_file)) {
       mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
     
     message('Running ', iters, ' MC iterations for class ', c)
-    tmp_list <- vector('list', length = iters)
-    for(i in 1:iters) { ### i <- 2
-      samp_df <- c_df %>%
-        rowwise() %>%
-        mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-        ungroup()
-      tmp_list[[i]] <- samp_df
-    }
+    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
+      FUN = function(i) { ### i <- 2
+        samp_df <- c_df %>%
+          rowwise() %>%
+          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
+          ungroup()
+        return(samp_df)
+      })
     mc_results_df <- tmp_list %>%
       bind_rows() %>%
       group_by(class, stressor, taxon) %>%
       summarize(mean_vuln = mean(v),
                 sd_vuln = sd(v),
                 # med_vuln = median(v),
-                n_known_spp = n_distinct(species)) %>%
+                n_spp_known = n_distinct(species)) %>%
       ungroup()
     cls_list[[c]] <- mc_results_df
   }
@@ -633,17 +578,10 @@ cls_fill_totes <- bind_rows(cls_fill_det,
                             cls_fill_nondet_solo,
                             cls_fill_prob_results) %>%
   select(-n_spp) %>%
-  mutate(gapfill = 'class')
+  mutate(gapfill = 'class') %>%
+  left_join(count_df, by = c('class' = 'name', 'gapfill' = 'rank'))
 ```
 
-class check:
-```{r}
-n_distinct(taxa_match_df$class)
-n_distinct(c(cls_fill_det$class,
-             cls_fill_matchrank$class,
-             cls_fill_nondet_solo$class,
-             cls_fill_prob_results$class))
-```
 
 ## Combine matched and gapfilled traits
 
@@ -652,16 +590,18 @@ Strip the higher ranks for file size; save out.
 vuln_all_spp <- match_vuln_df %>%
   mutate(gapfill = 'none') %>%
   bind_rows(gen_fill_totes, fam_fill_totes, ord_fill_totes, cls_fill_totes) %>%
-  mutate(vuln = ifelse(is.na(vuln), mean_vuln, vuln)) %>%
-  select(-mean_vuln, -kingdom, -phylum) %>%
+  mutate(vuln = ifelse(is.na(vuln), mean_vuln, vuln),
+         sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln),
+         n_prob = ifelse(is.na(n_prob), 0, n_prob)) %>%
+  select(-mean_vuln, -phylum) %>%
   distinct()
 
 ### split with a taxon ID
 
 vuln_tx <- vuln_all_spp %>%
-  select(class:species, taxon, n_known_spp, n_prob, gapfill, match_rank) %>%
+  select(class:species, taxon, n_spp_known, n_prob, gapfill, match_rank) %>%
   distinct() %>%
-  mutate(n_known_spp = ifelse(is.na(n_known_spp), 1, n_known_spp)) %>%
+  mutate(n_spp_known = ifelse(is.na(n_spp_known), 1, n_spp_known)) %>%
   arrange(class, order, family, genus, species) %>%
   mutate(tx_id = 1:n())
 
@@ -678,66 +618,70 @@ write_csv(vuln_tx,   '~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_taxa.csv')
 
 ## Examine gapfill variability by stressor and taxon
 
-The values in the following tables are coefficients of variation for each combination of stressor or taxon and various levels of potential gapfilling using an upstream-downstream method.
+### by standard deviation
 ```{r}
-cv_compare <- vuln_all_spp %>%
+sd_compare <- vuln_all_spp %>%
+  mutate(sd = ifelse(is.na(sd_vuln), 0, sd_vuln),
+         pct_known = ifelse(gapfill == 'none', 1, n_spp_known / n_spp_total)) %>%
   group_by(gapfill, stressor, taxon) %>%
-  mutate(cv = ifelse(vuln > 0 & !is.na(sd_vuln), sd_vuln / vuln, 0)) %>%
-  summarize(mean_cv = mean(cv), n_spp = n())
+  summarize(mean_sd = mean(sd), 
+            n_spp = n(),
+            pct_known = mean(pct_known)) %>%
+  mutate(gapfill = factor(gapfill, 
+                          levels = c('none', 'genus', 'family', 'order', 'class'))) %>%
+  ungroup()
 
-cv_by_str <- cv_compare %>% 
+sd_by_str <- sd_compare %>% 
   group_by(gapfill, stressor) %>%
-  summarize(w_mean_cv = (sum(mean_cv * n_spp) / sum(n_spp)) %>% round(5)) %>%
-  mutate(gapfill = factor(gapfill, levels = c('none', 'genus', 'family', 'order', 'class'))) %>%
-  arrange(desc(gapfill), desc(w_mean_cv)) %>%
-  spread(gapfill, w_mean_cv)
+  summarize(w_mean_sd = (sum(mean_sd * n_spp) / sum(n_spp)) %>% round(5)) %>%
+  arrange(desc(gapfill), desc(w_mean_sd))
 
-cv_by_taxon <- cv_compare %>% 
+sd_by_taxon <- sd_compare %>% 
   group_by(gapfill, taxon) %>%
-  summarize(w_mean_cv = (sum(mean_cv * n_spp) / sum(n_spp)) %>% round(5)) %>%
-  mutate(gapfill = factor(gapfill, levels = c('none', 'genus', 'family', 'order', 'class'))) %>%
-  arrange(desc(gapfill), desc(w_mean_cv)) %>%
-  spread(gapfill, w_mean_cv)
+  summarize(w_mean_sd = (sum(mean_sd * n_spp) / sum(n_spp)) %>% round(5)) %>%
+  arrange(desc(gapfill), desc(w_mean_sd))
 
-knitr::kable(cv_by_str)
-knitr::kable(cv_by_taxon)
+pct_pop_by_taxon <- sd_compare %>%
+  mutate(pct_to_fill = 1 - pct_known) %>%
+  select(gapfill, taxon, n_spp, pct_to_fill) %>%
+  distinct()
+  
 ```
 
-### plot these
-
 ```{r}
-lvls <- c('none', 'genus', 'family', 'order', 'class')
-cv_by_str_long <- cv_by_str %>%
-  gather(level, cv, none:class) %>%
-  mutate(level = factor(level, levels = lvls))
-ggplot(cv_by_str_long, aes(x = level, y = cv)) +
+ggplot(sd_by_str, aes(x = gapfill, y = w_mean_sd)) +
   geom_point() +
   facet_wrap(~stressor, scales = 'free_y') +
   theme(axis.text.x = element_text(angle = 90, vjust = .5)) +
-  labs(title = 'coef of var by stressor and gapfill level')
+  labs(title = 'std dev by stressor and gapfill level')
 ```
 
 ```{r}
-cv_by_taxon_long <- cv_by_taxon %>%
-  gather(level, cv, none:class) %>%
-  mutate(level = factor(level, levels = lvls))
-ggplot(cv_by_taxon_long, aes(x = level, y = cv)) +
+ggplot(sd_by_taxon, aes(x = gapfill, y = w_mean_sd)) +
   geom_point() +
   facet_wrap(~taxon, scales = 'free_y') +
   theme(axis.text.x = element_text(angle = 90, vjust = .5)) +
-  labs(title = 'coef of var by taxon and gapfill level')
+  labs(title = 'std dev by taxon and gapfill level')
+```
+
+```{r}
+ggplot(pct_pop_by_taxon, aes(x = gapfill, y = pct_to_fill)) +
+  geom_point() +
+  facet_wrap(~taxon) +
+  theme(axis.text.x = element_text(angle = 90, vjust = .5)) +
+  labs(title = 'Pct to fill by taxon and gapfill level')
 ```
 
 ## Calculate gapfill counts and taxon means/sds
 
-First let's use the vulnerability gapfilling to fill in species up to family or order level.
+First let's use the vulnerability gapfilling to fill in species up to class level (maximum) and write these out for posterity...
 
 ```{r apply upstreamed gapfill values to downstream spp}
 vuln_vals <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_values.csv')
 vuln_tx <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_taxa.csv')
 vuln_df <- vuln_tx %>%
   left_join(vuln_vals, by = 'tx_id') %>%
-  select(-tx_id, -n_known_spp, -n_prob) %>%
+  select(-tx_id, -n_spp_known, -n_prob) %>%
   distinct()
 
 vuln_direct_match <- vuln_df %>%
@@ -761,7 +705,7 @@ for(i in 2:length(gf_ranks)) {
     select(-all_of(drop_ranks)) %>%
     distinct()
   
-  rank_gf_df <- spp_df_wide %>%
+  rank_gf_df <- spp_all_wide %>%
     filter(!species %in% spp_done) %>%
     inner_join(rank_df)
   
@@ -773,7 +717,7 @@ for(i in 2:length(gf_ranks)) {
 vuln_all_gf <- bind_rows(gf_list) %>%
   bind_rows(vuln_direct_match) %>%
   mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln)) %>%
-  select(-kingdom, -phylum)
+  select(-phylum)
 
 vuln_gf_tx <- vuln_all_gf %>%
   select(class:species, taxon, gapfill, match_rank) %>%
@@ -786,19 +730,56 @@ vuln_gf_score <- vuln_all_gf %>%
             by = 'species') %>%
   select(vuln_gf_id, stressor, vuln) %>%
   distinct() %>%
-  mutate(vuln = round(vuln, 5))
+  mutate(vuln = round(vuln, 5)) %>%
+  spread(stressor, vuln)
 
 vuln_gf_sd <- vuln_all_gf %>%
   left_join(vuln_gf_tx %>% select(species, vuln_gf_id) %>% distinct(),
             by = 'species') %>%
   select(vuln_gf_id, stressor, sd_vuln) %>%
   distinct() %>%
-  mutate(sd_vuln = round(sd_vuln, 5))
+  mutate(sd_vuln = round(sd_vuln, 5)) %>%
+  spread(stressor, sd_vuln)
 
-  
-write_csv(vuln_gf_tx, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_tx.csv')
-write_csv(vuln_gf_score, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_score.csv')
-write_csv(vuln_gf_sd, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_sd.csv')
+write_csv(vuln_gf_tx, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_all_tx.csv')
+write_csv(vuln_gf_score, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_all_score.csv')
+write_csv(vuln_gf_sd, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_all_sd.csv')
+
+```
+
+... but for the purposes of the manuscript, let's do this again just to the family level:
+
+### Outputs: Species matched or gapfilled to family level
+
+```{r}
+vuln_gf_fam_tx <- vuln_all_gf %>%
+  filter(gapfill %in% c('none', 'genus', 'family')) %>%
+  select(class:species, taxon, gapfill, match_rank) %>%
+  distinct() %>%
+  arrange(species) %>%
+  mutate(vuln_gf_id = 1:n())
+
+vuln_gf_fam_score <- vuln_all_gf %>%
+  filter(gapfill %in% c('none', 'genus', 'family')) %>%
+  left_join(vuln_gf_tx %>% select(species, vuln_gf_id) %>% distinct(),
+            by = 'species') %>%
+  select(vuln_gf_id, stressor, vuln) %>%
+  distinct() %>%
+  mutate(vuln = round(vuln, 5)) %>%
+  spread(stressor, vuln)
+
+vuln_gf_fam_sd <- vuln_all_gf %>%
+  filter(gapfill %in% c('none', 'genus', 'family')) %>%
+  left_join(vuln_gf_tx %>% select(species, vuln_gf_id) %>% distinct(),
+            by = 'species') %>%
+  select(vuln_gf_id, stressor, sd_vuln) %>%
+  distinct() %>%
+  mutate(sd_vuln = round(sd_vuln, 5)) %>%
+  spread(stressor, sd_vuln)
+
+write_csv(vuln_gf_fam_tx, here('_output', 'vuln_gapfilled_tx.csv'))
+write_csv(vuln_gf_fam_score, here('_output', 'vuln_gapfilled_score.csv'))
+write_csv(vuln_gf_fam_sd, here('_output', 'vuln_gapfilled_sd.csv'))
 
 ```
 
@@ -820,6 +801,8 @@ write_csv(gf_count, here('_output/gapfill_count.csv'))
 ```
 
 ### Breakdown by taxon
+
+Using species gapfilled to the family level
 
 ```{r}
 set.seed(42)
@@ -847,19 +830,20 @@ mc_iters <- function(df, iters = 100, mc.cores) {
 }
 ```
 
-```{r}
+```{r summarize stats by taxon}
 tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
 
 if(!file.exists(tx_str_sum_outfile)) {
   tx <- vuln_all_gf$taxon %>% unique() %>% sort()
   str <- vuln_all_gf$stressor %>% unique() %>% sort()
   
-  iters <- 100
+  iters <- 1000
   
   tx_list <- vector('list', length = length(tx)) %>%
     setNames(tx)
   for(t in tx) { ### t <- tx[1]
     tmp_df <- vuln_all_gf %>%
+      filter(gapfill %in% c('none', 'genus', 'family')) %>%
       filter(taxon == t)
 
     nrows <- nrow(tmp_df)
@@ -870,9 +854,14 @@ if(!file.exists(tx_str_sum_outfile)) {
     for(s in str) { ### s <- str[1]
       tmp2_df <- tmp_df %>%
         filter(stressor == s)
+      n_known <- sum(tmp2_df$gapfill == 'none')
+      n_total <- n_distinct(tmp2_df$species)
       mc_tx_str_df <- mc_iters(tmp2_df, iters = iters, mc.cores = 40) %>%
         group_by(taxon, stressor) %>%
-        summarize(mean_vuln = mean(v), sd_vuln = sd(v))
+        summarize(mean_vuln = mean(v), sd_vuln = sd(v),
+                  n_spp_known = n_known,
+                  n_spp_total = n_total,
+                  pct_spp_filled = round((n_total - n_known)/n_total, 5) * 100)
       str_list[[s]] <- mc_tx_str_df
     }
       
@@ -891,7 +880,4 @@ DT::datatable(tx_str_summary)
 
 ```
 
-```{r}
-
-```
 
