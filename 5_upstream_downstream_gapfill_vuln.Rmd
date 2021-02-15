@@ -230,7 +230,7 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
 ``` {r monte carlo for genus vuln dists}
 iters <- 10000
 
-gen_fill_file <- here('int', sprintf('gen_fill_prob_results_%s.csv', iters))
+gen_fill_file <- here('int', sprintf('gapfill_gen_prob_results_%s.csv', iters))
 
 if(!file.exists(gen_fill_file)) {
   gen_fill_prob <- gen_fill_nondet %>%
@@ -325,7 +325,7 @@ fam_fill_nondet_solo <- fam_fill_nondet %>%
 ```
 
 ``` {r monte carlo for fam vuln dists}
-fam_fill_file <- here('int', sprintf('fam_fill_prob_results_%s.csv', iters))
+fam_fill_file <- here('int', sprintf('gapfill_fam_prob_results_%s.csv', iters))
 
 if(!file.exists(fam_fill_file)) {
   fam_fill_prob <- fam_fill_nondet %>%
@@ -421,7 +421,7 @@ ord_fill_nondet_solo <- ord_fill_nondet %>%
 ```
 
 ``` {r monte carlo for ord vuln dists}
-ord_fill_file <- here('int', sprintf('ord_fill_prob_results_%s.csv', iters))
+ord_fill_file <- here('int', sprintf('gapfill_ord_prob_results_%s.csv', iters))
 
 if(!file.exists(ord_fill_file)) {
   ord_fill_prob <- ord_fill_nondet %>%
@@ -518,7 +518,7 @@ cls_fill_nondet_solo <- cls_fill_nondet %>%
 ```
 
 ``` {r monte carlo for cls vuln dists}
-cls_fill_file <- here('int', sprintf('cls_fill_prob_results_%s.csv', iters))
+cls_fill_file <- here('int', sprintf('gapfill_cls_prob_results_%s.csv', iters))
 
 if(!file.exists(cls_fill_file)) {
   cls_fill_prob <- cls_fill_nondet %>%
@@ -841,17 +841,17 @@ if(!file.exists(tx_str_sum_outfile)) {
   
   tx_list <- vector('list', length = length(tx)) %>%
     setNames(tx)
-  for(t in tx) { ### t <- tx[1]
+  for(t in tx) { ### t <- tx[7]
     tmp_df <- vuln_all_gf %>%
       filter(gapfill %in% c('none', 'genus', 'family')) %>%
       filter(taxon == t)
 
     nrows <- nrow(tmp_df)
-    message('Processing taxon ', t, ': nrows = ', nrow(tmp_df))
     
     str_list <- vector('list', length = length(str)) %>%
       setNames(str)
-    for(s in str) { ### s <- str[1]
+    for(s in str) { ### s <- str[10]
+      message('Processing taxon ', t, ', ', s, ': nrows = ', nrow(tmp_df))
       tmp2_df <- tmp_df %>%
         filter(stressor == s)
       n_known <- sum(tmp2_df$gapfill == 'none')
@@ -859,6 +859,8 @@ if(!file.exists(tx_str_sum_outfile)) {
       mc_tx_str_df <- mc_iters(tmp2_df, iters = iters, mc.cores = 40) %>%
         group_by(taxon, stressor) %>%
         summarize(mean_vuln = mean(v), sd_vuln = sd(v),
+                  mean_vuln_known = sum(v * !is.na(match_rank)) / sum(!is.na(match_rank)),
+                  mean_vuln_filled = sum(v * (gapfill != 'none')) / sum(gapfill != 'none'),
                   n_spp_known = n_known,
                   n_spp_total = n_total,
                   pct_spp_filled = round((n_total - n_known)/n_total, 5) * 100)

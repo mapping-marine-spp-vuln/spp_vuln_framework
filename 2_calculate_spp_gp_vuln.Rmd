@@ -121,13 +121,13 @@ str_trait_shts <- readxl::excel_sheets(str_trait_f)
 
 ## Calculate sensitivity scores
 
-## Determine habitats for habitat loss/degradation stressor
+### Determine habitats for habitat loss/degradation stressor
 
 Habitat loss and degradation can be considered as an exposure variable, in the same way as potential exposure above.  However, in this case, we consider only one stressor.  
 
 Questions to consider that will affect scoring/weighting:
 
-### Is there an actionable difference between across-stage and within-stage dependence?
+#### Is there an actionable difference between across-stage and within-stage dependence?
     
 * Multiple habitats in the "within-stage" category seems to suggest that a species can move among habitats therefore being less sensitive to degradation of one habitat in its range.  This is a "parallel habitats" interpretation.
     * However, some species may depend on various habitats in a "series habitat" interpretation, e.g., birds that as adults depend on one habitat type for nesting/breeding, another type for forage, and a third for stopovers in migration.  In this case, harm to any would present a bottleneck.
@@ -158,11 +158,11 @@ spp_dep_habs <- spp_dep_habs_raw %>%
   summarize(sens_habs_raw = n_distinct(hab))
 ```
 
-### mean number of habitats per taxon:
+#### mean number of habitats per taxon:
 
 `r DT::datatable(taxon_check)`
 
-## Calculate for all 
+### Calculate for all 
 ``` {r}
 sens_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'sensitivity') 
 
@@ -653,7 +653,7 @@ for(i in seq_along(spp_mc)) {
     summarize(n_combos = prod(n_vals)) %>%
     .$n_combos
     
-  iters <- max(100, n_combos * 4)
+  iters <- max(250, n_combos * 5)
   message('Processing ', i, ' of ', length(spp_mc), ': ', spp, 
           ' (running ', iters, ' iterations for ', n_combos, ' permutations)')
   
