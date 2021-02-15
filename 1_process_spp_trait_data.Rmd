@@ -71,8 +71,7 @@ non_mut_excl <- c('adult_mobility', 'biomineral',
                   'within_stage_dependent_habitats_condition', 'zone')
 
 ### These traits are not being used
-drop_traits <- c('if one/few, size',
-                 'can the sex ratio be altered by a stressor?')
+drop_traits <- c('if one/few, size')
 
 spp_validcheck <- spp_data_raw %>%
   filter(!trait %in% drop_traits) %>%
