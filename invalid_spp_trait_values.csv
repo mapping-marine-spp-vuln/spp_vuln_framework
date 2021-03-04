@@ -1,20 +1,16 @@
 taxon,category,trait,spp_gp,trait_value,n_spp_gps
 corals,biophysical traits,respiration structures,acropora,diffusiion,4
-crustacea_arthropods,specialisation,across-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
-crustacea_arthropods,specialisation,within-stage dependent habitats + condition,bythograea thermydron,hydrothermal vents,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),nymphon australe,none,9
 crustacea_arthropods,biophysical traits,respiration structures,nymphon australe,skin or cuticle,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,palaemon elegans,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,9
-crustacea_arthropods,specialisation,within-stage dependent habitats + condition,paralithodes camtschaticus,hide for first year of life here,9
-crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus,none,9
-crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus,none,9
-crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus,none,9
-crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus,character(0),9
-crustacea_arthropods,specialisation,air-sea interface,penaeus,none,9
-crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus,none,9
-crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonum,none,9
-crustacea_arthropods,biophysical traits,respiration structures,pycnogonum,skin or cuticle,9
-crustacea_arthropods,specialisation,within-stage dependent habitats + condition,scylla serrata,during planktonic stage,9
+crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus 29 spp.,none,9
+crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus 29 spp.,none,9
+crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus 29 spp.,none,9
+crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus 29 spp.,character(0),9
+crustacea_arthropods,specialisation,air-sea interface,penaeus 29 spp.,none,9
+crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus 29 spp.,none,9
+crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonum 67 spp.,none,9
+crustacea_arthropods,biophysical traits,respiration structures,pycnogonum 67 spp.,skin or cuticle,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,yes w,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,coral,9
 echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,acanthaster,no,100
@@ -53,126 +49,52 @@ elasmobranchs,r (reproductive traits),are there sub-populations?,cruriraja,possi
 elasmobranchs,r (reproductive traits),are there sub-populations?,fenestraja,possibly,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiella,possibly,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,135
-elasmobranchs,specialisation,across-stage dependent habitats + condition,pteroplatytrygon violacea,midwater,135
-elasmobranchs,specialisation,within-stage dependent habitats + condition,pteroplatytrygon violacea,midwater,135
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthurus dussumieri,nil,115
 fish,r (reproductive traits),can the sex ratio be altered by temperature?,amphiprion akindynos,yes-if female dies a male takes over and becomes female,115
-fish,specialisation,across-stage dependent habitats + condition,amphiprion akindynos,anemone,115
-fish,specialisation,within-stage dependent habitats + condition,amphiprion akindynos,anemone,115
 fish,physiological tolerance breadths,salinity,anguilla australis,catadromous,115
 fish,physiological tolerance breadths,salinity,anguilla australis,sw-fw-sw,115
 fish,physiological tolerance breadths,sensitivity to wave energy (physical forcing),anguilla australis,no,115
 fish,r (reproductive traits),are there sub-populations?,anguilla australis,by river,115
-fish,specialisation,across-stage dependent habitats + condition,anguilla australis,catadromous,115
-fish,specialisation,across-stage dependent habitats + condition,anguilla australis,sw,115
-fish,specialisation,across-stage dependent habitats + condition,anguilla australis,fw,115
 fish,specialisation,terrestrial and marine life stages,anguilla australis,fw,115
 fish,specialisation,terrestrial and marine life stages,anguilla australis,sw,115
-fish,specialisation,within-stage dependent habitats + condition,anguilla australis,catadromous,115
-fish,specialisation,within-stage dependent habitats + condition,anguilla australis,sw,115
-fish,specialisation,within-stage dependent habitats + condition,anguilla australis,fw,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,balistoides viridescens,nil,115
-fish,specialisation,within-stage dependent habitats + condition,bathypterois grallator,unknown,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,brachionichthys hirsutus,week-month,115
-fish,specialisation,across-stage dependent habitats + condition,brachionichthys hirsutus,restricted,115
-fish,specialisation,within-stage dependent habitats + condition,brachionichthys hirsutus,restricted,115
-fish,specialisation,across-stage dependent habitats + condition,carapus bermudensis,sea cucumber,115
-fish,specialisation,across-stage dependent habitats + condition,carapus bermudensis,reef,115
 fish,specialisation,dependent interspecific interactions,carapus bermudensis,yes-sea cucumbers,115
-fish,specialisation,within-stage dependent habitats + condition,carapus bermudensis,sea cucumber,115
-fish,specialisation,within-stage dependent habitats + condition,carapus bermudensis,reef,115
-fish,specialisation,across-stage dependent habitats + condition,cephalopholis cyanostigma,live coral caves,115
-fish,specialisation,within-stage dependent habitats + condition,cephalopholis cyanostigma,live coral caves,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,cetoscarus bicolor,nil,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,champsocephalus gunnari,nil,115
-fish,specialisation,across-stage dependent habitats + condition,champsocephalus gunnari,deep,115
-fish,specialisation,within-stage dependent habitats + condition,champsocephalus gunnari,unknown,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,chanos chanos,nil,115
-fish,specialisation,across-stage dependent habitats + condition,chanos chanos,fw to marine,115
-fish,specialisation,within-stage dependent habitats + condition,chanos chanos,fw to marine,115
-fish,specialisation,across-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
-fish,specialisation,within-stage dependent habitats + condition,clupea harengus,brackish to oceanic,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,dissostichus eleginoides,nil,115
-fish,specialisation,across-stage dependent habitats + condition,dissostichus eleginoides,deep,115
-fish,specialisation,within-stage dependent habitats + condition,dissostichus eleginoides,shallow to deep,115
-fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
-fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,starfish,115
-fish,specialisation,across-stage dependent habitats + condition,encheliophis gracilis,reef,115
 fish,specialisation,dependent interspecific interactions,encheliophis gracilis,yes-sea cucumbers,115
 fish,specialisation,dependent interspecific interactions,encheliophis gracilis,starfish,115
 fish,specialisation,extreme diet specialization,encheliophis gracilis,specialist-gonads and respiotatory tree of host,115
-fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,sea cucumber,115
-fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,starfish,115
-fish,specialisation,within-stage dependent habitats + condition,encheliophis gracilis,reef,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,engraulis ringens,nil,115
 fish,specialisation,extreme diet specialization,engraulis ringens,but 98diatoms,115
-fish,specialisation,across-stage dependent habitats + condition,epinephelus itajara,live coral caves,115
-fish,specialisation,within-stage dependent habitats + condition,epinephelus itajara,inshore,115
-fish,specialisation,across-stage dependent habitats + condition,epinephelus lanceolatus,live coral caves,115
-fish,specialisation,within-stage dependent habitats + condition,epinephelus lanceolatus,inshore,115
 fish,physiological tolerance breadths,salinity,eptatretus cirrhatus,32-34parts per thousand,115
 fish,r (reproductive traits),can the sex ratio be altered by temperature?,eptatretus cirrhatus,probably,115
 fish,physiological tolerance breadths,salinity,eptatretus mendozai,32-34parts per thousand,115
 fish,r (reproductive traits),can the sex ratio be altered by temperature?,eptatretus mendozai,probably,115
-fish,specialisation,across-stage dependent habitats + condition,ethadophis merenda,unknown,115
-fish,specialisation,within-stage dependent habitats + condition,ethadophis merenda,unknown,115
-fish,specialisation,across-stage dependent habitats + condition,gadus morhua,deep habitats,115
-fish,specialisation,within-stage dependent habitats + condition,gadus morhua,shallow to deeper habitats,115
 fish,foraging range,sub-population dependence on particular sites,galaxias brevipinnis,only for spawning,115
-fish,specialisation,across-stage dependent habitats + condition,galaxias brevipinnis,adults fw,115
-fish,specialisation,within-stage dependent habitats + condition,galaxias brevipinnis,larvae in sw,115
-fish,specialisation,across-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
-fish,specialisation,within-stage dependent habitats + condition,hippocampus abdominalis,shallow habitats,115
-fish,specialisation,within-stage dependent habitats + condition,hippoglossus stenolepis,nearshore to deeper,115
-fish,specialisation,across-stage dependent habitats + condition,hoplostethus atlanticus,deep sea mount,115
-fish,specialisation,within-stage dependent habitats + condition,hoplostethus atlanticus,unknown,115
-fish,specialisation,within-stage dependent habitats + condition,hygophum proximum,unknown,115
 fish,physiological tolerance breadths,salinity,meuschenia scaber,euryhaline-brackish,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,meuschenia scaber,nil,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,naso vlamingii,nil,115
 fish,physiological tolerance breadths,salinity,notolabrus celidotus,euryhaline-brackish,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,notolabrus celidotus,nil,115
 fish,foraging range,sub-population dependence on particular sites,oncorhynchus nerka,only for spawning,115
-fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,fw,115
-fish,specialisation,across-stage dependent habitats + condition,oncorhynchus nerka,ocean,115
-fish,specialisation,within-stage dependent habitats + condition,oncorhynchus nerka,fw,115
-fish,specialisation,within-stage dependent habitats + condition,oncorhynchus nerka,ocean,115
-fish,specialisation,across-stage dependent habitats + condition,ostorhinchus doederleini,live coral caves,115
-fish,specialisation,within-stage dependent habitats + condition,ostorhinchus doederleini,live coral caves,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,parapercis colias,nil,115
-fish,specialisation,across-stage dependent habitats + condition,parma microlepis,barrens habitat,115
-fish,specialisation,within-stage dependent habitats + condition,parma microlepis,barrens habitat,115
-fish,specialisation,across-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
-fish,specialisation,within-stage dependent habitats + condition,plectropomus leopardus,live coral caves,115
-fish,specialisation,across-stage dependent habitats + condition,pomacentrus coelestis,rubble,115
 fish,specialisation,extreme diet specialization,pomacentrus coelestis,generalist-planktivore,115
-fish,specialisation,within-stage dependent habitats + condition,pomacentrus coelestis,rubble,115
-fish,specialisation,across-stage dependent habitats + condition,salarias fasciatus,shallow water,115
-fish,specialisation,within-stage dependent habitats + condition,salarias fasciatus,shallow water,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,scarus schlegeli,nil,115
 fish,r (reproductive traits),post-birth/hatching maternal dependence,sebastes diploproa,nil,115
-fish,specialisation,across-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
-fish,specialisation,within-stage dependent habitats + condition,spratelloides delicatulus,shallow water,115
-marine_mammals,specialisation,within-stage dependent habitats + condition,arctocephalus,breeding and raising pups,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,arctocephalus,for antartic fur seal,61
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,filter feed and eat zooplankton,61
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,epibenthic,61
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,benthic organisms,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,balaenoptera acutorostrata,fjords,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,balaenoptera acutorostrata,fjords,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,balaenoptera bonaerensis,antarctic_to_col_temperate_waters,61
 marine_mammals,r (reproductive traits),are there sub-populations?,balaenoptera bonaerensis,data deficient,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,balaenoptera borealis,8_18_degrees_celcius_don_t_go_into_polar_icy_water_c,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,balaenoptera physalus,temperate_subpolar_waters,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,berardius bairdii,sub_arctic_to_temperate_waters,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,callorhinus,breeding and raising pups,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,callorhinus,for antartic fur seal,61
 marine_mammals,r (reproductive traits),are there sub-populations?,cephalorhynchus hectori,yes-new zealand and maui,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,delphinapterus leucas,fjords,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,delphinapterus leucas,fjords,61
 marine_mammals,physiological tolerance breadths,salinity,dugong dugon,euryhalineprobably based on habitat types,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,dugong dugon,bays,61
 marine_mammals,specialisation,extreme diet specialization,dugong dugon,specialist-seagrass,61
 marine_mammals,r (reproductive traits),can the sex ratio be altered by temperature?,enhydra lutris,maybe pollution driving breeding female mortality,61
 marine_mammals,specialisation,extreme diet specialization,enhydra lutris,no,61
@@ -182,9 +104,6 @@ marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat sp
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,little known,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,but estimated to be long,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eumetopias,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,eumetopias,breeding and raising pups,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,globicephala,continental shelves,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,globicephala,continental shelves,61
 marine_mammals,physiological tolerance breadths,salinity,lagenorhynchus acutus,stenohaline-prefers low salinity,61
 marine_mammals,biophysical traits,flight,megaptera novaeangliae,none,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,megaptera novaeangliae,18_2_25_9_degrees,61
@@ -195,64 +114,25 @@ marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat sp
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,mesoplodon mirus,10_20_degrees,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,mesoplodon stejnegeri,cold_temperate_sub_arctic_waters,61
 marine_mammals,r (reproductive traits),are there sub-populations?,mesoplodon stejnegeri,data deficient,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,monodon monoceros,fjords,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,monodon monoceros,fjords,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,neophoca,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,neophoca,breeding and raising pups,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,odobenus rosmarus,breeding and raising pups,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,otaria,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,otaria,breeding and raising pups,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,peponocephala electra,continental shelves,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,peponocephala electra,continental shelves,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,phocarctos,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,phocarctos,breeding and raising pups,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,phocoena sinus,one,61
 marine_mammals,specialisation,dependent interspecific interactions,phocoena sinus,one,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,physeter macrocephalus,many,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,sousa chinensis taiwanensis,near bays,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,sousa chinensis taiwanensis,large river mouths,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,sousa chinensis taiwanensis,some of these habitats are not included in the habitat list you gave me,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,sousa chinensis taiwanensis,near bays,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,sousa chinensis taiwanensis,large river mouths,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,sousa chinensis taiwanensis,some of these habitats are not included in the habitat list you gave me,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,trichechus manatus,rivers,61
-marine_mammals,specialisation,across-stage dependent habitats + condition,trichechus manatus,and canals,61
 marine_mammals,specialisation,extreme diet specialization,trichechus manatus,specialist-sea grass,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,trichechus manatus,rivers,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,trichechus manatus,and canals,61
 marine_mammals,physiological tolerance breadths,salinity,trichechus senegalensis,stenohaline-avoid salt water,61
 marine_mammals,specialisation,extreme diet specialization,trichechus senegalensis,specialist-vegetation,61
 marine_mammals,r (reproductive traits),can the sex ratio be altered by temperature?,ursus maritimus,yes-sex-selective hunting,61
 marine_mammals,specialisation,extreme diet specialization,ursus maritimus,no,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,zalophus,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,specialisation,within-stage dependent habitats + condition,zalophus,breeding and raising pups,61
-molluscs,specialisation,within-stage dependent habitats + condition,acesta excavata,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,adamussium colbecki,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,anadara trapezia,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,argopecten irradians,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,bankia setacea,submerged timber,46
-molluscs,specialisation,within-stage dependent habitats + condition,cerastoderma edule,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,mercenaria mercenaria,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,mimachlamys asperrima,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,ostrea angasi,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,panopea generosa,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,panopea generosa,soft bottom,46
-molluscs,specialisation,within-stage dependent habitats + condition,pecten fumatus,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,pecten maximus,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,pinctada imbricata,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,pinctada maxima,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,pinna bicolor,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,pinna bicolor,soft bottom,46
-molluscs,specialisation,within-stage dependent habitats + condition,plebidonax deltoides,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,plebidonax deltoides,soft bottom,46
-molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,siliqua patula,soft bottom,46
-molluscs,specialisation,within-stage dependent habitats + condition,tridacna gigas,benthic,46
-molluscs,specialisation,within-stage dependent habitats + condition,tridacna maxima,benthic,46
 plants_algae,biophysical traits,calcium carbonate structure stages,porolithon,calcification after germination and through adulthood,4
 plants_algae,physiological tolerance breadths,salinity,porolithon,narrow,4
 plants_algae,r (reproductive traits),are there sub-populations?,porolithon,likely,4
+polychaetes,physiological tolerance breadths,dissolved oxygen,nephtyidae,character(0),4
+polychaetes,physiological tolerance breadths,dissolved oxygen,nereididae,character(0),4
+polychaetes,physiological tolerance breadths,dissolved oxygen,sabellidae,character(0),4
+polychaetes,physiological tolerance breadths,dissolved oxygen,terebellidae,character(0),4
 reptiles,physiological tolerance breadths,salinity,acrochordus,broad,16
 reptiles,biophysical traits,calcium carbonate structure stages,amblyrhynchus cristatus,no,16
 reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus acutus,hatchling maternal dependence,16

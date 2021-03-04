@@ -81,7 +81,9 @@ spp_validcheck <- spp_data_raw %>%
   filter(!is.na(spp_gp)) %>%
   filter(trait_value != '') %>%
   group_by(taxon) %>%
-  mutate(n_spp_gps = n_distinct(spp_gp))
+  mutate(n_spp_gps = n_distinct(spp_gp)) %>%
+  ### keep any note of dependent habitat for now...
+  mutate(valid = ifelse(str_detect(trait, 'dependent habitats'), TRUE, valid))
 
 spp_invalid <- spp_validcheck %>%
   filter(is.na(valid)) %>%

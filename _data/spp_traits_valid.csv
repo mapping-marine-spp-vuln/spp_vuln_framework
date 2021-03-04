@@ -13798,12 +13798,14 @@ crustacea_arthropods,spatial_scale_of_species,depth_min_max,bythograea thermydro
 crustacea_arthropods,spatial_scale_of_species,eoo_range,bythograea thermydron,<99,9,1
 crustacea_arthropods,spatial_scale_of_species,zone,bythograea thermydron,demersal,9,1
 crustacea_arthropods,specialisation,across_stage_dependent_habitats_condition,bythograea thermydron,deep hard bottom,9,1
+crustacea_arthropods,specialisation,across_stage_dependent_habitats_condition,bythograea thermydron,hydrothermal vents,9,1
 crustacea_arthropods,specialisation,air_sea_interface,bythograea thermydron,yes,9,1
 crustacea_arthropods,specialisation,dependent_interspecific_interactions,bythograea thermydron,no,9,1
 crustacea_arthropods,specialisation,extreme_diet_specialization,bythograea thermydron,generalist,9,1
 crustacea_arthropods,specialisation,photosynthetic,bythograea thermydron,no,9,1
 crustacea_arthropods,specialisation,terrestrial_and_marine_life_stages,bythograea thermydron,no,9,1
 crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,bythograea thermydron,deep hard bottom,9,1
+crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,bythograea thermydron,hydrothermal vents,9,1
 crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,mictyris platycheles,0.5mm-49mm,9,1
 crustacea_arthropods,biophysical_traits,biomineral,mictyris platycheles,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,mictyris platycheles,chitin/caco3 mix,9,1
@@ -13965,70 +13967,71 @@ crustacea_arthropods,specialisation,extreme_diet_specialization,paralithodes cam
 crustacea_arthropods,specialisation,photosynthetic,paralithodes camtschaticus,no,9,1
 crustacea_arthropods,specialisation,terrestrial_and_marine_life_stages,paralithodes camtschaticus,no,9,1
 crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,paralithodes camtschaticus,kelp forest,9,1
-crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,penaeus,50mm-999mm,9,1
-crustacea_arthropods,biophysical_traits,biomineral,penaeus,calcite,9,1
-crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,penaeus,external,9,1
-crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,penaeus,both,9,1
-crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,penaeus,high,9,1
-crustacea_arthropods,biophysical_traits,flight,penaeus,no,9,1
-crustacea_arthropods,biophysical_traits,navigation_requirements_light,penaeus,yes,9,1
-crustacea_arthropods,biophysical_traits,respiration_structures,penaeus,gills,9,1
-crustacea_arthropods,biophysical_traits,respiration_structures,penaeus,filter feeders,9,1
-crustacea_arthropods,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,penaeus,does not aggregate,9,1
-crustacea_arthropods,foraging_range,number_of_sites_incl_terrestrial_wetlands,penaeus,many,9,1
-crustacea_arthropods,movement,adult_mobility,penaeus,vertical migrator,9,1
-crustacea_arthropods,movement,adult_mobility,penaeus,horizontal migrator,9,1
-crustacea_arthropods,movement,adult_mobility,penaeus,nomadic,9,1
-crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,penaeus,unknown,9,1
-crustacea_arthropods,physiological_tolerance_breadths,ph,penaeus,<7.4,9,1
-crustacea_arthropods,physiological_tolerance_breadths,salinity,penaeus,euryhaline,9,1
-crustacea_arthropods,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,penaeus,25c,9,1
-crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,penaeus,<1yr,9,1
-crustacea_arthropods,r_reproductive_traits,can_the_sex_ratio_be_altered_by_temperature,penaeus,no,9,1
-crustacea_arthropods,r_reproductive_traits,fecundity,penaeus,>10000,9,1
-crustacea_arthropods,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,penaeus,feeding calcifier,9,1
-crustacea_arthropods,r_reproductive_traits,global_population_size,penaeus,100k-1m,9,0.5
-crustacea_arthropods,r_reproductive_traits,global_population_size,penaeus,>1m,9,0.5
-crustacea_arthropods,r_reproductive_traits,lifetime_reproductive_opportunities,penaeus,>100,9,1
-crustacea_arthropods,r_reproductive_traits,parental_investment,penaeus,live birth/egg care,9,1
-crustacea_arthropods,r_reproductive_traits,reproductive_strategy,penaeus,sexual dioecious,9,1
-crustacea_arthropods,spatial_scale_of_species,eoo_range,penaeus,>20000,9,1
-crustacea_arthropods,spatial_scale_of_species,zone,penaeus,demersal,9,1
-crustacea_arthropods,specialisation,extreme_diet_specialization,penaeus,generalist,9,1
-crustacea_arthropods,specialisation,photosynthetic,penaeus,no,9,1
-crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,pycnogonum,0.5mm-49mm,9,1
-crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,pycnogonum,none,9,1
-crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,pycnogonum,none,9,1
-crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,pycnogonum,none,9,1
-crustacea_arthropods,biophysical_traits,flight,pycnogonum,no,9,1
-crustacea_arthropods,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,pycnogonum,few,9,1
-crustacea_arthropods,breeding_nesting_range_number_of_spawning_aggregations_fish,sub_population_dependence_on_particular_sites,pycnogonum,yes,9,1
-crustacea_arthropods,foraging_range,number_of_sites_incl_terrestrial_wetlands,pycnogonum,one,9,1
-crustacea_arthropods,foraging_range,sub_population_dependence_on_particular_sites,pycnogonum,yes,9,1
-crustacea_arthropods,movement,adult_mobility,pycnogonum,mobile resident,9,1
-crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,pycnogonum,unknown,9,1
-crustacea_arthropods,physiological_tolerance_breadths,dissolved_oxygen,pycnogonum,unknown,9,1
-crustacea_arthropods,physiological_tolerance_breadths,ph,pycnogonum,<7.4,9,1
-crustacea_arthropods,physiological_tolerance_breadths,salinity,pycnogonum,stenohaline,9,1
-crustacea_arthropods,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,pycnogonum,10c,9,1
-crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,pycnogonum,1-5yrs,9,1
-crustacea_arthropods,r_reproductive_traits,can_the_sex_ratio_be_altered_by_temperature,pycnogonum,no,9,1
-crustacea_arthropods,r_reproductive_traits,fecundity,pycnogonum,10-20,9,0.3333333333333333
-crustacea_arthropods,r_reproductive_traits,fecundity,pycnogonum,20-50,9,0.3333333333333333
-crustacea_arthropods,r_reproductive_traits,fecundity,pycnogonum,50-100,9,0.3333333333333333
-crustacea_arthropods,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,pycnogonum,feeding non-calcifier,9,1
-crustacea_arthropods,r_reproductive_traits,global_population_size,pycnogonum,1k-10k,9,1
-crustacea_arthropods,r_reproductive_traits,lifetime_reproductive_opportunities,pycnogonum,11-25,9,1
-crustacea_arthropods,r_reproductive_traits,parental_investment,pycnogonum,live birth/egg care,9,1
-crustacea_arthropods,r_reproductive_traits,reproductive_strategy,pycnogonum,sexual dioecious,9,1
-crustacea_arthropods,spatial_scale_of_species,eoo_range,pycnogonum,<99,9,1
-crustacea_arthropods,spatial_scale_of_species,zone,pycnogonum,benthic,9,1
-crustacea_arthropods,specialisation,air_sea_interface,pycnogonum,yes,9,1
-crustacea_arthropods,specialisation,dependent_interspecific_interactions,pycnogonum,yes,9,1
-crustacea_arthropods,specialisation,extreme_diet_specialization,pycnogonum,specialist,9,1
-crustacea_arthropods,specialisation,photosynthetic,pycnogonum,no,9,1
-crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,pycnogonum,rocky intertidal,9,1
-crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,pycnogonum,coral reef,9,1
+crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,paralithodes camtschaticus,hide for first year of life here,9,1
+crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,penaeus 29 spp.,50mm-999mm,9,1
+crustacea_arthropods,biophysical_traits,biomineral,penaeus 29 spp.,calcite,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,penaeus 29 spp.,external,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,penaeus 29 spp.,both,9,1
+crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,penaeus 29 spp.,high,9,1
+crustacea_arthropods,biophysical_traits,flight,penaeus 29 spp.,no,9,1
+crustacea_arthropods,biophysical_traits,navigation_requirements_light,penaeus 29 spp.,yes,9,1
+crustacea_arthropods,biophysical_traits,respiration_structures,penaeus 29 spp.,gills,9,1
+crustacea_arthropods,biophysical_traits,respiration_structures,penaeus 29 spp.,filter feeders,9,1
+crustacea_arthropods,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,penaeus 29 spp.,does not aggregate,9,1
+crustacea_arthropods,foraging_range,number_of_sites_incl_terrestrial_wetlands,penaeus 29 spp.,many,9,1
+crustacea_arthropods,movement,adult_mobility,penaeus 29 spp.,vertical migrator,9,1
+crustacea_arthropods,movement,adult_mobility,penaeus 29 spp.,horizontal migrator,9,1
+crustacea_arthropods,movement,adult_mobility,penaeus 29 spp.,nomadic,9,1
+crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,penaeus 29 spp.,unknown,9,1
+crustacea_arthropods,physiological_tolerance_breadths,ph,penaeus 29 spp.,<7.4,9,1
+crustacea_arthropods,physiological_tolerance_breadths,salinity,penaeus 29 spp.,euryhaline,9,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,penaeus 29 spp.,25c,9,1
+crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,penaeus 29 spp.,<1yr,9,1
+crustacea_arthropods,r_reproductive_traits,can_the_sex_ratio_be_altered_by_temperature,penaeus 29 spp.,no,9,1
+crustacea_arthropods,r_reproductive_traits,fecundity,penaeus 29 spp.,>10000,9,1
+crustacea_arthropods,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,penaeus 29 spp.,feeding calcifier,9,1
+crustacea_arthropods,r_reproductive_traits,global_population_size,penaeus 29 spp.,100k-1m,9,0.5
+crustacea_arthropods,r_reproductive_traits,global_population_size,penaeus 29 spp.,>1m,9,0.5
+crustacea_arthropods,r_reproductive_traits,lifetime_reproductive_opportunities,penaeus 29 spp.,>100,9,1
+crustacea_arthropods,r_reproductive_traits,parental_investment,penaeus 29 spp.,live birth/egg care,9,1
+crustacea_arthropods,r_reproductive_traits,reproductive_strategy,penaeus 29 spp.,sexual dioecious,9,1
+crustacea_arthropods,spatial_scale_of_species,eoo_range,penaeus 29 spp.,>20000,9,1
+crustacea_arthropods,spatial_scale_of_species,zone,penaeus 29 spp.,demersal,9,1
+crustacea_arthropods,specialisation,extreme_diet_specialization,penaeus 29 spp.,generalist,9,1
+crustacea_arthropods,specialisation,photosynthetic,penaeus 29 spp.,no,9,1
+crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,pycnogonum 67 spp.,0.5mm-49mm,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_location,pycnogonum 67 spp.,none,9,1
+crustacea_arthropods,biophysical_traits,calcium_carbonate_structure_stages,pycnogonum 67 spp.,none,9,1
+crustacea_arthropods,biophysical_traits,extreme_pressure_wave_sensitive_structures,pycnogonum 67 spp.,none,9,1
+crustacea_arthropods,biophysical_traits,flight,pycnogonum 67 spp.,no,9,1
+crustacea_arthropods,breeding_nesting_range_number_of_spawning_aggregations_fish,number_of_sites,pycnogonum 67 spp.,few,9,1
+crustacea_arthropods,breeding_nesting_range_number_of_spawning_aggregations_fish,sub_population_dependence_on_particular_sites,pycnogonum 67 spp.,yes,9,1
+crustacea_arthropods,foraging_range,number_of_sites_incl_terrestrial_wetlands,pycnogonum 67 spp.,one,9,1
+crustacea_arthropods,foraging_range,sub_population_dependence_on_particular_sites,pycnogonum 67 spp.,yes,9,1
+crustacea_arthropods,movement,adult_mobility,pycnogonum 67 spp.,mobile resident,9,1
+crustacea_arthropods,movement,planktonic_larval_duration_pld_exposure,pycnogonum 67 spp.,unknown,9,1
+crustacea_arthropods,physiological_tolerance_breadths,dissolved_oxygen,pycnogonum 67 spp.,unknown,9,1
+crustacea_arthropods,physiological_tolerance_breadths,ph,pycnogonum 67 spp.,<7.4,9,1
+crustacea_arthropods,physiological_tolerance_breadths,salinity,pycnogonum 67 spp.,stenohaline,9,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_sensitivity_to_ocean_warming_max_temps_tolerated,pycnogonum 67 spp.,10c,9,1
+crustacea_arthropods,r_reproductive_traits,age_to_1st_reproduction_generation_time,pycnogonum 67 spp.,1-5yrs,9,1
+crustacea_arthropods,r_reproductive_traits,can_the_sex_ratio_be_altered_by_temperature,pycnogonum 67 spp.,no,9,1
+crustacea_arthropods,r_reproductive_traits,fecundity,pycnogonum 67 spp.,10-20,9,0.3333333333333333
+crustacea_arthropods,r_reproductive_traits,fecundity,pycnogonum 67 spp.,20-50,9,0.3333333333333333
+crustacea_arthropods,r_reproductive_traits,fecundity,pycnogonum 67 spp.,50-100,9,0.3333333333333333
+crustacea_arthropods,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,pycnogonum 67 spp.,feeding non-calcifier,9,1
+crustacea_arthropods,r_reproductive_traits,global_population_size,pycnogonum 67 spp.,1k-10k,9,1
+crustacea_arthropods,r_reproductive_traits,lifetime_reproductive_opportunities,pycnogonum 67 spp.,11-25,9,1
+crustacea_arthropods,r_reproductive_traits,parental_investment,pycnogonum 67 spp.,live birth/egg care,9,1
+crustacea_arthropods,r_reproductive_traits,reproductive_strategy,pycnogonum 67 spp.,sexual dioecious,9,1
+crustacea_arthropods,spatial_scale_of_species,eoo_range,pycnogonum 67 spp.,<99,9,1
+crustacea_arthropods,spatial_scale_of_species,zone,pycnogonum 67 spp.,benthic,9,1
+crustacea_arthropods,specialisation,air_sea_interface,pycnogonum 67 spp.,yes,9,1
+crustacea_arthropods,specialisation,dependent_interspecific_interactions,pycnogonum 67 spp.,yes,9,1
+crustacea_arthropods,specialisation,extreme_diet_specialization,pycnogonum 67 spp.,specialist,9,1
+crustacea_arthropods,specialisation,photosynthetic,pycnogonum 67 spp.,no,9,1
+crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,pycnogonum 67 spp.,rocky intertidal,9,1
+crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,pycnogonum 67 spp.,coral reef,9,1
 crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,scylla serrata,50mm-999mm,9,1
 crustacea_arthropods,biophysical_traits,biomineral,scylla serrata,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,scylla serrata,chitin/caco3 mix,9,1
@@ -14074,6 +14077,7 @@ crustacea_arthropods,specialisation,extreme_diet_specialization,scylla serrata,g
 crustacea_arthropods,specialisation,photosynthetic,scylla serrata,no,9,1
 crustacea_arthropods,specialisation,terrestrial_and_marine_life_stages,scylla serrata,no,9,1
 crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,scylla serrata,surface water,9,1
+crustacea_arthropods,specialisation,within_stage_dependent_habitats_condition,scylla serrata,during planktonic stage,9,1
 crustacea_arthropods,biophysical_traits,adult_body_mass_body_size,trapezia flavopunctata,50mm-999mm,9,1
 crustacea_arthropods,biophysical_traits,biomineral,trapezia flavopunctata,calcite,9,1
 crustacea_arthropods,biophysical_traits,biomineral,trapezia flavopunctata,chitin/caco3 mix,9,1
@@ -22581,12 +22585,14 @@ elasmobranchs,spatial_scale_of_species,eoo_range,pteroplatytrygon violacea,>2000
 elasmobranchs,spatial_scale_of_species,zone,pteroplatytrygon violacea,neritic,135,1
 elasmobranchs,spatial_scale_of_species,zone,pteroplatytrygon violacea,oceanic,135,1
 elasmobranchs,specialisation,across_stage_dependent_habitats_condition,pteroplatytrygon violacea,surface water,135,1
+elasmobranchs,specialisation,across_stage_dependent_habitats_condition,pteroplatytrygon violacea,midwater,135,1
 elasmobranchs,specialisation,air_sea_interface,pteroplatytrygon violacea,no,135,1
 elasmobranchs,specialisation,dependent_interspecific_interactions,pteroplatytrygon violacea,no,135,1
 elasmobranchs,specialisation,extreme_diet_specialization,pteroplatytrygon violacea,generalist,135,1
 elasmobranchs,specialisation,photosynthetic,pteroplatytrygon violacea,no,135,1
 elasmobranchs,specialisation,terrestrial_and_marine_life_stages,pteroplatytrygon violacea,no,135,1
 elasmobranchs,specialisation,within_stage_dependent_habitats_condition,pteroplatytrygon violacea,surface water,135,1
+elasmobranchs,specialisation,within_stage_dependent_habitats_condition,pteroplatytrygon violacea,midwater,135,1
 elasmobranchs,biophysical_traits,adult_body_mass_body_size,raja,50mm-999mm,135,0.5
 elasmobranchs,biophysical_traits,adult_body_mass_body_size,raja,>1000mm,135,0.5
 elasmobranchs,biophysical_traits,calcium_carbonate_structure_location,raja,none,135,1
@@ -24216,12 +24222,14 @@ fish,spatial_scale_of_species,depth_min_max,amphiprion akindynos,epipelagic,115,
 fish,spatial_scale_of_species,eoo_range,amphiprion akindynos,100-4999,115,1
 fish,spatial_scale_of_species,zone,amphiprion akindynos,demersal,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,amphiprion akindynos,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,amphiprion akindynos,anemone,115,1
 fish,specialisation,air_sea_interface,amphiprion akindynos,yes,115,1
 fish,specialisation,dependent_interspecific_interactions,amphiprion akindynos,no,115,1
 fish,specialisation,extreme_diet_specialization,amphiprion akindynos,specialist,115,1
 fish,specialisation,photosynthetic,amphiprion akindynos,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,amphiprion akindynos,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,amphiprion akindynos,coral reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,amphiprion akindynos,anemone,115,1
 fish,biophysical_traits,adult_body_mass_body_size,anguilla australis,>1000mm,115,1
 fish,biophysical_traits,biomineral,anguilla australis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,anguilla australis,internal,115,1
@@ -24258,10 +24266,16 @@ fish,spatial_scale_of_species,depth_min_max,anguilla australis,bathypelagic,115,
 fish,spatial_scale_of_species,eoo_range,anguilla australis,>20000,115,1
 fish,spatial_scale_of_species,zone,anguilla australis,neritic,115,1
 fish,spatial_scale_of_species,zone,anguilla australis,oceanic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,anguilla australis,catadromous,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,anguilla australis,sw,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,anguilla australis,fw,115,1
 fish,specialisation,air_sea_interface,anguilla australis,yes,115,1
 fish,specialisation,dependent_interspecific_interactions,anguilla australis,no,115,1
 fish,specialisation,extreme_diet_specialization,anguilla australis,generalist,115,1
 fish,specialisation,photosynthetic,anguilla australis,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,anguilla australis,catadromous,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,anguilla australis,sw,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,anguilla australis,fw,115,1
 fish,biophysical_traits,adult_body_mass_body_size,apterichtus kendalli,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,apterichtus kendalli,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,apterichtus kendalli,internal,115,1
@@ -24547,6 +24561,7 @@ fish,specialisation,dependent_interspecific_interactions,bathypterois grallator,
 fish,specialisation,extreme_diet_specialization,bathypterois grallator,generalist,115,1
 fish,specialisation,photosynthetic,bathypterois grallator,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,bathypterois grallator,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,bathypterois grallator,unknown,115,1
 fish,biophysical_traits,adult_body_mass_body_size,bathyuroconger vicinus,>1000mm,115,1
 fish,biophysical_traits,biomineral,bathyuroconger vicinus,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,bathyuroconger vicinus,internal,115,1
@@ -24622,12 +24637,14 @@ fish,spatial_scale_of_species,depth_min_max,brachionichthys hirsutus,epipelagic,
 fish,spatial_scale_of_species,eoo_range,brachionichthys hirsutus,<99,115,1
 fish,spatial_scale_of_species,zone,brachionichthys hirsutus,neritic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,brachionichthys hirsutus,estuary,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,brachionichthys hirsutus,restricted,115,1
 fish,specialisation,air_sea_interface,brachionichthys hirsutus,no,115,1
 fish,specialisation,dependent_interspecific_interactions,brachionichthys hirsutus,no,115,1
 fish,specialisation,extreme_diet_specialization,brachionichthys hirsutus,generalist,115,1
 fish,specialisation,photosynthetic,brachionichthys hirsutus,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,brachionichthys hirsutus,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,brachionichthys hirsutus,estuary,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,brachionichthys hirsutus,restricted,115,1
 fish,biophysical_traits,adult_body_mass_body_size,brachysomophis longipinnis,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,brachysomophis longipinnis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,brachysomophis longipinnis,internal,115,1
@@ -24740,10 +24757,14 @@ fish,spatial_scale_of_species,depth_min_max,carapus bermudensis,mesopelagic,115,
 fish,spatial_scale_of_species,eoo_range,carapus bermudensis,>20000,115,1
 fish,spatial_scale_of_species,zone,carapus bermudensis,demersal,115,1
 fish,spatial_scale_of_species,zone,carapus bermudensis,benthic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,carapus bermudensis,sea cucumber,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,carapus bermudensis,reef,115,1
 fish,specialisation,air_sea_interface,carapus bermudensis,no,115,1
 fish,specialisation,extreme_diet_specialization,carapus bermudensis,generalist,115,1
 fish,specialisation,photosynthetic,carapus bermudensis,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,carapus bermudensis,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,carapus bermudensis,sea cucumber,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,carapus bermudensis,reef,115,1
 fish,biophysical_traits,adult_body_mass_body_size,cephalopholis cyanostigma,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,cephalopholis cyanostigma,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,cephalopholis cyanostigma,internal,115,1
@@ -24778,12 +24799,14 @@ fish,spatial_scale_of_species,depth_min_max,cephalopholis cyanostigma,epipelagic
 fish,spatial_scale_of_species,eoo_range,cephalopholis cyanostigma,100-4999,115,1
 fish,spatial_scale_of_species,zone,cephalopholis cyanostigma,demersal,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,cephalopholis cyanostigma,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,cephalopholis cyanostigma,live coral caves,115,1
 fish,specialisation,air_sea_interface,cephalopholis cyanostigma,yes,115,1
 fish,specialisation,dependent_interspecific_interactions,cephalopholis cyanostigma,no,115,1
 fish,specialisation,extreme_diet_specialization,cephalopholis cyanostigma,specialist,115,1
 fish,specialisation,photosynthetic,cephalopholis cyanostigma,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,cephalopholis cyanostigma,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,cephalopholis cyanostigma,coral reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,cephalopholis cyanostigma,live coral caves,115,1
 fish,biophysical_traits,adult_body_mass_body_size,cetoscarus bicolor,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,cetoscarus bicolor,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,cetoscarus bicolor,internal,115,1
@@ -24980,11 +25003,13 @@ fish,spatial_scale_of_species,depth_min_max,champsocephalus gunnari,epipelagic,1
 fish,spatial_scale_of_species,depth_min_max,champsocephalus gunnari,mesopelagic,115,1
 fish,spatial_scale_of_species,eoo_range,champsocephalus gunnari,>20000,115,1
 fish,spatial_scale_of_species,zone,champsocephalus gunnari,benthic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,champsocephalus gunnari,deep,115,1
 fish,specialisation,air_sea_interface,champsocephalus gunnari,no,115,1
 fish,specialisation,dependent_interspecific_interactions,champsocephalus gunnari,no,115,1
 fish,specialisation,extreme_diet_specialization,champsocephalus gunnari,generalist,115,1
 fish,specialisation,photosynthetic,champsocephalus gunnari,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,champsocephalus gunnari,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,champsocephalus gunnari,unknown,115,1
 fish,biophysical_traits,adult_body_mass_body_size,chanos chanos,>1000mm,115,1
 fish,biophysical_traits,biomineral,chanos chanos,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,chanos chanos,internal,115,1
@@ -25018,11 +25043,13 @@ fish,spatial_scale_of_species,depth_min_max,chanos chanos,epipelagic,115,1
 fish,spatial_scale_of_species,eoo_range,chanos chanos,>20000,115,1
 fish,spatial_scale_of_species,zone,chanos chanos,neritic,115,1
 fish,spatial_scale_of_species,zone,chanos chanos,oceanic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,chanos chanos,fw to marine,115,1
 fish,specialisation,air_sea_interface,chanos chanos,no,115,1
 fish,specialisation,dependent_interspecific_interactions,chanos chanos,no,115,1
 fish,specialisation,extreme_diet_specialization,chanos chanos,generalist,115,1
 fish,specialisation,photosynthetic,chanos chanos,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,chanos chanos,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,chanos chanos,fw to marine,115,1
 fish,biophysical_traits,adult_body_mass_body_size,chlopsis kazuko,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,chlopsis kazuko,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,chlopsis kazuko,internal,115,1
@@ -25184,11 +25211,13 @@ fish,spatial_scale_of_species,depth_min_max,clupea harengus,epipelagic,115,1
 fish,spatial_scale_of_species,eoo_range,clupea harengus,>20000,115,1
 fish,spatial_scale_of_species,zone,clupea harengus,neritic,115,1
 fish,spatial_scale_of_species,zone,clupea harengus,oceanic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,clupea harengus,brackish to oceanic,115,1
 fish,specialisation,air_sea_interface,clupea harengus,no,115,1
 fish,specialisation,dependent_interspecific_interactions,clupea harengus,no,115,1
 fish,specialisation,extreme_diet_specialization,clupea harengus,generalist,115,1
 fish,specialisation,photosynthetic,clupea harengus,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,clupea harengus,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,clupea harengus,brackish to oceanic,115,1
 fish,biophysical_traits,adult_body_mass_body_size,coloconger japonicus,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,coloconger japonicus,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,coloconger japonicus,internal,115,1
@@ -25463,11 +25492,13 @@ fish,spatial_scale_of_species,depth_min_max,dissostichus eleginoides,mesopelagic
 fish,spatial_scale_of_species,depth_min_max,dissostichus eleginoides,bathypelagic,115,1
 fish,spatial_scale_of_species,eoo_range,dissostichus eleginoides,>20000,115,1
 fish,spatial_scale_of_species,zone,dissostichus eleginoides,benthic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,dissostichus eleginoides,deep,115,1
 fish,specialisation,air_sea_interface,dissostichus eleginoides,no,115,1
 fish,specialisation,dependent_interspecific_interactions,dissostichus eleginoides,no,115,1
 fish,specialisation,extreme_diet_specialization,dissostichus eleginoides,generalist,115,1
 fish,specialisation,photosynthetic,dissostichus eleginoides,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,dissostichus eleginoides,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,dissostichus eleginoides,shallow to deep,115,1
 fish,biophysical_traits,adult_body_mass_body_size,ecsenius trilineatus,0.5mm-49mm,115,1
 fish,biophysical_traits,biomineral,ecsenius trilineatus,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,ecsenius trilineatus,internal,115,1
@@ -25545,9 +25576,15 @@ fish,spatial_scale_of_species,depth_min_max,encheliophis gracilis,epipelagic,115
 fish,spatial_scale_of_species,eoo_range,encheliophis gracilis,>20000,115,1
 fish,spatial_scale_of_species,zone,encheliophis gracilis,demersal,115,1
 fish,spatial_scale_of_species,zone,encheliophis gracilis,benthic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,encheliophis gracilis,sea cucumber,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,encheliophis gracilis,starfish,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,encheliophis gracilis,reef,115,1
 fish,specialisation,air_sea_interface,encheliophis gracilis,no,115,1
 fish,specialisation,photosynthetic,encheliophis gracilis,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,encheliophis gracilis,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,encheliophis gracilis,sea cucumber,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,encheliophis gracilis,starfish,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,encheliophis gracilis,reef,115,1
 fish,biophysical_traits,adult_body_mass_body_size,enchelycore schismatorhynchus,>1000mm,115,1
 fish,biophysical_traits,biomineral,enchelycore schismatorhynchus,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,enchelycore schismatorhynchus,internal,115,1
@@ -25753,11 +25790,13 @@ fish,spatial_scale_of_species,eoo_range,epinephelus itajara,>20000,115,1
 fish,spatial_scale_of_species,zone,epinephelus itajara,demersal,115,1
 fish,spatial_scale_of_species,zone,epinephelus itajara,benthic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,epinephelus itajara,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,epinephelus itajara,live coral caves,115,1
 fish,specialisation,air_sea_interface,epinephelus itajara,no,115,1
 fish,specialisation,dependent_interspecific_interactions,epinephelus itajara,no,115,1
 fish,specialisation,extreme_diet_specialization,epinephelus itajara,generalist,115,1
 fish,specialisation,photosynthetic,epinephelus itajara,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,epinephelus itajara,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,epinephelus itajara,inshore,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,epinephelus itajara,seagrass,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,epinephelus itajara,mangrove,115,1
 fish,biophysical_traits,adult_body_mass_body_size,epinephelus lanceolatus,50mm-999mm,115,1
@@ -25794,11 +25833,13 @@ fish,spatial_scale_of_species,zone,epinephelus lanceolatus,neritic,115,1
 fish,spatial_scale_of_species,zone,epinephelus lanceolatus,oceanic,115,1
 fish,spatial_scale_of_species,zone,epinephelus lanceolatus,benthic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,epinephelus lanceolatus,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,epinephelus lanceolatus,live coral caves,115,1
 fish,specialisation,air_sea_interface,epinephelus lanceolatus,no,115,1
 fish,specialisation,dependent_interspecific_interactions,epinephelus lanceolatus,no,115,1
 fish,specialisation,extreme_diet_specialization,epinephelus lanceolatus,generalist,115,1
 fish,specialisation,photosynthetic,epinephelus lanceolatus,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,epinephelus lanceolatus,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,epinephelus lanceolatus,inshore,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,epinephelus lanceolatus,seagrass,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,epinephelus lanceolatus,mangrove,115,1
 fish,biophysical_traits,adult_body_mass_body_size,eptatretus cirrhatus,50mm-999mm,115,1
@@ -25948,11 +25989,13 @@ fish,spatial_scale_of_species,depth_min_max,ethadophis merenda,epipelagic,115,1
 fish,spatial_scale_of_species,eoo_range,ethadophis merenda,>20000,115,1
 fish,spatial_scale_of_species,zone,ethadophis merenda,neritic,115,1
 fish,spatial_scale_of_species,zone,ethadophis merenda,demersal,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,ethadophis merenda,unknown,115,1
 fish,specialisation,air_sea_interface,ethadophis merenda,no,115,1
 fish,specialisation,dependent_interspecific_interactions,ethadophis merenda,no,115,1
 fish,specialisation,extreme_diet_specialization,ethadophis merenda,generalist,115,1
 fish,specialisation,photosynthetic,ethadophis merenda,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,ethadophis merenda,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,ethadophis merenda,unknown,115,1
 fish,biophysical_traits,adult_body_mass_body_size,eviota sigillata,0.5mm-49mm,115,1
 fish,biophysical_traits,biomineral,eviota sigillata,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,eviota sigillata,internal,115,1
@@ -26150,11 +26193,13 @@ fish,spatial_scale_of_species,eoo_range,gadus morhua,>20000,115,1
 fish,spatial_scale_of_species,zone,gadus morhua,benthic,115,1
 fish,spatial_scale_of_species,zone,gadus morhua,neritic,115,1
 fish,spatial_scale_of_species,zone,gadus morhua,oceanic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,gadus morhua,deep habitats,115,1
 fish,specialisation,air_sea_interface,gadus morhua,no,115,1
 fish,specialisation,dependent_interspecific_interactions,gadus morhua,no,115,1
 fish,specialisation,extreme_diet_specialization,gadus morhua,generalist,115,1
 fish,specialisation,photosynthetic,gadus morhua,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,gadus morhua,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,gadus morhua,shallow to deeper habitats,115,1
 fish,biophysical_traits,adult_body_mass_body_size,galaxias brevipinnis,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,galaxias brevipinnis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,galaxias brevipinnis,internal,115,1
@@ -26187,10 +26232,12 @@ fish,r_reproductive_traits,reproductive_strategy,galaxias brevipinnis,sexual dio
 fish,spatial_scale_of_species,depth_min_max,galaxias brevipinnis,epipelagic,115,1
 fish,spatial_scale_of_species,eoo_range,galaxias brevipinnis,5000-19999,115,1
 fish,spatial_scale_of_species,zone,galaxias brevipinnis,benthic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,galaxias brevipinnis,adults fw,115,1
 fish,specialisation,dependent_interspecific_interactions,galaxias brevipinnis,no,115,1
 fish,specialisation,extreme_diet_specialization,galaxias brevipinnis,generalist,115,1
 fish,specialisation,photosynthetic,galaxias brevipinnis,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,galaxias brevipinnis,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,galaxias brevipinnis,larvae in sw,115,1
 fish,biophysical_traits,adult_body_mass_body_size,gobiodon citrinus,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,gobiodon citrinus,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,gobiodon citrinus,internal,115,1
@@ -26460,6 +26507,7 @@ fish,spatial_scale_of_species,eoo_range,hippocampus abdominalis,>20000,115,1
 fish,spatial_scale_of_species,zone,hippocampus abdominalis,benthic,115,1
 fish,spatial_scale_of_species,zone,hippocampus abdominalis,neritic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,hippocampus abdominalis,rocky reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,hippocampus abdominalis,shallow habitats,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,hippocampus abdominalis,seagrass,115,1
 fish,specialisation,air_sea_interface,hippocampus abdominalis,no,115,1
 fish,specialisation,dependent_interspecific_interactions,hippocampus abdominalis,no,115,1
@@ -26467,6 +26515,7 @@ fish,specialisation,extreme_diet_specialization,hippocampus abdominalis,generali
 fish,specialisation,photosynthetic,hippocampus abdominalis,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,hippocampus abdominalis,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,hippocampus abdominalis,rocky reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,hippocampus abdominalis,shallow habitats,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,hippocampus abdominalis,seagrass,115,1
 fish,biophysical_traits,adult_body_mass_body_size,hippoglossus stenolepis,>1000mm,115,1
 fish,biophysical_traits,biomineral,hippoglossus stenolepis,aragonite,115,1
@@ -26510,6 +26559,7 @@ fish,specialisation,dependent_interspecific_interactions,hippoglossus stenolepis
 fish,specialisation,extreme_diet_specialization,hippoglossus stenolepis,generalist,115,1
 fish,specialisation,photosynthetic,hippoglossus stenolepis,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,hippoglossus stenolepis,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,hippoglossus stenolepis,nearshore to deeper,115,1
 fish,biophysical_traits,adult_body_mass_body_size,hoplostethus atlanticus,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,hoplostethus atlanticus,aragonite,115,1
 fish,biophysical_traits,biomineral,hoplostethus atlanticus,calcite,115,1
@@ -26547,11 +26597,13 @@ fish,spatial_scale_of_species,depth_min_max,hoplostethus atlanticus,mesopelagic,
 fish,spatial_scale_of_species,depth_min_max,hoplostethus atlanticus,bathypelagic,115,1
 fish,spatial_scale_of_species,eoo_range,hoplostethus atlanticus,>20000,115,1
 fish,spatial_scale_of_species,zone,hoplostethus atlanticus,benthic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,hoplostethus atlanticus,deep sea mount,115,1
 fish,specialisation,air_sea_interface,hoplostethus atlanticus,no,115,1
 fish,specialisation,dependent_interspecific_interactions,hoplostethus atlanticus,no,115,1
 fish,specialisation,extreme_diet_specialization,hoplostethus atlanticus,generalist,115,1
 fish,specialisation,photosynthetic,hoplostethus atlanticus,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,hoplostethus atlanticus,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,hoplostethus atlanticus,unknown,115,1
 fish,biophysical_traits,adult_body_mass_body_size,hoplunnis schmidti,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,hoplunnis schmidti,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,hoplunnis schmidti,internal,115,1
@@ -26630,6 +26682,7 @@ fish,specialisation,dependent_interspecific_interactions,hygophum proximum,no,11
 fish,specialisation,extreme_diet_specialization,hygophum proximum,generalist,115,1
 fish,specialisation,photosynthetic,hygophum proximum,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,hygophum proximum,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,hygophum proximum,unknown,115,1
 fish,biophysical_traits,adult_body_mass_body_size,hypleurochilus bananensis,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,hypleurochilus bananensis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,hypleurochilus bananensis,internal,115,1
@@ -27285,11 +27338,15 @@ fish,spatial_scale_of_species,depth_min_max,oncorhynchus nerka,mesopelagic,115,1
 fish,spatial_scale_of_species,eoo_range,oncorhynchus nerka,>20000,115,1
 fish,spatial_scale_of_species,zone,oncorhynchus nerka,neritic,115,1
 fish,spatial_scale_of_species,zone,oncorhynchus nerka,oceanic,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,oncorhynchus nerka,fw,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,oncorhynchus nerka,ocean,115,1
 fish,specialisation,air_sea_interface,oncorhynchus nerka,no,115,1
 fish,specialisation,dependent_interspecific_interactions,oncorhynchus nerka,no,115,1
 fish,specialisation,extreme_diet_specialization,oncorhynchus nerka,generalist,115,1
 fish,specialisation,photosynthetic,oncorhynchus nerka,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,oncorhynchus nerka,no,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,oncorhynchus nerka,fw,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,oncorhynchus nerka,ocean,115,1
 fish,biophysical_traits,adult_body_mass_body_size,ophichthus altipennis,>1000mm,115,1
 fish,biophysical_traits,biomineral,ophichthus altipennis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,ophichthus altipennis,internal,115,1
@@ -27400,12 +27457,14 @@ fish,spatial_scale_of_species,depth_min_max,ostorhinchus doederleini,epipelagic,
 fish,spatial_scale_of_species,eoo_range,ostorhinchus doederleini,>20000,115,1
 fish,spatial_scale_of_species,zone,ostorhinchus doederleini,benthic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,ostorhinchus doederleini,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,ostorhinchus doederleini,live coral caves,115,1
 fish,specialisation,air_sea_interface,ostorhinchus doederleini,no,115,1
 fish,specialisation,dependent_interspecific_interactions,ostorhinchus doederleini,no,115,1
 fish,specialisation,extreme_diet_specialization,ostorhinchus doederleini,generalist,115,1
 fish,specialisation,photosynthetic,ostorhinchus doederleini,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,ostorhinchus doederleini,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,ostorhinchus doederleini,coral reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,ostorhinchus doederleini,live coral caves,115,1
 fish,biophysical_traits,adult_body_mass_body_size,parablennius parvicornis,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,parablennius parvicornis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,parablennius parvicornis,internal,115,1
@@ -27650,12 +27709,14 @@ fish,spatial_scale_of_species,eoo_range,parma microlepis,100-4999,115,1
 fish,spatial_scale_of_species,zone,parma microlepis,benthic,115,1
 fish,spatial_scale_of_species,zone,parma microlepis,demersal,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,parma microlepis,rocky reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,parma microlepis,barrens habitat,115,1
 fish,specialisation,air_sea_interface,parma microlepis,no,115,1
 fish,specialisation,dependent_interspecific_interactions,parma microlepis,no,115,1
 fish,specialisation,extreme_diet_specialization,parma microlepis,generalist,115,1
 fish,specialisation,photosynthetic,parma microlepis,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,parma microlepis,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,parma microlepis,rocky reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,parma microlepis,barrens habitat,115,1
 fish,biophysical_traits,adult_body_mass_body_size,phycodurus eques,0.5mm-49mm,115,1
 fish,biophysical_traits,biomineral,phycodurus eques,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,phycodurus eques,internal,115,1
@@ -27733,12 +27794,14 @@ fish,spatial_scale_of_species,eoo_range,plectropomus leopardus,>20000,115,1
 fish,spatial_scale_of_species,zone,plectropomus leopardus,demersal,115,1
 fish,spatial_scale_of_species,zone,plectropomus leopardus,benthic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,plectropomus leopardus,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,plectropomus leopardus,live coral caves,115,1
 fish,specialisation,air_sea_interface,plectropomus leopardus,no,115,1
 fish,specialisation,dependent_interspecific_interactions,plectropomus leopardus,no,115,1
 fish,specialisation,extreme_diet_specialization,plectropomus leopardus,generalist,115,1
 fish,specialisation,photosynthetic,plectropomus leopardus,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,plectropomus leopardus,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,plectropomus leopardus,coral reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,plectropomus leopardus,live coral caves,115,1
 fish,biophysical_traits,adult_body_mass_body_size,pomacentrus coelestis,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,pomacentrus coelestis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,pomacentrus coelestis,internal,115,1
@@ -27773,11 +27836,13 @@ fish,spatial_scale_of_species,depth_min_max,pomacentrus coelestis,epipelagic,115
 fish,spatial_scale_of_species,eoo_range,pomacentrus coelestis,>20000,115,1
 fish,spatial_scale_of_species,zone,pomacentrus coelestis,demersal,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,pomacentrus coelestis,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,pomacentrus coelestis,rubble,115,1
 fish,specialisation,air_sea_interface,pomacentrus coelestis,no,115,1
 fish,specialisation,dependent_interspecific_interactions,pomacentrus coelestis,no,115,1
 fish,specialisation,photosynthetic,pomacentrus coelestis,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,pomacentrus coelestis,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,pomacentrus coelestis,coral reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,pomacentrus coelestis,rubble,115,1
 fish,biophysical_traits,adult_body_mass_body_size,praealticus dayi,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,praealticus dayi,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,praealticus dayi,internal,115,1
@@ -27974,12 +28039,14 @@ fish,spatial_scale_of_species,depth_min_max,salarias fasciatus,epipelagic,115,1
 fish,spatial_scale_of_species,eoo_range,salarias fasciatus,>20000,115,1
 fish,spatial_scale_of_species,zone,salarias fasciatus,benthic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,salarias fasciatus,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,salarias fasciatus,shallow water,115,1
 fish,specialisation,air_sea_interface,salarias fasciatus,no,115,1
 fish,specialisation,dependent_interspecific_interactions,salarias fasciatus,no,115,1
 fish,specialisation,extreme_diet_specialization,salarias fasciatus,generalist,115,1
 fish,specialisation,photosynthetic,salarias fasciatus,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,salarias fasciatus,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,salarias fasciatus,coral reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,salarias fasciatus,shallow water,115,1
 fish,biophysical_traits,adult_body_mass_body_size,salarias sinuosus,50mm-999mm,115,1
 fish,biophysical_traits,biomineral,salarias sinuosus,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,salarias sinuosus,internal,115,1
@@ -28331,12 +28398,14 @@ fish,spatial_scale_of_species,depth_min_max,spratelloides delicatulus,epipelagic
 fish,spatial_scale_of_species,eoo_range,spratelloides delicatulus,>20000,115,1
 fish,spatial_scale_of_species,zone,spratelloides delicatulus,neritic,115,1
 fish,specialisation,across_stage_dependent_habitats_condition,spratelloides delicatulus,coral reef,115,1
+fish,specialisation,across_stage_dependent_habitats_condition,spratelloides delicatulus,shallow water,115,1
 fish,specialisation,air_sea_interface,spratelloides delicatulus,no,115,1
 fish,specialisation,dependent_interspecific_interactions,spratelloides delicatulus,no,115,1
 fish,specialisation,extreme_diet_specialization,spratelloides delicatulus,generalist,115,1
 fish,specialisation,photosynthetic,spratelloides delicatulus,no,115,1
 fish,specialisation,terrestrial_and_marine_life_stages,spratelloides delicatulus,no,115,1
 fish,specialisation,within_stage_dependent_habitats_condition,spratelloides delicatulus,coral reef,115,1
+fish,specialisation,within_stage_dependent_habitats_condition,spratelloides delicatulus,shallow water,115,1
 fish,biophysical_traits,adult_body_mass_body_size,synaphobranchus affinis,>1000mm,115,1
 fish,biophysical_traits,biomineral,synaphobranchus affinis,aragonite,115,1
 fish,biophysical_traits,calcium_carbonate_structure_location,synaphobranchus affinis,internal,115,1
@@ -28733,7 +28802,9 @@ marine_mammals,specialisation,extreme_diet_specialization,arctocephalus,generali
 marine_mammals,specialisation,photosynthetic,arctocephalus,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,arctocephalus,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,arctocephalus,rocky intertidal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,arctocephalus,breeding and raising pups,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,arctocephalus,sea ice edge,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,arctocephalus,for antartic fur seal,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,balaena mysticetus,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,balaena mysticetus,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,balaena mysticetus,none,61,1
@@ -28800,10 +28871,12 @@ marine_mammals,spatial_scale_of_species,eoo_range,balaenoptera acutorostrata,>20
 marine_mammals,spatial_scale_of_species,zone,balaenoptera acutorostrata,neritic,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,balaenoptera acutorostrata,surface water,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,balaenoptera acutorostrata,coastal,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,balaenoptera acutorostrata,fjords,61,1
 marine_mammals,specialisation,air_sea_interface,balaenoptera acutorostrata,yes,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,balaenoptera acutorostrata,no,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,balaenoptera acutorostrata,surface water,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,balaenoptera acutorostrata,coastal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,balaenoptera acutorostrata,fjords,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,balaenoptera bonaerensis,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,balaenoptera bonaerensis,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,balaenoptera bonaerensis,none,61,1
@@ -29117,7 +29190,9 @@ marine_mammals,specialisation,extreme_diet_specialization,callorhinus,generalist
 marine_mammals,specialisation,photosynthetic,callorhinus,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,callorhinus,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,callorhinus,rocky intertidal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,callorhinus,breeding and raising pups,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,callorhinus,sea ice edge,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,callorhinus,for antartic fur seal,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,caperea marginata,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,caperea marginata,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,caperea marginata,none,61,1
@@ -29235,6 +29310,7 @@ marine_mammals,specialisation,across_stage_dependent_habitats_condition,delphina
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,delphinapterus leucas,deep water,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,delphinapterus leucas,sea ice edge,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,delphinapterus leucas,estuary,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,delphinapterus leucas,fjords,61,1
 marine_mammals,specialisation,air_sea_interface,delphinapterus leucas,yes,61,1
 marine_mammals,specialisation,extreme_diet_specialization,delphinapterus leucas,generalist,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,delphinapterus leucas,no,61,1
@@ -29242,6 +29318,7 @@ marine_mammals,specialisation,within_stage_dependent_habitats_condition,delphina
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,delphinapterus leucas,deep water,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,delphinapterus leucas,sea ice edge,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,delphinapterus leucas,estuary,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,delphinapterus leucas,fjords,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,delphinus,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,delphinus,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,delphinus,none,61,1
@@ -29314,6 +29391,7 @@ marine_mammals,r_reproductive_traits,reproductive_strategy,dugong dugon,sexual d
 marine_mammals,spatial_scale_of_species,eoo_range,dugong dugon,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,dugong dugon,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,dugong dugon,oceanic,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,dugong dugon,bays,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,dugong dugon,coastal,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,dugong dugon,mangrove,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,dugong dugon,continental shelf,61,1
@@ -29553,6 +29631,7 @@ marine_mammals,specialisation,extreme_diet_specialization,eumetopias,generalist,
 marine_mammals,specialisation,photosynthetic,eumetopias,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,eumetopias,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,eumetopias,rocky intertidal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,eumetopias,breeding and raising pups,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,feresa attenuata,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,feresa attenuata,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,feresa attenuata,none,61,1
@@ -29629,12 +29708,14 @@ marine_mammals,spatial_scale_of_species,eoo_range,globicephala,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,globicephala,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,globicephala,oceanic,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,globicephala,surface water,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,globicephala,continental shelves,61,1
 marine_mammals,specialisation,air_sea_interface,globicephala,yes,61,1
 marine_mammals,specialisation,dependent_interspecific_interactions,globicephala,no,61,1
 marine_mammals,specialisation,extreme_diet_specialization,globicephala,generalist,61,1
 marine_mammals,specialisation,photosynthetic,globicephala,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,globicephala,no,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,globicephala,surface water,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,globicephala,continental shelves,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,grampus griseus,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,grampus griseus,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,grampus griseus,none,61,1
@@ -30210,6 +30291,7 @@ marine_mammals,specialisation,across_stage_dependent_habitats_condition,monodon 
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,monodon monoceros,deep water,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,monodon monoceros,sea ice edge,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,monodon monoceros,estuary,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,monodon monoceros,fjords,61,1
 marine_mammals,specialisation,air_sea_interface,monodon monoceros,yes,61,1
 marine_mammals,specialisation,extreme_diet_specialization,monodon monoceros,specialist,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,monodon monoceros,no,61,1
@@ -30217,6 +30299,7 @@ marine_mammals,specialisation,within_stage_dependent_habitats_condition,monodon 
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,monodon monoceros,deep water,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,monodon monoceros,sea ice edge,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,monodon monoceros,estuary,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,monodon monoceros,fjords,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,neophoca,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,neophoca,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,neophoca,none,61,1
@@ -30259,6 +30342,7 @@ marine_mammals,specialisation,extreme_diet_specialization,neophoca,generalist,61
 marine_mammals,specialisation,photosynthetic,neophoca,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,neophoca,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,neophoca,rocky intertidal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,neophoca,breeding and raising pups,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,odobenus rosmarus,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,odobenus rosmarus,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,odobenus rosmarus,none,61,1
@@ -30305,6 +30389,7 @@ marine_mammals,specialisation,photosynthetic,odobenus rosmarus,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,odobenus rosmarus,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,odobenus rosmarus,rocky intertidal,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,odobenus rosmarus,sea ice edge,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,odobenus rosmarus,breeding and raising pups,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,orcinus orca,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,orcinus orca,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,orcinus orca,none,61,1
@@ -30389,6 +30474,7 @@ marine_mammals,specialisation,extreme_diet_specialization,otaria,generalist,61,1
 marine_mammals,specialisation,photosynthetic,otaria,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,otaria,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,otaria,rocky intertidal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,otaria,breeding and raising pups,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,peponocephala electra,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,peponocephala electra,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,peponocephala electra,none,61,1
@@ -30422,12 +30508,14 @@ marine_mammals,spatial_scale_of_species,eoo_range,peponocephala electra,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,peponocephala electra,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,peponocephala electra,oceanic,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,peponocephala electra,surface water,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,peponocephala electra,continental shelves,61,1
 marine_mammals,specialisation,air_sea_interface,peponocephala electra,yes,61,1
 marine_mammals,specialisation,dependent_interspecific_interactions,peponocephala electra,no,61,1
 marine_mammals,specialisation,extreme_diet_specialization,peponocephala electra,generalist,61,1
 marine_mammals,specialisation,photosynthetic,peponocephala electra,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,peponocephala electra,no,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,peponocephala electra,surface water,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,peponocephala electra,continental shelves,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,phocarctos,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,phocarctos,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,phocarctos,none,61,1
@@ -30470,6 +30558,7 @@ marine_mammals,specialisation,extreme_diet_specialization,phocarctos,generalist,
 marine_mammals,specialisation,photosynthetic,phocarctos,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,phocarctos,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,phocarctos,rocky intertidal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,phocarctos,breeding and raising pups,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,phocidae,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,phocidae,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,phocidae,none,61,1
@@ -30664,20 +30753,26 @@ marine_mammals,spatial_scale_of_species,eoo_range,sousa chinensis taiwanensis,<9
 marine_mammals,spatial_scale_of_species,zone,sousa chinensis taiwanensis,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,sousa chinensis taiwanensis,oceanic,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,surface water,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,near bays,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,estuary,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,mangrove,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,rocky reef,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,coral reef,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,large river mouths,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,sousa chinensis taiwanensis,some of these habitats are not included in the habitat list you gave me,61,1
 marine_mammals,specialisation,air_sea_interface,sousa chinensis taiwanensis,yes,61,1
 marine_mammals,specialisation,dependent_interspecific_interactions,sousa chinensis taiwanensis,no,61,1
 marine_mammals,specialisation,extreme_diet_specialization,sousa chinensis taiwanensis,generalist,61,1
 marine_mammals,specialisation,photosynthetic,sousa chinensis taiwanensis,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,sousa chinensis taiwanensis,no,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,surface water,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,near bays,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,estuary,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,mangrove,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,rocky reef,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,coral reef,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,large river mouths,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,sousa chinensis taiwanensis,some of these habitats are not included in the habitat list you gave me,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,stenella,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,stenella,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,stenella,none,61,1
@@ -30868,13 +30963,17 @@ marine_mammals,spatial_scale_of_species,eoo_range,trichechus manatus,<99,61,1
 marine_mammals,spatial_scale_of_species,zone,trichechus manatus,neritic,61,1
 marine_mammals,spatial_scale_of_species,zone,trichechus manatus,oceanic,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,trichechus manatus,coastal,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,trichechus manatus,rivers,61,1
 marine_mammals,specialisation,across_stage_dependent_habitats_condition,trichechus manatus,estuary,61,1
+marine_mammals,specialisation,across_stage_dependent_habitats_condition,trichechus manatus,and canals,61,1
 marine_mammals,specialisation,air_sea_interface,trichechus manatus,yes,61,1
 marine_mammals,specialisation,dependent_interspecific_interactions,trichechus manatus,no,61,1
 marine_mammals,specialisation,photosynthetic,trichechus manatus,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,trichechus manatus,no,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,trichechus manatus,coastal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,trichechus manatus,rivers,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,trichechus manatus,estuary,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,trichechus manatus,and canals,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,trichechus senegalensis,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,trichechus senegalensis,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,trichechus senegalensis,none,61,1
@@ -31036,6 +31135,7 @@ marine_mammals,specialisation,extreme_diet_specialization,zalophus,generalist,61
 marine_mammals,specialisation,photosynthetic,zalophus,no,61,1
 marine_mammals,specialisation,terrestrial_and_marine_life_stages,zalophus,yes,61,1
 marine_mammals,specialisation,within_stage_dependent_habitats_condition,zalophus,rocky intertidal,61,1
+marine_mammals,specialisation,within_stage_dependent_habitats_condition,zalophus,breeding and raising pups,61,1
 marine_mammals,biophysical_traits,adult_body_mass_body_size,ziphius cavirostris,>1000mm,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_location,ziphius cavirostris,none,61,1
 marine_mammals,biophysical_traits,calcium_carbonate_structure_stages,ziphius cavirostris,none,61,1
@@ -31107,6 +31207,7 @@ molluscs,specialisation,dependent_interspecific_interactions,acesta excavata,no,
 molluscs,specialisation,extreme_diet_specialization,acesta excavata,generalist,46,1
 molluscs,specialisation,photosynthetic,acesta excavata,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,acesta excavata,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,acesta excavata,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,adamussium colbecki,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,adamussium colbecki,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,adamussium colbecki,external with a cover,46,1
@@ -31147,6 +31248,7 @@ molluscs,specialisation,dependent_interspecific_interactions,adamussium colbecki
 molluscs,specialisation,extreme_diet_specialization,adamussium colbecki,generalist,46,1
 molluscs,specialisation,photosynthetic,adamussium colbecki,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,adamussium colbecki,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,adamussium colbecki,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,aeolidia papillosa,0.5mm-49mm,46,1
 molluscs,biophysical_traits,biomineral,aeolidia papillosa,calcite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,aeolidia papillosa,none,46,1
@@ -31228,6 +31330,7 @@ molluscs,specialisation,dependent_interspecific_interactions,anadara trapezia,no
 molluscs,specialisation,extreme_diet_specialization,anadara trapezia,generalist,46,1
 molluscs,specialisation,photosynthetic,anadara trapezia,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,anadara trapezia,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,anadara trapezia,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,aplysia californica,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,aplysia californica,calcite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,aplysia californica,none,46,1
@@ -31350,6 +31453,7 @@ molluscs,specialisation,dependent_interspecific_interactions,argopecten irradian
 molluscs,specialisation,extreme_diet_specialization,argopecten irradians,generalist,46,1
 molluscs,specialisation,photosynthetic,argopecten irradians,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,argopecten irradians,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,argopecten irradians,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,austrocochlea porcata,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,austrocochlea porcata,calcite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,austrocochlea porcata,external with a cover,46,1
@@ -31431,6 +31535,8 @@ molluscs,specialisation,dependent_interspecific_interactions,bankia setacea,no,4
 molluscs,specialisation,extreme_diet_specialization,bankia setacea,generalist,46,1
 molluscs,specialisation,photosynthetic,bankia setacea,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,bankia setacea,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,bankia setacea,benthic,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,bankia setacea,submerged timber,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,cadlina luteomarginata,0.5mm-49mm,46,1
 molluscs,biophysical_traits,biomineral,cadlina luteomarginata,calcite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,cadlina luteomarginata,none,46,1
@@ -31595,6 +31701,7 @@ molluscs,specialisation,dependent_interspecific_interactions,cerastoderma edule,
 molluscs,specialisation,extreme_diet_specialization,cerastoderma edule,generalist,46,1
 molluscs,specialisation,photosynthetic,cerastoderma edule,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,cerastoderma edule,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,cerastoderma edule,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,crassostrea virginica,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,crassostrea virginica,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,crassostrea virginica,external with a cover,46,1
@@ -31972,6 +32079,7 @@ molluscs,specialisation,dependent_interspecific_interactions,mercenaria mercenar
 molluscs,specialisation,extreme_diet_specialization,mercenaria mercenaria,generalist,46,1
 molluscs,specialisation,photosynthetic,mercenaria mercenaria,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,mercenaria mercenaria,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,mercenaria mercenaria,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,mimachlamys asperrima,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,mimachlamys asperrima,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,mimachlamys asperrima,external with a cover,46,1
@@ -32012,6 +32120,7 @@ molluscs,specialisation,dependent_interspecific_interactions,mimachlamys asperri
 molluscs,specialisation,extreme_diet_specialization,mimachlamys asperrima,generalist,46,1
 molluscs,specialisation,photosynthetic,mimachlamys asperrima,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,mimachlamys asperrima,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,mimachlamys asperrima,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,mytilus californianus,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,mytilus californianus,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,mytilus californianus,external with a cover,46,1
@@ -32230,6 +32339,7 @@ molluscs,specialisation,dependent_interspecific_interactions,ostrea angasi,no,46
 molluscs,specialisation,extreme_diet_specialization,ostrea angasi,generalist,46,1
 molluscs,specialisation,photosynthetic,ostrea angasi,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,ostrea angasi,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,ostrea angasi,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,ostrea edulis,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,ostrea edulis,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,ostrea edulis,external with a cover,46,1
@@ -32358,6 +32468,8 @@ molluscs,specialisation,dependent_interspecific_interactions,panopea generosa,no
 molluscs,specialisation,extreme_diet_specialization,panopea generosa,generalist,46,1
 molluscs,specialisation,photosynthetic,panopea generosa,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,panopea generosa,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,panopea generosa,benthic,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,panopea generosa,soft bottom,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,pecten fumatus,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,pecten fumatus,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,pecten fumatus,external with a cover,46,1
@@ -32398,6 +32510,7 @@ molluscs,specialisation,dependent_interspecific_interactions,pecten fumatus,no,4
 molluscs,specialisation,extreme_diet_specialization,pecten fumatus,generalist,46,1
 molluscs,specialisation,photosynthetic,pecten fumatus,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,pecten fumatus,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,pecten fumatus,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,pecten maximus,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,pecten maximus,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,pecten maximus,external with a cover,46,1
@@ -32438,6 +32551,7 @@ molluscs,specialisation,dependent_interspecific_interactions,pecten maximus,no,4
 molluscs,specialisation,extreme_diet_specialization,pecten maximus,generalist,46,1
 molluscs,specialisation,photosynthetic,pecten maximus,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,pecten maximus,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,pecten maximus,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,pinctada imbricata,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,pinctada imbricata,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,pinctada imbricata,external with a cover,46,1
@@ -32478,6 +32592,7 @@ molluscs,specialisation,dependent_interspecific_interactions,pinctada imbricata,
 molluscs,specialisation,extreme_diet_specialization,pinctada imbricata,generalist,46,1
 molluscs,specialisation,photosynthetic,pinctada imbricata,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,pinctada imbricata,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,pinctada imbricata,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,pinctada maxima,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,pinctada maxima,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,pinctada maxima,external with a cover,46,1
@@ -32518,6 +32633,7 @@ molluscs,specialisation,dependent_interspecific_interactions,pinctada maxima,no,
 molluscs,specialisation,extreme_diet_specialization,pinctada maxima,generalist,46,1
 molluscs,specialisation,photosynthetic,pinctada maxima,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,pinctada maxima,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,pinctada maxima,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,pinna bicolor,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,pinna bicolor,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,pinna bicolor,external with a cover,46,1
@@ -32558,6 +32674,8 @@ molluscs,specialisation,dependent_interspecific_interactions,pinna bicolor,no,46
 molluscs,specialisation,extreme_diet_specialization,pinna bicolor,generalist,46,1
 molluscs,specialisation,photosynthetic,pinna bicolor,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,pinna bicolor,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,pinna bicolor,benthic,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,pinna bicolor,soft bottom,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,plebidonax deltoides,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,plebidonax deltoides,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,plebidonax deltoides,external with a cover,46,1
@@ -32598,6 +32716,8 @@ molluscs,specialisation,dependent_interspecific_interactions,plebidonax deltoide
 molluscs,specialisation,extreme_diet_specialization,plebidonax deltoides,generalist,46,1
 molluscs,specialisation,photosynthetic,plebidonax deltoides,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,plebidonax deltoides,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,plebidonax deltoides,benthic,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,plebidonax deltoides,soft bottom,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,rochia nilotica,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,rochia nilotica,calcite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,rochia nilotica,external with a cover,46,1
@@ -32722,6 +32842,8 @@ molluscs,specialisation,dependent_interspecific_interactions,siliqua patula,no,4
 molluscs,specialisation,extreme_diet_specialization,siliqua patula,generalist,46,1
 molluscs,specialisation,photosynthetic,siliqua patula,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,siliqua patula,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,siliqua patula,benthic,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,siliqua patula,soft bottom,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,tegula funebralis,0.5mm-49mm,46,1
 molluscs,biophysical_traits,biomineral,tegula funebralis,calcite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,tegula funebralis,external with a cover,46,1
@@ -32889,6 +33011,7 @@ molluscs,specialisation,dependent_interspecific_interactions,tridacna gigas,no,4
 molluscs,specialisation,extreme_diet_specialization,tridacna gigas,generalist,46,1
 molluscs,specialisation,photosynthetic,tridacna gigas,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,tridacna gigas,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,tridacna gigas,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,tridacna maxima,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,tridacna maxima,aragonite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,tridacna maxima,external with a cover,46,1
@@ -32929,6 +33052,7 @@ molluscs,specialisation,dependent_interspecific_interactions,tridacna maxima,no,
 molluscs,specialisation,extreme_diet_specialization,tridacna maxima,generalist,46,1
 molluscs,specialisation,photosynthetic,tridacna maxima,no,46,1
 molluscs,specialisation,terrestrial_and_marine_life_stages,tridacna maxima,no,46,1
+molluscs,specialisation,within_stage_dependent_habitats_condition,tridacna maxima,benthic,46,1
 molluscs,biophysical_traits,adult_body_mass_body_size,turbo militaris,50mm-999mm,46,1
 molluscs,biophysical_traits,biomineral,turbo militaris,calcite,46,1
 molluscs,biophysical_traits,calcium_carbonate_structure_location,turbo militaris,external with a cover,46,1
@@ -33128,7 +33252,7 @@ polychaetes,biophysical_traits,calcium_carbonate_structure_stages,nephtyidae,non
 polychaetes,biophysical_traits,respiration_structures,nephtyidae,filter feeders,4,1
 polychaetes,movement,adult_mobility,nephtyidae,mobile resident,4,1
 polychaetes,movement,planktonic_larval_duration_pld_exposure,nephtyidae,<1month,4,1
-polychaetes,physiological_tolerance_breadths,salinity,nephtyidae,euryhaline,4,1
+polychaetes,physiological_tolerance_breadths,salinity,nephtyidae,stenohaline,4,1
 polychaetes,r_reproductive_traits,age_to_1st_reproduction_generation_time,nephtyidae,1-5yrs,4,1
 polychaetes,r_reproductive_traits,fecundity,nephtyidae,100-1000,4,1
 polychaetes,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,nephtyidae,feeding non-calcifier,4,1
@@ -33159,7 +33283,7 @@ polychaetes,biophysical_traits,calcium_carbonate_structure_stages,nereididae,non
 polychaetes,biophysical_traits,respiration_structures,nereididae,filter feeders,4,1
 polychaetes,movement,adult_mobility,nereididae,mobile resident,4,1
 polychaetes,movement,planktonic_larval_duration_pld_exposure,nereididae,<1month,4,1
-polychaetes,physiological_tolerance_breadths,salinity,nereididae,euryhaline,4,1
+polychaetes,physiological_tolerance_breadths,salinity,nereididae,stenohaline,4,1
 polychaetes,r_reproductive_traits,age_to_1st_reproduction_generation_time,nereididae,1-5yrs,4,1
 polychaetes,r_reproductive_traits,fecundity,nereididae,1000-10000,4,1
 polychaetes,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,nereididae,feeding non-calcifier,4,1
@@ -33186,11 +33310,11 @@ polychaetes,spatial_scale_of_species,zone,nereididae,unknown,4,1
 polychaetes,specialisation,extreme_diet_specialization,nereididae,generalist,4,1
 polychaetes,biophysical_traits,adult_body_mass_body_size,sabellidae,0.5mm-49mm,4,1
 polychaetes,biophysical_traits,calcium_carbonate_structure_location,sabellidae,none,4,1
-polychaetes,biophysical_traits,calcium_carbonate_structure_stages,sabellidae,none,4,1
+polychaetes,biophysical_traits,calcium_carbonate_structure_stages,sabellidae,adult,4,1
 polychaetes,biophysical_traits,respiration_structures,sabellidae,filter feeders,4,1
 polychaetes,movement,adult_mobility,sabellidae,sessile,4,1
 polychaetes,movement,planktonic_larval_duration_pld_exposure,sabellidae,<1month,4,1
-polychaetes,physiological_tolerance_breadths,salinity,sabellidae,euryhaline,4,1
+polychaetes,physiological_tolerance_breadths,salinity,sabellidae,stenohaline,4,1
 polychaetes,r_reproductive_traits,age_to_1st_reproduction_generation_time,sabellidae,1-5yrs,4,1
 polychaetes,r_reproductive_traits,fecundity,sabellidae,5-10,4,0.5
 polychaetes,r_reproductive_traits,fecundity,sabellidae,1000-10000,4,0.5
@@ -33222,7 +33346,7 @@ polychaetes,biophysical_traits,calcium_carbonate_structure_stages,terebellidae,n
 polychaetes,biophysical_traits,respiration_structures,terebellidae,filter feeders,4,1
 polychaetes,movement,adult_mobility,terebellidae,sessile,4,1
 polychaetes,movement,planktonic_larval_duration_pld_exposure,terebellidae,<1month,4,1
-polychaetes,physiological_tolerance_breadths,salinity,terebellidae,euryhaline,4,1
+polychaetes,physiological_tolerance_breadths,salinity,terebellidae,stenohaline,4,1
 polychaetes,r_reproductive_traits,age_to_1st_reproduction_generation_time,terebellidae,1-5yrs,4,1
 polychaetes,r_reproductive_traits,fecundity,terebellidae,1000-10000,4,1
 polychaetes,r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,terebellidae,feeding non-calcifier,4,0.5
