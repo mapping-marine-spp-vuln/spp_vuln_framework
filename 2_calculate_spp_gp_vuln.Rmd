@@ -627,7 +627,7 @@ for(i in seq_along(spp_mc)) {
   traits_det <- traits %>%
     filter(trait_prob == 1)
   ### Identify mutually exclusive traits; tally up # of combos
-  trait_multi <- traits %>%
+  traits_multi <- traits %>%
     filter(trait_prob != 1) 
   
   ### filter sens and adcap dfs out of the loop
@@ -636,44 +636,57 @@ for(i in seq_along(spp_mc)) {
     select(trait, trait_value, sens_score, stressor) %>%
     bind_rows(data.frame(trait = 'biomass_trait', trait_value = 'whatevs',
                          sens_score = 1, stressor = 'biomass_removal'))
+  sens_clean_det <- sens_clean %>%
+    filter(trait %in% traits_det$trait)
+  sens_clean_multi <- sens_clean %>%
+    filter(trait %in% traits_multi$trait)
   acg_clean <- spp_adcap_gen_raw %>% 
     filter(spp_gp == spp) %>%
     select(trait, trait_value, adcap_gen_score)
+  acg_clean_det <- acg_clean %>%
+    filter(trait %in% traits_det$trait)
+  acg_clean_multi <- acg_clean %>%
+    filter(trait %in% traits_multi$trait)
 
   acs_clean <- spp_adcap_spec_raw %>% 
     filter(spp_gp == spp) %>%
     select(trait, trait_value, adcap_spec_score, stressor) %>%
     bind_rows(data.frame(trait = 'biomass_trait', trait_value = 'whatevs',
                          adcap_spec_score = 0, stressor = 'biomass_removal'))
+  acs_clean_det <- acs_clean %>%
+    filter(trait %in% traits_det$trait)
+  acs_clean_multi <- acs_clean %>%
+    filter(trait %in% traits_multi$trait)
   
-  n_combos <- trait_multi %>%
-    group_by(trait) %>%
-    summarize(n_vals = n()) %>%
-    ungroup() %>%
-    summarize(n_combos = prod(n_vals)) %>%
-    .$n_combos
+  # n_combos <- trait_multi %>%
+  #   group_by(trait) %>%
+  #   summarize(n_vals = n()) %>%
+  #   ungroup() %>%
+  #   summarize(n_combos = prod(n_vals)) %>%
+  #   .$n_combos
     
-  iters <- max(250, n_combos * 5)
+  # iters <- max(250, n_combos * 5)
+  iters <- 5000
+  
+  # message('Processing ', i, ' of ', length(spp_mc), ': ', spp, 
+  #         ' (running ', iters, ' iterations for ', n_combos, ' permutations)')
   message('Processing ', i, ' of ', length(spp_mc), ': ', spp, 
-          ' (running ', iters, ' iterations for ', n_combos, ' permutations)')
+          ' (running ', iters, ' iterations)')
   
   sample_list <- parallel::mclapply(1:iters, mc.cores = 40,
       FUN = function(x) {
-        trait_sample <- sample_trait_vals(trait_multi) %>%
-          bind_rows(traits_det)
-      
-        spp_sens_sample <- trait_sample %>%
-          inner_join(sens_clean, by = c('trait', 'trait_value')) %>%
+        spp_sens_sample <- sample_trait_vals(sens_clean_multi) %>%
+          bind_rows(sens_clean_det) %>%
           group_by(stressor) %>%
           summarize(sens_score = sum(sens_score)) %>%
           filter(!is.na(stressor))
-        spp_adcap_spec_sample <- trait_sample %>%
-          inner_join(acs_clean, by = c('trait', 'trait_value')) %>%
+        spp_adcap_spec_sample <- sample_trait_vals(acs_clean_multi) %>%
+          bind_rows(acs_clean_det) %>%
           group_by(stressor) %>%
           summarize(adcap_spec_score = sum(adcap_spec_score)) %>%
           filter(!is.na(stressor))
-        spp_adcap_gen_sample <- trait_sample %>%
-          inner_join(acg_clean, by = c('trait', 'trait_value')) %>%
+        spp_adcap_gen_sample <-  sample_trait_vals(acg_clean_multi) %>%
+          bind_rows(acg_clean_det) %>%
           summarize(adcap_gen_score = sum(adcap_gen_score)) %>%
           .$adcap_gen_score
     
