@@ -1,0 +1,119 @@
+---
+title: "monte carlo stability check"
+author: "Casey O'Hara"
+date: "3/4/2021"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+```
+
+
+### test for single trait setup
+
+```{r monte carlo stability test 1}
+
+traits <- c('trait1')
+vals <- c(0, 1)
+val_df <- crossing(trait = traits, v = vals)
+
+n_vec <- c(10, 20, 50, 1e2, 2e2, 5e2, 1e3, 2e3, 5e3, 1e4)
+# n_vec <- c(5e3, 1e4)
+sims <- 100
+
+
+mean_vec <- vector('numeric', length = length(sims))
+sd_vec   <- vector('numeric', length = length(sims))
+
+k_df <- data.frame()
+
+for(k in seq_along(n_vec)) { ### k <- 1
+  n <- n_vec[k]
+  for(s in 1:sims) {
+    message('testing sim ', s, ' at ', n, ' iterations')
+    v_vec <- parallel::mclapply(1:n, mc.cores = 40,
+      FUN = function(i) {
+      sample_df <- val_df %>%
+        group_by(trait) %>%
+        sample_n(1) %>%
+        ungroup()
+      v <- mean(sample_df$v)
+      }) %>%
+      unlist()
+    mean_vec[s] <- mean(v_vec)
+    sd_vec[s]   <- sd(v_vec)
+  }
+  s_df <- data.frame(sim = 1:sims, mu = mean_vec, sd = sd_vec) %>%
+    summarize(n = n, 
+              d_mu = abs(mean(mu) - .5), 
+              sd_mu = sd(mu), 
+              range_mu = max(mu) - min(mu))
+  
+  k_df <- bind_rows(k_df, s_df)
+}
+
+knitr::kable(k_df)
+
+ggplot(k_df %>% gather(param, val, d_mu, sd_mu, range_mu),
+       aes(x = n, y = val, color = param)) +
+  geom_line() +
+  scale_x_log10() +
+  # scale_y_log10() +
+  ylim(0, NA)
+
+```
+
+### test for a bunch of traits with multiple values
+
+```{r monte carlo stability test 2}
+
+traits <- paste0('trait', 1:12)
+vals <- c(0, 1)
+val_df <- crossing(trait = traits, v = vals)
+
+
+mean_vec <- vector('numeric', length = length(sims))
+sd_vec   <- vector('numeric', length = length(sims))
+
+k_df2 <- data.frame()
+
+for(k in seq_along(n_vec)) { ### k <- 1
+  n <- n_vec[k]
+  for(s in 1:sims) {
+    message('testing sim ', s, ' at ', n, ' iterations')
+    v_vec <- parallel::mclapply(1:n, mc.cores = 40,
+      FUN = function(i) {
+      sample_df <- val_df %>%
+        group_by(trait) %>%
+        sample_n(1) %>%
+        ungroup()
+      v <- mean(sample_df$v)
+      }) %>%
+      unlist()
+    mean_vec[s] <- mean(v_vec)
+    sd_vec[s]   <- sd(v_vec)
+  }
+  s_df2 <- data.frame(sim = 1:sims, mu = mean_vec, sd = sd_vec) %>%
+    summarize(n = n, 
+              d_mu = abs(mean(mu) - .5), 
+              sd_mu = sd(mu), 
+              range_mu = max(mu) - min(mu))
+  
+  k_df2 <- bind_rows(k_df2, s_df2)
+}
+
+knitr::kable(k_df2)
+
+ggplot(k_df2 %>% gather(param, val, d_mu, sd_mu, range_mu), 
+       aes(x = n, y = val, color = param)) +
+  geom_line() +
+  scale_x_log10() +
+  # scale_y_log10() +
+  ylim(0, NA)
+
+```
+
