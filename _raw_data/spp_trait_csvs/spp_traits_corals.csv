@@ -35,6 +35,7 @@ specialisation,across-stage dependent habitats + condition,coral reef;surface wa
 specialisation,air-sea interface,no,no,no,no
 specialisation,dependent interspecific interactions,no,no,no,no
 specialisation,extreme diet specialization,generalist,generalist,generalist,generalist
+specialisation,habitat forming,yes,yes,yes,yes
 specialisation,photosynthetic,yes,yes,yes,yes
 specialisation,terrestrial and marine life stages,no,no,no,no
 specialisation,within-stage dependent habitats + condition,coral reef,coral reef,coral reef,coral reef

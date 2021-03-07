@@ -36,9 +36,10 @@ spatial scale of species,depth (min/max),epipelagic;mesopelagic,epipelagic,epipe
 spatial scale of species,eoo (range),<99,<99,>20000,100-4999,<99,>20000,<99,<99,<99
 spatial scale of species,zone,demersal,intertidal,benthic,intertidal,intertidal,demersal,benthic,intertidal,benthic
 specialisation,across-stage dependent habitats + condition,deep hard bottom;hydrothermal vents,estuary;mangrove;intertidal mud;beach,NA,NA,intertidal mud;beach,NA,NA,intertidal mud;mangrove;estuary,coral reef
-specialisation,air-sea interface,yes,yes,no,no,yes,none,yes,yes,yes
+specialisation,air-sea interface,no,yes,no,no,yes,none,yes,yes,yes
 specialisation,dependent interspecific interactions,no,no,yes,no,no,none,yes,no,yes w;coral
 specialisation,extreme diet specialization,generalist,generalist,specialist,generalist,generalist,generalist,specialist,generalist,generalist
+specialisation,habitat forming,no,no,no,no,no,no,no,no,no
 specialisation,photosynthetic,no,no,no,no,no,no,no,no,no
 specialisation,terrestrial and marine life stages,no,no,NA,no,no,NA,NA,no,no
 specialisation,within-stage dependent habitats + condition,deep hard bottom;hydrothermal vents,estuary;mangrove;intertidal mud;beach,deep soft bottom,subtidal soft bottom;rocky reef;rocky intertidal,kelp forest;hide for first year of life here,NA,rocky intertidal;coral reef,surface water;during planktonic stage,coral reef
