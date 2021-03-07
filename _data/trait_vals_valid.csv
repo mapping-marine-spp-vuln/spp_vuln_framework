@@ -117,6 +117,9 @@ specialisation,air-sea interface,floating
 specialisation,air-sea interface,yes
 specialisation,air-sea interface,no
 specialisation,air-sea interface,unknown
+specialisation,habitat forming,yes
+specialisation,habitat forming,no
+specialisation,habitat forming,unknown
 specialisation,terrestrial and marine life stages,yes
 specialisation,terrestrial and marine life stages,no
 specialisation,terrestrial and marine life stages,unknown

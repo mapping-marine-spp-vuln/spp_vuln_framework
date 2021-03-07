@@ -250,7 +250,7 @@ r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-calcifie
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-non-calcifier,uv,0.67,medium
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-calcifier,uv,0.67,medium
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-non-calcifier,uv,0.67,medium
-specialisation,photosynthetic,yes,uv,0.67,medium
+specialisation,photosynthetic,yes,uv,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-calcifier,water_temp,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding-non-calcifier,water_temp,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding-calcifier,water_temp,1,high
