@@ -283,7 +283,7 @@ depth_vals <- traitvals_df_valid %>%
   filter(trait == 'depth (min/max)') %>%
   .$trait_value %>% paste0(collapse = '|')
 
-spp_data_depth <- raw_data_df %>%
+spp_data_depth_text <- raw_data_df %>%
   filter(trait == 'depth (min/max)') %>%
   mutate(trait_value = str_replace(trait_value, 'range across all', depth_vals),
          tmp = str_replace_all(tolower(trait_value), '[^a-z0-9 ]+', ';'),
@@ -291,6 +291,38 @@ spp_data_depth <- raw_data_df %>%
   unnest(tmp) %>%
   mutate(trait_val_clean = clean_trait(tmp)) %>%
   clean_up_mess()
+
+### Depth zones:
+### Epipelagic (0-200 m)
+### Mesopelagic (200 m– 6-700 m)
+### Bathypelagic (700 m – 1-2000 m)
+### Abyssopelagic (2000 m – 4-6000 m)
+### Hadopelagic (6000 m – 10,000 m)
+depth_df <- data.frame(d = 0:20000) %>%
+  mutate(zone = case_when(d <=  200 ~ 'epipelagic',
+                          d <=  700 ~ 'mesopelagic',
+                          d <= 2000 ~ 'bathypelagic',
+                          d <= 6000 ~ 'abyssopelagic',
+                          TRUE      ~ 'hadopelagic')) %>%
+  mutate(zone = fct_inorder(zone))
+zone_fct <- levels(depth_df$zone)
+
+spp_data_depth_num <- raw_data_df %>%
+  filter(trait == 'depth (min/max)') %>%
+  filter(str_detect(trait_value, '[0-9]')) %>%
+  rowwise() %>%
+  mutate(nums = str_extract_all(trait_value, '[0-9]+'),
+         min_d = min(as.numeric(unlist(nums))), 
+         max_d = max(as.numeric(unlist(nums)))) %>%
+  left_join(depth_df %>% rename(min_z = zone), by = c('min_d' = 'd')) %>%
+  left_join(depth_df %>% rename(max_z = zone), by = c('max_d' = 'd')) %>%
+  mutate(zones = paste0(zone_fct[as.integer(min_z):as.integer(max_z)], collapse = ';'),
+         zones = str_split(zones, ';')) %>%
+  unnest(zones) %>%
+  select(category, trait, trait_value, trait_val_clean = zones, spp_gp, sheet) %>%
+  distinct()
+  
+
 
 ### add atmosphere category
 spp_sessile <- spp_data_mobility %>%
@@ -322,8 +354,13 @@ spp_data_atm <- spp_atm %>%
          trait_value = '(sessile AND intertidal) OR flight OR marine/terrestrial', 
          trait_val_clean = 'atmosphere')
 
-spp_data_depth <- spp_data_depth %>%
-  bind_rows(spp_data_atm)
+spp_data_depth <- spp_data_depth_text %>%
+  bind_rows(spp_data_depth_num) %>%
+  bind_rows(spp_data_atm) %>%
+  distinct()
+
+# x <- spp_data_depth %>%
+#   anti_join(spp_data_depth1)
 
 spp_data_depth$trait_val_clean %>% table()
 ```
