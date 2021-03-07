@@ -1,7 +1,7 @@
 taxon,gapfill: class,gapfill: family,gapfill: genus,gapfill: order,match: class,match: family,match: genus,match: order,match: species
 cephalopods,10,33,19,6,NA,17,521,NA,220
 corals,5552,308,11,2764,NA,NA,282,NA,1
-crustacea_arthropods,19360,1425,353,12980,NA,NA,106,NA,7
+crustacea_arthropods,19360,1226,353,13285,NA,NA,NA,NA,7
 echinoderms,2596,2287,864,4299,NA,NA,2,NA,99
 elasmobranchs,NA,2,1,2,NA,626,563,6,34
 fish,1754,5341,1835,8625,NA,NA,NA,NA,115
