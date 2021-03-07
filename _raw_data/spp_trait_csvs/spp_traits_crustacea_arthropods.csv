@@ -32,7 +32,7 @@ r (reproductive traits),max age,1-5yrs,1-5yrs,NA,NA,20-100yrs,NA,NA,1-5yrs,1-5yr
 r (reproductive traits),parental investment,egg-layer,spawner,live birth/egg care,live birth/egg care,live birth/egg care,live birth/egg care,live birth/egg care,spawner,egg-layer
 r (reproductive traits),post-birth/hatching parental dependence,na,na,NA,NA,<week,NA,NA,na,na
 r (reproductive traits),reproductive strategy,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious,sexual dioecious
-spatial scale of species,depth (min/max),epipelagic;mesopelagic,NA,NA,NA,NA,NA,NA,epipelagic;mesopelagic,NA
+spatial scale of species,depth (min/max),epipelagic;mesopelagic,epipelagic,epipelagic;mesopelagic;bathypelagic,epipelagic,epipelagic,epipelagic,epipelagic,epipelagic;mesopelagic,epipelagic
 spatial scale of species,eoo (range),<99,<99,>20000,100-4999,<99,>20000,<99,<99,<99
 spatial scale of species,zone,demersal,intertidal,benthic,intertidal,intertidal,demersal,benthic,intertidal,benthic
 specialisation,across-stage dependent habitats + condition,deep hard bottom;hydrothermal vents,estuary;mangrove;intertidal mud;beach,NA,NA,intertidal mud;beach,NA,NA,intertidal mud;mangrove;estuary,coral reef

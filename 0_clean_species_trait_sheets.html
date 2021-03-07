@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Thu Mar 4 13:29:09 2021 by ohara" />
+<meta name="author" content="Compiled on Sat Mar 6 19:21:52 2021 by ohara" />
 
 
 <title>Clean species trait workbook</title>
@@ -357,7 +357,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Clean species trait workbook</h1>
-<h4 class="author"><em>Compiled on Thu Mar 4 13:29:09 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Sat Mar 6 19:21:52 2021 by ohara</em></h4>
 
 </div>
 
@@ -607,7 +607,7 @@ div.tocify {
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait <span class="sc">==</span> <span class="st">&#39;depth (min/max)&#39;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>trait_value <span class="sc">%&gt;%</span> <span class="fu">paste0</span>(<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>spp_data_depth <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>spp_data_depth_text <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait <span class="sc">==</span> <span class="st">&#39;depth (min/max)&#39;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_value =</span> <span class="fu">str_replace</span>(trait_value, <span class="st">&#39;range across all&#39;</span>, depth_vals),</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">str_replace_all</span>(<span class="fu">tolower</span>(trait_value), <span class="st">&#39;[^a-z0-9 ]+&#39;</span>, <span class="st">&#39;;&#39;</span>),</span>
@@ -616,45 +616,82 @@ div.tocify {
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">clean_trait</span>(tmp)) <span class="sc">%&gt;%</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_up_mess</span>()</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">### add atmosphere category</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>spp_sessile <span class="ot">&lt;-</span> spp_data_mobility <span class="sc">%&gt;%</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">==</span> <span class="st">&#39;sessile&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>spp_intertidal <span class="ot">&lt;-</span> spp_data_zones <span class="sc">%&gt;%</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(spp_gp <span class="sc">%in%</span> spp_sessile<span class="sc">$</span>spp_gp) <span class="sc">%&gt;%</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">==</span> <span class="st">&#39;intertidal&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>spp_terr_marine <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait, <span class="st">&#39;terrestrial and marine&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="fu">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>spp_flight <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait, <span class="st">&#39;flight&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="fu">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>spp_atm <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(spp_flight, spp_intertidal, spp_terr_marine) <span class="sc">%&gt;%</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>spp_data_atm <span class="ot">&lt;-</span> spp_atm <span class="sc">%&gt;%</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;spatial scale of species&#39;</span>,</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait    =</span> <span class="st">&#39;depth (min/max)&#39;</span>,</span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="st">&#39;(sessile AND intertidal) OR flight OR marine/terrestrial&#39;</span>, </span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;atmosphere&#39;</span>)</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>spp_data_depth <span class="ot">&lt;-</span> spp_data_depth <span class="sc">%&gt;%</span></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_atm)</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>spp_data_depth<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span> <span class="fu">table</span>()</span></code></pre></div>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">### Depth zones:</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="do">### Epipelagic (0-200 m)</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="do">### Mesopelagic (200 m– 6-700 m)</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="do">### Bathypelagic (700 m – 1-2000 m)</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="do">### Abyssopelagic (2000 m – 4-6000 m)</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">### Hadopelagic (6000 m – 10,000 m)</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>depth_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">d =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">20000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zone =</span> <span class="fu">case_when</span>(d <span class="sc">&lt;=</span>  <span class="dv">200</span> <span class="sc">~</span> <span class="st">&#39;epipelagic&#39;</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>                          d <span class="sc">&lt;=</span>  <span class="dv">700</span> <span class="sc">~</span> <span class="st">&#39;mesopelagic&#39;</span>,</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>                          d <span class="sc">&lt;=</span> <span class="dv">2000</span> <span class="sc">~</span> <span class="st">&#39;bathypelagic&#39;</span>,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>                          d <span class="sc">&lt;=</span> <span class="dv">6000</span> <span class="sc">~</span> <span class="st">&#39;abyssopelagic&#39;</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span>      <span class="sc">~</span> <span class="st">&#39;hadopelagic&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zone =</span> <span class="fu">fct_inorder</span>(zone))</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>zone_fct <span class="ot">&lt;-</span> <span class="fu">levels</span>(depth_df<span class="sc">$</span>zone)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>spp_data_depth_num <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait <span class="sc">==</span> <span class="st">&#39;depth (min/max)&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait_value, <span class="st">&#39;[0-9]&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">nums =</span> <span class="fu">str_extract_all</span>(trait_value, <span class="st">&#39;[0-9]+&#39;</span>),</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>         <span class="at">min_d =</span> <span class="fu">min</span>(<span class="fu">as.numeric</span>(<span class="fu">unlist</span>(nums))), </span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>         <span class="at">max_d =</span> <span class="fu">max</span>(<span class="fu">as.numeric</span>(<span class="fu">unlist</span>(nums)))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(depth_df <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">min_z =</span> zone), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;min_d&#39;</span> <span class="ot">=</span> <span class="st">&#39;d&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(depth_df <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">max_z =</span> zone), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;max_d&#39;</span> <span class="ot">=</span> <span class="st">&#39;d&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zones =</span> <span class="fu">paste0</span>(zone_fct[<span class="fu">as.integer</span>(min_z)<span class="sc">:</span><span class="fu">as.integer</span>(max_z)], <span class="at">collapse =</span> <span class="st">&#39;;&#39;</span>),</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">zones =</span> <span class="fu">str_split</span>(zones, <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(zones) <span class="sc">%&gt;%</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(category, trait, trait_value, <span class="at">trait_val_clean =</span> zones, spp_gp, sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="do">### add atmosphere category</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>spp_sessile <span class="ot">&lt;-</span> spp_data_mobility <span class="sc">%&gt;%</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">==</span> <span class="st">&#39;sessile&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>spp_intertidal <span class="ot">&lt;-</span> spp_data_zones <span class="sc">%&gt;%</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(spp_gp <span class="sc">%in%</span> spp_sessile<span class="sc">$</span>spp_gp) <span class="sc">%&gt;%</span></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">==</span> <span class="st">&#39;intertidal&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>spp_terr_marine <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait, <span class="st">&#39;terrestrial and marine&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="fu">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>spp_flight <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait, <span class="st">&#39;flight&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(<span class="fu">tolower</span>(trait_value), <span class="st">&#39;^y&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>spp_atm <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(spp_flight, spp_intertidal, spp_terr_marine) <span class="sc">%&gt;%</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>spp_data_atm <span class="ot">&lt;-</span> spp_atm <span class="sc">%&gt;%</span></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;spatial scale of species&#39;</span>,</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait    =</span> <span class="st">&#39;depth (min/max)&#39;</span>,</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="st">&#39;(sessile AND intertidal) OR flight OR marine/terrestrial&#39;</span>, </span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;atmosphere&#39;</span>)</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>spp_data_depth <span class="ot">&lt;-</span> spp_data_depth_text <span class="sc">%&gt;%</span></span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_depth_num) <span class="sc">%&gt;%</span></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_atm) <span class="sc">%&gt;%</span></span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a><span class="co"># x &lt;- spp_data_depth %&gt;%</span></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="co">#   anti_join(spp_data_depth1)</span></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>spp_data_depth<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span> <span class="fu">table</span>()</span></code></pre></div>
 <pre><code>## .
 ## abyssopelagic    atmosphere  bathypelagic    epipelagic   hadopelagic 
-##            18            66           143           436             4 
+##            89            66           254           623             4 
 ##   mesopelagic       unknown 
-##           233             5</code></pre>
+##           346             5</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> spp_data_depth <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">==</span> <span class="st">&#39;atmosphere&#39;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sheet) <span class="sc">%&gt;%</span></span>
