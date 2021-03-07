@@ -613,10 +613,22 @@ spp_mc <- spp_sens %>%
   .$spp_gp %>% unique()
 spp_mc_vuln_list <- vector('list', length = length(spp_mc))
 
+spp_tmp_stem <- here::here('tmp/vuln_monte_carlo_%s.csv')
+# zxcv <- list.files('tmp', pattern = 'vuln_monte_carlo', full.names = TRUE)
+# unlink('tmp/vuln_monte_carlo_*.csv')
+
 for(i in seq_along(spp_mc)) {
   ### i <- 1
   ### spp <- 'spheniscidae'
   spp <- spp_mc[i]
+  spp_tmp_file <- sprintf(spp_tmp_stem, str_replace(spp, '[^a-z]+', '_'))
+  if(file.exists(spp_tmp_file)) {
+    message('file exists: ', basename(spp_tmp_file), '... reading in and moving on!')
+    y <- read_csv(spp_tmp_file, col_types = cols(spp_gp = 'c'))
+    spp_mc_vuln_list[[i]] <- y
+    next()
+  }
+  
   traits <- spp_traits %>%
     filter(spp_gp == spp) %>%
     select(-n_spp_gps) %>%
@@ -666,7 +678,7 @@ for(i in seq_along(spp_mc)) {
   #   .$n_combos
     
   # iters <- max(250, n_combos * 5)
-  iters <- 5000
+  iters <- 10000
   
   # message('Processing ', i, ' of ', length(spp_mc), ': ', spp, 
   #         ' (running ', iters, ' iterations for ', n_combos, ' permutations)')
@@ -712,6 +724,7 @@ for(i in seq_along(spp_mc)) {
     mutate(taxon = taxon, spp_gp = spp)
   
   spp_mc_vuln_list[[i]] <- x
+  write_csv(x, spp_tmp_file)
 }
 
 spp_vuln_mc <- bind_rows(spp_mc_vuln_list)

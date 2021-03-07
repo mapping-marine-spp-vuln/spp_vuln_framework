@@ -245,32 +245,27 @@ if(!file.exists(gen_fill_file)) {
     ungroup()
   
   genera <- gen_fill_qty$genus %>% unique()
-  genera_list <- vector('list', length = length(genera)) %>%
-    setNames(genera)
-  for(g in genera) { ### g <- genera[1]
-    g_df <- gen_fill_prob %>%
-      filter(genus == g) %>%
-      mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-    
-    message('Running ', iters, ' MC iterations for genus ', g)
-    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
-      FUN = function(i) { ### i <- 2
-        samp_df <- g_df %>%
-          rowwise() %>%
-          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-          ungroup()
-        return(samp_df)
-      })
-    mc_results_df <- tmp_list %>%
-      bind_rows() %>%
-      group_by(class, order, family, genus, stressor, taxon) %>%
-      summarize(mean_vuln = mean(v),
-                sd_vuln = sd(v),
-                # med_vuln = median(v),
-                n_spp_known = n_distinct(species)) %>%
-      ungroup()
-    genera_list[[g]] <- mc_results_df
-  }
+  
+  genera_list <- parallel::mclapply(genera, mc.cores = 20,
+    FUN = function(g) {### g <- genera[1]
+      g_df <- gen_fill_prob %>%
+        filter(genus == g) %>%
+        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+      
+      message('Sampling ', iters, ' MC iterations for genus ', g)
+  
+      mc_results_df <- g_df %>%
+        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+        unnest(v) %>%
+        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+        group_by(class, order, family, genus, stressor, taxon) %>%
+        summarize(mean_vuln = mean(v),
+                  sd_vuln = sd(v),
+                  # med_vuln = median(v),
+                  n_spp_known = n_distinct(species)) %>%
+        ungroup()
+      return(mc_results_df)
+    })
   
   gen_fill_prob_results <- genera_list %>%
     bind_rows() %>%
@@ -340,32 +335,27 @@ if(!file.exists(fam_fill_file)) {
     ungroup()
   
   fams <- fam_fill_qty$family %>% unique()
-  fam_list <- vector('list', length = length(fams)) %>%
-    setNames(fams)
-  for(f in fams) { ### f <- fams[1]
-    f_df <- fam_fill_prob %>%
-      filter(family == f) %>%
-      mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-    
-    message('Running ', iters, ' MC iterations for family ', f)
-    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
-      FUN = function(i) { ### i <- 2
-        samp_df <- f_df %>%
-          rowwise() %>%
-          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-          ungroup()
-        return(samp_df)
-      })
-    mc_results_df <- tmp_list %>%
-      bind_rows() %>%
-      group_by(class, order, family, stressor, taxon) %>%
-      summarize(mean_vuln = mean(v),
-                sd_vuln = sd(v),
-                # med_vuln = median(v),
-                n_spp_known = n_distinct(species)) %>%
-      ungroup()
-    fam_list[[f]] <- mc_results_df
-  }
+
+  fam_list <- parallel::mclapply(fams, mc.cores = 20,
+    FUN = function(f) {### 
+      f_df <- fam_fill_prob %>%
+        filter(family == f) %>%
+        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+      
+      message('Sampling ', iters, ' MC iterations for family ', f)
+      
+      mc_results_df <- f_df %>%
+        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+        unnest(v) %>%
+        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+        group_by(class, order, family, stressor, taxon) %>%
+        summarize(mean_vuln = mean(v),
+                  sd_vuln = sd(v),
+                  # med_vuln = median(v),
+                  n_spp_known = n_distinct(species)) %>%
+        ungroup()
+      return(mc_results_df)
+    })
   
   
   fam_fill_prob_results <- fam_list %>%
@@ -436,32 +426,27 @@ if(!file.exists(ord_fill_file)) {
     ungroup()
   
   ords <- ord_fill_qty$order %>% unique()
-  ord_list <- vector('list', length = length(ords)) %>%
-    setNames(ords)
-  for(o in ords) { ### o <- ords[1]
-    o_df <- ord_fill_prob %>%
-      filter(order == o) %>%
-      mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-    
-    message('Running ', iters, ' MC iterations for order ', o)
-    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
-      FUN = function(i) { ### i <- 2
-        samp_df <- o_df %>%
-          rowwise() %>%
-          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-          ungroup()
-        return(samp_df)
-      })
-    mc_results_df <- tmp_list %>%
-      bind_rows() %>%
-      group_by(class, order, stressor, taxon) %>%
-      summarize(mean_vuln = mean(v),
-                sd_vuln = sd(v),
-                # med_vuln = median(v),
-                n_spp_known = n_distinct(species)) %>%
-      ungroup()
-    ord_list[[o]] <- mc_results_df
-  }
+
+  ord_list <- parallel::mclapply(ords, mc.cores = 15,
+    FUN = function(o) {
+      o_df <- ord_fill_prob %>%
+        filter(order == o) %>%
+        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+      
+      message('Sampling ', iters, ' MC iterations for order ', o)
+  
+      mc_results_df <- o_df %>%
+        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+        unnest(v) %>%
+        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+        group_by(class, order, stressor, taxon) %>%
+        summarize(mean_vuln = mean(v),
+                  sd_vuln = sd(v),
+                  # med_vuln = median(v),
+                  n_spp_known = n_distinct(species)) %>%
+        ungroup()
+      return(mc_results_df)
+    })
   
   
   ord_fill_prob_results <- ord_list %>%
@@ -532,33 +517,28 @@ if(!file.exists(cls_fill_file)) {
     filter(n_spp > 1) %>%
     ungroup()
   
-  clss <- cls_fill_qty$class %>% unique()
-  cls_list <- vector('list', length = length(clss)) %>%
-    setNames(clss)
-  for(c in clss) { ### c <- clss[1]
-    c_df <- cls_fill_prob %>%
-      filter(class == c) %>%
-      mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-    
-    message('Running ', iters, ' MC iterations for class ', c)
-    tmp_list <- parallel::mclapply(1:iters, mc.cores = 30,
-      FUN = function(i) { ### i <- 2
-        samp_df <- c_df %>%
-          rowwise() %>%
-          mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-          ungroup()
-        return(samp_df)
-      })
-    mc_results_df <- tmp_list %>%
-      bind_rows() %>%
-      group_by(class, stressor, taxon) %>%
-      summarize(mean_vuln = mean(v),
-                sd_vuln = sd(v),
-                # med_vuln = median(v),
-                n_spp_known = n_distinct(species)) %>%
-      ungroup()
-    cls_list[[c]] <- mc_results_df
-  }
+  clss <- cls_fill_qty$class %>% unique() %>% sort()
+
+  cls_list <- parallel::mclapply(clss, mc.cores = 1, ### memory issues
+    FUN = function(c) {
+      c_df <- cls_fill_prob %>%
+        filter(class == c) %>%
+        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+      
+      message('Sampling ', iters, ' MC iterations for class ', c)
+
+      mc_results_df <- c_df %>%
+        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+        unnest(v) %>%
+        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+        group_by(class, stressor, taxon) %>%
+        summarize(mean_vuln = mean(v),
+                  sd_vuln = sd(v),
+                  # med_vuln = median(v),
+                  n_spp_known = n_distinct(species)) %>%
+        ungroup()
+      return(mc_results_df)
+    })
   
   
   cls_fill_prob_results <- cls_list %>%
@@ -804,68 +784,43 @@ write_csv(gf_count, here('_output/gapfill_count.csv'))
 
 Using species gapfilled to the family level
 
-```{r}
-set.seed(42)
-mc_sample <- function(df) {
-  y <- df %>%
-    rowwise() %>%
-    mutate(v = rnorm(1, mean = vuln, sd = sd_vuln)) %>%
-    ungroup()
-  return(y)
-}
-mc_iters <- function(df, iters = 100, mc.cores) {
-  # x <- df %>%
-  #   filter(sd_vuln == 0 | is.na(sd_vuln))
-  # y <- df %>%
-  #   filter(sd_vuln > 0)
-  i <- 1:iters
-  z <- parallel::mclapply(i, mc.cores = mc.cores,
-          FUN = function(i) {
-            mc_sample(df)
-          })
-  zz <- bind_rows(z) # %>%
-    # group_by(class, order, family, genus, species, taxon, stressor) %>%
-    # summarize(vuln = mean(v), sd_vuln = sd(v))
-  return(zz)
-}
-```
-
 ```{r summarize stats by taxon}
 tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
 
 if(!file.exists(tx_str_sum_outfile)) {
-  tx <- vuln_all_gf$taxon %>% unique() %>% sort()
-  str <- vuln_all_gf$stressor %>% unique() %>% sort()
+  taxa <- vuln_all_gf$taxon %>% unique() %>% sort()
+  strs <- vuln_all_gf$stressor %>% unique() %>% sort()
   
-  iters <- 1000
+  iters <- 10000
   
-  tx_list <- vector('list', length = length(tx)) %>%
-    setNames(tx)
-  for(t in tx) { ### t <- tx[7]
-    tmp_df <- vuln_all_gf %>%
+  tx_list <- vector('list', length = length(taxa)) %>%
+    setNames(taxa)
+  for(t in taxa) { ### t <- taxa[7]
+    taxon_df <- vuln_all_gf %>%
       filter(gapfill %in% c('none', 'genus', 'family')) %>%
       filter(taxon == t)
 
-    nrows <- nrow(tmp_df)
-    
-    str_list <- vector('list', length = length(str)) %>%
-      setNames(str)
-    for(s in str) { ### s <- str[10]
-      message('Processing taxon ', t, ', ', s, ': nrows = ', nrow(tmp_df))
-      tmp2_df <- tmp_df %>%
-        filter(stressor == s)
-      n_known <- sum(tmp2_df$gapfill == 'none')
-      n_total <- n_distinct(tmp2_df$species)
-      mc_tx_str_df <- mc_iters(tmp2_df, iters = iters, mc.cores = 40) %>%
-        group_by(taxon, stressor) %>%
-        summarize(mean_vuln = mean(v), sd_vuln = sd(v),
-                  mean_vuln_known = sum(v * !is.na(match_rank)) / sum(!is.na(match_rank)),
-                  mean_vuln_filled = sum(v * (gapfill != 'none')) / sum(gapfill != 'none'),
-                  n_spp_known = n_known,
-                  n_spp_total = n_total,
-                  pct_spp_filled = round((n_total - n_known)/n_total, 5) * 100)
-      str_list[[s]] <- mc_tx_str_df
-    }
+    str_list <- parallel::mclapply(strs, mc.cores = 6,
+      FUN = function(s) {
+        taxon_str_df <- taxon_df %>%
+          filter(stressor == s)
+        message('Processing taxon ', t, ', ', s, ': nrows = ', nrow(taxon_str_df))
+        n_known <- sum(taxon_str_df$gapfill == 'none')
+        n_total <- n_distinct(taxon_str_df$species)
+  
+        mc_tx_str_df <- taxon_str_df %>%
+          mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+          unnest(v) %>%
+          mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+          group_by(taxon, stressor) %>%
+          summarize(mean_vuln = mean(v), sd_vuln = sd(v),
+                    mean_vuln_known  = sum(v * !is.na(match_rank)) / sum(!is.na(match_rank)),
+                    mean_vuln_filled = sum(v * (gapfill != 'none')) / sum(gapfill != 'none'),
+                    n_spp_known = n_known,
+                    n_spp_total = n_total,
+                    pct_spp_filled = round((n_total - n_known)/n_total, 5) * 100)
+        return(mc_tx_str_df)
+      })
       
     tx_list[[t]] <- bind_rows(str_list)
   }
