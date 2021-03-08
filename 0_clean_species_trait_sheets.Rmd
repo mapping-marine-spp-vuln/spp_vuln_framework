@@ -1175,6 +1175,21 @@ spp_data_nav_separated <- spp_data_nav %>%
   
 ```
 
+
+### Biomass removal trait
+
+``` {r add biomass removal trait}
+	
+spp_data_biomass_removal <- raw_data_df %>%
+  select(spp_gp, sheet) %>%
+  distinct() %>%
+  mutate(category = 'biomass removal',
+         trait = 'biomass removal vulnerability trait',
+         trait_value = 'vulnerable',
+         trait_val_clean = 'vulnerable')
+  
+```
+
 ### habitats
 
 ```{r clean up habitats}
@@ -1281,6 +1296,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_parent) %>%
   bind_rows(spp_data_age) %>%
   bind_rows(spp_data_nav_separated) %>%
+  bind_rows(spp_data_biomass_removal) %>%
   bind_rows(spp_data_habs) %>%
   ### split and unnest, trim and clean:
   mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%
