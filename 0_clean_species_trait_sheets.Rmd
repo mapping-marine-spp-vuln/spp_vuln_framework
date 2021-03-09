@@ -352,7 +352,7 @@ spp_data_atm <- spp_atm %>%
   mutate(category = 'spatial scale of species',
          trait    = 'depth (min/max)',
          trait_value = '(sessile AND intertidal) OR flight OR marine/terrestrial', 
-         trait_val_clean = 'atmosphere')
+         trait_val_clean = 'air')
 
 spp_data_depth <- spp_data_depth_text %>%
   bind_rows(spp_data_depth_num) %>%

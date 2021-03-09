@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Sun Mar 7 19:47:40 2021 by ohara" />
+<meta name="author" content="Compiled on Mon Mar 8 19:14:28 2021 by ohara" />
 
 
 <title>Clean species trait workbook</title>
@@ -373,7 +373,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Clean species trait workbook</h1>
-<h4 class="author"><em>Compiled on Sun Mar 7 19:47:40 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Mon Mar 8 19:14:28 2021 by ohara</em></h4>
 
 </div>
 
@@ -692,7 +692,7 @@ div.tocify {
 <span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;spatial scale of species&#39;</span>,</span>
 <span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait    =</span> <span class="st">&#39;depth (min/max)&#39;</span>,</span>
 <span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="st">&#39;(sessile AND intertidal) OR flight OR marine/terrestrial&#39;</span>, </span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;atmosphere&#39;</span>)</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;air&#39;</span>)</span>
 <span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>spp_data_depth <span class="ot">&lt;-</span> spp_data_depth_text <span class="sc">%&gt;%</span></span>
 <span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_depth_num) <span class="sc">%&gt;%</span></span>
@@ -704,7 +704,7 @@ div.tocify {
 <span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>spp_data_depth<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span> <span class="fu">table</span>()</span></code></pre></div>
 <pre><code>## .
-## abyssopelagic    atmosphere  bathypelagic    epipelagic   hadopelagic 
+## abyssopelagic           air  bathypelagic    epipelagic   hadopelagic 
 ##            90            66           254           623             5 
 ##   mesopelagic       unknown 
 ##           346             5</code></pre>
@@ -721,34 +721,6 @@ div.tocify {
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">elasmobranchs</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">fish</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">marine_mammals</td>
-<td align="right">9</td>
-</tr>
-<tr class="even">
-<td align="left">molluscs</td>
-<td align="right">12</td>
-</tr>
-<tr class="odd">
-<td align="left">polychaetes</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="left">reptiles</td>
-<td align="right">15</td>
-</tr>
-<tr class="odd">
-<td align="left">seabirds</td>
-<td align="right">21</td>
-</tr>
 </tbody>
 </table>
 </div>
