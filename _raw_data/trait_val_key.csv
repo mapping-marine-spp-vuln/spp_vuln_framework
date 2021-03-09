@@ -33,7 +33,7 @@ foraging range,"number of sites, incl. terrestrial wetlands",one; few; many; doe
 foraging range,"if one/few, size",very small; small; medium; large
 foraging range,sub-population dependence on particular sites,yes; no
 Spatial Scale of species,EOO (range),"<99; 100-4999; 5000-19,999; >20,000"
-Spatial Scale of species,depth (min/max),epipelagic; mesopelagic; bathypelagic; abyssopelagic; hadopelagic; atmosphere
+Spatial Scale of species,depth (min/max),epipelagic; mesopelagic; bathypelagic; abyssopelagic; hadopelagic; air
 Spatial Scale of species,zone,intertidal; neritic; oceanic; pelagic; demersal; benthic
 Biophysical Traits,adult body mass/body size,>1000 mm; 50 mm-999 mm; 0.5mm-49 mm; <0.4 mm
 Biophysical Traits,calcium carbonate structure location,none; internal; external with a cover; external; in external protein matrix; in cellulose cell wall

@@ -640,10 +640,9 @@ spp_mc_vuln_list <- parallel::mclapply(seq_along(spp_mc), mc.cores = 30,
     if(nrow(sens_clean_multi) > 0) {
       spp_sens_sample <- sens_clean_multi %>%
         group_by(trait, stressor) %>%
-        mutate(score_samp = list(sample(sens_score, size = iters, replace = TRUE))) %>%
-        select(-trait_value, -sens_score) %>%
-        distinct() %>%
+        summarize(score_samp = list(sample(sens_score, size = iters, replace = TRUE))) %>%
         unnest(score_samp) %>%
+        group_by(trait, stressor) %>%
         mutate(n = 1:n()) %>%
         group_by(stressor, n) %>%
         summarize(sens_score_random = sum(score_samp)) %>%
@@ -663,10 +662,9 @@ spp_mc_vuln_list <- parallel::mclapply(seq_along(spp_mc), mc.cores = 30,
     if(nrow(acs_clean_multi) > 0) {
       spp_acs_sample <- acs_clean_multi %>%
         group_by(trait, stressor) %>%
-        mutate(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE))) %>%
-        select(-trait_value, -adcap_spec_score) %>%
-        distinct() %>%
+        summarize(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE))) %>%
         unnest(score_samp) %>%
+        group_by(trait, stressor) %>%
         mutate(n = 1:n()) %>%
         group_by(stressor, n) %>%
         summarize(acs_score_random = sum(score_samp)) %>%
@@ -685,10 +683,9 @@ spp_mc_vuln_list <- parallel::mclapply(seq_along(spp_mc), mc.cores = 30,
     if(nrow(acg_clean_multi) > 0) {
       spp_acg_sample <- acg_clean_multi %>%
         group_by(trait) %>%
-        mutate(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE))) %>%
-        select(-trait_value, -adcap_gen_score) %>%
-        distinct() %>%
+        summarize(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE))) %>%
         unnest(score_samp) %>%
+        group_by(trait) %>%
         mutate(n = 1:n()) %>%
         group_by(n) %>%
         summarize(acg_score_random = sum(score_samp)) %>%
@@ -739,7 +736,8 @@ spp_vuln_all <- spp_scores_mean %>%
          vuln_raw, sd_sens, sd_acg, sd_acs, sd_vuln_raw = sd_vuln) %>%
   left_join(spp_exposure, by = c('spp_gp', 'taxon', 'stressor')) %>%
   mutate(vuln_raw = vuln_raw * exposure_mod,
-         sd_vuln_raw = sd_vuln_raw * exposure_mod)
+         sd_vuln_raw = sd_vuln_raw * exposure_mod) %>%
+  distinct()
 
 spp_vuln_rescale <- spp_vuln_all %>%
   ungroup() %>%
