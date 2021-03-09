@@ -1,0 +1,60 @@
+---
+title: "Compare pre- and post-bug-fix outputs"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
+options(dplyr.summarise.inform = FALSE) 
+```
+
+```{r}
+pre <- read_csv(here('_output/spp_gp_vuln_w_distribution_pre-bug.csv')) %>%
+  group_by(taxon, stressor) %>%
+  summarize(v_pre = mean(vuln),
+            s_pre = sd(vuln))
+
+post <- read_csv(here('_output/spp_gp_vuln_w_distribution.csv')) %>%
+  group_by(taxon, stressor) %>%
+  summarize(v_post = mean(vuln),
+            s_post = sd(vuln))
+
+df <- pre %>% left_join(post, by = c('stressor', 'taxon')) %>%
+  mutate(diff = abs(v_post - v_pre)) %>%
+  gather(prepost, v, v_pre, v_post)# %>%
+  # filter(diff > .02)
+
+for(t in df$taxon %>% unique()) { ### t <- df$taxon[1]
+  x <- ggplot(df %>%
+           filter(taxon == t), 
+         aes(x = stressor, y = v, color = prepost, size = diff)) +
+    geom_point(position = 'dodge') +
+    theme_minimal() +
+    ylim(c(0, 1)) +
+    scale_size(limits = c(0, max(df$diff))) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
+          axis.title.x = element_blank()) +
+    labs(title = t, y = 'vulnerability')
+  print(x)
+  ggsave(here(sprintf('figs/compare_bugfix/%s.png', t)), dpi = 300, height = 6, width = 6)
+}
+
+```
+
