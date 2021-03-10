@@ -30,8 +30,7 @@ specialisation,air_sea_interface,floating,bycatch,0.67,medium
 specialisation,air_sea_interface,yes,bycatch,0.67,medium
 specialisation,air_sea_interface,no,bycatch,0.33,low
 biophysical_traits,adult_body_mass_body_size,>1000mm,bycatch,1,high
-biophysical_traits,adult_body_mass_body_size,50mm-999mm,bycatch,1,high
-biophysical_traits,adult_body_mass_body_size,0.5mm-49mm,bycatch,0.33,low
+biophysical_traits,adult_body_mass_body_size,50mm-999mm,bycatch,0.67,medium
 specialisation,air_sea_interface,floating,entanglement_macroplastic,0.33,low
 specialisation,air_sea_interface,yes,entanglement_macroplastic,0.33,low
 biophysical_traits,adult_body_mass_body_size,>1000mm,entanglement_macroplastic,1,high
@@ -137,10 +136,6 @@ biophysical_traits,biomineral,high mg calcite,oa,1,high
 biophysical_traits,biomineral,calcite,oa,0.67,medium
 biophysical_traits,biomineral,chitin/caco3 mix,oa,0.33,low
 biophysical_traits,communication_requirement_sound,yes,oa,0.33,low
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,oceanographic,1,high
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,oceanographic,1,high
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calcifier,oceanographic,0.33,low
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding non-calcifier,oceanographic,0.33,low
 physiological_tolerance_breadths,salinity,stenohaline,oceanographic,0.33,low
 physiological_tolerance_breadths,dissolved_oxygen,low tolerance,oceanographic,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,organic_pollution,1,high
@@ -228,12 +223,11 @@ biophysical_traits,navigation_requirements_light,yes,sedimentation,1,high
 biophysical_traits,respiration_structures,gills,sedimentation,1,high
 biophysical_traits,respiration_structures,skin,sedimentation,0.67,medium
 biophysical_traits,respiration_structures,filter feeders,sedimentation,1,high
-physiological_tolerance_breadths,salinity,stenohaline,slr,1,high
+physiological_tolerance_breadths,salinity,stenohaline,slr,0.33,low
 specialisation,photosynthetic,yes,slr,1,high
-specialisation,air_sea_interface,floating,slr,1,high
 specialisation,air_sea_interface,yes,slr,1,high
 specialisation,terrestrial_and_marine_life_stages,yes,slr,1,high
-biophysical_traits,navigation_requirements_light,yes,slr,1,high
+biophysical_traits,navigation_requirements_light,yes,slr,0.33,low
 biophysical_traits,respiration_structures,pneumatophores,slr,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,storm_disturbance,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,storm_disturbance,0.33,low
@@ -248,10 +242,10 @@ specialisation,terrestrial_and_marine_life_stages,yes,storm_disturbance,0.33,low
 biophysical_traits,flight,yes,storm_disturbance,1,high
 biophysical_traits,communication_requirement_sound,yes,storm_disturbance,0.33,low
 biophysical_traits,navigation_requirements_sound,yes,storm_disturbance,0.33,low
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,uv,0.67,medium
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,uv,0.67,medium
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calcifier,uv,0.67,medium
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding non-calcifier,uv,0.67,medium
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,uv,0.33,low
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,uv,0.33,low
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calcifier,uv,0.33,low
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding non-calcifier,uv,0.33,low
 specialisation,photosynthetic,yes,uv,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,water_temp,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,water_temp,1,high
