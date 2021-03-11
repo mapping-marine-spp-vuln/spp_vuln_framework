@@ -306,13 +306,6 @@ adcap_spec_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'spec_adcap') %
   janitor::clean_names() %>%
   filter(!str_detect(tolower(category), 'spatial')) ### drop exposure traits
 
-### Need to fix missing values for a trait; this will fill all NAs for that value:
-fix_trait_df <- data.frame(category = 'movement',
-                           trait = 'planktonic_larval_duration_pld_exposure',
-                           trait_value = 'not larvae')
-adcap_spec_traits_raw <- adcap_spec_traits_raw %>%
-  bind_rows(fix_trait_df)
-
 ### now, clean up the result and assign scores
 adcap_spec_traits <- adcap_spec_traits_raw %>%
   janitor::clean_names() %>%
@@ -480,7 +473,7 @@ Check the spp traits for these species to identify proper assignment of at least
 
 ### These species are cleared of otherwise positive wildlife strike
 
-`r table(cleared_exposure$taxon)`
+`r knitr::kable(table(cleared_exposure$taxon))`
 
 `r DT::datatable(cleared_exposure)`
 
