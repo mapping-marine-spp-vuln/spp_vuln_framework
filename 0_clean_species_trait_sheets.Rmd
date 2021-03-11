@@ -228,7 +228,9 @@ zone_vals <- traitvals_df_valid %>%
 
 spp_data_zones <- raw_data_df %>%
   filter(trait == 'zone') %>%
-  mutate(trait_value = str_replace(trait_value, 'benthopelagic', 'pelagic;benthic'),
+  mutate(trait_value = str_replace(trait_value, 'pelagic larvae', ''),
+           ### drop sponge pelagic larvae from zones!
+         trait_value = str_replace(trait_value, 'benthopelagic', 'pelagic;benthic'),
          trait_value = str_replace(trait_value, 'pelagic', 'neritic;oceanic'),
          trait_value = str_replace(trait_value, 'coastal', 'neritic'),
          trait_value = str_replace(trait_value, 'range across all', zone_vals)) %>%
