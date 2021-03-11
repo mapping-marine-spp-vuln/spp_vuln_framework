@@ -39396,8 +39396,6 @@ sponges,r_reproductive_traits,reproductive_strategy,demospongiae,sexual dioeciou
 sponges,spatial_scale_of_species,depth_min_max,demospongiae,epipelagic,1,1
 sponges,spatial_scale_of_species,eoo_range,demospongiae,<99,1,1
 sponges,spatial_scale_of_species,zone,demospongiae,benthic,1,1
-sponges,spatial_scale_of_species,zone,demospongiae,neritic,1,1
-sponges,spatial_scale_of_species,zone,demospongiae,oceanic,1,1
 sponges,specialisation,air_sea_interface,demospongiae,no,1,1
 sponges,specialisation,dependent_interspecific_interactions,demospongiae,yes,1,1
 sponges,specialisation,extreme_diet_specialization,demospongiae,generalist,1,1
