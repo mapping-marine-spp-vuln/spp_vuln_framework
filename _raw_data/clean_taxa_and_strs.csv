@@ -1,0 +1,35 @@
+raw,clean
+cephalopods,Cephalopods
+corals,Corals
+crustacea_arthropods,Crust/Arthro
+echinoderms,Echinoderms
+elasmobranchs,Elasmobranchs
+fish,Fish
+marine_mammals,Mammals
+molluscs,Molluscs
+polychaetes,Polychaetes
+reptiles,Reptiles
+seabirds,Seabirds
+sponges,Sponges
+air_temp,Air Temp
+biomass_removal,Biomass Removal
+bycatch,Bycatch
+entanglement_macroplastic,Macroplastic
+eutrophication_nutrient_pollution,Nutr Poll
+habitat_loss_degradation,Hab Loss Degr
+inorganic_pollution,Inorg Poll
+invasive_species,Inv Species
+light_pollution,Light Poll
+noise_pollution,Noise Poll
+oa,OA
+oceanographic,Oceanographic
+organic_pollution,Org Poll
+plastic_pollution_microplastic,Microplastic
+poisons_toxins,Poisons Toxins
+salinity,Salinity
+sedimentation,Sedimentation
+slr,Slr
+storm_disturbance,Storm Dist
+uv,Uv
+water_temp,Water Temp
+wildlife_strike,Wildlife Strike

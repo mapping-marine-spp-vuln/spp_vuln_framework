@@ -114,7 +114,6 @@ For probabilistic taxa, we will do a Monte Carlo approach, sampling species from
 ``` {r identify deterministic taxa-stressor instances}
 
 gen_fill_det <- match_vuln_df %>%
-  # filter(genus == 'meridiastra') %>%
   group_by(class, order, family, genus, stressor, taxon) %>%
   filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
   summarize(n_spp_known = n_distinct(species),
@@ -201,7 +200,6 @@ count_df <- bind_rows(count_list)
 
 ``` {r genus prob fill}
 gen_fill_nondet <- match_vuln_df %>%
-  # filter(genus == 'meridiastra') %>%
   group_by(class, order, family, genus, stressor, taxon) %>%
   filter(sum(sd_vuln > 0, na.rm = TRUE) > 0) %>%
   ungroup()
@@ -210,7 +208,6 @@ gen_fill_matchrank <- gen_fill_nondet %>%
   group_by(class, order, family, genus, stressor, taxon) %>%
   filter(all(match_rank %in% c('class', 'order', 'family', 'genus'))) %>%
   summarize(mean_vuln = first(vuln), 
-            # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
             n_spp_known = n_distinct(species)) %>%
   ungroup()
@@ -220,7 +217,6 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
   group_by(class, order, family, genus, stressor, taxon) %>%
   filter(n_distinct(vuln) == 1 & n_distinct(sd_vuln) == 1) %>%
   summarize(mean_vuln = first(vuln), 
-            # med_vuln = first(vuln), 
             sd_vuln = first(sd_vuln), 
             n_spp_known = n_distinct(species)) %>%
   ungroup()
@@ -229,12 +225,13 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
 
 ``` {r monte carlo for genus vuln dists}
 iters <- 10000
-
+reload <- FALSE
 gen_fill_file <- here('int', sprintf('gapfill_gen_prob_results_%s.csv', iters))
 
-if(!file.exists(gen_fill_file)) {
+if(!file.exists(gen_fill_file) | reload) {
   gen_fill_prob <- gen_fill_nondet %>%
-    filter(!genus %in% c(gen_fill_matchrank$genus, gen_fill_nondet_solo$genus)) %>%
+    anti_join(gen_fill_matchrank %>% select(genus, stressor)) %>%
+    anti_join(gen_fill_nondet_solo %>% select(genus, stressor)) %>%
     group_by(class, order, family, genus, stressor, taxon)
     
   gen_fill_qty <- gen_fill_prob %>%
@@ -294,7 +291,6 @@ gen_fill_totes <- bind_rows(gen_fill_det,
 
 ``` {r family prob fill}
 fam_fill_nondet <- match_vuln_df %>%
-  # filter(genus == 'meridiastra') %>%
   group_by(class, order, family, stressor, taxon) %>%
   filter(sum(sd_vuln > 0, na.rm = TRUE) > 0) %>%
   ungroup()
@@ -324,7 +320,8 @@ fam_fill_file <- here('int', sprintf('gapfill_fam_prob_results_%s.csv', iters))
 
 if(!file.exists(fam_fill_file)) {
   fam_fill_prob <- fam_fill_nondet %>%
-    filter(!family %in% c(fam_fill_matchrank$family, fam_fill_nondet_solo$family)) %>%
+    anti_join(fam_fill_matchrank %>% select(family, stressor)) %>%
+    anti_join(fam_fill_nondet_solo %>% select(family, stressor)) %>%
     group_by(class, order, family, stressor, taxon)
     
   fam_fill_qty <- fam_fill_prob %>%
@@ -415,7 +412,8 @@ ord_fill_file <- here('int', sprintf('gapfill_ord_prob_results_%s.csv', iters))
 
 if(!file.exists(ord_fill_file)) {
   ord_fill_prob <- ord_fill_nondet %>%
-    filter(!order %in% c(ord_fill_matchrank$order, ord_fill_nondet_solo$order)) %>%
+    anti_join(ord_fill_matchrank %>% select(order, stressor)) %>%
+    anti_join(ord_fill_nondet_solo %>% select(order, stressor)) %>%
     group_by(class, order, stressor, taxon)
     
   ord_fill_qty <- ord_fill_prob %>%
@@ -507,7 +505,8 @@ cls_fill_file <- here('int', sprintf('gapfill_cls_prob_results_%s.csv', iters))
 
 if(!file.exists(cls_fill_file)) {
   cls_fill_prob <- cls_fill_nondet %>%
-    filter(!class %in% c(cls_fill_matchrank$class, cls_fill_nondet_solo$class)) %>%
+    anti_join(cls_fill_matchrank %>% select(class, stressor)) %>%
+    anti_join(cls_fill_nondet_solo %>% select(class, stressor)) %>%
     group_by(class, stressor, taxon)
     
   cls_fill_qty <- cls_fill_prob %>%
@@ -732,25 +731,26 @@ write_csv(vuln_gf_sd, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_all_sd.c
 ### Outputs: Species matched or gapfilled to family level
 
 ```{r}
-vuln_gf_fam_tx <- vuln_all_gf %>%
-  filter(gapfill %in% c('none', 'genus', 'family')) %>%
+
+vuln_gf_fam <- vuln_all_gf %>%
+  filter(gapfill %in% c('none', 'genus', 'family'))
+
+vuln_gf_fam_tx <- vuln_gf_fam %>%
   select(class:species, taxon, gapfill, match_rank) %>%
   distinct() %>%
   arrange(species) %>%
   mutate(vuln_gf_id = 1:n())
 
-vuln_gf_fam_score <- vuln_all_gf %>%
-  filter(gapfill %in% c('none', 'genus', 'family')) %>%
-  left_join(vuln_gf_tx %>% select(species, vuln_gf_id) %>% distinct(),
+vuln_gf_fam_score <- vuln_gf_fam %>%
+  left_join(vuln_gf_fam_tx %>% select(species, vuln_gf_id) %>% distinct(),
             by = 'species') %>%
   select(vuln_gf_id, stressor, vuln) %>%
   distinct() %>%
   mutate(vuln = round(vuln, 5)) %>%
   spread(stressor, vuln)
 
-vuln_gf_fam_sd <- vuln_all_gf %>%
-  filter(gapfill %in% c('none', 'genus', 'family')) %>%
-  left_join(vuln_gf_tx %>% select(species, vuln_gf_id) %>% distinct(),
+vuln_gf_fam_sd <- vuln_gf_fam %>%
+  left_join(vuln_gf_fam_tx %>% select(species, vuln_gf_id) %>% distinct(),
             by = 'species') %>%
   select(vuln_gf_id, stressor, sd_vuln) %>%
   distinct() %>%

@@ -174,8 +174,8 @@ spp_traits_hab_fixed <- spp_traits %>%
   group_by(taxon, spp_gp, category, trait) %>%
   summarize(dep_habs = paste(trait_value, collapse = ';'),
             trait_value = 'habitat list',
-            trait_prob = 1) %>%
-  ungroup() %>%
+            trait_prob = 1, 
+            .groups = 'drop') %>%
   bind_rows(spp_traits %>% filter(!str_detect(trait, 'dependent_habitat'))) %>%
   select(-n_spp_gps)
 
@@ -187,8 +187,7 @@ spp_sens <- spp_sens_raw %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
   summarize(sens_score = sum(sens_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
-  summarize(sens_score = sum(sens_score, na.rm = TRUE)) %>%
-  ungroup()
+  summarize(sens_score = sum(sens_score, na.rm = TRUE), .groups = 'drop')
   
 ```
 
@@ -273,8 +272,8 @@ spp_adcap_gen <- spp_adcap_gen_raw %>%
   group_by(spp_gp, taxon, trait) %>%
   summarize(adcap_gen_score = sum(adcap_gen_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, taxon) %>%
-  summarize(adcap_gen_score = sum(adcap_gen_score, na.rm = TRUE)) %>%
-  ungroup()
+  summarize(adcap_gen_score = sum(adcap_gen_score, na.rm = TRUE), 
+            .groups = 'drop')
 
 ```
 
@@ -326,14 +325,15 @@ spp_adcap_spec <- spp_adcap_spec_raw %>%
   group_by(spp_gp, stressor, taxon, trait) %>%
   summarize(adcap_spec_score = sum(adcap_spec_score * trait_prob, na.rm = TRUE)) %>%
   group_by(spp_gp, stressor, taxon) %>%
-  summarize(adcap_spec_score = sum(adcap_spec_score, na.rm = TRUE)) %>%
-  ungroup()
+  summarize(adcap_spec_score = sum(adcap_spec_score, na.rm = TRUE), 
+            .groups = 'drop')
 
 adcap_spec_sum <- spp_adcap_spec %>%
   group_by(stressor) %>%
   summarize(median = median(adcap_spec_score, na.rm = TRUE),
             mean   = mean(adcap_spec_score, na.rm = TRUE),
-            sd     = sd(adcap_spec_score, na.rm = TRUE))
+            sd     = sd(adcap_spec_score, na.rm = TRUE), 
+            .groups = 'drop')
 
 ```
 
@@ -381,10 +381,12 @@ knitr::include_graphics(here('figs/spp_adcap_spec_scores.png'))
 ```{r}
 top_3_adcap <- spp_adcap_spec %>%
   group_by(taxon, stressor) %>%
-  summarize(adcap_score = mean(adcap_spec_score)) %>%
+  summarize(adcap_score = mean(adcap_spec_score), 
+            .groups = 'drop') %>%
   arrange(desc(adcap_score)) %>%
   group_by(taxon) %>%
-  filter(adcap_score >= nth(adcap_score, 3))
+  filter(adcap_score >= nth(adcap_score, 3)) %>%
+  ungroup()
 
 DT::datatable(top_3_adcap)
 ```
@@ -411,8 +413,8 @@ spp_exposure_raw <- spp_traits %>%
   inner_join(exp_traits, by = c('category', 'trait', 'trait_value')) %>%
   filter(stressor != 'wildlife_strike') %>%
   group_by(spp_gp, stressor, taxon) %>%
-  summarize(exposure_mod = as.integer(sum(exp_score, na.rm = TRUE) > 0)) %>%
-  ungroup() %>%
+  summarize(exposure_mod = as.integer(sum(exp_score, na.rm = TRUE) > 0), 
+            .groups = 'drop') %>%
   arrange(stressor, taxon)
   
 air_sea <- spp_traits %>%
@@ -423,16 +425,17 @@ spp_exposure_wildlife_strike <- spp_traits %>%
   filter(stressor == 'wildlife_strike') %>%
   group_by(spp_gp, taxon) %>%
   summarize(exposure_mod = as.integer(sum(exp_score, na.rm = TRUE) > 0),
-            zone = paste(trait_value, collapse = ';')) %>%
+            zone = paste(trait_value, collapse = ';'),
+            .groups = 'drop') %>%
   mutate(btm_only = str_detect(zone, 'benthic|demersal') & 
                     !str_detect(zone, 'oceanic|air') &
                     !spp_gp %in% air_sea,
          intertidal_only = str_detect(zone, 'intertidal') & !str_detect(zone, 'neritic|oceanic'),
-         clear = btm_only|intertidal_only) %>%
+         taxon_excl = taxon %in% c('crustacea_arthropods', 'molluscs'),
+         clear = btm_only|intertidal_only|taxon_excl) %>%
   mutate(override = exposure_mod > 0 & clear,
          exposure_mod = ifelse(clear, 0, exposure_mod),
-         stressor = 'wildlife_strike') %>%
-  ungroup()
+         stressor = 'wildlife_strike')
 
 spp_exposure <- spp_exposure_wildlife_strike %>%
   select(spp_gp, taxon, exposure_mod, stressor) %>%
@@ -444,9 +447,9 @@ non_exposures <- spp_exposure %>%
   filter(exposure_mod == 0) %>% 
   summarize(n_gps_no_exp = n_distinct(spp_gp),
             n_gps = first(n_gps),
-            pct_no_exp = round(n_gps_no_exp / n_gps, 3)) %>%
-  arrange(stressor, desc(n_gps_no_exp)) %>%
-  ungroup()
+            pct_no_exp = round(n_gps_no_exp / n_gps, 3), 
+            .groups = 'drop') %>%
+  arrange(stressor, desc(n_gps_no_exp))
 
 null_exposures <- spp_traits %>%
   select(spp_gp, taxon) %>%
@@ -536,7 +539,8 @@ ref_values <- spp_scores_mean %>%
   summarize(max_sens = max(sens_score, 1), 
               ### the 1 ensures that stressors with very low scores don't get normalized by a low reference
             max_adcap_gen = max(adcap_gen_score, 1),
-            max_adcap_spec = max(adcap_spec_score, 1))
+            max_adcap_spec = max(adcap_spec_score, 1), 
+            .groups = 'drop')
 
 rescale_vals <- function(x) {
   z <- x %>%
@@ -646,19 +650,18 @@ spp_mc_vuln_list <- parallel::mclapply(seq_along(spp_mc), mc.cores = 30,
     ### process sensitivity traits
     sens_score_det <- sens_clean_det %>%
       group_by(stressor) %>%
-      summarize(sens_score_det = sum(sens_score))
+      summarize(sens_score_det = sum(sens_score), .groups = 'drop')
     
     if(nrow(sens_clean_multi) > 0) {
       spp_sens_sample <- sens_clean_multi %>%
         group_by(trait, stressor) %>%
-        summarize(score_samp = list(sample(sens_score, size = iters, replace = TRUE))) %>%
+        summarize(score_samp = list(sample(sens_score, size = iters, replace = TRUE)), 
+                  .groups = 'keep') %>%
         unnest(score_samp) %>%
-        group_by(trait, stressor) %>%
         mutate(n = 1:n()) %>%
         group_by(stressor, n) %>%
-        summarize(sens_score_random = sum(score_samp)) %>%
-        left_join(sens_score_det, by = 'stressor') %>%
-        ungroup()
+        summarize(sens_score_random = sum(score_samp), .groups = 'drop') %>%
+        left_join(sens_score_det, by = 'stressor')
     } else { 
       spp_sens_sample <- sens_score_det %>%
         mutate(sens_score_random = 0) %>%
@@ -668,19 +671,19 @@ spp_mc_vuln_list <- parallel::mclapply(seq_along(spp_mc), mc.cores = 30,
     ### process specific adcap traits
     acs_score_det <- acs_clean_det %>%
       group_by(stressor) %>%
-      summarize(acs_score_det = sum(adcap_spec_score))
+      summarize(acs_score_det = sum(adcap_spec_score), .groups = 'drop')
     
     if(nrow(acs_clean_multi) > 0) {
       spp_acs_sample <- acs_clean_multi %>%
         group_by(trait, stressor) %>%
-        summarize(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE))) %>%
+        summarize(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE)), 
+                  .groups = 'keep') %>%
         unnest(score_samp) %>%
-        group_by(trait, stressor) %>%
         mutate(n = 1:n()) %>%
         group_by(stressor, n) %>%
-        summarize(acs_score_random = sum(score_samp)) %>%
-        left_join(acs_score_det, by = 'stressor') %>%
-        ungroup()
+        summarize(acs_score_random = sum(score_samp), .groups = 'drop') %>%
+        left_join(acs_score_det, by = 'stressor')
+      
     } else { 
       spp_acs_sample <- acs_score_det %>%
         mutate(acs_score_random = 0) %>%
@@ -694,14 +697,14 @@ spp_mc_vuln_list <- parallel::mclapply(seq_along(spp_mc), mc.cores = 30,
     if(nrow(acg_clean_multi) > 0) {
       spp_acg_sample <- acg_clean_multi %>%
         group_by(trait) %>%
-        summarize(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE))) %>%
+        summarize(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE)), 
+                  .groups = 'keep') %>%
         unnest(score_samp) %>%
-        group_by(trait) %>%
         mutate(n = 1:n()) %>%
         group_by(n) %>%
-        summarize(acg_score_random = sum(score_samp)) %>%
-        mutate(acg_score_det = acg_score_det$acg_score_det) %>%
-        ungroup()
+        summarize(acg_score_random = sum(score_samp), .groups = 'drop') %>%
+        mutate(acg_score_det = acg_score_det$acg_score_det)
+      
     } else { 
       spp_acg_sample <- data.frame(n = 1:iters,
                                    acg_score_det = acg_score_det$acg_score_det,
@@ -727,7 +730,8 @@ spp_mc_vuln_list <- parallel::mclapply(seq_along(spp_mc), mc.cores = 30,
                 sd_acs = sd(adcap_spec_score),
                 adcap_spec_score = mean(adcap_spec_score),
                 sd_vuln = sd(vuln_raw),
-                vuln_raw = mean(vuln_raw)) %>%
+                vuln_raw = mean(vuln_raw), 
+                .groups = 'drop') %>%
       mutate(taxon = taxon, spp_gp = spp)
     
     return(x)
@@ -795,7 +799,7 @@ for(t in taxa) { # t <- taxa[6]
     filter(taxon == t)
   mean_str_vuln <- t_vuln %>%
     group_by(stressor) %>%
-    summarize(vuln = mean(vuln))
+    summarize(vuln = mean(vuln), .groups = 'drop')
   mean_tot_vuln <- t_vuln %>%
     summarize(vuln = mean(vuln))
   
@@ -826,7 +830,7 @@ for(t in taxa) { # t <- taxa[6]
 ```{r}
 str_mean_vuln <- plot_df %>%
   group_by(stressor) %>%
-  summarize(vuln = mean(vuln, na.rm = TRUE))
+  summarize(vuln = mean(vuln, na.rm = TRUE), .groups = 'drop')
 all_mean_vuln <- plot_df %>%
   summarize(vuln = mean(vuln, na.rm = TRUE))
 x <- ggplot(plot_df, aes(x = stressor, y = vuln, color = taxon)) +
@@ -849,7 +853,8 @@ top_3_vuln <- spp_vulnerability %>%
   summarize(vuln = mean(vuln)) %>%
   group_by(taxon) %>%
   arrange(taxon, desc(vuln)) %>%
-  filter(vuln >= nth(vuln, 3))
+  filter(vuln >= nth(vuln, 3)) %>%
+  ungroup()
 
 knitr::kable(top_3_vuln)
 ```
@@ -868,7 +873,7 @@ for(s in stressors) { # s <- stressors[6]
     filter(stressor == s)
   mean_str_vuln <- s_vuln %>%
     group_by(taxon) %>%
-    summarize(vuln = mean(vuln))
+    summarize(vuln = mean(vuln), .groups = 'drop')
   mean_tot_vuln <- s_vuln %>%
     summarize(vuln = mean(vuln))
   
@@ -898,7 +903,7 @@ for(s in stressors) { # s <- stressors[6]
 ```{r}
 tx_mean_vuln <- plot_df %>%
   group_by(taxon) %>%
-  summarize(vuln = mean(vuln, na.rm = TRUE))
+  summarize(vuln = mean(vuln, na.rm = TRUE), .groups = 'drop')
 all_mean_vuln <- plot_df %>%
   summarize(vuln = mean(vuln, na.rm = TRUE))
 x <- ggplot(plot_df, aes(x = taxon, y = vuln, color = stressor)) +
