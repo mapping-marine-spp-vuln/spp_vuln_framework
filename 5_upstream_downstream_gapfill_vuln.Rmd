@@ -225,7 +225,7 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
 
 ``` {r monte carlo for genus vuln dists}
 iters <- 10000
-reload <- FALSE
+reload <- TRUE
 gen_fill_file <- here('int', sprintf('gapfill_gen_prob_results_%s.csv', iters))
 
 if(!file.exists(gen_fill_file) | reload) {
@@ -252,6 +252,7 @@ if(!file.exists(gen_fill_file) | reload) {
       message('Sampling ', iters, ' MC iterations for genus ', g)
   
       mc_results_df <- g_df %>%
+        rowwise() %>%
         mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
         unnest(v) %>%
         mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
@@ -342,6 +343,7 @@ if(!file.exists(fam_fill_file)) {
       message('Sampling ', iters, ' MC iterations for family ', f)
       
       mc_results_df <- f_df %>%
+        rowwise() %>%
         mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
         unnest(v) %>%
         mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
@@ -434,6 +436,7 @@ if(!file.exists(ord_fill_file)) {
       message('Sampling ', iters, ' MC iterations for order ', o)
   
       mc_results_df <- o_df %>%
+        rowwise() %>%
         mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
         unnest(v) %>%
         mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
@@ -527,6 +530,7 @@ if(!file.exists(cls_fill_file)) {
       message('Sampling ', iters, ' MC iterations for class ', c)
 
       mc_results_df <- c_df %>%
+        rowwise() %>%
         mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
         unnest(v) %>%
         mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
@@ -787,7 +791,7 @@ Using species gapfilled to the family level
 ```{r summarize stats by taxon}
 tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
 
-if(!file.exists(tx_str_sum_outfile)) {
+# if(!file.exists(tx_str_sum_outfile)) {
   taxa <- vuln_all_gf$taxon %>% unique() %>% sort()
   strs <- vuln_all_gf$stressor %>% unique() %>% sort()
   
@@ -795,13 +799,13 @@ if(!file.exists(tx_str_sum_outfile)) {
   
   tx_list <- vector('list', length = length(taxa)) %>%
     setNames(taxa)
-  for(t in taxa) { ### t <- taxa[7]
+  for(t in taxa) { ### t <- taxa[6]
     taxon_df <- vuln_all_gf %>%
       filter(gapfill %in% c('none', 'genus', 'family')) %>%
       filter(taxon == t)
 
     str_list <- parallel::mclapply(strs, mc.cores = 6,
-      FUN = function(s) {
+      FUN = function(s) { ### s <- strs[2]
         taxon_str_df <- taxon_df %>%
           filter(stressor == s)
         message('Processing taxon ', t, ', ', s, ': nrows = ', nrow(taxon_str_df))
@@ -809,13 +813,17 @@ if(!file.exists(tx_str_sum_outfile)) {
         n_total <- n_distinct(taxon_str_df$species)
   
         mc_tx_str_df <- taxon_str_df %>%
+          rowwise() %>%
           mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
           unnest(v) %>%
           mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
           group_by(taxon, stressor) %>%
-          summarize(mean_vuln = mean(v), sd_vuln = sd(v),
-                    mean_vuln_known  = sum(v * !is.na(match_rank)) / sum(!is.na(match_rank)),
-                    mean_vuln_filled = sum(v * (gapfill != 'none')) / sum(gapfill != 'none'),
+          summarize(mean_vuln = mean(v) %>% round(5), 
+                    sd_vuln = sd(v) %>% round(5),
+                    mean_vuln_known  = sum(v * (gapfill == 'none')) / sum(gapfill == 'none') %>% 
+                      round(5),
+                    mean_vuln_filled = sum(v * (gapfill != 'none')) / sum(gapfill != 'none') %>%
+                      round(5),
                     n_spp_known = n_known,
                     n_spp_total = n_total,
                     pct_spp_filled = round((n_total - n_known)/n_total, 5) * 100)
@@ -828,10 +836,15 @@ if(!file.exists(tx_str_sum_outfile)) {
   tx_str_summary <- tx_list %>%
     bind_rows() %>%
     mutate(mean_vuln = round(mean_vuln, 5),
-           sd_vuln   = round(sd_vuln,))
+           sd_vuln   = round(sd_vuln, 5),
+           mean_vuln_known = round(mean_vuln_known, 5),
+           mean_vuln_filled = round(mean_vuln_filled, 5),
+           )
   write_csv(tx_str_summary, tx_str_sum_outfile)
-}
+# }
 
+  
+  
 tx_str_summary <- read_csv(tx_str_sum_outfile)
 DT::datatable(tx_str_summary)
 

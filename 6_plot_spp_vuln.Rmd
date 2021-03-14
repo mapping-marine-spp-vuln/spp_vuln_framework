@@ -1,5 +1,5 @@
 ---
-title: "Plot final specie vulnerabilities"
+title: "Plot final species vulnerabilities"
 author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
 output: 
   html_document:
@@ -118,7 +118,7 @@ x <- ggplot(test_df) +
   geom_vline(data = mean_df, aes(xintercept = mean), color = 'red', size = .2) +
   geom_hline(data = mean_df, aes(yintercept = mean), color = 'red', size = .2) +
   geom_point(data = mean_df, aes(x = mean, y = mean), color = 'red') +
-  coord_fixed(xlim = c(0, 1), ylim = c(0, 1), expand = FALSE) +
+  coord_fixed(xlim = c(0, 1), ylim = c(0, 1), expand = TRUE) +
   scale_x_continuous(breaks = c(0.1, 0.9), labels = c(0, 1)) +
   scale_y_continuous(breaks = c(0.1, 0.9), labels = c(0, 1)) +
   scale_alpha(range = c(0.02, 0.06)) +
