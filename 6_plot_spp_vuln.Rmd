@@ -243,3 +243,135 @@ x <- ggplot(mean_df, aes(x = str_clean, y = tx_clean)) +
 ggsave('vuln_heatmap.png', width = 6, height = 4, dpi = 300)
 knitr::include_graphics('vuln_heatmap.png')
 ```
+
+```{r str_summary_plot}
+
+str_summary_df <- vuln_df %>%
+  mutate(v_mean_all = mean(vuln, na.rm = TRUE)) %>%
+  group_by(str_clean) %>%
+  summarize(v_mean_all = first(v_mean_all),
+            v_mean = mean(vuln, na.rm = TRUE),
+            v_sd = sqrt(mean(vuln_sd^2)),
+            n_spp = n_distinct(species),
+            .groups = 'drop') %>%
+  arrange(v_mean) %>%
+  mutate(str_clean = fct_inorder(str_clean))
+
+
+x <- ggplot(vuln_df %>%
+              mutate(str_clean = factor(str_clean, levels = str_summary_df$str_clean)), 
+            aes(x = str_clean, y = vuln)) +
+  theme_ohara() +
+  geom_violin(scale = 'width', color = 'grey40', size = .2, fill = 'grey80', adjust = 2) +
+  geom_point(data = str_summary_df, aes(y = v_mean), 
+             shape = 21, color = 'black', fill = 'red', size = 2) +
+  geom_hline(data = str_summary_df, 
+             aes(yintercept = v_mean_all), color = 'red', size = .25) +
+  scale_y_continuous(expand = c(.01, .01)) +
+  coord_flip() +
+  theme(axis.title = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+  labs(title = 'Vulnerability distribution by stressor')
+  
+ggsave('vuln_dist_str.png', width = 4, height = 4, dpi = 300)
+knitr::include_graphics('vuln_dist_str.png')
+```
+
+```{r taxa_summary_plot}
+
+tx_summary_df <- vuln_df %>%
+  mutate(v_mean_all = mean(vuln, na.rm = TRUE)) %>%
+  group_by(tx_clean) %>%
+  summarize(v_mean_all = first(v_mean_all),
+            v_mean = mean(vuln, na.rm = TRUE),
+            v_sd = sqrt(mean(vuln_sd^2)),
+            n_spp = n_distinct(species),
+            .groups = 'drop') %>%
+  arrange(v_mean) %>%
+  mutate(tx_clean = fct_inorder(tx_clean))
+
+
+x <- ggplot(vuln_df %>%
+              mutate(tx_clean = factor(tx_clean, levels = tx_summary_df$tx_clean)), 
+            aes(x = tx_clean, y = vuln)) +
+  theme_ohara() +
+  geom_violin(scale = 'width', color = 'grey40', size = .2, fill = 'grey80', adjust = 2) +
+  geom_point(data = tx_summary_df, aes(y = v_mean), 
+             shape = 21, color = 'black', fill = 'red', size = 2) +
+  geom_hline(data = tx_summary_df, 
+             aes(yintercept = v_mean_all), color = 'red', size = .25) +
+  scale_y_continuous(expand = c(.01, .01)) +
+  coord_flip() +
+  theme(axis.title = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+  labs(title = 'Vulnerability distribution by taxon')
+  
+ggsave('vuln_dist_tx.png', width = 4, height = 3, dpi = 300)
+knitr::include_graphics('vuln_dist_tx.png')
+```
+
+```{r str_summary_boxplot}
+
+str_summary_df <- vuln_df %>%
+  mutate(v_mean_all = mean(vuln, na.rm = TRUE)) %>%
+  group_by(str_clean) %>%
+  summarize(v_mean_all = first(v_mean_all),
+            v_mean = mean(vuln, na.rm = TRUE),
+            v_sd = sqrt(mean(vuln_sd^2)),
+            n_spp = n_distinct(species),
+            .groups = 'drop') %>%
+  arrange(v_mean) %>%
+  mutate(str_clean = fct_inorder(str_clean))
+
+
+x <- ggplot(vuln_df %>%
+              mutate(str_clean = factor(str_clean, levels = str_summary_df$str_clean)), 
+            aes(x = str_clean, y = vuln)) +
+  theme_ohara() +
+  geom_boxplot(color = 'grey40', size = .2, fill = 'grey80', outlier.size = .2) +
+  geom_point(data = str_summary_df, aes(y = v_mean), 
+             shape = 21, color = 'black', fill = 'red', size = 1.3) +
+  geom_hline(data = str_summary_df, 
+             aes(yintercept = v_mean_all), color = 'red', size = .25) +
+  scale_y_continuous(expand = c(.01, .01)) +
+  coord_flip() +
+  theme(axis.title = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+  labs(title = 'Vulnerability distribution by stressor')
+  
+ggsave('vuln_dist_str_box.png', width = 4, height = 3, dpi = 300)
+knitr::include_graphics('vuln_dist_str_box.png')
+```
+
+```{r taxa_summary_boxplot}
+
+tx_summary_df <- vuln_df %>%
+  mutate(v_mean_all = mean(vuln, na.rm = TRUE)) %>%
+  group_by(tx_clean) %>%
+  summarize(v_mean_all = first(v_mean_all),
+            v_mean = mean(vuln, na.rm = TRUE),
+            v_sd = sqrt(mean(vuln_sd^2)),
+            n_spp = n_distinct(species),
+            .groups = 'drop') %>%
+  arrange(v_mean) %>%
+  mutate(tx_clean = fct_inorder(tx_clean))
+
+
+x <- ggplot(vuln_df %>%
+              mutate(tx_clean = factor(tx_clean, levels = tx_summary_df$tx_clean)), 
+            aes(x = tx_clean, y = vuln)) +
+  theme_ohara() +
+  geom_boxplot(color = 'grey40', size = .2, fill = 'grey80', outlier.size = .2) +
+  geom_point(data = tx_summary_df, aes(y = v_mean), 
+             shape = 21, color = 'black', fill = 'red', size = 1.3) +
+  geom_hline(data = tx_summary_df, 
+             aes(yintercept = v_mean_all), color = 'red', size = .25) +
+  scale_y_continuous(expand = c(.01, .01)) +
+  coord_flip() +
+  theme(axis.title = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+  labs(title = 'Vulnerability distribution by taxon')
+  
+ggsave('vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
+knitr::include_graphics('vuln_dist_tx_box.png')
+```

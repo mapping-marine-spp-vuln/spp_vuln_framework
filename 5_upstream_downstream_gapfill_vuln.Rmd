@@ -799,13 +799,13 @@ tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
   
   tx_list <- vector('list', length = length(taxa)) %>%
     setNames(taxa)
-  for(t in taxa) { ### t <- taxa[6]
+  for(t in taxa) { ### t <- taxa[3]
     taxon_df <- vuln_all_gf %>%
       filter(gapfill %in% c('none', 'genus', 'family')) %>%
       filter(taxon == t)
 
     str_list <- parallel::mclapply(strs, mc.cores = 6,
-      FUN = function(s) { ### s <- strs[2]
+      FUN = function(s) { ### s <- strs[1]
         taxon_str_df <- taxon_df %>%
           filter(stressor == s)
         message('Processing taxon ', t, ', ', s, ': nrows = ', nrow(taxon_str_df))
@@ -826,7 +826,7 @@ tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
                       round(5),
                     n_spp_known = n_known,
                     n_spp_total = n_total,
-                    pct_spp_filled = round((n_total - n_known)/n_total, 5) * 100)
+                    pct_spp_filled = round((n_total - n_known)/n_total * 100), 3)
         return(mc_tx_str_df)
       })
       
@@ -834,12 +834,7 @@ tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
   }
   
   tx_str_summary <- tx_list %>%
-    bind_rows() %>%
-    mutate(mean_vuln = round(mean_vuln, 5),
-           sd_vuln   = round(sd_vuln, 5),
-           mean_vuln_known = round(mean_vuln_known, 5),
-           mean_vuln_filled = round(mean_vuln_filled, 5),
-           )
+    bind_rows()
   write_csv(tx_str_summary, tx_str_sum_outfile)
 # }
 
