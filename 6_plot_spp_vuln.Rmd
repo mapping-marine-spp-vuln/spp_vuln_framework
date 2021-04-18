@@ -376,7 +376,7 @@ ggsave('vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
 knitr::include_graphics('vuln_dist_tx_box.png')
 ```
 
-```{r taxa_3x4panel_boxplot}
+```{r taxa_12x1panel_boxplot}
 
 tx_summary_df <- vuln_df %>%
   group_by(tx_clean) %>%
@@ -393,61 +393,13 @@ tx_summary_df <- vuln_df %>%
 
 plot_df <- vuln_df %>%
   mutate(tx_clean = factor(tx_clean, levels = levels(tx_summary_df$tx_clean)),
-         str_clean = factor(str_clean, levels = levels(tx_summary_df$str_clean))) %>%
+         str_clean = factor(str_clean, levels = levels(str_summary_df$str_clean))) %>%
   # slice_sample(prop = .5) %>%
   rowwise() %>%
   mutate(v = list(rnorm(n = 30, mean = vuln, sd = vuln_sd))) %>%
   unnest(v) %>%
   mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
   ungroup()
-
-x <- ggplot(plot_df, aes(x = str_clean, y = v)) +
-  theme_ohara(base_size = 7) +
-  geom_boxplot(color = 'grey40', size = .2, fill = 'grey80',
-               outlier.size = .05, outlier.color = 'grey70') +
-  # geom_violin(scale = 'width', color = 'grey40', size = .2, fill = 'grey80') +
-  # geom_jitter(color = 'black', size = .2, alpha = .1, width = .4, height = 0) +
-  geom_hline(data = tx_summary_df, 
-             aes(yintercept = v_mean_all), color = 'red', size = .25) +
-  geom_point(data = tx_summary_df, aes(y = v_mean), 
-             shape = 21, color = 'black', fill = 'red', size = 1) +
-  scale_y_continuous(expand = c(.01, .01)) +
-  coord_flip() +
-  theme(# strip.background = element_blank(),
-        strip.text = element_text(face = 'bold', hjust = 0),
-        axis.title.y = element_blank(),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
-  labs(# title = 'Vulnerability distribution by taxon and stressor',
-       y = 'Vulnerability') +
-  facet_wrap( ~ tx_clean, nrow = 3)
-  
-ggsave('vuln_dist_tx_3x4panel.png', width = 6, height = 6, dpi = 300)
-knitr::include_graphics('vuln_dist_tx_3x4panel.png')
-```
-
-```{r taxa_12x1panel_boxplot}
-
-# tx_summary_df <- vuln_df %>%
-#   group_by(tx_clean) %>%
-#   mutate(v_mean_all = mean(vuln, na.rm = TRUE)) %>%
-#   group_by(tx_clean, str_clean) %>%
-#   summarize(v_mean_all = first(v_mean_all),
-#             v_mean = mean(vuln, na.rm = TRUE),
-#             v_sd = sqrt(mean(vuln_sd^2)),
-#             n_spp = n_distinct(species),
-#             .groups = 'drop') %>%
-#   arrange(desc(v_mean)) %>%
-#   mutate(tx_clean = fct_inorder(tx_clean),
-#          str_clean = fct_inorder(str_clean) %>% fct_rev())
-# 
-# plot_df <- vuln_df %>%
-#   mutate(tx_clean = factor(tx_clean, levels = levels(tx_summary_df$tx_clean)),
-#          str_clean = factor(str_clean, levels = levels(tx_summary_df$str_clean))) %>%
-#   # slice_sample(prop = .05) %>%
-#   rowwise() %>%
-#   mutate(v = rnorm(n = 1, mean = vuln, sd = vuln_sd),
-#          v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
-#   ungroup()
 
 x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)), 
             aes(x = str_clean, y = v)) +
