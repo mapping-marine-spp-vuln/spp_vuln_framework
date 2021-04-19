@@ -1,0 +1,125 @@
+---
+title: "Compare calculated vulnerability to IUCN threats"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
+source(here('bd_chi_fxns.R'))
+options(dplyr.summarise.inform = FALSE) 
+
+```
+
+# Summary
+
+Here we pull in species threat information from IUCN and compare to the vulnerability scores calculated in this project.  Won't worry about distribution, just the mean.
+
+```{r}
+iucn_spp <- get_incl_spp() %>%
+  mutate(sciname = tolower(sciname)) %>%
+  select(-comname, -category, -rank, -taxon)
+
+
+vuln_spp <- read_csv(here('_output/vuln_gapfilled_tx.csv')) %>%
+  dt_join(read_csv(here('_output/vuln_gapfilled_score.csv')), 
+          by = 'vuln_gf_id', type = 'full') %>%
+  gather(stressor, vuln, air_temp:wildlife_strike) %>%
+  select(sciname = species, gapfill, match_rank, vuln_str = stressor, vuln) %>%
+  distinct() %>%
+  mutate(vuln_str = str_remove(vuln_str, '_pollution'),
+         vuln_str = str_remove(vuln_str, 'eutrophication_'))
+
+# vuln_spp$vuln_str %>% unique() %>% sort()
+```
+
+match up stressors
+
+'art_fish;dem_dest;dem_nondest_hb;dem_nondest_lb;pel_hb;pel_lb'
+ [5] 'direct_human'   'light'          'nutrient'       'oa'            
+ [9] 'organic'        'shipping'      
+[13] 'slr'            'sst'
+
+```{r}
+vuln_strs <- tribble(
+  ~vuln_str, ~iucn_str,
+  'biomass_removal', 'art_fish;dem_dest;dem_nondest_hb;dem_nondest_lb;pel_hb;pel_lb',
+  'bycatch',         'art_fish;dem_dest;dem_nondest_hb;dem_nondest_lb;pel_hb;pel_lb',
+  'nutrient',        'nutrient',
+  'light',           'light',
+  'oa',              'oa',
+  'organic',         'organic',
+  'slr',             'slr',
+  'water_temp',      'sst',
+  'wildlife_strike', 'shipping') %>%
+  mutate(iucn_str = str_split(iucn_str, ';')) %>%
+  unnest(iucn_str)
+  
+match_iucn_vuln <- iucn_spp %>%
+  group_by(iucn_sid, sciname) %>%
+  complete(stressor = vuln_strs$iucn_str, nesting(cat_score, assess_gp, desc)) %>%
+  mutate(sens = ifelse(is.na(code), 0, 1)) %>%
+  left_join(vuln_strs, by = c('stressor' = 'iucn_str')) %>%
+  dt_join(vuln_spp, by = c('sciname', 'vuln_str'), type = 'left') %>%
+  ### align bycatch and removal with unintended and intended fishing:
+  filter(!(vuln_str == 'bycatch' & code %in% c('5.4.3', '5.4.4'))) %>%
+  filter(!(vuln_str == 'biomass_removal' & code %in% c('5.4.1', '5.4.2'))) %>%
+  ### align wildlife strike to count corals as not sensitive
+  mutate(sens = ifelse(assess_gp == 'reef_building_corals' & vuln_str == 'wildlife_strike', 
+                       0, sens)) %>%
+  filter(!is.na(vuln))
+
+ggplot(match_iucn_vuln, aes(x = vuln, y = sens)) +
+  geom_point() +
+  facet_wrap(~ vuln_str)
+```
+try a logit model
+```{r}
+
+strs <- match_iucn_vuln$vuln_str %>% unique() %>% sort()
+for(s in strs) {# s <- strs[1]
+  tmp <- match_iucn_vuln %>%
+    filter(vuln_str == s)
+  
+  vuln_logit <- glm(sens ~ vuln, data = tmp, family = "binomial")
+  vuln_logit_tidy <- broom::tidy(vuln_logit)
+  vuln_logit_pred <- broom::augment(vuln_logit, type.predict = 'response')
+
+  x <- ggplot(vuln_logit_pred, aes(x = vuln, y = sens)) +
+    geom_jitter(width = 0.01, height = 0.02) +
+    geom_line(aes(y = .fitted)) +
+    xlim(c(0, 1)) +
+    # ylim(c(0, 1.02)) +
+    labs(title = s, x = 'vulnerability score', y = 'IUCN sensitivity')
+  print(x)
+  
+}
+```
+
+keeping in mind that IUCN sensitivity is based on exposure creating a known threat; while vulnerability score can mean a species *would* be vulnerable if exposed.
+
+<!-- why a lot of wildlife_strike vuln = 0 sens = 1? aha, corals. -->
+```{r, eval = FALSE}
+x <- match_iucn_vuln %>%
+  filter(stressor == 'shipping') %>%
+  mutate(check = vuln < .02 & sens == 1)
+```
+
+

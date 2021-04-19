@@ -323,10 +323,6 @@ ggsave('vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
 knitr::include_graphics('vuln_dist_tx_box.png')
 ```
 
-<<<<<<< HEAD
-```{r taxa_12x1panel_boxplot}
-=======
-
 ```{r taxa_12x1panel_boxplot}
 
 vuln_overall_df <- vuln_df %>%
@@ -335,7 +331,6 @@ vuln_overall_df <- vuln_df %>%
             vuln_sd = sqrt(mean(vuln_sd^2)),
             .groups = 'drop') %>%
   mutate(str_clean = 'Overall')
->>>>>>> 9e049cd074f32ca58d9cb71423fa692d0cedbf45
 
 tx_summary_df <- vuln_df %>%
   bind_rows(vuln_overall_df) %>%
@@ -358,18 +353,11 @@ plot_df <- vuln_df %>%
   bind_rows(vuln_overall_df) %>%
   mutate(tx_clean = factor(tx_clean, levels = levels(tx_summary_df$tx_clean)),
          str_clean = factor(str_clean, levels = levels(str_summary_df$str_clean))) %>%
-<<<<<<< HEAD
-  # slice_sample(prop = .5) %>%
-=======
-  # slice_sample(prop = .05) %>%
->>>>>>> 9e049cd074f32ca58d9cb71423fa692d0cedbf45
   rowwise() %>%
   mutate(v = rnorm(n = 1, mean = vuln, sd = vuln_sd),
          v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
   ungroup()
 
-<<<<<<< HEAD
-=======
 x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)), 
             aes(x = str_clean, y = v)) +
   theme_ohara(base_size = 7) +
@@ -436,7 +424,6 @@ plot_df <- vuln_df %>%
          v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
   ungroup()
 
->>>>>>> 9e049cd074f32ca58d9cb71423fa692d0cedbf45
 x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)), 
             aes(x = str_clean, y = v)) +
   theme_ohara(base_size = 7) +
