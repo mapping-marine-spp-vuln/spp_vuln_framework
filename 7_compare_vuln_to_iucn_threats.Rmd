@@ -91,7 +91,7 @@ ggplot(match_iucn_vuln, aes(x = vuln, y = sens)) +
   facet_wrap(~ vuln_str)
 ```
 try a logit model
-```{r}
+```{r, results = 'asis'}
 
 strs <- match_iucn_vuln$vuln_str %>% unique() %>% sort()
 for(s in strs) {# s <- strs[1]
@@ -108,8 +108,9 @@ for(s in strs) {# s <- strs[1]
     xlim(c(0, 1)) +
     # ylim(c(0, 1.02)) +
     labs(title = s, x = 'vulnerability score', y = 'IUCN sensitivity')
+  cat(sprintf('-----\n\n### Stressor: %s #####\n', s))
   print(x)
-  
+  print(knitr::kable(vuln_logit_tidy))
 }
 ```
 
