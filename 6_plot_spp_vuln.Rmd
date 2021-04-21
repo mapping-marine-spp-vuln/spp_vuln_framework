@@ -133,8 +133,8 @@ x <- ggplot(test_df) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('vuln_summary_plot.png', width = 6, height = 6, dpi = 300)
-knitr::include_graphics('vuln_summary_plot.png')
+ggsave('ms_figs/vuln_summary_plot.png', width = 6, height = 6, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_summary_plot.png')
 ```
 
 ```{r diag violin, eval = FALSE}
@@ -205,8 +205,8 @@ p <- ggplot(dens_diag) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('vuln_summary_plot_violin.png', width = 6, height = 6, dpi = 300)
-knitr::include_graphics('vuln_summary_plot_violin.png')
+ggsave('ms_figs/vuln_summary_plot_violin.png', width = 6, height = 6, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_summary_plot_violin.png')
 ```
 
 
@@ -243,8 +243,8 @@ x <- ggplot(mean_df, aes(x = str_clean, y = tx_clean)) +
   labs(fill = 'std dev', color = 'mean',
        title = 'Vulnerability by taxon and stressor')
   
-ggsave('vuln_heatmap.png', width = 6, height = 4, dpi = 300)
-knitr::include_graphics('vuln_heatmap.png')
+ggsave('ms_figs/vuln_heatmap.png', width = 6, height = 4, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_heatmap.png')
 ```
 
 ```{r str_summary_boxplot}
@@ -286,8 +286,8 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) # +
   # labs(title = 'Vulnerability distribution by stressor')
   
-ggsave('vuln_dist_str_box.png', width = 4, height = 3, dpi = 300)
-knitr::include_graphics('vuln_dist_str_box.png')
+ggsave('ms_figs/vuln_dist_str_box.png', width = 4, height = 3, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_dist_str_box.png')
 ```
 
 ```{r taxa_summary_boxplot}
@@ -319,8 +319,8 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) #+
   # labs(title = 'Vulnerability distribution by taxon')
   
-ggsave('vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
-knitr::include_graphics('vuln_dist_tx_box.png')
+ggsave('ms_figs/vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_dist_tx_box.png')
 ```
 
 ```{r taxa_12x1panel_boxplot}
@@ -385,8 +385,8 @@ x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)),
        y = 'Vulnerability') +
   facet_wrap( ~ tx_clean, ncol = 1, strip.position = 'right')
   
-ggsave('vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
-knitr::include_graphics('vuln_dist_tx_12x1panel.png')
+ggsave('ms_figs/vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_dist_tx_12x1panel.png')
 ```
 
 ```{r taxa_12x1panel_boxplot_w_jitter, eval = FALSE}
@@ -451,6 +451,6 @@ x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)),
        y = 'Vulnerability') +
   facet_wrap( ~ tx_clean, ncol = 1, strip.position = 'right')
   
-ggsave('vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
-knitr::include_graphics('vuln_dist_tx_12x1panel.png')
+ggsave('ms_figs/vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_dist_tx_12x1panel.png')
 ```
