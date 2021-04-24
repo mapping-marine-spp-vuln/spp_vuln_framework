@@ -4,5 +4,4 @@
 .Ruserdata
 tmp/
 explore/
-figs/
-int/
+figs/unnamed*.png
