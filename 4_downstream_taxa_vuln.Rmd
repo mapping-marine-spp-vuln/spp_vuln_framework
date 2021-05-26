@@ -50,6 +50,15 @@ spp_all_wide <- assemble_worms('wide')
 spp_all_long <- assemble_worms('long')
 ```
 
+### check birds
+
+```{r}
+birds <- spp_all_wide %>% filter(class == 'aves')
+
+bird_fam_sum <- birds %>% group_by(family) %>% summarize(n = n_distinct(species))
+DT::datatable(bird_fam_sum)
+```
+
 ## Match species with known vulnerability to most specific rank
 
 Loading the vulnerability data, and match to the long-format species classifications.  Then join these together sequentially by each level.
@@ -221,3 +230,6 @@ knitr::kable(match_vuln_df %>%
                summarize(n_spp_matched = n_distinct(species)))
 ```
 
+Total number of species matched with down-fill:
+
+`r n_distinct(match_vuln_df$species)`
