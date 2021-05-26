@@ -3,26 +3,19 @@ corals,biophysical traits,respiration structures,acropora,diffusiion,4
 crustacea_arthropods,biophysical traits,communication requirement (sound),nymphon australe,none,9
 crustacea_arthropods,biophysical traits,respiration structures,nymphon australe,skin or cuticle,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,palaemon elegans,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,9
-crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus 29 spp.,none,9
-crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus 29 spp.,none,9
-crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus 29 spp.,none,9
-crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus 29 spp.,character(0),9
-crustacea_arthropods,specialisation,air-sea interface,penaeus 29 spp.,none,9
-crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus 29 spp.,none,9
-crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonum 67 spp.,none,9
-crustacea_arthropods,biophysical traits,respiration structures,pycnogonum 67 spp.,skin or cuticle,9
+crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus,none,9
+crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus,none,9
+crustacea_arthropods,foraging range,sub-population dependence on particular sites,penaeus,none,9
+crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus,character(0),9
+crustacea_arthropods,specialisation,air-sea interface,penaeus,none,9
+crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus,none,9
+crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonida,none,9
+crustacea_arthropods,biophysical traits,respiration structures,pycnogonida,skin or cuticle,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,yes w,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,coral,9
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,acanthaster,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,amphipholis squamata,yes-live birth,100
 echinoderms,specialisation,dependent interspecific interactions,aporometra wilsoni,yes-sargassum cystophora,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,aquilonastra burtoni,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),arachnoides placenta,senstive,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,asterias rubens,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),brisaster latifrons,senstive,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina hystera,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina pacifica,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,cryptasterina pentagona,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),dendraster excentricus,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema antillarum,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),diadema savignyi,senstive,100
@@ -32,14 +25,7 @@ echinoderms,physiological tolerance breadths,sensitivity to wave energy (physica
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),holopneustes purpurascens,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),loxechinus albus,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),mesocentrotus franciscanus,senstive,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,odontaster validus,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra exigua,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra parvivipara,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,parvulastra vivipara,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,patiriella regularis,no,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pisaster ochraceus,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),psammechinus miliaris,senstive,100
-echinoderms,r (reproductive traits),post-birth/hatching maternal dependence,pycnopodia helianthoides,no,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus droebachiensis,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus fragilis,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus pallidus,senstive,100
@@ -49,8 +35,6 @@ elasmobranchs,r (reproductive traits),are there sub-populations?,cruriraja,possi
 elasmobranchs,r (reproductive traits),are there sub-populations?,fenestraja,possibly,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiella,possibly,135
 elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,135
-fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthochromis polyacanthus,week to two months,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,acanthurus dussumieri,nil,115
 fish,r (reproductive traits),can the sex ratio be altered by temperature?,amphiprion akindynos,yes-if female dies a male takes over and becomes female,115
 fish,physiological tolerance breadths,salinity,anguilla australis,catadromous,115
 fish,physiological tolerance breadths,salinity,anguilla australis,sw-fw-sw,115
@@ -58,17 +42,10 @@ fish,physiological tolerance breadths,sensitivity to wave energy (physical forci
 fish,r (reproductive traits),are there sub-populations?,anguilla australis,by river,115
 fish,specialisation,terrestrial and marine life stages,anguilla australis,fw,115
 fish,specialisation,terrestrial and marine life stages,anguilla australis,sw,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,balistoides viridescens,nil,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,brachionichthys hirsutus,week-month,115
 fish,specialisation,dependent interspecific interactions,carapus bermudensis,yes-sea cucumbers,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,cetoscarus bicolor,nil,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,champsocephalus gunnari,nil,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,chanos chanos,nil,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,dissostichus eleginoides,nil,115
 fish,specialisation,dependent interspecific interactions,encheliophis gracilis,yes-sea cucumbers,115
 fish,specialisation,dependent interspecific interactions,encheliophis gracilis,starfish,115
 fish,specialisation,extreme diet specialization,encheliophis gracilis,specialist-gonads and respiotatory tree of host,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,engraulis ringens,nil,115
 fish,specialisation,extreme diet specialization,engraulis ringens,but 98diatoms,115
 fish,physiological tolerance breadths,salinity,eptatretus cirrhatus,32-34parts per thousand,115
 fish,r (reproductive traits),can the sex ratio be altered by temperature?,eptatretus cirrhatus,probably,115
@@ -76,15 +53,9 @@ fish,physiological tolerance breadths,salinity,eptatretus mendozai,32-34parts pe
 fish,r (reproductive traits),can the sex ratio be altered by temperature?,eptatretus mendozai,probably,115
 fish,foraging range,sub-population dependence on particular sites,galaxias brevipinnis,only for spawning,115
 fish,physiological tolerance breadths,salinity,meuschenia scaber,euryhaline-brackish,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,meuschenia scaber,nil,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,naso vlamingii,nil,115
 fish,physiological tolerance breadths,salinity,notolabrus celidotus,euryhaline-brackish,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,notolabrus celidotus,nil,115
 fish,foraging range,sub-population dependence on particular sites,oncorhynchus nerka,only for spawning,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,parapercis colias,nil,115
 fish,specialisation,extreme diet specialization,pomacentrus coelestis,generalist-planktivore,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,scarus schlegeli,nil,115
-fish,r (reproductive traits),post-birth/hatching maternal dependence,sebastes diploproa,nil,115
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,filter feed and eat zooplankton,61
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,epibenthic,61
 marine_mammals,specialisation,extreme diet specialization,balaena mysticetus,benthic organisms,61
@@ -99,24 +70,17 @@ marine_mammals,specialisation,extreme diet specialization,dugong dugon,specialis
 marine_mammals,r (reproductive traits),can the sex ratio be altered by temperature?,enhydra lutris,maybe pollution driving breeding female mortality,61
 marine_mammals,specialisation,extreme diet specialization,enhydra lutris,no,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,eschrichtius robustus,many,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena glacialis,8-17months,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,eubalaena japonica,polar_to_temperate_waters,61
 marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,little known,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,but estimated to be long,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eumetopias,month-year-exception that some australian sea lions can care for pup up to 3years,61
+marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,eubalaena japonica,but estimated -be long,61
 marine_mammals,physiological tolerance breadths,salinity,lagenorhynchus acutus,stenohaline-prefers low salinity,61
 marine_mammals,biophysical traits,flight,megaptera novaeangliae,none,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,megaptera novaeangliae,18_2_25_9_degrees,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,mesoplodon bidens,cold_temperate_to_subantarctic_waters,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,mesoplodon densirostris,some nursing,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,mesoplodon densirostris,but little parental investment,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,mesoplodon europaeus,temperate_tropical_waters,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,mesoplodon mirus,10_20_degrees,61
 marine_mammals,physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,mesoplodon stejnegeri,cold_temperate_sub_arctic_waters,61
 marine_mammals,r (reproductive traits),are there sub-populations?,mesoplodon stejnegeri,data deficient,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,neophoca,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,otaria,month-year-exception that some australian sea lions can care for pup up to 3years,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,phocarctos,month-year-exception that some australian sea lions can care for pup up to 3years,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,phocoena sinus,one,61
 marine_mammals,specialisation,dependent interspecific interactions,phocoena sinus,one,61
 marine_mammals,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,physeter macrocephalus,many,61
@@ -125,7 +89,6 @@ marine_mammals,physiological tolerance breadths,salinity,trichechus senegalensis
 marine_mammals,specialisation,extreme diet specialization,trichechus senegalensis,specialist-vegetation,61
 marine_mammals,r (reproductive traits),can the sex ratio be altered by temperature?,ursus maritimus,yes-sex-selective hunting,61
 marine_mammals,specialisation,extreme diet specialization,ursus maritimus,no,61
-marine_mammals,r (reproductive traits),post-birth/hatching parental dependence,zalophus,month-year-exception that some australian sea lions can care for pup up to 3years,61
 plants_algae,biophysical traits,calcium carbonate structure stages,porolithon,calcification after germination and through adulthood,4
 plants_algae,physiological tolerance breadths,salinity,porolithon,narrow,4
 plants_algae,r (reproductive traits),are there sub-populations?,porolithon,likely,4
@@ -136,8 +99,6 @@ polychaetes,physiological tolerance breadths,dissolved oxygen,sabellidae,charact
 polychaetes,physiological tolerance breadths,dissolved oxygen,terebellidae,character(0),4
 reptiles,physiological tolerance breadths,salinity,acrochordus,broad,16
 reptiles,biophysical traits,calcium carbonate structure stages,amblyrhynchus cristatus,no,16
-reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus acutus,hatchling maternal dependence,16
-reptiles,r (reproductive traits),post-birth/hatching parental dependence,crocodylus porosus,hatchling maternal dependence,16
 reptiles,physiological tolerance breadths,salinity,elapidae,broad,16
 reptiles,physiological tolerance breadths,salinity,ephalophis,broad,16
 reptiles,physiological tolerance breadths,salinity,hydrelaps,broad,16

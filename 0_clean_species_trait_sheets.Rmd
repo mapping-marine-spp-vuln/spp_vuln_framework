@@ -610,6 +610,33 @@ spp_data_fecund$trait_val_clean %>% table()
 
 ```
 
+### post-birth/hatch dependence
+
+``` {r clean up parental dependence}
+
+spp_data_par_dep <- raw_data_df %>%
+  filter(str_detect(trait, 'post-birth/hatching.+dependence')) %>%
+  mutate(trait = 'post-birth/hatching parental dependence') %>%
+  filter(!is.na(trait_value)) %>%
+  rowwise() %>%
+  mutate(tmp = clean_trait(trait_value),
+         tmp = str_replace_all(tmp, 'to ', '-'),
+         tmp = ifelse(str_detect(tmp, 'hatchling maternal'), 'month-year', tmp),
+         tmp = ifelse(str_detect(tmp, '8-17months'), 'month-year;>year', tmp),
+         tmp = ifelse(str_detect(tmp, 'month-year-exception'), 'month-year;>year', tmp),
+         tmp = ifelse(str_detect(tmp, 'some nursing'), 'week-month', tmp),
+         tmp = ifelse(tmp == 'no' | tmp == 'nil', 'na', tmp),
+         tmp = ifelse(tmp == 'week -two months', 'week-month', tmp),
+         tmp = ifelse(tmp == 'yes-live birth', 'na', tmp),
+         tmp = str_split(tmp, ';')) %>%
+  unnest(tmp) %>%
+  select(category, trait, trait_value, spp_gp, sheet, trait_val_clean = tmp) %>%
+  distinct()
+
+spp_data_par_dep$trait_val_clean %>% table()
+
+```
+
 ### global pop size
 
 ``` {r clean up global pop size}
@@ -774,8 +801,6 @@ spp_data_age$trait_val_clean %>% table()
 ### reproductive strategy
 
 ``` {r clean up reprod strategy}
-### Here, extract numerics from the string, use the min and max values to
-### identify the span, then assign categories within that span. UGH
 
 reprod_strategy_vals <- traitvals_df_valid %>%
   filter(trait == 'reproductive strategy') %>%
@@ -1274,6 +1299,7 @@ cleaned_traits <- c('zone', 'adult mobility',
 
 spp_data_clean <- raw_data_df %>%
   filter(!trait %in% cleaned_traits) %>%
+  filter(!str_detect(trait, 'post-birth/hatching.+dependence')) %>%
   mutate(trait_val_clean = clean_trait(trait_value)) %>%
   clean_up_mess() %>%
   bind_rows(spp_data_zones) %>%
@@ -1285,6 +1311,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_biomin) %>%
   bind_rows(spp_data_bodysize) %>%
   bind_rows(spp_data_fecund) %>%
+  bind_rows(spp_data_par_dep) %>%
   bind_rows(spp_data_pop) %>%
   bind_rows(spp_data_prs) %>%
   bind_rows(spp_data_gen_time) %>%
