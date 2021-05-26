@@ -133,8 +133,8 @@ x <- ggplot(test_df) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('vuln_summary_plot.png', width = 6, height = 6, dpi = 300)
-knitr::include_graphics('vuln_summary_plot.png')
+ggsave('ms_figs/vuln_summary_plot.png', width = 6, height = 6, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_summary_plot.png')
 ```
 
 ```{r diag violin, eval = FALSE}
@@ -205,8 +205,8 @@ p <- ggplot(dens_diag) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('vuln_summary_plot_violin.png', width = 6, height = 6, dpi = 300)
-knitr::include_graphics('vuln_summary_plot_violin.png')
+ggsave('ms_figs/vuln_summary_plot_violin.png', width = 6, height = 6, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_summary_plot_violin.png')
 ```
 
 
@@ -243,8 +243,8 @@ x <- ggplot(mean_df, aes(x = str_clean, y = tx_clean)) +
   labs(fill = 'std dev', color = 'mean',
        title = 'Vulnerability by taxon and stressor')
   
-ggsave('vuln_heatmap.png', width = 6, height = 4, dpi = 300)
-knitr::include_graphics('vuln_heatmap.png')
+ggsave('ms_figs/vuln_heatmap.png', width = 6, height = 4, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_heatmap.png')
 ```
 
 ```{r str_summary_boxplot}
@@ -286,8 +286,8 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) # +
   # labs(title = 'Vulnerability distribution by stressor')
   
-ggsave('vuln_dist_str_box.png', width = 4, height = 3, dpi = 300)
-knitr::include_graphics('vuln_dist_str_box.png')
+ggsave('ms_figs/vuln_dist_str_box.png', width = 4, height = 3, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_dist_str_box.png')
 ```
 
 ```{r taxa_summary_boxplot}
@@ -319,12 +319,11 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) #+
   # labs(title = 'Vulnerability distribution by taxon')
   
-ggsave('vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
-knitr::include_graphics('vuln_dist_tx_box.png')
+ggsave('ms_figs/vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_dist_tx_box.png')
 ```
 
-
-```{r taxa_12x1panel_boxplot}
+```{r setup for taxa_12x1panel_boxplot}
 
 vuln_overall_df <- vuln_df %>%
   group_by(species, tx_clean, vert) %>%
@@ -354,11 +353,16 @@ plot_df <- vuln_df %>%
   bind_rows(vuln_overall_df) %>%
   mutate(tx_clean = factor(tx_clean, levels = levels(tx_summary_df$tx_clean)),
          str_clean = factor(str_clean, levels = levels(str_summary_df$str_clean))) %>%
-  # slice_sample(prop = .05) %>%
   rowwise() %>%
   mutate(v = rnorm(n = 1, mean = vuln, sd = vuln_sd),
          v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
   ungroup()
+
+```
+
+``` {r taxa_12x1panel_boxplot}
+### Theme cols from Nat to match other figs (from light to dark)
+theme_cols <- c('#0294AD', '#006989', '#00446C')
 
 x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)), 
             aes(x = str_clean, y = v)) +
@@ -366,93 +370,32 @@ x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)),
   ### manually create panel background and gridlines
   scale_x_discrete(expand = c(0, 0)) +
   annotate('rect', xmin = .5, xmax = 23.5, ymin = 0, ymax = 1, 
-           color = NA, fill = 'grey95') +
-  geom_hline(yintercept = c(.25, .5, .75, 1), color = 'white', size = .2) +
-  geom_vline(xintercept = 1:22, color = 'white', size = .2) +
-  geom_hline(yintercept = 0, color = 'grey20', size = .2) +
+           color = NA, fill = theme_cols[2], alpha = .1) +
+  geom_hline(yintercept = c(.25, .5, .75, 1), color = 'white', size = .5) +
+  geom_vline(xintercept = 1:22, color = 'white', size = .5) +
+  geom_hline(yintercept = 0, color = theme_cols[3], size = .2) +
   scale_y_continuous(breaks = c(0.07, 0.93), labels = c('0', '1')) +
   ### boxplot
-  geom_boxplot(color = 'grey40', size = .2, fill = 'grey80', outlier.size = .05, outlier.color = 'grey70') +
+  geom_boxplot(color = theme_cols[3], size = .2, fill = theme_cols[1], 
+               outlier.size = .05, 
+               outlier.color = theme_cols[1]) +
   # geom_jitter(color = 'black', size = .1, alpha = .1) +
   geom_hline(data = tx_summary_df, 
-             aes(yintercept = v_mean_all), color = 'red', size = .1) +
+             aes(yintercept = v_mean_all), color = 'red', size = .2) +
   geom_point(data = tx_summary_df, aes(y = v_mean), 
-             shape = 21, color = 'black', fill = 'red', size = 1) +
+             shape = 21, color = theme_cols[3], fill = 'yellow', size = 1) +
   theme(strip.background = element_blank(),
         strip.text.y = element_text(face = 'bold', hjust = 0, angle = 0),
         axis.title.x = element_blank(),
         axis.ticks.length = unit(0, 'cm'),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5, face = 'bold'),
+        axis.text.y = element_text(angle =  0, hjust = 1, vjust = .5, face = 'bold'),
+        axis.title.y = element_text(face = 'bold')) +
   labs(# title = 'Vulnerability distribution by taxon and stressor',
-       y = 'Vulnerability') +
+       y = 'Vulnerability score') +
   facet_wrap( ~ tx_clean, ncol = 1, strip.position = 'right')
   
-ggsave('vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
-knitr::include_graphics('vuln_dist_tx_12x1panel.png')
+ggsave('ms_figs/vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
+knitr::include_graphics('ms_figs/vuln_dist_tx_12x1panel.png')
 ```
 
-```{r taxa_12x1panel_boxplot_w_jitter, eval = FALSE}
-
-vuln_overall_df <- vuln_df %>%
-  group_by(species, tx_clean, vert) %>%
-  summarize(vuln = mean(vuln, na.rm = TRUE),
-            vuln_sd = sqrt(mean(vuln_sd^2)),
-            .groups = 'drop') %>%
-  mutate(str_clean = 'Overall')
-
-tx_summary_df <- vuln_df %>%
-  bind_rows(vuln_overall_df) %>%
-  group_by(tx_clean) %>%
-  mutate(v_mean_all = mean(vuln, na.rm = TRUE)) %>%
-  group_by(tx_clean, str_clean, vert) %>%
-  summarize(v_mean_all = first(v_mean_all),
-            v_mean = mean(vuln, na.rm = TRUE),
-            v_sd = sqrt(mean(vuln_sd^2)),
-            n_spp = n_distinct(species),
-            .groups = 'drop') %>%
-  mutate(overall = str_clean == 'Overall') %>%
-  arrange(!overall, !vert, desc(v_mean)) %>%
-  mutate(tx_clean = fct_inorder(tx_clean),
-         str_clean = fct_inorder(str_clean) %>% 
-                       fct_relevel('Overall') %>%
-                       fct_rev())
-
-plot_df <- vuln_df %>%
-  bind_rows(vuln_overall_df) %>%
-  mutate(tx_clean = factor(tx_clean, levels = levels(tx_summary_df$tx_clean)),
-         str_clean = factor(str_clean, levels = levels(tx_summary_df$str_clean))) %>%
-  rowwise() %>%
-  mutate(v = rnorm(n = 1, mean = vuln, sd = vuln_sd),
-         v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
-  ungroup()
-
-x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)), 
-            aes(x = str_clean, y = v)) +
-  theme_ohara(base_size = 7) +
-  ### manually create panel background and gridlines
-  scale_x_discrete(expand = c(0, 0)) +
-  annotate('rect', xmin = .5, xmax = 23.5, ymin = 0, ymax = 1, 
-           color = NA, fill = 'grey95') +
-  geom_hline(yintercept = c(.25, .5, .75, 1), color = 'white', size = .2) +
-  geom_vline(xintercept = 1:22, color = 'white', size = .2) +
-  geom_hline(yintercept = 0, color = 'grey20', size = .2) +
-  scale_y_continuous(breaks = c(0.07, 0.93), labels = c('0', '1')) +
-  ### boxplot
-  geom_boxplot(color = 'grey40', size = .2, fill = NA, outlier.size = .05, outlier.color = 'grey70') +
-  geom_jitter(color = 'blue', size = .1, alpha = .1) +
-  geom_hline(data = tx_summary_df, 
-             aes(yintercept = v_mean_all), color = 'red', size = .1) +
-  geom_point(data = tx_summary_df, aes(y = v_mean), 
-             shape = 21, color = 'black', fill = 'red', size = 1) +
-  theme(strip.background = element_blank(),
-        strip.text.y = element_text(face = 'bold', hjust = 0, angle = 0),
-        axis.title.x = element_blank(),
-        axis.ticks.length = unit(0, 'cm'),
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
-  labs(# title = 'Vulnerability distribution by taxon and stressor',
-       y = 'Vulnerability') +
-  facet_wrap( ~ tx_clean, ncol = 1, strip.position = 'right')
-  
-ggsave('vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
-knitr::include_graphics('vuln_dist_tx_12x1panel.png')
-```
