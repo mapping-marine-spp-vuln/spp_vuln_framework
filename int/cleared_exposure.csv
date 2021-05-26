@@ -407,7 +407,7 @@ patiria pectinifera,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,
 patiriella regularis,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 pecten fumatus,molluscs,0,epipelagic;benthic,TRUE,FALSE,TRUE,TRUE,TRUE,wildlife_strike
 pecten maximus,molluscs,0,epipelagic;benthic,TRUE,FALSE,TRUE,TRUE,TRUE,wildlife_strike
-penaeus 29 spp.,crustacea_arthropods,0,epipelagic;demersal,TRUE,FALSE,TRUE,TRUE,TRUE,wildlife_strike
+penaeus,crustacea_arthropods,0,epipelagic;demersal,TRUE,FALSE,TRUE,TRUE,TRUE,wildlife_strike
 pentamera populifera,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 pentanchus,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 phycodurus eques,fish,0,epipelagic;benthic;neritic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
@@ -436,7 +436,7 @@ pseudotriakidae,elasmobranchs,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,w
 psolidium bullatum,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 psolus chitonoides,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 pteroctopus,cephalopods,0,epipelagic;mesopelagic;bathypelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
-pycnogonum 67 spp.,crustacea_arthropods,0,epipelagic;benthic,FALSE,FALSE,TRUE,TRUE,TRUE,wildlife_strike
+pycnogonida,crustacea_arthropods,0,epipelagic;benthic,FALSE,FALSE,TRUE,TRUE,TRUE,wildlife_strike
 pycnopodia helianthoides,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 raja,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 rajella,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;abyssopelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike

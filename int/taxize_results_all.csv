@@ -2554,15 +2554,6 @@ penaeus,Dendrobranchiata,suborder,106669,FALSE,worms
 penaeus,Penaeoidea,superfamily,106683,FALSE,worms
 penaeus,Penaeidae,family,106727,FALSE,worms
 penaeus,Penaeus,genus,106822,FALSE,worms
-pycnogonum,Animalia,kingdom,2,FALSE,worms
-pycnogonum,Arthropoda,phylum,1065,FALSE,worms
-pycnogonum,Chelicerata,subphylum,1274,FALSE,worms
-pycnogonum,Pycnogonida,class,1302,FALSE,worms
-pycnogonum,Pantopoda,order,1358,FALSE,worms
-pycnogonum,Eupantopodida,suborder,379601,FALSE,worms
-pycnogonum,Pycnogonoidea,superfamily,379611,FALSE,worms
-pycnogonum,Pycnogonidae,family,1567,FALSE,worms
-pycnogonum,Pycnogonum,genus,134595,FALSE,worms
 scylla serrata,Animalia,kingdom,2,FALSE,worms
 scylla serrata,Arthropoda,phylum,1065,FALSE,worms
 scylla serrata,Crustacea,subphylum,1066,FALSE,worms
@@ -9383,5 +9374,23 @@ stoloteuthis,Heteroteuthinae,subfamily,877778,FALSE,worms
 stoloteuthis,Stoloteuthis,genus,138484,FALSE,worms
 nautilus suluensis,NA,NA,NA,FALSE,worms
 ostrea angasi,NA,NA,NA,FALSE,worms
+ardenna,NA,NA,NA,FALSE,worms
+ichthyaetus,NA,NA,NA,FALSE,worms
+pycnogonida,Animalia,kingdom,2,FALSE,worms
+pycnogonida,Arthropoda,phylum,1065,FALSE,worms
+pycnogonida,Chelicerata,subphylum,1274,FALSE,worms
+pycnogonida,Pycnogonida,class,1302,FALSE,worms
+ostrea angasi,Animalia,kingdom,2,FALSE,worms
+ostrea angasi,Mollusca,phylum,51,FALSE,worms
+ostrea angasi,Bivalvia,class,105,FALSE,worms
+ostrea angasi,Autobranchia,subclass,1424948,FALSE,worms
+ostrea angasi,Pteriomorphia,infraclass,206,FALSE,worms
+ostrea angasi,Ostreida,order,1774,FALSE,worms
+ostrea angasi,Ostreoidea,superfamily,151323,FALSE,worms
+ostrea angasi,Ostreidae,family,215,FALSE,worms
+ostrea angasi,Ostreinae,subfamily,510735,FALSE,worms
+ostrea angasi,Ostrea,genus,138298,FALSE,worms
+ostrea angasi,Ostrea angasi,species,397159,FALSE,worms
+nautilus suluensis,NA,NA,NA,FALSE,worms
 ardenna,NA,NA,NA,FALSE,worms
 ichthyaetus,NA,NA,NA,FALSE,worms
