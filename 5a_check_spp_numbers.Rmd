@@ -1,0 +1,169 @@
+---
+title: "Check downfilled numbers vs Nat's numbers"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
+source(here('common_fxns.R'))
+options(dplyr.summarise.inform = FALSE) 
+
+```
+
+# Summary
+
+Compare Nat's species counts to those included in the downfill operation.
+
+# Methods
+
+Read in the downfilled species list (`gapfill == 'none'` indicates properly downfilled).  Nat's sheet is not easily parsed unfortunately, so will generate outputs one taxon at a time.
+
+```{r}
+spp_downfill <- read_csv(here('_output/vuln_gapfilled_tx.csv'))
+
+taxa_in_code <- spp_downfill$taxon %>% unique() %>% sort()
+
+xlsx_f <- here('_raw_data/xlsx/species_numbers.xlsx')
+spp_count_shts <- readxl::excel_sheets(xlsx_f)
+taxa_in_xlsx <- spp_count_shts[spp_count_shts != 'summary'] %>% sort()
+
+if(length(taxa_in_xlsx[!taxa_in_xlsx %in% taxa_in_code]) > 0) {
+  stop('Non-matches in taxon names')
+}
+```
+
+## Raw count by taxon
+
+```{r}
+
+count_df <- data.frame()
+
+for(t in taxa_in_code) {
+  ### t <- taxa_in_code[1]
+  n_in_code <- spp_downfill %>%
+    filter(taxon == t) %>%
+    filter(gapfill == 'none') %>%
+    count() %>%
+    .$n
+  
+  n_in_xlsx <- readxl::read_excel(xlsx_f, sheet = t) %>%
+    summarize(n = sum(n_spp, na.rm = TRUE)) %>%
+    .$n
+  
+  count_df <- count_df %>%
+    bind_rows(data.frame(taxon = t, n_in_code, n_in_xlsx))
+}
+
+count_df <- count_df %>%
+  mutate(diff = n_in_code - n_in_xlsx,
+         pct_diff = 100 * round(diff / n_in_xlsx, 3))
+knitr::kable(count_df %>% arrange(desc(abs(pct_diff))))
+```
+
+Most problematic taxa:
+
+* Birds, because we should know exactly which ones to include
+* Crustacea/arthropods, because of order of magnitude differences
+* Echinoderms, because of order of magnitude differences (these likely explained b/c Maria stating some species sub in for whole orders - but which?)
+
+## Check specific taxa
+
+### Seabirds
+
+These should be pretty spot-on, why is the downfill result returning extras and missing so many others?
+
+```{r}
+birds_from_code <- spp_downfill %>%
+  filter(taxon == 'seabirds') %>%
+  filter(gapfill == 'none') %>%
+  select(family, genus, species) %>%
+  distinct() %>%
+  mutate(code = 1)
+
+birds_from_xlsx <- readxl::read_excel(xlsx_f, sheet = 'seabirds', skip = 1) %>%
+  janitor::clean_names() %>%
+  select(family = family_fixed, species = scientific_name_fixed, common_name) %>%
+  mutate(family = tolower(family),
+         species = tolower(species)) %>%
+  # mutate(species = str_replace(species, '^ardenna', 'puffinus'),
+  #        species = ifelse(str_detect(species, 'hydrobates') & !str_detect(species, 'furcatus|pelagicus'),
+  #                         str_replace(species, 'hydrobates', 'oceanodroma'), species),
+  #        species = str_replace(species, 'gulosus|leucocarbo|microcarbo|nannopterum|^urile', 'phalacrocorax'),
+  #        family = ifelse(family == 'oceanitidae', 'hydrobatidae', family),
+  #        family = ifelse(family == 'oceanitidae', 'hydrobatidae', family),
+  #        family = ifelse(str_detect(species, 'phalaropus'), 'phalaropodidae', family)) %>%
+  mutate(genus = str_remove(species, ' .+')) %>%
+  mutate(xlsx = 1)
+
+combo <- birds_from_code %>%
+  full_join(birds_from_xlsx, by = c('family', 'genus', 'species'))
+
+mismatch <- combo %>%
+  filter(is.na(code) | is.na(xlsx))
+match <- combo %>%
+  filter(code == 1 & xlsx == 1)
+
+match_by_fam <- combo %>%
+  group_by(family) %>%
+  summarize(n_match = sum(code == 1 & xlsx == 1, na.rm = TRUE),
+            n_mismatch = sum(is.na(code) | is.na(xlsx)))
+
+# knitr::kable(match_by_fam)
+
+fam_from_xlsx <- readxl::read_excel(xlsx_f, sheet = 'seabirds') %>%
+  select(1, n_spp) %>%
+  filter(!is.na(n_spp)) %>%
+  distinct()
+
+# knitr::kable(fam_from_xlsx)
+
+```
+
+Good matches for (counts in code/mismatch vs total in xlsx):
+
+* Alcidae (24/1 vs 24)
+* Diomedeidae (21/2 vs 22)
+* Fregatidae/Phaethontidae (8/0 vs 8)
+* Sphenicidae (18/1 vs. 18)
+* Sulidae (10/0 vs. 10)
+
+Poor matches for:
+
+* Anatidae, Gaviidae, Podicipedidae (18/37, 5/0, 4/11 vs. 30) - total 27, so close, but lots of extras - freshwater species?
+* Oceanitidae, Hydrobatidae (0/9, 2/36 vs 24)
+* Procellariidae (74/30, vs 74+18)
+* Pelecanidae, Phalacrocoracidae (3/5, 10/42 vs. 33) - note also pelecanoididae 0/4
+* Scolopacidae (0/58 vs. 2) - change to Phalaropodidae on species trait sheet
+* Laridae (71/39 vs. 87)
+
+Notes:  These fixes have been implemented in the XSLX spreadsheet and code above for improved matching.  The only fix necessary to capture missing species is Scolopacidae -> Phaloropodidae.
+
+* _Ardenna_: Genus _Ardenna_ Reichenbach, 1853 accepted as _Puffinus_ Brisson, 1760
+* _Pelecanoididae_ - 5 spp that on the xlsx are listed as Procellariidae
+* _Oceanitidae_ accepted as _Hydrobatidae_ Mathews, 1913 - but still only two _Hydrobatidae_?
+* Most _Hydrobates_ species (on xlsx) are listed as _Oceanodroma_ species (e.g., Band-rumped Storm-petrel)
+* Phalaropes are listed as family _Phalaropodidae_, not _Scolopacidae_ (but fix needs to be implemented earlier - not captured in species traits)
+* _Gulosus aristotelis_ recognized as _Phalacrocorax aristotelis_; most _leucocarbo_, _microcarbo_, _urile_, and _nannopterum_ species are recognized as _phalacrocorax_ as well...
+
+```{r}
+worms <- assemble_worms()
+```
+

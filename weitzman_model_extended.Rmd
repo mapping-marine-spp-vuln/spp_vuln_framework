@@ -1,0 +1,93 @@
+---
+title: "Weitzman model extended"
+author: "Casey O'Hara"
+date: "4/15/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* Weitzman 1992 - diversity metric
+* Weitzman 1993 - what to preserve? uses genetic distance and extinction risk of crane spp - marginal diversity, elasticity of diversity ("conservation potential")
+* Weitzman 1998 - Noah's Ark problem
+
+## basic idea
+
+Project $i$ is a conservation action that increases probability of survival of species $i$ by $\Delta P_i$ at cost $C_i$.  $U_i$ represents direct utility of species $i$, while $D_i$ represents distinctiveness of species $i$.
+
+### Ranking criterion $R_i$:
+
+$$R_i = (D_i + U_i)\frac{\Delta P_i}{C_i}$$
+
+### Library analogy
+
+A library $i$ has direct utility value (building value $U_i$) and contains information value (books $M_i$).  Some of these books overlap with those in other libraries - distinctiveness of $i$ is related to the unique set of books contained only in library $i$.  Species analogy: species $i$ has direct utility because we value it for some reason (existence, ecosystem services, etc); distinctiveness of $i$ is how evolutionarily or genetically distinct this species is from others.
+
+Diversity function $V(S)$ is the total number of books (genes or traits?) in set $S$ across all the libraries (species).  Two library model: Library 1 has set of books $M_1 = E_1 + J$ where $E_1$ is books unique to library 1, and $J$ is the set of books in both libraries 1 and 2.  So:
+$$V(S) = E_1 + J + E_2$$
+(don't double count the overlapping books).  $V(S)$ looks like the denominator in a Jaccard similarity index... $M_1 \cup M_2$.
+
+Considering probability of survival $P_i$ of each of these libraries/species we can look at expected direct utility and expected diversity.
+
+Expected direct utility is probability of survival of each library/species times its direct utility: $$U(P) = P_1 U_1 + P_2 U_2 = \sum P_i U_i$$
+
+Expected diversity is probability-weighted sum of all possible sets of books/genes (that overlap makes it a little more complicated than direct utility):
+\begin{align*}
+  W(P) = &P_1 P_2 \cdot (M_1 + M_2 - J) &\text{(both spp survive)}\\
+         &+ P_1(1-P_2) \cdot M_1        &\text{(only spp 1 survives)}\\
+         &+ (1-P_1)P_2 \cdot M_2        &\text{(only spp 2 survives)}\\
+         &+(1-P_1)(1-P_2) \cdot 0       &\text{(neither survives)}
+\end{align*}
+
+or more generally:
+$$W(P) \equiv \sum_{Q \subseteq S} \left(\prod_{j \in Q} P_j \right)\left(\prod_{k \in S \setminus Q}(1 - P_k)\right) V(Q)$$
+
+## More holistic approach
+
+Diaz et al. (2020) examine various proposed goals across different "facets" of nature and its contribution to people, e.g.:
+
+* ecosystems: no net loss
+* species: halt population declines
+* genes: conserve genetic diversity
+* nature's contribution to people (NCP): secure NCP
+
+These facets are often treated separately but Diaz et al. suggest should be considered as interdependent and should be treated holistically and explicitly.  "The interdependence of ecosystems, species, genetic diversity, and NCP offers the opportunity to design policies and actions that contribute to multiple goals simultaneously."
+
+Weitzman suggests the library analogy can be extended to other scales/units of analysis.  What is the appropriate unit of analysis?  Weitzman's analysis seems to be most directly related to species (and maybe genes?) through the distinctiveness value, and to NCP through the direct utility.  Can we account for the ecosystem facet?
+
+### What's missing
+
+Let's keep the focus on a species level.  Even though most conservation efforts are probably not focusing on a single species, perhaps it is a good focusing tool, for example success of a project can be measured by its effect on the highest priority species.  In any case, the ranking criterion given above does not acknowledge the role that a given species plays in its context (unless we allow $U_i$ to extend to indirect utility).  Why might conservation of a species with low direct utility or low distinctiveness be important?  Because of linkages with other species in the ecosystem:
+
+* the species might be important to the life histories of other species of value, e.g. as a food source, predator, or through some supporting function: "connectivity"
+* conservation of that species may provide an umbrella effect that protects many other species at the same time at no (or low) marginal cost: "umbrella value"
+
+__Connectivity__ $K_i$ could be represented as the interdependence of species in a location on each other, such that if species $j$ is crucially dependent on species $i$ such that loss of $i$ will guarantee extinction of $j$, then $X_{ij} = 1$ and if species $j$ is not impacted by loss of $i$ then $X_{ij} = 0$.  Note, could even extend to a situation where loss of $i$ benefits spp $j$, e.g., eliminating a competitor, but that seems like a fraught road to go down just yet.  If we wanted to do this iteratively, then e.g., for a species $j$ with $P_j = 0.6$, and $X_{ij} = 0.3$, if $i$ was lost, then survival probability is reduced: $P_j' = P_j(1 - X_{ij}) = 0.6\cdot0.7 = 0.42$.
+
+So you could have a dependence matrix $\mathbf X$, here for two species; note $X_{ij}$ does not necessarily equal $X_{ji}$; let $X_{ii} = 1$:
+\begin{align*}
+  \mathbf X = \pmatrix{  1    & X_{12} & ... & X_{1N}\\
+                       X_{21} &   1    & ... & X_{2N}\\
+                        ...   &  ...   &  1  &  ...\\
+                       X_{N1} &  ...   & ... &   1}
+\end{align*}
+
+How to tally this for multiple species?  $K_i = \frac{1}{N}\sum_{k \in S \setminus i} X_{ik}$? so as a greater proportion of spp are dependent upon $i$, the value increases.  Note that the interdependence will depend on the suite of species present in the location.  On the one hand, an area of higher richness would have more opportunities for dependence, so $K_i$ might be expected to increase in $N$.  On the other hand, greater richness also provides more opportunities for substitution, so $X_{ij}$ values between two particular species may depend on context, decreasing in $N$. But by taking the average over species present, we sort of assume those two effects balance out...
+
+__Umbrella value__ $B_i$ could account for whether protection of species $i$ is likely to also afford protection for species $j$ - e.g., if you ban bottom trawling to protect a scallop species, you probably also improve prospects for a shrimp species in the same area.  Do this again with a matrix, where $Y_{ij} = 1$ for if protection of species $i$ guarantees protection for species $j$, and 0 if protection of species $i$ does nothing for species $j$.
+\begin{align*}
+  \mathbf Y = \pmatrix{  1    & Y_{12} & ... & Y_{1N}\\
+                       Y_{21} &   1    & ... & Y_{2N}\\
+                        ...   &  ...   &  1  &  ...\\
+                       Y_{N1} &  ...   & ... &   1}
+\end{align*}
+
+Maybe again just take the average $B_i = \frac{1}{N}\sum_{k \in S \setminus i} Y_{ik}$?  Here, species richness does not diminish protection values - if you protect that scallop, you protect that flatfish just as well whether there are no other benthic spp or a hundred other benthic spp... so perhaps a mean is not the appropriate manner of accounting, and we should let it (generally) increase with species richness.
+
+Updated ranking criterion:
+
+$$R_i = (D_i + U_i + K_i + B_i)\frac{\Delta P_i}{C_i}$$
+This is additive for each facet, so a one-for-one tradeoff between distinctiveness, connectivity, "umbrella" value, and direct utility.
+

@@ -1343,6 +1343,8 @@ Here we need to recombine multiple trait vals into one line, separate using a se
 spp_data_out <- spp_data_clean %>%
   filter(trait_val_clean != '') %>%
   mutate(spp_gp = tolower(spp_gp),
+         ### drop parentheticals with "was" or "incl":
+         spp_gp = str_remove_all(spp_gp, '\\((was|incl).+?\\)'),
          spp_gp = str_split(spp_gp, ';')) %>%
   unnest(spp_gp) %>%
   rename(trait_val_orig = trait_value) %>%
