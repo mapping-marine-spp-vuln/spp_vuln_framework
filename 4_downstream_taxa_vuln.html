@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Wed May 26 15:26:58 2021 by ohara" />
+<meta name="author" content="Compiled on Tue Jun 22 12:07:50 2021 by ohara" />
 
 
 <title>Downstream taxa vulnerability</title>
@@ -364,7 +364,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Downstream taxa vulnerability</h1>
-<h4 class="author"><em>Compiled on Wed May 26 15:26:58 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Tue Jun 22 12:07:50 2021 by ohara</em></h4>
 
 </div>
 
@@ -397,12 +397,15 @@ div.tocify {
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spp_all_long <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="st">&#39;long&#39;</span>)</span></code></pre></div>
 <div id="check-birds" class="section level3" number="2.1.1">
 <h3 number="2.1.1"><span class="header-section-number">2.1.1</span> check birds</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>birds <span class="ot">&lt;-</span> spp_all_wide <span class="sc">%&gt;%</span> <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&#39;aves&#39;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>bird_fam_sum <span class="ot">&lt;-</span> birds <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(family) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n_distinct</span>(species))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(bird_fam_sum)</span></code></pre></div>
-<div id="htmlwidget-f875dad9d16b97c6178e" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f875dad9d16b97c6178e">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36"],["alcedinidae","alcidae","anatidae","anhingidae","aramidae","ardeidae","burhinidae","charadriidae","chionidae","diomedeidae","dromadidae","fregatidae","fringillidae","gaviidae","glareolidae","heliornithidae","hydrobatidae","laridae","pelecanidae","pelecanoididae","phaethontidae","phalacrocoracidae","phalaropodidae","phoenicopteridae","pluvianellidae","podicipedidae","procellariidae","rallidae","recurvirostridae","rynchopidae","scolopacidae","spheniscidae","stercorariidae","sulidae","threskiornithidae","tyrannidae"],[7,25,52,2,1,15,3,56,2,22,1,5,1,5,8,1,25,100,8,4,3,32,3,3,1,15,84,6,9,3,56,19,7,10,6,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>family<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>birds <span class="ot">&lt;-</span> spp_all_wide <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&#39;aves&#39;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>bird_fam_sum <span class="ot">&lt;-</span> birds <span class="sc">%&gt;%</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(family) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n_distinct</span>(species))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(bird_fam_sum)</span></code></pre></div>
+<div id="htmlwidget-df81d21dba241d398438" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-df81d21dba241d398438">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["alcidae","anatidae","diomedeidae","fregatidae","gaviidae","hydrobatidae","laridae","pelecanidae","pelecanoididae","phaethontidae","phalacrocoracidae","phalaropodidae","podicipedidae","procellariidae","spheniscidae","stercorariidae","sulidae"],[24,18,21,5,5,23,81,3,4,3,28,2,4,81,18,6,10]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>family<\/th>\n      <th>n<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":2},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="match-species-with-known-vulnerability-to-most-specific-rank" class="section level2" number="2.2">
@@ -440,31 +443,28 @@ div.tocify {
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>check_class_list <span class="ot">&lt;-</span> <span class="fu">classification</span>(unmatched_df<span class="sc">$</span>spp_gp, <span class="at">db =</span> <span class="st">&#39;worms&#39;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(unmatched_df<span class="sc">$</span>spp_gp)</span></code></pre></div>
-<pre><code>## ══  19 queries  ══════════════
-## ✓  Found:  taeniurops
+<pre><code>## ══  12 queries  ══════════════
 ## ✓  Found:  spiniraja whitleyi
-## x  Not Found:  ardenna
-## x  Not Found:  ichthyaetus
+##        id                target       authority      status
+## 1 1471549           Leucophaeus     Bruch, 1853    accepted
+## 2  343613           Leucophaeus Bonaparte, 1853 nomen nudum
+## 3  344089 Leucophaeus scoresbii  (Traill, 1823)    accepted
+## x  Not Found:  leucophaeus
 ## ✓  Found:  chroicocephalus
-## ✓  Found:  thalasseus
+## ✓  Found:  phaetusa
 ## ✓  Found:  cellana tramoserica
-## ✓  Found:  ostrea angasi
-## ✓  Found:  oceanitidae
 ## ✓  Found:  lottia scutum
 ## ✓  Found:  balaenoptera brydei
-## ✓  Found:  bathytoshia
 ## ✓  Found:  manta
-## ✓  Found:  muusoctopus normani
 ## ✓  Found:  nautilus repertus
 ## x  Not Found:  nautilus suluensis
-## ✓  Found:  octopus filosus
 ## ✓  Found:  semirossia
 ## ✓  Found:  sousa chinensis taiwanensis
 ## ══  Results  ═════════════════
 ## 
-## ● Total: 19 
-## ● Found: 16 
-## ● Not Found: 3</code></pre>
+## ● Total: 12 
+## ● Found: 10 
+## ● Not Found: 2</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>check_class_df <span class="ot">&lt;-</span> check_class_list[<span class="sc">!</span><span class="fu">is.na</span>(check_class_list)] <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;spp_gp_orig&#39;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.character, tolower)</span>
@@ -477,8 +477,8 @@ div.tocify {
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(check_accepted_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;sciname&#39;</span>, <span class="st">&#39;id&#39;</span>))</span></code></pre></div>
 <div id="unmatched-spp-groups-with-scored-traits" class="section level3" number="2.2.1">
 <h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Unmatched spp groups with scored traits:</h3>
-<div id="htmlwidget-dbf1f70e94c900d2c128" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dbf1f70e94c900d2c128">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["elasmobranchs","elasmobranchs","seabirds","seabirds","seabirds","seabirds","molluscs","molluscs","seabirds","molluscs","marine_mammals","elasmobranchs","elasmobranchs","cephalopods","cephalopods","cephalopods","cephalopods","cephalopods","marine_mammals"],["taeniurops","spiniraja whitleyi","ardenna","ichthyaetus","chroicocephalus","thalasseus","cellana tramoserica","ostrea angasi","oceanitidae","lottia scutum","balaenoptera brydei","bathytoshia","manta","muusoctopus normani","nautilus repertus","nautilus suluensis","octopus filosus","semirossia","sousa chinensis taiwanensis"],[true,true,false,false,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true],["taeniurops","spiniraja whitleyi",null,null,"chroicocephalus","thalasseus","cellana tramoserica","ostrea angasi","oceanitidae","lottia scutum","balaenoptera brydei","bathytoshia","manta","muusoctopus normani","nautilus repertus",null,"octopus filosus","semirossia","sousa chinensis taiwanensis"],["genus","species",null,null,"genus","genus","species","species","family","species","species","genus","genus","species","species",null,"species","genus","subspecies"],[712240,712958,null,null,465357,413038,325467,397159,136997,456605,242603,296132,105755,527158,342237,null,341972,157035,853079],["unaccepted","accepted",null,null,"accepted","unaccepted","accepted","accepted","unaccepted","accepted","taxon inquirendum","unaccepted","accepted","unaccepted","taxon inquirendum",null,"unaccepted","accepted","accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c8297e14ce8752a309d1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c8297e14ce8752a309d1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12"],["elasmobranchs","seabirds","seabirds","seabirds","molluscs","molluscs","marine_mammals","elasmobranchs","cephalopods","cephalopods","cephalopods","marine_mammals"],["spiniraja whitleyi","leucophaeus","chroicocephalus","phaetusa","cellana tramoserica","lottia scutum","balaenoptera brydei","manta","nautilus repertus","nautilus suluensis","semirossia","sousa chinensis taiwanensis"],[true,false,true,true,true,true,true,true,true,false,true,true],["spiniraja whitleyi",null,"chroicocephalus","phaetusa","cellana tramoserica","lottia scutum","balaenoptera brydei","manta","nautilus repertus",null,"semirossia","sousa chinensis taiwanensis"],["species",null,"genus","genus","species","species","species","genus","species",null,"genus","subspecies"],[712958,null,465357,343624,325467,456605,242603,105755,342237,null,157035,853079],["accepted",null,"accepted","accepted","accepted","accepted","taxon inquirendum","accepted","taxon inquirendum",null,"accepted","accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Problems where a taxon is found, and accepted, may mean error in the <code>downstream</code> call. Check the various <code>X_from_X.csv</code> dataframes to figure out where this taxon is being dropped.</li>
 <li>problems where a taxon is found, but not accepted (or not a main rank), may indicate species where an alternate name will fix the issue.
@@ -493,7 +493,6 @@ div.tocify {
 <p>Specific problems:</p>
 <ul>
 <li><em>Cellana tramoserica</em> upstream has no “order” rank.</li>
-<li><em>Ostrea angasi</em> seems legit but not recognized in WoRMS.</li>
 </ul>
 </div>
 </div>
@@ -581,7 +580,7 @@ div.tocify {
 <span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(spp_vuln,  <span class="fu">here</span>(<span class="st">&#39;int/vuln_downfill_only.csv&#39;</span>))</span></code></pre></div>
 <div id="how-many-matched-at-each-level" class="section level3" number="2.3.1">
 <h3 number="2.3.1"><span class="header-section-number">2.3.1</span> How many matched at each level?</h3>
-<p>There are 13917 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
+<p>There are 13784 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(match_rank) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">n_spp_matched =</span> <span class="fu">n_distinct</span>(species)))</span></code></pre></div>
@@ -603,15 +602,15 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td align="left">family</td>
-<td align="right">2986</td>
+<td align="right">2872</td>
 </tr>
 <tr class="even">
 <td align="left">genus</td>
-<td align="right">1622</td>
+<td align="right">1602</td>
 </tr>
 <tr class="odd">
 <td align="left">species</td>
-<td align="right">575</td>
+<td align="right">576</td>
 </tr>
 </tbody>
 </table>
@@ -659,7 +658,7 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">molluscs</td>
-<td align="right">43</td>
+<td align="right">44</td>
 </tr>
 <tr class="odd">
 <td align="left">polychaetes</td>
@@ -671,7 +670,7 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td align="left">seabirds</td>
-<td align="right">466</td>
+<td align="right">332</td>
 </tr>
 <tr class="even">
 <td align="left">sponges</td>
@@ -680,7 +679,7 @@ div.tocify {
 </tbody>
 </table>
 <p>Total number of species matched with down-fill:</p>
-<p>13917</p>
+<p>13784</p>
 </div>
 </div>
 </div>

@@ -1671,28 +1671,6 @@ arctocephalus,storm_disturbance,marine_mammals,0.99,6.2700000000000005,0.67
 arctocephalus,uv,marine_mammals,0,6.2700000000000005,0
 arctocephalus,water_temp,marine_mammals,2.33,6.2700000000000005,0.33
 arctocephalus,wildlife_strike,marine_mammals,2.67,6.2700000000000005,0.67
-ardenna,air_temp,seabirds,1.67,6.1575,0.67
-ardenna,biomass_removal,seabirds,1,6.1575,0
-ardenna,bycatch,seabirds,1.505,6.1575,0
-ardenna,entanglement_macroplastic,seabirds,0.9950000000000001,6.1575,0.33
-ardenna,eutrophication_nutrient_pollution,seabirds,1,6.1575,1
-ardenna,habitat_loss_degradation,seabirds,3,6.1575,1
-ardenna,inorganic_pollution,seabirds,3.15,6.1575,1
-ardenna,invasive_species,seabirds,1,6.1575,1
-ardenna,light_pollution,seabirds,1,6.1575,1
-ardenna,noise_pollution,seabirds,2,6.1575,1
-ardenna,oa,seabirds,0.66,6.1575,1
-ardenna,oceanographic,seabirds,0,6.1575,0.33
-ardenna,organic_pollution,seabirds,3.1550000000000002,6.1575,1
-ardenna,plastic_pollution_microplastic,seabirds,0.33,6.1575,0.67
-ardenna,poisons_toxins,seabirds,0.33,6.1575,1
-ardenna,salinity,seabirds,0,6.1575,1
-ardenna,sedimentation,seabirds,1.835,6.1575,1
-ardenna,slr,seabirds,2.33,6.1575,1
-ardenna,storm_disturbance,seabirds,2.3200000000000003,6.1575,1
-ardenna,uv,seabirds,0,6.1575,0
-ardenna,water_temp,seabirds,1,6.1575,0.67
-ardenna,wildlife_strike,seabirds,2.505,6.1575,1
 argonauta,air_temp,cephalopods,3.0100000000000002,7,0.67
 argonauta,biomass_removal,cephalopods,1,7,0
 argonauta,bycatch,cephalopods,1.34,7,0
@@ -2573,28 +2551,6 @@ bathyraja,storm_disturbance,elasmobranchs,0.33,2.99,0.67
 bathyraja,uv,elasmobranchs,0,2.99,0
 bathyraja,water_temp,elasmobranchs,0,2.99,0.33
 bathyraja,wildlife_strike,elasmobranchs,0.835,2.99,0.67
-bathytoshia,air_temp,elasmobranchs,0,3.66,0.67
-bathytoshia,biomass_removal,elasmobranchs,1,3.66,0
-bathytoshia,bycatch,elasmobranchs,1.33,3.66,0
-bathytoshia,entanglement_macroplastic,elasmobranchs,1,3.66,0.67
-bathytoshia,eutrophication_nutrient_pollution,elasmobranchs,2,3.66,0.67
-bathytoshia,habitat_loss_degradation,elasmobranchs,2,3.66,1
-bathytoshia,inorganic_pollution,elasmobranchs,1.99,3.66,0.67
-bathytoshia,invasive_species,elasmobranchs,0,3.66,0.33
-bathytoshia,light_pollution,elasmobranchs,0,3.66,1
-bathytoshia,noise_pollution,elasmobranchs,0,3.66,0.67
-bathytoshia,oa,elasmobranchs,0.33,3.66,0.67
-bathytoshia,oceanographic,elasmobranchs,0.33,3.66,0
-bathytoshia,organic_pollution,elasmobranchs,2.66,3.66,1
-bathytoshia,plastic_pollution_microplastic,elasmobranchs,1,3.66,0.67
-bathytoshia,poisons_toxins,elasmobranchs,1.6600000000000001,3.66,0.67
-bathytoshia,salinity,elasmobranchs,1,3.66,0.67
-bathytoshia,sedimentation,elasmobranchs,1,3.66,0.67
-bathytoshia,slr,elasmobranchs,0.33,3.66,1
-bathytoshia,storm_disturbance,elasmobranchs,0.33,3.66,0.67
-bathytoshia,uv,elasmobranchs,0,3.66,0
-bathytoshia,water_temp,elasmobranchs,0,3.66,0.33
-bathytoshia,wildlife_strike,elasmobranchs,1,3.66,0.67
 bathyuroconger vicinus,air_temp,fish,2.68,6.33,0.67
 bathyuroconger vicinus,biomass_removal,fish,1,6.33,0
 bathyuroconger vicinus,bycatch,fish,1.33,6.33,0
@@ -4795,28 +4751,28 @@ daption,storm_disturbance,seabirds,2.3200000000000003,6.100833333333333,1.67
 daption,uv,seabirds,0,6.100833333333333,0
 daption,water_temp,seabirds,1,6.100833333333333,1
 daption,wildlife_strike,seabirds,2.34,6.100833333333333,1.67
-dasyatis,air_temp,elasmobranchs,0,2.33,0.67
-dasyatis,biomass_removal,elasmobranchs,1,2.33,0
-dasyatis,bycatch,elasmobranchs,1.165,2.33,0
-dasyatis,entanglement_macroplastic,elasmobranchs,0.665,2.33,0.67
-dasyatis,eutrophication_nutrient_pollution,elasmobranchs,2,2.33,0.67
-dasyatis,habitat_loss_degradation,elasmobranchs,2,2.33,1
-dasyatis,inorganic_pollution,elasmobranchs,2.16,2.33,0.67
-dasyatis,invasive_species,elasmobranchs,0,2.33,0.33
-dasyatis,light_pollution,elasmobranchs,0,2.33,1
-dasyatis,noise_pollution,elasmobranchs,0,2.33,0.67
-dasyatis,oa,elasmobranchs,0.33,2.33,0.67
-dasyatis,oceanographic,elasmobranchs,0.33,2.33,0
-dasyatis,organic_pollution,elasmobranchs,2.495,2.33,1
-dasyatis,plastic_pollution_microplastic,elasmobranchs,1,2.33,0.67
-dasyatis,poisons_toxins,elasmobranchs,1.6600000000000001,2.33,0.67
-dasyatis,salinity,elasmobranchs,1,2.33,0.67
-dasyatis,sedimentation,elasmobranchs,1.165,2.33,0.67
-dasyatis,slr,elasmobranchs,0.33,2.33,1
-dasyatis,storm_disturbance,elasmobranchs,0.33,2.33,0.67
-dasyatis,uv,elasmobranchs,0,2.33,0
-dasyatis,water_temp,elasmobranchs,0,2.33,0.33
-dasyatis,wildlife_strike,elasmobranchs,0.835,2.33,0.67
+dasyatis,air_temp,elasmobranchs,0,3.16,0.67
+dasyatis,biomass_removal,elasmobranchs,1,3.16,0
+dasyatis,bycatch,elasmobranchs,1.165,3.16,0
+dasyatis,entanglement_macroplastic,elasmobranchs,0.665,3.16,0.67
+dasyatis,eutrophication_nutrient_pollution,elasmobranchs,2,3.16,0.67
+dasyatis,habitat_loss_degradation,elasmobranchs,2,3.16,1
+dasyatis,inorganic_pollution,elasmobranchs,2.16,3.16,0.67
+dasyatis,invasive_species,elasmobranchs,0,3.16,0.33
+dasyatis,light_pollution,elasmobranchs,0,3.16,1
+dasyatis,noise_pollution,elasmobranchs,0,3.16,0.67
+dasyatis,oa,elasmobranchs,0.33,3.16,0.67
+dasyatis,oceanographic,elasmobranchs,0.33,3.16,0
+dasyatis,organic_pollution,elasmobranchs,2.495,3.16,1
+dasyatis,plastic_pollution_microplastic,elasmobranchs,1,3.16,0.67
+dasyatis,poisons_toxins,elasmobranchs,1.6600000000000001,3.16,0.67
+dasyatis,salinity,elasmobranchs,1,3.16,0.67
+dasyatis,sedimentation,elasmobranchs,1.165,3.16,0.67
+dasyatis,slr,elasmobranchs,0.33,3.16,1
+dasyatis,storm_disturbance,elasmobranchs,0.33,3.16,0.67
+dasyatis,uv,elasmobranchs,0,3.16,0
+dasyatis,water_temp,elasmobranchs,0,3.16,0.33
+dasyatis,wildlife_strike,elasmobranchs,0.835,3.16,0.67
 delphinapterus leucas,air_temp,marine_mammals,2.34,5.99,2.34
 delphinapterus leucas,biomass_removal,marine_mammals,1,5.99,0
 delphinapterus leucas,bycatch,marine_mammals,1.67,5.99,0
@@ -8381,28 +8337,6 @@ hypsoblennius striatus,storm_disturbance,fish,0.66,10.01,1.34
 hypsoblennius striatus,uv,fish,0.33,10.01,0.67
 hypsoblennius striatus,water_temp,fish,3.3400000000000003,10.01,0.33
 hypsoblennius striatus,wildlife_strike,fish,0.67,10.01,0.67
-ichthyaetus,air_temp,seabirds,1.67,6.683333333333334,1.34
-ichthyaetus,biomass_removal,seabirds,1,6.683333333333334,0
-ichthyaetus,bycatch,seabirds,1.505,6.683333333333334,0
-ichthyaetus,entanglement_macroplastic,seabirds,0.9950000000000001,6.683333333333334,1
-ichthyaetus,eutrophication_nutrient_pollution,seabirds,1,6.683333333333334,1.67
-ichthyaetus,habitat_loss_degradation,seabirds,3,6.683333333333334,2
-ichthyaetus,inorganic_pollution,seabirds,3.15,6.683333333333334,1.67
-ichthyaetus,invasive_species,seabirds,1,6.683333333333334,1.33
-ichthyaetus,light_pollution,seabirds,1,6.683333333333334,2
-ichthyaetus,noise_pollution,seabirds,2,6.683333333333334,1.67
-ichthyaetus,oa,seabirds,0.66,6.683333333333334,1.67
-ichthyaetus,oceanographic,seabirds,0,6.683333333333334,0.33
-ichthyaetus,organic_pollution,seabirds,3.1550000000000002,6.683333333333334,2
-ichthyaetus,plastic_pollution_microplastic,seabirds,0.33,6.683333333333334,1.34
-ichthyaetus,poisons_toxins,seabirds,0.33,6.683333333333334,1.67
-ichthyaetus,salinity,seabirds,0,6.683333333333334,1.67
-ichthyaetus,sedimentation,seabirds,1.835,6.683333333333334,1.67
-ichthyaetus,slr,seabirds,2.33,6.683333333333334,2
-ichthyaetus,storm_disturbance,seabirds,2.3200000000000003,6.683333333333334,1.67
-ichthyaetus,uv,seabirds,0,6.683333333333334,0
-ichthyaetus,water_temp,seabirds,1,6.683333333333334,1
-ichthyaetus,wildlife_strike,seabirds,2.505,6.683333333333334,1.67
 idiosepius,air_temp,cephalopods,3,7,1.34
 idiosepius,biomass_removal,cephalopods,1,7,0
 idiosepius,bycatch,cephalopods,0.33,7,0
@@ -10581,28 +10515,28 @@ muusoctopus hokkaidensis,storm_disturbance,cephalopods,0.33,6.34,0.67
 muusoctopus hokkaidensis,uv,cephalopods,0,6.34,0
 muusoctopus hokkaidensis,water_temp,cephalopods,4.34,6.34,0.33
 muusoctopus hokkaidensis,wildlife_strike,cephalopods,0.67,6.34,0.67
-muusoctopus januarii,air_temp,cephalopods,4.01,6.34,0.67
-muusoctopus januarii,biomass_removal,cephalopods,1,6.34,0
-muusoctopus januarii,bycatch,cephalopods,1,6.34,0
-muusoctopus januarii,entanglement_macroplastic,cephalopods,0.33,6.34,0.67
-muusoctopus januarii,eutrophication_nutrient_pollution,cephalopods,5.34,6.34,0.67
-muusoctopus januarii,habitat_loss_degradation,cephalopods,2,6.34,1
-muusoctopus januarii,inorganic_pollution,cephalopods,6.01,6.34,0.67
-muusoctopus januarii,invasive_species,cephalopods,0,6.34,0.33
-muusoctopus januarii,light_pollution,cephalopods,0,6.34,1
-muusoctopus januarii,noise_pollution,cephalopods,1,6.34,0.67
-muusoctopus januarii,oa,cephalopods,3.67,6.34,0.67
-muusoctopus januarii,oceanographic,cephalopods,0.66,6.34,0
-muusoctopus januarii,organic_pollution,cephalopods,3.66,6.34,1
-muusoctopus januarii,plastic_pollution_microplastic,cephalopods,1,6.34,0.67
-muusoctopus januarii,poisons_toxins,cephalopods,2.33,6.34,0.67
-muusoctopus januarii,salinity,cephalopods,2.34,6.34,0.67
-muusoctopus januarii,sedimentation,cephalopods,2.67,6.34,0.67
-muusoctopus januarii,slr,cephalopods,0.33,6.34,1
-muusoctopus januarii,storm_disturbance,cephalopods,0.33,6.34,0.67
-muusoctopus januarii,uv,cephalopods,0,6.34,0
-muusoctopus januarii,water_temp,cephalopods,4.34,6.34,0.33
-muusoctopus januarii,wildlife_strike,cephalopods,0.67,6.34,0.67
+muusoctopus januarii,air_temp,cephalopods,4.01,7.005,0.67
+muusoctopus januarii,biomass_removal,cephalopods,1,7.005,0
+muusoctopus januarii,bycatch,cephalopods,1,7.005,0
+muusoctopus januarii,entanglement_macroplastic,cephalopods,0.33,7.005,0.67
+muusoctopus januarii,eutrophication_nutrient_pollution,cephalopods,5.34,7.005,0.67
+muusoctopus januarii,habitat_loss_degradation,cephalopods,2,7.005,1
+muusoctopus januarii,inorganic_pollution,cephalopods,6.01,7.005,0.67
+muusoctopus januarii,invasive_species,cephalopods,0,7.005,0.33
+muusoctopus januarii,light_pollution,cephalopods,0,7.005,1
+muusoctopus januarii,noise_pollution,cephalopods,1,7.005,0.67
+muusoctopus januarii,oa,cephalopods,3.67,7.005,0.67
+muusoctopus januarii,oceanographic,cephalopods,0.66,7.005,0
+muusoctopus januarii,organic_pollution,cephalopods,3.66,7.005,1
+muusoctopus januarii,plastic_pollution_microplastic,cephalopods,1,7.005,0.67
+muusoctopus januarii,poisons_toxins,cephalopods,2.33,7.005,0.67
+muusoctopus januarii,salinity,cephalopods,2.34,7.005,0.67
+muusoctopus januarii,sedimentation,cephalopods,2.67,7.005,0.67
+muusoctopus januarii,slr,cephalopods,0.33,7.005,1
+muusoctopus januarii,storm_disturbance,cephalopods,0.33,7.005,0.67
+muusoctopus januarii,uv,cephalopods,0,7.005,0
+muusoctopus januarii,water_temp,cephalopods,4.34,7.005,0.33
+muusoctopus januarii,wildlife_strike,cephalopods,0.67,7.005,0.67
 muusoctopus johnsonianus,air_temp,cephalopods,4.01,6.67,0.67
 muusoctopus johnsonianus,biomass_removal,cephalopods,1,6.67,0
 muusoctopus johnsonianus,bycatch,cephalopods,1,6.67,0
@@ -10713,28 +10647,6 @@ muusoctopus longibrachus,storm_disturbance,cephalopods,0.33,6.34,0.67
 muusoctopus longibrachus,uv,cephalopods,0,6.34,0
 muusoctopus longibrachus,water_temp,cephalopods,4.34,6.34,0.33
 muusoctopus longibrachus,wildlife_strike,cephalopods,0.67,6.34,0.67
-muusoctopus normani,air_temp,cephalopods,4.01,6.67,0.67
-muusoctopus normani,biomass_removal,cephalopods,1,6.67,0
-muusoctopus normani,bycatch,cephalopods,1,6.67,0
-muusoctopus normani,entanglement_macroplastic,cephalopods,0.33,6.67,0.67
-muusoctopus normani,eutrophication_nutrient_pollution,cephalopods,5.34,6.67,0.67
-muusoctopus normani,habitat_loss_degradation,cephalopods,2,6.67,1
-muusoctopus normani,inorganic_pollution,cephalopods,6.01,6.67,0.67
-muusoctopus normani,invasive_species,cephalopods,0,6.67,0.33
-muusoctopus normani,light_pollution,cephalopods,0,6.67,1
-muusoctopus normani,noise_pollution,cephalopods,1,6.67,0.67
-muusoctopus normani,oa,cephalopods,3.67,6.67,0.67
-muusoctopus normani,oceanographic,cephalopods,0.66,6.67,0
-muusoctopus normani,organic_pollution,cephalopods,3.66,6.67,1
-muusoctopus normani,plastic_pollution_microplastic,cephalopods,1,6.67,0.67
-muusoctopus normani,poisons_toxins,cephalopods,2.33,6.67,0.67
-muusoctopus normani,salinity,cephalopods,2.34,6.67,0.67
-muusoctopus normani,sedimentation,cephalopods,2.67,6.67,0.67
-muusoctopus normani,slr,cephalopods,0.33,6.67,1
-muusoctopus normani,storm_disturbance,cephalopods,0.33,6.67,0.67
-muusoctopus normani,uv,cephalopods,0,6.67,0
-muusoctopus normani,water_temp,cephalopods,4.34,6.67,0.33
-muusoctopus normani,wildlife_strike,cephalopods,0.67,6.67,0.67
 muusoctopus oregonae,air_temp,cephalopods,4.01,6.67,0.67
 muusoctopus oregonae,biomass_removal,cephalopods,1,6.67,0
 muusoctopus oregonae,bycatch,cephalopods,1,6.67,0
@@ -11703,28 +11615,6 @@ nymphon australe,storm_disturbance,crustacea_arthropods,0.66,6.165,1.67
 nymphon australe,uv,crustacea_arthropods,0.33,6.165,0
 nymphon australe,water_temp,crustacea_arthropods,1.99,6.165,1
 nymphon australe,wildlife_strike,crustacea_arthropods,0,6.165,1.67
-oceanitidae,air_temp,seabirds,1.67,5.880833333333333,1.34
-oceanitidae,biomass_removal,seabirds,1,5.880833333333333,0
-oceanitidae,bycatch,seabirds,1.34,5.880833333333333,0
-oceanitidae,entanglement_macroplastic,seabirds,0.66,5.880833333333333,1
-oceanitidae,eutrophication_nutrient_pollution,seabirds,1,5.880833333333333,1.67
-oceanitidae,habitat_loss_degradation,seabirds,3,5.880833333333333,2
-oceanitidae,inorganic_pollution,seabirds,3.3200000000000003,5.880833333333333,1.67
-oceanitidae,invasive_species,seabirds,1,5.880833333333333,1.33
-oceanitidae,light_pollution,seabirds,1,5.880833333333333,2
-oceanitidae,noise_pollution,seabirds,2,5.880833333333333,1.67
-oceanitidae,oa,seabirds,0.66,5.880833333333333,1.67
-oceanitidae,oceanographic,seabirds,0,5.880833333333333,0.33
-oceanitidae,organic_pollution,seabirds,2.99,5.880833333333333,2
-oceanitidae,plastic_pollution_microplastic,seabirds,0.33,5.880833333333333,1.34
-oceanitidae,poisons_toxins,seabirds,0.33,5.880833333333333,1.67
-oceanitidae,salinity,seabirds,0,5.880833333333333,1.67
-oceanitidae,sedimentation,seabirds,2,5.880833333333333,1.67
-oceanitidae,slr,seabirds,2.33,5.880833333333333,2
-oceanitidae,storm_disturbance,seabirds,2.3200000000000003,5.880833333333333,1.67
-oceanitidae,uv,seabirds,0,5.880833333333333,0
-oceanitidae,water_temp,seabirds,1,5.880833333333333,1
-oceanitidae,wildlife_strike,seabirds,2.34,5.880833333333333,1.67
 octopoteuthis,air_temp,cephalopods,3.0100000000000002,8,1.67
 octopoteuthis,biomass_removal,cephalopods,1,8,0
 octopoteuthis,bycatch,cephalopods,1,8,0
@@ -11813,28 +11703,6 @@ octopus bimaculoides,storm_disturbance,cephalopods,0.33,7,0.67
 octopus bimaculoides,uv,cephalopods,0,7,0
 octopus bimaculoides,water_temp,cephalopods,4.01,7,0.33
 octopus bimaculoides,wildlife_strike,cephalopods,0.67,7,0.67
-octopus filosus,air_temp,cephalopods,3.68,7,0.67
-octopus filosus,biomass_removal,cephalopods,1,7,0
-octopus filosus,bycatch,cephalopods,1,7,0
-octopus filosus,entanglement_macroplastic,cephalopods,0.33,7,0.67
-octopus filosus,eutrophication_nutrient_pollution,cephalopods,5.34,7,0.67
-octopus filosus,habitat_loss_degradation,cephalopods,2,7,1
-octopus filosus,inorganic_pollution,cephalopods,6.3500000000000005,7,0.67
-octopus filosus,invasive_species,cephalopods,0,7,0.33
-octopus filosus,light_pollution,cephalopods,0,7,1
-octopus filosus,noise_pollution,cephalopods,1,7,0.67
-octopus filosus,oa,cephalopods,3.67,7,0.67
-octopus filosus,oceanographic,cephalopods,0.66,7,0
-octopus filosus,organic_pollution,cephalopods,4,7,1
-octopus filosus,plastic_pollution_microplastic,cephalopods,1,7,0.67
-octopus filosus,poisons_toxins,cephalopods,2.33,7,0.67
-octopus filosus,salinity,cephalopods,2.34,7,0.67
-octopus filosus,sedimentation,cephalopods,2.67,7,0.67
-octopus filosus,slr,cephalopods,0.33,7,1
-octopus filosus,storm_disturbance,cephalopods,0.33,7,0.67
-octopus filosus,uv,cephalopods,0,7,0
-octopus filosus,water_temp,cephalopods,4.01,7,0.33
-octopus filosus,wildlife_strike,cephalopods,0.67,7,0.67
 octopus hubbsorum,air_temp,cephalopods,3.68,7.33,1.34
 octopus hubbsorum,biomass_removal,cephalopods,1,7.33,0
 octopus hubbsorum,bycatch,cephalopods,1,7.33,0
@@ -11857,28 +11725,28 @@ octopus hubbsorum,storm_disturbance,cephalopods,0.66,7.33,1.34
 octopus hubbsorum,uv,cephalopods,0.33,7.33,0.67
 octopus hubbsorum,water_temp,cephalopods,5.01,7.33,0.33
 octopus hubbsorum,wildlife_strike,cephalopods,0.67,7.33,0.67
-octopus hummelincki,air_temp,cephalopods,3.68,7.33,1.34
-octopus hummelincki,biomass_removal,cephalopods,1,7.33,0
-octopus hummelincki,bycatch,cephalopods,1,7.33,0
-octopus hummelincki,entanglement_macroplastic,cephalopods,0.33,7.33,0.67
-octopus hummelincki,eutrophication_nutrient_pollution,cephalopods,5.67,7.33,1
-octopus hummelincki,habitat_loss_degradation,cephalopods,2,7.33,1
-octopus hummelincki,inorganic_pollution,cephalopods,6.3500000000000005,7.33,1
-octopus hummelincki,invasive_species,cephalopods,0,7.33,0.33
-octopus hummelincki,light_pollution,cephalopods,0.33,7.33,1
-octopus hummelincki,noise_pollution,cephalopods,1,7.33,0.67
-octopus hummelincki,oa,cephalopods,4,7.33,1
-octopus hummelincki,oceanographic,cephalopods,0.66,7.33,0
-octopus hummelincki,organic_pollution,cephalopods,4.67,7.33,1.33
-octopus hummelincki,plastic_pollution_microplastic,cephalopods,2,7.33,1
-octopus hummelincki,poisons_toxins,cephalopods,3.33,7.33,1
-octopus hummelincki,salinity,cephalopods,2.67,7.33,1
-octopus hummelincki,sedimentation,cephalopods,3,7.33,1
-octopus hummelincki,slr,cephalopods,0.33,7.33,1
-octopus hummelincki,storm_disturbance,cephalopods,0.66,7.33,1.34
-octopus hummelincki,uv,cephalopods,0.33,7.33,0.67
-octopus hummelincki,water_temp,cephalopods,5.01,7.33,0.33
-octopus hummelincki,wildlife_strike,cephalopods,0.67,7.33,0.67
+octopus hummelincki,air_temp,cephalopods,3.68,7.165,1.0050000000000001
+octopus hummelincki,biomass_removal,cephalopods,1,7.165,0
+octopus hummelincki,bycatch,cephalopods,1,7.165,0
+octopus hummelincki,entanglement_macroplastic,cephalopods,0.33,7.165,0.67
+octopus hummelincki,eutrophication_nutrient_pollution,cephalopods,5.505,7.165,0.8350000000000001
+octopus hummelincki,habitat_loss_degradation,cephalopods,2,7.165,1
+octopus hummelincki,inorganic_pollution,cephalopods,6.3500000000000005,7.165,0.8350000000000001
+octopus hummelincki,invasive_species,cephalopods,0,7.165,0.33
+octopus hummelincki,light_pollution,cephalopods,0.165,7.165,1
+octopus hummelincki,noise_pollution,cephalopods,1,7.165,0.67
+octopus hummelincki,oa,cephalopods,3.835,7.165,0.8350000000000001
+octopus hummelincki,oceanographic,cephalopods,0.66,7.165,0
+octopus hummelincki,organic_pollution,cephalopods,4.335,7.165,1.165
+octopus hummelincki,plastic_pollution_microplastic,cephalopods,1.5,7.165,0.8350000000000001
+octopus hummelincki,poisons_toxins,cephalopods,2.83,7.165,0.8350000000000001
+octopus hummelincki,salinity,cephalopods,2.505,7.165,0.8350000000000001
+octopus hummelincki,sedimentation,cephalopods,2.835,7.165,0.8350000000000001
+octopus hummelincki,slr,cephalopods,0.33,7.165,1
+octopus hummelincki,storm_disturbance,cephalopods,0.495,7.165,1.0050000000000001
+octopus hummelincki,uv,cephalopods,0.165,7.165,0.335
+octopus hummelincki,water_temp,cephalopods,4.51,7.165,0.33
+octopus hummelincki,wildlife_strike,cephalopods,0.67,7.165,0.67
 octopus insularis,air_temp,cephalopods,3.68,7.33,1.34
 octopus insularis,biomass_removal,cephalopods,1,7.33,0
 octopus insularis,bycatch,cephalopods,1,7.33,0
@@ -14563,6 +14431,28 @@ phalacrocoracidae,storm_disturbance,seabirds,2.3200000000000003,6.21083333333333
 phalacrocoracidae,uv,seabirds,0,6.210833333333333,0
 phalacrocoracidae,water_temp,seabirds,1,6.210833333333333,1
 phalacrocoracidae,wildlife_strike,seabirds,2.505,6.210833333333333,1.67
+phalaropodidae,air_temp,seabirds,1.67,7.66,0.67
+phalaropodidae,biomass_removal,seabirds,1,7.66,0
+phalaropodidae,bycatch,seabirds,1.34,7.66,0
+phalaropodidae,entanglement_macroplastic,seabirds,0.66,7.66,0.33
+phalaropodidae,eutrophication_nutrient_pollution,seabirds,1,7.66,1
+phalaropodidae,habitat_loss_degradation,seabirds,3,7.66,1
+phalaropodidae,inorganic_pollution,seabirds,3.3200000000000003,7.66,1
+phalaropodidae,invasive_species,seabirds,1,7.66,1
+phalaropodidae,light_pollution,seabirds,1,7.66,1
+phalaropodidae,noise_pollution,seabirds,2,7.66,1
+phalaropodidae,oa,seabirds,0.66,7.66,1
+phalaropodidae,oceanographic,seabirds,0,7.66,0.33
+phalaropodidae,organic_pollution,seabirds,2.99,7.66,1
+phalaropodidae,plastic_pollution_microplastic,seabirds,0.33,7.66,0.67
+phalaropodidae,poisons_toxins,seabirds,0.33,7.66,1
+phalaropodidae,salinity,seabirds,0,7.66,1
+phalaropodidae,sedimentation,seabirds,2,7.66,1
+phalaropodidae,slr,seabirds,2.33,7.66,1
+phalaropodidae,storm_disturbance,seabirds,2.3200000000000003,7.66,1
+phalaropodidae,uv,seabirds,0,7.66,0
+phalaropodidae,water_temp,seabirds,1,7.66,0.67
+phalaropodidae,wildlife_strike,seabirds,2.34,7.66,1
 phocarctos,air_temp,marine_mammals,3,5.495,0.67
 phocarctos,biomass_removal,marine_mammals,1,5.495,0
 phocarctos,bycatch,marine_mammals,1.67,5.495,0
@@ -16235,28 +16125,6 @@ schroederichthys,storm_disturbance,elasmobranchs,0.33,2.33,0.67
 schroederichthys,uv,elasmobranchs,0,2.33,0
 schroederichthys,water_temp,elasmobranchs,0,2.33,0.33
 schroederichthys,wildlife_strike,elasmobranchs,0.835,2.33,0.67
-scolopacidae,air_temp,seabirds,1.67,7.66,0.67
-scolopacidae,biomass_removal,seabirds,1,7.66,0
-scolopacidae,bycatch,seabirds,1.34,7.66,0
-scolopacidae,entanglement_macroplastic,seabirds,0.66,7.66,0.33
-scolopacidae,eutrophication_nutrient_pollution,seabirds,1,7.66,1
-scolopacidae,habitat_loss_degradation,seabirds,3,7.66,1
-scolopacidae,inorganic_pollution,seabirds,3.3200000000000003,7.66,1
-scolopacidae,invasive_species,seabirds,1,7.66,1
-scolopacidae,light_pollution,seabirds,1,7.66,1
-scolopacidae,noise_pollution,seabirds,2,7.66,1
-scolopacidae,oa,seabirds,0.66,7.66,1
-scolopacidae,oceanographic,seabirds,0,7.66,0.33
-scolopacidae,organic_pollution,seabirds,2.99,7.66,1
-scolopacidae,plastic_pollution_microplastic,seabirds,0.33,7.66,0.67
-scolopacidae,poisons_toxins,seabirds,0.33,7.66,1
-scolopacidae,salinity,seabirds,0,7.66,1
-scolopacidae,sedimentation,seabirds,2,7.66,1
-scolopacidae,slr,seabirds,2.33,7.66,1
-scolopacidae,storm_disturbance,seabirds,2.3200000000000003,7.66,1
-scolopacidae,uv,seabirds,0,7.66,0
-scolopacidae,water_temp,seabirds,1,7.66,0.67
-scolopacidae,wildlife_strike,seabirds,2.34,7.66,1
 scyliorhinus,air_temp,elasmobranchs,0,2.33,0.67
 scyliorhinus,biomass_removal,elasmobranchs,1,2.33,0
 scyliorhinus,bycatch,elasmobranchs,1.165,2.33,0
@@ -17379,50 +17247,28 @@ synaphobranchus oregoni,storm_disturbance,fish,0.66,5.66,0.67
 synaphobranchus oregoni,uv,fish,0.33,5.66,0
 synaphobranchus oregoni,water_temp,fish,4.01,5.66,0.33
 synaphobranchus oregoni,wildlife_strike,fish,1,5.66,0.67
-taeniura,air_temp,elasmobranchs,0,4.66,0.67
-taeniura,biomass_removal,elasmobranchs,1,4.66,0
-taeniura,bycatch,elasmobranchs,1,4.66,0
-taeniura,entanglement_macroplastic,elasmobranchs,0.33,4.66,0.67
-taeniura,eutrophication_nutrient_pollution,elasmobranchs,2,4.66,0.67
-taeniura,habitat_loss_degradation,elasmobranchs,2,4.66,1
-taeniura,inorganic_pollution,elasmobranchs,2.33,4.66,0.67
-taeniura,invasive_species,elasmobranchs,0,4.66,0.33
-taeniura,light_pollution,elasmobranchs,0,4.66,1
-taeniura,noise_pollution,elasmobranchs,0,4.66,0.67
-taeniura,oa,elasmobranchs,0.33,4.66,0.67
-taeniura,oceanographic,elasmobranchs,0.33,4.66,0
-taeniura,organic_pollution,elasmobranchs,2.33,4.66,1
-taeniura,plastic_pollution_microplastic,elasmobranchs,1,4.66,0.67
-taeniura,poisons_toxins,elasmobranchs,1.6600000000000001,4.66,0.67
-taeniura,salinity,elasmobranchs,1,4.66,0.67
-taeniura,sedimentation,elasmobranchs,1.33,4.66,0.67
-taeniura,slr,elasmobranchs,0.33,4.66,1
-taeniura,storm_disturbance,elasmobranchs,0.33,4.66,0.67
-taeniura,uv,elasmobranchs,0,4.66,0
-taeniura,water_temp,elasmobranchs,0,4.66,0.33
-taeniura,wildlife_strike,elasmobranchs,0.67,4.66,0.67
-taeniurops,air_temp,elasmobranchs,0,2.99,0.67
-taeniurops,biomass_removal,elasmobranchs,1,2.99,0
-taeniurops,bycatch,elasmobranchs,1.165,2.99,0
-taeniurops,entanglement_macroplastic,elasmobranchs,0.665,2.99,0.67
-taeniurops,eutrophication_nutrient_pollution,elasmobranchs,2,2.99,0.67
-taeniurops,habitat_loss_degradation,elasmobranchs,2,2.99,1
-taeniurops,inorganic_pollution,elasmobranchs,2.16,2.99,0.67
-taeniurops,invasive_species,elasmobranchs,0,2.99,0.33
-taeniurops,light_pollution,elasmobranchs,0,2.99,1
-taeniurops,noise_pollution,elasmobranchs,0,2.99,0.67
-taeniurops,oa,elasmobranchs,0.33,2.99,0.67
-taeniurops,oceanographic,elasmobranchs,0.33,2.99,0
-taeniurops,organic_pollution,elasmobranchs,2.495,2.99,1
-taeniurops,plastic_pollution_microplastic,elasmobranchs,1,2.99,0.67
-taeniurops,poisons_toxins,elasmobranchs,1.6600000000000001,2.99,0.67
-taeniurops,salinity,elasmobranchs,1,2.99,0.67
-taeniurops,sedimentation,elasmobranchs,1.165,2.99,0.67
-taeniurops,slr,elasmobranchs,0.33,2.99,1
-taeniurops,storm_disturbance,elasmobranchs,0.33,2.99,0.67
-taeniurops,uv,elasmobranchs,0,2.99,0
-taeniurops,water_temp,elasmobranchs,0,2.99,0.33
-taeniurops,wildlife_strike,elasmobranchs,0.835,2.99,0.67
+taeniura,air_temp,elasmobranchs,0,4.325,0.67
+taeniura,biomass_removal,elasmobranchs,1,4.325,0
+taeniura,bycatch,elasmobranchs,1.165,4.325,0
+taeniura,entanglement_macroplastic,elasmobranchs,0.665,4.325,0.67
+taeniura,eutrophication_nutrient_pollution,elasmobranchs,2,4.325,0.67
+taeniura,habitat_loss_degradation,elasmobranchs,2,4.325,1
+taeniura,inorganic_pollution,elasmobranchs,2.16,4.325,0.67
+taeniura,invasive_species,elasmobranchs,0,4.325,0.33
+taeniura,light_pollution,elasmobranchs,0,4.325,1
+taeniura,noise_pollution,elasmobranchs,0,4.325,0.67
+taeniura,oa,elasmobranchs,0.33,4.325,0.67
+taeniura,oceanographic,elasmobranchs,0.33,4.325,0
+taeniura,organic_pollution,elasmobranchs,2.495,4.325,1
+taeniura,plastic_pollution_microplastic,elasmobranchs,1,4.325,0.67
+taeniura,poisons_toxins,elasmobranchs,1.6600000000000001,4.325,0.67
+taeniura,salinity,elasmobranchs,1,4.325,0.67
+taeniura,sedimentation,elasmobranchs,1.165,4.325,0.67
+taeniura,slr,elasmobranchs,0.33,4.325,1
+taeniura,storm_disturbance,elasmobranchs,0.33,4.325,0.67
+taeniura,uv,elasmobranchs,0,4.325,0
+taeniura,water_temp,elasmobranchs,0,4.325,0.33
+taeniura,wildlife_strike,elasmobranchs,0.835,4.325,0.67
 taningia danae,air_temp,cephalopods,3.0100000000000002,7.34,1.67
 taningia danae,biomass_removal,cephalopods,1,7.34,0
 taningia danae,bycatch,cephalopods,1.33,7.34,0
@@ -17599,28 +17445,6 @@ teuthowenia,storm_disturbance,cephalopods,0.66,8,1.67
 teuthowenia,uv,cephalopods,0.33,8,1.67
 teuthowenia,water_temp,cephalopods,4.01,8,0.67
 teuthowenia,wildlife_strike,cephalopods,0.67,8,0.67
-thalasseus,air_temp,seabirds,1.67,6.714166666666666,1.34
-thalasseus,biomass_removal,seabirds,1,6.714166666666666,0
-thalasseus,bycatch,seabirds,1.505,6.714166666666666,0
-thalasseus,entanglement_macroplastic,seabirds,0.9950000000000001,6.714166666666666,1
-thalasseus,eutrophication_nutrient_pollution,seabirds,1,6.714166666666666,1.67
-thalasseus,habitat_loss_degradation,seabirds,3,6.714166666666666,2
-thalasseus,inorganic_pollution,seabirds,3.15,6.714166666666666,1.67
-thalasseus,invasive_species,seabirds,1,6.714166666666666,1.33
-thalasseus,light_pollution,seabirds,1,6.714166666666666,2
-thalasseus,noise_pollution,seabirds,2,6.714166666666666,1.67
-thalasseus,oa,seabirds,0.66,6.714166666666666,1.67
-thalasseus,oceanographic,seabirds,0,6.714166666666666,0.33
-thalasseus,organic_pollution,seabirds,3.1550000000000002,6.714166666666666,2
-thalasseus,plastic_pollution_microplastic,seabirds,0.33,6.714166666666666,1.34
-thalasseus,poisons_toxins,seabirds,0.33,6.714166666666666,1.67
-thalasseus,salinity,seabirds,0,6.714166666666666,1.67
-thalasseus,sedimentation,seabirds,1.835,6.714166666666666,1.67
-thalasseus,slr,seabirds,2.33,6.714166666666666,2
-thalasseus,storm_disturbance,seabirds,2.3200000000000003,6.714166666666666,1.67
-thalasseus,uv,seabirds,0,6.714166666666666,0
-thalasseus,water_temp,seabirds,1,6.714166666666666,1
-thalasseus,wildlife_strike,seabirds,2.505,6.714166666666666,1.67
 thalassoica,air_temp,seabirds,1.67,6.100833333333333,1.34
 thalassoica,biomass_removal,seabirds,1,6.100833333333333,0
 thalassoica,bycatch,seabirds,1.34,6.100833333333333,0

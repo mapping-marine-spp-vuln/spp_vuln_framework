@@ -41,7 +41,7 @@ Use the `taxize` package:
 * `taxize::children()` to get immediate taxonomic children for a given taxon
 * `taxize::downstream()` to get names down to a specified rank, e.g., getting all species in a family.
 
-```{r}
+```{r setup functions}
 ### create a function to break up large species lists into chunks,
 ### saving to tmp, in case of breaks in internet connectivity
 classify_chunks <- function(spp_gps, chunk_size = 20, 
@@ -132,20 +132,28 @@ spp_traits <- read_csv('_data/spp_traits_valid.csv')
 
 y <- read_csv(here('int/taxize_results_all.csv')) %>%
   filter(spp_gp %in% spp_traits$spp_gp) %>%
-  left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
+  left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct()) %>%
+  distinct() %>%
+  ### filter NAs out, except where NA is the only record for a spp_gp
+  group_by(spp_gp) %>%
+  filter(!is.na(id) | all(is.na(id))) %>%
+  ungroup()
 
 ### any new groups?
 yy <- spp_traits %>%
   filter(!spp_gp %in% y$spp_gp) %>%
   .$spp_gp %>% unique()
 spp_gps_error <- y %>%
-  filter(error | is.na(id)) %>%
+  group_by(spp_gp) %>%
+  filter(error | all(is.na(id))) %>%
   .$spp_gp %>% unique()
 
 z <- classify_chunks(c(yy, spp_gps_error), db = db_api, overwrite = TRUE) %>%
   mutate(db = db_api)
 
-z %>% filter(error) %>% .$spp_gp %>% n_distinct()
+z %>% filter(error) %>% 
+  .$spp_gp %>% 
+  n_distinct()
 
 zz <- y %>%
   filter(!error) %>%
@@ -160,7 +168,7 @@ write_csv(zz, here('int/taxize_results_all.csv'))
 
 After manual fixes, WoRMS still leaves 4 unmatched out of 848 species groups, but these are duplicated elsewhere in the data e.g. Ardenna was formerly within Puffinus which is in the seabirds data (in the same category).
 
-```{r}
+```{r check matches of worms to spp_gp}
 spp_traits <- read_csv('_data/spp_traits_valid.csv')
 
 y <- read_csv(here('int/taxize_results_all.csv')) %>%
@@ -186,11 +194,9 @@ knitr::kable(spp_gps_error)
 
 Here we will use WoRMS data to get downstream ranks for all classes represented in the species traits data.  This will give us the structure of the trees moving down toward species, so each species will also have information on genus, family, order, etc.
 
-Here let's start at the kingdom level, and find all classes in WoRMS to identify any classes missing from our NCBI structured tree.  
-
 From the classes in WoRMS under each kingdom, get downstream information for each class.  Here we use the `downstream` function, with `intermediate = FALSE`.  We will do this iteratively for class --> order, order --> family, family --> genus, and genus --> species.  This way we can reassemble the structure.
 
-```{r}
+```{r moar functions}
 
 check_status <- function(check_ids) {
   check_ids <- check_ids[!is.na(check_ids)]
@@ -274,7 +280,7 @@ get_downstream <- function(gp_df, db = 'worms',
 
 ```{r get phylum from kingdom}
 
-p_from_k_file <- here('int/phylum_from_kingdom_worms.csv')
+p_from_k_file <- here('int/expand1_phylum_from_kingdom_worms.csv')
 
 if(!file.exists(p_from_k_file)) {
   taxize_results_all <- read_csv(here('int/taxize_results_all.csv'))
@@ -305,7 +311,7 @@ DT::datatable(p_from_k_df)
 
 ```{r get class from phylum}
 
-c_from_p_file <- here('int/class_from_phylum_worms.csv')
+c_from_p_file <- here('int/expand2_class_from_phylum_worms.csv')
 
 if(!file.exists(c_from_p_file)) {
   gp_df <- read_csv(p_from_k_file)
@@ -324,21 +330,27 @@ DT::datatable(c_from_p_df)
 ```
 
 ```{r order from class}
-o_from_c_file <- here('int/order_from_class_worms.csv')
+o_from_c_file <- here('int/expand3_order_from_class_worms.csv')
 
 if(!file.exists(o_from_c_file)) {
   gp_df <- read_csv(c_from_p_file)
   
   o_from_c_df <- get_downstream(gp_df, downto = 'order', downfrom = 'class', 
                                 namestem = 'o_from_c')
+  missing_order_fix <- tribble( 
+    ~	id, ~ name, ~ rank, ~ parent, ~ parent_level,
+    391063, 'lottioidea', 'order', 'gastropoda', 'class',  ### substitute superfamily for order...
+    156481, 'patelloidea', 'order', 'gastropoda', 'class') ### substitute superfamily for order...
 
+  o_from_c_df <- o_from_c_df %>%
+    bind_rows(missing_order_fix)
   write_csv(o_from_c_df, o_from_c_file)
 }
 
 ```
 
 ```{r family from order}
-f_from_o_file <- here('int/family_from_order_worms.csv')
+f_from_o_file <- here('int/expand4_family_from_order_worms.csv')
 
 if(!file.exists(f_from_o_file)) {
   gp_df <- read_csv(o_from_c_file) %>%
@@ -354,7 +366,7 @@ if(!file.exists(f_from_o_file)) {
 
 ```{r genus from family}
 
-g_from_f_file <- here('int/genus_from_family_worms.csv')
+g_from_f_file <- here('int/expand5_genus_from_family_worms.csv')
 
 if(!file.exists(g_from_f_file)) {
   gp_df <- read_csv(f_from_o_file) %>%
@@ -368,7 +380,7 @@ if(!file.exists(g_from_f_file)) {
 ```
 
 ```{r species from genus}
-s_from_g_file <- here('int/species_from_genus_worms.csv')
+s_from_g_file <- here('int/expand6_species_from_genus_worms.csv')
 
 if(!file.exists(s_from_g_file)) {
   gp_df <- read_csv(g_from_f_file) %>%
@@ -386,7 +398,7 @@ if(!file.exists(s_from_g_file)) {
 
 How many species? how many genera? etc.
 
-```{r}
+```{r compare numbers of spp}
 s_from_g <- read_csv(s_from_g_file)
 g_from_f <- read_csv(g_from_f_file)
 f_from_o <- read_csv(f_from_o_file)
@@ -414,7 +426,7 @@ knitr::kable(all_ranks_sum)
 
 These are species whose traits we can infer directly from data given to us by our taxon experts, at different levels.  Note, half the matches are related to class-level traits - and the only class-level traits we were given are from Demospongiae, so many of our current direct matches are sponges.
 
-``` {r}
+``` {r potential spp matches}
 trait_spp_gps <- read_csv(here('_data/spp_traits_valid.csv')) %>%
   select(taxon, spp_gp) %>%
   distinct()
@@ -503,7 +515,7 @@ knitr::kable(match_summary)
 
 These are species groups with traits given to us by the taxon experts, that are not currently matching up with data from WoRMS.
 
-``` {r}
+``` {r spp_gp still unmatched}
 traits_unmatched <- trait_spp_gps %>%
   filter(!spp_gp %in% matched_df$name)
 
@@ -517,7 +529,22 @@ compare <- traits_unmatched_sum %>%
   left_join(traits_tot_sum, by = 'taxon') %>%
   mutate(error_rate = round(n_gps_unmatched / n_gps_tot, 3))
 knitr::kable(compare)
+
+knitr::kable(traits_unmatched)
 ```
+
+#### Problems
+
+**To not worry about:**
+* _Sousa chinensis taiwanensis_ is a subspecies of _Sousa chinensis_ (which is included in WoRMS but not the traits XLSX), so fails to match. 
+* _Balaenoptera brydei_ is status _taxon inquirendum_, rather than accepted.
+* _Nautilus suluensis_ not found in WoRMS. _Nautilus repertus_ status _taxon inquirendum_.
+
+**To address:**
+
+* _Lottia scutum_ and _Cellana tramoserica_ have no "order" rank, so they are dropping out.  How to reconcile that?!
+* _Semirossia_ - ??? not sure why this is failing.
+* _Spiniraja whitleyii_ is accepted, but the genus _Spiniraja_ is unaccepted, instead accepted as _Raja_ - how to reconcile that?!
 
 ### Marine species without matches
 

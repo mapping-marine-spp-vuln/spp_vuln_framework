@@ -53,9 +53,12 @@ spp_all_long <- assemble_worms('long')
 ### check birds
 
 ```{r}
-birds <- spp_all_wide %>% filter(class == 'aves')
+birds <- spp_all_wide %>% 
+  filter(class == 'aves')
 
-bird_fam_sum <- birds %>% group_by(family) %>% summarize(n = n_distinct(species))
+bird_fam_sum <- birds %>% 
+  group_by(family) %>% 
+  summarize(n = n_distinct(species))
 DT::datatable(bird_fam_sum)
 ```
 
@@ -124,7 +127,6 @@ unmatch_check_df <- unmatched_df %>%
 Specific problems:
 
 * _Cellana tramoserica_ upstream has no "order" rank.
-* _Ostrea angasi_ seems legit but not recognized in WoRMS.
 
 ## Expand classification for matched species
 
