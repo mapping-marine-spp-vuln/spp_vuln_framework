@@ -79,7 +79,6 @@ bathypolypus sponsalis,cephalopods,0,mesopelagic;bathypelagic;neritic;benthic,TR
 bathypolypus valdiviae,cephalopods,0,epipelagic;mesopelagic;bathypelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 bathypurpurata profunda,cephalopods,0,mesopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 bathyraja,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;abyssopelagic;benthic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
-bathytoshia,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 bathyuroconger vicinus,fish,0,epipelagic;mesopelagic;bathypelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 bentheledone rotunda,cephalopods,0,bathypelagic;abyssopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 beringraja,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;abyssopelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
@@ -292,7 +291,6 @@ muusoctopus karubar,cephalopods,0,mesopelagic;bathypelagic;neritic;benthic,TRUE,
 muusoctopus leioderma,cephalopods,0,epipelagic;mesopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 muusoctopus levis,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 muusoctopus longibrachus,cephalopods,0,epipelagic;mesopelagic;bathypelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
-muusoctopus normani,cephalopods,0,mesopelagic;bathypelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 muusoctopus oregonae,cephalopods,0,mesopelagic;bathypelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 muusoctopus oregonensis,cephalopods,0,bathypelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 muusoctopus profundorum,cephalopods,0,epipelagic;mesopelagic;bathypelagic;abyssopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
@@ -326,9 +324,8 @@ nymphon australe,crustacea_arthropods,0,epipelagic;mesopelagic;bathypelagic;bent
 octopus,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 octopus bimaculatus,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 octopus bimaculoides,cephalopods,0,epipelagic;mesopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
-octopus filosus,cephalopods,0,epipelagic;mesopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 octopus hubbsorum,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
-octopus hummelincki,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+octopus hummelincki,cephalopods,0,epipelagic;mesopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 octopus insularis,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 octopus maya,cephalopods,0,epipelagic;mesopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 octopus mimus,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
@@ -483,8 +480,7 @@ strongylocentrotus droebachiensis,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FA
 strongylocentrotus fragilis,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 strongylocentrotus pallidus,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 strongylocentrotus purpuratus,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
-taeniura,elasmobranchs,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
-taeniurops,elasmobranchs,0,epipelagic;mesopelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+taeniura,elasmobranchs,0,epipelagic;mesopelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 tegula funebralis,molluscs,0,epipelagic;intertidal,FALSE,TRUE,TRUE,TRUE,TRUE,wildlife_strike
 telatrygon,elasmobranchs,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 tetracheledone spinicirrhus,cephalopods,0,epipelagic;mesopelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike

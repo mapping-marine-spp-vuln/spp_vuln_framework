@@ -30,11 +30,11 @@ echinoderms,physiological tolerance breadths,sensitivity to wave energy (physica
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus fragilis,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus pallidus,senstive,100
 echinoderms,physiological tolerance breadths,sensitivity to wave energy (physical forcing),strongylocentrotus purpuratus,senstive,100
-elasmobranchs,r (reproductive traits),are there sub-populations?,anacanthobatidae,possibly,135
-elasmobranchs,r (reproductive traits),are there sub-populations?,cruriraja,possibly,135
-elasmobranchs,r (reproductive traits),are there sub-populations?,fenestraja,possibly,135
-elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiella,possibly,135
-elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,135
+elasmobranchs,r (reproductive traits),are there sub-populations?,anacanthobatidae,possibly,133
+elasmobranchs,r (reproductive traits),are there sub-populations?,cruriraja,possibly,133
+elasmobranchs,r (reproductive traits),are there sub-populations?,fenestraja,possibly,133
+elasmobranchs,r (reproductive traits),are there sub-populations?,gurgesiella,possibly,133
+elasmobranchs,r (reproductive traits),are there sub-populations?,gymnuridae,possibly,133
 fish,r (reproductive traits),can the sex ratio be altered by temperature?,amphiprion akindynos,yes-if female dies a male takes over and becomes female,115
 fish,physiological tolerance breadths,salinity,anguilla australis,catadromous,115
 fish,physiological tolerance breadths,salinity,anguilla australis,sw-fw-sw,115
@@ -89,10 +89,6 @@ marine_mammals,physiological tolerance breadths,salinity,trichechus senegalensis
 marine_mammals,specialisation,extreme diet specialization,trichechus senegalensis,specialist-vegetation,61
 marine_mammals,r (reproductive traits),can the sex ratio be altered by temperature?,ursus maritimus,yes-sex-selective hunting,61
 marine_mammals,specialisation,extreme diet specialization,ursus maritimus,no,61
-plants_algae,biophysical traits,calcium carbonate structure stages,porolithon,calcification after germination and through adulthood,4
-plants_algae,physiological tolerance breadths,salinity,porolithon,narrow,4
-plants_algae,r (reproductive traits),are there sub-populations?,porolithon,likely,4
-plants_algae,spatial scale of species,depth (min/max),porolithon,atmosphere,4
 polychaetes,physiological tolerance breadths,dissolved oxygen,nephtyidae,character(0),4
 polychaetes,physiological tolerance breadths,dissolved oxygen,nereididae,character(0),4
 polychaetes,physiological tolerance breadths,dissolved oxygen,sabellidae,character(0),4

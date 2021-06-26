@@ -1347,6 +1347,7 @@ spp_data_out <- spp_data_clean %>%
          spp_gp = str_remove_all(spp_gp, '\\((was|incl).+?\\)'),
          spp_gp = str_split(spp_gp, ';')) %>%
   unnest(spp_gp) %>%
+  mutate(spp_gp = str_trim(spp_gp)) %>%
   rename(trait_val_orig = trait_value) %>%
   distinct() %>%
   group_by(category, trait, sheet, spp_gp) %>%
@@ -1357,6 +1358,8 @@ spp_data_out <- spp_data_clean %>%
   ungroup()
 
 sheets <- spp_data_out$sheet %>% unique()
+
+unlink(here('_raw_data/spp_trait_csvs/spp_traits_*.csv'))
 
 for(s in sheets) { ### s <- sheets[1]
   spp_gp_data <- spp_data_out %>%

@@ -243,28 +243,39 @@ if(!file.exists(gen_fill_file) | reload) {
   
   genera <- gen_fill_qty$genus %>% unique()
   
-  genera_list <- parallel::mclapply(genera, mc.cores = 20,
-    FUN = function(g) {### g <- genera[1]
-      g_df <- gen_fill_prob %>%
-        filter(genus == g) %>%
-        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-      
-      message('Sampling ', iters, ' MC iterations for genus ', g)
+  tmp_fstem <- here('tmp/gen_fill_mc_%s.csv')
+  force <- FALSE
   
-      mc_results_df <- g_df %>%
-        rowwise() %>%
-        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
-        unnest(v) %>%
-        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
-        group_by(class, order, family, genus, stressor, taxon) %>%
-        summarize(mean_vuln = mean(v),
-                  sd_vuln = sd(v),
-                  # med_vuln = median(v),
-                  n_spp_known = n_distinct(species)) %>%
-        ungroup()
-      return(mc_results_df)
+  trash <- parallel::mclapply(genera, mc.cores = 20,
+    FUN = function(g) {### g <- genera[1]
+      tmp_file <- sprintf(tmp_fstem, g)
+      if(!file.exists(tmp_file) | force) {
+        unlink(tmp_file)
+        g_df <- gen_fill_prob %>%
+          filter(genus == g) %>%
+          mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+        
+        message('Sampling ', iters, ' MC iterations for genus ', g)
+    
+        mc_results_df <- g_df %>%
+          rowwise() %>%
+          mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+          unnest(v) %>%
+          mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+          group_by(class, order, family, genus, stressor, taxon) %>%
+          summarize(mean_vuln = mean(v),
+                    sd_vuln = sd(v),
+                    # med_vuln = median(v),
+                    n_spp_known = n_distinct(species)) %>%
+          ungroup()
+
+        write_csv(mc_results_df, tmp_file)
+      }
     })
   
+  genera_fs <- list.files(here('tmp', pattern = 'gen_fill_mc.+.csv'),
+                            full.names = TRUE)
+  genera_list <- parallel::mclapply(genera_fs, FUN = read_csv, mc.cores = 20)
   gen_fill_prob_results <- genera_list %>%
     bind_rows() %>%
     left_join(gen_fill_qty)
@@ -319,7 +330,8 @@ fam_fill_nondet_solo <- fam_fill_nondet %>%
 ``` {r monte carlo for fam vuln dists}
 fam_fill_file <- here('int', sprintf('gapfill_fam_prob_results_%s.csv', iters))
 
-if(!file.exists(fam_fill_file)) {
+reload <- TRUE
+if(!file.exists(fam_fill_file) | reload) {
   fam_fill_prob <- fam_fill_nondet %>%
     anti_join(fam_fill_matchrank %>% select(family, stressor)) %>%
     anti_join(fam_fill_nondet_solo %>% select(family, stressor)) %>%
@@ -334,8 +346,14 @@ if(!file.exists(fam_fill_file)) {
   
   fams <- fam_fill_qty$family %>% unique()
 
-  fam_list <- parallel::mclapply(fams, mc.cores = 20,
-    FUN = function(f) {### 
+  tmp_fstem <- here('tmp/fam_fill_mc_%s.csv')
+  force <- FALSE
+
+  trash <- parallel::mclapply(fams, mc.cores = 20,
+    FUN = function(f) {### f <- fams[1]
+      tmp_file <- sprintf(tmp_fstem, f)
+      if(!file.exists(tmp_file) | force) {
+        unlink(tmp_file)
       f_df <- fam_fill_prob %>%
         filter(family == f) %>%
         mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
@@ -353,10 +371,14 @@ if(!file.exists(fam_fill_file)) {
                   # med_vuln = median(v),
                   n_spp_known = n_distinct(species)) %>%
         ungroup()
-      return(mc_results_df)
+
+        write_csv(mc_results_df, tmp_file)
+      }
     })
   
-  
+  family_fs <- list.files(here('tmp', pattern = 'fam_fill_mc.+.csv'),
+                            full.names = TRUE)
+  fam_list <- parallel::mclapply(family_fs, FUN = read_csv, mc.cores = 20)  
   fam_fill_prob_results <- fam_list %>%
     bind_rows() %>%
     left_join(fam_fill_qty)
@@ -412,7 +434,8 @@ ord_fill_nondet_solo <- ord_fill_nondet %>%
 ``` {r monte carlo for ord vuln dists}
 ord_fill_file <- here('int', sprintf('gapfill_ord_prob_results_%s.csv', iters))
 
-if(!file.exists(ord_fill_file)) {
+reload <- TRUE
+if(!file.exists(ord_fill_file) | reload) {
   ord_fill_prob <- ord_fill_nondet %>%
     anti_join(ord_fill_matchrank %>% select(order, stressor)) %>%
     anti_join(ord_fill_nondet_solo %>% select(order, stressor)) %>%
@@ -427,28 +450,39 @@ if(!file.exists(ord_fill_file)) {
   
   ords <- ord_fill_qty$order %>% unique()
 
-  ord_list <- parallel::mclapply(ords, mc.cores = 15,
-    FUN = function(o) {
-      o_df <- ord_fill_prob %>%
-        filter(order == o) %>%
-        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-      
-      message('Sampling ', iters, ' MC iterations for order ', o)
+  tmp_fstem <- here('tmp/ord_fill_mc_%s.csv')
+  force <- FALSE
   
-      mc_results_df <- o_df %>%
-        rowwise() %>%
-        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
-        unnest(v) %>%
-        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
-        group_by(class, order, stressor, taxon) %>%
-        summarize(mean_vuln = mean(v),
-                  sd_vuln = sd(v),
-                  # med_vuln = median(v),
-                  n_spp_known = n_distinct(species)) %>%
-        ungroup()
-      return(mc_results_df)
+  trash <- parallel::mclapply(ords, mc.cores = 20,
+    FUN = function(o) {### o <- ords[1]
+      tmp_file <- sprintf(tmp_fstem, o)
+      if(!file.exists(tmp_file) | force) {
+        unlink(tmp_file)
+        o_df <- ord_fill_prob %>%
+          filter(order == o) %>%
+          mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+        
+        message('Sampling ', iters, ' MC iterations for order ', o)
+    
+        mc_results_df <- o_df %>%
+          rowwise() %>%
+          mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+          unnest(v) %>%
+          mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+          group_by(class, order, stressor, taxon) %>%
+          summarize(mean_vuln = mean(v),
+                    sd_vuln = sd(v),
+                    # med_vuln = median(v),
+                    n_spp_known = n_distinct(species)) %>%
+          ungroup()
+  
+          write_csv(mc_results_df, tmp_file)
+      }
     })
   
+  ord_fs <- list.files(here('tmp', pattern = 'ord_fill_mc.+.csv'),
+                            full.names = TRUE)
+  ord_list <- parallel::mclapply(ord_fs, FUN = read_csv, mc.cores = 20)
   
   ord_fill_prob_results <- ord_list %>%
     bind_rows() %>%
@@ -506,7 +540,9 @@ cls_fill_nondet_solo <- cls_fill_nondet %>%
 ``` {r monte carlo for cls vuln dists}
 cls_fill_file <- here('int', sprintf('gapfill_cls_prob_results_%s.csv', iters))
 
-if(!file.exists(cls_fill_file)) {
+reload <- TRUE
+if(!file.exists(cls_fill_file) | reload) {
+
   cls_fill_prob <- cls_fill_nondet %>%
     anti_join(cls_fill_matchrank %>% select(class, stressor)) %>%
     anti_join(cls_fill_nondet_solo %>% select(class, stressor)) %>%
@@ -521,8 +557,14 @@ if(!file.exists(cls_fill_file)) {
   
   clss <- cls_fill_qty$class %>% unique() %>% sort()
 
-  cls_list <- parallel::mclapply(clss, mc.cores = 1, ### memory issues
-    FUN = function(c) {
+  tmp_fstem <- here('tmp/cls_fill_mc_%s.csv')
+  force <- FALSE
+
+  trash <- parallel::mclapply(clss, mc.cores = 20,
+    FUN = function(c) {### c <- clss[1]
+      tmp_file <- sprintf(tmp_fstem, c)
+      if(!file.exists(tmp_file) | force) {
+        unlink(tmp_file)
       c_df <- cls_fill_prob %>%
         filter(class == c) %>%
         mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
@@ -540,10 +582,14 @@ if(!file.exists(cls_fill_file)) {
                   # med_vuln = median(v),
                   n_spp_known = n_distinct(species)) %>%
         ungroup()
-      return(mc_results_df)
+
+        write_csv(mc_results_df, tmp_file)
+      }
     })
   
-  
+  cls_fs <- list.files(here('tmp', pattern = 'cls_fill_mc.+.csv'),
+                            full.names = TRUE)
+  cls_list <- parallel::mclapply(cls_fs, FUN = read_csv, mc.cores = 20)  
   cls_fill_prob_results <- cls_list %>%
     bind_rows() %>%
     left_join(cls_fill_qty)
@@ -791,7 +837,8 @@ Using species gapfilled to the family level
 ```{r summarize stats by taxon}
 tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
 
-# if(!file.exists(tx_str_sum_outfile)) {
+if(!file.exists(tx_str_sum_outfile) | reload) {
+
   taxa <- vuln_all_gf$taxon %>% unique() %>% sort()
   strs <- vuln_all_gf$stressor %>% unique() %>% sort()
   
@@ -836,7 +883,7 @@ tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
   tx_str_summary <- tx_list %>%
     bind_rows()
   write_csv(tx_str_summary, tx_str_sum_outfile)
-# }
+}
 
   
   
