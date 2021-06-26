@@ -1,16 +1,22 @@
 assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
   ### Note: this drops all kingdoms but Animalia 
-  p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv'), col_types = c(id = 'i')) %>%
+  p_from_k <- read_csv(here('int/expand1_phylum_from_kingdom_worms.csv'), 
+                       col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  c_from_p <- read_csv(here('int/class_from_phylum_worms.csv'), col_types = c(id = 'i')) %>%
+  c_from_p <- read_csv(here('int/expand2_class_from_phylum_worms.csv'), 
+                       col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  o_from_c <- read_csv(here('int/order_from_class_worms.csv'), col_types = c(id = 'i')) %>%
+  o_from_c <- read_csv(here('int/expand3_order_from_class_worms.csv'), 
+                       col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  f_from_o <- read_csv(here('int/family_from_order_worms.csv'), col_types = c(id = 'i')) %>%
+  f_from_o <- read_csv(here('int/expand4_family_from_order_worms.csv'), 
+                       col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  g_from_f <- read_csv(here('int/genus_from_family_worms.csv'), col_types = c(id = 'i')) %>%
+  g_from_f <- read_csv(here('int/expand5_genus_from_family_worms.csv'), 
+                       col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  s_from_g <- read_csv(here('int/species_from_genus_worms.csv'), col_types = c(id = 'i')) %>%
+  s_from_g <- read_csv(here('int/expand6_species_from_genus_worms.csv'), 
+                       col_types = c(id = 'i')) %>%
     filter(!is.na(id))
   
   rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
