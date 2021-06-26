@@ -46,32 +46,49 @@ Grab data from each rank (kingdom --> phylum, phylum --> class, class --> order,
 Because we are dropping plants and algae, filter wide dataframe to just species in kingdom _Animalia_.  This is done in the `assemble_worms()` function from `common_fxns.R`.
 
 ``` {r assemble full spp taxonomic table from WoRMS}
-spp_all_wide <- assemble_worms('wide')
-spp_all_long <- assemble_worms('long')
-```
-
-### check birds
-
-```{r}
-birds <- spp_all_wide %>% 
-  filter(class == 'aves')
-
-bird_fam_sum <- birds %>% 
-  group_by(family) %>% 
-  summarize(n = n_distinct(species))
-DT::datatable(bird_fam_sum)
+spp_all_wide <- assemble_worms('wide', seabirds = TRUE)
+spp_all_long <- assemble_worms('long', seabirds = TRUE)
 ```
 
 ## Match species with known vulnerability to most specific rank
 
-Loading the vulnerability data, and match to the long-format species classifications.  Then join these together sequentially by each level.
+Load the vulnerability data, and match to the wide-format species classifications along with the representativeness corrections, to identify species that represent higher ranks.  Create a separate dataframe of these higher ranks, based on averages of species vulnerability scores.  
 
-``` {r match up}
+Then bind the representative-based dataframe with the original vulnerability data, and join to long-format species classifications.
+
+``` {r determine representative spp gps}
 spp_gp_vuln <- read_csv(here('_output/spp_gp_vuln_w_distribution.csv')) %>%
   select(taxon, spp_gp, stressor, vuln, sd_vuln)
 
+repres_df <- readxl::read_excel(here('_raw_data/xlsx/spp_gp_representativeness.xlsx')) %>%
+  janitor::clean_names() %>%
+  select(taxon, species, repres = representative_rank) %>%
+  filter(!is.na(repres) & repres != 'species')
+
+repr_spp <- spp_gp_vuln %>%
+  inner_join(repres_df, by = c('taxon', 'spp_gp' = 'species')) %>%
+  inner_join(spp_all_wide, by = c('spp_gp' = 'species')) %>%
+  mutate(spp_gp_new = case_when(repres == 'genus'  ~ genus,
+                                repres == 'family' ~ family,
+                                repres == 'order'  ~ order,
+                                repres == 'class'  ~ class,
+                                TRUE ~ NA_character_))
+
+repr_spp_gps <- repr_spp %>%
+  group_by(taxon, spp_gp_new, stressor) %>%
+  summarize(sd_vuln = sqrt(sd(vuln)^2 + 1/n()*sum(sd_vuln^2, na.rm = TRUE)),
+            vuln = mean(vuln),
+            n_spp = n()) %>%
+  ungroup() %>%
+  rename(spp_gp = spp_gp_new)
+```
+
+``` {r match up}
+spp_gp_vuln_repr_fix <- spp_gp_vuln %>%
+  bind_rows(repr_spp_gps %>% select(-n_spp))
+
 matched_df <- spp_all_long %>%
-  inner_join(spp_gp_vuln, by = c('name' = 'spp_gp')) %>%
+  inner_join(spp_gp_vuln_repr_fix, by = c('name' = 'spp_gp')) %>%
   mutate(match = rank)
 # matched_df$rank %>% unique() # species genus   family  class
 ```
