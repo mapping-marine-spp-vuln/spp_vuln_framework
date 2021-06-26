@@ -8204,7 +8204,6 @@ pecten maximus,Pectininae,subfamily,393857,FALSE,worms
 pecten maximus,Pectinini,tribe,393858,FALSE,worms
 pecten maximus,Pecten,genus,138323,FALSE,worms
 pecten maximus,Pecten maximus,species,140712,FALSE,worms
-ostrea angasi,NA,NA,NA,FALSE,worms
 pinctada imbricata,Animalia,kingdom,2,FALSE,worms
 pinctada imbricata,Mollusca,phylum,51,FALSE,worms
 pinctada imbricata,Bivalvia,class,105,FALSE,worms
@@ -8346,49 +8345,6 @@ turbo militaris,Turbinidae,family,503,FALSE,worms
 turbo militaris,Turbininae,subfamily,225151,FALSE,worms
 turbo militaris,Turbo,genus,151576,FALSE,worms
 turbo militaris,Turbo militaris,species,581912,FALSE,worms
-avicennia marina,Plantae,kingdom,3,FALSE,worms
-avicennia marina,Viridiplantae,subkingdom,368663,FALSE,worms
-avicennia marina,Streptophyta,infrakingdom,536191,FALSE,worms
-avicennia marina,Tracheophyta,phylum (division),596326,FALSE,worms
-avicennia marina,Spermatophytina,subphylum (subdivision),596331,FALSE,worms
-avicennia marina,Magnoliopsida,class,182757,FALSE,worms
-avicennia marina,Asteranae,superorder,449896,FALSE,worms
-avicennia marina,Lamiales,order,234498,FALSE,worms
-avicennia marina,Acanthaceae,family,344737,FALSE,worms
-avicennia marina,Avicennia,genus,235033,FALSE,worms
-avicennia marina,Avicennia marina,species,235040,FALSE,worms
-macrocystis,Chromista,kingdom,7,FALSE,worms
-macrocystis,Harosa,subkingdom,582419,FALSE,worms
-macrocystis,Heterokonta,infrakingdom,368898,FALSE,worms
-macrocystis,Ochrophyta,phylum,345465,FALSE,worms
-macrocystis,Phaeista,subphylum,588641,FALSE,worms
-macrocystis,Limnista,infraphylum,591205,FALSE,worms
-macrocystis,Fucistia,superclass,588642,FALSE,worms
-macrocystis,Phaeophyceae,class,830,FALSE,worms
-macrocystis,Laminariales,order,845,FALSE,worms
-macrocystis,Laminariaceae,family,143755,FALSE,worms
-macrocystis,Macrocystis,genus,206527,FALSE,worms
-porolithon,Plantae,kingdom,3,FALSE,worms
-porolithon,Biliphyta,subkingdom,368662,FALSE,worms
-porolithon,Rhodophyta,phylum (division),852,FALSE,worms
-porolithon,Eurhodophytina,subphylum (subdivision),493826,FALSE,worms
-porolithon,Florideophyceae,class,368670,FALSE,worms
-porolithon,Corallinophycidae,subclass,368687,FALSE,worms
-porolithon,Corallinales,order,15308,FALSE,worms
-porolithon,Porolithaceae,family,1306670,FALSE,worms
-porolithon,Porolithoideae,subfamily,599750,FALSE,worms
-porolithon,Porolithon,genus,370087,FALSE,worms
-posidonia australis,Plantae,kingdom,3,FALSE,worms
-posidonia australis,Viridiplantae,subkingdom,368663,FALSE,worms
-posidonia australis,Streptophyta,infrakingdom,536191,FALSE,worms
-posidonia australis,Tracheophyta,phylum (division),596326,FALSE,worms
-posidonia australis,Spermatophytina,subphylum (subdivision),596331,FALSE,worms
-posidonia australis,Magnoliopsida,class,182757,FALSE,worms
-posidonia australis,Lilianae,superorder,449895,FALSE,worms
-posidonia australis,Alismatales,order,153491,FALSE,worms
-posidonia australis,Posidoniaceae,family,143769,FALSE,worms
-posidonia australis,Posidonia,genus,144232,FALSE,worms
-posidonia australis,Posidonia australis,species,374712,FALSE,worms
 nephtyidae,Animalia,kingdom,2,FALSE,worms
 nephtyidae,Annelida,phylum,882,FALSE,worms
 nephtyidae,Polychaeta,class,883,FALSE,worms
@@ -8774,7 +8730,6 @@ leucophaeus,Aves,class,1836,FALSE,worms
 leucophaeus,Charadriiformes,order,2682,FALSE,worms
 leucophaeus,Laridae,family,136988,FALSE,worms
 leucophaeus,Leucophaeus,genus,343613,FALSE,worms
-ardenna,NA,NA,NA,FALSE,worms
 ichthyaetus,NA,NA,NA,FALSE,worms
 dosidicus gigas,Animalia,kingdom,2,FALSE,worms
 dosidicus gigas,Mollusca,phylum,51,FALSE,worms
@@ -8994,14 +8949,6 @@ macronectes,Aves,class,1836,FALSE,worms
 macronectes,Procellariiformes,order,2686,FALSE,worms
 macronectes,Procellariidae,family,136998,FALSE,worms
 macronectes,Macronectes,genus,206822,FALSE,worms
-oceanitidae,Animalia,kingdom,2,FALSE,worms
-oceanitidae,Chordata,phylum,1821,FALSE,worms
-oceanitidae,Vertebrata,subphylum,146419,FALSE,worms
-oceanitidae,Gnathostomata,superclass,1828,FALSE,worms
-oceanitidae,Tetrapoda,superclass,1831,FALSE,worms
-oceanitidae,Aves,class,1836,FALSE,worms
-oceanitidae,Procellariiformes,order,2686,FALSE,worms
-oceanitidae,Oceanitidae,family,136997,FALSE,worms
 onychoprion,Animalia,kingdom,2,FALSE,worms
 onychoprion,Chordata,phylum,1821,FALSE,worms
 onychoprion,Vertebrata,subphylum,146419,FALSE,worms
@@ -9142,14 +9089,6 @@ rissa,Aves,class,1836,FALSE,worms
 rissa,Charadriiformes,order,2682,FALSE,worms
 rissa,Laridae,family,136988,FALSE,worms
 rissa,Rissa,genus,137046,FALSE,worms
-scolopacidae,Animalia,kingdom,2,FALSE,worms
-scolopacidae,Chordata,phylum,1821,FALSE,worms
-scolopacidae,Vertebrata,subphylum,146419,FALSE,worms
-scolopacidae,Gnathostomata,superclass,1828,FALSE,worms
-scolopacidae,Tetrapoda,superclass,1831,FALSE,worms
-scolopacidae,Aves,class,1836,FALSE,worms
-scolopacidae,Charadriiformes,order,2682,FALSE,worms
-scolopacidae,Scolopacidae,family,147429,FALSE,worms
 spheniscidae,Animalia,kingdom,2,FALSE,worms
 spheniscidae,Chordata,phylum,1821,FALSE,worms
 spheniscidae,Vertebrata,subphylum,146419,FALSE,worms
@@ -9242,10 +9181,6 @@ elapidae,Squamata,order,196109,FALSE,worms
 elapidae,Serpentes,suborder,196112,FALSE,worms
 elapidae,Alethinophidia,infraorder,196113,FALSE,worms
 elapidae,Elapidae,family,342638,FALSE,worms
-nautilus suluensis,NA,NA,NA,FALSE,worms
-ostrea angasi,NA,NA,NA,FALSE,worms
-ardenna,NA,NA,NA,FALSE,worms
-ichthyaetus,NA,NA,NA,FALSE,worms
 amphorateuthis,Animalia,kingdom,2,FALSE,worms
 amphorateuthis,Mollusca,phylum,51,FALSE,worms
 amphorateuthis,Cephalopoda,class,11707,FALSE,worms
@@ -9372,10 +9307,6 @@ stoloteuthis,Sepioloidea,superfamily,1454580,FALSE,worms
 stoloteuthis,Sepiolidae,family,11725,FALSE,worms
 stoloteuthis,Heteroteuthinae,subfamily,877778,FALSE,worms
 stoloteuthis,Stoloteuthis,genus,138484,FALSE,worms
-nautilus suluensis,NA,NA,NA,FALSE,worms
-ostrea angasi,NA,NA,NA,FALSE,worms
-ardenna,NA,NA,NA,FALSE,worms
-ichthyaetus,NA,NA,NA,FALSE,worms
 pycnogonida,Animalia,kingdom,2,FALSE,worms
 pycnogonida,Arthropoda,phylum,1065,FALSE,worms
 pycnogonida,Chelicerata,subphylum,1274,FALSE,worms
@@ -9391,6 +9322,11 @@ ostrea angasi,Ostreidae,family,215,FALSE,worms
 ostrea angasi,Ostreinae,subfamily,510735,FALSE,worms
 ostrea angasi,Ostrea,genus,138298,FALSE,worms
 ostrea angasi,Ostrea angasi,species,397159,FALSE,worms
-nautilus suluensis,NA,NA,NA,FALSE,worms
-ardenna,NA,NA,NA,FALSE,worms
-ichthyaetus,NA,NA,NA,FALSE,worms
+phalaropodidae,Animalia,kingdom,2,FALSE,worms
+phalaropodidae,Chordata,phylum,1821,FALSE,worms
+phalaropodidae,Vertebrata,subphylum,146419,FALSE,worms
+phalaropodidae,Gnathostomata,infraphylum,1828,FALSE,worms
+phalaropodidae,Tetrapoda,superclass,1831,FALSE,worms
+phalaropodidae,Aves,class,1836,FALSE,worms
+phalaropodidae,Charadriiformes,order,2682,FALSE,worms
+phalaropodidae,Phalaropodidae,family,136989,FALSE,worms

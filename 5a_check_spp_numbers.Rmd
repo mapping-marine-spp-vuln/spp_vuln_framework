@@ -37,7 +37,7 @@ Compare Nat's species counts to those included in the downfill operation.
 Read in the downfilled species list (`gapfill == 'none'` indicates properly downfilled).  Nat's sheet is not easily parsed unfortunately, so will generate outputs one taxon at a time.
 
 ```{r}
-spp_downfill <- read_csv(here('_output/vuln_gapfilled_tx.csv'))
+spp_downfill <- read_csv(here('int/spp_match_downfill.csv'))
 
 taxa_in_code <- spp_downfill$taxon %>% unique() %>% sort()
 
@@ -60,7 +60,6 @@ for(t in taxa_in_code) {
   ### t <- taxa_in_code[1]
   n_in_code <- spp_downfill %>%
     filter(taxon == t) %>%
-    filter(gapfill == 'none') %>%
     count() %>%
     .$n
   
@@ -81,8 +80,8 @@ knitr::kable(count_df %>% arrange(desc(abs(pct_diff))))
 Most problematic taxa:
 
 * Birds, because we should know exactly which ones to include
-* Crustacea/arthropods, because of order of magnitude differences
-* Echinoderms, because of order of magnitude differences (these likely explained b/c Maria stating some species sub in for whole orders - but which?)
+* Crustacea/arthropods, because of order of magnitude differences - why does code predict so many more than what the exper thinks?
+* Echinoderms, because of order of magnitude differences - these likely explained b/c Maria stating some species sub in for whole orders - but which?
 
 ## Check specific taxa
 
@@ -91,10 +90,18 @@ Most problematic taxa:
 These should be pretty spot-on, why is the downfill result returning extras and missing so many others?
 
 ```{r}
+seabird_list <- readxl::read_excel(here('_raw_data/xlsx/species_numbers.xlsx'),
+                                   sheet = 'seabirds', skip = 1) %>%
+  janitor::clean_names() %>%
+  select(spp = scientific_name_fixed) %>%
+  filter(!is.na(spp)) %>%
+  mutate(spp = tolower(spp)) %>%
+  .$spp
+
 birds_from_code <- spp_downfill %>%
   filter(taxon == 'seabirds') %>%
-  filter(gapfill == 'none') %>%
-  select(family, genus, species) %>%
+  mutate(seabird = (species %in% seabird_list)) %>%
+  select(family, genus, species, seabird) %>%
   distinct() %>%
   mutate(code = 1)
 
@@ -102,16 +109,12 @@ birds_from_xlsx <- readxl::read_excel(xlsx_f, sheet = 'seabirds', skip = 1) %>%
   janitor::clean_names() %>%
   select(family = family_fixed, species = scientific_name_fixed, common_name) %>%
   mutate(family = tolower(family),
-         species = tolower(species)) %>%
-  # mutate(species = str_replace(species, '^ardenna', 'puffinus'),
-  #        species = ifelse(str_detect(species, 'hydrobates') & !str_detect(species, 'furcatus|pelagicus'),
-  #                         str_replace(species, 'hydrobates', 'oceanodroma'), species),
-  #        species = str_replace(species, 'gulosus|leucocarbo|microcarbo|nannopterum|^urile', 'phalacrocorax'),
-  #        family = ifelse(family == 'oceanitidae', 'hydrobatidae', family),
-  #        family = ifelse(family == 'oceanitidae', 'hydrobatidae', family),
-  #        family = ifelse(str_detect(species, 'phalaropus'), 'phalaropodidae', family)) %>%
+         species = tolower(species) %>% str_trim()) %>%
   mutate(genus = str_remove(species, ' .+')) %>%
   mutate(xlsx = 1)
+
+n_birds_xlsx <- birds_from_xlsx$species %>% n_distinct()
+n_birds_code <- birds_from_code$species %>% n_distinct()
 
 combo <- birds_from_code %>%
   full_join(birds_from_xlsx, by = c('family', 'genus', 'species'))
@@ -154,17 +157,11 @@ Poor matches for:
 * Scolopacidae (0/58 vs. 2) - change to Phalaropodidae on species trait sheet
 * Laridae (71/39 vs. 87)
 
-Notes:  These fixes have been implemented in the XSLX spreadsheet and code above for improved matching.  The only fix necessary to capture missing species is Scolopacidae -> Phaloropodidae.
-
-* _Ardenna_: Genus _Ardenna_ Reichenbach, 1853 accepted as _Puffinus_ Brisson, 1760
-* _Pelecanoididae_ - 5 spp that on the xlsx are listed as Procellariidae
-* _Oceanitidae_ accepted as _Hydrobatidae_ Mathews, 1913 - but still only two _Hydrobatidae_?
-* Most _Hydrobates_ species (on xlsx) are listed as _Oceanodroma_ species (e.g., Band-rumped Storm-petrel)
-* Phalaropes are listed as family _Phalaropodidae_, not _Scolopacidae_ (but fix needs to be implemented earlier - not captured in species traits)
-* _Gulosus aristotelis_ recognized as _Phalacrocorax aristotelis_; most _leucocarbo_, _microcarbo_, _urile_, and _nannopterum_ species are recognized as _phalacrocorax_ as well...
+Notes: fixes have been implemented in the XSLX spreadsheet and code above for improved matching.
 
 ```{r}
-worms <- assemble_worms()
+worms <- assemble_worms(seabirds = FALSE) %>%
+  mutate(seabird = (species %in% seabird_list))
 ```
 
 ## Specify representativeness

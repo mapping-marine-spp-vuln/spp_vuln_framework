@@ -1,16 +1,16 @@
-assemble_worms <- function(aspect = 'wide') {
+assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
   ### Note: this drops all kingdoms but Animalia 
-  p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv')) %>%
+  p_from_k <- read_csv(here('int/phylum_from_kingdom_worms.csv'), col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  c_from_p <- read_csv(here('int/class_from_phylum_worms.csv')) %>%
+  c_from_p <- read_csv(here('int/class_from_phylum_worms.csv'), col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  o_from_c <- read_csv(here('int/order_from_class_worms.csv')) %>%
+  o_from_c <- read_csv(here('int/order_from_class_worms.csv'), col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  f_from_o <- read_csv(here('int/family_from_order_worms.csv')) %>%
+  f_from_o <- read_csv(here('int/family_from_order_worms.csv'), col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  g_from_f <- read_csv(here('int/genus_from_family_worms.csv')) %>%
+  g_from_f <- read_csv(here('int/genus_from_family_worms.csv'), col_types = c(id = 'i')) %>%
     filter(!is.na(id))
-  s_from_g <- read_csv(here('int/species_from_genus_worms.csv')) %>%
+  s_from_g <- read_csv(here('int/species_from_genus_worms.csv'), col_types = c(id = 'i')) %>%
     filter(!is.na(id))
   
   rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
@@ -33,22 +33,30 @@ assemble_worms <- function(aspect = 'wide') {
     select(-kingdom) %>%
     distinct()
   
-  spp_wide <- disambiguate_species(spp_wide)
+  spp_df <- disambiguate_species(spp_wide)
+  
+  if(seabirds == TRUE) {
+    seabird_list <- readxl::read_excel(here('_raw_data/xlsx/species_numbers.xlsx'),
+                                       sheet = 'seabirds', skip = 1) %>%
+      janitor::clean_names() %>%
+      select(spp = scientific_name_fixed) %>%
+      filter(!is.na(spp)) %>%
+      mutate(spp = tolower(spp)) %>%
+      .$spp
+    spp_df <- spp_df %>%
+      filter(!(tolower(class) == 'aves' & !tolower(species) %in% seabird_list))
+  }
   
   if(aspect == 'long') {
     
     ### make that long, but keeping structure for each species
-    spp_long <- spp_wide %>%
+    spp_df <- spp_df %>%
       mutate(spp = species) %>%
       gather(rank, name, phylum:species) %>%
       mutate(rank = factor(rank, levels = rank_lvls))
-    return(spp_long)
-    
-  } else {
-    
-    return(spp_wide)
-    
+
   }
+  return(spp_df)
 }
 
 disambiguate_species <- function(spp_wide) {
