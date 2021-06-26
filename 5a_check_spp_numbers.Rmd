@@ -167,3 +167,21 @@ Notes:  These fixes have been implemented in the XSLX spreadsheet and code above
 worms <- assemble_worms()
 ```
 
+## Specify representativeness
+
+Create spreadsheets for experts to specify the representativeness of species groups given at the species level.  For groups given at higher ranks, assume they are provided at the correct level of representativeness.  How will this be incorporated in the scoring/downfill stage?  For each species name, identify the rank to which it is representative, then replace the species name with the name at the specified rank, and allow the downfill process to work its magic...?
+
+```{r}
+spp_gps <- read_csv(here('_data/spp_traits_valid.csv')) %>%
+  select(taxon, species = spp_gp) %>%
+  distinct() %>%
+  filter(taxon %in% c('corals', 'crustacea_arthropods', 'echinoderms',
+                      'fish', 'molluscs')) %>%
+  filter(str_detect(species, ' ')) %>%
+    ### if there's a space, there are two words in the field, suggesting
+    ### a species name rather than a higher rank
+  mutate(representative_to = '',
+         comments_notes = '')
+write_csv(spp_gps, here('_raw_data/representativeness_blank.csv'))
+```
+
