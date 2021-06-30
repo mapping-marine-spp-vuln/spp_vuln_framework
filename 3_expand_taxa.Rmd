@@ -219,14 +219,24 @@ check_status <- function(check_ids) {
 get_downstream <- function(gp_df, db = 'worms', 
                            downto, downfrom, 
                            namestem) {
+  
+  ### Look at all temp files already created for this step, and omit from loop
+  tmp_files_pre <- list.files(here('tmp'),
+                        pattern = sprintf('%s_%s_.+.csv', namestem, db),
+                        full.names = TRUE)
+  names_pre <- basename(tmp_files_pre) %>%
+    str_remove_all(sprintf('%s_%s_|.csv', namestem, db))
+               
   gp_df <- gp_df %>%
     mutate(name = str_trim(tolower(name))) %>%
     arrange(name) %>%
-    filter(!is.na(name))
+    filter(!is.na(name)) %>%
+    filter(!name %in% names_pre)
   names <- gp_df$name %>% unique()
   
   for(pname in names) {
     ### pname <- names[1]
+    ### pname <- 'manta'
     tmp_file <- sprintf(here('tmp/%s_%s_%s.csv'), namestem, db, pname)
     if(!file.exists(tmp_file)) {
       ids   <- gp_df$id[gp_df$name == pname]
@@ -259,15 +269,20 @@ get_downstream <- function(gp_df, db = 'worms',
       write_csv(tx_out_df, tmp_file)
     }
   }
-  tmp_files <- list.files(here('tmp'),
+  tmp_files_post <- list.files(here('tmp'),
                           pattern = sprintf('%s_%s_.+.csv', namestem, db),
                           full.names = TRUE)
   
-  tx_out_all <- parallel::mclapply(tmp_files, 
-                                   FUN = function(f) {
-                                     asdf <- read_csv(f) %>%
-                                       mutate(id = as.numeric(id))
-                                     }, mc.cores = 16) %>%
+  tx_out_all <- vector('list', length = length(tmp_files_post)) %>%
+    setNames(tmp_files_post)
+  # for(f in tmp_files_post) {
+  tx_out_all <- parallel::mclapply(tmp_files_post, mc.cores = 16, 
+                   FUN = function(f) { ### f <- tmp_files_post[1]
+                     df_out <- data.table::fread(
+                       f,
+                       colClasses = list(character = c("name", 'rank', 'parent', 'parent_level'), 
+                                         integer = 'id'))
+                     }) %>%
     bind_rows() %>%
     mutate_if(is.character, tolower) %>%
     distinct()
@@ -536,19 +551,20 @@ knitr::kable(traits_unmatched)
 #### Problems
 
 **To not worry about:**
+
 * _Sousa chinensis taiwanensis_ is a subspecies of _Sousa chinensis_ (which is included in WoRMS but not the traits XLSX), so fails to match. 
 * _Balaenoptera brydei_ is status _taxon inquirendum_, rather than accepted.
 * _Nautilus suluensis_ not found in WoRMS. _Nautilus repertus_ status _taxon inquirendum_.
+* _Leptopentacta elongata_ accepted as _Paraleptopentacta elongata_ (which is included)
 
 **To address:**
 
-* _Lottia scutum_ and _Cellana tramoserica_ have no "order" rank, so they are dropping out.  How to reconcile that?!
-* _Semirossia_ - ??? not sure why this is failing.
+* _Lottia scutum_ and _Cellana tramoserica_ have no "order" rank.  These were fixed by adding in a line to use the superfamily as order.
 * _Spiniraja whitleyii_ is accepted, but the genus _Spiniraja_ is unaccepted, instead accepted as _Raja_ - how to reconcile that?!
 
 ### Marine species without matches
 
-Note: there are 16 classes in Plantae, 19 in Chromista, and 123 in Animalia (ignoring isMarine errors).
+Note: there are 16 classes in Plantae, 19 in Chromista, and 123 in Animalia (ignoring `isMarine` errors).
 
 First look at species who are unmatched
 ```{r}

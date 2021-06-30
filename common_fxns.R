@@ -47,7 +47,7 @@ assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
       janitor::clean_names() %>%
       select(spp = scientific_name_fixed) %>%
       filter(!is.na(spp)) %>%
-      mutate(spp = tolower(spp)) %>%
+      mutate(spp = tolower(spp) %>% str_trim) %>%
       .$spp
     spp_df <- spp_df %>%
       filter(!(tolower(class) == 'aves' & !tolower(species) %in% seabird_list))
