@@ -63,6 +63,7 @@ spp_gp_vuln <- read_csv(here('_output/spp_gp_vuln_w_distribution.csv')) %>%
 repres_df <- readxl::read_excel(here('_raw_data/xlsx/spp_gp_representativeness.xlsx')) %>%
   janitor::clean_names() %>%
   select(taxon, species, repres = representative_rank) %>%
+  mutate(repres = tolower(repres)) %>%
   filter(!is.na(repres) & repres != 'species')
 
 repr_spp <- spp_gp_vuln %>%
@@ -129,7 +130,17 @@ unmatch_check_df <- unmatched_df %>%
   mutate(found = !is.na(check_class_list)) %>%
   left_join(check_class_df, by = c('spp_gp' = 'name')) %>%
   left_join(check_accepted_df, by = c('spp_gp' = 'sciname', 'id'))
+
+DT::datatable(unmatch_check_df)
 ```
+
+Notes: 
+
+* _Manta_ is accepted as a genus, but all spp within it are accepted as _Mobula_
+* _Balaenoptera brydei_ is taxon inquirendum
+* _Leptopentacta elongata_ is accepted as _Paraleptopentacta elongata_ (already included)
+* _Nautilus repertus_ is taxon inquirendum
+* _Sousa chinensis taiwanensis_ is a subspecies (species is separately included)
 
 ### Unmatched spp groups with scored traits:
 
