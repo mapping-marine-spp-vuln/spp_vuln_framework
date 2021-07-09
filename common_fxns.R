@@ -19,6 +19,17 @@ assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
                        col_types = c(id = 'i')) %>%
     filter(!is.na(id))
   
+  am_patch_long <- read_csv(here('int/expand7_aquamaps_patch.csv'),
+                            col_types = cols(.default = 'c')) %>%
+    select(spp_gp, rank, name) %>%
+    distinct()
+
+  am_patch_wide <- am_patch_long %>%
+    distinct() %>%
+    spread(rank, name) %>%
+    select(-spp_gp) %>%
+    distinct()
+  
   rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
   
   ### create wide for complete classification for each species
@@ -37,6 +48,7 @@ assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
     select(kingdom, phylum, class, order, family, genus, species) %>%
     filter(kingdom == 'animalia') %>%
     select(-kingdom) %>%
+    bind_rows(am_patch_wide) %>%
     distinct()
   
   spp_df <- disambiguate_species(spp_wide)
