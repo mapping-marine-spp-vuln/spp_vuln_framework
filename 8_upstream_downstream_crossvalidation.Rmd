@@ -1,0 +1,192 @@
+---
+title: "Upstream/downstream cross validation"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
+source(here('common_fxns.R'))
+options(dplyr.summarise.inform = FALSE) 
+```
+
+# Summary
+
+Use a cross-validation technique to estimate the error/uncertainty in the upstream-downstream gapfilling process.  Starting with the body of species groups provided by experts, use the downfill process to estimate vulnerability for as many "given" species as possible.  Next, identify given species whose vulnerability could be gapfilled using an upstream/downstream gapfill process.  
+
+* Identify all species whose vulnerability is calculated from traits at species level.
+* Looping over these species, attempt to gapfill at genus level, using other species given at the species level to calculate a weighted average.
+* Repeat at family level, then order level.
+
+
+# Data
+
+Data is calculated from pre-gapfilled vulnerability score files created in script 5:
+
+* `~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_values.csv`
+* `~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_taxa.csv`
+
+# Methods
+
+## Read in vulnerability scores and identify candidates for cross validation
+
+To be eligible for cross-validation, a species must be a member of a genus with two or more species represented (otherwise, nothing to cross-validate from).  
+
+```{r}
+vuln_vals <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_values.csv')
+vuln_tx <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_taxa.csv')
+
+vuln_df <- vuln_vals %>%
+  full_join(vuln_tx, by = 'tx_id')
+
+spp_df <- vuln_df %>%
+  filter(match_rank == 'species') %>%
+  # group_by(class, order, family, genus) %>%
+  # filter(n_distinct(species) > 1) %>%
+  ungroup()
+
+```
+
+## Cross-validate at species level
+
+Leave-one-out cross validation will drop one species at a time, recalculate vulnerability across all stressors based on other species within the same taxonomic group (genus, family, etc).
+
+The results will be compared to the directly-calculated vulnerability scores.  For each taxonomic group and stressor, an RMS difference will be calculated to estimate the uncertainty in upstream/downstream gapfilling.
+
+```{r LOO crossvalidation function}
+
+calc_xval <- function(name, df, r_at, r_up) {
+  ### r_up <- 'genus'; r_at <- 'species'
+  ### name <- spp_vec[1]
+  ### df <- spp_df
+  tmp_df <- df %>%
+    rename(tmp_up := !!r_up,
+           tmp_at := !!r_at)
+  
+  loocv_df <- tmp_df %>%
+    group_by(tmp_up) %>%
+    filter(n_distinct(tmp_at) > 1) %>%
+    filter(name %in% tmp_at) %>%
+    filter(tmp_at != name) %>%
+    group_by(stressor) %>%
+    summarize(vuln_xv = mean(vuln),
+              sd_vuln_xv = sqrt(sum(sd_vuln^2, na.rm = TRUE)))
+  
+  left_out_df <- tmp_df %>%
+    filter(tmp_at == name) %>%
+    select(taxon, stressor, !!r_up := tmp_up, !!r_at := tmp_at, vuln, sd_vuln) %>%
+    distinct()
+  
+  loocv_result <- left_out_df %>%
+    left_join(loocv_df, by = 'stressor') %>%
+    filter(!is.na(vuln_xv))
+
+  return(loocv_result)
+}
+
+```
+
+```{r run crossvalidation at from species level}
+
+spp_vec <- unique(spp_df$species)
+
+xval_s_g_df <- parallel::mclapply(spp_vec, mc.cores = 20,
+                                  FUN = calc_xval, 
+                                  df = spp_df, r_at = 'species', r_up = 'genus') %>%
+  bind_rows()
+
+xval_s_f_df <- parallel::mclapply(spp_vec, mc.cores = 20,
+                                  FUN = calc_xval, 
+                                  df = spp_df, r_at = 'species', r_up = 'family') %>%
+  bind_rows()
+
+xval_s_o_df <- parallel::mclapply(spp_vec, mc.cores = 20,
+                                  FUN = calc_xval, 
+                                  df = spp_df, r_at = 'species', r_up = 'order') %>%
+  bind_rows()
+
+xval_s_c_df <- parallel::mclapply(spp_vec, mc.cores = 20,
+                                  FUN = calc_xval, 
+                                  df = spp_df, r_at = 'species', r_up = 'class') %>%
+  bind_rows()
+
+```
+
+```{r summarize crossval results}
+summarize_xval <- function(xval_df, vars) {
+  xval_summary <- xval_df %>%
+    group_by(across(all_of(vars))) %>%
+    mutate(vuln_diff = vuln - vuln_xv,
+           sd_vuln_diff = sd_vuln - sd_vuln_xv) %>%
+    summarize(rmse_vuln = sqrt(mean(vuln_diff^2)),
+              rmse_sd_vuln = sqrt(sum(sd_vuln_diff^2, na.rm = TRUE) / n()),
+              v_mean = mean(vuln),
+              sd_v_mean = 1/n() * sqrt(sum(sd_vuln^2, na.rm = TRUE)),
+              n_in_group = n(),
+              .groups = 'drop')
+}
+
+xval_s_g_sum <- summarize_xval(xval_s_g_df, c('taxon', 'stressor')) %>%
+  mutate(rmse_over_mean = rmse_vuln / v_mean)
+xval_s_f_sum <- summarize_xval(xval_s_f_df, c('taxon', 'stressor')) %>%
+  mutate(rmse_over_mean = rmse_vuln / v_mean)
+xval_s_o_sum <- summarize_xval(xval_s_o_df, c('taxon', 'stressor')) %>%
+  mutate(rmse_over_mean = rmse_vuln / v_mean)
+xval_s_c_sum <- summarize_xval(xval_s_c_df, c('taxon', 'stressor')) %>%
+  mutate(rmse_over_mean = rmse_vuln / v_mean)
+```
+
+``` {r compare and plot}
+compare_rmse_df <- xval_s_g_sum %>%
+  select(taxon, stressor, genus = rmse_vuln, n_g = n_in_group) %>%
+  full_join(xval_s_f_sum %>% select(taxon, stressor, family = rmse_vuln, n_f = n_in_group), 
+            by = c('taxon', 'stressor')) %>%
+  full_join(xval_s_o_sum %>% select(taxon, stressor, order = rmse_vuln, n_o = n_in_group), 
+            by = c('taxon', 'stressor')) %>%
+  full_join(xval_s_c_sum %>% select(taxon, stressor, class = rmse_vuln, n_c = n_in_group), 
+            by = c('taxon', 'stressor')) %>%
+  mutate(across(where(is.numeric), ~round(.x, 4)))
+
+DT::datatable(compare_rmse_df)
+
+plot_df <- compare_rmse_df %>%
+  gather(gf_level, rmse, -taxon, -stressor, -starts_with('n_')) %>%
+  mutate(gf_level = factor(gf_level, levels = c('genus', 'family', 'order', 'class')),
+         tx_lab = case_when(taxon == 'marine_mammals' ~ 'mamm',
+                            taxon == 'echinoderms'    ~ 'echn',
+                            taxon == 'elasmobranchs'  ~ 'elsm',
+                            taxon == 'molluscs'       ~ 'mlsc',
+                            taxon == 'crustacea_arthropods' ~ 'arth',
+                            TRUE ~ str_match(taxon, '[a-z]{4}')))
+
+
+p <- ggplot(plot_df, aes(x = as.integer(gf_level), y = rmse, group = tx_lab, color = tx_lab)) +
+  geom_line() +
+  facet_wrap(~stressor) +
+  scale_x_continuous(breaks = 1:4, labels = c('g', 'f', 'o', 'c')) +
+  scale_color_brewer(palette = 'Dark2') +
+  theme_minimal() +
+  theme(axis.title.x = element_blank())
+
+ggsave(here('figs/up_down_gapfill_crossval.png'), height = 8, width = 8)
+
+knitr::include_graphics(here('figs/up_down_gapfill_crossval.png'))
+```
+
