@@ -411,437 +411,454 @@ calc_vuln <- function(x, ref_values) {
 ```
 
 ``` {r score deterministic spp convex}
-spp_scores_conv_mean <- spp_sens_conv %>%
-  left_join(spp_adcap_gen_conv, by = c('taxon', 'spp_gp')) %>%
-  left_join(spp_adcap_spec_conv, by = c('taxon', 'spp_gp', 'stressor'))
 
-ref_values_conv <- spp_scores_conv_mean %>%
-  group_by(stressor) %>%
-  summarize(max_sens = max(sens_score, 1), 
-              ### the 1 ensures that stressors with very low scores don't get normalized by a low reference
-            max_adcap_gen = max(adcap_gen_score, 1),
-            max_adcap_spec = max(adcap_spec_score, 1), 
-            .groups = 'drop')
+conv_score_file <- here('int/spp_gp_vuln_convex_scoring.csv')
 
-### Separate deterministic spp (all traits fixed) from those for Monte Carlo
-spp_sens_conv_det <- spp_sens_conv_raw %>%
-  group_by(spp_gp) %>%
-  filter(all(trait_prob == 1)) %>%
-  .$spp_gp %>% unique()
-
-spp_adcap_spec_conv_det <- spp_adcap_spec_conv_raw %>%
-  group_by(spp_gp) %>%
-  filter(all(trait_prob == 1)) %>%
-  .$spp_gp %>% unique()
-
-spp_adcap_gen_conv_det <- spp_adcap_gen_conv_raw %>%
-  group_by(spp_gp) %>%
-  filter(all(trait_prob == 1)) %>%
-  .$spp_gp %>% unique()
-
-### to be fully determined, a species must be fixed in sensitivity and both adcaps
-spp_conv_deterministic <- spp_sens_conv_det[(spp_sens_conv_det %in% spp_adcap_spec_conv_det) & 
-                                    (spp_sens_conv_det %in% spp_adcap_gen_conv_det)]
-spp_scores_conv_det <- spp_scores_conv_mean %>%
-  filter(spp_gp %in% spp_conv_deterministic)
+if(!file.exists(conv_score_file)) {
+  spp_scores_conv_mean <- spp_sens_conv %>%
+    left_join(spp_adcap_gen_conv, by = c('taxon', 'spp_gp')) %>%
+    left_join(spp_adcap_spec_conv, by = c('taxon', 'spp_gp', 'stressor'))
+  
+  ref_values_conv <- spp_scores_conv_mean %>%
+    group_by(stressor) %>%
+    summarize(max_sens = max(sens_score, 1), 
+                ### the 1 ensures that stressors with very low scores don't get normalized by a low reference
+              max_adcap_gen = max(adcap_gen_score, 1),
+              max_adcap_spec = max(adcap_spec_score, 1), 
+              .groups = 'drop')
+  
+  ### Separate deterministic spp (all traits fixed) from those for Monte Carlo
+  spp_sens_conv_det <- spp_sens_conv_raw %>%
+    group_by(spp_gp) %>%
+    filter(all(trait_prob == 1)) %>%
+    .$spp_gp %>% unique()
+  
+  spp_adcap_spec_conv_det <- spp_adcap_spec_conv_raw %>%
+    group_by(spp_gp) %>%
+    filter(all(trait_prob == 1)) %>%
+    .$spp_gp %>% unique()
+  
+  spp_adcap_gen_conv_det <- spp_adcap_gen_conv_raw %>%
+    group_by(spp_gp) %>%
+    filter(all(trait_prob == 1)) %>%
+    .$spp_gp %>% unique()
+  
+  ### to be fully determined, a species must be fixed in sensitivity and both adcaps
+  spp_conv_deterministic <- spp_sens_conv_det[(spp_sens_conv_det %in% spp_adcap_spec_conv_det) & 
+                                      (spp_sens_conv_det %in% spp_adcap_gen_conv_det)]
+  spp_scores_conv_det <- spp_scores_conv_mean %>%
+    filter(spp_gp %in% spp_conv_deterministic)
+}
 
 ```
 
 ``` {r use monte carlo on non-det spp convex}
 
-### For Monte Carlo spp, for each spp, draw a bunch of samples from pool of
-### possible values
-
-set.seed(42)
-iters <- 100000
-
-### empty set fill
-empty_set <- crossing(stressor = spp_sens_conv$stressor %>% unique(),
-                      n = 1:iters)
-
-spp_conv_mc <- spp_sens_conv %>%
-  filter(!spp_gp %in% spp_conv_deterministic) %>%
-  .$spp_gp %>% unique()
-
-
-spp_conv_mc_vuln_list <- parallel::mclapply(seq_along(spp_conv_mc), mc.cores = 30, 
-  FUN = function(i) {
-    ### spp <- 'pelecanidae'
-    spp <- spp_conv_mc[i]
-    
-    traits <- spp_traits %>%
-      filter(spp_gp == spp) %>%
-      select(-n_spp_gps)
-    taxon <- traits$taxon[1]
+if(!file.exists(conv_score_file)) {
+  ### For Monte Carlo spp, for each spp, draw a bunch of samples from pool of
+  ### possible values
   
-    ### separate out single and non-mutually-exclusive traits; include all values
-    traits_det <- traits %>%
-      filter(trait_prob == 1)
-    ### Identify mutually exclusive traits; tally up # of combos
-    traits_multi <- traits %>%
-      filter(trait_prob != 1)
-    
-    ### filter sens and adcap dfs out of the loop
-    sens_clean <- spp_sens_conv_raw %>% 
-      filter(spp_gp == spp) %>%
-      select(trait, trait_value, sens_score, stressor)
-    sens_clean_det <- sens_clean %>%
-      filter(trait %in% traits_det$trait)
-    sens_clean_multi <- sens_clean %>%
-      filter(trait %in% traits_multi$trait)
-    
-    acg_clean <- spp_adcap_gen_conv_raw %>% 
-      filter(spp_gp == spp) %>%
-      select(trait, trait_value, adcap_gen_score)
-    acg_clean_det <- acg_clean %>%
-      filter(trait %in% traits_det$trait)
-    acg_clean_multi <- acg_clean %>%
-      filter(trait %in% traits_multi$trait)
+  set.seed(42)
+  iters <- 100000
   
-    acs_clean <- spp_adcap_spec_conv_raw %>% 
-      filter(spp_gp == spp) %>%
-      select(trait, trait_value, adcap_spec_score, stressor)
-    acs_clean_det <- acs_clean %>%
-      filter(trait %in% traits_det$trait)
-    acs_clean_multi <- acs_clean %>%
-      filter(trait %in% traits_multi$trait)
-    
-    message('Processing ', i, ' of ', length(spp_conv_mc), ': ', spp, 
-            ' (running ', iters, ' iterations)')
-    
-    ### process sensitivity traits
-    sens_score_det <- sens_clean_det %>%
-      group_by(stressor) %>%
-      summarize(sens_score_det = sum(sens_score), .groups = 'drop')
-    
-    if(nrow(sens_clean_multi) > 0) {
-      spp_sens_sample <- sens_clean_multi %>%
-        group_by(trait, stressor) %>%
-        summarize(score_samp = list(sample(sens_score, size = iters, replace = TRUE)), 
-                  .groups = 'keep') %>%
-        unnest(score_samp) %>%
-        mutate(n = 1:n()) %>%
-        group_by(stressor, n) %>%
-        summarize(sens_score_random = sum(score_samp), .groups = 'drop') %>%
-        left_join(sens_score_det, by = 'stressor')
-    } else { 
-      spp_sens_sample <- sens_score_det %>%
-        mutate(sens_score_random = 0) %>%
-        left_join(empty_set, by = 'stressor')
-    }
+  ### empty set fill
+  empty_set <- crossing(stressor = spp_sens_conv$stressor %>% unique(),
+                        n = 1:iters)
   
-    ### process specific adcap traits
-    acs_score_det <- acs_clean_det %>%
-      group_by(stressor) %>%
-      summarize(acs_score_det = sum(adcap_spec_score), .groups = 'drop')
+  spp_conv_mc <- spp_sens_conv %>%
+    filter(!spp_gp %in% spp_conv_deterministic) %>%
+    .$spp_gp %>% unique()
+  
+  
+  spp_conv_mc_vuln_list <- parallel::mclapply(seq_along(spp_conv_mc), mc.cores = 30, 
+    FUN = function(i) {
+      ### spp <- 'pelecanidae'
+      spp <- spp_conv_mc[i]
+      
+      traits <- spp_traits %>%
+        filter(spp_gp == spp) %>%
+        select(-n_spp_gps)
+      taxon <- traits$taxon[1]
     
-    if(nrow(acs_clean_multi) > 0) {
-      spp_acs_sample <- acs_clean_multi %>%
-        group_by(trait, stressor) %>%
-        summarize(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE)), 
-                  .groups = 'keep') %>%
-        unnest(score_samp) %>%
-        mutate(n = 1:n()) %>%
-        group_by(stressor, n) %>%
-        summarize(acs_score_random = sum(score_samp), .groups = 'drop') %>%
-        left_join(acs_score_det, by = 'stressor')
+      ### separate out single and non-mutually-exclusive traits; include all values
+      traits_det <- traits %>%
+        filter(trait_prob == 1)
+      ### Identify mutually exclusive traits; tally up # of combos
+      traits_multi <- traits %>%
+        filter(trait_prob != 1)
       
-    } else { 
-      spp_acs_sample <- acs_score_det %>%
-        mutate(acs_score_random = 0) %>%
-        left_join(empty_set, by = 'stressor')
-    }
+      ### filter sens and adcap dfs out of the loop
+      sens_clean <- spp_sens_conv_raw %>% 
+        filter(spp_gp == spp) %>%
+        select(trait, trait_value, sens_score, stressor)
+      sens_clean_det <- sens_clean %>%
+        filter(trait %in% traits_det$trait)
+      sens_clean_multi <- sens_clean %>%
+        filter(trait %in% traits_multi$trait)
       
-    ### process general adcap traits
-    acg_score_det <- acg_clean_det %>%
-      summarize(acg_score_det = sum(adcap_gen_score))
+      acg_clean <- spp_adcap_gen_conv_raw %>% 
+        filter(spp_gp == spp) %>%
+        select(trait, trait_value, adcap_gen_score)
+      acg_clean_det <- acg_clean %>%
+        filter(trait %in% traits_det$trait)
+      acg_clean_multi <- acg_clean %>%
+        filter(trait %in% traits_multi$trait)
     
-    if(nrow(acg_clean_multi) > 0) {
-      spp_acg_sample <- acg_clean_multi %>%
-        group_by(trait) %>%
-        summarize(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE)), 
-                  .groups = 'keep') %>%
-        unnest(score_samp) %>%
-        mutate(n = 1:n()) %>%
-        group_by(n) %>%
-        summarize(acg_score_random = sum(score_samp), .groups = 'drop') %>%
-        mutate(acg_score_det = acg_score_det$acg_score_det)
+      acs_clean <- spp_adcap_spec_conv_raw %>% 
+        filter(spp_gp == spp) %>%
+        select(trait, trait_value, adcap_spec_score, stressor)
+      acs_clean_det <- acs_clean %>%
+        filter(trait %in% traits_det$trait)
+      acs_clean_multi <- acs_clean %>%
+        filter(trait %in% traits_multi$trait)
       
-    } else { 
-      spp_acg_sample <- data.frame(n = 1:iters,
-                                   acg_score_det = acg_score_det$acg_score_det,
-                                   acg_score_random = 0)
-    }
+      message('Processing ', i, ' of ', length(spp_conv_mc), ': ', spp, 
+              ' (running ', iters, ' iterations)')
       
-    spp_scores_sample <- spp_sens_sample %>%
-      left_join(spp_acs_sample, by = c('stressor', 'n')) %>%
-      left_join(spp_acg_sample, by = 'n') %>%
-      mutate(sens_score = sens_score_random + sens_score_det,
-             adcap_gen_score = acg_score_det + acg_score_random,
-             adcap_spec_score = acs_score_random + acs_score_det) %>%
-      select(-ends_with('random'), -ends_with('det'))
-   
-    ### gather iterations and calculate distributions
-    x <- spp_scores_sample %>%
-      calc_vuln(ref_values = ref_values_conv) %>%
-      group_by(stressor) %>%
-      summarize(sd_sens = sd(sens_score),
-                sens_score = mean(sens_score),
-                sd_acg = sd(adcap_gen_score),
-                adcap_gen_score = mean(adcap_gen_score),
-                sd_acs = sd(adcap_spec_score),
-                adcap_spec_score = mean(adcap_spec_score),
-                sd_vuln = sd(vuln_raw),
-                vuln_raw = mean(vuln_raw), 
-                .groups = 'drop') %>%
-      mutate(taxon = taxon, spp_gp = spp)
+      ### process sensitivity traits
+      sens_score_det <- sens_clean_det %>%
+        group_by(stressor) %>%
+        summarize(sens_score_det = sum(sens_score), .groups = 'drop')
+      
+      if(nrow(sens_clean_multi) > 0) {
+        spp_sens_sample <- sens_clean_multi %>%
+          group_by(trait, stressor) %>%
+          summarize(score_samp = list(sample(sens_score, size = iters, replace = TRUE)), 
+                    .groups = 'keep') %>%
+          unnest(score_samp) %>%
+          mutate(n = 1:n()) %>%
+          group_by(stressor, n) %>%
+          summarize(sens_score_random = sum(score_samp), .groups = 'drop') %>%
+          left_join(sens_score_det, by = 'stressor')
+      } else { 
+        spp_sens_sample <- sens_score_det %>%
+          mutate(sens_score_random = 0) %>%
+          left_join(empty_set, by = 'stressor')
+      }
     
-    return(x)
-  })
-
-spp_vuln_conv_mc <- bind_rows(spp_conv_mc_vuln_list)
-
+      ### process specific adcap traits
+      acs_score_det <- acs_clean_det %>%
+        group_by(stressor) %>%
+        summarize(acs_score_det = sum(adcap_spec_score), .groups = 'drop')
+      
+      if(nrow(acs_clean_multi) > 0) {
+        spp_acs_sample <- acs_clean_multi %>%
+          group_by(trait, stressor) %>%
+          summarize(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE)), 
+                    .groups = 'keep') %>%
+          unnest(score_samp) %>%
+          mutate(n = 1:n()) %>%
+          group_by(stressor, n) %>%
+          summarize(acs_score_random = sum(score_samp), .groups = 'drop') %>%
+          left_join(acs_score_det, by = 'stressor')
+        
+      } else { 
+        spp_acs_sample <- acs_score_det %>%
+          mutate(acs_score_random = 0) %>%
+          left_join(empty_set, by = 'stressor')
+      }
+        
+      ### process general adcap traits
+      acg_score_det <- acg_clean_det %>%
+        summarize(acg_score_det = sum(adcap_gen_score))
+      
+      if(nrow(acg_clean_multi) > 0) {
+        spp_acg_sample <- acg_clean_multi %>%
+          group_by(trait) %>%
+          summarize(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE)), 
+                    .groups = 'keep') %>%
+          unnest(score_samp) %>%
+          mutate(n = 1:n()) %>%
+          group_by(n) %>%
+          summarize(acg_score_random = sum(score_samp), .groups = 'drop') %>%
+          mutate(acg_score_det = acg_score_det$acg_score_det)
+        
+      } else { 
+        spp_acg_sample <- data.frame(n = 1:iters,
+                                     acg_score_det = acg_score_det$acg_score_det,
+                                     acg_score_random = 0)
+      }
+        
+      spp_scores_sample <- spp_sens_sample %>%
+        left_join(spp_acs_sample, by = c('stressor', 'n')) %>%
+        left_join(spp_acg_sample, by = 'n') %>%
+        mutate(sens_score = sens_score_random + sens_score_det,
+               adcap_gen_score = acg_score_det + acg_score_random,
+               adcap_spec_score = acs_score_random + acs_score_det) %>%
+        select(-ends_with('random'), -ends_with('det'))
+     
+      ### gather iterations and calculate distributions
+      x <- spp_scores_sample %>%
+        calc_vuln(ref_values = ref_values_conv) %>%
+        group_by(stressor) %>%
+        summarize(sd_sens = sd(sens_score),
+                  sens_score = mean(sens_score),
+                  sd_acg = sd(adcap_gen_score),
+                  adcap_gen_score = mean(adcap_gen_score),
+                  sd_acs = sd(adcap_spec_score),
+                  adcap_spec_score = mean(adcap_spec_score),
+                  sd_vuln = sd(vuln_raw),
+                  vuln_raw = mean(vuln_raw), 
+                  .groups = 'drop') %>%
+        mutate(taxon = taxon, spp_gp = spp)
+      
+      return(x)
+    })
+  
+  spp_vuln_conv_mc <- bind_rows(spp_conv_mc_vuln_list)
+}
 ```
 
 ``` {r combine all scores convex}
-spp_vuln_conv_all <- spp_scores_conv_mean %>%
-  filter(!spp_gp %in% spp_conv_mc) %>%
-  calc_vuln(ref_values = ref_values_conv) %>%
-  bind_rows(spp_vuln_conv_mc) %>%
-  select(taxon, spp_gp, stressor, 
-         sens_score, adcap_gen_score, adcap_spec_score, 
-         vuln_raw, sd_sens, sd_acg, sd_acs, sd_vuln_raw = sd_vuln) %>%
-  left_join(spp_exposure, by = c('spp_gp', 'taxon', 'stressor')) %>%
-  mutate(vuln_raw = vuln_raw * exposure_mod,
-         sd_vuln_raw = sd_vuln_raw * exposure_mod) %>%
-  distinct()
-
-spp_vuln_conv_rescale <- spp_vuln_conv_all %>%
-  ungroup() %>%
-  filter(stressor != 'habitat_loss_degradation') %>%
-  mutate(vuln = vuln_raw / max(vuln_raw),
-         sd_vuln = sd_vuln_raw / max(vuln_raw)) %>%
-  arrange(desc(sd_vuln))
+if(!file.exists(conv_score_file)) {
+  spp_vuln_conv_all <- spp_scores_conv_mean %>%
+    filter(!spp_gp %in% spp_conv_mc) %>%
+    calc_vuln(ref_values = ref_values_conv) %>%
+    bind_rows(spp_vuln_conv_mc) %>%
+    select(taxon, spp_gp, stressor, 
+           sens_score, adcap_gen_score, adcap_spec_score, 
+           vuln_raw, sd_sens, sd_acg, sd_acs, sd_vuln_raw = sd_vuln) %>%
+    left_join(spp_exposure, by = c('spp_gp', 'taxon', 'stressor')) %>%
+    mutate(vuln_raw = vuln_raw * exposure_mod,
+           sd_vuln_raw = sd_vuln_raw * exposure_mod) %>%
+    distinct()
   
-write_csv(spp_vuln_conv_rescale, here('int/spp_gp_vuln_convex_scoring.csv'))
+  spp_vuln_conv_rescale <- spp_vuln_conv_all %>%
+    ungroup() %>%
+    filter(stressor != 'habitat_loss_degradation') %>%
+    mutate(vuln = vuln_raw / max(vuln_raw),
+           sd_vuln = sd_vuln_raw / max(vuln_raw)) %>%
+    arrange(desc(sd_vuln))
+    
+  write_csv(spp_vuln_conv_rescale, conv_score_file)
+}
+
 ```
 
 # Combine scores for concave scoring
 
 ``` {r score deterministic spp concave}
-spp_scores_conc_mean <- spp_sens_conc %>%
-  left_join(spp_adcap_gen_conc, by = c('taxon', 'spp_gp')) %>%
-  left_join(spp_adcap_spec_conc, by = c('taxon', 'spp_gp', 'stressor'))
 
-ref_values_conc <- spp_scores_conc_mean %>%
-  group_by(stressor) %>%
-  summarize(max_sens = max(sens_score, 1), 
-              ### the 1 ensures that stressors with very low scores don't get normalized by a low reference
-            max_adcap_gen = max(adcap_gen_score, 1),
-            max_adcap_spec = max(adcap_spec_score, 1), 
-            .groups = 'drop')
+conc_score_file <- here('int/spp_gp_vuln_concave_scoring.csv')
 
-### Separate deterministic spp (all traits fixed) from those for Monte Carlo
-spp_sens_conc_det <- spp_sens_conc_raw %>%
-  group_by(spp_gp) %>%
-  filter(all(trait_prob == 1)) %>%
-  .$spp_gp %>% unique()
-
-spp_adcap_spec_conc_det <- spp_adcap_spec_conc_raw %>%
-  group_by(spp_gp) %>%
-  filter(all(trait_prob == 1)) %>%
-  .$spp_gp %>% unique()
-
-spp_adcap_gen_conc_det <- spp_adcap_gen_conc_raw %>%
-  group_by(spp_gp) %>%
-  filter(all(trait_prob == 1)) %>%
-  .$spp_gp %>% unique()
-
-### to be fully determined, a species must be fixed in sensitivity and both adcaps
-spp_conc_deterministic <- spp_sens_conc_det[(spp_sens_conc_det %in% spp_adcap_spec_conc_det) & 
-                                    (spp_sens_conc_det %in% spp_adcap_gen_conc_det)]
-spp_scores_conc_det <- spp_scores_conc_mean %>%
-  filter(spp_gp %in% spp_conc_deterministic)
-
+if(!file.exists(conc_score_file)) {
+  spp_scores_conc_mean <- spp_sens_conc %>%
+    left_join(spp_adcap_gen_conc, by = c('taxon', 'spp_gp')) %>%
+    left_join(spp_adcap_spec_conc, by = c('taxon', 'spp_gp', 'stressor'))
+  
+  ref_values_conc <- spp_scores_conc_mean %>%
+    group_by(stressor) %>%
+    summarize(max_sens = max(sens_score, 1), 
+                ### the 1 ensures that stressors with very low scores don't get normalized by a low reference
+              max_adcap_gen = max(adcap_gen_score, 1),
+              max_adcap_spec = max(adcap_spec_score, 1), 
+              .groups = 'drop')
+  
+  ### Separate deterministic spp (all traits fixed) from those for Monte Carlo
+  spp_sens_conc_det <- spp_sens_conc_raw %>%
+    group_by(spp_gp) %>%
+    filter(all(trait_prob == 1)) %>%
+    .$spp_gp %>% unique()
+  
+  spp_adcap_spec_conc_det <- spp_adcap_spec_conc_raw %>%
+    group_by(spp_gp) %>%
+    filter(all(trait_prob == 1)) %>%
+    .$spp_gp %>% unique()
+  
+  spp_adcap_gen_conc_det <- spp_adcap_gen_conc_raw %>%
+    group_by(spp_gp) %>%
+    filter(all(trait_prob == 1)) %>%
+    .$spp_gp %>% unique()
+  
+  ### to be fully determined, a species must be fixed in sensitivity and both adcaps
+  spp_conc_deterministic <- spp_sens_conc_det[(spp_sens_conc_det %in% spp_adcap_spec_conc_det) & 
+                                      (spp_sens_conc_det %in% spp_adcap_gen_conc_det)]
+  spp_scores_conc_det <- spp_scores_conc_mean %>%
+    filter(spp_gp %in% spp_conc_deterministic)
+}
 ```
 
 ``` {r use monte carlo on non-det spp concave}
 
-### For Monte Carlo spp, for each spp, draw a bunch of samples from pool of
-### possible values
-
-set.seed(42)
-iters <- 100000
-
-### empty set fill
-empty_set <- crossing(stressor = spp_sens_conc$stressor %>% unique(),
-                      n = 1:iters)
-
-spp_conc_mc <- spp_sens_conc %>%
-  filter(!spp_gp %in% spp_conc_deterministic) %>%
-  .$spp_gp %>% unique()
-
-
-spp_conc_mc_vuln_list <- parallel::mclapply(seq_along(spp_conc_mc), mc.cores = 30, 
-  FUN = function(i) {
-    ### spp <- 'pelecanidae'
-    spp <- spp_conc_mc[i]
-    
-    traits <- spp_traits %>%
-      filter(spp_gp == spp) %>%
-      select(-n_spp_gps)
-    taxon <- traits$taxon[1]
+if(!file.exists(conc_score_file)) {
+  ### For Monte Carlo spp, for each spp, draw a bunch of samples from pool of
+  ### possible values
   
-    ### separate out single and non-mutually-exclusive traits; include all values
-    traits_det <- traits %>%
-      filter(trait_prob == 1)
-    ### Identify mutually exclusive traits; tally up # of combos
-    traits_multi <- traits %>%
-      filter(trait_prob != 1)
-    
-    ### filter sens and adcap dfs out of the loop
-    sens_clean <- spp_sens_conc_raw %>% 
-      filter(spp_gp == spp) %>%
-      select(trait, trait_value, sens_score, stressor)
-    sens_clean_det <- sens_clean %>%
-      filter(trait %in% traits_det$trait)
-    sens_clean_multi <- sens_clean %>%
-      filter(trait %in% traits_multi$trait)
-    
-    acg_clean <- spp_adcap_gen_conc_raw %>% 
-      filter(spp_gp == spp) %>%
-      select(trait, trait_value, adcap_gen_score)
-    acg_clean_det <- acg_clean %>%
-      filter(trait %in% traits_det$trait)
-    acg_clean_multi <- acg_clean %>%
-      filter(trait %in% traits_multi$trait)
+  set.seed(42)
+  iters <- 100000
   
-    acs_clean <- spp_adcap_spec_conc_raw %>% 
-      filter(spp_gp == spp) %>%
-      select(trait, trait_value, adcap_spec_score, stressor)
-    acs_clean_det <- acs_clean %>%
-      filter(trait %in% traits_det$trait)
-    acs_clean_multi <- acs_clean %>%
-      filter(trait %in% traits_multi$trait)
-    
-    message('Processing ', i, ' of ', length(spp_conc_mc), ': ', spp, 
-            ' (running ', iters, ' iterations)')
-    
-    ### process sensitivity traits
-    sens_score_det <- sens_clean_det %>%
-      group_by(stressor) %>%
-      summarize(sens_score_det = sum(sens_score), .groups = 'drop')
-    
-    if(nrow(sens_clean_multi) > 0) {
-      spp_sens_sample <- sens_clean_multi %>%
-        group_by(trait, stressor) %>%
-        summarize(score_samp = list(sample(sens_score, size = iters, replace = TRUE)), 
-                  .groups = 'keep') %>%
-        unnest(score_samp) %>%
-        mutate(n = 1:n()) %>%
-        group_by(stressor, n) %>%
-        summarize(sens_score_random = sum(score_samp), .groups = 'drop') %>%
-        left_join(sens_score_det, by = 'stressor')
-    } else { 
-      spp_sens_sample <- sens_score_det %>%
-        mutate(sens_score_random = 0) %>%
-        left_join(empty_set, by = 'stressor')
-    }
+  ### empty set fill
+  empty_set <- crossing(stressor = spp_sens_conc$stressor %>% unique(),
+                        n = 1:iters)
   
-    ### process specific adcap traits
-    acs_score_det <- acs_clean_det %>%
-      group_by(stressor) %>%
-      summarize(acs_score_det = sum(adcap_spec_score), .groups = 'drop')
+  spp_conc_mc <- spp_sens_conc %>%
+    filter(!spp_gp %in% spp_conc_deterministic) %>%
+    .$spp_gp %>% unique()
+  
+  
+  spp_conc_mc_vuln_list <- parallel::mclapply(seq_along(spp_conc_mc), mc.cores = 30, 
+    FUN = function(i) {
+      ### spp <- 'pelecanidae'
+      spp <- spp_conc_mc[i]
+      
+      traits <- spp_traits %>%
+        filter(spp_gp == spp) %>%
+        select(-n_spp_gps)
+      taxon <- traits$taxon[1]
     
-    if(nrow(acs_clean_multi) > 0) {
-      spp_acs_sample <- acs_clean_multi %>%
-        group_by(trait, stressor) %>%
-        summarize(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE)), 
-                  .groups = 'keep') %>%
-        unnest(score_samp) %>%
-        mutate(n = 1:n()) %>%
-        group_by(stressor, n) %>%
-        summarize(acs_score_random = sum(score_samp), .groups = 'drop') %>%
-        left_join(acs_score_det, by = 'stressor')
+      ### separate out single and non-mutually-exclusive traits; include all values
+      traits_det <- traits %>%
+        filter(trait_prob == 1)
+      ### Identify mutually exclusive traits; tally up # of combos
+      traits_multi <- traits %>%
+        filter(trait_prob != 1)
       
-    } else { 
-      spp_acs_sample <- acs_score_det %>%
-        mutate(acs_score_random = 0) %>%
-        left_join(empty_set, by = 'stressor')
-    }
+      ### filter sens and adcap dfs out of the loop
+      sens_clean <- spp_sens_conc_raw %>% 
+        filter(spp_gp == spp) %>%
+        select(trait, trait_value, sens_score, stressor)
+      sens_clean_det <- sens_clean %>%
+        filter(trait %in% traits_det$trait)
+      sens_clean_multi <- sens_clean %>%
+        filter(trait %in% traits_multi$trait)
       
-    ### process general adcap traits
-    acg_score_det <- acg_clean_det %>%
-      summarize(acg_score_det = sum(adcap_gen_score))
+      acg_clean <- spp_adcap_gen_conc_raw %>% 
+        filter(spp_gp == spp) %>%
+        select(trait, trait_value, adcap_gen_score)
+      acg_clean_det <- acg_clean %>%
+        filter(trait %in% traits_det$trait)
+      acg_clean_multi <- acg_clean %>%
+        filter(trait %in% traits_multi$trait)
     
-    if(nrow(acg_clean_multi) > 0) {
-      spp_acg_sample <- acg_clean_multi %>%
-        group_by(trait) %>%
-        summarize(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE)), 
-                  .groups = 'keep') %>%
-        unnest(score_samp) %>%
-        mutate(n = 1:n()) %>%
-        group_by(n) %>%
-        summarize(acg_score_random = sum(score_samp), .groups = 'drop') %>%
-        mutate(acg_score_det = acg_score_det$acg_score_det)
+      acs_clean <- spp_adcap_spec_conc_raw %>% 
+        filter(spp_gp == spp) %>%
+        select(trait, trait_value, adcap_spec_score, stressor)
+      acs_clean_det <- acs_clean %>%
+        filter(trait %in% traits_det$trait)
+      acs_clean_multi <- acs_clean %>%
+        filter(trait %in% traits_multi$trait)
       
-    } else { 
-      spp_acg_sample <- data.frame(n = 1:iters,
-                                   acg_score_det = acg_score_det$acg_score_det,
-                                   acg_score_random = 0)
-    }
+      message('Processing ', i, ' of ', length(spp_conc_mc), ': ', spp, 
+              ' (running ', iters, ' iterations)')
       
-    spp_scores_sample <- spp_sens_sample %>%
-      left_join(spp_acs_sample, by = c('stressor', 'n')) %>%
-      left_join(spp_acg_sample, by = 'n') %>%
-      mutate(sens_score = sens_score_random + sens_score_det,
-             adcap_gen_score = acg_score_det + acg_score_random,
-             adcap_spec_score = acs_score_random + acs_score_det) %>%
-      select(-ends_with('random'), -ends_with('det'))
-   
-    ### gather iterations and calculate distributions
-    x <- spp_scores_sample %>%
-      calc_vuln(ref_values = ref_values_conc) %>%
-      group_by(stressor) %>%
-      summarize(sd_sens = sd(sens_score),
-                sens_score = mean(sens_score),
-                sd_acg = sd(adcap_gen_score),
-                adcap_gen_score = mean(adcap_gen_score),
-                sd_acs = sd(adcap_spec_score),
-                adcap_spec_score = mean(adcap_spec_score),
-                sd_vuln = sd(vuln_raw),
-                vuln_raw = mean(vuln_raw), 
-                .groups = 'drop') %>%
-      mutate(taxon = taxon, spp_gp = spp)
+      ### process sensitivity traits
+      sens_score_det <- sens_clean_det %>%
+        group_by(stressor) %>%
+        summarize(sens_score_det = sum(sens_score), .groups = 'drop')
+      
+      if(nrow(sens_clean_multi) > 0) {
+        spp_sens_sample <- sens_clean_multi %>%
+          group_by(trait, stressor) %>%
+          summarize(score_samp = list(sample(sens_score, size = iters, replace = TRUE)), 
+                    .groups = 'keep') %>%
+          unnest(score_samp) %>%
+          mutate(n = 1:n()) %>%
+          group_by(stressor, n) %>%
+          summarize(sens_score_random = sum(score_samp), .groups = 'drop') %>%
+          left_join(sens_score_det, by = 'stressor')
+      } else { 
+        spp_sens_sample <- sens_score_det %>%
+          mutate(sens_score_random = 0) %>%
+          left_join(empty_set, by = 'stressor')
+      }
     
-    return(x)
-  })
-
-spp_vuln_conc_mc <- bind_rows(spp_conc_mc_vuln_list)
-
+      ### process specific adcap traits
+      acs_score_det <- acs_clean_det %>%
+        group_by(stressor) %>%
+        summarize(acs_score_det = sum(adcap_spec_score), .groups = 'drop')
+      
+      if(nrow(acs_clean_multi) > 0) {
+        spp_acs_sample <- acs_clean_multi %>%
+          group_by(trait, stressor) %>%
+          summarize(score_samp = list(sample(adcap_spec_score, size = iters, replace = TRUE)), 
+                    .groups = 'keep') %>%
+          unnest(score_samp) %>%
+          mutate(n = 1:n()) %>%
+          group_by(stressor, n) %>%
+          summarize(acs_score_random = sum(score_samp), .groups = 'drop') %>%
+          left_join(acs_score_det, by = 'stressor')
+        
+      } else { 
+        spp_acs_sample <- acs_score_det %>%
+          mutate(acs_score_random = 0) %>%
+          left_join(empty_set, by = 'stressor')
+      }
+        
+      ### process general adcap traits
+      acg_score_det <- acg_clean_det %>%
+        summarize(acg_score_det = sum(adcap_gen_score))
+      
+      if(nrow(acg_clean_multi) > 0) {
+        spp_acg_sample <- acg_clean_multi %>%
+          group_by(trait) %>%
+          summarize(score_samp = list(sample(adcap_gen_score, size = iters, replace = TRUE)), 
+                    .groups = 'keep') %>%
+          unnest(score_samp) %>%
+          mutate(n = 1:n()) %>%
+          group_by(n) %>%
+          summarize(acg_score_random = sum(score_samp), .groups = 'drop') %>%
+          mutate(acg_score_det = acg_score_det$acg_score_det)
+        
+      } else { 
+        spp_acg_sample <- data.frame(n = 1:iters,
+                                     acg_score_det = acg_score_det$acg_score_det,
+                                     acg_score_random = 0)
+      }
+        
+      spp_scores_sample <- spp_sens_sample %>%
+        left_join(spp_acs_sample, by = c('stressor', 'n')) %>%
+        left_join(spp_acg_sample, by = 'n') %>%
+        mutate(sens_score = sens_score_random + sens_score_det,
+               adcap_gen_score = acg_score_det + acg_score_random,
+               adcap_spec_score = acs_score_random + acs_score_det) %>%
+        select(-ends_with('random'), -ends_with('det'))
+     
+      ### gather iterations and calculate distributions
+      x <- spp_scores_sample %>%
+        calc_vuln(ref_values = ref_values_conc) %>%
+        group_by(stressor) %>%
+        summarize(sd_sens = sd(sens_score),
+                  sens_score = mean(sens_score),
+                  sd_acg = sd(adcap_gen_score),
+                  adcap_gen_score = mean(adcap_gen_score),
+                  sd_acs = sd(adcap_spec_score),
+                  adcap_spec_score = mean(adcap_spec_score),
+                  sd_vuln = sd(vuln_raw),
+                  vuln_raw = mean(vuln_raw), 
+                  .groups = 'drop') %>%
+        mutate(taxon = taxon, spp_gp = spp)
+      
+      return(x)
+    })
+  
+  spp_vuln_conc_mc <- bind_rows(spp_conc_mc_vuln_list)
+}
 ```
 
 ``` {r combine all scores concave}
-spp_vuln_conc_all <- spp_scores_conc_mean %>%
-  filter(!spp_gp %in% spp_conc_mc) %>%
-  calc_vuln(ref_values = ref_values_conc) %>%
-  bind_rows(spp_vuln_conc_mc) %>%
-  select(taxon, spp_gp, stressor, 
-         sens_score, adcap_gen_score, adcap_spec_score, 
-         vuln_raw, sd_sens, sd_acg, sd_acs, sd_vuln_raw = sd_vuln) %>%
-  left_join(spp_exposure, by = c('spp_gp', 'taxon', 'stressor')) %>%
-  mutate(vuln_raw = vuln_raw * exposure_mod,
-         sd_vuln_raw = sd_vuln_raw * exposure_mod) %>%
-  distinct()
-
-spp_vuln_conc_rescale <- spp_vuln_conc_all %>%
-  ungroup() %>%
-  filter(stressor != 'habitat_loss_degradation') %>%
-  mutate(vuln = vuln_raw / max(vuln_raw),
-         sd_vuln = sd_vuln_raw / max(vuln_raw)) %>%
-  arrange(desc(sd_vuln))
+if(!file.exists(conc_score_file)) {
+  spp_vuln_conc_all <- spp_scores_conc_mean %>%
+    filter(!spp_gp %in% spp_conc_mc) %>%
+    calc_vuln(ref_values = ref_values_conc) %>%
+    bind_rows(spp_vuln_conc_mc) %>%
+    select(taxon, spp_gp, stressor, 
+           sens_score, adcap_gen_score, adcap_spec_score, 
+           vuln_raw, sd_sens, sd_acg, sd_acs, sd_vuln_raw = sd_vuln) %>%
+    left_join(spp_exposure, by = c('spp_gp', 'taxon', 'stressor')) %>%
+    mutate(vuln_raw = vuln_raw * exposure_mod,
+           sd_vuln_raw = sd_vuln_raw * exposure_mod) %>%
+    distinct()
   
-write_csv(spp_vuln_conc_rescale, here('int/spp_gp_vuln_concave_scoring.csv'))
+  spp_vuln_conc_rescale <- spp_vuln_conc_all %>%
+    ungroup() %>%
+    filter(stressor != 'habitat_loss_degradation') %>%
+    mutate(vuln = vuln_raw / max(vuln_raw),
+           sd_vuln = sd_vuln_raw / max(vuln_raw)) %>%
+    arrange(desc(sd_vuln))
+    
+  write_csv(spp_vuln_conc_rescale, conc_score_file)
+}
+
 ```
 
 # Calculate differences
@@ -893,10 +910,15 @@ df_fix <- df_raw %>%
   mutate(spp_gp = spp_gp_repr) %>%
   select(-spp_gp_repr, -repres)
 
+str_name_drops <- c('plastic_pollution_', 'entanglement_', 
+                    'eutrophication_', '_pollution', 'urbance', 'itat', 'adation') %>%
+  paste0(collapse = '|')
+
 df <- df_raw %>%
   bind_rows(df_fix) %>%
   full_join(spp_downfill, by = c('spp_gp', 'taxon')) %>%
-  filter(!is.na(species))
+  filter(!is.na(species)) %>%
+  mutate(str_lbl = str_remove_all(stressor, str_name_drops))
 
 ```
 
@@ -906,11 +928,11 @@ Boxplots of scores by stressor or by taxon, with respect to scoring function.
 
 ```{r}
 df_long <- df %>%
-  select(taxon, stressor, species, linear = vuln, convex = v_conv, concave = v_conc) %>%
-  gather(shape, vuln, -taxon, -stressor, -species) %>%
-  mutate(shape = factor(shape, levels = c('linear', 'convex', 'concave')))
+  select(taxon, str_lbl, species, linear = vuln, convex = v_conv, concave = v_conc) %>%
+  gather(shape, vuln, -taxon, -str_lbl, -species) %>%
+  mutate(shape = factor(shape, levels = c('convex', 'linear', 'concave')))
 
-ggplot(df_long, aes(x = stressor, y = vuln)) +
+ggplot(df_long, aes(x = str_lbl, y = vuln)) +
   theme_minimal() +
   theme(axis.title.y = element_blank()) +
   geom_boxplot(aes(fill = shape), outlier.size = .1, outlier.color = 'grey70') +
@@ -932,7 +954,7 @@ Use an RMSE approach to determine the amount that these scoring strategies chang
 
 ``` {r}
 rmse_by_stressor <- df %>%
-  group_by(stressor) %>%
+  group_by(str_lbl) %>%
   summarize(mean_vuln_lin = mean(vuln),
             rmse_v_conc = sqrt(sum((vuln - v_conc)^2) / n()),
             rmse_v_conv = sqrt(sum((vuln - v_conv)^2) / n()),
@@ -954,11 +976,11 @@ rmse_by_taxon <- df %>%
 
 Would it make more sense to use RMSE on the ranking of each species in the set (by stressor)?  So if looking at a particular stressor, a species is ranked 100 out of 22,000+ species, and after is ranked 104, that's not a huge swing.  
 
-Here, arrange low to high, so top rank is a low vulnerability.  To avoid issues of identical scores getting different ranks, let's use a quantile instead of a rank, so lowest score(s) get 1, highest score(s) get 1000.
+Here, arrange low to high, so top rank is a low vulnerability.  Use `percent_rank()` to normalize rank by number of observations, to be between 0 and 1.
 ``` {r}
-rmse_by_stressor <- df %>%
+rmse_rank_by_stressor <- df %>%
   select(-starts_with('sd_')) %>%
-  group_by(stressor) %>%
+  group_by(str_lbl) %>%
   mutate(rank_linear  = percent_rank(vuln),
          rank_convex  = percent_rank(v_conv), 
          rank_concave = percent_rank(v_conc)) %>%
@@ -969,8 +991,8 @@ rmse_by_stressor <- df %>%
             rmse_rank_conv = sqrt(sum((rank_linear - rank_convex)^2) / n()),
             .groups = 'drop')
             
-rmse_by_taxon <- df %>%
-  group_by(stressor, taxon) %>%
+rmse_rank_by_taxon <- df %>%
+  group_by(str_lbl, taxon) %>%
   mutate(rank_linear  = percent_rank(vuln),
          rank_convex  = percent_rank(v_conv), 
          rank_concave = percent_rank(v_conc)) %>%
@@ -985,8 +1007,49 @@ rmse_by_taxon <- df %>%
 
 ### RMSE of rank by stressor
 
-`r DT::datatable(rmse_by_stressor)`
+`r DT::datatable(rmse_rank_by_stressor)`
+
+```{r}
+
+plot_str_df <- rmse_rank_by_stressor %>%
+  select(str_lbl, starts_with('rmse_rank')) %>%
+  gather(score_f, rmse_rank, -str_lbl) %>%
+  mutate(score_f = ifelse(score_f == 'rmse_rank_conc', 'concave', 'convex')) %>%
+  group_by(str_lbl) %>%
+  mutate(mean_rmse_rank = mean(rmse_rank)) %>%
+  arrange(mean_rmse_rank) %>%
+  ungroup() %>%
+  mutate(str_lbl = fct_inorder(str_lbl))
+  
+ggplot(plot_str_df, aes(x = str_lbl, y = rmse_rank, color = score_f)) +
+  geom_point() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.title.x = element_blank()) +
+  labs(y = 'RMSE(rank)',
+       color = 'score function',
+       title = 'RMSE(rank) by stressor across all taxa')
+```
+
 
 ### RMSE of rank by stressor and taxon
 
-`r DT::datatable(rmse_by_taxon)`
+`r DT::datatable(rmse_rank_by_taxon)`
+
+```{r}
+plot_str_tx_df <- rmse_rank_by_taxon %>%
+  select(str_lbl, taxon, starts_with('rmse_rank')) %>%
+  gather(score_f, rmse_rank, -str_lbl, -taxon) %>%
+  mutate(score_f = ifelse(score_f == 'rmse_rank_conc', 'concave', 'convex')) %>%
+  mutate(str_lbl = factor(str_lbl, levels = levels(plot_str_df$str_lbl)))
+  
+ggplot(plot_str_tx_df, aes(x = str_lbl, y = rmse_rank, color = score_f)) +
+  geom_point() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.title.x = element_blank()) +
+  labs(y = 'RMSE(rank)',
+       color = 'score function',
+       title = 'RMSE(rank) by stressor and taxa') +
+  facet_wrap(~taxon, ncol = 3)
+```
