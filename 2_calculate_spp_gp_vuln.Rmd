@@ -32,9 +32,9 @@ Read in taxonomic traits filled in by taxon experts and cleaned in prior scripts
 
 # Data
 
-`_raw_data/xlsx/master_all_taxa_trait_data.xlsx` is the raw workbook prepared by Nathalie Butt from the various submissions of the taxa-group experts.  This has been processed and cleaned to `_data/spp_traits_valid.csv`.  See earlier scripts in the process.
+`_raw_data/xlsx/spp_traits_all.xlsx` is the raw workbook prepared by Nathalie Butt from the various submissions of the taxa-group experts.  This has been processed and cleaned to `_data/spp_traits_valid.csv`.  See earlier scripts in the process.
 
-`trait_stressor_rankings/final_scores_all_stressors_traits.xlsx` is a workbook with each sheet indicating sensitivity or adaptive capacity; columns in each sheet indicate stressors, and rows indicate traits.
+`trait_stressor_rankings/stressors_traits_scored.xlsx` is a workbook with each sheet indicating sensitivity or adaptive capacity; columns in each sheet indicate stressors, and rows indicate traits.
 
 # Methods
 
