@@ -39204,3 +39204,925 @@ sponges,specialisation,extreme_diet_specialization,demospongiae,generalist,1,1
 sponges,specialisation,habitat_forming,demospongiae,no,1,1
 sponges,specialisation,photosynthetic,demospongiae,no,1,1
 sponges,specialisation,terrestrial_and_marine_life_stages,demospongiae,no,1,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,parenchelyurus hepburni,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hexatrygon bickelli,>15C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,omobranchus fasciolatus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,encheliophis gracilis,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,kaupichthys brachychirus,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,chaetodon auriga,5-7.5C,115,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,actinopyga echinites,2.5-5C,100,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,todaropsis eblanae,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,eucleoteuthis luminosa,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,nautilus macromphalus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,ommastrephes bartramii,>15C,309,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaenoptera edeni,7.5-10C,61,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,tridacna maxima,2.5-5C,46,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiocoma scolopendrina,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,tripneustes gratilla,5-7.5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiomastix caryophyllata,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiomastix mixta,2.5-5C,100,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis calypso,10-15C,309,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,eptatretus mendozai,>15C,115,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,asterina phylactica,2.5-5C,100,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cirrothauma murrayi,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cirrothauma magna,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,narrowteuthis nesisi,0-2.5C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cephalurus cephalus,2.5-5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,enchelycore schismatorhynchus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,gobiodon citrinus,2.5-5C,115,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,architeuthis dux,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,adelieledone adelieana,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,graneledone yamana,10-15C,309,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,ariosoma selenops,>15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,ethadophis akkistikos,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,synaphobranchus oregoni,>15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,congriscus maldivensis,>15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,serrivomer lanceolatoides,10-15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,bathycongrus vicinalis,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,mobula birostris,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,coryphaena hippurus,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,epinephelus itajara,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,katsuwonus pelamis,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,thunnus maccoyii,10-15C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,carcharhinus leucas,5-7.5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,carcharodon carcharias,10-15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,echinorhinus brucus,>15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeocerdo cuvier,5-7.5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,prionace glauca,10-15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,alopias superciliosus,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,apterichtus kendalli,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,ginglymostoma cirratum,2.5-5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,moringua edwardsi,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,carapus bermudensis,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,scarus schlegeli,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pseudocarcharias kamoharai,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,naso vlamingii,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,balistoides viridescens,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,gymnothorax javanicus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,epinephelus lanceolatus,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,monopenchelys acuta,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,bathypterois grallator,10-15C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,echinorhinus cookei,10-15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,isurus paucus,7.5-10C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,acanthurus dussumieri,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,exocoetus volitans,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhincodon typus,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,hygophum proximum,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,chaetodon trifascialis,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,uropterygius fuscoguttatus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,derichthys serpentinus,10-15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,synaphobranchus affinis,>15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,crossosalarias macrospilus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,rhinomuraena quaesita,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,amphiprion akindynos,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,parablennius parvicornis,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,isurus oxyrinchus,10-15C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,parablennius zvonimiri,2.5-5C,115,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,palaemon elegans,10-15C,9,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,steno bredanensis,5-7.5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,tursiops truncatus,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,stenella clymene,2.5-5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,lagenodelphis hosei,5-7.5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,grampus griseus,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,peponocephala electra,5-7.5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,feresa attenuata,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,pseudorca crassidens,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,physeter macrocephalus,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,kogia breviceps,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,ziphius cavirostris,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,indopacetus pacificus,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,mesoplodon europaeus,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,mesoplodon densirostris,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,megaptera novaeangliae,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,trichechus manatus,2.5-5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,stenella frontalis,7.5-10C,61,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,caretta caretta,10-15C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,chelonia mydas,7.5-10C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,crocodylus acutus,2.5-5C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,dermochelys coriacea,10-15C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,eretmochelys imbricata,5-7.5C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,lepidochelys kempii,10-15C,16,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,antedon mediterranea,2.5-5C,100,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,trapezia flavopunctata,2.5-5C,9,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,diadema antillarum,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,diadema savignyi,5-7.5C,100,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,ancistrocheirus lesueurii,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,bathothauma lyromma,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,lepidoteuthis grimaldii,10-15C,309,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,mytilus galloprovincialis,7.5-10C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,bathypolypus sponsalis,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus vulgaris,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,taningia danae,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis agassizii,2.5-5C,309,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,ostrea edulis,7.5-10C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,spirula spirula,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,thysanoteuthis rhombus,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,vampyroteuthis infernalis,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,grimpoteuthis wuelkeri,5-7.5C,309,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,argopecten irradians,>15C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,lampadioteuthis megaleia,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cranchia scabra,10-15C,309,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,pinctada imbricata,5-7.5C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,egea inermis,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,hyaloteuthis pelagica,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,liguriella podophthalma,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,neoteuthis thielei,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,nototodarus hawaiiensis,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sandalops melancholicus,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,selenoteuthis scintillans,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,tetracheledone spinicirrhus,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus burryi,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,muusoctopus januarii,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus ornatus,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus mototi,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,joubiniteuthis portieri,7.5-10C,309,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiocoma erinaceus,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiocoma echinata,0-2.5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiocomella ophiactoides,2.5-5C,100,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,clupea harengus,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,chanos chanos,7.5-10C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,lamna nasus,10-15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cetorhinus maximus,10-15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,somniosus microcephalus,10-15C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,lutjanus sebae,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,anguilla australis,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,parapercis colias,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,champsocephalus gunnari,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,hippoglossus stenolepis,5-7.5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,lamna ditropis,7.5-10C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,lutjanus carponotatus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,spratelloides delicatulus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,pomacentrus coelestis,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,leptocharias smithii,2.5-5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,alopias vulpinus,10-15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pteroplatytrygon violacea,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,sebastes diploproa,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,cirripectes filamentosus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,cetoscarus bicolor,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeorhinus galeus,10-15C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,plectropomus leopardus,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,stegostoma fasciatum,2.5-5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,alopias pelagicus,5-7.5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,nebrius ferrugineus,2.5-5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,megachasma pelagios,10-15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,mitsukurina owstoni,10-15C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,cephalopholis cyanostigma,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,acanthochromis polyacanthus,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,plesiobatis daviesi,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,rexea solandri,7.5-10C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hypnos monopterygius,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,bathyuroconger vicinus,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,simenchelys parasitica,10-15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,synaphobranchus kaupii,>15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,parma microlepis,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,meuschenia scaber,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,phycodurus eques,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,hoplostethus atlanticus,>15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,venefica tentaculata,>15C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,spiniraja whitleyi,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,oncorhynchus nerka,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,hippocampus abdominalis,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,gadus morhua,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,engraulis ringens,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,mobula alfredi,5-7.5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,dissostichus eleginoides,10-15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,salarias fasciatus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,brachionichthys hirsutus,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,notolabrus celidotus,5-7.5C,115,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,scylla serrata,7.5-10C,9,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,paralithodes camtschaticus,5-7.5C,9,1
+corals,physiological_tolerance_breadths,thermal_tolerance_range,diploastrea heliopora,2.5-5C,4,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,pinna bicolor,7.5-10C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,mytilus californianus,7.5-10C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,siliqua patula,5-7.5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,cerastoderma edule,7.5-10C,46,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,asterias rubens,2.5-5C,100,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,mercenaria mercenaria,10-15C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,panopea generosa,7.5-10C,46,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,strongylocentrotus droebachiensis,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,echinocardium cordatum,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,apostichopus japonicus,10-15C,100,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia apama,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,filippovia knipovitchi,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,martialia hyadesi,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pareledone turqueti,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia latimanus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cistopus indicus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia bandensis,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,watasenia scintillans,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,psychroteuthis glacialis,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,heterololigo bleekeri,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus aegina,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,nautilus pompilius,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,enteroctopus dofleini,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,dosidicus gigas,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus macropus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus maya,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,bathypolypus arcticus,10-15C,309,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,lepidochelys olivacea,2.5-5C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,natator depressa,2.5-5C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,crocodylus porosus,2.5-5C,16,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,amblyrhynchus cristatus,0-2.5C,16,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,berardius bairdii,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,hyperoodon ampullatus,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,mesoplodon mirus,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,odobenus rosmarus,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,mesoplodon stejnegeri,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,mesoplodon bidens,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,eschrichtius robustus,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaenoptera acutorostrata,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaenoptera borealis,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaenoptera physalus,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaenoptera musculus,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaena mysticetus,2.5-5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,caperea marginata,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,eubalaena glacialis,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,enhydra lutris,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,lagenorhynchus acutus,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,cephalorhynchus hectori,2.5-5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,lissodelphis borealis,5-7.5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,orcinus orca,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocoena sinus,2.5-5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,delphinapterus leucas,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,monodon monoceros,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,dugong dugon,5-7.5C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,eubalaena australis,10-15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,eubalaena japonica,7.5-10C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaenoptera bonaerensis,>15C,61,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,balaenoptera brydei,10-15C,61,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,haliotis rubra,5-7.5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,tridacna gigas,2.5-5C,46,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,loxechinus albus,10-15C,100,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,megaleledone setebos,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus tetricus,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus insularis,0-2.5C,309,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,gobiodon histrio,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,eviota sigillata,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,salarias ceramensis,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,chaetodon triangulum,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,saurenchelys fierasfer,10-15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,ostorhinchus doederleini,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,ecsenius trilineatus,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,conger verreauxi,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,omobranchus anolius,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,salarias sinuosus,2.5-5C,115,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,megatrygon microps,2.5-5C,133,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,hypleurochilus bananensis,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,gorgasia maculata,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,bathycongrus retrotinctus,10-15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,parablennius yatabei,10-15C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,eptatretus cirrhatus,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,heteroconger klausewitzi,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,forsterygion varium,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,xestochilus nebulosus,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,ophichthus altipennis,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,xenomystax trucidans,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,heteroconger taylori,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,omobranchus rotundiceps,5-7.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,cirripectes alleni,2.5-5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,skythrenchelys zabra,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,entomacrodus macrospilus,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,facciolella karreri,7.5-10C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,chlopsis kazuko,0-2.5C,115,1
+fish,physiological_tolerance_breadths,thermal_tolerance_range,hoplunnis schmidti,2.5-5C,115,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,calliostoma ligatum,5-7.5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,haliotis kamtschatkana,5-7.5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,tegula funebralis,7.5-10C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,aplysia californica,10-15C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,cadlina luteomarginata,5-7.5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,aeolidia papillosa,2.5-5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,pecten maximus,5-7.5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,mytilus trossulus,2.5-5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,mytilus edulis,10-15C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,bankia setacea,5-7.5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,crassostrea virginica,>15C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,ostrea lurida,7.5-10C,46,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiopholis aculeata,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,mesocentrotus franciscanus,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,strongylocentrotus pallidus,10-15C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,strongylocentrotus purpuratus,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,dendraster excentricus,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,amphipholis squamata,>15C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,amphiodia occidentalis,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,apostichopus californicus,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,strongylocentrotus fragilis,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,brisaster latifrons,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,asterina gibbosa,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,patiria miniata,10-15C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,pisaster ochraceus,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,pycnopodia helianthoides,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,gorgonocephalus eucnemis,10-15C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,cucumaria miniata,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,cucumaria piperata,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,eupentacta quinquesemita,5-7.5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,cucumaria frondosa,10-15C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,florometra serratissima,5-7.5C,100,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,nymphon australe,0-2.5C,9,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus oculifer,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus fangsiao,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,ameloctopus litoralis,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,enteroctopus megalocyathus,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,abdopus aculeatus,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis depressa,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pareledone charcoti,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus exannulatus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,hapalochlaena lunulata,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,bathypolypus ergasticus,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pareledone prydzensis,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis persephone,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis pluto,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus luteus,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,bathypolypus valdiviae,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis massyae,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,abdopus horridus,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus marginatus,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,robsonella fontaniana,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus bimaculatus,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus hubbsorum,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,graneledone verrucosa,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cirroteuthis muelleri,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis californiana,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,stauroteuthis syrtensis,0-2.5C,309,1
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,bythograea thermydron,0-2.5C,9,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,pecten fumatus,7.5-10C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,pinctada maxima,5-7.5C,46,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiomastix annulosa,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiomastix janualis,7.5-10C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,diadema setosum,5-7.5C,100,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,adamussium colbecki,0-2.5C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,enteroctopus magnificus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus neglectus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus rex,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,thaumoctopus mimicus,2.5-5C,309,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,saccostrea glomerata,10-15C,46,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,odontaster validus,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,cryptasterina pentagona,5-7.5C,100,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,bathypolypus bairdii,10-15C,309,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,aquilonastra burtoni,2.5-5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,ophiocoma aethiops,5-7.5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,centrostephanus rodgersii,5-7.5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,heliocidaris tuberculata,5-7.5C,100,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,patiria chilensis,10-15C,100,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,ostrea angasi,5-7.5C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus dierythraeus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus graptus,2.5-5C,309,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,magallana gigas,2.5-5C,46,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,mimachlamys asperrima,7.5-10C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,bathypolypus pugniger,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pareledone felix,0-2.5C,309,1
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,arachnoides placenta,2.5-5C,100,1
+molluscs,physiological_tolerance_breadths,thermal_tolerance_range,acesta excavata,10-15C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus polyzenia,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,thaumeledone brevis,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus alpheus,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus aspilosomatis,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,stauroteuthis gilchristi,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,vosseledone charrua,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,nautilus belauensis,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,muusoctopus robustus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pickfordiateuthis pulchella,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis bruuni,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis grimaldii,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis albatrossi,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,abdopus abaculus,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus nocturnus,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,graneledone gonzalezi,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,grimpoteuthis boylei,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,grimpoteuthis challengeri,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,grimpoteuthis discoveryi,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis borealis,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,adelieledone piatkowski,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis chathamensis,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis mero,5-7.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,thaumeledone peninsulae,0-2.5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cistopus taiwanicus,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,opisthoteuthis hardyi,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,abdopus,0-2.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,abdopus,5-7.5C,309,0.6666666666666666
+echinoderms,physiological_tolerance_breadths,thermal_tolerance_range,acanthaster,2.5-5C,100,1
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,acrochordus,2.5-5C,16,1
+corals,physiological_tolerance_breadths,thermal_tolerance_range,acropora,0-2.5C,4,0.2169811320754717
+corals,physiological_tolerance_breadths,thermal_tolerance_range,acropora,2.5-5C,4,0.71698113207547165
+corals,physiological_tolerance_breadths,thermal_tolerance_range,acropora,5-7.5C,4,0.0660377358490566
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,aetobatus,5-7.5C,133,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,alloteuthis,2.5-5C,309,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,alloteuthis,7.5-10C,309,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,amblyraja,0-2.5C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,amblyraja,10-15C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,amblyraja,2.5-5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,amblyraja,5-7.5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,amblyraja,7.5-10C,133,0.14285714285714285
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus,2.5-5C,309,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus,5-7.5C,309,0.2222222222222222
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphioctopus,7.5-10C,309,0.1111111111111111
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,apristurus,>15C,133,0.17391304347826086
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,apristurus,0-2.5C,133,0.08695652173913043
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,apristurus,10-15C,133,0.21739130434782608
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,apristurus,2.5-5C,133,0.13043478260869565
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,apristurus,5-7.5C,133,0.08695652173913043
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,apristurus,7.5-10C,133,0.30434782608695654
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,aptychotrema,7.5-10C,133,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,arctocephalus,>15C,61,0.16666666666666666
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,arctocephalus,0-2.5C,61,0.16666666666666666
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,arctocephalus,10-15C,61,0.3333333333333333
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,arctocephalus,2.5-5C,61,0.16666666666666666
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,arctocephalus,5-7.5C,61,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,argonauta,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,argonauta,7.5-10C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,asymbolus,>15C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,asymbolus,2.5-5C,133,0.375
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,asymbolus,5-7.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,atelomycterus,0-2.5C,133,0.8
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,atelomycterus,2.5-5C,133,0.2
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,austrorossia,>15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,austrorossia,10-15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,austrorossia,7.5-10C,309,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bathyraja,>15C,133,0.043478260869565216
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bathyraja,0-2.5C,133,0.34782608695652173
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bathyraja,10-15C,133,0.08695652173913043
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bathyraja,2.5-5C,133,0.2391304347826087
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bathyraja,5-7.5C,133,0.1956521739130435
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bathyraja,7.5-10C,133,0.08695652173913043
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,beringraja,0-2.5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,beringraja,10-15C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,beringraja,5-7.5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,beringraja,7.5-10C,133,0.4
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,berryteuthis,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,berryteuthis,5-7.5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,brachioteuthis,>15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,brachioteuthis,0-2.5C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,breviraja,>15C,133,0.6666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,breviraja,5-7.5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,breviraja,7.5-10C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,brevitrygon,2.5-5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bythaelurus,>15C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bythaelurus,0-2.5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bythaelurus,10-15C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bythaelurus,2.5-5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,bythaelurus,5-7.5C,133,0.125
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus,0-2.5C,309,0.375
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus,2.5-5C,309,0.375
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus,5-7.5C,309,0.125
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,callistoctopus,7.5-10C,309,0.125
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,callorhinus,10-15C,61,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cephaloscyllium,>15C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cephaloscyllium,0-2.5C,133,0.06666666666666667
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cephaloscyllium,10-15C,133,0.13333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cephaloscyllium,2.5-5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cephaloscyllium,5-7.5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cephaloscyllium,7.5-10C,133,0.06666666666666667
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,chiroteuthis,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cistopus,2.5-5C,309,1
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,creagrus,7.5-10C,46,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cruriraja,>15C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cruriraja,0-2.5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cruriraja,2.5-5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,cruriraja,5-7.5C,133,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,cycloteuthis,5-7.5C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dactylobatus,>15C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dasyatis,10-15C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dasyatis,2.5-5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dasyatis,5-7.5C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dasyatis,7.5-10C,133,0.2857142857142857
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,delphinus,>15C,61,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dentiraja,0-2.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dentiraja,2.5-5C,133,0.375
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dentiraja,7.5-10C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dipturus,>15C,133,0.13333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dipturus,0-2.5C,133,0.1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dipturus,10-15C,133,0.3
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dipturus,2.5-5C,133,0.23333333333333334
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dipturus,7.5-10C,133,0.23333333333333334
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,discoteuthis,>15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,discoteuthis,7.5-10C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,doryteuthis,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,eledone,0-2.5C,309,0.14285714285714285
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,eledone,10-15C,309,0.14285714285714285
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,eledone,2.5-5C,309,0.42857142857142855
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,eledone,5-7.5C,309,0.14285714285714285
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,eledone,7.5-10C,309,0.14285714285714285
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,enoploteuthis,7.5-10C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,eridacnis,>15C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,eridacnis,0-2.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,eridacnis,2.5-5C,133,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,euaxoctopus,0-2.5C,309,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,eumetopias,7.5-10C,61,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,euprymna,>15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,euprymna,0-2.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,euprymna,7.5-10C,309,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,fenestraja,>15C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,fenestraja,0-2.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,figaro,10-15C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,figaro,7.5-10C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,fontitrygon,0-2.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,fontitrygon,2.5-5C,133,0.6666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeus,>15C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeus,0-2.5C,133,0.13333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeus,10-15C,133,0.26666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeus,2.5-5C,133,0.13333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeus,5-7.5C,133,0.13333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,galeus,7.5-10C,133,0.13333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,galiteuthis,10-15C,309,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,globicephala,10-15C,61,0.5
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,globicephala,7.5-10C,61,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,glyphis,2.5-5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,glyphis,5-7.5C,133,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,gonatus,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,grimalditeuthis,10-15C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,gurgesiella,>15C,133,0.6666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,gurgesiella,10-15C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,halaelurus,0-2.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,halaelurus,2.5-5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,halaelurus,5-7.5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,halaelurus,7.5-10C,133,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,haliphron,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,hapalochlaena,2.5-5C,309,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,hapalochlaena,7.5-10C,309,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,haploblepharus,5-7.5C,133,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,helicocranchia,10-15C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemitrygon,0-2.5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemitrygon,2.5-5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemitrygon,5-7.5C,133,0.4
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemitrygon,7.5-10C,133,0.2
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,heteroteuthis,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,heteroteuthis,7.5-10C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,himantura,0-2.5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,himantura,2.5-5C,133,0.8
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,histioteuthis,10-15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,histioteuthis,5-7.5C,309,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,histioteuthis,7.5-10C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,holohalaelurus,>15C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,holohalaelurus,0-2.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,holohalaelurus,5-7.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hongeo,5-7.5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hypanus,0-2.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hypanus,10-15C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hypanus,5-7.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hypanus,7.5-10C,133,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,idiosepius,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,idiosepius,5-7.5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,illex,10-15C,309,0.75
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,illex,5-7.5C,309,0.25
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,kogia,10-15C,61,0.5
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,kogia,7.5-10C,61,0.5
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,lagenorhynchus,10-15C,61,0.16666666666666666
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,lagenorhynchus,5-7.5C,61,0.16666666666666666
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,lagenorhynchus,7.5-10C,61,0.6666666666666666
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,laticauda,0-2.5C,16,0.3333333333333333
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,laticauda,2.5-5C,16,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,leachia,>15C,309,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,leachia,0-2.5C,309,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,leachia,10-15C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,leucoraja,0-2.5C,133,0.08333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,leucoraja,10-15C,133,0.08333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,leucoraja,2.5-5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,leucoraja,7.5-10C,133,0.5833333333333334
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,loligo,>15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,loligo,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,lycoteuthis,0-2.5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,lycoteuthis,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,macrotritopus,7.5-10C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,maculabatis,0-2.5C,133,0.5714285714285714
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,maculabatis,2.5-5C,133,0.42857142857142855
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,malacoraja,0-2.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,malacoraja,5-7.5C,133,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,mastigoteuthis,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,megalocranchia,>15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,megalocranchia,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,metasepia,2.5-5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,metasepia,7.5-10C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,mobula,10-15C,133,0.1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,mobula,2.5-5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,mobula,5-7.5C,133,0.7
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,neophoca,2.5-5C,61,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,neoraja,>15C,133,0.4
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,neoraja,10-15C,133,0.4
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,neoraja,7.5-10C,133,0.2
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,neorossia,10-15C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,neotrygon,0-2.5C,133,0.6
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,neotrygon,2.5-5C,133,0.4
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,notoraja,>15C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,notoraja,0-2.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,notoraja,2.5-5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,notoraja,5-7.5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,notoraja,7.5-10C,133,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,nototodarus,10-15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,nototodarus,5-7.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,nototodarus,7.5-10C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopoteuthis,>15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopoteuthis,10-15C,309,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus,>15C,309,0.04
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus,0-2.5C,309,0.32
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus,10-15C,309,0.04
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus,2.5-5C,309,0.36
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus,5-7.5C,309,0.16
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,octopus,7.5-10C,309,0.08
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,ocythoe,10-15C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,okamejei,>15C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,okamejei,10-15C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,okamejei,2.5-5C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,okamejei,7.5-10C,133,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,onychoteuthis,0-2.5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,onychoteuthis,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,onykia,2.5-5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,onykia,5-7.5C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,orbiraja,0-2.5C,133,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,ornithoteuthis,7.5-10C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parmaturus,10-15C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parmaturus,2.5-5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parmaturus,5-7.5C,133,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,paroctopus,5-7.5C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pastinachus,0-2.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pastinachus,2.5-5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pateobatis,0-2.5C,133,0.4
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pateobatis,2.5-5C,133,0.6
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,penaeus,0-2.5C,9,0.16666666666666666
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,penaeus,2.5-5C,9,0.8333333333333334
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocarctos,5-7.5C,61,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pholidoteuthis,2.5-5C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pickfordiateuthis,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,planctoteuthis,>15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,planctoteuthis,5-7.5C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,platyrhina,2.5-5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,platyrhinoidis,10-15C,133,1
+corals,physiological_tolerance_breadths,thermal_tolerance_range,pocillopora,0-2.5C,4,0.23076923076923078
+corals,physiological_tolerance_breadths,thermal_tolerance_range,pocillopora,2.5-5C,4,0.6153846153846154
+corals,physiological_tolerance_breadths,thermal_tolerance_range,pocillopora,5-7.5C,4,0.15384615384615385
+corals,physiological_tolerance_breadths,thermal_tolerance_range,porites,0-2.5C,4,0.3333333333333333
+corals,physiological_tolerance_breadths,thermal_tolerance_range,porites,2.5-5C,4,0.6666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,poroderma,5-7.5C,133,1
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,procellaria,10-15C,46,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,proscyllium,5-7.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,proscyllium,7.5-10C,133,0.5
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,pseudobulweria,0-2.5C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pteroctopus,2.5-5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pteroctopus,7.5-10C,309,0.5
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,pterodroma,0-2.5C,46,0.3333333333333333
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,pterodroma,2.5-5C,46,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pterygioteuthis,10-15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pterygioteuthis,7.5-10C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pyroteuthis,>15C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,pyroteuthis,10-15C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,raja,>15C,133,0.045454545454545456
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,raja,0-2.5C,133,0.13636363636363635
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,raja,10-15C,133,0.13636363636363635
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,raja,2.5-5C,133,0.4090909090909091
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,raja,5-7.5C,133,0.09090909090909091
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,raja,7.5-10C,133,0.18181818181818182
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rajella,>15C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rajella,10-15C,133,0.375
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rajella,2.5-5C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rajella,7.5-10C,133,0.375
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhina,5-7.5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinoptera,0-2.5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinoptera,10-15C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinoptera,2.5-5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinoptera,5-7.5C,133,0.4
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,rondeletiola,7.5-10C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,rossia,>15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,rossia,10-15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,rossia,2.5-5C,309,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,rossia,5-7.5C,309,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rostroraja,10-15C,133,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,scaeurgus,0-2.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,scaeurgus,5-7.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,scaeurgus,7.5-10C,309,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,schroederichthys,0-2.5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,schroederichthys,5-7.5C,133,0.75
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,scyliorhinus,>15C,133,0.2727272727272727
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,scyliorhinus,0-2.5C,133,0.18181818181818182
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,scyliorhinus,10-15C,133,0.09090909090909091
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,scyliorhinus,2.5-5C,133,0.2727272727272727
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,scyliorhinus,7.5-10C,133,0.18181818181818182
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia,>15C,309,0.030303030303030304
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia,0-2.5C,309,0.16666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia,10-15C,309,0.09090909090909091
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia,2.5-5C,309,0.3484848484848485
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia,5-7.5C,309,0.24242424242424243
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepia,7.5-10C,309,0.12121212121212122
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepiella,0-2.5C,309,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepiella,2.5-5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepiella,5-7.5C,309,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepietta,10-15C,309,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepietta,5-7.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepiola,0-2.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepiola,2.5-5C,309,0.6666666666666666
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepioteuthis,0-2.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepioteuthis,5-7.5C,309,0.6666666666666666
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,stenella,10-15C,61,0.2
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,stenella,2.5-5C,61,0.6
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,stenella,7.5-10C,61,0.2
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,sterna,7.5-10C,46,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sthenoteuthis,5-7.5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sthenoteuthis,7.5-10C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,stigmatoteuthis,>15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,stoloteuthis,>15C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,taeniura,2.5-5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,taeniura,5-7.5C,133,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,taonius,>15C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,telatrygon,5-7.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,telatrygon,7.5-10C,133,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,teuthowenia,10-15C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,teuthowenia,2.5-5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,teuthowenia,5-7.5C,309,0.3333333333333333
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,todarodes,>15C,309,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,todarodes,10-15C,309,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,todarodes,7.5-10C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,tremoctopus,7.5-10C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,trygonorrhina,5-7.5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urogymnus,0-2.5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urogymnus,2.5-5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urogymnus,5-7.5C,133,0.25
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,walvisteuthis,10-15C,309,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,wunderpus,0-2.5C,309,1
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,zalophus,10-15C,61,0.5
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,zalophus,2.5-5C,61,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,zanobatus,0-2.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,zanobatus,5-7.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,zapteryx,5-7.5C,133,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,zearaja,7.5-10C,133,1
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,amphitretidae,10-15C,309,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,anacanthobatidae,>15C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,anacanthobatidae,0-2.5C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,anacanthobatidae,2.5-5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,anacanthobatidae,5-7.5C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,arhynchobatidae,>15C,133,0.07317073170731707
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,arhynchobatidae,0-2.5C,133,0.23170731707317074
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,arhynchobatidae,10-15C,133,0.06097560975609756
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,arhynchobatidae,2.5-5C,133,0.23170731707317074
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,arhynchobatidae,5-7.5C,133,0.2804878048780488
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,arhynchobatidae,7.5-10C,133,0.12195121951219512
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,brachaeluridae,2.5-5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,brachaeluridae,5-7.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,carcharhinidae,0-2.5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,carcharhinidae,10-15C,133,0.04081632653061224
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,carcharhinidae,2.5-5C,133,0.46938775510204084
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,carcharhinidae,5-7.5C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,carcharhinidae,7.5-10C,133,0.061224489795918366
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,centrophoridae,>15C,133,0.42857142857142855
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,centrophoridae,0-2.5C,133,0.07142857142857142
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,centrophoridae,10-15C,133,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,centrophoridae,7.5-10C,133,0.21428571428571427
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dalatiidae,>15C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dalatiidae,10-15C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dalatiidae,5-7.5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,dalatiidae,7.5-10C,133,0.5
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,diomedeidae,10-15C,46,0.3333333333333333
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,diomedeidae,5-7.5C,46,0.3333333333333333
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,diomedeidae,7.5-10C,46,0.3333333333333333
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,elapidae,0-2.5C,16,0.07142857142857142
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,elapidae,10-15C,16,0.14285714285714285
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,elapidae,2.5-5C,16,0.5
+reptiles,physiological_tolerance_breadths,thermal_tolerance_range,elapidae,5-7.5C,16,0.2857142857142857
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,etmopteridae,>15C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,etmopteridae,0-2.5C,133,0.175
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,etmopteridae,10-15C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,etmopteridae,2.5-5C,133,0.1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,etmopteridae,5-7.5C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,etmopteridae,7.5-10C,133,0.2
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,fregatidae,0-2.5C,46,1
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,glaucostegidae,2.5-5C,133,0.6
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,glaucostegidae,5-7.5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,glaucostegidae,7.5-10C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,gymnuridae,0-2.5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,gymnuridae,10-15C,133,0.42857142857142855
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,gymnuridae,2.5-5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,gymnuridae,5-7.5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,gymnuridae,7.5-10C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemigaleidae,0-2.5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemigaleidae,2.5-5C,133,0.8571428571428571
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemiscylliidae,0-2.5C,133,0.46153846153846156
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemiscylliidae,2.5-5C,133,0.46153846153846156
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hemiscylliidae,5-7.5C,133,0.07692307692307693
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,heterodontidae,0-2.5C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,heterodontidae,10-15C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,heterodontidae,2.5-5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,heterodontidae,5-7.5C,133,0.375
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,heterodontidae,7.5-10C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,myliobatidae,0-2.5C,133,0.030303030303030304
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,myliobatidae,10-15C,133,0.21212121212121213
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,myliobatidae,2.5-5C,133,0.2727272727272727
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,myliobatidae,5-7.5C,133,0.42424242424242425
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,myliobatidae,7.5-10C,133,0.06060606060606061
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,narcinidae,0-2.5C,133,0.4444444444444444
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,narcinidae,10-15C,133,0.05555555555555555
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,narcinidae,2.5-5C,133,0.2222222222222222
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,narcinidae,5-7.5C,133,0.2777777777777778
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,narkidae,0-2.5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,narkidae,2.5-5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,narkidae,5-7.5C,133,0.5
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nephtyidae,>15C,4,0.15789473684210525
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nephtyidae,0-2.5C,4,0.10526315789473684
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nephtyidae,10-15C,4,0.21052631578947367
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nephtyidae,2.5-5C,4,0.3684210526315789
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nephtyidae,5-7.5C,4,0.05263157894736842
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nephtyidae,7.5-10C,4,0.10526315789473684
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nereididae,>15C,4,0.175
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nereididae,0-2.5C,4,0.175
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nereididae,10-15C,4,0.15
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nereididae,2.5-5C,4,0.225
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nereididae,5-7.5C,4,0.25
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,nereididae,7.5-10C,4,0.025
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,odontaspididae,10-15C,133,0.6666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,odontaspididae,2.5-5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,orectolobidae,0-2.5C,133,0.18181818181818182
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,orectolobidae,10-15C,133,0.09090909090909091
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,orectolobidae,2.5-5C,133,0.5454545454545454
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,orectolobidae,5-7.5C,133,0.18181818181818182
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,oxynotidae,10-15C,133,0.75
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,oxynotidae,5-7.5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parascylliidae,>15C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parascylliidae,0-2.5C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parascylliidae,10-15C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parascylliidae,2.5-5C,133,0.42857142857142855
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,parascylliidae,5-7.5C,133,0.14285714285714285
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocidae,>15C,61,0.11764705882352941
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocidae,0-2.5C,61,0.17647058823529413
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocidae,10-15C,61,0.058823529411764705
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocidae,2.5-5C,61,0.11764705882352941
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocidae,5-7.5C,61,0.23529411764705882
+marine_mammals,physiological_tolerance_breadths,thermal_tolerance_range,phocidae,7.5-10C,61,0.29411764705882354
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pristidae,2.5-5C,133,0.6666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pristidae,5-7.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pristiophoridae,0-2.5C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pristiophoridae,10-15C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pristiophoridae,2.5-5C,133,0.375
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pristiophoridae,5-7.5C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pristiophoridae,7.5-10C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pseudotriakidae,10-15C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,pseudotriakidae,5-7.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinobatidae,0-2.5C,133,0.2903225806451613
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinobatidae,10-15C,133,0.06451612903225806
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinobatidae,2.5-5C,133,0.2903225806451613
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinobatidae,5-7.5C,133,0.22580645161290322
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,rhinobatidae,7.5-10C,133,0.12903225806451613
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,sabellidae,>15C,4,0.25
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,sabellidae,0-2.5C,4,0.125
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,sabellidae,10-15C,4,0.125
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,sabellidae,2.5-5C,4,0.25
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,sabellidae,5-7.5C,4,0.125
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,sabellidae,7.5-10C,4,0.125
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepiadariidae,5-7.5C,309,0.5
+cephalopods,physiological_tolerance_breadths,thermal_tolerance_range,sepiadariidae,7.5-10C,309,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,somniosidae,>15C,133,0.07142857142857142
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,somniosidae,10-15C,133,0.35714285714285715
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,somniosidae,2.5-5C,133,0.07142857142857142
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,somniosidae,5-7.5C,133,0.35714285714285715
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,somniosidae,7.5-10C,133,0.14285714285714285
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,sphyrnidae,0-2.5C,133,0.1111111111111111
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,sphyrnidae,2.5-5C,133,0.1111111111111111
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,sphyrnidae,5-7.5C,133,0.5555555555555556
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,sphyrnidae,7.5-10C,133,0.2222222222222222
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squalidae,>15C,133,0.13043478260869565
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squalidae,0-2.5C,133,0.08695652173913043
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squalidae,10-15C,133,0.391304347826087
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squalidae,2.5-5C,133,0.13043478260869565
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squalidae,5-7.5C,133,0.13043478260869565
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squalidae,7.5-10C,133,0.13043478260869565
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squatinidae,0-2.5C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squatinidae,10-15C,133,0.25
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squatinidae,2.5-5C,133,0.1875
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squatinidae,5-7.5C,133,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,squatinidae,7.5-10C,133,0.1875
+seabirds,physiological_tolerance_breadths,thermal_tolerance_range,sulidae,2.5-5C,46,1
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,terebellidae,>15C,4,0.25
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,terebellidae,0-2.5C,4,0.09375
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,terebellidae,10-15C,4,0.1875
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,terebellidae,2.5-5C,4,0.21875
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,terebellidae,5-7.5C,4,0.125
+polychaetes,physiological_tolerance_breadths,thermal_tolerance_range,terebellidae,7.5-10C,4,0.125
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,torpedinidae,>15C,133,0.06666666666666667
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,torpedinidae,0-2.5C,133,0.06666666666666667
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,torpedinidae,10-15C,133,0.26666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,torpedinidae,2.5-5C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,torpedinidae,5-7.5C,133,0.3333333333333333
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,torpedinidae,7.5-10C,133,0.06666666666666667
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,triakidae,>15C,133,0.058823529411764705
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,triakidae,0-2.5C,133,0.08823529411764706
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,triakidae,10-15C,133,0.17647058823529413
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,triakidae,2.5-5C,133,0.17647058823529413
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,triakidae,5-7.5C,133,0.3235294117647059
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,triakidae,7.5-10C,133,0.17647058823529413
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urolophidae,>15C,133,0.1111111111111111
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urolophidae,0-2.5C,133,0.2777777777777778
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urolophidae,2.5-5C,133,0.3888888888888889
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urolophidae,5-7.5C,133,0.16666666666666666
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urolophidae,7.5-10C,133,0.05555555555555555
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urotrygonidae,0-2.5C,133,0.42857142857142855
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urotrygonidae,2.5-5C,133,0.07142857142857142
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,urotrygonidae,5-7.5C,133,0.5
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hexanchiformes,>15C,133,0.2
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hexanchiformes,10-15C,133,0.4
+elasmobranchs,physiological_tolerance_breadths,thermal_tolerance_range,hexanchiformes,7.5-10C,133,0.4
+sponges,physiological_tolerance_breadths,thermal_tolerance_range,demospongiae,>15C,1,0.03583617747440273
+sponges,physiological_tolerance_breadths,thermal_tolerance_range,demospongiae,0-2.5C,1,0.4539249146757679
+sponges,physiological_tolerance_breadths,thermal_tolerance_range,demospongiae,10-15C,1,0.05460750853242321
+sponges,physiological_tolerance_breadths,thermal_tolerance_range,demospongiae,2.5-5C,1,0.3412969283276451
+sponges,physiological_tolerance_breadths,thermal_tolerance_range,demospongiae,5-7.5C,1,0.06143344709897611
+sponges,physiological_tolerance_breadths,thermal_tolerance_range,demospongiae,7.5-10C,1,0.052901023890784986
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,pycnogonida,>15C,9,0.061016949152542375
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,pycnogonida,0-2.5C,9,0.376271186440678
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,pycnogonida,10-15C,9,0.10508474576271186
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,pycnogonida,2.5-5C,9,0.2627118644067797
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,pycnogonida,5-7.5C,9,0.09661016949152543
+crustacea_arthropods,physiological_tolerance_breadths,thermal_tolerance_range,pycnogonida,7.5-10C,9,0.09830508474576272

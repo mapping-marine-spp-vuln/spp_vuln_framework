@@ -21,7 +21,8 @@ output:
 knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
-source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+library(oharac) ### remotes::install_github('oharac/oharac')
+oharac::setup()
 
 ```
 
@@ -102,10 +103,27 @@ spp_valid <- spp_validcheck %>%
   group_by(trait, spp_gp) %>%
   mutate(trait_prob = ifelse(trait %in% non_mut_excl, 1, 1/n_distinct(trait_value))) %>%
   ungroup()
+```
 
-# spp_valid$spp_gp %>% n_distinct()
+Include thermal tolerance ranges from AquaMaps envelopes
+```{r}
+spp_gps_df <- spp_valid %>%
+  select(taxon, spp_gp, n_spp_gps) %>%
+  distinct()
 
-write_csv(spp_valid, '_data/spp_traits_valid.csv')
+spp_gp_thermal_tol <- read_csv(here('_raw_data/aquamaps', 
+                                    'aquamaps_spp_gp_thermal_range.csv')) %>%
+  rename(spp_gp = name) %>%
+  inner_join(spp_gps_df, by = 'spp_gp') %>%
+  select(-rank) %>%
+  mutate(category = 'physiological_tolerance_breadths')
+
+spp_valid_plus_thermal <- spp_valid %>%
+  bind_rows(spp_gp_thermal_tol)
+
+# spp_gp_thermal_tol$spp_gp %>% n_distinct()
+
+write_csv(spp_valid_plus_thermal, '_data/spp_traits_valid.csv')
 ```
 
 There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups accounted for with at least some valid trait codes.
