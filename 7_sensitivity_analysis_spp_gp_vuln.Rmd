@@ -910,15 +910,17 @@ df_fix <- df_raw %>%
   mutate(spp_gp = spp_gp_repr) %>%
   select(-spp_gp_repr, -repres)
 
-str_name_drops <- c('plastic_pollution_', 'entanglement_', 
-                    'eutrophication_', '_pollution', 'urbance', 'itat', 'adation') %>%
-  paste0(collapse = '|')
+str_fixes <- read_csv(here('_raw_data/clean_taxa_and_strs.csv')) %>%
+  rename(stressor = raw, str_lbl = clean)
+tx_fixes <- read_csv(here('_raw_data/clean_taxa_and_strs.csv')) %>%
+  rename(taxon = raw, tx_lbl = clean)
 
 df <- df_raw %>%
   bind_rows(df_fix) %>%
   full_join(spp_downfill, by = c('spp_gp', 'taxon')) %>%
   filter(!is.na(species)) %>%
-  mutate(str_lbl = str_remove_all(stressor, str_name_drops))
+  left_join(str_fixes, by = c('stressor')) %>%
+  left_join(tx_fixes, by = 'taxon')
 
 ```
 
@@ -928,23 +930,36 @@ Boxplots of scores by stressor or by taxon, with respect to scoring function.
 
 ```{r}
 df_long <- df %>%
-  select(taxon, str_lbl, species, linear = vuln, convex = v_conv, concave = v_conc) %>%
-  gather(shape, vuln, -taxon, -str_lbl, -species) %>%
+  select(tx_lbl, str_lbl, species, 
+         linear = vuln, convex = v_conv, concave = v_conc) %>%
+  gather(shape, vuln, -tx_lbl, -str_lbl, -species) %>%
   mutate(shape = factor(shape, levels = c('convex', 'linear', 'concave')))
 
-ggplot(df_long, aes(x = str_lbl, y = vuln)) +
-  theme_minimal() +
+p <- ggplot(df_long, aes(x = str_lbl, y = vuln)) +
+  theme_ohara() +
   theme(axis.title.y = element_blank()) +
-  geom_boxplot(aes(fill = shape), outlier.size = .1, outlier.color = 'grey70') +
+  geom_boxplot(aes(fill = shape), size = .1,
+               outlier.size = .1, outlier.color = 'grey70') +
+  scale_fill_viridis_d() +
   coord_flip() +
-  labs(title = 'Vulnerability by stressor and score function')
+  labs(#title = 'Vulnerability by stressor and score function',
+       fill = 'function', y = 'Vulnerability')
 
-ggplot(df_long, aes(x = taxon, y = vuln)) +
-  theme_minimal() +
+ggsave('figs/si_sensitivity_str.png', height = 3.5, width = 6, dpi = 300)
+knitr::include_graphics('figs/si_sensitivity_str.png')
+
+p <- ggplot(df_long, aes(x = tx_lbl, y = vuln)) +
+  theme_ohara() +
   theme(axis.title.y = element_blank()) +
-  geom_boxplot(aes(fill = shape), outlier.size = .1, outlier.color = 'grey70') +
+  geom_boxplot(aes(fill = shape), size = .1,
+               outlier.size = .1, outlier.color = 'grey70') +
+  scale_fill_viridis_d() +
   coord_flip() +
-  labs(title = 'Vulnerability by taxon and score function')
+  labs(#title = 'Vulnerability by taxon and score function',
+       fill = 'function', y = 'Vulnerability')
+
+ggsave('figs/si_sensitivity_tx.png', height = 2.5, width = 6, dpi = 300)
+knitr::include_graphics('figs/si_sensitivity_tx.png')
 
 ```
 
@@ -963,7 +978,7 @@ rmse_by_stressor <- df %>%
             .groups = 'drop')
             
 rmse_by_taxon <- df %>%
-  group_by(taxon) %>%
+  group_by(tx_lbl) %>%
   summarize(mean_sd_lin = sqrt(sum(sd_vuln^2, na.rm = TRUE) / n()),
             rmse_v_conc = sqrt(sum((vuln - v_conc)^2) / n()),
             rmse_v_conv = sqrt(sum((vuln - v_conv)^2) / n()),
@@ -992,7 +1007,7 @@ rmse_rank_by_stressor <- df %>%
             .groups = 'drop')
             
 rmse_rank_by_taxon <- df %>%
-  group_by(str_lbl, taxon) %>%
+  group_by(tx_lbl) %>%
   mutate(rank_linear  = percent_rank(vuln),
          rank_convex  = percent_rank(v_conv), 
          rank_concave = percent_rank(v_conc)) %>%
@@ -1021,14 +1036,16 @@ plot_str_df <- rmse_rank_by_stressor %>%
   ungroup() %>%
   mutate(str_lbl = fct_inorder(str_lbl))
   
-ggplot(plot_str_df, aes(x = str_lbl, y = rmse_rank, color = score_f)) +
+p <- ggplot(plot_str_df, aes(x = str_lbl, y = rmse_rank, color = score_f)) +
   geom_point() +
-  theme_minimal() +
+  theme_ohara() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1),
         axis.title.x = element_blank()) +
+  scale_color_manual(values = c("#4B0055", "#00BE7D")) +
   labs(y = 'RMSE(rank)',
-       color = 'score function',
-       title = 'RMSE(rank) by stressor across all taxa')
+       color = 'score function')
+ggsave('figs/si_sensitivity_rank_str.png', height = 2.5, width = 6, dpi = 300)
+knitr::include_graphics('figs/si_sensitivity_rank_str.png')
 ```
 
 
@@ -1038,18 +1055,26 @@ ggplot(plot_str_df, aes(x = str_lbl, y = rmse_rank, color = score_f)) +
 
 ```{r}
 plot_str_tx_df <- rmse_rank_by_taxon %>%
-  select(str_lbl, taxon, starts_with('rmse_rank')) %>%
-  gather(score_f, rmse_rank, -str_lbl, -taxon) %>%
+  select(tx_lbl, starts_with('rmse_rank')) %>%
+  gather(score_f, rmse_rank, -tx_lbl) %>%
   mutate(score_f = ifelse(score_f == 'rmse_rank_conc', 'concave', 'convex')) %>%
-  mutate(str_lbl = factor(str_lbl, levels = levels(plot_str_df$str_lbl)))
+  group_by(tx_lbl) %>%
+  mutate(mean_rmse_rank = mean(rmse_rank)) %>%
+  arrange(mean_rmse_rank) %>%
+  ungroup() %>%
+  mutate(tx_lbl = fct_inorder(tx_lbl))
   
-ggplot(plot_str_tx_df, aes(x = str_lbl, y = rmse_rank, color = score_f)) +
+ggplot(plot_str_tx_df, aes(x = tx_lbl, y = rmse_rank, color = score_f)) +
   geom_point() +
-  theme_minimal() +
+  theme_ohara() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1),
         axis.title.x = element_blank()) +
+  scale_color_manual(values = c("#4B0055", "#00BE7D")) +
   labs(y = 'RMSE(rank)',
        color = 'score function',
-       title = 'RMSE(rank) by stressor and taxa') +
-  facet_wrap(~taxon, ncol = 3)
+       title = 'RMSE(rank) by taxon')
+
+ggsave('figs/si_sensitivity_rank_tx.png', height = 2.5, width = 6, dpi = 300)
+knitr::include_graphics('figs/si_sensitivity_rank_tx.png')
+
 ```
