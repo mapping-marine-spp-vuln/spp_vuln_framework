@@ -1,0 +1,65 @@
+---
+title: "idiosyncratic trait values"
+author: "Casey O'Hara"
+date: "8/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(readxl)
+```
+
+Traits that need cleaning/clarification:
+```{r}
+df <- readxl::read_excel('~/Downloads/SLRI Marine Fishes Traits Master (1).xlsx', sheet = 1) %>%
+  janitor::clean_names() %>%
+  slice(-c(1,2)) %>%
+  select(-starts_with(c('x', 'kk_')), -category)
+# names(df)
+
+ignore_traits <- c('list_of_sis_habitats',
+                   'maximum_depth', 'minimum_depth', 
+                   'zone', 
+                   'thermal_sensitivity_to_ocean_warming_max_temps_tolerated',
+                   'across_stage_dependent_habitats_condition',
+                   'within_stage_dependent_habitats_condition',
+                   'depth_min_max', 'count_of_habitats', 'fecundity',
+                   'age_to_1st_reproduction_generation_time',
+                   'breeding_nesting_range_number_of_spawning_aggregations_fish',
+                   'hard_shelf_hard_slope_soft_shelf_soft_slope_deep_hard_bottom_deep_soft_benthic_subtidal_soft_bottom_suspension_feeder_reef_deep_water_kelp_forest_deep_seamount_beach_surface_water_rocky_reef_coral_reef_seagrass_intertidal_mud_rocky_intertidal_salt_marsh_mangrove_sea_ice_edge',
+                   'biomineral', 'calcium_carbonate_structure_location', 'calcium_carbonate_structure_stages', 'can_the_sex_ratio_be_altered_by_a_stressor', 'dependent_interspecific_interactions', 'photosynthetic', 'terrestrial_and_marine_life_stages',
+                   'planktonic_larval_duration_pld', 'lifetime_number_reproductive_opportunities',
+                   'post_birth_hatching_maternal_dependence',
+                   'specialisation')
+needs_work <- c('adult_body_mass_body_size',
+                   'low_dissolved_oxygen_use_habitat_and_depth_as_surrogate',
+                   'salinity_use_habitat_as_surrogate',
+                   'global_population_size',
+                   'reproductive_strategy',
+                   'eoo_range', 'adult_mobility',
+                   'parental_investment', 'max_age', 
+                   'navigation_requirements_sound_or_light_or_magnetic',
+                   'feeding_larva_post_hatching_metamorphosis',
+                   'extreme_diet_specialization',
+                   'communication_requirement_sound')
+
+traits_df <- df %>%
+  gather(trait, value, everything()) %>%
+  distinct() %>%
+  filter(!is.na(value) & value != '') %>%
+  filter(!trait %in% ignore_traits) %>%
+  # filter(!trait %in% needs_work) %>%
+  mutate(value_clean = str_remove_all(tolower(value), ' '), ### drop whitespace
+         value_clean = str_remove_all(value_clean, '\\(.+\\)')) %>%
+  group_by(trait) %>%
+  mutate(n_values = n_distinct(value_clean)) %>%
+  ungroup() %>%
+  filter(n_values > 2) %>%
+  arrange(desc(n_values), trait, value)
+
+DT::datatable(traits_df)
+
+```
