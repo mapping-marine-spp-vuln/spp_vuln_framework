@@ -178,17 +178,19 @@ plot_df <- compare_rmse_df %>%
   left_join(tx_fixes, by = 'taxon')
 
 
-p <- ggplot(plot_df, aes(x = as.integer(gf_level), y = rmse, group = tx_lab, color = tx_lab)) +
+p <- ggplot(plot_df, aes(x = as.integer(gf_level), y = rmse, group = tx_lbl, color = tx_lbl)) +
   geom_line() +
   facet_wrap(~str_lbl) +
-  scale_x_continuous(breaks = 1:4, labels = c('g', 'f', 'o', 'c')) +
+  scale_x_continuous(breaks = 1:4, labels = c('genus', 'family', 'order', 'class')) +
   scale_color_brewer(palette = 'Dark2') +
-  theme_ohara() +
-  theme(axis.title.x = element_blank()) +
+  theme_minimal() +
+  theme(text = element_text(size = 8),
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) +
   labs(y = 'RMSE (vulnerability)',
-       color = NA)
+       x = 'Imputation rank',
+       color = 'Taxon')
 
-ggsave(here('figs/up_down_gapfill_crossval.png'), height = 8, width = 6)
+ggsave(here('figs/up_down_gapfill_crossval.png'), height = 5, width = 6, dpi = 300)
 
 knitr::include_graphics(here('figs/up_down_gapfill_crossval.png'))
 ```
