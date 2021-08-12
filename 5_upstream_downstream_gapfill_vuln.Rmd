@@ -226,6 +226,7 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
 ``` {r monte carlo for genus vuln dists}
 iters <- 10000
 reload <- TRUE
+force  <- TRUE
 gen_fill_file <- here('int', sprintf('gapfill_gen_prob_results_%s.csv', iters))
 
 if(!file.exists(gen_fill_file) | reload) {
@@ -244,7 +245,6 @@ if(!file.exists(gen_fill_file) | reload) {
   genera <- gen_fill_qty$genus %>% unique()
   
   tmp_fstem <- here('tmp/gen_fill_mc_%s.csv')
-  force <- FALSE
   
   trash <- parallel::mclapply(genera, mc.cores = 20,
     FUN = function(g) {### g <- genera[1]
@@ -273,7 +273,7 @@ if(!file.exists(gen_fill_file) | reload) {
       }
     })
   
-  genera_fs <- list.files(here('tmp', pattern = 'gen_fill_mc.+.csv'),
+  genera_fs <- list.files(here('tmp'), pattern = 'gen_fill_mc.+.csv',
                             full.names = TRUE)
   genera_list <- parallel::mclapply(genera_fs, FUN = read_csv, mc.cores = 20)
   gen_fill_prob_results <- genera_list %>%
@@ -330,7 +330,6 @@ fam_fill_nondet_solo <- fam_fill_nondet %>%
 ``` {r monte carlo for fam vuln dists}
 fam_fill_file <- here('int', sprintf('gapfill_fam_prob_results_%s.csv', iters))
 
-reload <- TRUE
 if(!file.exists(fam_fill_file) | reload) {
   fam_fill_prob <- fam_fill_nondet %>%
     anti_join(fam_fill_matchrank %>% select(family, stressor)) %>%
@@ -347,7 +346,6 @@ if(!file.exists(fam_fill_file) | reload) {
   fams <- fam_fill_qty$family %>% unique()
 
   tmp_fstem <- here('tmp/fam_fill_mc_%s.csv')
-  force <- FALSE
 
   trash <- parallel::mclapply(fams, mc.cores = 20,
     FUN = function(f) {### f <- fams[1]
@@ -376,7 +374,7 @@ if(!file.exists(fam_fill_file) | reload) {
       }
     })
   
-  family_fs <- list.files(here('tmp', pattern = 'fam_fill_mc.+.csv'),
+  family_fs <- list.files(here('tmp'), pattern = 'fam_fill_mc.+.csv',
                             full.names = TRUE)
   fam_list <- parallel::mclapply(family_fs, FUN = read_csv, mc.cores = 20)  
   fam_fill_prob_results <- fam_list %>%
@@ -434,7 +432,6 @@ ord_fill_nondet_solo <- ord_fill_nondet %>%
 ``` {r monte carlo for ord vuln dists}
 ord_fill_file <- here('int', sprintf('gapfill_ord_prob_results_%s.csv', iters))
 
-reload <- TRUE
 if(!file.exists(ord_fill_file) | reload) {
   ord_fill_prob <- ord_fill_nondet %>%
     anti_join(ord_fill_matchrank %>% select(order, stressor)) %>%
@@ -451,8 +448,7 @@ if(!file.exists(ord_fill_file) | reload) {
   ords <- ord_fill_qty$order %>% unique()
 
   tmp_fstem <- here('tmp/ord_fill_mc_%s.csv')
-  force <- FALSE
-  
+
   trash <- parallel::mclapply(ords, mc.cores = 20,
     FUN = function(o) {### o <- ords[1]
       tmp_file <- sprintf(tmp_fstem, o)
@@ -480,7 +476,7 @@ if(!file.exists(ord_fill_file) | reload) {
       }
     })
   
-  ord_fs <- list.files(here('tmp', pattern = 'ord_fill_mc.+.csv'),
+  ord_fs <- list.files(here('tmp'), pattern = 'ord_fill_mc.+.csv',
                             full.names = TRUE)
   ord_list <- parallel::mclapply(ord_fs, FUN = read_csv, mc.cores = 20)
   
@@ -540,7 +536,6 @@ cls_fill_nondet_solo <- cls_fill_nondet %>%
 ``` {r monte carlo for cls vuln dists}
 cls_fill_file <- here('int', sprintf('gapfill_cls_prob_results_%s.csv', iters))
 
-reload <- TRUE
 if(!file.exists(cls_fill_file) | reload) {
 
   cls_fill_prob <- cls_fill_nondet %>%
@@ -558,7 +553,6 @@ if(!file.exists(cls_fill_file) | reload) {
   clss <- cls_fill_qty$class %>% unique() %>% sort()
 
   tmp_fstem <- here('tmp/cls_fill_mc_%s.csv')
-  force <- FALSE
 
   trash <- parallel::mclapply(clss, mc.cores = 20,
     FUN = function(c) {### c <- clss[1]
@@ -587,7 +581,7 @@ if(!file.exists(cls_fill_file) | reload) {
       }
     })
   
-  cls_fs <- list.files(here('tmp', pattern = 'cls_fill_mc.+.csv'),
+  cls_fs <- list.files(here('tmp'), pattern = 'cls_fill_mc.+.csv',
                             full.names = TRUE)
   cls_list <- parallel::mclapply(cls_fs, FUN = read_csv, mc.cores = 20)  
   cls_fill_prob_results <- cls_list %>%
