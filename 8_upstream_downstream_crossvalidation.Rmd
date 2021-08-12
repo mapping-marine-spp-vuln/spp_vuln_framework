@@ -166,20 +166,16 @@ compare_rmse_df <- xval_s_g_sum %>%
 
 DT::datatable(compare_rmse_df)
 
-str_name_drops <- c('plastic_pollution_', 'entanglement_', 
-                    'eutrophication_', '_pollution', 'urbance', 'adation') %>%
-  paste0(collapse = '|')
+str_fixes <- read_csv(here('_raw_data/clean_taxa_and_strs.csv')) %>%
+  rename(stressor = raw, str_lbl = clean)
+tx_fixes <- read_csv(here('_raw_data/clean_taxa_and_strs.csv')) %>%
+  rename(taxon = raw, tx_lbl = clean)
 
 plot_df <- compare_rmse_df %>%
   gather(gf_level, rmse, -taxon, -stressor, -starts_with('n_')) %>%
-  mutate(gf_level = factor(gf_level, levels = c('genus', 'family', 'order', 'class')),
-         str_lbl = str_remove_all(stressor, str_name_drops),
-         tx_lab = case_when(taxon == 'marine_mammals' ~ 'mamm',
-                            taxon == 'echinoderms'    ~ 'echn',
-                            taxon == 'elasmobranchs'  ~ 'elsm',
-                            taxon == 'molluscs'       ~ 'mlsc',
-                            taxon == 'crustacea_arthropods' ~ 'arth',
-                            TRUE ~ str_match(taxon, '[a-z]{4}')))
+  mutate(gf_level = factor(gf_level, levels = c('genus', 'family', 'order', 'class'))) %>%
+  left_join(str_fixes, by = 'stressor') %>%
+  left_join(tx_fixes, by = 'taxon')
 
 
 p <- ggplot(plot_df, aes(x = as.integer(gf_level), y = rmse, group = tx_lab, color = tx_lab)) +
@@ -187,10 +183,12 @@ p <- ggplot(plot_df, aes(x = as.integer(gf_level), y = rmse, group = tx_lab, col
   facet_wrap(~str_lbl) +
   scale_x_continuous(breaks = 1:4, labels = c('g', 'f', 'o', 'c')) +
   scale_color_brewer(palette = 'Dark2') +
-  theme_minimal() +
-  theme(axis.title.x = element_blank())
+  theme_ohara() +
+  theme(axis.title.x = element_blank()) +
+  labs(y = 'RMSE (vulnerability)',
+       color = NA)
 
-ggsave(here('figs/up_down_gapfill_crossval.png'), height = 8, width = 8)
+ggsave(here('figs/up_down_gapfill_crossval.png'), height = 8, width = 6)
 
 knitr::include_graphics(here('figs/up_down_gapfill_crossval.png'))
 ```
