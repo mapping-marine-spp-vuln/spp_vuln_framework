@@ -20,7 +20,7 @@ output:
 
 knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
-
+### helper functions and setup
 library(oharac) ### remotes::install_github('oharac/oharac')
 oharac::setup()
 
@@ -38,7 +38,9 @@ Columns `category`, `sub-category`, and `category units` are standard.  Addition
 
 # Methods
 
-Set up cleaner functions
+## Set up cleaner functions
+
+to aid with the processing of messy data
 
 ```{r}
 clean_up_mess <- function(df) {
@@ -82,7 +84,9 @@ clean_trait <- function(x, drop_parens = TRUE) {
 }
 ```
 
-Process Nat's key to create a final key.  Add an "unknown" value for all traits, to catch explicitly stated unknown values.
+## Process Nat's key to create a final key.  
+
+Add an "unknown" value for all traits, to catch explicitly stated unknown values.
 
 ```{r}
 traitvals_df_raw <- read_csv(here('_raw_data/trait_val_key.csv')) %>%
@@ -127,9 +131,16 @@ traitvals_df_valid <- traitvals_df_prehabs %>%
 write_csv(traitvals_df_valid, '_data/trait_vals_valid.csv')
 ```
 
-Read in Excel sheets one at a time, convert to long format, bind into a single dataframe with minimal processing.
+
+## Read in Excel sheets one at a time
+
+### Original traits data
+
+convert to long format, bind into a single dataframe with minimal processing.
 
 First, check headers to make sure there's not taxonomic information in multiple rows.  The first row of each sheet should be blank, as most sheets have a space before the first category ("Movement").  Even without this space, "Movement" should not have any values of its own, so still blank.
+
+Note that with the additional fish data we will process these separately.
 
 ```{r}
 check_headers <- function(f, s) {
@@ -204,6 +215,35 @@ raw_data_df <- lapply(sheetnames,
 
 x <- raw_data_df %>%
   select(trait_value) %>% distinct()
+```
+
+### New fish traits data
+
+```{r}
+fish_beth_raw <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add.xlsx'),
+                                sheet = 'srli_fish_traits') %>%
+  setNames(tolower(names(.))) %>%
+  slice(-c(1, 2)) ### drop empty rows
+
+category_df <- raw_data_df %>%
+  select(category, trait) %>%
+  distinct()
+
+fish_beth <- fish_beth_raw %>%
+  gather(trait, trait_value, -order, -family, -species) %>%
+  select(-order, -family, spp_gp = species) %>%
+  filter(!is.na(trait_value)) %>%
+  mutate(sheet = 'fish',
+         spp_gp = tolower(spp_gp),
+         trait = str_remove(trait, '\\.\\.\\.[0-9]+')) %>%
+  full_join(category_df, by = 'trait')
+  
+x <- fish_beth %>% filter(is.na(category))
+# x$trait %>% unique()
+y <- fish_beth %>% filter(is.na(trait))
+
+raw_data_df <- raw_data_df %>%
+  bind_rows(fish_beth)
 ```
 
 Check raw data against valid category values.
@@ -326,7 +366,7 @@ spp_data_depth_num <- raw_data_df %>%
   
 
 
-### add atmosphere category
+### add air category
 spp_sessile <- spp_data_mobility %>%
   filter(trait_val_clean == 'sessile') %>%
   select(spp_gp, sheet) %>%
@@ -348,6 +388,8 @@ spp_flight <- raw_data_df %>%
   select(spp_gp, sheet) %>%
   distinct()
 spp_atm <- bind_rows(spp_flight, spp_intertidal, spp_terr_marine) %>%
+  mutate(spp_gp = str_split(spp_gp, ';')) %>%
+  unnest(spp_gp) %>%
   distinct()
   
 spp_data_atm <- spp_atm %>%
@@ -369,9 +411,9 @@ spp_data_depth$trait_val_clean %>% table()
 
 ```{r}
 x <- spp_data_depth %>%
-  filter(trait_val_clean == 'atmosphere') %>%
+  filter(trait_val_clean == 'air') %>%
   group_by(sheet) %>%
-  summarize(n_spp = n_distinct(spp_gp))
+  summarize(n_spp_gps = n_distinct(spp_gp))
 knitr::kable(x)
 ```
 
@@ -1329,10 +1371,20 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_habs) %>%
   ### split and unnest, trim and clean:
   mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%
-  unnest(trait_val_clean)
+  unnest(trait_val_clean) %>%
+  filter(!is.na(sheet))
 
 x <- spp_data_clean %>% select(trait, trait_value, trait_val_clean) %>% distinct()
 
+y <- spp_data_clean %>%
+  group_by(sheet, trait) %>%
+  summarize(n_spp = n_distinct(spp_gp)) %>%
+  group_by(sheet) %>%
+  complete(trait = unique(spp_data_clean$trait))
+
+z <- spp_data_clean %>%
+  group_by(sheet, trait) %>%
+  summarize(n_traits = n_distinct(trait)) 
 ```
 
 ## write out clean species group sheets
