@@ -1,12 +1,44 @@
 parent,id,parent_level,name,rank
 acantharia incertae sedis,NA,order,NA,NA
 acanthonida,866439,order,astrolonchidae,family
+acanthuriformes,125515,order,acanthuridae,family
+acanthuriformes,125613,order,caproidae,family
+acanthuriformes,125528,order,chaetodontidae,family
+acanthuriformes,196072,order,drepaneidae,family
+acanthuriformes,151426,order,ephippidae,family
+acanthuriformes,125542,order,leiognathidae,family
+acanthuriformes,125543,order,lobotidae,family
+acanthuriformes,125544,order,luvaridae,family
+acanthuriformes,151470,order,pomacanthidae,family
+acanthuriformes,151427,order,scatophagidae,family
+acanthuriformes,125562,order,siganidae,family
+acanthuriformes,151428,order,zanclidae,family
 achnanthales,149190,order,achnanthaceae,family
 achnanthales,163530,order,achnanthidiaceae,family
 achnanthales,148988,order,cocconeidaceae,family
 acipenseriformes,125424,order,acipenseridae,family
 aconchulinida,872112,order,vampyrellidae,family
 acrochaetiales,143661,order,acrochaetiaceae,family
+acropomatiformes,151434,order,acropomatidae,family
+acropomatiformes,151444,order,banjosidae,family
+acropomatiformes,151463,order,bathyclupeidae,family
+acropomatiformes,151407,order,champsodontidae,family
+acropomatiformes,151410,order,creediidae,family
+acropomatiformes,151446,order,dinolestidae,family
+acropomatiformes,125535,order,epigonidae,family
+acropomatiformes,151461,order,glaucosomatidae,family
+acropomatiformes,1517569,order,hemerocoetidae,family
+acropomatiformes,267023,order,howellidae,family
+acropomatiformes,267024,order,lateolabracidae,family
+acropomatiformes,151411,order,leptoscopidae,family
+acropomatiformes,1517573,order,malakichthyidae,family
+acropomatiformes,151436,order,ostracoberycidae,family
+acropomatiformes,151460,order,pempheridae,family
+acropomatiformes,151472,order,pentacerotidae,family
+acropomatiformes,125552,order,polyprionidae,family
+acropomatiformes,151449,order,scombropidae,family
+acropomatiformes,151437,order,symphysanodontidae,family
+acropomatiformes,1517571,order,synagropidae,family
 acrosymphytales,143693,order,acrosymphytaceae,family
 acrosymphytales,1372955,order,acrothesauraceae,family
 actiniaria,741024,order,antheidae,family
@@ -19,14 +51,13 @@ actiniaria,100665,order,edwardsiidae,family
 actiniaria,100653,order,actiniidae,family
 actiniaria,411319,order,actinodendridae,family
 actiniaria,100658,order,andresiidae,family
-actiniaria,172970,order,capneidae,family
 actiniaria,100663,order,condylanthidae,family
 actiniaria,100671,order,haloclavidae,family
+actiniaria,1471617,order,heteranthidae,family
 actiniaria,414826,order,homostichanthidae,family
 actiniaria,853974,order,iosactinidae,family
 actiniaria,100676,order,limnactiniidae,family
 actiniaria,100677,order,liponematidae,family
-actiniaria,266933,order,minyadidae,family
 actiniaria,266936,order,oractiidae,family
 actiniaria,100680,order,phymanthidae,family
 actiniaria,853978,order,preactiniidae,family
@@ -34,7 +65,9 @@ actiniaria,853968,order,ptychodactinidae,family
 actiniaria,266939,order,stichodactylidae,family
 actiniaria,196167,order,thalassianthidae,family
 actiniaria,100655,order,actinostolidae,family
+actiniaria,172970,order,capneidae,family
 actiniaria,266929,order,exocoelactinidae,family
+actiniaria,100668,order,halcampoididae,family
 actiniaria,1359396,order,halcampulactidae,family
 actiniaria,266928,order,acontiophoridae,family
 actiniaria,1288524,order,acricoactinidae,family
@@ -81,8 +114,6 @@ agelasida,598619,order,hymerhabdiidae,family
 ahnfeltiales,146313,order,ahnfeltiaceae,family
 albuliformes,151805,order,albulidae,family
 alcyonacea,517542,order,acanthoaxiidae,family
-alcyonacea,411562,order,haimeidae,family
-alcyonacea,151540,order,paramuriceidae,family
 alcyonacea,743776,order,parasphaerascleridae,family
 alcyonacea,1049569,order,acrophytidae,family
 alcyonacea,125269,order,alcyoniidae,family
@@ -95,14 +126,17 @@ alcyonacea,125282,order,paralcyoniidae,family
 alcyonacea,125271,order,xeniidae,family
 alcyonacea,125273,order,chrysogorgiidae,family
 alcyonacea,125274,order,ellisellidae,family
+alcyonacea,1465563,order,huziogorgiidae,family
 alcyonacea,266948,order,ifalukellidae,family
 alcyonacea,125276,order,isididae,family
+alcyonacea,1496004,order,pleurogorgiidae,family
 alcyonacea,125278,order,primnoidae,family
 alcyonacea,125272,order,acanthogorgiidae,family
 alcyonacea,266947,order,dendrobrachiidae,family
 alcyonacea,125275,order,gorgoniidae,family
 alcyonacea,196168,order,keroeididae,family
 alcyonacea,125277,order,plexauridae,family
+alcyonacea,411562,order,haimeidae,family
 alcyonacea,266951,order,taiaroidae,family
 alcyonacea,125279,order,anthothelidae,family
 alcyonacea,266946,order,briareidae,family
@@ -120,6 +154,8 @@ alcyonacea,411564,order,coelogorgiidae,family
 alcyonacea,125283,order,cornulariidae,family
 alcyonacea,266950,order,pseudogorgiidae,family
 alcyonacea,196208,order,tubiporidae,family
+alepocephaliformes,125507,order,alepocephalidae,family
+alepocephaliformes,125514,order,platytroctidae,family
 alismatales,715984,order,alismataceae,family
 alismatales,425928,order,araceae,family
 alismatales,143768,order,cymodoceaceae,family
@@ -135,6 +171,7 @@ allogromiida,720959,order,hospitellidae,family
 allogromiida,111894,order,lagynidae,family
 allogromiida,720958,order,maylisoriidae,family
 allogromiida,526476,order,phthanotrochidae,family
+ammonitida,NA,order,NA,NA
 amphidiniales,1308689,order,amphidiniaceae,family
 amphidiscosida,131684,order,hyalonematidae,family
 amphidiscosida,171554,order,monorhaphididae,family
@@ -334,6 +371,7 @@ amphipoda,475166,order,maeridae,family
 amphipoda,101397,order,melitidae,family
 amphipoda,545468,order,metacrangonyctidae,family
 amphipoda,719504,order,nuuanuidae,family
+amphipoda,1466475,order,magnovidae,family
 amphipoda,430449,order,caspicolidae,family
 amphipoda,196117,order,ceinidae,family
 amphipoda,236753,order,dogielinotidae,family
@@ -349,6 +387,10 @@ amphipoda,1453559,order,arcitalitridae,family
 amphipoda,1453560,order,protorchestiidae,family
 amphipoda,1453567,order,uhlorchestiidae,family
 amphipoda,101411,order,talitridae,family
+anabantiformes,151375,order,anabantidae,family
+anabantiformes,151380,order,channidae,family
+anabantiformes,151473,order,nandidae,family
+anabantiformes,151378,order,osphronemidae,family
 anaulales,160526,order,anaulaceae,family
 anguilliformes,125425,order,anguillidae,family
 anguilliformes,125426,order,chlopsidae,family
@@ -492,8 +534,6 @@ archaediscida,1048314,order,pseudovidalinidae,family
 archaediscida,720898,order,pseudoammodiscidae,family
 archaediscida,720909,order,tournayellidae,family
 archaeognatha,118091,order,machilidae,family
-archaeolepadomorpha,1422389,order,archaeolepadidae,family
-archaeolepadomorpha,1422594,order,myolepadidae,family
 archaeostraca,607468,order,caryocarididae,family
 archaeostraca,607444,order,ceratiocarididae,family
 archaeostraca,607616,order,aristozoidae,family
@@ -532,6 +572,7 @@ arthracanthida,367342,order,hexalaspidae,family
 arthracanthida,367341,order,lithopteridae,family
 arthracanthida,367339,order,phractopeltidae,family
 arthrochirotida,1328161,order,palaeocucumariidae,family
+arthrogregarida,1505209,order,dactylophoridae,family
 arthrotardigrada,836352,order,archechiniscidae,family
 arthrotardigrada,136622,order,batillipedidae,family
 arthrotardigrada,136623,order,coronarctidae,family
@@ -591,6 +632,7 @@ astrorhizida,737312,order,stegnamminidae,family
 ateleopodiformes,125437,order,ateleopodidae,family
 atheriniformes,125438,order,atherinidae,family
 atheriniformes,266995,order,atherinopsidae,family
+atheriniformes,1517534,order,atherionidae,family
 atheriniformes,266996,order,dentatherinidae,family
 atheriniformes,397231,order,isonidae,family
 atheriniformes,151839,order,melanotaeniidae,family
@@ -609,6 +651,7 @@ aulopiformes,125442,order,chlorophthalmidae,family
 aulopiformes,125443,order,evermannellidae,family
 aulopiformes,151854,order,giganturidae,family
 aulopiformes,125444,order,ipnopidae,family
+aulopiformes,1517472,order,lestidiidae,family
 aulopiformes,125445,order,notosudidae,family
 aulopiformes,125446,order,omosudidae,family
 aulopiformes,125447,order,paralepididae,family
@@ -650,13 +693,14 @@ beloniformes,125453,order,hemiramphidae,family
 beloniformes,125454,order,scomberesocidae,family
 beloniformes,714659,order,zenarchopteridae,family
 beroida,106317,order,beroidae,family
-beryciformes,151916,order,anomalopidae,family
-beryciformes,267002,order,anoplogastridae,family
+beryciformes,151947,order,barbourisiidae,family
 beryciformes,125456,order,berycidae,family
-beryciformes,125457,order,diretmidae,family
-beryciformes,125458,order,holocentridae,family
-beryciformes,151917,order,monocentridae,family
-beryciformes,125459,order,trachichthyidae,family
+beryciformes,125460,order,cetomimidae,family
+beryciformes,154435,order,gibberichthyidae,family
+beryciformes,154615,order,hispidoberycidae,family
+beryciformes,125599,order,melamphaidae,family
+beryciformes,125463,order,rondeletiidae,family
+beryciformes,125600,order,stephanoberycidae,family
 bicoecida,22574,order,bicosoecaceae,family
 bicoecida,17616,order,cafeteriaceae,family
 biddulphiales,148966,order,biddulphiaceae,family
@@ -683,6 +727,13 @@ blastodiniales,562649,order,haplozoonidae,family
 blastodiniales,345493,order,oodiniaceae,family
 blastodiniales,562652,order,oodinidae,family
 blastodiniales,562659,order,paradinophycidae,family
+blenniiformes,1517543,order,antigoniidae,family
+blenniiformes,125519,order,blenniidae,family
+blenniiformes,151415,order,chaenopsidae,family
+blenniiformes,125530,order,clinidae,family
+blenniiformes,151416,order,dactyloscopidae,family
+blenniiformes,151414,order,labrisomidae,family
+blenniiformes,125572,order,tripterygiidae,family
 bochusacea,391551,order,hirsutiidae,family
 bolidomonadales,345468,order,bolidomonadaceae,family
 bonnemaisoniales,143665,order,bonnemaisoniaceae,family
@@ -754,8 +805,9 @@ calanoida,345956,order,sulcanidae,family
 calanoida,104106,order,temoridae,family
 calanoida,104107,order,tharybidae,family
 calanoida,157682,order,tortanidae,family
-calanticomorpha,1422810,order,cretiscalpellidae,family
-calanticomorpha,1422677,order,titanolepadidae,family
+callionymiformes,125522,order,callionymidae,family
+callionymiformes,125532,order,draconettidae,family
+callochitonida,385492,order,callochitonidae,family
 camarodonta,196183,order,parasaleniidae,family
 camarodonta,123160,order,echinidae,family
 camarodonta,510797,order,parechinidae,family
@@ -776,6 +828,21 @@ capilloventrida,370516,order,capilloventridae,family
 capsalidea,119225,order,capsalidae,family
 capsalidea,119227,order,dionchidae,family
 capsalidea,225751,order,enoplocotylidae,family
+carangaria incertae sedis,151431,order,centropomidae,family
+carangaria incertae sedis,151448,order,lactariidae,family
+carangaria incertae sedis,267025,order,latidae,family
+carangaria incertae sedis,151462,order,leptobramidae,family
+carangaria incertae sedis,151451,order,menidae,family
+carangaria incertae sedis,125551,order,polynemidae,family
+carangaria incertae sedis,125565,order,sphyraenidae,family
+carangaria incertae sedis,151464,order,toxotidae,family
+carangiformes,125523,order,carangidae,family
+carangiformes,125531,order,coryphaenidae,family
+carangiformes,125533,order,echeneidae,family
+carangiformes,125539,order,istiophoridae,family
+carangiformes,151450,order,nematistiidae,family
+carangiformes,125556,order,rachycentridae,family
+carangiformes,125574,order,xiphiidae,family
 carcharhiniformes,105689,order,carcharhinidae,family
 carcharhiniformes,105690,order,hemigaleidae,family
 carcharhiniformes,105691,order,leptochariidae,family
@@ -798,6 +865,7 @@ carditida,22997,order,carditidae,family
 carditida,151338,order,condylocardiidae,family
 carditida,228,order,astartidae,family
 carditida,23013,order,crassatellidae,family
+carinomiformes,1451608,order,carininidae,family
 carinomiformes,122318,order,carinomidae,family
 carnivora,404128,order,canidae,family
 carnivora,136974,order,mustelidae,family
@@ -825,6 +893,26 @@ cathetocephalidea,414960,order,cathetocephalidae,family
 cathetocephalidea,515787,order,disculicepitidae,family
 caulerpales,NA,order,NA,NA
 celastrales,414781,order,celastraceae,family
+centrarchiformes,151476,order,aplodactylidae,family
+centrarchiformes,151288,order,centrarchidae,family
+centrarchiformes,151477,order,cheilodactylidae,family
+centrarchiformes,151478,order,chironemidae,family
+centrarchiformes,151475,order,cirrhitidae,family
+centrarchiformes,151465,order,dichistiidae,family
+centrarchiformes,178674,order,elassomatidae,family
+centrarchiformes,151471,order,enoplosidae,family
+centrarchiformes,1517558,order,girellidae,family
+centrarchiformes,151445,order,kuhliidae,family
+centrarchiformes,125540,order,kyphosidae,family
+centrarchiformes,151382,order,latridae,family
+centrarchiformes,1517560,order,microcanthidae,family
+centrarchiformes,151474,order,oplegnathidae,family
+centrarchiformes,151467,order,parascorpididae,family
+centrarchiformes,1517563,order,percalatidae,family
+centrarchiformes,125549,order,percichthyidae,family
+centrarchiformes,1517559,order,scorpididae,family
+centrarchiformes,1517561,order,sinipercidae,family
+centrarchiformes,125568,order,terapontidae,family
 centrohelida,428527,order,acanthocystidae,family
 centrohelida,341310,order,heterophryidae,family
 centrohelida,451655,order,raphidiophryidae,family
@@ -877,10 +965,7 @@ cetartiodactyla,136984,order,phocoenidae,family
 cetartiodactyla,136985,order,physeteridae,family
 cetartiodactyla,342635,order,pontoporiidae,family
 cetartiodactyla,136986,order,ziphiidae,family
-cetomimiformes,151947,order,barbourisiidae,family
-cetomimiformes,125460,order,cetomimidae,family
 cetomimiformes,125461,order,megalomycteridae,family
-cetomimiformes,125463,order,rondeletiidae,family
 chaetocerales,NA,order,NA,NA
 chaetocerotanae incertae sedis,162752,order,acanthocerataceae,family
 chaetocerotanae incertae sedis,160518,order,attheyaceae,family
@@ -913,6 +998,7 @@ chattonellales,246828,order,vacuolariaceae,family
 chaunacanthida,367344,order,conaconidae,family
 chaunacanthida,367345,order,gigartaconidae,family
 chaunacanthida,367343,order,stauraconidae,family
+cheilostomatida,1507598,order,elementellidae,family
 cheilostomatida,110726,order,aeteidae,family
 cheilostomatida,1371782,order,peedeesellidae,family
 cheilostomatida,751090,order,belluloporidae,family
@@ -943,6 +1029,7 @@ cheilostomatida,182829,order,farciminariidae,family
 cheilostomatida,414815,order,foveolariidae,family
 cheilostomatida,110752,order,heliodomidae,family
 cheilostomatida,467588,order,hiantoporidae,family
+cheilostomatida,1507624,order,incertae sedis,family
 cheilostomatida,578753,order,mourellinidae,family
 cheilostomatida,709468,order,pyrisinellidae,family
 cheilostomatida,428515,order,quadricellariidae,family
@@ -966,13 +1053,16 @@ cheilostomatida,174216,order,lekythoporidae,family
 cheilostomatida,467936,order,orbituliporidae,family
 cheilostomatida,110742,order,cribrilinidae,family
 cheilostomatida,466948,order,euthyroididae,family
+cheilostomatida,1516032,order,inversiscaphidae,family
 cheilostomatida,1371757,order,lekythoglenidae,family
 cheilostomatida,466953,order,polliciporidae,family
+cheilostomatida,827615,order,vitrimurellidae,family
 cheilostomatida,467929,order,didymosellidae,family
 cheilostomatida,1421279,order,clathrolunulidae,family
 cheilostomatida,467931,order,euthyrisellidae,family
 cheilostomatida,1421284,order,neoeuthyroididae,family
 cheilostomatida,1371753,order,bicorniferidae,family
+cheilostomatida,1507634,order,borioplebidae,family
 cheilostomatida,1371749,order,coscinopleuridae,family
 cheilostomatida,1371750,order,fusicellariidae,family
 cheilostomatida,1371752,order,skyloniidae,family
@@ -983,7 +1073,6 @@ cheilostomatida,110751,order,haplopomidae,family
 cheilostomatida,110757,order,hippothoidae,family
 cheilostomatida,110767,order,pasytheidae,family
 cheilostomatida,110779,order,trypostegidae,family
-cheilostomatida,827615,order,vitrimurellidae,family
 cheilostomatida,1033456,order,atlantisinidae,family
 cheilostomatida,110730,order,bryocryptellidae,family
 cheilostomatida,1371775,order,cheilhorneropsidae,family
@@ -994,6 +1083,7 @@ cheilostomatida,467918,order,gemelliporellidae,family
 cheilostomatida,110753,order,hincksiporidae,family
 cheilostomatida,467924,order,jaculinidae,family
 cheilostomatida,110760,order,lepraliellidae,family
+cheilostomatida,1511019,order,lepralielloidea incertae sedis,family
 cheilostomatida,174248,order,metrarabdotosidae,family
 cheilostomatida,110770,order,romancheinidae,family
 cheilostomatida,174319,order,sclerodomidae,family
@@ -1013,6 +1103,7 @@ cheilostomatida,467912,order,alysidiidae,family
 cheilostomatida,172921,order,aspidostomatidae,family
 cheilostomatida,110732,order,calescharidae,family
 cheilostomatida,110739,order,chlidoniidae,family
+cheilostomatida,1507628,order,granomuridae,family
 cheilostomatida,110764,order,microporidae,family
 cheilostomatida,110766,order,onychocellidae,family
 cheilostomatida,467908,order,poricellariidae,family
@@ -1024,7 +1115,7 @@ cheilostomatida,466584,order,pseudolepraliidae,family
 cheilostomatida,240553,order,acoraniidae,family
 cheilostomatida,467920,order,actisecidae,family
 cheilostomatida,1372002,order,bryobaculidae,family
-cheilostomatida,393239,order,buffonellodidae,family
+cheilostomatida,1495297,order,buffonellidae,family
 cheilostomatida,182875,order,calwelliidae,family
 cheilostomatida,110738,order,cheiloporinidae,family
 cheilostomatida,110743,order,cryptosulidae,family
@@ -1077,7 +1168,7 @@ cheilostomatida,110773,order,scrupariidae,family
 cheilostomatida,237797,order,tendridae,family
 cheilostomatida,196092,order,steginoporellidae,family
 cheilostomatida,196093,order,thalamoporellidae,family
-chelodida,1353699,order,chelodidae,family
+chelodida,1507037,order,mattheviidae,family
 chimaericolidea,119238,order,chimaericolidae,family
 chimaeriformes,148800,order,callorhinchidae,family
 chimaeriformes,105696,order,chimaeridae,family
@@ -1094,7 +1185,6 @@ chitonida,23074,order,mopaliidae,family
 chitonida,385498,order,schizoplacidae,family
 chitonida,385500,order,tonicellidae,family
 chitonida,385493,order,callistoplacidae,family
-chitonida,385492,order,callochitonidae,family
 chitonida,385494,order,chaetopleuridae,family
 chitonida,64,order,chitonidae,family
 chitonida,69,order,ischnochitonidae,family
@@ -1156,7 +1246,6 @@ chromadorida,227134,order,achromadoridae,family
 chromadorida,2162,order,chromadoridae,family
 chromadorida,2163,order,cyatholaimidae,family
 chromadorida,2164,order,ethmolaimidae,family
-chromadorida,2165,order,neotonchidae,family
 chromadorida,2166,order,selachinematidae,family
 chromulinales,160546,order,chromulinaceae,family
 chromulinales,599879,order,chromulinales incertae sedis,family
@@ -1171,6 +1260,8 @@ chrysanthemodiscales,380897,order,chrysanthemodiscaceae,family
 chrysomeridales,590464,order,chrysomeridaceae,family
 chrysoparadoxales,1359030,order,chrysoparadoxaceae,family
 chrysophyceae incertae sedis,NA,order,NA,NA
+cichliformes,151383,order,cichlidae,family
+cichliformes,267027,order,pholidichthyidae,family
 ciconiiformes,148747,order,ardeidae,family
 ciconiiformes,148757,order,threskiornithidae,family
 cidaroida,559479,order,anisocidaridae,family
@@ -1212,6 +1303,7 @@ clupeiformes,125464,order,clupeidae,family
 clupeiformes,714646,order,dussumieriidae,family
 clupeiformes,125465,order,engraulidae,family
 clupeiformes,267009,order,pristigasteridae,family
+clupeiformes,1517447,order,spratelloididae,family
 clupeiformes,152008,order,sundasalangidae,family
 clypeasteroida,510661,order,conoclypidae,family
 clypeasteroida,510702,order,faujasiidae,family
@@ -1255,6 +1347,7 @@ colaconematales,172844,order,colaconemataceae,family
 coleoptera,989580,order,anthribidae,family
 coleoptera,118092,order,carabidae,family
 coleoptera,150716,order,curculionidae,family
+coleoptera,1474545,order,dermestidae,family
 coleoptera,150718,order,dytiscidae,family
 coleoptera,150720,order,heteroceridae,family
 coleoptera,150721,order,hydraenidae,family
@@ -1265,7 +1358,6 @@ coleoptera,150723,order,melyridae,family
 coleoptera,493905,order,salpingidae,family
 coleoptera,118093,order,staphylinidae,family
 coleoptera,150728,order,tenebrionidae,family
-collodaria,NA,order,NA,NA
 collothecaceae,134914,order,collothecidae,family
 colpodea incertae sedis,NA,order,NA,NA
 colpodellida,NA,order,NA,NA
@@ -1335,8 +1427,6 @@ coscinodiscales,599622,order,rocellaceae,family
 coscinodiscales,987004,order,stellarimaceae,family
 craniida,104024,order,craniidae,family
 crassiclitellata,22960,order,megascolecidae,family
-crocodylia,886663,order,alligatoridae,family
-crocodylia,342631,order,crocodylidae,family
 crustoidea,579915,order,hormograptidae,family
 crustoidea,579897,order,wimanicrustidae,family
 cryomonadida,742628,order,protaspidae,family
@@ -1353,7 +1443,6 @@ cryptomonadales,22576,order,campylomonadaceae,family
 cryptomonadales,17644,order,cryptomonadaceae,family
 cryptomonadales,17641,order,hemiselmidaceae,family
 cryptomonadales,178563,order,hilleaceae,family
-cryptophialida,173704,order,cryptophialidae,family
 cryptophyceae incertae sedis,NA,order,NA,NA
 cryptostomida,1371667,order,kielceporidae,family
 cryptostomida,1371668,order,palescharidae,family
@@ -1633,20 +1722,27 @@ cymbellales,149410,order,anomoeoneidaceae,family
 cymbellales,149537,order,cymbellaceae,family
 cymbellales,149552,order,gomphonemataceae,family
 cymbellales,149390,order,rhoicospheniaceae,family
-cyprilepadiformes,718805,order,cyprilepadidae,family
+cypriniformes,1517459,order,acheilognathidae,family
 cypriniformes,154177,order,balitoridae,family
 cypriniformes,154179,order,catostomidae,family
 cypriniformes,154174,order,cobitidae,family
 cypriniformes,154163,order,cyprinidae,family
+cypriniformes,1517455,order,danionidae,family
+cypriniformes,1517460,order,gobionidae,family
 cypriniformes,826577,order,nemacheilidae,family
+cypriniformes,1517458,order,tincidae,family
+cypriniformes,1517457,order,xenocyprididae,family
 cyprinodontiformes,154390,order,anablepidae,family
+cyprinodontiformes,1517537,order,aphaniidae,family
 cyprinodontiformes,154441,order,aplocheilidae,family
 cyprinodontiformes,1310230,order,cynolebiidae,family
 cyprinodontiformes,125466,order,cyprinodontidae,family
 cyprinodontiformes,154194,order,fundulidae,family
 cyprinodontiformes,154195,order,goodeidae,family
 cyprinodontiformes,267010,order,nothobranchiidae,family
+cyprinodontiformes,1517535,order,pantanodontidae,family
 cyprinodontiformes,154389,order,poeciliidae,family
+cyprinodontiformes,1517538,order,procatopodidae,family
 cyprinodontiformes,267011,order,rivulidae,family
 cyrtocrinida,714677,order,sclerocrinidae,family
 cyrtocrinida,246655,order,eudesicrinidae,family
@@ -1683,6 +1779,8 @@ dactylogyridea,517906,order,neotetraonchidae,family
 dactylogyridea,518766,order,protogyrodactylidae,family
 dactylogyridea,517903,order,pseudodactylogyridae,family
 dactylogyridea,119233,order,tetraonchidae,family
+dactylopteriformes,125591,order,dactylopteridae,family
+dactylopteriformes,154575,order,pegasidae,family
 dasycladales,143702,order,dasycladaceae,family
 dasycladales,143703,order,polyphysaceae,family
 decapoda,106725,order,aristeidae,family
@@ -1729,14 +1827,17 @@ decapoda,158390,order,hippidae,family
 decapoda,590101,order,hapalogastridae,family
 decapoda,106737,order,lithodidae,family
 decapoda,366104,order,lomisidae,family
+decapoda,1515001,order,calcinidae,family
 decapoda,196140,order,coenobitidae,family
 decapoda,106736,order,diogenidae,family
 decapoda,106738,order,paguridae,family
 decapoda,106739,order,parapaguridae,family
 decapoda,196156,order,pylochelidae,family
 decapoda,364527,order,pylojacquesidae,family
+decapoda,1514996,order,xylopaguridae,family
 decapoda,106740,order,enoplometopidae,family
 decapoda,106741,order,nephropidae,family
+decapoda,1482028,order,stenochiridae,family
 decapoda,106776,order,alpheidae,family
 decapoda,240699,order,barbouriidae,family
 decapoda,883937,order,bythocarididae,family
@@ -1837,6 +1938,7 @@ decapoda,877516,order,ovalipidae,family
 decapoda,557512,order,polybiidae,family
 decapoda,106763,order,portunidae,family
 decapoda,106752,order,thiidae,family
+decapoda,1459303,order,pseudocarcinidae,family
 decapoda,877536,order,christmaplacidae,family
 decapoda,106767,order,pilumnoididae,family
 decapoda,439094,order,planopilumnidae,family
@@ -1888,9 +1990,6 @@ dendrochirotida,196180,order,rhopalodinidae,family
 dendrochirotida,196182,order,sclerodactylidae,family
 dendrochirotida,196181,order,vaneyellidae,family
 dendrochirotida,123186,order,ypsilothuriidae,family
-dendrogastrida,103950,order,ascothoracidae,family
-dendrogastrida,173728,order,ctenosculidae,family
-dendrogastrida,103951,order,dendrogastridae,family
 dentaliida,343636,order,anulidentaliidae,family
 dentaliida,343637,order,calliodentaliidae,family
 dentaliida,202,order,dentaliidae,family
@@ -2039,6 +2138,7 @@ echinoneoida,510662,order,conulidae,family
 echinoneoida,510714,order,galeritidae,family
 echinoneoida,510787,order,neoglobatoridae,family
 echinorhagata,101070,order,echinoderidae,family
+echinorhiniformes,105715,order,echinorhinidae,family
 echinorhynchida,20287,order,arhythmacanthidae,family
 echinorhynchida,20373,order,cavisomatidae,family
 echinorhynchida,448565,order,diplosentidae,family
@@ -2046,6 +2146,7 @@ echinorhynchida,20294,order,echinorhynchidae,family
 echinorhynchida,20317,order,heteracanthocephalidae,family
 echinorhynchida,20360,order,illiosentidae,family
 echinorhynchida,872648,order,isthmosacanthidae,family
+echinorhynchida,1416332,order,paracanthocephalidae,family
 echinorhynchida,20395,order,pomphorhynchidae,family
 echinorhynchida,20351,order,rhadinorhynchidae,family
 echinorhynchida,1449447,order,spinulacorpidae,family
@@ -2086,7 +2187,14 @@ enantiopoda,845999,order,tesnusocarididae,family
 enchytraeida,2038,order,enchytraeidae,family
 enchytraeida,475487,order,randiellidae,family
 encrinida,484685,order,encrinidae,family
-endogenida,NA,order,NA,NA
+endogenida,172286,order,acinetidae,family
+endogenida,425468,order,acinetopsidae,family
+endogenida,414790,order,corynophryidae,family
+endogenida,414799,order,dendrosomatidae,family
+endogenida,425471,order,endosphaeridae,family
+endogenida,425472,order,pseudogemmidae,family
+endogenida,425473,order,tokophryidae,family
+endogenida,414908,order,trichophryidae,family
 endothyrida,720912,order,bradyinidae,family
 endothyrida,1055908,order,endothyranopsidae,family
 endothyrida,1055910,order,eoendothyranopsidae,family
@@ -2179,6 +2287,28 @@ eunicida,233987,order,atraktoprionidae,family
 eunicida,233988,order,conjungaspidae,family
 eunicida,233989,order,tretoprionidae,family
 eunotiales,149401,order,eunotiaceae,family
+eupercaria incertae sedis,151454,order,caesionidae,family
+eupercaria incertae sedis,125521,order,callanthiidae,family
+eupercaria incertae sedis,267018,order,centrogenyidae,family
+eupercaria incertae sedis,125527,order,cepolidae,family
+eupercaria incertae sedis,151435,order,dinopercidae,family
+eupercaria incertae sedis,125534,order,emmelichthyidae,family
+eupercaria incertae sedis,151456,order,gerreidae,family
+eupercaria incertae sedis,125538,order,haemulidae,family
+eupercaria incertae sedis,125541,order,labridae,family
+eupercaria incertae sedis,1517578,order,latilidae,family
+eupercaria incertae sedis,151458,order,lethrinidae,family
+eupercaria incertae sedis,151453,order,lutjanidae,family
+eupercaria incertae sedis,151447,order,malacanthidae,family
+eupercaria incertae sedis,151469,order,monodactylidae,family
+eupercaria incertae sedis,125545,order,moronidae,family
+eupercaria incertae sedis,151459,order,nemipteridae,family
+eupercaria incertae sedis,151387,order,odacidae,family
+eupercaria incertae sedis,125555,order,priacanthidae,family
+eupercaria incertae sedis,125557,order,scaridae,family
+eupercaria incertae sedis,125558,order,sciaenidae,family
+eupercaria incertae sedis,125563,order,sillaginidae,family
+eupercaria incertae sedis,125564,order,sparidae,family
 euphausiacea,110670,order,bentheuphausiidae,family
 euphausiacea,110671,order,euphausiidae,family
 euplotida,425502,order,discocephalidae,family
@@ -2220,6 +2350,7 @@ exogenida,341357,order,thecacinetidae,family
 favositida,1458068,order,alveolitidae,family
 favositida,1458065,order,angoporidae,family
 favositida,1458069,order,coenitidae,family
+favositida,1512531,order,favositida incertae sedis,family
 favositida,1458082,order,favositidae,family
 favositida,1457912,order,micheliniidae,family
 favositida,1458067,order,pachyporidae,family
@@ -2288,29 +2419,34 @@ fusulinida,1059095,order,triticitidae,family
 fusulinida,1059509,order,nankinellidae,family
 fusulinida,1059508,order,pseudoendothyridae,family
 fusulinida,720923,order,staffellidae,family
+gadiformes,1517484,order,bathygadidae,family
 gadiformes,125468,order,bregmacerotidae,family
 gadiformes,267012,order,euclichthyidae,family
 gadiformes,125469,order,gadidae,family
+gadiformes,1517479,order,gaidropsaridae,family
 gadiformes,125470,order,lotidae,family
+gadiformes,1517483,order,lyconidae,family
 gadiformes,125471,order,macrouridae,family
+gadiformes,1517482,order,macruronidae,family
 gadiformes,125472,order,melanonidae,family
 gadiformes,125473,order,merlucciidae,family
 gadiformes,125474,order,moridae,family
 gadiformes,154631,order,muraenolepididae,family
 gadiformes,125475,order,phycidae,family
+gadiformes,1517480,order,ranicipitidae,family
+gadiformes,1517485,order,steindachneriidae,family
+gadiformes,1517481,order,trachyrincidae,family
 gadilida,13695,order,entalinidae,family
 gadilida,343642,order,[unassigned] gadilida,family
 gadilida,435,order,gadilidae,family
 gadilida,2096,order,pulsellidae,family
 gadilida,343641,order,wemersoniellidae,family
+galaxiiformes,154215,order,galaxiidae,family
 galeommatida,489090,order,basterotiidae,family
 galeommatida,226,order,galeommatidae,family
 galeommatida,222,order,lasaeidae,family
 ganeshida,264885,order,ganeshidae,family
-gasterosteiformes,267013,order,aulorhynchidae,family
-gasterosteiformes,125476,order,gasterosteidae,family
-gasterosteiformes,154246,order,hypoptychidae,family
-gasterosteiformes,154575,order,pegasidae,family
+gasterosteiformes,NA,order,NA,NA
 gastrochaenida,250,order,gastrochaenidae,family
 gaviiformes,136996,order,gaviidae,family
 gelidiales,143726,order,gelidiaceae,family
@@ -2372,13 +2508,22 @@ glissomonadida,872118,order,allapsidae,family
 glissomonadida,590940,order,sandonidae,family
 gloeodiniales,146251,order,gloeodiniaceae,family
 gobiesociformes,125477,order,gobiesocidae,family
+gobiiformes,1517507,order,butidae,family
+gobiiformes,151420,order,eleotridae,family
+gobiiformes,125537,order,gobiidae,family
+gobiiformes,1517508,order,milyeringidae,family
+gobiiformes,151419,order,odontobutidae,family
+gobiiformes,1517506,order,oxudercidae,family
+gobiiformes,151418,order,rhyacichthyidae,family
+gobiiformes,714656,order,thalasseleotrididae,family
+gobiiformes,151409,order,trichonotidae,family
 golfingiida,2032,order,golfingiidae,family
 golfingiida,1450685,order,siphonosomatidae,family
 golfingiida,1648,order,sipunculidae,family
 goniomonadales,22579,order,goniomonadaceae,family
 goniotrichales,143747,order,goniotrichaceae,family
-gonorhynchiformes,154432,order,chanidae,family
-gonorhynchiformes,267014,order,gonorynchidae,family
+gonorynchiformes,154432,order,chanidae,family
+gonorynchiformes,267014,order,gonorynchidae,family
 gonyaulacales,109421,order,ceratiaceae,family
 gonyaulacales,109422,order,ceratocoryaceae,family
 gonyaulacales,109425,order,cladopyxidaceae,family
@@ -2469,7 +2614,6 @@ harpacticoida,115149,order,darcythompsoniidae,family
 harpacticoida,115151,order,ectinosomatidae,family
 harpacticoida,149928,order,hamondiidae,family
 harpacticoida,115153,order,harpacticidae,family
-harpacticoida,366436,order,heteropsyllidae,family
 harpacticoida,293083,order,idyanthidae,family
 harpacticoida,115155,order,laophontidae,family
 harpacticoida,115156,order,laophontopsidae,family
@@ -2523,6 +2667,7 @@ hemiptera,869433,order,aepophilidae,family
 hemiptera,869482,order,leptopodidae,family
 hemiptera,493903,order,omaniidae,family
 hemiptera,118102,order,saldidae,family
+heterocorallia,1510378,order,heterophylliidae,family
 heterodontiformes,148802,order,heterodontidae,family
 heterogloeales,456712,order,heterogloeaceae,family
 heteronemertea,155848,order,gorgonorhynchidae,family
@@ -2584,6 +2729,7 @@ holectypoida,510616,order,anorthopygidae,family
 holectypoida,510659,order,coenholectypidae,family
 holectypoida,510674,order,discoididae,family
 holectypoida,510774,order,holectypidae,family
+holocentriformes,125458,order,holocentridae,family
 holothuriida,731943,order,holothuriidae,family
 holothuriida,731919,order,mesothuriidae,family
 homosclerophorida,150263,order,oscarellidae,family
@@ -2594,8 +2740,6 @@ hymenostraca,882607,order,hymenocarididae,family
 hyocrinida,123155,order,hyocrinidae,family
 hypocomatida,134812,order,hypocomidae,family
 hypotrichia incertae sedis,NA,order,NA,NA
-ibliformes,196138,order,iblidae,family
-ibliformes,391623,order,idioiblidae,family
 idiosepida,153037,order,idiosepiidae,family
 ingolfiellida,101427,order,ingolfiellidae,family
 ishigeales,368781,order,ishigeaceae,family
@@ -2696,6 +2840,7 @@ isopoda,146514,order,dajidae,family
 isopoda,589330,order,entophilidae,family
 isopoda,248296,order,hemioniscidae,family
 isopoda,147079,order,podasconidae,family
+isopoda,1470772,order,stellatoniscidae,family
 ixodida,762205,order,argasidae,family
 ixodida,762201,order,ixodidae,family
 karyorelictea incertae sedis,NA,order,NA,NA
@@ -2709,6 +2854,8 @@ kiitrichida,414832,order,kiitrichidae,family
 kilbuchophyllida,1460176,order,kilbuchophyllidae,family
 klebsormidiales,368782,order,klebsormidiaceae,family
 klebsormidiales,143752,order,stichococcaceae,family
+kurtiformes,125518,order,apogonidae,family
+kurtiformes,151425,order,kurtidae,family
 labyrinthulida,22195,order,labyrinthulaceae,family
 labyrinthulida,177360,order,labyrinthulida incertae sedis,family
 lagenida,720905,order,colaniellidae,family
@@ -2731,6 +2878,7 @@ laminariales,143755,order,laminariaceae,family
 laminariales,196198,order,lessoniaceae,family
 laminariales,368785,order,pseudochordaceae,family
 lamniformes,105700,order,alopiidae,family
+lamniformes,148827,order,carchariidae,family
 lamniformes,105701,order,cetorhinidae,family
 lamniformes,105702,order,lamnidae,family
 lamniformes,267044,order,megachasmidae,family
@@ -2741,12 +2889,8 @@ lampriformes,125478,order,lampridae,family
 lampriformes,125479,order,lophotidae,family
 lampriformes,125480,order,radiicephalidae,family
 lampriformes,125481,order,regalecidae,family
-lampriformes,125482,order,stylephoridae,family
 lampriformes,125483,order,trachipteridae,family
 lampriformes,154424,order,veliferidae,family
-laurida,103952,order,lauridae,family
-laurida,103953,order,petrarcidae,family
-laurida,103954,order,synagogidae,family
 lecanicephalidea,872357,order,aberrapecidae,family
 lecanicephalidea,872358,order,cephalobothriidae,family
 lecanicephalidea,872360,order,eniochobothriidae,family
@@ -2757,16 +2901,6 @@ lecanicephalidea,515791,order,polypocephalidae,family
 lecanicephalidea,104934,order,tetragonocephalidae,family
 lecanicephalidea,872363,order,zanobatocestidae,family
 leiocopida,NA,order,NA,NA
-lepadiformes,106051,order,anelasmatidae,family
-lepadiformes,106052,order,heteralepadidae,family
-lepadiformes,534764,order,koleolepadidae,family
-lepadiformes,733038,order,malacolepadidae,family
-lepadiformes,733036,order,microlepadidae,family
-lepadiformes,733037,order,rhizolepadidae,family
-lepadiformes,106048,order,lepadidae,family
-lepadiformes,106049,order,oxynaspididae,family
-lepadiformes,106050,order,poecilasmatidae,family
-lepadiformes,739439,order,praelepadidae,family
 lepetellida,111,order,fissurellidae,family
 lepetellida,1727,order,haliotidae,family
 lepetellida,833762,order,temnotropidae,family
@@ -2797,7 +2931,7 @@ lepidopleurida,59,order,leptochitonidae,family
 lepidopleurida,1353766,order,mesochitonidae,family
 lepidopleurida,385489,order,nierstraszellidae,family
 lepidopleurida,385491,order,protochitonidae,family
-lepisosteiformes,154640,order,lepisosteidae,family
+lepidopleurida,1473069,order,unassigned_lepidopleurina,family
 leptocylindrales,149037,order,leptocylindraceae,family
 leptomitales,172232,order,leptomitaceae,family
 leptostraca,147029,order,nebaliidae,family
@@ -2814,6 +2948,7 @@ leptothecata,266955,order,cirrholoveniidae,family
 leptothecata,266956,order,clathrozoidae,family
 leptothecata,22794,order,dipleurosomatidae,family
 leptothecata,15378,order,eirenidae,family
+leptothecata,1522391,order,gonaxiidae,family
 leptothecata,1608,order,haleciidae,family
 leptothecata,196237,order,hebellidae,family
 leptothecata,1609,order,lafoeidae,family
@@ -2858,6 +2993,7 @@ leucosolenida,164494,order,lelapiidae,family
 leucosolenida,131616,order,leucosoleniidae,family
 leucosolenida,164547,order,sycanthidae,family
 leucosolenida,131617,order,sycettidae,family
+lichenariida,1512537,order,lyoporidae,family
 licmophorales,149341,order,licmophoraceae,family
 licmophorales,1245872,order,ulnariaceae,family
 licnophorida,172646,order,licnophoridae,family
@@ -2873,8 +3009,6 @@ lingulida,235157,order,lingulidae,family
 lingulida,890710,order,obolidae,family
 lithobiomorpha,394574,order,lithobiidae,family
 lithodesmiales,149021,order,lithodesmiaceae,family
-lithoglyptida,106047,order,lithoglyptidae,family
-lithoglyptida,106046,order,trypetesidae,family
 lithonida,131618,order,minchinellidae,family
 litobothriidea,515792,order,litobothriidae,family
 littorinimorpha,141,order,calyptraeidae,family
@@ -2883,10 +3017,7 @@ littorinimorpha,1740,order,cingulopsidae,family
 littorinimorpha,196894,order,eatoniellidae,family
 littorinimorpha,411670,order,rastodentidae,family
 littorinimorpha,23022,order,cypraeidae,family
-littorinimorpha,23036,order,eratoidae,family
 littorinimorpha,1747,order,ovulidae,family
-littorinimorpha,144,order,triviidae,family
-littorinimorpha,143,order,velutinidae,family
 littorinimorpha,196334,order,ficidae,family
 littorinimorpha,834055,order,leviathaniidae,family
 littorinimorpha,119,order,littorinidae,family
@@ -2909,11 +3040,13 @@ littorinimorpha,877987,order,zebinidae,family
 littorinimorpha,22988,order,aporrhaidae,family
 littorinimorpha,834062,order,dilatilabridae,family
 littorinimorpha,834063,order,hippochrenidae,family
+littorinimorpha,833907,order,lamelliphoridae,family
 littorinimorpha,834064,order,pereiraeidae,family
 littorinimorpha,387400,order,rostellariidae,family
 littorinimorpha,411720,order,seraphsidae,family
 littorinimorpha,23123,order,strombidae,family
 littorinimorpha,196899,order,struthiolariidae,family
+littorinimorpha,23144,order,xenophoridae,family
 littorinimorpha,22995,order,bursidae,family
 littorinimorpha,22999,order,cassidae,family
 littorinimorpha,989514,order,charoniidae,family
@@ -2927,6 +3060,7 @@ littorinimorpha,22984,order,anabathridae,family
 littorinimorpha,121,order,assimineidae,family
 littorinimorpha,182697,order,bithyniidae,family
 littorinimorpha,126,order,caecidae,family
+littorinimorpha,590774,order,caledoniellidae,family
 littorinimorpha,411705,order,calopiidae,family
 littorinimorpha,722758,order,clenchiellidae,family
 littorinimorpha,411706,order,cochliopidae,family
@@ -2941,6 +3075,7 @@ littorinimorpha,397032,order,pomatiopsidae,family
 littorinimorpha,1381939,order,spirostyliferinidae,family
 littorinimorpha,715962,order,stenothyridae,family
 littorinimorpha,722759,order,tateidae,family
+littorinimorpha,1516995,order,teinostomatidae,family
 littorinimorpha,1057163,order,tomichiidae,family
 littorinimorpha,124,order,tornidae,family
 littorinimorpha,1738,order,truncatellidae,family
@@ -2949,10 +3084,11 @@ littorinimorpha,135,order,eulimidae,family
 littorinimorpha,398790,order,haloceratidae,family
 littorinimorpha,23057,order,hipponicidae,family
 littorinimorpha,23138,order,vanikoridae,family
+littorinimorpha,23036,order,eratoidae,family
+littorinimorpha,144,order,triviidae,family
+littorinimorpha,143,order,velutinidae,family
 littorinimorpha,451696,order,sakarahellidae,family
 littorinimorpha,23139,order,vermetidae,family
-littorinimorpha,833907,order,lamelliphoridae,family
-littorinimorpha,23144,order,xenophoridae,family
 lituolida,111961,order,discamminidae,family
 lituolida,111963,order,haplophragmoididae,family
 lituolida,111966,order,lituolidae,family
@@ -3021,9 +3157,11 @@ loftusiida,738636,order,hottingeritidae,family
 loftusiida,738674,order,loftusiidae,family
 loftusiida,738424,order,mesoendothyridae,family
 loftusiida,738663,order,spirocyclinidae,family
+loftusiida,1497384,order,suraqalatiidae,family
 loftusiida,738634,order,syrianidae,family
 loftusiida,739340,order,coskinolinidae,family
 loftusiida,555780,order,orbitolinidae,family
+loftusiida,1503969,order,bakhtiarellidae,family
 loftusiida,739176,order,hauraniidae,family
 loftusiida,739179,order,parurgoninidae,family
 loftusiida,739171,order,pfenderinidae,family
@@ -3078,7 +3216,7 @@ malvales,413963,order,malvaceae,family
 mamiellales,493889,order,bathycoccaceae,family
 mamiellales,17663,order,mamiellaceae,family
 mamiellales,578238,order,monomastigaceae,family
-marimermithida,834586,order,marimermithidae,family
+marimermithida,834586,order,marimermithidae_,family
 marimonadida,872066,order,marimonadida incertae sedis,family
 marsupiomonadales,NA,order,NA,NA
 mastogloiales,157051,order,mastogloiaceae,family
@@ -3200,7 +3338,6 @@ monhysterida,2192,order,siphonolaimidae,family
 monhysterida,2188,order,monhysteridae,family
 monhysterida,2189,order,sphaerolaimidae,family
 monhysterida,2190,order,xyalidae,family
-monocotylidea,119230,order,loimoidae,family
 monocotylidea,119231,order,microbothriidae,family
 monocotylidea,119232,order,monocotylidae,family
 monomastigales,NA,order,NA,NA
@@ -3209,7 +3346,7 @@ monostilifera,122323,order,amphiporidae,family
 monostilifera,122324,order,carcinonemertidae,family
 monostilifera,122326,order,emplectonematidae,family
 monostilifera,122322,order,malacobdellidae,family
-monostilifera,1416266,order,neesidae,family
+monostilifera,1416266,order,neesiidae,family
 monostilifera,162289,order,oerstediidae,family
 monostilifera,122327,order,ototyphlonemertidae,family
 monostilifera,162321,order,plectonemertidae,family
@@ -3222,11 +3359,9 @@ monstrilloida,119777,order,monstrillidae,family
 montchadskyellidea,518764,order,montchadskyellidae,family
 mormonilloida,119815,order,mormonillidae,family
 mugiliformes,125546,order,mugilidae,family
+mulliformes,125547,order,mullidae,family
 multivalvulida,120255,order,kudoidae,family
 multivalvulida,120256,order,trilosporidae,family
-murrayonida,164793,order,lelapiellidae,family
-murrayonida,164797,order,murrayonidae,family
-murrayonida,164800,order,paramurrayonidae,family
 myalinida,833118,order,lunulacardiidae,family
 myalinida,833122,order,ramonalinidae,family
 myalinida,833124,order,inoceramidae,family
@@ -3239,14 +3374,18 @@ myida,833383,order,pleurodesmatidae,family
 myida,252,order,pholadidae,family
 myida,253,order,teredinidae,family
 myida,1338968,order,xylophagaidae,family
+myliobatiformes,1517438,order,aetobatidae,family
 myliobatiformes,105708,order,dasyatidae,family
 myliobatiformes,105709,order,gymnuridae,family
 myliobatiformes,148836,order,hexatrygonidae,family
+myliobatiformes,196070,order,mobulidae,family
 myliobatiformes,105710,order,myliobatidae,family
 myliobatiformes,148829,order,plesiobatidae,family
 myliobatiformes,148834,order,potamotrygonidae,family
+myliobatiformes,1517439,order,rhinopteridae,family
 myliobatiformes,148830,order,urolophidae,family
 myliobatiformes,397229,order,urotrygonidae,family
+myliobatiformes,1517437,order,zanobatidae,family
 myodocopida,196139,order,cylindroleberididae,family
 myodocopida,127481,order,cypridinidae,family
 myodocopida,843392,order,nymphatelinidae,family
@@ -3332,15 +3471,26 @@ neogastropoda,833895,order,purpurinidae,family
 neogastropoda,828345,order,speightiidae,family
 neogastropoda,411802,order,strepsiduridae,family
 neogastropoda,828339,order,taiomidae,family
+neogastropoda,1522370,order,austrosiphonidae,family
 neogastropoda,703779,order,belomitridae,family
+neogastropoda,1522366,order,buccinanopsidae,family
 neogastropoda,149,order,buccinidae,family
+neogastropoda,862828,order,busyconidae,family
+neogastropoda,1522424,order,chauvetiidae,family
+neogastropoda,1522115,order,colidae,family
 neogastropoda,411754,order,colubrariidae,family
 neogastropoda,23009,order,columbellidae,family
+neogastropoda,196901,order,cominellidae,family
+neogastropoda,1522101,order,dolicholatiridae,family
 neogastropoda,862840,order,echinofulguridae,family
+neogastropoda,1522129,order,eosiphonidae,family
 neogastropoda,23038,order,fasciolariidae,family
 neogastropoda,160182,order,melongenidae,family
 neogastropoda,151,order,nassariidae,family
 neogastropoda,1054108,order,pisaniidae,family
+neogastropoda,1522422,order,prodotiidae,family
+neogastropoda,1522144,order,prosiphonidae,family
+neogastropoda,1522369,order,retimohniidae,family
 neogastropoda,1296552,order,tudiclidae,family
 neogastropoda,153870,order,borsoniidae,family
 neogastropoda,606011,order,bouchetispiridae,family
@@ -3387,6 +3537,7 @@ neogastropoda,23141,order,volutidae,family
 neomphalida,411613,order,melanodrymiidae,family
 neomphalida,411612,order,neomphalidae,family
 neomphalida,180915,order,peltospiridae,family
+neopilinida,23078,order,neopilinidae,family
 nephroselmidales,368875,order,nephroselmidaceae,family
 noctilucales,146252,order,kofoidiniaceae,family
 noctilucales,109417,order,leptodiscaceae,family
@@ -3399,6 +3550,7 @@ nodosariida,414896,order,stilostomellidae,family
 notacanthiformes,125500,order,halosauridae,family
 notacanthiformes,125501,order,notacanthidae,family
 notomyotida,123126,order,benthopectinidae,family
+nuculanida,367885,order,bathyspinulidae,family
 nuculanida,147088,order,lametilidae,family
 nuculanida,23068,order,malletiidae,family
 nuculanida,23077,order,neilonellidae,family
@@ -3423,6 +3575,7 @@ nudibranchia,23096,order,piseinotecidae,family
 nudibranchia,570853,order,pleurolidiidae,family
 nudibranchia,2087,order,arminidae,family
 nudibranchia,412594,order,doridomorphidae,family
+nudibranchia,23056,order,heterodorididae,family
 nudibranchia,412598,order,bornellidae,family
 nudibranchia,186,order,dendronotidae,family
 nudibranchia,187,order,dotidae,family
@@ -3535,6 +3688,7 @@ ophiacanthida,1116874,order,clarkcomidae,family
 ophiacanthida,123204,order,ophiacanthidae,family
 ophiacanthida,1075315,order,ophiobyrsidae,family
 ophiacanthida,1116867,order,ophiocamacidae,family
+ophiacanthida,1515842,order,ophiojuridae,family
 ophiacanthida,1116873,order,ophiopteridae,family
 ophiacanthida,1116868,order,ophiotomidae,family
 ophiacanthida,152490,order,ophiocomidae,family
@@ -3544,6 +3698,7 @@ ophiacanthida,1116875,order,ophiopezidae,family
 ophidiiformes,125502,order,aphyonidae,family
 ophidiiformes,125503,order,bythitidae,family
 ophidiiformes,125504,order,carapidae,family
+ophidiiformes,1517489,order,dinematichthyidae,family
 ophidiiformes,125505,order,ophidiidae,family
 ophidiiformes,125506,order,parabrotulidae,family
 ophioleucida,1148548,order,ophiernidae,family
@@ -3572,11 +3727,8 @@ orthoptera,707535,order,mogoplistidae,family
 orthoptera,426335,order,tettigoniidae,family
 orthoptera,707490,order,trigonidiidae,family
 orthoseirales,163296,order,orthoseiraceae,family
-osmeriformes,125507,order,alepocephalidae,family
-osmeriformes,154215,order,galaxiidae,family
 osmeriformes,125510,order,leptochilichthyidae,family
 osmeriformes,125513,order,osmeridae,family
-osmeriformes,125514,order,platytroctidae,family
 osmeriformes,154162,order,plecoglossidae,family
 osmeriformes,154214,order,retropinnidae,family
 osmeriformes,154213,order,salangidae,family
@@ -3597,6 +3749,14 @@ ostreida,564652,order,margaritidae,family
 ostreida,1775,order,pteriidae,family
 ostreida,489071,order,pulvinitidae,family
 ostreida,492136,order,vulsellidae,family
+ovalentaria incertae sedis,151432,order,ambassidae,family
+ovalentaria incertae sedis,151386,order,embiotocidae,family
+ovalentaria incertae sedis,151440,order,grammatidae,family
+ovalentaria incertae sedis,151443,order,opistognathidae,family
+ovalentaria incertae sedis,151441,order,plesiopidae,family
+ovalentaria incertae sedis,267028,order,polycentridae,family
+ovalentaria incertae sedis,125553,order,pomacentridae,family
+ovalentaria incertae sedis,151438,order,pseudochromidae,family
 oxyrrhinales,146255,order,oxyrrhinaceae,family
 palaeocaridacea,NA,order,NA,NA
 palaeocopida,NA,order,NA,NA
@@ -3686,179 +3846,96 @@ peniculida,414834,order,lembadionidae,family
 peniculida,414856,order,parameciidae,family
 peniculida,425445,order,stokesiidae,family
 pennales,NA,order,NA,NA
+pennatulacea,128480,order,anthoptilidae,family
 pennatulacea,196246,order,chunellidae,family
 pennatulacea,196247,order,echinoptilidae,family
-pennatulacea,266953,order,renillidae,family
-pennatulacea,182877,order,scleroptilidae,family
-pennatulacea,266954,order,stachyptilidae,family
-pennatulacea,128480,order,anthoptilidae,family
 pennatulacea,128481,order,funiculinidae,family
 pennatulacea,128483,order,kophobelemnidae,family
 pennatulacea,128485,order,protoptilidae,family
+pennatulacea,266953,order,renillidae,family
+pennatulacea,182877,order,scleroptilidae,family
+pennatulacea,266954,order,stachyptilidae,family
 pennatulacea,128486,order,umbellulidae,family
 pennatulacea,128487,order,veretillidae,family
-pennatulacea,128482,order,halipteridae,family
+pennatulacea,1508602,order,balticinidae,family
 pennatulacea,128484,order,pennatulidae,family
 pennatulacea,128488,order,virgulariidae,family
-perciformes,125515,order,acanthuridae,family
-perciformes,151426,order,ephippidae,family
-perciformes,125544,order,luvaridae,family
-perciformes,151427,order,scatophagidae,family
-perciformes,125562,order,siganidae,family
-perciformes,151428,order,zanclidae,family
-perciformes,151375,order,anabantidae,family
-perciformes,151378,order,osphronemidae,family
-perciformes,125519,order,blenniidae,family
-perciformes,151415,order,chaenopsidae,family
-perciformes,125530,order,clinidae,family
-perciformes,151416,order,dactyloscopidae,family
-perciformes,151414,order,labrisomidae,family
-perciformes,125572,order,tripterygiidae,family
-perciformes,125522,order,callionymidae,family
-perciformes,125532,order,draconettidae,family
-perciformes,125613,order,caproidae,family
-perciformes,151380,order,channidae,family
-perciformes,151420,order,eleotridae,family
-perciformes,125537,order,gobiidae,family
-perciformes,151421,order,kraemeriidae,family
-perciformes,151423,order,microdesmidae,family
-perciformes,151419,order,odontobutidae,family
-perciformes,151418,order,rhyacichthyidae,family
-perciformes,151417,order,schindleriidae,family
-perciformes,714656,order,thalasseleotrididae,family
-perciformes,151424,order,xenisthmidae,family
-perciformes,151400,order,icosteidae,family
-perciformes,151425,order,kurtidae,family
-perciformes,151383,order,cichlidae,family
-perciformes,151386,order,embiotocidae,family
-perciformes,125541,order,labridae,family
-perciformes,151387,order,odacidae,family
-perciformes,125553,order,pomacentridae,family
-perciformes,125557,order,scaridae,family
-perciformes,151398,order,artedidraconidae,family
-perciformes,151405,order,bathydraconidae,family
-perciformes,151403,order,bovichtidae,family
-perciformes,234518,order,channichthyidae,family
-perciformes,267021,order,eleginopsidae,family
-perciformes,151397,order,harpagiferidae,family
-perciformes,151404,order,nototheniidae,family
-perciformes,267029,order,pseudaphritidae,family
-perciformes,151434,order,acropomatidae,family
-perciformes,151432,order,ambassidae,family
-perciformes,151476,order,aplodactylidae,family
-perciformes,125518,order,apogonidae,family
-perciformes,151452,order,arripidae,family
-perciformes,151444,order,banjosidae,family
-perciformes,151463,order,bathyclupeidae,family
-perciformes,125520,order,bramidae,family
-perciformes,151454,order,caesionidae,family
-perciformes,125521,order,callanthiidae,family
-perciformes,125523,order,carangidae,family
-perciformes,125524,order,caristiidae,family
-perciformes,125525,order,centracanthidae,family
-perciformes,151288,order,centrarchidae,family
-perciformes,267018,order,centrogenyidae,family
-perciformes,151431,order,centropomidae,family
-perciformes,125527,order,cepolidae,family
-perciformes,125528,order,chaetodontidae,family
-perciformes,151477,order,cheilodactylidae,family
-perciformes,151478,order,chironemidae,family
-perciformes,151475,order,cirrhitidae,family
-perciformes,125531,order,coryphaenidae,family
-perciformes,267020,order,datnioididae,family
-perciformes,151465,order,dichistiidae,family
-perciformes,151446,order,dinolestidae,family
-perciformes,151435,order,dinopercidae,family
-perciformes,196072,order,drepaneidae,family
-perciformes,125533,order,echeneidae,family
-perciformes,125534,order,emmelichthyidae,family
-perciformes,151471,order,enoplosidae,family
-perciformes,125535,order,epigonidae,family
-perciformes,151456,order,gerreidae,family
-perciformes,151461,order,glaucosomatidae,family
-perciformes,151440,order,grammatidae,family
-perciformes,125538,order,haemulidae,family
-perciformes,267022,order,hapalogenyidae,family
-perciformes,267023,order,howellidae,family
-perciformes,151445,order,kuhliidae,family
-perciformes,125540,order,kyphosidae,family
-perciformes,151448,order,lactariidae,family
-perciformes,267024,order,lateolabracidae,family
-perciformes,267025,order,latidae,family
-perciformes,151382,order,latridae,family
-perciformes,125542,order,leiognathidae,family
-perciformes,151462,order,leptobramidae,family
-perciformes,151458,order,lethrinidae,family
-perciformes,125543,order,lobotidae,family
-perciformes,151453,order,lutjanidae,family
-perciformes,151447,order,malacanthidae,family
-perciformes,151451,order,menidae,family
-perciformes,151469,order,monodactylidae,family
-perciformes,125545,order,moronidae,family
-perciformes,125547,order,mullidae,family
-perciformes,151473,order,nandidae,family
-perciformes,151450,order,nematistiidae,family
-perciformes,151459,order,nemipteridae,family
-perciformes,151443,order,opistognathidae,family
-perciformes,151474,order,oplegnathidae,family
-perciformes,151436,order,ostracoberycidae,family
-perciformes,151467,order,parascorpididae,family
-perciformes,151460,order,pempheridae,family
-perciformes,151472,order,pentacerotidae,family
-perciformes,125549,order,percichthyidae,family
-perciformes,151300,order,percidae,family
-perciformes,151441,order,plesiopidae,family
-perciformes,267028,order,polycentridae,family
-perciformes,125551,order,polynemidae,family
-perciformes,125552,order,polyprionidae,family
-perciformes,151470,order,pomacanthidae,family
-perciformes,125554,order,pomatomidae,family
-perciformes,125555,order,priacanthidae,family
-perciformes,151438,order,pseudochromidae,family
-perciformes,125556,order,rachycentridae,family
-perciformes,125558,order,sciaenidae,family
-perciformes,151449,order,scombropidae,family
-perciformes,125561,order,serranidae,family
-perciformes,125563,order,sillaginidae,family
-perciformes,125564,order,sparidae,family
-perciformes,151437,order,symphysanodontidae,family
-perciformes,125568,order,terapontidae,family
-perciformes,151464,order,toxotidae,family
-perciformes,267027,order,pholidichthyidae,family
-perciformes,125536,order,gempylidae,family
-perciformes,125559,order,scombridae,family
-perciformes,125571,order,trichiuridae,family
-perciformes,125560,order,scombrolabracidae,family
-perciformes,125565,order,sphyraenidae,family
-perciformes,151429,order,amarsipidae,family
-perciformes,151430,order,ariommatidae,family
-perciformes,125526,order,centrolophidae,family
-perciformes,125548,order,nomeidae,family
-perciformes,125567,order,stromateidae,family
-perciformes,125569,order,tetragonuridae,family
+perciformes,125588,order,agonidae,family
 perciformes,125516,order,ammodytidae,family
-perciformes,151407,order,champsodontidae,family
+perciformes,125517,order,anarhichadidae,family
+perciformes,154666,order,anoplopomatidae,family
+perciformes,154249,order,apistidae,family
+perciformes,154253,order,aploactinidae,family
+perciformes,151398,order,artedidraconidae,family
+perciformes,267013,order,aulorhynchidae,family
+perciformes,151405,order,bathydraconidae,family
+perciformes,151388,order,bathymasteridae,family
+perciformes,154662,order,bembridae,family
+perciformes,1517586,order,bembropidae,family
+perciformes,151403,order,bovichtidae,family
+perciformes,1517590,order,caesioscorpididae,family
+perciformes,1517585,order,cebidichthyidae,family
+perciformes,234518,order,channichthyidae,family
 perciformes,267019,order,cheimarrichthyidae,family
-perciformes,125529,order,chiasmodontidae,family
-perciformes,151410,order,creediidae,family
-perciformes,151411,order,leptoscopidae,family
+perciformes,154264,order,congiopodidae,family
+perciformes,125589,order,cottidae,family
+perciformes,151391,order,cryptacanthodidae,family
+perciformes,125590,order,cyclopteridae,family
+perciformes,1517588,order,eleginopidae,family
+perciformes,154420,order,ereuniidae,family
+perciformes,267032,order,eschmeyeridae,family
+perciformes,1517581,order,eulophiidae,family
+perciformes,125476,order,gasterosteidae,family
+perciformes,154263,order,gnathanacanthidae,family
+perciformes,151397,order,harpagiferidae,family
+perciformes,1517591,order,hemilutjanidae,family
+perciformes,154415,order,hexagrammidae,family
+perciformes,196073,order,hoplichthyidae,family
+perciformes,154246,order,hypoptychidae,family
+perciformes,234519,order,liparidae,family
+perciformes,1517583,order,lumpenidae,family
+perciformes,154248,order,neosebastidae,family
+perciformes,1517580,order,neozoarcidae,family
+perciformes,1517579,order,niphonidae,family
+perciformes,267033,order,normanichthyidae,family
+perciformes,151404,order,nototheniidae,family
+perciformes,1517584,order,opisthocentridae,family
+perciformes,154262,order,pataecidae,family
+perciformes,151300,order,percidae,family
 perciformes,151412,order,percophidae,family
+perciformes,125592,order,peristediidae,family
+perciformes,826580,order,perryenidae,family
+perciformes,125550,order,pholidae,family
 perciformes,151413,order,pinguipedidae,family
+perciformes,125593,order,platycephalidae,family
+perciformes,154267,order,plectrogeniidae,family
+perciformes,267029,order,pseudaphritidae,family
+perciformes,125594,order,psychrolutidae,family
+perciformes,151396,order,ptilichthyidae,family
+perciformes,154419,order,rhamphocottidae,family
+perciformes,125595,order,scorpaenidae,family
+perciformes,151402,order,scytalinidae,family
+perciformes,125596,order,sebastidae,family
+perciformes,125561,order,serranidae,family
+perciformes,125597,order,setarchidae,family
+perciformes,125566,order,stichaeidae,family
+perciformes,154251,order,synanceiidae,family
+perciformes,154250,order,tetrarogidae,family
 perciformes,125570,order,trachinidae,family
 perciformes,151408,order,trichodontidae,family
-perciformes,151409,order,trichonotidae,family
+perciformes,125598,order,triglidae,family
 perciformes,125573,order,uranoscopidae,family
-perciformes,125539,order,istiophoridae,family
-perciformes,125574,order,xiphiidae,family
-perciformes,125517,order,anarhichadidae,family
-perciformes,151388,order,bathymasteridae,family
-perciformes,151391,order,cryptacanthodidae,family
-perciformes,125550,order,pholidae,family
-perciformes,151396,order,ptilichthyidae,family
-perciformes,151402,order,scytalinidae,family
-perciformes,125566,order,stichaeidae,family
+perciformes,1517599,order,zaniolepididae,family
 perciformes,151401,order,zaproridae,family
 perciformes,125575,order,zoarcidae,family
+perciformes,151421,order,kraemeriidae,family
+perciformes,151423,order,microdesmidae,family
+perciformes,151417,order,schindleriidae,family
+perciformes,151424,order,xenisthmidae,family
+perciformes,267021,order,eleginopsidae,family
+perciformes,267020,order,datnioididae,family
+perciformes,267022,order,hapalogenyidae,family
+perciformes,125567,order,stromateidae,family
 peridiniales,109419,order,archaesphaerodiniopsidaceae,family
 peridiniales,231797,order,ceratocorythaceae,family
 peridiniales,109423,order,ceratoperidiniaceae,family
@@ -3942,7 +4019,6 @@ phyllodocida,19199,order,acoetidae,family
 phyllodocida,938,order,aphroditidae,family
 phyllodocida,942,order,eulepethidae,family
 phyllodocida,155222,order,iphionidae,family
-phyllodocida,941,order,pholoidae,family
 phyllodocida,939,order,polynoidae,family
 phyllodocida,943,order,sigalionidae,family
 phyllodocida,952,order,glyceridae,family
@@ -4013,6 +4089,7 @@ plagiorchiida,1036432,order,gonocercidae,family
 plagiorchiida,108471,order,hemiuridae,family
 plagiorchiida,108472,order,hirudinellidae,family
 plagiorchiida,108473,order,lecithasteridae,family
+plagiorchiida,1491354,order,paraccacladiidae,family
 plagiorchiida,108474,order,ptychogonimidae,family
 plagiorchiida,108475,order,sclerodistomidae,family
 plagiorchiida,468937,order,sclerodistomoididae,family
@@ -4025,7 +4102,6 @@ plagiorchiida,108437,order,gyliauchenidae,family
 plagiorchiida,744194,order,lepidapedidae,family
 plagiorchiida,108438,order,lepocreadiidae,family
 plagiorchiida,744235,order,lepocreadioidea incertae sedis,family
-plagiorchiida,468941,order,liliatrematidae,family
 plagiorchiida,108436,order,deropristidae,family
 plagiorchiida,148283,order,lissorchiidae,family
 plagiorchiida,108453,order,monorchiidae,family
@@ -4082,6 +4158,7 @@ platyctenida,264869,order,lyroctenidae,family
 platyctenida,106330,order,platyctenidae,family
 platyctenida,264870,order,savangiidae,family
 platyctenida,264871,order,tjalfiellidae,family
+plectida,182912,order,benthimermithidae,family
 plectida,2175,order,aegialoalaimidae,family
 plectida,2176,order,ceramonematidae,family
 plectida,834632,order,diplopeltoididae,family
@@ -4105,10 +4182,15 @@ pleuronectiformes,154171,order,achiridae,family
 pleuronectiformes,154169,order,achiropsettidae,family
 pleuronectiformes,125576,order,bothidae,family
 pleuronectiformes,125577,order,citharidae,family
+pleuronectiformes,1517524,order,cyclopsettidae,family
 pleuronectiformes,125578,order,cynoglossidae,family
+pleuronectiformes,1517529,order,oncopteridae,family
+pleuronectiformes,1517526,order,paralichthodidae,family
 pleuronectiformes,154168,order,paralichthyidae,family
 pleuronectiformes,125579,order,pleuronectidae,family
+pleuronectiformes,1517530,order,poecilopsettidae,family
 pleuronectiformes,154167,order,psettodidae,family
+pleuronectiformes,1517527,order,rhombosoleidae,family
 pleuronectiformes,154170,order,samaridae,family
 pleuronectiformes,125580,order,scophthalmidae,family
 pleuronectiformes,125581,order,soleidae,family
@@ -4216,7 +4298,6 @@ podocopida,586817,order,progonocytheridae,family
 podocopida,459466,order,protocytheridae,family
 podocopida,459467,order,psammocytheridae,family
 podocopida,459468,order,saididae,family
-podocopida,459469,order,schizocytheridae,family
 podocopida,731217,order,schulerideidae,family
 podocopida,459470,order,speluncellidae,family
 podocopida,459471,order,thaerocytheridae,family
@@ -4245,7 +4326,6 @@ poecilosclerida,131658,order,myxillidae,family
 poecilosclerida,169521,order,phellodermidae,family
 poecilosclerida,168707,order,podospongiidae,family
 poecilosclerida,131659,order,tedaniidae,family
-pollicipedomorpha,1422797,order,zeugmatolepadidae,family
 polymastiida,131673,order,polymastiidae,family
 polymixiiformes,125582,order,polymixiidae,family
 polymorphida,20380,order,plagiorhynchidae,family
@@ -4291,7 +4371,7 @@ prasinophyceae incertae sedis,NA,order,NA,NA
 prasiolales,558970,order,koliellaceae,family
 prasiolales,143771,order,prasiolaceae,family
 prasiolales,599688,order,prasiolales incertae sedis,family
-pristiformes,105707,order,pristidae,family
+pristiformes,NA,order,NA,NA
 pristiophoriformes,148804,order,pristiophoridae,family
 procellariiformes,148742,order,diomedeidae,family
 procellariiformes,148794,order,hydrobatidae,family
@@ -4335,6 +4415,7 @@ pseudoscourfieldiales,22613,order,pycnococcaceae,family
 pteropoda,23000,order,cavoliniidae,family
 pteropoda,411904,order,cliidae,family
 pteropoda,411905,order,creseidae,family
+pteropoda,411906,order,cuvierinidae,family
 pteropoda,1449178,order,hyalocylidae,family
 pteropoda,1214739,order,praecuvierinidae,family
 pteropoda,828351,order,sphaerocinidae,family
@@ -4371,8 +4452,8 @@ raillietiellida,730052,order,raillietiellidae,family
 rajiformes,148828,order,anacanthobatidae,family
 rajiformes,714639,order,arhynchobatidae,family
 rajiformes,826571,order,crurirajidae,family
+rajiformes,1517436,order,gurgesiellidae,family
 rajiformes,105711,order,rajidae,family
-rajiformes,105712,order,rhinobatidae,family
 ralfsiales,1309291,order,hapalospongidiaceae,family
 ralfsiales,493896,order,neoralfsiaceae,family
 ralfsiales,143684,order,ralfsiaceae,family
@@ -4433,6 +4514,10 @@ rhinebothriidea,835735,order,echeneibothriidae,family
 rhinebothriidea,835734,order,escherbothriidae,family
 rhinebothriidea,515794,order,rhinebothriidae,family
 rhinopristiformes,1042841,order,glaucostegidae,family
+rhinopristiformes,105707,order,pristidae,family
+rhinopristiformes,342462,order,rhinidae,family
+rhinopristiformes,105712,order,rhinobatidae,family
+rhinopristiformes,1517435,order,trygonorrhinidae,family
 rhizochloridales,368884,order,rhizochloridaceae,family
 rhizochloridales,599694,order,stipitococcaceae,family
 rhizochromulinales,368885,order,rhizochromulinaceae,family
@@ -4466,6 +4551,7 @@ rhynchobdellida,22593,order,ozobranchidae,family
 rhynchobdellida,2043,order,piscicolidae,family
 rhynchodida,134811,order,ancistrocomidae,family
 rhynchodida,134813,order,sphenophryidae,family
+rhynchonellida,1468718,order,cyclothyrididae,family
 rhynchonellida,869078,order,rhynchonellidae,family
 rhynchonellida,104025,order,cryptoporidae,family
 rhynchonellida,104027,order,hemithirididae,family
@@ -4537,7 +4623,6 @@ rotaliida,767393,order,cancrisidae,family
 rotaliida,720947,order,conorbinidae,family
 rotaliida,111919,order,discorbidae,family
 rotaliida,111924,order,eponididae,family
-rotaliida,414824,order,heleninidae,family
 rotaliida,111934,order,mississippinidae,family
 rotaliida,527048,order,pannellainidae,family
 rotaliida,527001,order,pegidiidae,family
@@ -4617,6 +4702,7 @@ rotaliida,720940,order,hedbergellidae,family
 rotaliida,1035310,order,praehedbergellidae,family
 rotaliida,559002,order,rotaliporidae,family
 rotaliida,1115674,order,sphaerogerinidae,family
+rugosa incertae sedis,1510392,order,paleocyclidae,family
 runcinida,411899,order,ilbiidae,family
 runcinida,1751,order,runcinidae,family
 sabellida,154918,order,fabriciidae,family
@@ -4626,6 +4712,7 @@ sabellida,129096,order,siboglinidae,family
 saccopharyngiformes,125583,order,cyematidae,family
 saccopharyngiformes,125584,order,eurypharyngidae,family
 saccopharyngiformes,125585,order,monognathidae,family
+saccopharyngiformes,1517443,order,neocyematidae,family
 saccopharyngiformes,125586,order,saccopharyngidae,family
 salenioida,510613,order,acrosaleniidae,family
 salenioida,510747,order,goniophoridae,family
@@ -4700,14 +4787,6 @@ sarcoptiformes,508173,order,sphaerochthoniidae,family
 sarcoptiformes,508177,order,tectocepheidae,family
 sauria,342633,order,iguanidae,family
 saxifragales,414792,order,crassulaceae,family
-scalpelliformes,106053,order,calanticidae,family
-scalpelliformes,391326,order,eolepadidae,family
-scalpelliformes,534765,order,lithotryidae,family
-scalpelliformes,1422822,order,neolepadidae,family
-scalpelliformes,106054,order,pollicipedidae,family
-scalpelliformes,865820,order,probathylepadidae,family
-scalpelliformes,106055,order,scalpellidae,family
-scalpelliformes,739432,order,stramentidae,family
 sceptrulophora,131686,order,aphrocallistidae,family
 sceptrulophora,581295,order,auloplacidae,family
 sceptrulophora,171640,order,craticulariidae,family
@@ -4761,7 +4840,7 @@ scleractinia,1439928,order,distichoflabellidae,family
 scleractinia,1439923,order,donacosmiliidae,family
 scleractinia,1439881,order,eckastraeidae,family
 scleractinia,1439884,order,eugyridae,family
-scleractinia,266942,order,euphylliidae,family
+scleractinia,1507871,order,euphylliidae,family
 scleractinia,196099,order,faviidae,family
 scleractinia,1439869,order,felixaraeidae,family
 scleractinia,135075,order,flabellidae,family
@@ -4774,11 +4853,13 @@ scleractinia,1439859,order,gigantostyliidae,family
 scleractinia,1439861,order,guembelastraeidae,family
 scleractinia,135077,order,guyniidae,family
 scleractinia,1347699,order,haplaraeidae,family
+scleractinia,1439834,order,hemiporitidae,family
 scleractinia,1348231,order,heterocoeniidae,family
 scleractinia,1439853,order,hexapetalidae,family
 scleractinia,1439815,order,intersmiliidae,family
 scleractinia,1439813,order,kobyastraeidae,family
 scleractinia,1290732,order,latomeandridae,family
+scleractinia,1464209,order,leptastreidae,family
 scleractinia,739007,order,lobophylliidae,family
 scleractinia,1439704,order,margarophylliidae,family
 scleractinia,196101,order,meandrinidae,family
@@ -4787,6 +4868,7 @@ scleractinia,173384,order,micrabaciidae,family
 scleractinia,1439744,order,misistellidae,family
 scleractinia,718585,order,montastraeidae,family
 scleractinia,1439701,order,negoporitidae,family
+scleractinia,1516398,order,numidiaphylliidae,family
 scleractinia,135078,order,oculinidae,family
 scleractinia,1455226,order,oppelismiliidae,family
 scleractinia,1348080,order,oulastreidae,family
@@ -4797,6 +4879,7 @@ scleractinia,1440446,order,phyllosmiliidae,family
 scleractinia,1439676,order,pinacophyllidae,family
 scleractinia,1440385,order,placophylliidae,family
 scleractinia,1439679,order,placosmiliidae,family
+scleractinia,1464206,order,plerogyridae,family
 scleractinia,1289758,order,plesiastreidae,family
 scleractinia,135079,order,pocilloporidae,family
 scleractinia,1439682,order,polystylidiidae,family
@@ -4828,41 +4911,26 @@ scleractinia,135081,order,turbinoliidae,family
 scleractinia,1438063,order,volzeiidae,family
 scleractinia,1438053,order,zardinophyllidae,family
 scolopendromorpha,450025,order,scolopendridae,family
+scombriformes,151429,order,amarsipidae,family
+scombriformes,151430,order,ariommatidae,family
+scombriformes,151452,order,arripidae,family
+scombriformes,125520,order,bramidae,family
+scombriformes,125524,order,caristiidae,family
+scombriformes,125526,order,centrolophidae,family
+scombriformes,125529,order,chiasmodontidae,family
+scombriformes,125536,order,gempylidae,family
+scombriformes,151400,order,icosteidae,family
+scombriformes,125548,order,nomeidae,family
+scombriformes,125554,order,pomatomidae,family
+scombriformes,125559,order,scombridae,family
+scombriformes,125560,order,scombrolabracidae,family
+scombriformes,125569,order,tetragonuridae,family
+scombriformes,125571,order,trichiuridae,family
 scopalinida,598620,order,scopalinidae,family
-scorpaeniformes,154666,order,anoplopomatidae,family
-scorpaeniformes,125588,order,agonidae,family
 scorpaeniformes,267031,order,bathylutichthyidae,family
-scorpaeniformes,125589,order,cottidae,family
 scorpaeniformes,154422,order,cottocomephoridae,family
-scorpaeniformes,125590,order,cyclopteridae,family
-scorpaeniformes,154420,order,ereuniidae,family
 scorpaeniformes,154610,order,hemitripteridae,family
-scorpaeniformes,234519,order,liparidae,family
-scorpaeniformes,125594,order,psychrolutidae,family
-scorpaeniformes,154419,order,rhamphocottidae,family
-scorpaeniformes,125591,order,dactylopteridae,family
-scorpaeniformes,154415,order,hexagrammidae,family
-scorpaeniformes,267033,order,normanichthyidae,family
-scorpaeniformes,154662,order,bembridae,family
-scorpaeniformes,196073,order,hoplichthyidae,family
 scorpaeniformes,154661,order,parabembridae,family
-scorpaeniformes,125592,order,peristediidae,family
-scorpaeniformes,125593,order,platycephalidae,family
-scorpaeniformes,154267,order,plectrogeniidae,family
-scorpaeniformes,125598,order,triglidae,family
-scorpaeniformes,154249,order,apistidae,family
-scorpaeniformes,154253,order,aploactinidae,family
-scorpaeniformes,154264,order,congiopodidae,family
-scorpaeniformes,267032,order,eschmeyeridae,family
-scorpaeniformes,154263,order,gnathanacanthidae,family
-scorpaeniformes,154248,order,neosebastidae,family
-scorpaeniformes,154262,order,pataecidae,family
-scorpaeniformes,826580,order,perryenidae,family
-scorpaeniformes,125595,order,scorpaenidae,family
-scorpaeniformes,125596,order,sebastidae,family
-scorpaeniformes,125597,order,setarchidae,family
-scorpaeniformes,154251,order,synanceiidae,family
-scorpaeniformes,154250,order,tetrarogidae,family
 scotinosphaerales,NA,order,NA,NA
 scourfieldiales,368888,order,scourfieldiaceae,family
 scytosiphonales,196262,order,chnoosporaceae,family
@@ -4896,29 +4964,13 @@ sepiida,1454583,order,belosepiellidae,family
 sepiida,1454582,order,vasseuriidae,family
 sepiida,153041,order,sepiadariidae,family
 sepiida,11725,order,sepiolidae,family
+septemchitonida,1507058,order,litochitonidae,family
+septemchitonida,1507054,order,preacanthochitonidae,family
+septemchitonida,1507060,order,alastegidae,family
 septemchitonida,1353710,order,gotlandochitonidae,family
 septemchitonida,1353716,order,helminthochitonidae,family
 septemchitonida,1353752,order,septemchitonidae,family
-sessilia,933313,order,brachylepadidae,family
-sessilia,933314,order,neobrachylepadidae,family
-sessilia,1423113,order,eoverrucidae,family
-sessilia,733043,order,neoverrucidae,family
-sessilia,733042,order,proverrucidae,family
-sessilia,106066,order,verrucidae,family
-sessilia,106056,order,archaeobalanidae,family
-sessilia,106057,order,balanidae,family
-sessilia,106058,order,pyrgomatidae,family
-sessilia,733040,order,chionelasmatidae,family
-sessilia,739444,order,waikalasmatidae,family
-sessilia,733041,order,catophragmidae,family
-sessilia,106059,order,chthamalidae,family
-sessilia,106060,order,chelonibiidae,family
-sessilia,106061,order,coronulidae,family
-sessilia,106062,order,platylepadidae,family
-sessilia,106063,order,pachylasmatidae,family
-sessilia,534784,order,austrobalanidae,family
-sessilia,106064,order,bathylasmatidae,family
-sessilia,106065,order,tetraclitidae,family
+septemchitonida,1507207,order,solenocarididae,family
 sessilida,425447,order,ellobiophryidae,family
 sessilida,163169,order,epistylididae,family
 sessilida,414833,order,lagenophryidae,family
@@ -4928,6 +4980,7 @@ sessilida,163170,order,scyphidiidae,family
 sessilida,163171,order,vaginicolidae,family
 sessilida,163172,order,vorticellidae,family
 sessilida,235773,order,zoothamniidae,family
+siluriformes,1517461,order,ailiidae,family
 siluriformes,154659,order,ariidae,family
 siluriformes,154243,order,aspredinidae,family
 siluriformes,154618,order,auchenipteridae,family
@@ -4941,6 +4994,7 @@ siluriformes,154197,order,ictaluridae,family
 siluriformes,154623,order,loricariidae,family
 siluriformes,154617,order,mochokidae,family
 siluriformes,154648,order,pangasiidae,family
+siluriformes,1517463,order,phreatobiidae,family
 siluriformes,154427,order,pimelodidae,family
 siluriformes,154425,order,plotosidae,family
 siluriformes,154647,order,schilbeidae,family
@@ -5094,7 +5148,6 @@ spumellaria,712021,order,spumellaria incertae sedis,family
 spumellaria,367314,order,tholoniidae,family
 squaliformes,105713,order,centrophoridae,family
 squaliformes,105714,order,dalatiidae,family
-squaliformes,105715,order,echinorhinidae,family
 squaliformes,267045,order,etmopteridae,family
 squaliformes,267046,order,oxynotidae,family
 squaliformes,267047,order,somniosidae,family
@@ -5113,14 +5166,22 @@ stauriida,1457976,order,amplexidae,family
 stauriida,1457989,order,arachnophyllidae,family
 stauriida,1457954,order,aulophyllidae,family
 stauriida,1457947,order,axophyllidae,family
+stauriida,1511752,order,calostylidae,family
 stauriida,1458033,order,columnariidae,family
+stauriida,1512552,order,cyathaxoniidae,family
 stauriida,1457971,order,cyathophyllidae,family
 stauriida,1457978,order,cyathopsidae,family
+stauriida,1512562,order,kyphophyllidae,family
 stauriida,1457956,order,lonsdaleiidae,family
+stauriida,1512549,order,lykophyllidae,family
+stauriida,1512541,order,petraiidae,family
 stauriida,1457999,order,plerophyllidae,family
 stauriida,1458008,order,polycoeliidae,family
+stauriida,1510385,order,spongophyllidae,family
+stauriida,1511788,order,stauriidae,family
 stauriida,1457942,order,timorphyllidae,family
 stauriida,1457994,order,verbeekiellidae,family
+stauriida,1510892,order,durhaminidae,family
 stauriida,1457923,order,lithostrotionidae,family
 stauromedusae,411580,order,craterolophidae,family
 stauromedusae,135243,order,kishinouyeidae,family
@@ -5129,10 +5190,7 @@ stauromedusae,266982,order,kyopodiidae,family
 stauromedusae,135244,order,lipkeidae,family
 stauromedusae,135245,order,lucernariidae,family
 stenolaemata incertae sedis,NA,order,NA,NA
-stephanoberyciformes,154435,order,gibberichthyidae,family
-stephanoberyciformes,154615,order,hispidoberycidae,family
-stephanoberyciformes,125599,order,melamphaidae,family
-stephanoberyciformes,125600,order,stephanoberycidae,family
+stephanoberyciformes,NA,order,NA,NA
 stereolasmatina,1457933,order,hapsiphyllidae,family
 stichocotylida,103978,order,stichocotylidae,family
 sticholonchida,NA,order,NA,NA
@@ -5182,6 +5240,7 @@ strongylida,22891,order,pseudaliidae,family
 strongylida,22822,order,amidostomidae,family
 stygiomysida,161329,order,lepidomysidae,family
 stygiomysida,225841,order,stygiomysidae,family
+stylephoriformes,125482,order,stylephoridae,family
 stylonematales,368890,order,stylonemataceae,family
 suberitida,131633,order,halichondriidae,family
 suberitida,131675,order,stylocordylidae,family
@@ -5225,6 +5284,7 @@ syringoporida,1458070,order,multithecoporidae,family
 syringoporida,1457918,order,syringoporidae,family
 systellommatophora,1773,order,onchidiidae,family
 tabellariales,149332,order,tabellariaceae,family
+tabulata incertae sedis,NA,order,NA,NA
 tanaidacea,242568,order,anthracocarididae,family
 tanaidacea,242575,order,niveotanaidae,family
 tanaidacea,237588,order,apseudellidae,family
@@ -5261,6 +5321,7 @@ tanaidacea,196161,order,pseudozeuxidae,family
 tanaidacea,244585,order,tanaellidae,family
 tanaidacea,448931,order,tanaissuidae,family
 tanaidacea,720035,order,tanaopsidae,family
+tanaidacea,448992,order,teleotanaidae,family
 tanaidacea,136165,order,typhlotanaidae,family
 tanaidacea,798770,order,tanaididae,family
 taxopodida,NA,order,NA,NA
@@ -5400,9 +5461,15 @@ torodiniales,1368613,order,kapelodiniaceae,family
 torpediniformes,475045,order,hypnidae,family
 torpediniformes,148816,order,narcinidae,family
 torpediniformes,196076,order,narkidae,family
+torpediniformes,1517434,order,platyrhinidae,family
 torpediniformes,105718,order,torpedinidae,family
 tovelliales,577245,order,tovelliaceae,family
 toxariales,248073,order,toxariaceae,family
+trachichthyiformes,151916,order,anomalopidae,family
+trachichthyiformes,267002,order,anoplogastridae,family
+trachichthyiformes,125457,order,diretmidae,family
+trachichthyiformes,151917,order,monocentridae,family
+trachichthyiformes,125459,order,trachichthyidae,family
 trachycladida,171041,order,trachycladidae,family
 trachymedusae,16844,order,halicreatidae,family
 trachymedusae,22811,order,petasidae,family
@@ -5467,6 +5534,7 @@ trigoniida,833240,order,laevitrigoniidae,family
 trigoniida,833238,order,myophorellidae,family
 trigoniida,833243,order,rutitrigoniidae,family
 trigoniida,1036062,order,steinmanellidae,family
+trigoniida,1473346,order,vaugoniidae,family
 trigoniida,833245,order,pseudocardiniidae,family
 trigoniida,833215,order,eoschizodidae,family
 trigoniida,989070,order,erugoniidae,family
@@ -5491,6 +5559,7 @@ trochida,413480,order,areneidae,family
 trochida,382180,order,calliostomatidae,family
 trochida,382202,order,colloniidae,family
 trochida,590778,order,conradiidae,family
+trochida,833820,order,elasmonematidae,family
 trochida,999609,order,epulotrochidae,family
 trochida,196896,order,liotiidae,family
 trochida,714634,order,margaritidae,family
@@ -5515,7 +5584,6 @@ trombidiformes,1484,order,halacaridae,family
 trombidiformes,227527,order,pontarachnidae,family
 trombidiformes,509945,order,trombiculidae,family
 trombidiformes,150430,order,trombidiidae,family
-tryblidiida,23078,order,neopilinidae,family
 tryblidiida,1443021,order,tryblidiidae,family
 trypanorhyncha,104963,order,trypanorhyncha incertae sedis,family
 trypanorhyncha,104950,order,eutetrarhynchidae,family
@@ -5533,10 +5601,10 @@ trypanorhyncha,104959,order,pterobothriidae,family
 trypanorhyncha,104958,order,otobothriidae,family
 trypanorhyncha,508478,order,paranybeliniidae,family
 trypanorhyncha,478782,order,pseudotobothriidae,family
+tubificida,NA,order,NA,NA
 tuboidea,579923,order,cyclograptidae,family
 tuboidea,579920,order,tubidendridae,family
 tubulaniformes,1451610,order,callineridae,family
-tubulaniformes,1451608,order,carininidae,family
 tubulaniformes,1451611,order,carinomellidae,family
 tubulaniformes,122321,order,tubulanidae,family
 ulotrichales,143789,order,borodinellaceae,family
@@ -5584,6 +5652,7 @@ velatida,177886,order,caymanostellidae,family
 velatida,123140,order,korethrasteridae,family
 velatida,123141,order,myxasteridae,family
 velatida,123142,order,pterasteridae,family
+velatida,1519386,order,tropidasteridae,family
 venerida,241,order,arcticidae,family
 venerida,23130,order,trapezidae,family
 venerida,23001,order,chamidae,family
@@ -5616,7 +5685,6 @@ xanthophyceae incertae sedis,NA,order,NA,NA
 xenosomata,1433259,order,campyloderidae,family
 xiphosurida,150511,order,limulidae,family
 zeiformes,267042,order,cyttidae,family
-zeiformes,178674,order,elassomatidae,family
 zeiformes,125614,order,grammicolepididae,family
 zeiformes,125615,order,macrurocyttidae,family
 zeiformes,125616,order,oreosomatidae,family
