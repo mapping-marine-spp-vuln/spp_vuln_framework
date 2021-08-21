@@ -56,16 +56,46 @@ Load the vulnerability data, and match to the wide-format species classification
 
 Then bind the representative-based dataframe with the original vulnerability data, and join to long-format species classifications.
 
+```{r expand Beth fish representativeness, eval = FALSE}
+fish_spp <- spp_gp_vuln %>%
+  filter(taxon == 'fish') %>%
+  select(species = spp_gp) %>%
+  distinct()
+
+fish_gps <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add.xlsx'), 
+                               sheet = 'repres_raw') %>%
+  .$species_group %>% tolower()
+  
+fish_repres <- spp_all_wide %>%
+  filter(species %in% fish_spp$species) %>%
+  mutate(repres = case_when(genus %in% fish_gps  ~ 'genus',
+                            family %in% fish_gps ~ 'family',
+                            order %in% fish_gps  ~ 'order',
+                            class %in% fish_gps  ~ 'class',
+                            TRUE ~ 'species')) %>%
+  mutate(taxon = 'fish') %>%
+  select(taxon, species, repres) %>%
+  distinct()
+
+write_csv(fish_repres, 'fish_repres.csv')
+
+```
+
 ``` {r determine representative spp gps}
 spp_gp_vuln <- read_csv(here('_output/spp_gp_vuln_w_distribution.csv')) %>%
   select(taxon, spp_gp, stressor, vuln, sd_vuln)
 
-repres_df <- readxl::read_excel(here('_raw_data/xlsx/spp_gp_representativeness.xlsx')) %>%
+repres_fish <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add.xlsx'), 
+                                  sheet = 'repres_expanded')
+repres_df   <- readxl::read_excel(here('_raw_data/xlsx/spp_gp_representativeness.xlsx')) %>%
   janitor::clean_names() %>%
   select(taxon, species, repres = representative_rank) %>%
   mutate(repres = tolower(repres)) %>%
+  bind_rows(fish_repres) %>%
   filter(!is.na(repres) & repres != 'species')
 
+### create new dataframe including all representative species, with
+### spp_gp_new assigned to the representative rank
 repr_spp <- spp_gp_vuln %>%
   inner_join(repres_df, by = c('taxon', 'spp_gp' = 'species')) %>%
   inner_join(spp_all_wide, by = c('spp_gp' = 'species')) %>%
@@ -75,6 +105,7 @@ repr_spp <- spp_gp_vuln %>%
                                 repres == 'class'  ~ class,
                                 TRUE ~ NA_character_))
 
+### group by the new spp gp and summarize vulnerabilities
 repr_spp_gps <- repr_spp %>%
   group_by(taxon, spp_gp_new, stressor) %>%
   summarize(sd_vuln = sqrt(sd(vuln)^2 + 1/n()*sum(sd_vuln^2, na.rm = TRUE)),
@@ -85,6 +116,9 @@ repr_spp_gps <- repr_spp %>%
 ```
 
 ``` {r match up}
+### add representative spp gps to the original spp_gp_vuln. Note
+### this will keep the species level scores intact, while also adding
+### higher order representative ranks.
 spp_gp_vuln_repr_fix <- spp_gp_vuln %>%
   bind_rows(repr_spp_gps %>% select(-n_spp))
 
