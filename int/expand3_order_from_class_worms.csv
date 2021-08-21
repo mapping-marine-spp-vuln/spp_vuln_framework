@@ -7,7 +7,16 @@ id,name,rank,parent,parent_level
 367299,symphyacanthida,order,acantharia,class
 591168,haemospororida,order,aconoidasida,class
 562847,piroplasmorida,order,aconoidasida,class
+10323,cetomimiformes,order,actinopterygii,class
+10326,gasterosteiformes,order,actinopterygii,class
+10329,scorpaeniformes,order,actinopterygii,class
+10321,stephanoberyciformes,order,actinopterygii,class
 10288,acipenseriformes,order,actinopterygii,class
+1517548,acanthuriformes,order,actinopterygii,class
+1517567,acropomatiformes,order,actinopterygii,class
+151804,albuliformes,order,actinopterygii,class
+1517449,alepocephaliformes,order,actinopterygii,class
+1517509,anabantiformes,order,actinopterygii,class
 1321884,argentiniformes,order,actinopterygii,class
 10307,ateleopodiformes,order,actinopterygii,class
 10318,atheriniformes,order,actinopterygii,class
@@ -15,37 +24,48 @@ id,name,rank,parent,parent_level
 10315,batrachoidiformes,order,actinopterygii,class
 10320,beloniformes,order,actinopterygii,class
 10322,beryciformes,order,actinopterygii,class
-10323,cetomimiformes,order,actinopterygii,class
+1517542,blenniiformes,order,actinopterygii,class
+1517496,callionymiformes,order,actinopterygii,class
+1517511,carangaria incertae sedis,order,actinopterygii,class
+1517532,carangiformes,order,actinopterygii,class
+1517557,centrarchiformes,order,actinopterygii,class
+1517533,cichliformes,order,actinopterygii,class
 10297,clupeiformes,order,actinopterygii,class
 154156,cypriniformes,order,actinopterygii,class
 10319,cyprinodontiformes,order,actinopterygii,class
+1517495,dactylopteriformes,order,actinopterygii,class
+10292,elopiformes,order,actinopterygii,class
+1517577,eupercaria incertae sedis,order,actinopterygii,class
 10313,gadiformes,order,actinopterygii,class
-10326,gasterosteiformes,order,actinopterygii,class
+1517467,galaxiiformes,order,actinopterygii,class
 10317,gobiesociformes,order,actinopterygii,class
-154212,gonorhynchiformes,order,actinopterygii,class
+1517500,gobiiformes,order,actinopterygii,class
+154212,gonorynchiformes,order,actinopterygii,class
+1517488,holocentriformes,order,actinopterygii,class
+1517499,kurtiformes,order,actinopterygii,class
 10310,lampriformes,order,actinopterygii,class
-154571,lepisosteiformes,order,actinopterygii,class
 10316,lophiiformes,order,actinopterygii,class
 397228,mugiliformes,order,actinopterygii,class
+1517498,mulliformes,order,actinopterygii,class
 10309,myctophiformes,order,actinopterygii,class
 10294,notacanthiformes,order,actinopterygii,class
 10314,ophidiiformes,order,actinopterygii,class
 10304,osmeriformes,order,actinopterygii,class
+1517546,ovalentaria incertae sedis,order,actinopterygii,class
 11014,perciformes,order,actinopterygii,class
 10331,pleuronectiformes,order,actinopterygii,class
 10311,polymixiiformes,order,actinopterygii,class
 10305,salmoniformes,order,actinopterygii,class
-10329,scorpaeniformes,order,actinopterygii,class
+1517490,scombriformes,order,actinopterygii,class
 154157,siluriformes,order,actinopterygii,class
-10321,stephanoberyciformes,order,actinopterygii,class
 10306,stomiiformes,order,actinopterygii,class
+1517478,stylephoriformes,order,actinopterygii,class
 154218,synbranchiformes,order,actinopterygii,class
 10327,syngnathiformes,order,actinopterygii,class
 10332,tetraodontiformes,order,actinopterygii,class
+1517487,trachichthyiformes,order,actinopterygii,class
 10919,zeiformes,order,actinopterygii,class
-151804,albuliformes,order,actinopterygii,class
 10295,anguilliformes,order,actinopterygii,class
-10292,elopiformes,order,actinopterygii,class
 10296,saccopharyngiformes,order,actinopterygii,class
 NA,NA,NA,allomalorhagida,class
 380371,auloporida,order,anthozoa,class
@@ -61,13 +81,17 @@ NA,NA,NA,allomalorhagida,class
 1365,alcyonacea,order,anthozoa,class
 266987,helioporacea,order,anthozoa,class
 1367,pennatulacea,order,anthozoa,class
+1510376,heterocorallia,order,anthozoa,class
+1510391,rugosa incertae sedis,order,anthozoa,class
 1457921,stauriida,order,anthozoa,class
 1457932,stereolasmatina,order,anthozoa,class
 1457917,auloporida,order,anthozoa,class
 1457911,favositida,order,anthozoa,class
 1458061,halysitida,order,anthozoa,class
+1512536,lichenariida,order,anthozoa,class
 1458034,sarcinulida,order,anthozoa,class
 1458062,syringoporida,order,anthozoa,class
+1511828,tabulata incertae sedis,order,anthozoa,class
 591166,colpodellida,order,apicomonadea,class
 NA,NA,NA,apicomplexa incertae sedis,class
 103353,copelata,order,appendicularia,class
@@ -194,11 +218,11 @@ NA,NA,NA,apicomplexa incertae sedis,class
 131591,leucosolenida,order,calcarea,class
 131592,lithonida,order,calcarea,class
 131593,clathrinida,order,calcarea,class
-164792,murrayonida,order,calcarea,class
 2088,chaetodermatida,order,caudofoveata,class
 341275,centrohelida,order,centrohelea,class
 NA,NA,NA,cephalaspidomorphi,class
 238273,brachypoda,order,cephalocarida,class
+1496403,ammonitida,order,cephalopoda,class
 153046,nautilida,order,cephalopoda,class
 1374984,orthocerida,order,cephalopoda,class
 1454589,bathyteuthida,order,cephalopoda,class
@@ -270,6 +294,7 @@ NA,NA,NA,chlorophyta incertae sedis,class
 2118,haplotaxida,order,clitellata,class
 177531,lumbriculida,order,clitellata,class
 468016,oligochaeta incertae sedis,order,clitellata,class
+1511829,tubificida,order,clitellata,class
 160002,arhynchobdellida,order,clitellata,class
 2117,rhynchobdellida,order,clitellata,class
 163510,coelacanthiformes,order,coelacanthi,class
@@ -285,6 +310,7 @@ NA,NA,NA,collembola,class
 394012,eucoccidiorida,order,conoidasida,class
 562801,protococcidiorida,order,conoidasida,class
 562674,archigregarinorida,order,conoidasida,class
+1505208,arthrogregarida,order,conoidasida,class
 394869,eugregarinorida,order,conoidasida,class
 104021,craniida,order,craniata,class
 123093,comatulida,order,crinoidea,class
@@ -372,11 +398,12 @@ NA,NA,NA,cryptophyta incertae sedis,class
 123098,cassiduloida,order,echinoidea,class
 123100,clypeasteroida,order,echinoidea,class
 510523,echinolampadoida,order,echinoidea,class
-1042840,rhinopristiformes,order,elasmobranchii,class
 196069,myliobatiformes,order,elasmobranchii,class
 10214,pristiformes,order,elasmobranchii,class
 10216,rajiformes,order,elasmobranchii,class
+1042840,rhinopristiformes,order,elasmobranchii,class
 10215,torpediniformes,order,elasmobranchii,class
+1517433,echinorhiniformes,order,elasmobranchii,class
 10210,carcharhiniformes,order,elasmobranchii,class
 148801,heterodontiformes,order,elasmobranchii,class
 10209,lamniformes,order,elasmobranchii,class
@@ -492,8 +519,6 @@ NA,NA,NA,heliozoa incertae sedis,class
 171834,lyssacinosida,order,hexactinellida,class
 605841,sceptrulophora,order,hexactinellida,class
 22605,platycopioida,order,hexanauplia,class
-103948,dendrogastrida,order,hexanauplia,class
-103949,laurida,order,hexanauplia,class
 1100,calanoida,order,hexanauplia,class
 1035042,canuelloida,order,hexanauplia,class
 1101,cyclopoida,order,hexanauplia,class
@@ -502,16 +527,6 @@ NA,NA,NA,heliozoa incertae sedis,class
 1106,monstrilloida,order,hexanauplia,class
 22598,mormonilloida,order,hexanauplia,class
 1104,siphonostomatoida,order,hexanauplia,class
-445275,cryptophialida,order,hexanauplia,class
-438970,lithoglyptida,order,hexanauplia,class
-534762,cyprilepadiformes,order,hexanauplia,class
-391622,ibliformes,order,hexanauplia,class
-534761,lepadiformes,order,hexanauplia,class
-534760,scalpelliformes,order,hexanauplia,class
-106033,sessilia,order,hexanauplia,class
-1422384,archaeolepadomorpha,order,hexanauplia,class
-1422350,calanticomorpha,order,hexanauplia,class
-1422322,pollicipedomorpha,order,hexanauplia,class
 10217,chimaeriformes,order,holocephali,class
 123111,dendrochirotida,order,holothuroidea,class
 123112,elasipodida,order,holothuroidea,class
@@ -628,6 +643,7 @@ NA,NA,NA,machaeridia,class
 390779,mazocraeidea,order,monogenea,class
 562121,polystomatidea,order,monogenea,class
 1425762,cyrtonellida,order,monoplacophora,class
+1509418,neopilinida,order,monoplacophora,class
 1425760,sinuitopsida,order,monoplacophora,class
 23079,tryblidiida,order,monoplacophora,class
 163155,allogromiida,order,monothalamea,class
@@ -751,9 +767,9 @@ NA,NA,NA,phaeothamniophyceae,class
 901,sabellida,order,polychaeta,class
 889,spionida,order,polychaeta,class
 900,terebellida,order,polychaeta,class
-863399,collodaria,order,polycystina,class
 235741,nassellaria,order,polycystina,class
 345835,spumellaria,order,polycystina,class
+1484176,callochitonida,order,polyplacophora,class
 382003,chitonida,order,polyplacophora,class
 58,lepidopleurida,order,polyplacophora,class
 1353695,chelodida,order,polyplacophora,class
@@ -788,11 +804,22 @@ NA,NA,NA,radiozoa incertae sedis,class
 1293739,commatiida,order,raphidophyceae,class
 150303,enantiopoda,order,remipedia,class
 134754,nectiopoda,order,remipedia,class
-342630,crocodylia,order,reptilia,class
 380398,plesiosauria,order,reptilia,class
 342632,sauria,order,reptilia,class
 196109,squamata,order,reptilia,class
 2689,testudines,order,reptilia,class
+2681,anseriformes,order,reptilia,class
+2682,charadriiformes,order,reptilia,class
+148746,ciconiiformes,order,reptilia,class
+158981,coraciiformes,order,reptilia,class
+148793,gaviiformes,order,reptilia,class
+159002,gruiformes,order,reptilia,class
+159384,passeriformes,order,reptilia,class
+2684,pelecaniformes,order,reptilia,class
+196035,phoenicopteriformes,order,reptilia,class
+2685,podicipediformes,order,reptilia,class
+2686,procellariiformes,order,reptilia,class
+196033,sphenisciformes,order,reptilia,class
 493833,dixoniellales,order,rhodellophyceae,class
 493834,rhodellales,order,rhodellophyceae,class
 NA,NA,NA,rhodophyta incertae sedis,class

@@ -868,17 +868,6 @@ muusoctopus longibrachus,Octopodoidea,superfamily,14672,FALSE,worms
 muusoctopus longibrachus,Enteroctopodidae,family,834049,FALSE,worms
 muusoctopus longibrachus,Muusoctopus,genus,527126,FALSE,worms
 muusoctopus longibrachus,Muusoctopus longibrachus,species,527140,FALSE,worms
-muusoctopus normani,Animalia,kingdom,2,FALSE,worms
-muusoctopus normani,Mollusca,phylum,51,FALSE,worms
-muusoctopus normani,Cephalopoda,class,11707,FALSE,worms
-muusoctopus normani,Coleoidea,subclass,11709,FALSE,worms
-muusoctopus normani,Octopodiformes,superorder,325343,FALSE,worms
-muusoctopus normani,Octopoda,order,11718,FALSE,worms
-muusoctopus normani,Incirrata,suborder,11733,FALSE,worms
-muusoctopus normani,Octopodoidea,superfamily,14672,FALSE,worms
-muusoctopus normani,Enteroctopodidae,family,834049,FALSE,worms
-muusoctopus normani,Muusoctopus,genus,527126,FALSE,worms
-muusoctopus normani,Muusoctopus normani,species,527158,FALSE,worms
 muusoctopus oregonae,Animalia,kingdom,2,FALSE,worms
 muusoctopus oregonae,Mollusca,phylum,51,FALSE,worms
 muusoctopus oregonae,Cephalopoda,class,11707,FALSE,worms
@@ -1153,17 +1142,6 @@ octopus bimaculoides,Octopodoidea,superfamily,14672,FALSE,worms
 octopus bimaculoides,Octopodidae,family,11782,FALSE,worms
 octopus bimaculoides,Octopus,genus,138268,FALSE,worms
 octopus bimaculoides,Octopus bimaculoides,species,341952,FALSE,worms
-octopus filosus,Animalia,kingdom,2,FALSE,worms
-octopus filosus,Mollusca,phylum,51,FALSE,worms
-octopus filosus,Cephalopoda,class,11707,FALSE,worms
-octopus filosus,Coleoidea,subclass,11709,FALSE,worms
-octopus filosus,Octopodiformes,superorder,325343,FALSE,worms
-octopus filosus,Octopoda,order,11718,FALSE,worms
-octopus filosus,Incirrata,suborder,11733,FALSE,worms
-octopus filosus,Octopodoidea,superfamily,14672,FALSE,worms
-octopus filosus,Octopodidae,family,11782,FALSE,worms
-octopus filosus,Octopus,genus,138268,FALSE,worms
-octopus filosus,Octopus filosus,species,341972,FALSE,worms
 octopus hubbsorum,Animalia,kingdom,2,FALSE,worms
 octopus hubbsorum,Mollusca,phylum,51,FALSE,worms
 octopus hubbsorum,Cephalopoda,class,11707,FALSE,worms
@@ -4059,17 +4037,6 @@ bathyraja,Batoidea,infraclass,368409,FALSE,worms
 bathyraja,Rajiformes,order,10216,FALSE,worms
 bathyraja,Arhynchobatidae,family,714639,FALSE,worms
 bathyraja,Bathyraja,genus,105761,FALSE,worms
-bathytoshia,Animalia,kingdom,2,FALSE,worms
-bathytoshia,Chordata,phylum,1821,FALSE,worms
-bathytoshia,Vertebrata,subphylum,146419,FALSE,worms
-bathytoshia,Gnathostomata,superclass,1828,FALSE,worms
-bathytoshia,Pisces,superclass,11676,FALSE,worms
-bathytoshia,Elasmobranchii,class,10193,FALSE,worms
-bathytoshia,Neoselachii,subclass,368407,FALSE,worms
-bathytoshia,Batoidea,infraclass,368409,FALSE,worms
-bathytoshia,Myliobatiformes,order,196069,FALSE,worms
-bathytoshia,Dasyatidae,family,105708,FALSE,worms
-bathytoshia,Bathytoshia,genus,296132,FALSE,worms
 beringraja,Animalia,kingdom,2,FALSE,worms
 beringraja,Chordata,phylum,1821,FALSE,worms
 beringraja,Vertebrata,subphylum,146419,FALSE,worms
@@ -5326,17 +5293,6 @@ taeniura,Batoidea,infraclass,368409,FALSE,worms
 taeniura,Myliobatiformes,order,196069,FALSE,worms
 taeniura,Dasyatidae,family,105708,FALSE,worms
 taeniura,Taeniura,genus,105753,FALSE,worms
-taeniurops,Animalia,kingdom,2,FALSE,worms
-taeniurops,Chordata,phylum,1821,FALSE,worms
-taeniurops,Vertebrata,subphylum,146419,FALSE,worms
-taeniurops,Gnathostomata,superclass,1828,FALSE,worms
-taeniurops,Pisces,superclass,11676,FALSE,worms
-taeniurops,Elasmobranchii,class,10193,FALSE,worms
-taeniurops,Neoselachii,subclass,368407,FALSE,worms
-taeniurops,Batoidea,infraclass,368409,FALSE,worms
-taeniurops,Myliobatiformes,order,196069,FALSE,worms
-taeniurops,Dasyatidae,family,105708,FALSE,worms
-taeniurops,Taeniurops,genus,712240,FALSE,worms
 telatrygon,Animalia,kingdom,2,FALSE,worms
 telatrygon,Chordata,phylum,1821,FALSE,worms
 telatrygon,Vertebrata,subphylum,146419,FALSE,worms
@@ -8730,7 +8686,6 @@ leucophaeus,Aves,class,1836,FALSE,worms
 leucophaeus,Charadriiformes,order,2682,FALSE,worms
 leucophaeus,Laridae,family,136988,FALSE,worms
 leucophaeus,Leucophaeus,genus,343613,FALSE,worms
-ichthyaetus,NA,NA,NA,FALSE,worms
 dosidicus gigas,Animalia,kingdom,2,FALSE,worms
 dosidicus gigas,Mollusca,phylum,51,FALSE,worms
 dosidicus gigas,Cephalopoda,class,11707,FALSE,worms
@@ -9131,15 +9086,6 @@ sulidae,Tetrapoda,superclass,1831,FALSE,worms
 sulidae,Aves,class,1836,FALSE,worms
 sulidae,Pelecaniformes,order,2684,FALSE,worms
 sulidae,Sulidae,family,136994,FALSE,worms
-thalasseus,Animalia,kingdom,2,FALSE,worms
-thalasseus,Chordata,phylum,1821,FALSE,worms
-thalasseus,Vertebrata,subphylum,146419,FALSE,worms
-thalasseus,Gnathostomata,superclass,1828,FALSE,worms
-thalasseus,Tetrapoda,superclass,1831,FALSE,worms
-thalasseus,Aves,class,1836,FALSE,worms
-thalasseus,Charadriiformes,order,2682,FALSE,worms
-thalasseus,Laridae,family,136988,FALSE,worms
-thalasseus,Thalasseus,genus,413038,FALSE,worms
 thalassoica,Animalia,kingdom,2,FALSE,worms
 thalassoica,Chordata,phylum,1821,FALSE,worms
 thalassoica,Vertebrata,subphylum,146419,FALSE,worms
@@ -9330,3 +9276,2356 @@ phalaropodidae,Tetrapoda,superclass,1831,FALSE,worms
 phalaropodidae,Aves,class,1836,FALSE,worms
 phalaropodidae,Charadriiformes,order,2682,FALSE,worms
 phalaropodidae,Phalaropodidae,family,136989,FALSE,worms
+alcichthys elongatus,Animalia,kingdom,2,FALSE,worms
+alcichthys elongatus,Chordata,phylum,1821,FALSE,worms
+alcichthys elongatus,Vertebrata,subphylum,146419,FALSE,worms
+alcichthys elongatus,Gnathostomata,infraphylum,1828,FALSE,worms
+alcichthys elongatus,Osteichthyes,parvphylum,152352,FALSE,worms
+alcichthys elongatus,Actinopterygii,gigaclass,10194,FALSE,worms
+alcichthys elongatus,Actinopteri,class,843664,FALSE,worms
+alcichthys elongatus,Teleostei,subclass,293496,FALSE,worms
+alcichthys elongatus,Perciformes,order,11014,FALSE,worms
+alcichthys elongatus,Cottidae,family,125589,FALSE,worms
+alcichthys elongatus,Alcichthys,genus,268248,FALSE,worms
+alcichthys elongatus,Alcichthys elongatus,species,279545,FALSE,worms
+alectis ciliaris,Animalia,kingdom,2,FALSE,worms
+alectis ciliaris,Chordata,phylum,1821,FALSE,worms
+alectis ciliaris,Vertebrata,subphylum,146419,FALSE,worms
+alectis ciliaris,Gnathostomata,infraphylum,1828,FALSE,worms
+alectis ciliaris,Osteichthyes,parvphylum,152352,FALSE,worms
+alectis ciliaris,Actinopterygii,gigaclass,10194,FALSE,worms
+alectis ciliaris,Actinopteri,class,843664,FALSE,worms
+alectis ciliaris,Teleostei,subclass,293496,FALSE,worms
+alectis ciliaris,Carangiformes,order,1517532,FALSE,worms
+alectis ciliaris,Carangidae,family,125523,FALSE,worms
+alectis ciliaris,Alectis,genus,125933,FALSE,worms
+alectis ciliaris,Alectis ciliaris,species,159629,FALSE,worms
+alepes vari,Animalia,kingdom,2,FALSE,worms
+alepes vari,Chordata,phylum,1821,FALSE,worms
+alepes vari,Vertebrata,subphylum,146419,FALSE,worms
+alepes vari,Gnathostomata,infraphylum,1828,FALSE,worms
+alepes vari,Osteichthyes,parvphylum,152352,FALSE,worms
+alepes vari,Actinopterygii,gigaclass,10194,FALSE,worms
+alepes vari,Actinopteri,class,843664,FALSE,worms
+alepes vari,Teleostei,subclass,293496,FALSE,worms
+alepes vari,Carangiformes,order,1517532,FALSE,worms
+alepes vari,Carangidae,family,125523,FALSE,worms
+alepes vari,Alepes,genus,125934,FALSE,worms
+alepes vari,Alepes vari,species,218383,FALSE,worms
+amphichthys cryptocentrus,Animalia,kingdom,2,FALSE,worms
+amphichthys cryptocentrus,Chordata,phylum,1821,FALSE,worms
+amphichthys cryptocentrus,Vertebrata,subphylum,146419,FALSE,worms
+amphichthys cryptocentrus,Gnathostomata,infraphylum,1828,FALSE,worms
+amphichthys cryptocentrus,Osteichthyes,parvphylum,152352,FALSE,worms
+amphichthys cryptocentrus,Actinopterygii,gigaclass,10194,FALSE,worms
+amphichthys cryptocentrus,Actinopteri,class,843664,FALSE,worms
+amphichthys cryptocentrus,Teleostei,subclass,293496,FALSE,worms
+amphichthys cryptocentrus,Batrachoidiformes,order,10315,FALSE,worms
+amphichthys cryptocentrus,Batrachoididae,family,125450,FALSE,worms
+amphichthys cryptocentrus,Batrachoidinae,subfamily,714644,FALSE,worms
+amphichthys cryptocentrus,Amphichthys,genus,268294,FALSE,worms
+amphichthys cryptocentrus,Amphichthys cryptocentrus,species,279590,FALSE,worms
+ancylopsetta cycloidea,Animalia,kingdom,2,FALSE,worms
+ancylopsetta cycloidea,Chordata,phylum,1821,FALSE,worms
+ancylopsetta cycloidea,Vertebrata,subphylum,146419,FALSE,worms
+ancylopsetta cycloidea,Gnathostomata,infraphylum,1828,FALSE,worms
+ancylopsetta cycloidea,Osteichthyes,parvphylum,152352,FALSE,worms
+ancylopsetta cycloidea,Actinopterygii,gigaclass,10194,FALSE,worms
+ancylopsetta cycloidea,Actinopteri,class,843664,FALSE,worms
+ancylopsetta cycloidea,Teleostei,subclass,293496,FALSE,worms
+ancylopsetta cycloidea,Pleuronectiformes,order,10331,FALSE,worms
+ancylopsetta cycloidea,Paralichthyidae,family,154168,FALSE,worms
+ancylopsetta cycloidea,Ancylopsetta,genus,159272,FALSE,worms
+ancylopsetta cycloidea,Ancylopsetta cycloidea,species,276006,FALSE,worms
+ancylopsetta kumperae,Animalia,kingdom,2,FALSE,worms
+ancylopsetta kumperae,Chordata,phylum,1821,FALSE,worms
+ancylopsetta kumperae,Vertebrata,subphylum,146419,FALSE,worms
+ancylopsetta kumperae,Gnathostomata,infraphylum,1828,FALSE,worms
+ancylopsetta kumperae,Osteichthyes,parvphylum,152352,FALSE,worms
+ancylopsetta kumperae,Actinopterygii,gigaclass,10194,FALSE,worms
+ancylopsetta kumperae,Actinopteri,class,843664,FALSE,worms
+ancylopsetta kumperae,Teleostei,subclass,293496,FALSE,worms
+ancylopsetta kumperae,Pleuronectiformes,order,10331,FALSE,worms
+ancylopsetta kumperae,Paralichthyidae,family,154168,FALSE,worms
+ancylopsetta kumperae,Ancylopsetta,genus,159272,FALSE,worms
+ancylopsetta kumperae,Ancylopsetta kumperae,species,276009,FALSE,worms
+antipodocottus galatheae,Animalia,kingdom,2,FALSE,worms
+antipodocottus galatheae,Chordata,phylum,1821,FALSE,worms
+antipodocottus galatheae,Vertebrata,subphylum,146419,FALSE,worms
+antipodocottus galatheae,Gnathostomata,infraphylum,1828,FALSE,worms
+antipodocottus galatheae,Osteichthyes,parvphylum,152352,FALSE,worms
+antipodocottus galatheae,Actinopterygii,gigaclass,10194,FALSE,worms
+antipodocottus galatheae,Actinopteri,class,843664,FALSE,worms
+antipodocottus galatheae,Teleostei,subclass,293496,FALSE,worms
+antipodocottus galatheae,Perciformes,order,11014,FALSE,worms
+antipodocottus galatheae,Cottidae,family,125589,FALSE,worms
+antipodocottus galatheae,Antipodocottus,genus,268330,FALSE,worms
+antipodocottus galatheae,Antipodocottus galatheae,species,279635,FALSE,worms
+apogon compressus,Animalia,kingdom,2,FALSE,worms
+apogon compressus,Chordata,phylum,1821,FALSE,worms
+apogon compressus,Vertebrata,subphylum,146419,FALSE,worms
+apogon compressus,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon compressus,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon compressus,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon compressus,Actinopteri,class,843664,FALSE,worms
+apogon compressus,Teleostei,subclass,293496,FALSE,worms
+apogon compressus,Kurtiformes,order,1517499,FALSE,worms
+apogon compressus,Apogonidae,family,125518,FALSE,worms
+apogon compressus,Apogoninae,subfamily,267079,FALSE,worms
+apogon compressus,Apogon,genus,125913,FALSE,worms
+apogon compressus,Apogon compressus,species,272999,FALSE,worms
+apogon fleurieu,Animalia,kingdom,2,FALSE,worms
+apogon fleurieu,Chordata,phylum,1821,FALSE,worms
+apogon fleurieu,Vertebrata,subphylum,146419,FALSE,worms
+apogon fleurieu,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon fleurieu,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon fleurieu,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon fleurieu,Actinopteri,class,843664,FALSE,worms
+apogon fleurieu,Teleostei,subclass,293496,FALSE,worms
+apogon fleurieu,Kurtiformes,order,1517499,FALSE,worms
+apogon fleurieu,Apogonidae,family,125518,FALSE,worms
+apogon fleurieu,Apogoninae,subfamily,267079,FALSE,worms
+apogon fleurieu,Apogon,genus,125913,FALSE,worms
+apogon fleurieu,Apogon fleurieu,species,209324,FALSE,worms
+apogon indicus,Animalia,kingdom,2,FALSE,worms
+apogon indicus,Chordata,phylum,1821,FALSE,worms
+apogon indicus,Vertebrata,subphylum,146419,FALSE,worms
+apogon indicus,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon indicus,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon indicus,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon indicus,Actinopteri,class,843664,FALSE,worms
+apogon indicus,Teleostei,subclass,293496,FALSE,worms
+apogon indicus,Kurtiformes,order,1517499,FALSE,worms
+apogon indicus,Apogonidae,family,125518,FALSE,worms
+apogon indicus,Apogoninae,subfamily,267079,FALSE,worms
+apogon indicus,Apogon,genus,125913,FALSE,worms
+apogon indicus,Apogon indicus,species,273022,FALSE,worms
+apogon margaritophorus,Animalia,kingdom,2,FALSE,worms
+apogon margaritophorus,Chordata,phylum,1821,FALSE,worms
+apogon margaritophorus,Vertebrata,subphylum,146419,FALSE,worms
+apogon margaritophorus,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon margaritophorus,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon margaritophorus,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon margaritophorus,Actinopteri,class,843664,FALSE,worms
+apogon margaritophorus,Teleostei,subclass,293496,FALSE,worms
+apogon margaritophorus,Kurtiformes,order,1517499,FALSE,worms
+apogon margaritophorus,Apogonidae,family,125518,FALSE,worms
+apogon margaritophorus,Apogoninae,subfamily,267079,FALSE,worms
+apogon margaritophorus,Apogon,genus,125913,FALSE,worms
+apogon margaritophorus,Apogon margaritophorus,species,273039,FALSE,worms
+apogon neotes,Animalia,kingdom,2,FALSE,worms
+apogon neotes,Chordata,phylum,1821,FALSE,worms
+apogon neotes,Vertebrata,subphylum,146419,FALSE,worms
+apogon neotes,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon neotes,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon neotes,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon neotes,Actinopteri,class,843664,FALSE,worms
+apogon neotes,Teleostei,subclass,293496,FALSE,worms
+apogon neotes,Kurtiformes,order,1517499,FALSE,worms
+apogon neotes,Apogonidae,family,125518,FALSE,worms
+apogon neotes,Apogoninae,subfamily,267079,FALSE,worms
+apogon neotes,Apogon,genus,125913,FALSE,worms
+apogon neotes,Apogon neotes,species,273053,FALSE,worms
+apogon notatus,Animalia,kingdom,2,FALSE,worms
+apogon notatus,Chordata,phylum,1821,FALSE,worms
+apogon notatus,Vertebrata,subphylum,146419,FALSE,worms
+apogon notatus,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon notatus,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon notatus,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon notatus,Actinopteri,class,843664,FALSE,worms
+apogon notatus,Teleostei,subclass,293496,FALSE,worms
+apogon notatus,Kurtiformes,order,1517499,FALSE,worms
+apogon notatus,Apogonidae,family,125518,FALSE,worms
+apogon notatus,Apogoninae,subfamily,267079,FALSE,worms
+apogon notatus,Apogon,genus,125913,FALSE,worms
+apogon notatus,Apogon notatus,species,273057,FALSE,worms
+apogon rubrimacula,Animalia,kingdom,2,FALSE,worms
+apogon rubrimacula,Chordata,phylum,1821,FALSE,worms
+apogon rubrimacula,Vertebrata,subphylum,146419,FALSE,worms
+apogon rubrimacula,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon rubrimacula,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon rubrimacula,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon rubrimacula,Actinopteri,class,843664,FALSE,worms
+apogon rubrimacula,Teleostei,subclass,293496,FALSE,worms
+apogon rubrimacula,Kurtiformes,order,1517499,FALSE,worms
+apogon rubrimacula,Apogonidae,family,125518,FALSE,worms
+apogon rubrimacula,Apogoninae,subfamily,267079,FALSE,worms
+apogon rubrimacula,Apogon,genus,125913,FALSE,worms
+apogon rubrimacula,Apogon rubrimacula,species,273090,FALSE,worms
+apogon sealei,Animalia,kingdom,2,FALSE,worms
+apogon sealei,Chordata,phylum,1821,FALSE,worms
+apogon sealei,Vertebrata,subphylum,146419,FALSE,worms
+apogon sealei,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon sealei,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon sealei,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon sealei,Actinopteri,class,843664,FALSE,worms
+apogon sealei,Teleostei,subclass,293496,FALSE,worms
+apogon sealei,Kurtiformes,order,1517499,FALSE,worms
+apogon sealei,Apogonidae,family,125518,FALSE,worms
+apogon sealei,Apogoninae,subfamily,267079,FALSE,worms
+apogon sealei,Apogon,genus,125913,FALSE,worms
+apogon sealei,Apogon sealei,species,273095,FALSE,worms
+apogon semilineatus,Animalia,kingdom,2,FALSE,worms
+apogon semilineatus,Chordata,phylum,1821,FALSE,worms
+apogon semilineatus,Vertebrata,subphylum,146419,FALSE,worms
+apogon semilineatus,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon semilineatus,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon semilineatus,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon semilineatus,Actinopteri,class,843664,FALSE,worms
+apogon semilineatus,Teleostei,subclass,293496,FALSE,worms
+apogon semilineatus,Kurtiformes,order,1517499,FALSE,worms
+apogon semilineatus,Apogonidae,family,125518,FALSE,worms
+apogon semilineatus,Apogoninae,subfamily,267079,FALSE,worms
+apogon semilineatus,Apogon,genus,125913,FALSE,worms
+apogon semilineatus,Apogon semilineatus,species,273097,FALSE,worms
+apogon wassinki,Animalia,kingdom,2,FALSE,worms
+apogon wassinki,Chordata,phylum,1821,FALSE,worms
+apogon wassinki,Vertebrata,subphylum,146419,FALSE,worms
+apogon wassinki,Gnathostomata,infraphylum,1828,FALSE,worms
+apogon wassinki,Osteichthyes,parvphylum,152352,FALSE,worms
+apogon wassinki,Actinopterygii,gigaclass,10194,FALSE,worms
+apogon wassinki,Actinopteri,class,843664,FALSE,worms
+apogon wassinki,Teleostei,subclass,293496,FALSE,worms
+apogon wassinki,Kurtiformes,order,1517499,FALSE,worms
+apogon wassinki,Apogonidae,family,125518,FALSE,worms
+apogon wassinki,Apogoninae,subfamily,267079,FALSE,worms
+apogon wassinki,Apogon,genus,125913,FALSE,worms
+apogon wassinki,Apogon wassinki,species,273117,FALSE,worms
+apogonichthys ocellatus,Animalia,kingdom,2,FALSE,worms
+apogonichthys ocellatus,Chordata,phylum,1821,FALSE,worms
+apogonichthys ocellatus,Vertebrata,subphylum,146419,FALSE,worms
+apogonichthys ocellatus,Gnathostomata,infraphylum,1828,FALSE,worms
+apogonichthys ocellatus,Osteichthyes,parvphylum,152352,FALSE,worms
+apogonichthys ocellatus,Actinopterygii,gigaclass,10194,FALSE,worms
+apogonichthys ocellatus,Actinopteri,class,843664,FALSE,worms
+apogonichthys ocellatus,Teleostei,subclass,293496,FALSE,worms
+apogonichthys ocellatus,Kurtiformes,order,1517499,FALSE,worms
+apogonichthys ocellatus,Apogonidae,family,125518,FALSE,worms
+apogonichthys ocellatus,Apogoninae,subfamily,267079,FALSE,worms
+apogonichthys ocellatus,Apogonichthys,genus,204629,FALSE,worms
+apogonichthys ocellatus,Apogonichthys ocellatus,species,209384,FALSE,worms
+arnoglossus brunneus,Animalia,kingdom,2,FALSE,worms
+arnoglossus brunneus,Chordata,phylum,1821,FALSE,worms
+arnoglossus brunneus,Vertebrata,subphylum,146419,FALSE,worms
+arnoglossus brunneus,Gnathostomata,infraphylum,1828,FALSE,worms
+arnoglossus brunneus,Osteichthyes,parvphylum,152352,FALSE,worms
+arnoglossus brunneus,Actinopterygii,gigaclass,10194,FALSE,worms
+arnoglossus brunneus,Actinopteri,class,843664,FALSE,worms
+arnoglossus brunneus,Teleostei,subclass,293496,FALSE,worms
+arnoglossus brunneus,Pleuronectiformes,order,10331,FALSE,worms
+arnoglossus brunneus,Bothidae,family,125576,FALSE,worms
+arnoglossus brunneus,Arnoglossus,genus,126109,FALSE,worms
+arnoglossus brunneus,Arnoglossus brunneus,species,274161,FALSE,worms
+arnoglossus imperialis,Animalia,kingdom,2,FALSE,worms
+arnoglossus imperialis,Chordata,phylum,1821,FALSE,worms
+arnoglossus imperialis,Vertebrata,subphylum,146419,FALSE,worms
+arnoglossus imperialis,Gnathostomata,infraphylum,1828,FALSE,worms
+arnoglossus imperialis,Osteichthyes,parvphylum,152352,FALSE,worms
+arnoglossus imperialis,Actinopterygii,gigaclass,10194,FALSE,worms
+arnoglossus imperialis,Actinopteri,class,843664,FALSE,worms
+arnoglossus imperialis,Teleostei,subclass,293496,FALSE,worms
+arnoglossus imperialis,Pleuronectiformes,order,10331,FALSE,worms
+arnoglossus imperialis,Bothidae,family,125576,FALSE,worms
+arnoglossus imperialis,Arnoglossus,genus,126109,FALSE,worms
+arnoglossus imperialis,Arnoglossus imperialis,species,127124,FALSE,worms
+minous dempsterae,Animalia,kingdom,2,FALSE,worms
+minous dempsterae,Chordata,phylum,1821,FALSE,worms
+minous dempsterae,Vertebrata,subphylum,146419,FALSE,worms
+minous dempsterae,Gnathostomata,infraphylum,1828,FALSE,worms
+minous dempsterae,Osteichthyes,parvphylum,152352,FALSE,worms
+minous dempsterae,Actinopterygii,gigaclass,10194,FALSE,worms
+minous dempsterae,Actinopteri,class,843664,FALSE,worms
+minous dempsterae,Teleostei,subclass,293496,FALSE,worms
+minous dempsterae,Perciformes,order,11014,FALSE,worms
+minous dempsterae,Synanceiidae,family,154251,FALSE,worms
+minous dempsterae,Minoinae,subfamily,154411,FALSE,worms
+minous dempsterae,Minous,genus,204832,FALSE,worms
+minous dempsterae,Minous dempsterae,species,277742,FALSE,worms
+minous quincarinatus,Animalia,kingdom,2,FALSE,worms
+minous quincarinatus,Chordata,phylum,1821,FALSE,worms
+minous quincarinatus,Vertebrata,subphylum,146419,FALSE,worms
+minous quincarinatus,Gnathostomata,infraphylum,1828,FALSE,worms
+minous quincarinatus,Osteichthyes,parvphylum,152352,FALSE,worms
+minous quincarinatus,Actinopterygii,gigaclass,10194,FALSE,worms
+minous quincarinatus,Actinopteri,class,843664,FALSE,worms
+minous quincarinatus,Teleostei,subclass,293496,FALSE,worms
+minous quincarinatus,Perciformes,order,11014,FALSE,worms
+minous quincarinatus,Synanceiidae,family,154251,FALSE,worms
+minous quincarinatus,Minoinae,subfamily,154411,FALSE,worms
+minous quincarinatus,Minous,genus,204832,FALSE,worms
+minous quincarinatus,Minous quincarinatus,species,277745,FALSE,worms
+monomitopus agassizii,Animalia,kingdom,2,FALSE,worms
+monomitopus agassizii,Chordata,phylum,1821,FALSE,worms
+monomitopus agassizii,Vertebrata,subphylum,146419,FALSE,worms
+monomitopus agassizii,Gnathostomata,infraphylum,1828,FALSE,worms
+monomitopus agassizii,Osteichthyes,parvphylum,152352,FALSE,worms
+monomitopus agassizii,Actinopterygii,gigaclass,10194,FALSE,worms
+monomitopus agassizii,Actinopteri,class,843664,FALSE,worms
+monomitopus agassizii,Teleostei,subclass,293496,FALSE,worms
+monomitopus agassizii,Ophidiiformes,order,10314,FALSE,worms
+monomitopus agassizii,Ophidiidae,family,125505,FALSE,worms
+monomitopus agassizii,Neobythitinae,subfamily,154740,FALSE,worms
+monomitopus agassizii,Monomitopus,genus,125862,FALSE,worms
+monomitopus agassizii,Monomitopus agassizii,species,158765,FALSE,worms
+mulloidichthys dentatus,Animalia,kingdom,2,FALSE,worms
+mulloidichthys dentatus,Chordata,phylum,1821,FALSE,worms
+mulloidichthys dentatus,Vertebrata,subphylum,146419,FALSE,worms
+mulloidichthys dentatus,Gnathostomata,infraphylum,1828,FALSE,worms
+mulloidichthys dentatus,Osteichthyes,parvphylum,152352,FALSE,worms
+mulloidichthys dentatus,Actinopterygii,gigaclass,10194,FALSE,worms
+mulloidichthys dentatus,Actinopteri,class,843664,FALSE,worms
+mulloidichthys dentatus,Teleostei,subclass,293496,FALSE,worms
+mulloidichthys dentatus,Mulliformes,order,1517498,FALSE,worms
+mulloidichthys dentatus,Mullidae,family,125547,FALSE,worms
+mulloidichthys dentatus,Mulloidichthys,genus,205210,FALSE,worms
+mulloidichthys dentatus,Mulloidichthys dentatus,species,277990,FALSE,worms
+myctophum lychnobium,Animalia,kingdom,2,FALSE,worms
+myctophum lychnobium,Chordata,phylum,1821,FALSE,worms
+myctophum lychnobium,Vertebrata,subphylum,146419,FALSE,worms
+myctophum lychnobium,Gnathostomata,infraphylum,1828,FALSE,worms
+myctophum lychnobium,Osteichthyes,parvphylum,152352,FALSE,worms
+myctophum lychnobium,Actinopterygii,gigaclass,10194,FALSE,worms
+myctophum lychnobium,Actinopteri,class,843664,FALSE,worms
+myctophum lychnobium,Teleostei,subclass,293496,FALSE,worms
+myctophum lychnobium,Myctophiformes,order,10309,FALSE,worms
+myctophum lychnobium,Myctophidae,family,125498,FALSE,worms
+myctophum lychnobium,Myctophum,genus,125829,FALSE,worms
+myctophum lychnobium,Myctophum lychnobium,species,272723,FALSE,worms
+myctophum spinosum,Animalia,kingdom,2,FALSE,worms
+myctophum spinosum,Chordata,phylum,1821,FALSE,worms
+myctophum spinosum,Vertebrata,subphylum,146419,FALSE,worms
+myctophum spinosum,Gnathostomata,infraphylum,1828,FALSE,worms
+myctophum spinosum,Osteichthyes,parvphylum,152352,FALSE,worms
+myctophum spinosum,Actinopterygii,gigaclass,10194,FALSE,worms
+myctophum spinosum,Actinopteri,class,843664,FALSE,worms
+myctophum spinosum,Teleostei,subclass,293496,FALSE,worms
+myctophum spinosum,Myctophiformes,order,10309,FALSE,worms
+myctophum spinosum,Myctophidae,family,125498,FALSE,worms
+myctophum spinosum,Myctophum,genus,125829,FALSE,worms
+myctophum spinosum,Myctophum spinosum,species,272726,FALSE,worms
+myoxocephalus tuberculatus,Animalia,kingdom,2,FALSE,worms
+myoxocephalus tuberculatus,Chordata,phylum,1821,FALSE,worms
+myoxocephalus tuberculatus,Vertebrata,subphylum,146419,FALSE,worms
+myoxocephalus tuberculatus,Gnathostomata,infraphylum,1828,FALSE,worms
+myoxocephalus tuberculatus,Osteichthyes,parvphylum,152352,FALSE,worms
+myoxocephalus tuberculatus,Actinopterygii,gigaclass,10194,FALSE,worms
+myoxocephalus tuberculatus,Actinopteri,class,843664,FALSE,worms
+myoxocephalus tuberculatus,Teleostei,subclass,293496,FALSE,worms
+myoxocephalus tuberculatus,Perciformes,order,11014,FALSE,worms
+myoxocephalus tuberculatus,Cottidae,family,125589,FALSE,worms
+myoxocephalus tuberculatus,Myoxocephalus,genus,126152,FALSE,worms
+myoxocephalus tuberculatus,Myoxocephalus tuberculatus,species,274394,FALSE,worms
+nannobrachium gibbsi,Animalia,kingdom,2,FALSE,worms
+nannobrachium gibbsi,Chordata,phylum,1821,FALSE,worms
+nannobrachium gibbsi,Vertebrata,subphylum,146419,FALSE,worms
+nannobrachium gibbsi,Gnathostomata,infraphylum,1828,FALSE,worms
+nannobrachium gibbsi,Osteichthyes,parvphylum,152352,FALSE,worms
+nannobrachium gibbsi,Actinopterygii,gigaclass,10194,FALSE,worms
+nannobrachium gibbsi,Actinopteri,class,843664,FALSE,worms
+nannobrachium gibbsi,Teleostei,subclass,293496,FALSE,worms
+nannobrachium gibbsi,Myctophiformes,order,10309,FALSE,worms
+nannobrachium gibbsi,Myctophidae,family,125498,FALSE,worms
+nannobrachium gibbsi,Nannobrachium,genus,158908,FALSE,worms
+nannobrachium gibbsi,Nannobrachium gibbsi,species,275862,FALSE,worms
+nectamia annularis,Animalia,kingdom,2,FALSE,worms
+nectamia annularis,Chordata,phylum,1821,FALSE,worms
+nectamia annularis,Vertebrata,subphylum,146419,FALSE,worms
+nectamia annularis,Gnathostomata,infraphylum,1828,FALSE,worms
+nectamia annularis,Osteichthyes,parvphylum,152352,FALSE,worms
+nectamia annularis,Actinopterygii,gigaclass,10194,FALSE,worms
+nectamia annularis,Actinopteri,class,843664,FALSE,worms
+nectamia annularis,Teleostei,subclass,293496,FALSE,worms
+nectamia annularis,Kurtiformes,order,1517499,FALSE,worms
+nectamia annularis,Apogonidae,family,125518,FALSE,worms
+nectamia annularis,Apogoninae,subfamily,267079,FALSE,worms
+nectamia annularis,Nectamia,genus,397692,FALSE,worms
+nectamia annularis,Nectamia annularis,species,398503,FALSE,worms
+nectamia fusca,Animalia,kingdom,2,FALSE,worms
+nectamia fusca,Chordata,phylum,1821,FALSE,worms
+nectamia fusca,Vertebrata,subphylum,146419,FALSE,worms
+nectamia fusca,Gnathostomata,infraphylum,1828,FALSE,worms
+nectamia fusca,Osteichthyes,parvphylum,152352,FALSE,worms
+nectamia fusca,Actinopterygii,gigaclass,10194,FALSE,worms
+nectamia fusca,Actinopteri,class,843664,FALSE,worms
+nectamia fusca,Teleostei,subclass,293496,FALSE,worms
+nectamia fusca,Kurtiformes,order,1517499,FALSE,worms
+nectamia fusca,Apogonidae,family,125518,FALSE,worms
+nectamia fusca,Apogoninae,subfamily,267079,FALSE,worms
+nectamia fusca,Nectamia,genus,397692,FALSE,worms
+nectamia fusca,Nectamia fusca,species,398505,FALSE,worms
+neobythites bimaculatus,Animalia,kingdom,2,FALSE,worms
+neobythites bimaculatus,Chordata,phylum,1821,FALSE,worms
+neobythites bimaculatus,Vertebrata,subphylum,146419,FALSE,worms
+neobythites bimaculatus,Gnathostomata,infraphylum,1828,FALSE,worms
+neobythites bimaculatus,Osteichthyes,parvphylum,152352,FALSE,worms
+neobythites bimaculatus,Actinopterygii,gigaclass,10194,FALSE,worms
+neobythites bimaculatus,Actinopteri,class,843664,FALSE,worms
+neobythites bimaculatus,Teleostei,subclass,293496,FALSE,worms
+neobythites bimaculatus,Ophidiiformes,order,10314,FALSE,worms
+neobythites bimaculatus,Ophidiidae,family,125505,FALSE,worms
+neobythites bimaculatus,Neobythitinae,subfamily,154740,FALSE,worms
+neobythites bimaculatus,Neobythites,genus,182835,FALSE,worms
+neobythites bimaculatus,Neobythites bimaculatus,species,276608,FALSE,worms
+neobythites franzi,Animalia,kingdom,2,FALSE,worms
+neobythites franzi,Chordata,phylum,1821,FALSE,worms
+neobythites franzi,Vertebrata,subphylum,146419,FALSE,worms
+neobythites franzi,Gnathostomata,infraphylum,1828,FALSE,worms
+neobythites franzi,Osteichthyes,parvphylum,152352,FALSE,worms
+neobythites franzi,Actinopterygii,gigaclass,10194,FALSE,worms
+neobythites franzi,Actinopteri,class,843664,FALSE,worms
+neobythites franzi,Teleostei,subclass,293496,FALSE,worms
+neobythites franzi,Ophidiiformes,order,10314,FALSE,worms
+neobythites franzi,Ophidiidae,family,125505,FALSE,worms
+neobythites franzi,Neobythitinae,subfamily,154740,FALSE,worms
+neobythites franzi,Neobythites,genus,182835,FALSE,worms
+neobythites franzi,Neobythites franzi,species,276614,FALSE,worms
+neomerinthe hemingwayi,Animalia,kingdom,2,FALSE,worms
+neomerinthe hemingwayi,Chordata,phylum,1821,FALSE,worms
+neomerinthe hemingwayi,Vertebrata,subphylum,146419,FALSE,worms
+neomerinthe hemingwayi,Gnathostomata,infraphylum,1828,FALSE,worms
+neomerinthe hemingwayi,Osteichthyes,parvphylum,152352,FALSE,worms
+neomerinthe hemingwayi,Actinopterygii,gigaclass,10194,FALSE,worms
+neomerinthe hemingwayi,Actinopteri,class,843664,FALSE,worms
+neomerinthe hemingwayi,Teleostei,subclass,293496,FALSE,worms
+neomerinthe hemingwayi,Perciformes,order,11014,FALSE,worms
+neomerinthe hemingwayi,Scorpaenidae,family,125595,FALSE,worms
+neomerinthe hemingwayi,Scorpaeninae,subfamily,154409,FALSE,worms
+neomerinthe hemingwayi,Neomerinthe,genus,159553,FALSE,worms
+neomerinthe hemingwayi,Neomerinthe hemingwayi,species,159554,FALSE,worms
+neomerinthe rotunda,Animalia,kingdom,2,FALSE,worms
+neomerinthe rotunda,Chordata,phylum,1821,FALSE,worms
+neomerinthe rotunda,Vertebrata,subphylum,146419,FALSE,worms
+neomerinthe rotunda,Gnathostomata,infraphylum,1828,FALSE,worms
+neomerinthe rotunda,Osteichthyes,parvphylum,152352,FALSE,worms
+neomerinthe rotunda,Actinopterygii,gigaclass,10194,FALSE,worms
+neomerinthe rotunda,Actinopteri,class,843664,FALSE,worms
+neomerinthe rotunda,Teleostei,subclass,293496,FALSE,worms
+neomerinthe rotunda,Perciformes,order,11014,FALSE,worms
+neomerinthe rotunda,Scorpaenidae,family,125595,FALSE,worms
+neomerinthe rotunda,Scorpaeninae,subfamily,154409,FALSE,worms
+neomerinthe rotunda,Neomerinthe,genus,159553,FALSE,worms
+neomerinthe rotunda,Neomerinthe rotunda,species,276266,FALSE,worms
+notopogon macrosolen,Animalia,kingdom,2,FALSE,worms
+notopogon macrosolen,Chordata,phylum,1821,FALSE,worms
+notopogon macrosolen,Vertebrata,subphylum,146419,FALSE,worms
+notopogon macrosolen,Gnathostomata,infraphylum,1828,FALSE,worms
+notopogon macrosolen,Osteichthyes,parvphylum,152352,FALSE,worms
+notopogon macrosolen,Actinopterygii,gigaclass,10194,FALSE,worms
+notopogon macrosolen,Actinopteri,class,843664,FALSE,worms
+notopogon macrosolen,Teleostei,subclass,293496,FALSE,worms
+notopogon macrosolen,Syngnathiformes,order,10327,FALSE,worms
+notopogon macrosolen,Centriscidae,family,125605,FALSE,worms
+notopogon macrosolen,Macroramphosinae,subfamily,154403,FALSE,worms
+notopogon macrosolen,Notopogon,genus,206571,FALSE,worms
+notopogon macrosolen,Notopogon macrosolen,species,217975,FALSE,worms
+ocosia possi,Animalia,kingdom,2,FALSE,worms
+ocosia possi,Chordata,phylum,1821,FALSE,worms
+ocosia possi,Vertebrata,subphylum,146419,FALSE,worms
+ocosia possi,Gnathostomata,infraphylum,1828,FALSE,worms
+ocosia possi,Osteichthyes,parvphylum,152352,FALSE,worms
+ocosia possi,Actinopterygii,gigaclass,10194,FALSE,worms
+ocosia possi,Actinopteri,class,843664,FALSE,worms
+ocosia possi,Teleostei,subclass,293496,FALSE,worms
+ocosia possi,Perciformes,order,11014,FALSE,worms
+ocosia possi,Tetrarogidae,family,154250,FALSE,worms
+ocosia possi,Ocosia,genus,270064,FALSE,worms
+ocosia possi,Ocosia possi,species,281805,FALSE,worms
+ophidion fulvum,Animalia,kingdom,2,FALSE,worms
+ophidion fulvum,Chordata,phylum,1821,FALSE,worms
+ophidion fulvum,Vertebrata,subphylum,146419,FALSE,worms
+ophidion fulvum,Gnathostomata,infraphylum,1828,FALSE,worms
+ophidion fulvum,Osteichthyes,parvphylum,152352,FALSE,worms
+ophidion fulvum,Actinopterygii,gigaclass,10194,FALSE,worms
+ophidion fulvum,Actinopteri,class,843664,FALSE,worms
+ophidion fulvum,Teleostei,subclass,293496,FALSE,worms
+ophidion fulvum,Ophidiiformes,order,10314,FALSE,worms
+ophidion fulvum,Ophidiidae,family,125505,FALSE,worms
+ophidion fulvum,Ophidiinae,subfamily,154739,FALSE,worms
+ophidion fulvum,Ophidion,genus,125863,FALSE,worms
+ophidion fulvum,Ophidion fulvum,species,272820,FALSE,worms
+ostorhinchus lateralis,Animalia,kingdom,2,FALSE,worms
+ostorhinchus lateralis,Chordata,phylum,1821,FALSE,worms
+ostorhinchus lateralis,Vertebrata,subphylum,146419,FALSE,worms
+ostorhinchus lateralis,Gnathostomata,infraphylum,1828,FALSE,worms
+ostorhinchus lateralis,Osteichthyes,parvphylum,152352,FALSE,worms
+ostorhinchus lateralis,Actinopterygii,gigaclass,10194,FALSE,worms
+ostorhinchus lateralis,Actinopteri,class,843664,FALSE,worms
+ostorhinchus lateralis,Teleostei,subclass,293496,FALSE,worms
+ostorhinchus lateralis,Kurtiformes,order,1517499,FALSE,worms
+ostorhinchus lateralis,Apogonidae,family,125518,FALSE,worms
+ostorhinchus lateralis,Apogoninae,subfamily,267079,FALSE,worms
+ostorhinchus lateralis,Ostorhinchus,genus,297317,FALSE,worms
+ostorhinchus lateralis,Ostorhinchus lateralis,species,712667,FALSE,worms
+paracentropogon vespa,Animalia,kingdom,2,FALSE,worms
+paracentropogon vespa,Chordata,phylum,1821,FALSE,worms
+paracentropogon vespa,Vertebrata,subphylum,146419,FALSE,worms
+paracentropogon vespa,Gnathostomata,infraphylum,1828,FALSE,worms
+paracentropogon vespa,Osteichthyes,parvphylum,152352,FALSE,worms
+paracentropogon vespa,Actinopterygii,gigaclass,10194,FALSE,worms
+paracentropogon vespa,Actinopteri,class,843664,FALSE,worms
+paracentropogon vespa,Teleostei,subclass,293496,FALSE,worms
+paracentropogon vespa,Perciformes,order,11014,FALSE,worms
+paracentropogon vespa,Tetrarogidae,family,154250,FALSE,worms
+paracentropogon vespa,Paracentropogon,genus,204363,FALSE,worms
+paracentropogon vespa,Paracentropogon vespa,species,277238,FALSE,worms
+paralichthodes algoensis,Animalia,kingdom,2,FALSE,worms
+paralichthodes algoensis,Chordata,phylum,1821,FALSE,worms
+paralichthodes algoensis,Vertebrata,subphylum,146419,FALSE,worms
+paralichthodes algoensis,Gnathostomata,infraphylum,1828,FALSE,worms
+paralichthodes algoensis,Osteichthyes,parvphylum,152352,FALSE,worms
+paralichthodes algoensis,Actinopterygii,gigaclass,10194,FALSE,worms
+paralichthodes algoensis,Actinopteri,class,843664,FALSE,worms
+paralichthodes algoensis,Teleostei,subclass,293496,FALSE,worms
+paralichthodes algoensis,Pleuronectiformes,order,10331,FALSE,worms
+paralichthodes algoensis,Pleuronectidae,family,125579,FALSE,worms
+paralichthodes algoensis,Paralichthodinae,subfamily,154688,FALSE,worms
+paralichthodes algoensis,Paralichthodes,genus,206342,FALSE,worms
+paralichthodes algoensis,Paralichthodes algoensis,species,219815,FALSE,worms
+paralichthys aestuarius,Animalia,kingdom,2,FALSE,worms
+paralichthys aestuarius,Chordata,phylum,1821,FALSE,worms
+paralichthys aestuarius,Vertebrata,subphylum,146419,FALSE,worms
+paralichthys aestuarius,Gnathostomata,infraphylum,1828,FALSE,worms
+paralichthys aestuarius,Osteichthyes,parvphylum,152352,FALSE,worms
+paralichthys aestuarius,Actinopterygii,gigaclass,10194,FALSE,worms
+paralichthys aestuarius,Actinopteri,class,843664,FALSE,worms
+paralichthys aestuarius,Teleostei,subclass,293496,FALSE,worms
+paralichthys aestuarius,Pleuronectiformes,order,10331,FALSE,worms
+paralichthys aestuarius,Paralichthyidae,family,154168,FALSE,worms
+paralichthys aestuarius,Paralichthys,genus,158823,FALSE,worms
+paralichthys aestuarius,Paralichthys aestuarius,species,275807,FALSE,worms
+paralichthys dentatus,Animalia,kingdom,2,FALSE,worms
+paralichthys dentatus,Chordata,phylum,1821,FALSE,worms
+paralichthys dentatus,Vertebrata,subphylum,146419,FALSE,worms
+paralichthys dentatus,Gnathostomata,infraphylum,1828,FALSE,worms
+paralichthys dentatus,Osteichthyes,parvphylum,152352,FALSE,worms
+paralichthys dentatus,Actinopterygii,gigaclass,10194,FALSE,worms
+paralichthys dentatus,Actinopteri,class,843664,FALSE,worms
+paralichthys dentatus,Teleostei,subclass,293496,FALSE,worms
+paralichthys dentatus,Pleuronectiformes,order,10331,FALSE,worms
+paralichthys dentatus,Paralichthyidae,family,154168,FALSE,worms
+paralichthys dentatus,Paralichthys,genus,158823,FALSE,worms
+paralichthys dentatus,Paralichthys dentatus,species,158826,FALSE,worms
+paralichthys schmitti,Animalia,kingdom,2,FALSE,worms
+paralichthys schmitti,Chordata,phylum,1821,FALSE,worms
+paralichthys schmitti,Vertebrata,subphylum,146419,FALSE,worms
+paralichthys schmitti,Gnathostomata,infraphylum,1828,FALSE,worms
+paralichthys schmitti,Osteichthyes,parvphylum,152352,FALSE,worms
+paralichthys schmitti,Actinopterygii,gigaclass,10194,FALSE,worms
+paralichthys schmitti,Actinopteri,class,843664,FALSE,worms
+paralichthys schmitti,Teleostei,subclass,293496,FALSE,worms
+paralichthys schmitti,Pleuronectiformes,order,10331,FALSE,worms
+paralichthys schmitti,Paralichthyidae,family,154168,FALSE,worms
+paralichthys schmitti,Paralichthys,genus,158823,FALSE,worms
+paralichthys schmitti,Paralichthys schmitti,species,275819,FALSE,worms
+paraliparis atramentatus,Animalia,kingdom,2,FALSE,worms
+paraliparis atramentatus,Chordata,phylum,1821,FALSE,worms
+paraliparis atramentatus,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis atramentatus,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis atramentatus,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis atramentatus,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis atramentatus,Actinopteri,class,843664,FALSE,worms
+paraliparis atramentatus,Teleostei,subclass,293496,FALSE,worms
+paraliparis atramentatus,Perciformes,order,11014,FALSE,worms
+paraliparis atramentatus,Liparidae,family,234519,FALSE,worms
+paraliparis atramentatus,Paraliparis,genus,126161,FALSE,worms
+paraliparis atramentatus,Paraliparis atramentatus,species,274552,FALSE,worms
+paraliparis atrolabiatus,Animalia,kingdom,2,FALSE,worms
+paraliparis atrolabiatus,Chordata,phylum,1821,FALSE,worms
+paraliparis atrolabiatus,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis atrolabiatus,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis atrolabiatus,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis atrolabiatus,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis atrolabiatus,Actinopteri,class,843664,FALSE,worms
+paraliparis atrolabiatus,Teleostei,subclass,293496,FALSE,worms
+paraliparis atrolabiatus,Perciformes,order,11014,FALSE,worms
+paraliparis atrolabiatus,Liparidae,family,234519,FALSE,worms
+paraliparis atrolabiatus,Paraliparis,genus,126161,FALSE,worms
+paraliparis atrolabiatus,Paraliparis atrolabiatus,species,274553,FALSE,worms
+paraliparis copei,Animalia,kingdom,2,FALSE,worms
+paraliparis copei,Chordata,phylum,1821,FALSE,worms
+paraliparis copei,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis copei,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis copei,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis copei,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis copei,Actinopteri,class,843664,FALSE,worms
+paraliparis copei,Teleostei,subclass,293496,FALSE,worms
+paraliparis copei,Perciformes,order,11014,FALSE,worms
+paraliparis copei,Liparidae,family,234519,FALSE,worms
+paraliparis copei,Paraliparis,genus,126161,FALSE,worms
+paraliparis copei,Paraliparis copei,species,159530,FALSE,worms
+paraliparis kreffti,Animalia,kingdom,2,FALSE,worms
+paraliparis kreffti,Chordata,phylum,1821,FALSE,worms
+paraliparis kreffti,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis kreffti,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis kreffti,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis kreffti,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis kreffti,Actinopteri,class,843664,FALSE,worms
+paraliparis kreffti,Teleostei,subclass,293496,FALSE,worms
+paraliparis kreffti,Perciformes,order,11014,FALSE,worms
+paraliparis kreffti,Liparidae,family,234519,FALSE,worms
+paraliparis kreffti,Paraliparis,genus,126161,FALSE,worms
+paraliparis kreffti,Paraliparis kreffti,species,274588,FALSE,worms
+paraliparis megalopus,Animalia,kingdom,2,FALSE,worms
+paraliparis megalopus,Chordata,phylum,1821,FALSE,worms
+paraliparis megalopus,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis megalopus,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis megalopus,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis megalopus,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis megalopus,Actinopteri,class,843664,FALSE,worms
+paraliparis megalopus,Teleostei,subclass,293496,FALSE,worms
+paraliparis megalopus,Perciformes,order,11014,FALSE,worms
+paraliparis megalopus,Liparidae,family,234519,FALSE,worms
+paraliparis megalopus,Paraliparis,genus,126161,FALSE,worms
+paraliparis megalopus,Paraliparis megalopus,species,274595,FALSE,worms
+paraliparis obliquosus,Animalia,kingdom,2,FALSE,worms
+paraliparis obliquosus,Chordata,phylum,1821,FALSE,worms
+paraliparis obliquosus,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis obliquosus,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis obliquosus,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis obliquosus,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis obliquosus,Actinopteri,class,843664,FALSE,worms
+paraliparis obliquosus,Teleostei,subclass,293496,FALSE,worms
+paraliparis obliquosus,Perciformes,order,11014,FALSE,worms
+paraliparis obliquosus,Liparidae,family,234519,FALSE,worms
+paraliparis obliquosus,Paraliparis,genus,126161,FALSE,worms
+paraliparis obliquosus,Paraliparis obliquosus,species,234718,FALSE,worms
+paraliparis operculosus,Animalia,kingdom,2,FALSE,worms
+paraliparis operculosus,Chordata,phylum,1821,FALSE,worms
+paraliparis operculosus,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis operculosus,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis operculosus,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis operculosus,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis operculosus,Actinopteri,class,843664,FALSE,worms
+paraliparis operculosus,Teleostei,subclass,293496,FALSE,worms
+paraliparis operculosus,Perciformes,order,11014,FALSE,worms
+paraliparis operculosus,Liparidae,family,234519,FALSE,worms
+paraliparis operculosus,Paraliparis,genus,126161,FALSE,worms
+paraliparis operculosus,Paraliparis operculosus,species,234806,FALSE,worms
+paraliparis orcadensis,Animalia,kingdom,2,FALSE,worms
+paraliparis orcadensis,Chordata,phylum,1821,FALSE,worms
+paraliparis orcadensis,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis orcadensis,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis orcadensis,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis orcadensis,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis orcadensis,Actinopteri,class,843664,FALSE,worms
+paraliparis orcadensis,Teleostei,subclass,293496,FALSE,worms
+paraliparis orcadensis,Perciformes,order,11014,FALSE,worms
+paraliparis orcadensis,Liparidae,family,234519,FALSE,worms
+paraliparis orcadensis,Paraliparis,genus,126161,FALSE,worms
+paraliparis orcadensis,Paraliparis orcadensis,species,234782,FALSE,worms
+paraliparis plagiostomus,Animalia,kingdom,2,FALSE,worms
+paraliparis plagiostomus,Chordata,phylum,1821,FALSE,worms
+paraliparis plagiostomus,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis plagiostomus,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis plagiostomus,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis plagiostomus,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis plagiostomus,Actinopteri,class,843664,FALSE,worms
+paraliparis plagiostomus,Teleostei,subclass,293496,FALSE,worms
+paraliparis plagiostomus,Perciformes,order,11014,FALSE,worms
+paraliparis plagiostomus,Liparidae,family,234519,FALSE,worms
+paraliparis plagiostomus,Paraliparis,genus,126161,FALSE,worms
+paraliparis plagiostomus,Paraliparis plagiostomus,species,274606,FALSE,worms
+paraliparis tompkinsae,Animalia,kingdom,2,FALSE,worms
+paraliparis tompkinsae,Chordata,phylum,1821,FALSE,worms
+paraliparis tompkinsae,Vertebrata,subphylum,146419,FALSE,worms
+paraliparis tompkinsae,Gnathostomata,infraphylum,1828,FALSE,worms
+paraliparis tompkinsae,Osteichthyes,parvphylum,152352,FALSE,worms
+paraliparis tompkinsae,Actinopterygii,gigaclass,10194,FALSE,worms
+paraliparis tompkinsae,Actinopteri,class,843664,FALSE,worms
+paraliparis tompkinsae,Teleostei,subclass,293496,FALSE,worms
+paraliparis tompkinsae,Perciformes,order,11014,FALSE,worms
+paraliparis tompkinsae,Liparidae,family,234519,FALSE,worms
+paraliparis tompkinsae,Paraliparis,genus,126161,FALSE,worms
+paraliparis tompkinsae,Paraliparis tompkinsae,species,234765,FALSE,worms
+parupeneus crassilabris,Animalia,kingdom,2,FALSE,worms
+parupeneus crassilabris,Chordata,phylum,1821,FALSE,worms
+parupeneus crassilabris,Vertebrata,subphylum,146419,FALSE,worms
+parupeneus crassilabris,Gnathostomata,infraphylum,1828,FALSE,worms
+parupeneus crassilabris,Osteichthyes,parvphylum,152352,FALSE,worms
+parupeneus crassilabris,Actinopterygii,gigaclass,10194,FALSE,worms
+parupeneus crassilabris,Actinopteri,class,843664,FALSE,worms
+parupeneus crassilabris,Teleostei,subclass,293496,FALSE,worms
+parupeneus crassilabris,Mulliformes,order,1517498,FALSE,worms
+parupeneus crassilabris,Mullidae,family,125547,FALSE,worms
+parupeneus crassilabris,Parupeneus,genus,204915,FALSE,worms
+parupeneus crassilabris,Parupeneus crassilabris,species,277814,FALSE,worms
+parupeneus multifasciatus,Animalia,kingdom,2,FALSE,worms
+parupeneus multifasciatus,Chordata,phylum,1821,FALSE,worms
+parupeneus multifasciatus,Vertebrata,subphylum,146419,FALSE,worms
+parupeneus multifasciatus,Gnathostomata,infraphylum,1828,FALSE,worms
+parupeneus multifasciatus,Osteichthyes,parvphylum,152352,FALSE,worms
+parupeneus multifasciatus,Actinopterygii,gigaclass,10194,FALSE,worms
+parupeneus multifasciatus,Actinopteri,class,843664,FALSE,worms
+parupeneus multifasciatus,Teleostei,subclass,293496,FALSE,worms
+parupeneus multifasciatus,Mulliformes,order,1517498,FALSE,worms
+parupeneus multifasciatus,Mullidae,family,125547,FALSE,worms
+parupeneus multifasciatus,Parupeneus,genus,204915,FALSE,worms
+parupeneus multifasciatus,Parupeneus multifasciatus,species,277820,FALSE,worms
+parupeneus posteli,Animalia,kingdom,2,FALSE,worms
+parupeneus posteli,Chordata,phylum,1821,FALSE,worms
+parupeneus posteli,Vertebrata,subphylum,146419,FALSE,worms
+parupeneus posteli,Gnathostomata,infraphylum,1828,FALSE,worms
+parupeneus posteli,Osteichthyes,parvphylum,152352,FALSE,worms
+parupeneus posteli,Actinopterygii,gigaclass,10194,FALSE,worms
+parupeneus posteli,Actinopteri,class,843664,FALSE,worms
+parupeneus posteli,Teleostei,subclass,293496,FALSE,worms
+parupeneus posteli,Mulliformes,order,1517498,FALSE,worms
+parupeneus posteli,Mullidae,family,125547,FALSE,worms
+parupeneus posteli,Parupeneus,genus,204915,FALSE,worms
+parupeneus posteli,Parupeneus posteli,species,277822,FALSE,worms
+paxton concilians,Animalia,kingdom,2,FALSE,worms
+paxton concilians,Chordata,phylum,1821,FALSE,worms
+paxton concilians,Vertebrata,subphylum,146419,FALSE,worms
+paxton concilians,Gnathostomata,infraphylum,1828,FALSE,worms
+paxton concilians,Osteichthyes,parvphylum,152352,FALSE,worms
+paxton concilians,Actinopterygii,gigaclass,10194,FALSE,worms
+paxton concilians,Actinopteri,class,843664,FALSE,worms
+paxton concilians,Teleostei,subclass,293496,FALSE,worms
+paxton concilians,Kurtiformes,order,1517499,FALSE,worms
+paxton concilians,Apogonidae,family,125518,FALSE,worms
+paxton concilians,Pseudamiinae,subfamily,826591,FALSE,worms
+paxton concilians,Paxton,genus,270314,FALSE,worms
+paxton concilians,Paxton concilians,species,282182,FALSE,worms
+pelotretis flavilatus,Animalia,kingdom,2,FALSE,worms
+pelotretis flavilatus,Chordata,phylum,1821,FALSE,worms
+pelotretis flavilatus,Vertebrata,subphylum,146419,FALSE,worms
+pelotretis flavilatus,Gnathostomata,infraphylum,1828,FALSE,worms
+pelotretis flavilatus,Osteichthyes,parvphylum,152352,FALSE,worms
+pelotretis flavilatus,Actinopterygii,gigaclass,10194,FALSE,worms
+pelotretis flavilatus,Actinopteri,class,843664,FALSE,worms
+pelotretis flavilatus,Teleostei,subclass,293496,FALSE,worms
+pelotretis flavilatus,Pleuronectiformes,order,10331,FALSE,worms
+pelotretis flavilatus,Pleuronectidae,family,125579,FALSE,worms
+pelotretis flavilatus,Rhombosoleinae,subfamily,154757,FALSE,worms
+pelotretis flavilatus,Pelotretis,genus,270323,FALSE,worms
+pelotretis flavilatus,Pelotretis flavilatus,species,282188,FALSE,worms
+percis matsuii,Animalia,kingdom,2,FALSE,worms
+percis matsuii,Chordata,phylum,1821,FALSE,worms
+percis matsuii,Vertebrata,subphylum,146419,FALSE,worms
+percis matsuii,Gnathostomata,infraphylum,1828,FALSE,worms
+percis matsuii,Osteichthyes,parvphylum,152352,FALSE,worms
+percis matsuii,Actinopterygii,gigaclass,10194,FALSE,worms
+percis matsuii,Actinopteri,class,843664,FALSE,worms
+percis matsuii,Teleostei,subclass,293496,FALSE,worms
+percis matsuii,Perciformes,order,11014,FALSE,worms
+percis matsuii,Agonidae,family,125588,FALSE,worms
+percis matsuii,Hypsagoninae,subfamily,267136,FALSE,worms
+percis matsuii,Percis,genus,254388,FALSE,worms
+percis matsuii,Percis matsuii,species,254390,FALSE,worms
+peristedion amblygenys,Animalia,kingdom,2,FALSE,worms
+peristedion amblygenys,Chordata,phylum,1821,FALSE,worms
+peristedion amblygenys,Vertebrata,subphylum,146419,FALSE,worms
+peristedion amblygenys,Gnathostomata,infraphylum,1828,FALSE,worms
+peristedion amblygenys,Osteichthyes,parvphylum,152352,FALSE,worms
+peristedion amblygenys,Actinopterygii,gigaclass,10194,FALSE,worms
+peristedion amblygenys,Actinopteri,class,843664,FALSE,worms
+peristedion amblygenys,Teleostei,subclass,293496,FALSE,worms
+peristedion amblygenys,Perciformes,order,11014,FALSE,worms
+peristedion amblygenys,Peristediidae,family,125592,FALSE,worms
+peristedion amblygenys,Peristedion,genus,126165,FALSE,worms
+peristedion amblygenys,Peristedion amblygenys,species,274634,FALSE,worms
+petrotyx sanguineus,Animalia,kingdom,2,FALSE,worms
+petrotyx sanguineus,Chordata,phylum,1821,FALSE,worms
+petrotyx sanguineus,Vertebrata,subphylum,146419,FALSE,worms
+petrotyx sanguineus,Gnathostomata,infraphylum,1828,FALSE,worms
+petrotyx sanguineus,Osteichthyes,parvphylum,152352,FALSE,worms
+petrotyx sanguineus,Actinopterygii,gigaclass,10194,FALSE,worms
+petrotyx sanguineus,Actinopteri,class,843664,FALSE,worms
+petrotyx sanguineus,Teleostei,subclass,293496,FALSE,worms
+petrotyx sanguineus,Ophidiiformes,order,10314,FALSE,worms
+petrotyx sanguineus,Ophidiidae,family,125505,FALSE,worms
+petrotyx sanguineus,Neobythitinae,subfamily,154740,FALSE,worms
+petrotyx sanguineus,Petrotyx,genus,270357,FALSE,worms
+petrotyx sanguineus,Petrotyx sanguineus,species,282225,FALSE,worms
+platichthys flesus,Animalia,kingdom,2,FALSE,worms
+platichthys flesus,Chordata,phylum,1821,FALSE,worms
+platichthys flesus,Vertebrata,subphylum,146419,FALSE,worms
+platichthys flesus,Gnathostomata,infraphylum,1828,FALSE,worms
+platichthys flesus,Osteichthyes,parvphylum,152352,FALSE,worms
+platichthys flesus,Actinopterygii,gigaclass,10194,FALSE,worms
+platichthys flesus,Actinopteri,class,843664,FALSE,worms
+platichthys flesus,Teleostei,subclass,293496,FALSE,worms
+platichthys flesus,Pleuronectiformes,order,10331,FALSE,worms
+platichthys flesus,Pleuronectidae,family,125579,FALSE,worms
+platichthys flesus,Pleuronectinae,subfamily,154687,FALSE,worms
+platichthys flesus,Platichthys,genus,126119,FALSE,worms
+platichthys flesus,Platichthys flesus,species,127141,FALSE,worms
+platycephalus indicus,Animalia,kingdom,2,FALSE,worms
+platycephalus indicus,Chordata,phylum,1821,FALSE,worms
+platycephalus indicus,Vertebrata,subphylum,146419,FALSE,worms
+platycephalus indicus,Gnathostomata,infraphylum,1828,FALSE,worms
+platycephalus indicus,Osteichthyes,parvphylum,152352,FALSE,worms
+platycephalus indicus,Actinopterygii,gigaclass,10194,FALSE,worms
+platycephalus indicus,Actinopteri,class,843664,FALSE,worms
+platycephalus indicus,Teleostei,subclass,293496,FALSE,worms
+platycephalus indicus,Perciformes,order,11014,FALSE,worms
+platycephalus indicus,Platycephalidae,family,125593,FALSE,worms
+platycephalus indicus,Platycephalus,genus,126166,FALSE,worms
+platycephalus indicus,Platycephalus indicus,species,127234,FALSE,worms
+plectrogenium nanum,Animalia,kingdom,2,FALSE,worms
+plectrogenium nanum,Chordata,phylum,1821,FALSE,worms
+plectrogenium nanum,Vertebrata,subphylum,146419,FALSE,worms
+plectrogenium nanum,Gnathostomata,infraphylum,1828,FALSE,worms
+plectrogenium nanum,Osteichthyes,parvphylum,152352,FALSE,worms
+plectrogenium nanum,Actinopterygii,gigaclass,10194,FALSE,worms
+plectrogenium nanum,Actinopteri,class,843664,FALSE,worms
+plectrogenium nanum,Teleostei,subclass,293496,FALSE,worms
+plectrogenium nanum,Perciformes,order,11014,FALSE,worms
+plectrogenium nanum,Plectrogeniidae,family,154267,FALSE,worms
+plectrogenium nanum,Plectrogenium,genus,270453,FALSE,worms
+plectrogenium nanum,Plectrogenium nanum,species,282285,FALSE,worms
+poecilopsetta albomaculata,Animalia,kingdom,2,FALSE,worms
+poecilopsetta albomaculata,Chordata,phylum,1821,FALSE,worms
+poecilopsetta albomaculata,Vertebrata,subphylum,146419,FALSE,worms
+poecilopsetta albomaculata,Gnathostomata,infraphylum,1828,FALSE,worms
+poecilopsetta albomaculata,Osteichthyes,parvphylum,152352,FALSE,worms
+poecilopsetta albomaculata,Actinopterygii,gigaclass,10194,FALSE,worms
+poecilopsetta albomaculata,Actinopteri,class,843664,FALSE,worms
+poecilopsetta albomaculata,Teleostei,subclass,293496,FALSE,worms
+poecilopsetta albomaculata,Pleuronectiformes,order,10331,FALSE,worms
+poecilopsetta albomaculata,Pleuronectidae,family,125579,FALSE,worms
+poecilopsetta albomaculata,Poecilopsettinae,subfamily,154756,FALSE,worms
+poecilopsetta albomaculata,Poecilopsetta,genus,158905,FALSE,worms
+poecilopsetta albomaculata,Poecilopsetta albomaculata,species,275846,FALSE,worms
+pontinus macrocephalus,Animalia,kingdom,2,FALSE,worms
+pontinus macrocephalus,Chordata,phylum,1821,FALSE,worms
+pontinus macrocephalus,Vertebrata,subphylum,146419,FALSE,worms
+pontinus macrocephalus,Gnathostomata,infraphylum,1828,FALSE,worms
+pontinus macrocephalus,Osteichthyes,parvphylum,152352,FALSE,worms
+pontinus macrocephalus,Actinopterygii,gigaclass,10194,FALSE,worms
+pontinus macrocephalus,Actinopteri,class,843664,FALSE,worms
+pontinus macrocephalus,Teleostei,subclass,293496,FALSE,worms
+pontinus macrocephalus,Perciformes,order,11014,FALSE,worms
+pontinus macrocephalus,Scorpaenidae,family,125595,FALSE,worms
+pontinus macrocephalus,Scorpaeninae,subfamily,154409,FALSE,worms
+pontinus macrocephalus,Pontinus,genus,126170,FALSE,worms
+pontinus macrocephalus,Pontinus macrocephalus,species,274689,FALSE,worms
+porichthys oculellus,Animalia,kingdom,2,FALSE,worms
+porichthys oculellus,Chordata,phylum,1821,FALSE,worms
+porichthys oculellus,Vertebrata,subphylum,146419,FALSE,worms
+porichthys oculellus,Gnathostomata,infraphylum,1828,FALSE,worms
+porichthys oculellus,Osteichthyes,parvphylum,152352,FALSE,worms
+porichthys oculellus,Actinopterygii,gigaclass,10194,FALSE,worms
+porichthys oculellus,Actinopteri,class,843664,FALSE,worms
+porichthys oculellus,Teleostei,subclass,293496,FALSE,worms
+porichthys oculellus,Batrachoidiformes,order,10315,FALSE,worms
+porichthys oculellus,Batrachoididae,family,125450,FALSE,worms
+porichthys oculellus,Porichthyinae,subfamily,714643,FALSE,worms
+porichthys oculellus,Porichthys,genus,158783,FALSE,worms
+porichthys oculellus,Porichthys oculellus,species,275659,FALSE,worms
+porichthys oculofrenum,Animalia,kingdom,2,FALSE,worms
+porichthys oculofrenum,Chordata,phylum,1821,FALSE,worms
+porichthys oculofrenum,Vertebrata,subphylum,146419,FALSE,worms
+porichthys oculofrenum,Gnathostomata,infraphylum,1828,FALSE,worms
+porichthys oculofrenum,Osteichthyes,parvphylum,152352,FALSE,worms
+porichthys oculofrenum,Actinopterygii,gigaclass,10194,FALSE,worms
+porichthys oculofrenum,Actinopteri,class,843664,FALSE,worms
+porichthys oculofrenum,Teleostei,subclass,293496,FALSE,worms
+porichthys oculofrenum,Batrachoidiformes,order,10315,FALSE,worms
+porichthys oculofrenum,Batrachoididae,family,125450,FALSE,worms
+porichthys oculofrenum,Porichthyinae,subfamily,714643,FALSE,worms
+porichthys oculofrenum,Porichthys,genus,158783,FALSE,worms
+porichthys oculofrenum,Porichthys oculofrenum,species,275660,FALSE,worms
+porocephalichthys dasyrhynchus,Animalia,kingdom,2,FALSE,worms
+porocephalichthys dasyrhynchus,Chordata,phylum,1821,FALSE,worms
+porocephalichthys dasyrhynchus,Vertebrata,subphylum,146419,FALSE,worms
+porocephalichthys dasyrhynchus,Gnathostomata,infraphylum,1828,FALSE,worms
+porocephalichthys dasyrhynchus,Osteichthyes,parvphylum,152352,FALSE,worms
+porocephalichthys dasyrhynchus,Actinopterygii,gigaclass,10194,FALSE,worms
+porocephalichthys dasyrhynchus,Actinopteri,class,843664,FALSE,worms
+porocephalichthys dasyrhynchus,Teleostei,subclass,293496,FALSE,worms
+porocephalichthys dasyrhynchus,Ophidiiformes,order,10314,FALSE,worms
+porocephalichthys dasyrhynchus,Bythitidae,family,125503,FALSE,worms
+porocephalichthys dasyrhynchus,Brosmophycinae,subfamily,154744,FALSE,worms
+porocephalichthys dasyrhynchus,Porocephalichthys,genus,475049,FALSE,worms
+porocephalichthys dasyrhynchus,Porocephalichthys dasyrhynchus,species,475075,FALSE,worms
+prognatholiparis ptychomandibularis,Animalia,kingdom,2,FALSE,worms
+prognatholiparis ptychomandibularis,Chordata,phylum,1821,FALSE,worms
+prognatholiparis ptychomandibularis,Vertebrata,subphylum,146419,FALSE,worms
+prognatholiparis ptychomandibularis,Gnathostomata,infraphylum,1828,FALSE,worms
+prognatholiparis ptychomandibularis,Osteichthyes,parvphylum,152352,FALSE,worms
+prognatholiparis ptychomandibularis,Actinopterygii,gigaclass,10194,FALSE,worms
+prognatholiparis ptychomandibularis,Actinopteri,class,843664,FALSE,worms
+prognatholiparis ptychomandibularis,Teleostei,subclass,293496,FALSE,worms
+prognatholiparis ptychomandibularis,Perciformes,order,11014,FALSE,worms
+prognatholiparis ptychomandibularis,Liparidae,family,234519,FALSE,worms
+prognatholiparis ptychomandibularis,Prognatholiparis,genus,270521,FALSE,worms
+prognatholiparis ptychomandibularis,Prognatholiparis ptychomandibularis,species,282359,FALSE,worms
+protomyctophum luciferum,Animalia,kingdom,2,FALSE,worms
+protomyctophum luciferum,Chordata,phylum,1821,FALSE,worms
+protomyctophum luciferum,Vertebrata,subphylum,146419,FALSE,worms
+protomyctophum luciferum,Gnathostomata,infraphylum,1828,FALSE,worms
+protomyctophum luciferum,Osteichthyes,parvphylum,152352,FALSE,worms
+protomyctophum luciferum,Actinopterygii,gigaclass,10194,FALSE,worms
+protomyctophum luciferum,Actinopteri,class,843664,FALSE,worms
+protomyctophum luciferum,Teleostei,subclass,293496,FALSE,worms
+protomyctophum luciferum,Myctophiformes,order,10309,FALSE,worms
+protomyctophum luciferum,Myctophidae,family,125498,FALSE,worms
+protomyctophum luciferum,Protomyctophum,genus,125832,FALSE,worms
+protomyctophum luciferum,Protomyctophum luciferum,species,234757,FALSE,worms
+psednos andriashevi,Animalia,kingdom,2,FALSE,worms
+psednos andriashevi,Chordata,phylum,1821,FALSE,worms
+psednos andriashevi,Vertebrata,subphylum,146419,FALSE,worms
+psednos andriashevi,Gnathostomata,infraphylum,1828,FALSE,worms
+psednos andriashevi,Osteichthyes,parvphylum,152352,FALSE,worms
+psednos andriashevi,Actinopterygii,gigaclass,10194,FALSE,worms
+psednos andriashevi,Actinopteri,class,843664,FALSE,worms
+psednos andriashevi,Teleostei,subclass,293496,FALSE,worms
+psednos andriashevi,Perciformes,order,11014,FALSE,worms
+psednos andriashevi,Liparidae,family,234519,FALSE,worms
+psednos andriashevi,Psednos,genus,126162,FALSE,worms
+psednos andriashevi,Psednos andriashevi,species,274614,FALSE,worms
+psednos harteli,Animalia,kingdom,2,FALSE,worms
+psednos harteli,Chordata,phylum,1821,FALSE,worms
+psednos harteli,Vertebrata,subphylum,146419,FALSE,worms
+psednos harteli,Gnathostomata,infraphylum,1828,FALSE,worms
+psednos harteli,Osteichthyes,parvphylum,152352,FALSE,worms
+psednos harteli,Actinopterygii,gigaclass,10194,FALSE,worms
+psednos harteli,Actinopteri,class,843664,FALSE,worms
+psednos harteli,Teleostei,subclass,293496,FALSE,worms
+psednos harteli,Perciformes,order,11014,FALSE,worms
+psednos harteli,Liparidae,family,234519,FALSE,worms
+psednos harteli,Psednos,genus,126162,FALSE,worms
+psednos harteli,Psednos harteli,species,159539,FALSE,worms
+psettina hainanensis,Animalia,kingdom,2,FALSE,worms
+psettina hainanensis,Chordata,phylum,1821,FALSE,worms
+psettina hainanensis,Vertebrata,subphylum,146419,FALSE,worms
+psettina hainanensis,Gnathostomata,infraphylum,1828,FALSE,worms
+psettina hainanensis,Osteichthyes,parvphylum,152352,FALSE,worms
+psettina hainanensis,Actinopterygii,gigaclass,10194,FALSE,worms
+psettina hainanensis,Actinopteri,class,843664,FALSE,worms
+psettina hainanensis,Teleostei,subclass,293496,FALSE,worms
+psettina hainanensis,Pleuronectiformes,order,10331,FALSE,worms
+psettina hainanensis,Bothidae,family,125576,FALSE,worms
+psettina hainanensis,Psettina,genus,205466,FALSE,worms
+psettina hainanensis,Psettina hainanensis,species,278138,FALSE,worms
+pterois lunulata,Animalia,kingdom,2,FALSE,worms
+pterois lunulata,Chordata,phylum,1821,FALSE,worms
+pterois lunulata,Vertebrata,subphylum,146419,FALSE,worms
+pterois lunulata,Gnathostomata,infraphylum,1828,FALSE,worms
+pterois lunulata,Osteichthyes,parvphylum,152352,FALSE,worms
+pterois lunulata,Actinopterygii,gigaclass,10194,FALSE,worms
+pterois lunulata,Actinopteri,class,843664,FALSE,worms
+pterois lunulata,Teleostei,subclass,293496,FALSE,worms
+pterois lunulata,Perciformes,order,11014,FALSE,worms
+pterois lunulata,Scorpaenidae,family,125595,FALSE,worms
+pterois lunulata,Pteroinae,subfamily,154410,FALSE,worms
+pterois lunulata,Pterois,genus,204051,FALSE,worms
+pterois lunulata,Pterois lunulata,species,218083,FALSE,worms
+pterygotrigla hemisticta,Animalia,kingdom,2,FALSE,worms
+pterygotrigla hemisticta,Chordata,phylum,1821,FALSE,worms
+pterygotrigla hemisticta,Vertebrata,subphylum,146419,FALSE,worms
+pterygotrigla hemisticta,Gnathostomata,infraphylum,1828,FALSE,worms
+pterygotrigla hemisticta,Osteichthyes,parvphylum,152352,FALSE,worms
+pterygotrigla hemisticta,Actinopterygii,gigaclass,10194,FALSE,worms
+pterygotrigla hemisticta,Actinopteri,class,843664,FALSE,worms
+pterygotrigla hemisticta,Teleostei,subclass,293496,FALSE,worms
+pterygotrigla hemisticta,Perciformes,order,11014,FALSE,worms
+pterygotrigla hemisticta,Triglidae,family,125598,FALSE,worms
+pterygotrigla hemisticta,Pterygotrigla,genus,204113,FALSE,worms
+pterygotrigla hemisticta,Pterygotrigla hemisticta,species,277041,FALSE,worms
+pycnocraspedum squamipinne,Animalia,kingdom,2,FALSE,worms
+pycnocraspedum squamipinne,Chordata,phylum,1821,FALSE,worms
+pycnocraspedum squamipinne,Vertebrata,subphylum,146419,FALSE,worms
+pycnocraspedum squamipinne,Gnathostomata,infraphylum,1828,FALSE,worms
+pycnocraspedum squamipinne,Osteichthyes,parvphylum,152352,FALSE,worms
+pycnocraspedum squamipinne,Actinopterygii,gigaclass,10194,FALSE,worms
+pycnocraspedum squamipinne,Actinopteri,class,843664,FALSE,worms
+pycnocraspedum squamipinne,Teleostei,subclass,293496,FALSE,worms
+pycnocraspedum squamipinne,Ophidiiformes,order,10314,FALSE,worms
+pycnocraspedum squamipinne,Ophidiidae,family,125505,FALSE,worms
+pycnocraspedum squamipinne,Neobythitinae,subfamily,154740,FALSE,worms
+pycnocraspedum squamipinne,Pycnocraspedum,genus,204022,FALSE,worms
+pycnocraspedum squamipinne,Pycnocraspedum squamipinne,species,217819,FALSE,worms
+pyramodon lindas,Animalia,kingdom,2,FALSE,worms
+pyramodon lindas,Chordata,phylum,1821,FALSE,worms
+pyramodon lindas,Vertebrata,subphylum,146419,FALSE,worms
+pyramodon lindas,Gnathostomata,infraphylum,1828,FALSE,worms
+pyramodon lindas,Osteichthyes,parvphylum,152352,FALSE,worms
+pyramodon lindas,Actinopterygii,gigaclass,10194,FALSE,worms
+pyramodon lindas,Actinopteri,class,843664,FALSE,worms
+pyramodon lindas,Teleostei,subclass,293496,FALSE,worms
+pyramodon lindas,Ophidiiformes,order,10314,FALSE,worms
+pyramodon lindas,Carapidae,family,125504,FALSE,worms
+pyramodon lindas,Pyramodontinae,subfamily,154742,FALSE,worms
+pyramodon lindas,Pyramodon,genus,206307,FALSE,worms
+pyramodon lindas,Pyramodon lindas,species,278791,FALSE,worms
+rhombosolea plebeia,Animalia,kingdom,2,FALSE,worms
+rhombosolea plebeia,Chordata,phylum,1821,FALSE,worms
+rhombosolea plebeia,Vertebrata,subphylum,146419,FALSE,worms
+rhombosolea plebeia,Gnathostomata,infraphylum,1828,FALSE,worms
+rhombosolea plebeia,Osteichthyes,parvphylum,152352,FALSE,worms
+rhombosolea plebeia,Actinopterygii,gigaclass,10194,FALSE,worms
+rhombosolea plebeia,Actinopteri,class,843664,FALSE,worms
+rhombosolea plebeia,Teleostei,subclass,293496,FALSE,worms
+rhombosolea plebeia,Pleuronectiformes,order,10331,FALSE,worms
+rhombosolea plebeia,Pleuronectidae,family,125579,FALSE,worms
+rhombosolea plebeia,Rhombosoleinae,subfamily,154757,FALSE,worms
+rhombosolea plebeia,Rhombosolea,genus,270749,FALSE,worms
+rhombosolea plebeia,Rhombosolea plebeia,species,282601,FALSE,worms
+ricuzenius nudithorax,Animalia,kingdom,2,FALSE,worms
+ricuzenius nudithorax,Chordata,phylum,1821,FALSE,worms
+ricuzenius nudithorax,Vertebrata,subphylum,146419,FALSE,worms
+ricuzenius nudithorax,Gnathostomata,infraphylum,1828,FALSE,worms
+ricuzenius nudithorax,Osteichthyes,parvphylum,152352,FALSE,worms
+ricuzenius nudithorax,Actinopterygii,gigaclass,10194,FALSE,worms
+ricuzenius nudithorax,Actinopteri,class,843664,FALSE,worms
+ricuzenius nudithorax,Teleostei,subclass,293496,FALSE,worms
+ricuzenius nudithorax,Perciformes,order,11014,FALSE,worms
+ricuzenius nudithorax,Cottidae,family,125589,FALSE,worms
+ricuzenius nudithorax,Ricuzenius,genus,270759,FALSE,worms
+ricuzenius nudithorax,Ricuzenius nudithorax,species,282612,FALSE,worms
+samariscus filipectoralis,Animalia,kingdom,2,FALSE,worms
+samariscus filipectoralis,Chordata,phylum,1821,FALSE,worms
+samariscus filipectoralis,Vertebrata,subphylum,146419,FALSE,worms
+samariscus filipectoralis,Gnathostomata,infraphylum,1828,FALSE,worms
+samariscus filipectoralis,Osteichthyes,parvphylum,152352,FALSE,worms
+samariscus filipectoralis,Actinopterygii,gigaclass,10194,FALSE,worms
+samariscus filipectoralis,Actinopteri,class,843664,FALSE,worms
+samariscus filipectoralis,Teleostei,subclass,293496,FALSE,worms
+samariscus filipectoralis,Pleuronectiformes,order,10331,FALSE,worms
+samariscus filipectoralis,Samaridae,family,154170,FALSE,worms
+samariscus filipectoralis,Samariscus,genus,206731,FALSE,worms
+samariscus filipectoralis,Samariscus filipectoralis,species,279134,FALSE,worms
+samariscus huysmani,Animalia,kingdom,2,FALSE,worms
+samariscus huysmani,Chordata,phylum,1821,FALSE,worms
+samariscus huysmani,Vertebrata,subphylum,146419,FALSE,worms
+samariscus huysmani,Gnathostomata,infraphylum,1828,FALSE,worms
+samariscus huysmani,Osteichthyes,parvphylum,152352,FALSE,worms
+samariscus huysmani,Actinopterygii,gigaclass,10194,FALSE,worms
+samariscus huysmani,Actinopteri,class,843664,FALSE,worms
+samariscus huysmani,Teleostei,subclass,293496,FALSE,worms
+samariscus huysmani,Pleuronectiformes,order,10331,FALSE,worms
+samariscus huysmani,Samaridae,family,154170,FALSE,worms
+samariscus huysmani,Samariscus,genus,206731,FALSE,worms
+samariscus huysmani,Samariscus huysmani,species,279135,FALSE,worms
+scorpaena azorica,Animalia,kingdom,2,FALSE,worms
+scorpaena azorica,Chordata,phylum,1821,FALSE,worms
+scorpaena azorica,Vertebrata,subphylum,146419,FALSE,worms
+scorpaena azorica,Gnathostomata,infraphylum,1828,FALSE,worms
+scorpaena azorica,Osteichthyes,parvphylum,152352,FALSE,worms
+scorpaena azorica,Actinopterygii,gigaclass,10194,FALSE,worms
+scorpaena azorica,Actinopteri,class,843664,FALSE,worms
+scorpaena azorica,Teleostei,subclass,293496,FALSE,worms
+scorpaena azorica,Perciformes,order,11014,FALSE,worms
+scorpaena azorica,Scorpaenidae,family,125595,FALSE,worms
+scorpaena azorica,Scorpaeninae,subfamily,154409,FALSE,worms
+scorpaena azorica,Scorpaena,genus,126171,FALSE,worms
+scorpaena azorica,Scorpaena azorica,species,127241,FALSE,worms
+scorpaena hatizyoensis,Animalia,kingdom,2,FALSE,worms
+scorpaena hatizyoensis,Chordata,phylum,1821,FALSE,worms
+scorpaena hatizyoensis,Vertebrata,subphylum,146419,FALSE,worms
+scorpaena hatizyoensis,Gnathostomata,infraphylum,1828,FALSE,worms
+scorpaena hatizyoensis,Osteichthyes,parvphylum,152352,FALSE,worms
+scorpaena hatizyoensis,Actinopterygii,gigaclass,10194,FALSE,worms
+scorpaena hatizyoensis,Actinopteri,class,843664,FALSE,worms
+scorpaena hatizyoensis,Teleostei,subclass,293496,FALSE,worms
+scorpaena hatizyoensis,Perciformes,order,11014,FALSE,worms
+scorpaena hatizyoensis,Scorpaenidae,family,125595,FALSE,worms
+scorpaena hatizyoensis,Scorpaeninae,subfamily,154409,FALSE,worms
+scorpaena hatizyoensis,Scorpaena,genus,126171,FALSE,worms
+scorpaena hatizyoensis,Scorpaena hatizyoensis,species,274714,FALSE,worms
+scorpaenodes hirsutus,Animalia,kingdom,2,FALSE,worms
+scorpaenodes hirsutus,Chordata,phylum,1821,FALSE,worms
+scorpaenodes hirsutus,Vertebrata,subphylum,146419,FALSE,worms
+scorpaenodes hirsutus,Gnathostomata,infraphylum,1828,FALSE,worms
+scorpaenodes hirsutus,Osteichthyes,parvphylum,152352,FALSE,worms
+scorpaenodes hirsutus,Actinopterygii,gigaclass,10194,FALSE,worms
+scorpaenodes hirsutus,Actinopteri,class,843664,FALSE,worms
+scorpaenodes hirsutus,Teleostei,subclass,293496,FALSE,worms
+scorpaenodes hirsutus,Perciformes,order,11014,FALSE,worms
+scorpaenodes hirsutus,Scorpaenidae,family,125595,FALSE,worms
+scorpaenodes hirsutus,Scorpaeninae,subfamily,154409,FALSE,worms
+scorpaenodes hirsutus,Scorpaenodes,genus,126172,FALSE,worms
+scorpaenodes hirsutus,Scorpaenodes hirsutus,species,218096,FALSE,worms
+scorpaenodes quadrispinosus,Animalia,kingdom,2,FALSE,worms
+scorpaenodes quadrispinosus,Chordata,phylum,1821,FALSE,worms
+scorpaenodes quadrispinosus,Vertebrata,subphylum,146419,FALSE,worms
+scorpaenodes quadrispinosus,Gnathostomata,infraphylum,1828,FALSE,worms
+scorpaenodes quadrispinosus,Osteichthyes,parvphylum,152352,FALSE,worms
+scorpaenodes quadrispinosus,Actinopterygii,gigaclass,10194,FALSE,worms
+scorpaenodes quadrispinosus,Actinopteri,class,843664,FALSE,worms
+scorpaenodes quadrispinosus,Teleostei,subclass,293496,FALSE,worms
+scorpaenodes quadrispinosus,Perciformes,order,11014,FALSE,worms
+scorpaenodes quadrispinosus,Scorpaenidae,family,125595,FALSE,worms
+scorpaenodes quadrispinosus,Scorpaeninae,subfamily,154409,FALSE,worms
+scorpaenodes quadrispinosus,Scorpaenodes,genus,126172,FALSE,worms
+scorpaenodes quadrispinosus,Scorpaenodes quadrispinosus,species,274750,FALSE,worms
+scorpaenopsis altirostris,Animalia,kingdom,2,FALSE,worms
+scorpaenopsis altirostris,Chordata,phylum,1821,FALSE,worms
+scorpaenopsis altirostris,Vertebrata,subphylum,146419,FALSE,worms
+scorpaenopsis altirostris,Gnathostomata,infraphylum,1828,FALSE,worms
+scorpaenopsis altirostris,Osteichthyes,parvphylum,152352,FALSE,worms
+scorpaenopsis altirostris,Actinopterygii,gigaclass,10194,FALSE,worms
+scorpaenopsis altirostris,Actinopteri,class,843664,FALSE,worms
+scorpaenopsis altirostris,Teleostei,subclass,293496,FALSE,worms
+scorpaenopsis altirostris,Perciformes,order,11014,FALSE,worms
+scorpaenopsis altirostris,Scorpaenidae,family,125595,FALSE,worms
+scorpaenopsis altirostris,Scorpaeninae,subfamily,154409,FALSE,worms
+scorpaenopsis altirostris,Scorpaenopsis,genus,204563,FALSE,worms
+scorpaenopsis altirostris,Scorpaenopsis altirostris,species,277518,FALSE,worms
+sebastes cortezi,Animalia,kingdom,2,FALSE,worms
+sebastes cortezi,Chordata,phylum,1821,FALSE,worms
+sebastes cortezi,Vertebrata,subphylum,146419,FALSE,worms
+sebastes cortezi,Gnathostomata,infraphylum,1828,FALSE,worms
+sebastes cortezi,Osteichthyes,parvphylum,152352,FALSE,worms
+sebastes cortezi,Actinopterygii,gigaclass,10194,FALSE,worms
+sebastes cortezi,Actinopteri,class,843664,FALSE,worms
+sebastes cortezi,Teleostei,subclass,293496,FALSE,worms
+sebastes cortezi,Perciformes,order,11014,FALSE,worms
+sebastes cortezi,Sebastidae,family,125596,FALSE,worms
+sebastes cortezi,Sebastinae,subfamily,154407,FALSE,worms
+sebastes cortezi,Sebastes,genus,126175,FALSE,worms
+sebastes cortezi,Sebastes cortezi,species,274784,FALSE,worms
+sebastes koreanus,Animalia,kingdom,2,FALSE,worms
+sebastes koreanus,Chordata,phylum,1821,FALSE,worms
+sebastes koreanus,Vertebrata,subphylum,146419,FALSE,worms
+sebastes koreanus,Gnathostomata,infraphylum,1828,FALSE,worms
+sebastes koreanus,Osteichthyes,parvphylum,152352,FALSE,worms
+sebastes koreanus,Actinopterygii,gigaclass,10194,FALSE,worms
+sebastes koreanus,Actinopteri,class,843664,FALSE,worms
+sebastes koreanus,Teleostei,subclass,293496,FALSE,worms
+sebastes koreanus,Perciformes,order,11014,FALSE,worms
+sebastes koreanus,Sebastidae,family,125596,FALSE,worms
+sebastes koreanus,Sebastinae,subfamily,154407,FALSE,worms
+sebastes koreanus,Sebastes,genus,126175,FALSE,worms
+sebastes koreanus,Sebastes koreanus,species,274810,FALSE,worms
+sebastes mentella,Animalia,kingdom,2,FALSE,worms
+sebastes mentella,Chordata,phylum,1821,FALSE,worms
+sebastes mentella,Vertebrata,subphylum,146419,FALSE,worms
+sebastes mentella,Gnathostomata,infraphylum,1828,FALSE,worms
+sebastes mentella,Osteichthyes,parvphylum,152352,FALSE,worms
+sebastes mentella,Actinopterygii,gigaclass,10194,FALSE,worms
+sebastes mentella,Actinopteri,class,843664,FALSE,worms
+sebastes mentella,Teleostei,subclass,293496,FALSE,worms
+sebastes mentella,Perciformes,order,11014,FALSE,worms
+sebastes mentella,Sebastidae,family,125596,FALSE,worms
+sebastes mentella,Sebastinae,subfamily,154407,FALSE,worms
+sebastes mentella,Sebastes,genus,126175,FALSE,worms
+sebastes mentella,Sebastes mentella,species,127254,FALSE,worms
+sebastes nivosus,Animalia,kingdom,2,FALSE,worms
+sebastes nivosus,Chordata,phylum,1821,FALSE,worms
+sebastes nivosus,Vertebrata,subphylum,146419,FALSE,worms
+sebastes nivosus,Gnathostomata,infraphylum,1828,FALSE,worms
+sebastes nivosus,Osteichthyes,parvphylum,152352,FALSE,worms
+sebastes nivosus,Actinopterygii,gigaclass,10194,FALSE,worms
+sebastes nivosus,Actinopteri,class,843664,FALSE,worms
+sebastes nivosus,Teleostei,subclass,293496,FALSE,worms
+sebastes nivosus,Perciformes,order,11014,FALSE,worms
+sebastes nivosus,Sebastidae,family,125596,FALSE,worms
+sebastes nivosus,Sebastinae,subfamily,154407,FALSE,worms
+sebastes nivosus,Sebastes,genus,126175,FALSE,worms
+sebastes nivosus,Sebastes nivosus,species,274826,FALSE,worms
+sebastes peduncularis,Animalia,kingdom,2,FALSE,worms
+sebastes peduncularis,Chordata,phylum,1821,FALSE,worms
+sebastes peduncularis,Vertebrata,subphylum,146419,FALSE,worms
+sebastes peduncularis,Gnathostomata,infraphylum,1828,FALSE,worms
+sebastes peduncularis,Osteichthyes,parvphylum,152352,FALSE,worms
+sebastes peduncularis,Actinopterygii,gigaclass,10194,FALSE,worms
+sebastes peduncularis,Actinopteri,class,843664,FALSE,worms
+sebastes peduncularis,Teleostei,subclass,293496,FALSE,worms
+sebastes peduncularis,Perciformes,order,11014,FALSE,worms
+sebastes peduncularis,Sebastidae,family,125596,FALSE,worms
+sebastes peduncularis,Sebastinae,subfamily,154407,FALSE,worms
+sebastes peduncularis,Sebastes,genus,126175,FALSE,worms
+sebastes peduncularis,Sebastes peduncularis,species,274834,FALSE,worms
+siokunichthys nigrolineatus,Animalia,kingdom,2,FALSE,worms
+siokunichthys nigrolineatus,Chordata,phylum,1821,FALSE,worms
+siokunichthys nigrolineatus,Vertebrata,subphylum,146419,FALSE,worms
+siokunichthys nigrolineatus,Gnathostomata,infraphylum,1828,FALSE,worms
+siokunichthys nigrolineatus,Osteichthyes,parvphylum,152352,FALSE,worms
+siokunichthys nigrolineatus,Actinopterygii,gigaclass,10194,FALSE,worms
+siokunichthys nigrolineatus,Actinopteri,class,843664,FALSE,worms
+siokunichthys nigrolineatus,Teleostei,subclass,293496,FALSE,worms
+siokunichthys nigrolineatus,Syngnathiformes,order,10327,FALSE,worms
+siokunichthys nigrolineatus,Syngnathidae,family,125606,FALSE,worms
+siokunichthys nigrolineatus,Syngnathinae,subfamily,154405,FALSE,worms
+siokunichthys nigrolineatus,Siokunichthys,genus,206367,FALSE,worms
+siokunichthys nigrolineatus,Siokunichthys nigrolineatus,species,278824,FALSE,worms
+solea triophthalma,Animalia,kingdom,2,FALSE,worms
+solea triophthalma,Chordata,phylum,1821,FALSE,worms
+solea triophthalma,Vertebrata,subphylum,146419,FALSE,worms
+solea triophthalma,Gnathostomata,infraphylum,1828,FALSE,worms
+solea triophthalma,Osteichthyes,parvphylum,152352,FALSE,worms
+solea triophthalma,Actinopterygii,gigaclass,10194,FALSE,worms
+solea triophthalma,Actinopteri,class,843664,FALSE,worms
+solea triophthalma,Teleostei,subclass,293496,FALSE,worms
+solea triophthalma,Pleuronectiformes,order,10331,FALSE,worms
+solea triophthalma,Soleidae,family,125581,FALSE,worms
+solea triophthalma,Solea,genus,126132,FALSE,worms
+solea triophthalma,Solea triophthalma,species,305864,FALSE,worms
+stelgistrum beringianum,Animalia,kingdom,2,FALSE,worms
+stelgistrum beringianum,Chordata,phylum,1821,FALSE,worms
+stelgistrum beringianum,Vertebrata,subphylum,146419,FALSE,worms
+stelgistrum beringianum,Gnathostomata,infraphylum,1828,FALSE,worms
+stelgistrum beringianum,Osteichthyes,parvphylum,152352,FALSE,worms
+stelgistrum beringianum,Actinopterygii,gigaclass,10194,FALSE,worms
+stelgistrum beringianum,Actinopteri,class,843664,FALSE,worms
+stelgistrum beringianum,Teleostei,subclass,293496,FALSE,worms
+stelgistrum beringianum,Perciformes,order,11014,FALSE,worms
+stelgistrum beringianum,Cottidae,family,125589,FALSE,worms
+stelgistrum beringianum,Stelgistrum,genus,270971,FALSE,worms
+stelgistrum beringianum,Stelgistrum beringianum,species,282878,FALSE,worms
+stygnobrotula latebricola,Animalia,kingdom,2,FALSE,worms
+stygnobrotula latebricola,Chordata,phylum,1821,FALSE,worms
+stygnobrotula latebricola,Vertebrata,subphylum,146419,FALSE,worms
+stygnobrotula latebricola,Gnathostomata,infraphylum,1828,FALSE,worms
+stygnobrotula latebricola,Osteichthyes,parvphylum,152352,FALSE,worms
+stygnobrotula latebricola,Actinopterygii,gigaclass,10194,FALSE,worms
+stygnobrotula latebricola,Actinopteri,class,843664,FALSE,worms
+stygnobrotula latebricola,Teleostei,subclass,293496,FALSE,worms
+stygnobrotula latebricola,Ophidiiformes,order,10314,FALSE,worms
+stygnobrotula latebricola,Bythitidae,family,125503,FALSE,worms
+stygnobrotula latebricola,Bythitinae,subfamily,154743,FALSE,worms
+stygnobrotula latebricola,Stygnobrotula,genus,271005,FALSE,worms
+stygnobrotula latebricola,Stygnobrotula latebricola,species,282910,FALSE,worms
+synclidopus macleayanus,Animalia,kingdom,2,FALSE,worms
+synclidopus macleayanus,Chordata,phylum,1821,FALSE,worms
+synclidopus macleayanus,Vertebrata,subphylum,146419,FALSE,worms
+synclidopus macleayanus,Gnathostomata,infraphylum,1828,FALSE,worms
+synclidopus macleayanus,Osteichthyes,parvphylum,152352,FALSE,worms
+synclidopus macleayanus,Actinopterygii,gigaclass,10194,FALSE,worms
+synclidopus macleayanus,Actinopteri,class,843664,FALSE,worms
+synclidopus macleayanus,Teleostei,subclass,293496,FALSE,worms
+synclidopus macleayanus,Pleuronectiformes,order,10331,FALSE,worms
+synclidopus macleayanus,Soleidae,family,125581,FALSE,worms
+synclidopus macleayanus,Synclidopus,genus,712348,FALSE,worms
+synclidopus macleayanus,Synclidopus macleayanus,species,712918,FALSE,worms
+syngnathus floridae,Animalia,kingdom,2,FALSE,worms
+syngnathus floridae,Chordata,phylum,1821,FALSE,worms
+syngnathus floridae,Vertebrata,subphylum,146419,FALSE,worms
+syngnathus floridae,Gnathostomata,infraphylum,1828,FALSE,worms
+syngnathus floridae,Osteichthyes,parvphylum,152352,FALSE,worms
+syngnathus floridae,Actinopterygii,gigaclass,10194,FALSE,worms
+syngnathus floridae,Actinopteri,class,843664,FALSE,worms
+syngnathus floridae,Teleostei,subclass,293496,FALSE,worms
+syngnathus floridae,Syngnathiformes,order,10327,FALSE,worms
+syngnathus floridae,Syngnathidae,family,125606,FALSE,worms
+syngnathus floridae,Syngnathinae,subfamily,154405,FALSE,worms
+syngnathus floridae,Syngnathus,genus,126227,FALSE,worms
+syngnathus floridae,Syngnathus floridae,species,159450,FALSE,worms
+taeniamia buruensis,Animalia,kingdom,2,FALSE,worms
+taeniamia buruensis,Chordata,phylum,1821,FALSE,worms
+taeniamia buruensis,Vertebrata,subphylum,146419,FALSE,worms
+taeniamia buruensis,Gnathostomata,infraphylum,1828,FALSE,worms
+taeniamia buruensis,Osteichthyes,parvphylum,152352,FALSE,worms
+taeniamia buruensis,Actinopterygii,gigaclass,10194,FALSE,worms
+taeniamia buruensis,Actinopteri,class,843664,FALSE,worms
+taeniamia buruensis,Teleostei,subclass,293496,FALSE,worms
+taeniamia buruensis,Kurtiformes,order,1517499,FALSE,worms
+taeniamia buruensis,Apogonidae,family,125518,FALSE,worms
+taeniamia buruensis,Taeniamia,genus,826853,FALSE,worms
+taeniamia buruensis,Taeniamia buruensis,species,1021447,FALSE,worms
+tetraroge barbata,Animalia,kingdom,2,FALSE,worms
+tetraroge barbata,Chordata,phylum,1821,FALSE,worms
+tetraroge barbata,Vertebrata,subphylum,146419,FALSE,worms
+tetraroge barbata,Gnathostomata,infraphylum,1828,FALSE,worms
+tetraroge barbata,Osteichthyes,parvphylum,152352,FALSE,worms
+tetraroge barbata,Actinopterygii,gigaclass,10194,FALSE,worms
+tetraroge barbata,Actinopteri,class,843664,FALSE,worms
+tetraroge barbata,Teleostei,subclass,293496,FALSE,worms
+tetraroge barbata,Perciformes,order,11014,FALSE,worms
+tetraroge barbata,Tetrarogidae,family,154250,FALSE,worms
+tetraroge barbata,Tetraroge,genus,271069,FALSE,worms
+tetraroge barbata,Tetraroge barbata,species,282946,FALSE,worms
+thalassobathia pelagica,Animalia,kingdom,2,FALSE,worms
+thalassobathia pelagica,Chordata,phylum,1821,FALSE,worms
+thalassobathia pelagica,Vertebrata,subphylum,146419,FALSE,worms
+thalassobathia pelagica,Gnathostomata,infraphylum,1828,FALSE,worms
+thalassobathia pelagica,Osteichthyes,parvphylum,152352,FALSE,worms
+thalassobathia pelagica,Actinopterygii,gigaclass,10194,FALSE,worms
+thalassobathia pelagica,Actinopteri,class,843664,FALSE,worms
+thalassobathia pelagica,Teleostei,subclass,293496,FALSE,worms
+thalassobathia pelagica,Ophidiiformes,order,10314,FALSE,worms
+thalassobathia pelagica,Ophidiidae,family,125505,FALSE,worms
+thalassobathia pelagica,Neobythitinae,subfamily,154740,FALSE,worms
+thalassobathia pelagica,Thalassobathia,genus,125852,FALSE,worms
+thalassobathia pelagica,Thalassobathia pelagica,species,126660,FALSE,worms
+trachinotus goodei,Animalia,kingdom,2,FALSE,worms
+trachinotus goodei,Chordata,phylum,1821,FALSE,worms
+trachinotus goodei,Vertebrata,subphylum,146419,FALSE,worms
+trachinotus goodei,Gnathostomata,infraphylum,1828,FALSE,worms
+trachinotus goodei,Osteichthyes,parvphylum,152352,FALSE,worms
+trachinotus goodei,Actinopterygii,gigaclass,10194,FALSE,worms
+trachinotus goodei,Actinopteri,class,843664,FALSE,worms
+trachinotus goodei,Teleostei,subclass,293496,FALSE,worms
+trachinotus goodei,Carangiformes,order,1517532,FALSE,worms
+trachinotus goodei,Carangidae,family,125523,FALSE,worms
+trachinotus goodei,Trachinotus,genus,125945,FALSE,worms
+trachinotus goodei,Trachinotus goodei,species,159654,FALSE,worms
+trachinotus rhodopus,Animalia,kingdom,2,FALSE,worms
+trachinotus rhodopus,Chordata,phylum,1821,FALSE,worms
+trachinotus rhodopus,Vertebrata,subphylum,146419,FALSE,worms
+trachinotus rhodopus,Gnathostomata,infraphylum,1828,FALSE,worms
+trachinotus rhodopus,Osteichthyes,parvphylum,152352,FALSE,worms
+trachinotus rhodopus,Actinopterygii,gigaclass,10194,FALSE,worms
+trachinotus rhodopus,Actinopteri,class,843664,FALSE,worms
+trachinotus rhodopus,Teleostei,subclass,293496,FALSE,worms
+trachinotus rhodopus,Carangiformes,order,1517532,FALSE,worms
+trachinotus rhodopus,Carangidae,family,125523,FALSE,worms
+trachinotus rhodopus,Trachinotus,genus,125945,FALSE,worms
+trachinotus rhodopus,Trachinotus rhodopus,species,273297,FALSE,worms
+triglops forficatus,Animalia,kingdom,2,FALSE,worms
+triglops forficatus,Chordata,phylum,1821,FALSE,worms
+triglops forficatus,Vertebrata,subphylum,146419,FALSE,worms
+triglops forficatus,Gnathostomata,infraphylum,1828,FALSE,worms
+triglops forficatus,Osteichthyes,parvphylum,152352,FALSE,worms
+triglops forficatus,Actinopterygii,gigaclass,10194,FALSE,worms
+triglops forficatus,Actinopteri,class,843664,FALSE,worms
+triglops forficatus,Teleostei,subclass,293496,FALSE,worms
+triglops forficatus,Perciformes,order,11014,FALSE,worms
+triglops forficatus,Cottidae,family,125589,FALSE,worms
+triglops forficatus,Triglops,genus,126154,FALSE,worms
+triglops forficatus,Triglops forficatus,species,254530,FALSE,worms
+vanacampus vercoi,Animalia,kingdom,2,FALSE,worms
+vanacampus vercoi,Chordata,phylum,1821,FALSE,worms
+vanacampus vercoi,Vertebrata,subphylum,146419,FALSE,worms
+vanacampus vercoi,Gnathostomata,infraphylum,1828,FALSE,worms
+vanacampus vercoi,Osteichthyes,parvphylum,152352,FALSE,worms
+vanacampus vercoi,Actinopterygii,gigaclass,10194,FALSE,worms
+vanacampus vercoi,Actinopteri,class,843664,FALSE,worms
+vanacampus vercoi,Teleostei,subclass,293496,FALSE,worms
+vanacampus vercoi,Syngnathiformes,order,10327,FALSE,worms
+vanacampus vercoi,Syngnathidae,family,125606,FALSE,worms
+vanacampus vercoi,Syngnathinae,subfamily,154405,FALSE,worms
+vanacampus vercoi,Vanacampus,genus,271200,FALSE,worms
+vanacampus vercoi,Vanacampus vercoi,species,283130,FALSE,worms
+zanclorhynchus spinifer,Animalia,kingdom,2,FALSE,worms
+zanclorhynchus spinifer,Chordata,phylum,1821,FALSE,worms
+zanclorhynchus spinifer,Vertebrata,subphylum,146419,FALSE,worms
+zanclorhynchus spinifer,Gnathostomata,infraphylum,1828,FALSE,worms
+zanclorhynchus spinifer,Osteichthyes,parvphylum,152352,FALSE,worms
+zanclorhynchus spinifer,Actinopterygii,gigaclass,10194,FALSE,worms
+zanclorhynchus spinifer,Actinopteri,class,843664,FALSE,worms
+zanclorhynchus spinifer,Teleostei,subclass,293496,FALSE,worms
+zanclorhynchus spinifer,Perciformes,order,11014,FALSE,worms
+zanclorhynchus spinifer,Congiopodidae,family,154264,FALSE,worms
+zanclorhynchus spinifer,Zanclorhynchus,genus,234520,FALSE,worms
+zanclorhynchus spinifer,Zanclorhynchus spinifer,species,234683,FALSE,worms
+zebrias crossolepis,Animalia,kingdom,2,FALSE,worms
+zebrias crossolepis,Chordata,phylum,1821,FALSE,worms
+zebrias crossolepis,Vertebrata,subphylum,146419,FALSE,worms
+zebrias crossolepis,Gnathostomata,infraphylum,1828,FALSE,worms
+zebrias crossolepis,Osteichthyes,parvphylum,152352,FALSE,worms
+zebrias crossolepis,Actinopterygii,gigaclass,10194,FALSE,worms
+zebrias crossolepis,Actinopteri,class,843664,FALSE,worms
+zebrias crossolepis,Teleostei,subclass,293496,FALSE,worms
+zebrias crossolepis,Pleuronectiformes,order,10331,FALSE,worms
+zebrias crossolepis,Soleidae,family,125581,FALSE,worms
+zebrias crossolepis,Zebrias,genus,204665,FALSE,worms
+zebrias crossolepis,Zebrias crossolepis,species,277581,FALSE,worms
+zesticelus bathybius,Animalia,kingdom,2,FALSE,worms
+zesticelus bathybius,Chordata,phylum,1821,FALSE,worms
+zesticelus bathybius,Vertebrata,subphylum,146419,FALSE,worms
+zesticelus bathybius,Gnathostomata,infraphylum,1828,FALSE,worms
+zesticelus bathybius,Osteichthyes,parvphylum,152352,FALSE,worms
+zesticelus bathybius,Actinopterygii,gigaclass,10194,FALSE,worms
+zesticelus bathybius,Actinopteri,class,843664,FALSE,worms
+zesticelus bathybius,Teleostei,subclass,293496,FALSE,worms
+zesticelus bathybius,Perciformes,order,11014,FALSE,worms
+zesticelus bathybius,Cottidae,family,125589,FALSE,worms
+zesticelus bathybius,Zesticelus,genus,271279,FALSE,worms
+zesticelus bathybius,Zesticelus bathybius,species,283216,FALSE,worms
+arnoglossus rueppelii,Animalia,kingdom,2,FALSE,worms
+arnoglossus rueppelii,Chordata,phylum,1821,FALSE,worms
+arnoglossus rueppelii,Vertebrata,subphylum,146419,FALSE,worms
+arnoglossus rueppelii,Gnathostomata,infraphylum,1828,FALSE,worms
+arnoglossus rueppelii,Osteichthyes,parvphylum,152352,FALSE,worms
+arnoglossus rueppelii,Actinopterygii,gigaclass,10194,FALSE,worms
+arnoglossus rueppelii,Actinopteri,class,843664,FALSE,worms
+arnoglossus rueppelii,Teleostei,subclass,293496,FALSE,worms
+arnoglossus rueppelii,Pleuronectiformes,order,10331,FALSE,worms
+arnoglossus rueppelii,Bothidae,family,125576,FALSE,worms
+arnoglossus rueppelii,Arnoglossus,genus,126109,FALSE,worms
+arnoglossus rueppelii,Arnoglossus rueppelii,species,127127,FALSE,worms
+artediellichthys nigripinnis,Animalia,kingdom,2,FALSE,worms
+artediellichthys nigripinnis,Chordata,phylum,1821,FALSE,worms
+artediellichthys nigripinnis,Vertebrata,subphylum,146419,FALSE,worms
+artediellichthys nigripinnis,Gnathostomata,infraphylum,1828,FALSE,worms
+artediellichthys nigripinnis,Osteichthyes,parvphylum,152352,FALSE,worms
+artediellichthys nigripinnis,Actinopterygii,gigaclass,10194,FALSE,worms
+artediellichthys nigripinnis,Actinopteri,class,843664,FALSE,worms
+artediellichthys nigripinnis,Teleostei,subclass,293496,FALSE,worms
+artediellichthys nigripinnis,Perciformes,order,11014,FALSE,worms
+artediellichthys nigripinnis,Cottidae,family,125589,FALSE,worms
+artediellichthys nigripinnis,Artediellichthys,genus,268387,FALSE,worms
+artediellichthys nigripinnis,Artediellichthys nigripinnis,species,279696,FALSE,worms
+artedielloides auriculatus,Animalia,kingdom,2,FALSE,worms
+artedielloides auriculatus,Chordata,phylum,1821,FALSE,worms
+artedielloides auriculatus,Vertebrata,subphylum,146419,FALSE,worms
+artedielloides auriculatus,Gnathostomata,infraphylum,1828,FALSE,worms
+artedielloides auriculatus,Osteichthyes,parvphylum,152352,FALSE,worms
+artedielloides auriculatus,Actinopterygii,gigaclass,10194,FALSE,worms
+artedielloides auriculatus,Actinopteri,class,843664,FALSE,worms
+artedielloides auriculatus,Teleostei,subclass,293496,FALSE,worms
+artedielloides auriculatus,Perciformes,order,11014,FALSE,worms
+artedielloides auriculatus,Cottidae,family,125589,FALSE,worms
+artedielloides auriculatus,Artedielloides,genus,268389,FALSE,worms
+artedielloides auriculatus,Artedielloides auriculatus,species,279698,FALSE,worms
+austroglossus microlepis,Animalia,kingdom,2,FALSE,worms
+austroglossus microlepis,Chordata,phylum,1821,FALSE,worms
+austroglossus microlepis,Vertebrata,subphylum,146419,FALSE,worms
+austroglossus microlepis,Gnathostomata,infraphylum,1828,FALSE,worms
+austroglossus microlepis,Osteichthyes,parvphylum,152352,FALSE,worms
+austroglossus microlepis,Actinopterygii,gigaclass,10194,FALSE,worms
+austroglossus microlepis,Actinopteri,class,843664,FALSE,worms
+austroglossus microlepis,Teleostei,subclass,293496,FALSE,worms
+austroglossus microlepis,Pleuronectiformes,order,10331,FALSE,worms
+austroglossus microlepis,Soleidae,family,125581,FALSE,worms
+austroglossus microlepis,Austroglossus,genus,205867,FALSE,worms
+austroglossus microlepis,Austroglossus microlepis,species,219822,FALSE,worms
+bassozetus robustus,Animalia,kingdom,2,FALSE,worms
+bassozetus robustus,Chordata,phylum,1821,FALSE,worms
+bassozetus robustus,Vertebrata,subphylum,146419,FALSE,worms
+bassozetus robustus,Gnathostomata,infraphylum,1828,FALSE,worms
+bassozetus robustus,Osteichthyes,parvphylum,152352,FALSE,worms
+bassozetus robustus,Actinopterygii,gigaclass,10194,FALSE,worms
+bassozetus robustus,Actinopteri,class,843664,FALSE,worms
+bassozetus robustus,Teleostei,subclass,293496,FALSE,worms
+bassozetus robustus,Ophidiiformes,order,10314,FALSE,worms
+bassozetus robustus,Ophidiidae,family,125505,FALSE,worms
+bassozetus robustus,Neobythitinae,subfamily,154740,FALSE,worms
+bassozetus robustus,Bassozetus,genus,125856,FALSE,worms
+bassozetus robustus,Bassozetus robustus,species,217795,FALSE,worms
+batrachoides surinamensis,Animalia,kingdom,2,FALSE,worms
+batrachoides surinamensis,Chordata,phylum,1821,FALSE,worms
+batrachoides surinamensis,Vertebrata,subphylum,146419,FALSE,worms
+batrachoides surinamensis,Gnathostomata,infraphylum,1828,FALSE,worms
+batrachoides surinamensis,Osteichthyes,parvphylum,152352,FALSE,worms
+batrachoides surinamensis,Actinopterygii,gigaclass,10194,FALSE,worms
+batrachoides surinamensis,Actinopteri,class,843664,FALSE,worms
+batrachoides surinamensis,Teleostei,subclass,293496,FALSE,worms
+batrachoides surinamensis,Batrachoidiformes,order,10315,FALSE,worms
+batrachoides surinamensis,Batrachoididae,family,125450,FALSE,worms
+batrachoides surinamensis,Batrachoidinae,subfamily,714644,FALSE,worms
+batrachoides surinamensis,Batrachoides,genus,206102,FALSE,worms
+batrachoides surinamensis,Batrachoides surinamensis,species,278668,FALSE,worms
+benthocometes robustus,Animalia,kingdom,2,FALSE,worms
+benthocometes robustus,Chordata,phylum,1821,FALSE,worms
+benthocometes robustus,Vertebrata,subphylum,146419,FALSE,worms
+benthocometes robustus,Gnathostomata,infraphylum,1828,FALSE,worms
+benthocometes robustus,Osteichthyes,parvphylum,152352,FALSE,worms
+benthocometes robustus,Actinopterygii,gigaclass,10194,FALSE,worms
+benthocometes robustus,Actinopteri,class,843664,FALSE,worms
+benthocometes robustus,Teleostei,subclass,293496,FALSE,worms
+benthocometes robustus,Ophidiiformes,order,10314,FALSE,worms
+benthocometes robustus,Ophidiidae,family,125505,FALSE,worms
+benthocometes robustus,Neobythitinae,subfamily,154740,FALSE,worms
+benthocometes robustus,Benthocometes,genus,125858,FALSE,worms
+benthocometes robustus,Benthocometes robustus,species,126667,FALSE,worms
+benthosema pterotum,Animalia,kingdom,2,FALSE,worms
+benthosema pterotum,Chordata,phylum,1821,FALSE,worms
+benthosema pterotum,Vertebrata,subphylum,146419,FALSE,worms
+benthosema pterotum,Gnathostomata,infraphylum,1828,FALSE,worms
+benthosema pterotum,Osteichthyes,parvphylum,152352,FALSE,worms
+benthosema pterotum,Actinopterygii,gigaclass,10194,FALSE,worms
+benthosema pterotum,Actinopteri,class,843664,FALSE,worms
+benthosema pterotum,Teleostei,subclass,293496,FALSE,worms
+benthosema pterotum,Myctophiformes,order,10309,FALSE,worms
+benthosema pterotum,Myctophidae,family,125498,FALSE,worms
+benthosema pterotum,Benthosema,genus,125815,FALSE,worms
+benthosema pterotum,Benthosema pterotum,species,217680,FALSE,worms
+bhanotia nuda,Animalia,kingdom,2,FALSE,worms
+bhanotia nuda,Chordata,phylum,1821,FALSE,worms
+bhanotia nuda,Vertebrata,subphylum,146419,FALSE,worms
+bhanotia nuda,Gnathostomata,infraphylum,1828,FALSE,worms
+bhanotia nuda,Osteichthyes,parvphylum,152352,FALSE,worms
+bhanotia nuda,Actinopterygii,gigaclass,10194,FALSE,worms
+bhanotia nuda,Actinopteri,class,843664,FALSE,worms
+bhanotia nuda,Teleostei,subclass,293496,FALSE,worms
+bhanotia nuda,Syngnathiformes,order,10327,FALSE,worms
+bhanotia nuda,Syngnathidae,family,125606,FALSE,worms
+bhanotia nuda,Syngnathinae,subfamily,154405,FALSE,worms
+bhanotia nuda,Bhanotia,genus,268540,FALSE,worms
+bhanotia nuda,Bhanotia nuda,species,279909,FALSE,worms
+bothus mancus,Animalia,kingdom,2,FALSE,worms
+bothus mancus,Chordata,phylum,1821,FALSE,worms
+bothus mancus,Vertebrata,subphylum,146419,FALSE,worms
+bothus mancus,Gnathostomata,infraphylum,1828,FALSE,worms
+bothus mancus,Osteichthyes,parvphylum,152352,FALSE,worms
+bothus mancus,Actinopterygii,gigaclass,10194,FALSE,worms
+bothus mancus,Actinopteri,class,843664,FALSE,worms
+bothus mancus,Teleostei,subclass,293496,FALSE,worms
+bothus mancus,Pleuronectiformes,order,10331,FALSE,worms
+bothus mancus,Bothidae,family,125576,FALSE,worms
+bothus mancus,Bothus,genus,126110,FALSE,worms
+bothus mancus,Bothus mancus,species,219796,FALSE,worms
+brachirus harmandi,Animalia,kingdom,2,FALSE,worms
+brachirus harmandi,Chordata,phylum,1821,FALSE,worms
+brachirus harmandi,Vertebrata,subphylum,146419,FALSE,worms
+brachirus harmandi,Gnathostomata,infraphylum,1828,FALSE,worms
+brachirus harmandi,Osteichthyes,parvphylum,152352,FALSE,worms
+brachirus harmandi,Actinopterygii,gigaclass,10194,FALSE,worms
+brachirus harmandi,Actinopteri,class,843664,FALSE,worms
+brachirus harmandi,Teleostei,subclass,293496,FALSE,worms
+brachirus harmandi,Pleuronectiformes,order,10331,FALSE,worms
+brachirus harmandi,Soleidae,family,125581,FALSE,worms
+brachirus harmandi,Brachirus,genus,268574,FALSE,worms
+brachirus harmandi,Brachirus harmandi,species,279963,FALSE,worms
+brachirus sorsogonensis,Animalia,kingdom,2,FALSE,worms
+brachirus sorsogonensis,Chordata,phylum,1821,FALSE,worms
+brachirus sorsogonensis,Vertebrata,subphylum,146419,FALSE,worms
+brachirus sorsogonensis,Gnathostomata,infraphylum,1828,FALSE,worms
+brachirus sorsogonensis,Osteichthyes,parvphylum,152352,FALSE,worms
+brachirus sorsogonensis,Actinopterygii,gigaclass,10194,FALSE,worms
+brachirus sorsogonensis,Actinopteri,class,843664,FALSE,worms
+brachirus sorsogonensis,Teleostei,subclass,293496,FALSE,worms
+brachirus sorsogonensis,Pleuronectiformes,order,10331,FALSE,worms
+brachirus sorsogonensis,Soleidae,family,125581,FALSE,worms
+brachirus sorsogonensis,Brachirus,genus,268574,FALSE,worms
+brachirus sorsogonensis,Brachirus sorsogonensis,species,279971,FALSE,worms
+brachypleura novaezeelandiae,Animalia,kingdom,2,FALSE,worms
+brachypleura novaezeelandiae,Chordata,phylum,1821,FALSE,worms
+brachypleura novaezeelandiae,Vertebrata,subphylum,146419,FALSE,worms
+brachypleura novaezeelandiae,Gnathostomata,infraphylum,1828,FALSE,worms
+brachypleura novaezeelandiae,Osteichthyes,parvphylum,152352,FALSE,worms
+brachypleura novaezeelandiae,Actinopterygii,gigaclass,10194,FALSE,worms
+brachypleura novaezeelandiae,Actinopteri,class,843664,FALSE,worms
+brachypleura novaezeelandiae,Teleostei,subclass,293496,FALSE,worms
+brachypleura novaezeelandiae,Pleuronectiformes,order,10331,FALSE,worms
+brachypleura novaezeelandiae,Citharidae,family,125577,FALSE,worms
+brachypleura novaezeelandiae,Brachypleura,genus,268587,FALSE,worms
+brachypleura novaezeelandiae,Brachypleura novaezeelandiae,species,279986,FALSE,worms
+bryx veleronis,Animalia,kingdom,2,FALSE,worms
+bryx veleronis,Chordata,phylum,1821,FALSE,worms
+bryx veleronis,Vertebrata,subphylum,146419,FALSE,worms
+bryx veleronis,Gnathostomata,infraphylum,1828,FALSE,worms
+bryx veleronis,Osteichthyes,parvphylum,152352,FALSE,worms
+bryx veleronis,Actinopterygii,gigaclass,10194,FALSE,worms
+bryx veleronis,Actinopteri,class,843664,FALSE,worms
+bryx veleronis,Teleostei,subclass,293496,FALSE,worms
+bryx veleronis,Syngnathiformes,order,10327,FALSE,worms
+bryx veleronis,Syngnathidae,family,125606,FALSE,worms
+bryx veleronis,Syngnathinae,subfamily,154405,FALSE,worms
+bryx veleronis,Bryx,genus,159443,FALSE,worms
+bryx veleronis,Bryx veleronis,species,276236,FALSE,worms
+buglossidium luteum,Animalia,kingdom,2,FALSE,worms
+buglossidium luteum,Chordata,phylum,1821,FALSE,worms
+buglossidium luteum,Vertebrata,subphylum,146419,FALSE,worms
+buglossidium luteum,Gnathostomata,infraphylum,1828,FALSE,worms
+buglossidium luteum,Osteichthyes,parvphylum,152352,FALSE,worms
+buglossidium luteum,Actinopterygii,gigaclass,10194,FALSE,worms
+buglossidium luteum,Actinopteri,class,843664,FALSE,worms
+buglossidium luteum,Teleostei,subclass,293496,FALSE,worms
+buglossidium luteum,Pleuronectiformes,order,10331,FALSE,worms
+buglossidium luteum,Soleidae,family,125581,FALSE,worms
+buglossidium luteum,Buglossidium,genus,126127,FALSE,worms
+buglossidium luteum,Buglossidium luteum,species,127153,FALSE,worms
+calamopteryx jeb,Animalia,kingdom,2,FALSE,worms
+calamopteryx jeb,Chordata,phylum,1821,FALSE,worms
+calamopteryx jeb,Vertebrata,subphylum,146419,FALSE,worms
+calamopteryx jeb,Gnathostomata,infraphylum,1828,FALSE,worms
+calamopteryx jeb,Osteichthyes,parvphylum,152352,FALSE,worms
+calamopteryx jeb,Actinopterygii,gigaclass,10194,FALSE,worms
+calamopteryx jeb,Actinopteri,class,843664,FALSE,worms
+calamopteryx jeb,Teleostei,subclass,293496,FALSE,worms
+calamopteryx jeb,Ophidiiformes,order,10314,FALSE,worms
+calamopteryx jeb,Bythitidae,family,125503,FALSE,worms
+calamopteryx jeb,Bythitinae,subfamily,154743,FALSE,worms
+calamopteryx jeb,Calamopteryx,genus,268632,FALSE,worms
+calamopteryx jeb,Calamopteryx jeb,species,280020,FALSE,worms
+caranx crysos,Animalia,kingdom,2,FALSE,worms
+caranx crysos,Chordata,phylum,1821,FALSE,worms
+caranx crysos,Vertebrata,subphylum,146419,FALSE,worms
+caranx crysos,Gnathostomata,infraphylum,1828,FALSE,worms
+caranx crysos,Osteichthyes,parvphylum,152352,FALSE,worms
+caranx crysos,Actinopterygii,gigaclass,10194,FALSE,worms
+caranx crysos,Actinopteri,class,843664,FALSE,worms
+caranx crysos,Teleostei,subclass,293496,FALSE,worms
+caranx crysos,Carangiformes,order,1517532,FALSE,worms
+caranx crysos,Carangidae,family,125523,FALSE,worms
+caranx crysos,Caranx,genus,125936,FALSE,worms
+caranx crysos,Caranx crysos,species,126802,FALSE,worms
+caranx sexfasciatus,Animalia,kingdom,2,FALSE,worms
+caranx sexfasciatus,Chordata,phylum,1821,FALSE,worms
+caranx sexfasciatus,Vertebrata,subphylum,146419,FALSE,worms
+caranx sexfasciatus,Gnathostomata,infraphylum,1828,FALSE,worms
+caranx sexfasciatus,Osteichthyes,parvphylum,152352,FALSE,worms
+caranx sexfasciatus,Actinopterygii,gigaclass,10194,FALSE,worms
+caranx sexfasciatus,Actinopteri,class,843664,FALSE,worms
+caranx sexfasciatus,Teleostei,subclass,293496,FALSE,worms
+caranx sexfasciatus,Carangiformes,order,1517532,FALSE,worms
+caranx sexfasciatus,Carangidae,family,125523,FALSE,worms
+caranx sexfasciatus,Caranx,genus,125936,FALSE,worms
+caranx sexfasciatus,Caranx sexfasciatus,species,218404,FALSE,worms
+careproctus cactiformis,Animalia,kingdom,2,FALSE,worms
+careproctus cactiformis,Chordata,phylum,1821,FALSE,worms
+careproctus cactiformis,Vertebrata,subphylum,146419,FALSE,worms
+careproctus cactiformis,Gnathostomata,infraphylum,1828,FALSE,worms
+careproctus cactiformis,Osteichthyes,parvphylum,152352,FALSE,worms
+careproctus cactiformis,Actinopterygii,gigaclass,10194,FALSE,worms
+careproctus cactiformis,Actinopteri,class,843664,FALSE,worms
+careproctus cactiformis,Teleostei,subclass,293496,FALSE,worms
+careproctus cactiformis,Perciformes,order,11014,FALSE,worms
+careproctus cactiformis,Liparidae,family,234519,FALSE,worms
+careproctus cactiformis,Careproctus,genus,126156,FALSE,worms
+careproctus cactiformis,Careproctus cactiformis,species,274415,FALSE,worms
+careproctus herwigi,Animalia,kingdom,2,FALSE,worms
+careproctus herwigi,Chordata,phylum,1821,FALSE,worms
+careproctus herwigi,Vertebrata,subphylum,146419,FALSE,worms
+careproctus herwigi,Gnathostomata,infraphylum,1828,FALSE,worms
+careproctus herwigi,Osteichthyes,parvphylum,152352,FALSE,worms
+careproctus herwigi,Actinopterygii,gigaclass,10194,FALSE,worms
+careproctus herwigi,Actinopteri,class,843664,FALSE,worms
+careproctus herwigi,Teleostei,subclass,293496,FALSE,worms
+careproctus herwigi,Perciformes,order,11014,FALSE,worms
+careproctus herwigi,Liparidae,family,234519,FALSE,worms
+careproctus herwigi,Careproctus,genus,126156,FALSE,worms
+careproctus herwigi,Careproctus herwigi,species,274431,FALSE,worms
+careproctus mederi,Animalia,kingdom,2,FALSE,worms
+careproctus mederi,Chordata,phylum,1821,FALSE,worms
+careproctus mederi,Vertebrata,subphylum,146419,FALSE,worms
+careproctus mederi,Gnathostomata,infraphylum,1828,FALSE,worms
+careproctus mederi,Osteichthyes,parvphylum,152352,FALSE,worms
+careproctus mederi,Actinopterygii,gigaclass,10194,FALSE,worms
+careproctus mederi,Actinopteri,class,843664,FALSE,worms
+careproctus mederi,Teleostei,subclass,293496,FALSE,worms
+careproctus mederi,Perciformes,order,11014,FALSE,worms
+careproctus mederi,Liparidae,family,234519,FALSE,worms
+careproctus mederi,Careproctus,genus,126156,FALSE,worms
+careproctus mederi,Careproctus mederi,species,274444,FALSE,worms
+careproctus minimus,Animalia,kingdom,2,FALSE,worms
+careproctus minimus,Chordata,phylum,1821,FALSE,worms
+careproctus minimus,Vertebrata,subphylum,146419,FALSE,worms
+careproctus minimus,Gnathostomata,infraphylum,1828,FALSE,worms
+careproctus minimus,Osteichthyes,parvphylum,152352,FALSE,worms
+careproctus minimus,Actinopterygii,gigaclass,10194,FALSE,worms
+careproctus minimus,Actinopteri,class,843664,FALSE,worms
+careproctus minimus,Teleostei,subclass,293496,FALSE,worms
+careproctus minimus,Perciformes,order,11014,FALSE,worms
+careproctus minimus,Liparidae,family,234519,FALSE,worms
+careproctus minimus,Careproctus,genus,126156,FALSE,worms
+careproctus minimus,Careproctus minimus,species,274447,FALSE,worms
+careproctus pallidus,Animalia,kingdom,2,FALSE,worms
+careproctus pallidus,Chordata,phylum,1821,FALSE,worms
+careproctus pallidus,Vertebrata,subphylum,146419,FALSE,worms
+careproctus pallidus,Gnathostomata,infraphylum,1828,FALSE,worms
+careproctus pallidus,Osteichthyes,parvphylum,152352,FALSE,worms
+careproctus pallidus,Actinopterygii,gigaclass,10194,FALSE,worms
+careproctus pallidus,Actinopteri,class,843664,FALSE,worms
+careproctus pallidus,Teleostei,subclass,293496,FALSE,worms
+careproctus pallidus,Perciformes,order,11014,FALSE,worms
+careproctus pallidus,Liparidae,family,234519,FALSE,worms
+careproctus pallidus,Careproctus,genus,126156,FALSE,worms
+careproctus pallidus,Careproctus pallidus,species,274455,FALSE,worms
+centropogon latifrons,Animalia,kingdom,2,FALSE,worms
+centropogon latifrons,Chordata,phylum,1821,FALSE,worms
+centropogon latifrons,Vertebrata,subphylum,146419,FALSE,worms
+centropogon latifrons,Gnathostomata,infraphylum,1828,FALSE,worms
+centropogon latifrons,Osteichthyes,parvphylum,152352,FALSE,worms
+centropogon latifrons,Actinopterygii,gigaclass,10194,FALSE,worms
+centropogon latifrons,Actinopteri,class,843664,FALSE,worms
+centropogon latifrons,Teleostei,subclass,293496,FALSE,worms
+centropogon latifrons,Perciformes,order,11014,FALSE,worms
+centropogon latifrons,Tetrarogidae,family,154250,FALSE,worms
+centropogon latifrons,Centropogon,genus,268679,FALSE,worms
+centropogon latifrons,Centropogon latifrons,species,280057,FALSE,worms
+chascanopsetta crumenalis,Animalia,kingdom,2,FALSE,worms
+chascanopsetta crumenalis,Chordata,phylum,1821,FALSE,worms
+chascanopsetta crumenalis,Vertebrata,subphylum,146419,FALSE,worms
+chascanopsetta crumenalis,Gnathostomata,infraphylum,1828,FALSE,worms
+chascanopsetta crumenalis,Osteichthyes,parvphylum,152352,FALSE,worms
+chascanopsetta crumenalis,Actinopterygii,gigaclass,10194,FALSE,worms
+chascanopsetta crumenalis,Actinopteri,class,843664,FALSE,worms
+chascanopsetta crumenalis,Teleostei,subclass,293496,FALSE,worms
+chascanopsetta crumenalis,Pleuronectiformes,order,10331,FALSE,worms
+chascanopsetta crumenalis,Bothidae,family,125576,FALSE,worms
+chascanopsetta crumenalis,Chascanopsetta,genus,205496,FALSE,worms
+chascanopsetta crumenalis,Chascanopsetta crumenalis,species,278147,FALSE,worms
+cheilodipterus singapurensis,Animalia,kingdom,2,FALSE,worms
+cheilodipterus singapurensis,Chordata,phylum,1821,FALSE,worms
+cheilodipterus singapurensis,Vertebrata,subphylum,146419,FALSE,worms
+cheilodipterus singapurensis,Gnathostomata,infraphylum,1828,FALSE,worms
+cheilodipterus singapurensis,Osteichthyes,parvphylum,152352,FALSE,worms
+cheilodipterus singapurensis,Actinopterygii,gigaclass,10194,FALSE,worms
+cheilodipterus singapurensis,Actinopteri,class,843664,FALSE,worms
+cheilodipterus singapurensis,Teleostei,subclass,293496,FALSE,worms
+cheilodipterus singapurensis,Kurtiformes,order,1517499,FALSE,worms
+cheilodipterus singapurensis,Apogonidae,family,125518,FALSE,worms
+cheilodipterus singapurensis,Apogoninae,subfamily,267079,FALSE,worms
+cheilodipterus singapurensis,Cheilodipterus,genus,206449,FALSE,worms
+cheilodipterus singapurensis,Cheilodipterus singapurensis,species,278897,FALSE,worms
+chelidonichthys kumu,Animalia,kingdom,2,FALSE,worms
+chelidonichthys kumu,Chordata,phylum,1821,FALSE,worms
+chelidonichthys kumu,Vertebrata,subphylum,146419,FALSE,worms
+chelidonichthys kumu,Gnathostomata,infraphylum,1828,FALSE,worms
+chelidonichthys kumu,Osteichthyes,parvphylum,152352,FALSE,worms
+chelidonichthys kumu,Actinopterygii,gigaclass,10194,FALSE,worms
+chelidonichthys kumu,Actinopteri,class,843664,FALSE,worms
+chelidonichthys kumu,Teleostei,subclass,293496,FALSE,worms
+chelidonichthys kumu,Perciformes,order,11014,FALSE,worms
+chelidonichthys kumu,Triglidae,family,125598,FALSE,worms
+chelidonichthys kumu,Chelidonichthys,genus,126178,FALSE,worms
+chelidonichthys kumu,Chelidonichthys kumu,species,218122,FALSE,worms
+citharichthys gymnorhinus,Animalia,kingdom,2,FALSE,worms
+citharichthys gymnorhinus,Chordata,phylum,1821,FALSE,worms
+citharichthys gymnorhinus,Vertebrata,subphylum,146419,FALSE,worms
+citharichthys gymnorhinus,Gnathostomata,infraphylum,1828,FALSE,worms
+citharichthys gymnorhinus,Osteichthyes,parvphylum,152352,FALSE,worms
+citharichthys gymnorhinus,Actinopterygii,gigaclass,10194,FALSE,worms
+citharichthys gymnorhinus,Actinopteri,class,843664,FALSE,worms
+citharichthys gymnorhinus,Teleostei,subclass,293496,FALSE,worms
+citharichthys gymnorhinus,Pleuronectiformes,order,10331,FALSE,worms
+citharichthys gymnorhinus,Paralichthyidae,family,154168,FALSE,worms
+citharichthys gymnorhinus,Citharichthys,genus,158786,FALSE,worms
+citharichthys gymnorhinus,Citharichthys gymnorhinus,species,158793,FALSE,worms
+citharichthys mariajorisae,Animalia,kingdom,2,FALSE,worms
+citharichthys mariajorisae,Chordata,phylum,1821,FALSE,worms
+citharichthys mariajorisae,Vertebrata,subphylum,146419,FALSE,worms
+citharichthys mariajorisae,Gnathostomata,infraphylum,1828,FALSE,worms
+citharichthys mariajorisae,Osteichthyes,parvphylum,152352,FALSE,worms
+citharichthys mariajorisae,Actinopterygii,gigaclass,10194,FALSE,worms
+citharichthys mariajorisae,Actinopteri,class,843664,FALSE,worms
+citharichthys mariajorisae,Teleostei,subclass,293496,FALSE,worms
+citharichthys mariajorisae,Pleuronectiformes,order,10331,FALSE,worms
+citharichthys mariajorisae,Paralichthyidae,family,154168,FALSE,worms
+citharichthys mariajorisae,Citharichthys,genus,158786,FALSE,worms
+citharichthys mariajorisae,Citharichthys mariajorisae,species,275691,FALSE,worms
+clinocottus globiceps,Animalia,kingdom,2,FALSE,worms
+clinocottus globiceps,Chordata,phylum,1821,FALSE,worms
+clinocottus globiceps,Vertebrata,subphylum,146419,FALSE,worms
+clinocottus globiceps,Gnathostomata,infraphylum,1828,FALSE,worms
+clinocottus globiceps,Osteichthyes,parvphylum,152352,FALSE,worms
+clinocottus globiceps,Actinopterygii,gigaclass,10194,FALSE,worms
+clinocottus globiceps,Actinopteri,class,843664,FALSE,worms
+clinocottus globiceps,Teleostei,subclass,293496,FALSE,worms
+clinocottus globiceps,Perciformes,order,11014,FALSE,worms
+clinocottus globiceps,Cottidae,family,125589,FALSE,worms
+clinocottus globiceps,Clinocottus,genus,268796,FALSE,worms
+clinocottus globiceps,Clinocottus globiceps,species,280221,FALSE,worms
+cociella punctata,Animalia,kingdom,2,FALSE,worms
+cociella punctata,Chordata,phylum,1821,FALSE,worms
+cociella punctata,Vertebrata,subphylum,146419,FALSE,worms
+cociella punctata,Gnathostomata,infraphylum,1828,FALSE,worms
+cociella punctata,Osteichthyes,parvphylum,152352,FALSE,worms
+cociella punctata,Actinopterygii,gigaclass,10194,FALSE,worms
+cociella punctata,Actinopteri,class,843664,FALSE,worms
+cociella punctata,Teleostei,subclass,293496,FALSE,worms
+cociella punctata,Perciformes,order,11014,FALSE,worms
+cociella punctata,Platycephalidae,family,125593,FALSE,worms
+cociella punctata,Cociella,genus,205182,FALSE,worms
+cociella punctata,Cociella punctata,species,218136,FALSE,worms
+cocotropus roseus,Animalia,kingdom,2,FALSE,worms
+cocotropus roseus,Chordata,phylum,1821,FALSE,worms
+cocotropus roseus,Vertebrata,subphylum,146419,FALSE,worms
+cocotropus roseus,Gnathostomata,infraphylum,1828,FALSE,worms
+cocotropus roseus,Osteichthyes,parvphylum,152352,FALSE,worms
+cocotropus roseus,Actinopterygii,gigaclass,10194,FALSE,worms
+cocotropus roseus,Actinopteri,class,843664,FALSE,worms
+cocotropus roseus,Teleostei,subclass,293496,FALSE,worms
+cocotropus roseus,Perciformes,order,11014,FALSE,worms
+cocotropus roseus,Aploactinidae,family,154253,FALSE,worms
+cocotropus roseus,Cocotropus,genus,205144,FALSE,worms
+cocotropus roseus,Cocotropus roseus,species,277967,FALSE,worms
+congiopodus torvus,Animalia,kingdom,2,FALSE,worms
+congiopodus torvus,Chordata,phylum,1821,FALSE,worms
+congiopodus torvus,Vertebrata,subphylum,146419,FALSE,worms
+congiopodus torvus,Gnathostomata,infraphylum,1828,FALSE,worms
+congiopodus torvus,Osteichthyes,parvphylum,152352,FALSE,worms
+congiopodus torvus,Actinopterygii,gigaclass,10194,FALSE,worms
+congiopodus torvus,Actinopteri,class,843664,FALSE,worms
+congiopodus torvus,Teleostei,subclass,293496,FALSE,worms
+congiopodus torvus,Perciformes,order,11014,FALSE,worms
+congiopodus torvus,Congiopodidae,family,154264,FALSE,worms
+congiopodus torvus,Congiopodus,genus,205655,FALSE,worms
+congiopodus torvus,Congiopodus torvus,species,221442,FALSE,worms
+corythoichthys amplexus,Animalia,kingdom,2,FALSE,worms
+corythoichthys amplexus,Chordata,phylum,1821,FALSE,worms
+corythoichthys amplexus,Vertebrata,subphylum,146419,FALSE,worms
+corythoichthys amplexus,Gnathostomata,infraphylum,1828,FALSE,worms
+corythoichthys amplexus,Osteichthyes,parvphylum,152352,FALSE,worms
+corythoichthys amplexus,Actinopterygii,gigaclass,10194,FALSE,worms
+corythoichthys amplexus,Actinopteri,class,843664,FALSE,worms
+corythoichthys amplexus,Teleostei,subclass,293496,FALSE,worms
+corythoichthys amplexus,Syngnathiformes,order,10327,FALSE,worms
+corythoichthys amplexus,Syngnathidae,family,125606,FALSE,worms
+corythoichthys amplexus,Syngnathinae,subfamily,154405,FALSE,worms
+corythoichthys amplexus,Corythoichthys,genus,205735,FALSE,worms
+corythoichthys amplexus,Corythoichthys amplexus,species,217996,FALSE,worms
+cosmocampus elucens,Animalia,kingdom,2,FALSE,worms
+cosmocampus elucens,Chordata,phylum,1821,FALSE,worms
+cosmocampus elucens,Vertebrata,subphylum,146419,FALSE,worms
+cosmocampus elucens,Gnathostomata,infraphylum,1828,FALSE,worms
+cosmocampus elucens,Osteichthyes,parvphylum,152352,FALSE,worms
+cosmocampus elucens,Actinopterygii,gigaclass,10194,FALSE,worms
+cosmocampus elucens,Actinopteri,class,843664,FALSE,worms
+cosmocampus elucens,Teleostei,subclass,293496,FALSE,worms
+cosmocampus elucens,Syngnathiformes,order,10327,FALSE,worms
+cosmocampus elucens,Syngnathidae,family,125606,FALSE,worms
+cosmocampus elucens,Syngnathinae,subfamily,154405,FALSE,worms
+cosmocampus elucens,Cosmocampus,genus,205330,FALSE,worms
+cosmocampus elucens,Cosmocampus elucens,species,278059,FALSE,worms
+cynoglossus maccullochi,Animalia,kingdom,2,FALSE,worms
+cynoglossus maccullochi,Chordata,phylum,1821,FALSE,worms
+cynoglossus maccullochi,Vertebrata,subphylum,146419,FALSE,worms
+cynoglossus maccullochi,Gnathostomata,infraphylum,1828,FALSE,worms
+cynoglossus maccullochi,Osteichthyes,parvphylum,152352,FALSE,worms
+cynoglossus maccullochi,Actinopterygii,gigaclass,10194,FALSE,worms
+cynoglossus maccullochi,Actinopteri,class,843664,FALSE,worms
+cynoglossus maccullochi,Teleostei,subclass,293496,FALSE,worms
+cynoglossus maccullochi,Pleuronectiformes,order,10331,FALSE,worms
+cynoglossus maccullochi,Cynoglossidae,family,125578,FALSE,worms
+cynoglossus maccullochi,Cynoglossinae,subfamily,154690,FALSE,worms
+cynoglossus maccullochi,Cynoglossus,genus,126112,FALSE,worms
+cynoglossus maccullochi,Cynoglossus maccullochi,species,274208,FALSE,worms
+dactyloptena gilberti,Animalia,kingdom,2,FALSE,worms
+dactyloptena gilberti,Chordata,phylum,1821,FALSE,worms
+dactyloptena gilberti,Vertebrata,subphylum,146419,FALSE,worms
+dactyloptena gilberti,Gnathostomata,infraphylum,1828,FALSE,worms
+dactyloptena gilberti,Osteichthyes,parvphylum,152352,FALSE,worms
+dactyloptena gilberti,Actinopterygii,gigaclass,10194,FALSE,worms
+dactyloptena gilberti,Actinopteri,class,843664,FALSE,worms
+dactyloptena gilberti,Teleostei,subclass,293496,FALSE,worms
+dactyloptena gilberti,Dactylopteriformes,order,1517495,FALSE,worms
+dactyloptena gilberti,Dactylopteridae,family,125591,FALSE,worms
+dactyloptena gilberti,Dactyloptena,genus,205762,FALSE,worms
+dactyloptena gilberti,Dactyloptena gilberti,species,218159,FALSE,worms
+daector dowi,Animalia,kingdom,2,FALSE,worms
+daector dowi,Chordata,phylum,1821,FALSE,worms
+daector dowi,Vertebrata,subphylum,146419,FALSE,worms
+daector dowi,Gnathostomata,infraphylum,1828,FALSE,worms
+daector dowi,Osteichthyes,parvphylum,152352,FALSE,worms
+daector dowi,Actinopterygii,gigaclass,10194,FALSE,worms
+daector dowi,Actinopteri,class,843664,FALSE,worms
+daector dowi,Teleostei,subclass,293496,FALSE,worms
+daector dowi,Batrachoidiformes,order,10315,FALSE,worms
+daector dowi,Batrachoididae,family,125450,FALSE,worms
+daector dowi,Thalassophryninae,subfamily,714642,FALSE,worms
+daector dowi,Daector,genus,268942,FALSE,worms
+daector dowi,Daector dowi,species,280479,FALSE,worms
+decapterus russelli,Animalia,kingdom,2,FALSE,worms
+decapterus russelli,Chordata,phylum,1821,FALSE,worms
+decapterus russelli,Vertebrata,subphylum,146419,FALSE,worms
+decapterus russelli,Gnathostomata,infraphylum,1828,FALSE,worms
+decapterus russelli,Osteichthyes,parvphylum,152352,FALSE,worms
+decapterus russelli,Actinopterygii,gigaclass,10194,FALSE,worms
+decapterus russelli,Actinopteri,class,843664,FALSE,worms
+decapterus russelli,Teleostei,subclass,293496,FALSE,worms
+decapterus russelli,Carangiformes,order,1517532,FALSE,worms
+decapterus russelli,Carangidae,family,125523,FALSE,worms
+decapterus russelli,Decapterus,genus,125937,FALSE,worms
+decapterus russelli,Decapterus russelli,species,218427,FALSE,worms
+dermatopsoides talboti,Animalia,kingdom,2,FALSE,worms
+dermatopsoides talboti,Chordata,phylum,1821,FALSE,worms
+dermatopsoides talboti,Vertebrata,subphylum,146419,FALSE,worms
+dermatopsoides talboti,Gnathostomata,infraphylum,1828,FALSE,worms
+dermatopsoides talboti,Osteichthyes,parvphylum,152352,FALSE,worms
+dermatopsoides talboti,Actinopterygii,gigaclass,10194,FALSE,worms
+dermatopsoides talboti,Actinopteri,class,843664,FALSE,worms
+dermatopsoides talboti,Teleostei,subclass,293496,FALSE,worms
+dermatopsoides talboti,Ophidiiformes,order,10314,FALSE,worms
+dermatopsoides talboti,Bythitidae,family,125503,FALSE,worms
+dermatopsoides talboti,Brosmophycinae,subfamily,154744,FALSE,worms
+dermatopsoides talboti,Dermatopsoides,genus,206868,FALSE,worms
+dermatopsoides talboti,Dermatopsoides talboti,species,220361,FALSE,worms
+diancistrus novaeguineae,Animalia,kingdom,2,FALSE,worms
+diancistrus novaeguineae,Chordata,phylum,1821,FALSE,worms
+diancistrus novaeguineae,Vertebrata,subphylum,146419,FALSE,worms
+diancistrus novaeguineae,Gnathostomata,infraphylum,1828,FALSE,worms
+diancistrus novaeguineae,Osteichthyes,parvphylum,152352,FALSE,worms
+diancistrus novaeguineae,Actinopterygii,gigaclass,10194,FALSE,worms
+diancistrus novaeguineae,Actinopteri,class,843664,FALSE,worms
+diancistrus novaeguineae,Teleostei,subclass,293496,FALSE,worms
+diancistrus novaeguineae,Ophidiiformes,order,10314,FALSE,worms
+diancistrus novaeguineae,Bythitidae,family,125503,FALSE,worms
+diancistrus novaeguineae,Brosmophycinae,subfamily,154744,FALSE,worms
+diancistrus novaeguineae,Diancistrus,genus,268981,FALSE,worms
+diancistrus novaeguineae,Diancistrus novaeguineae,species,280540,FALSE,worms
+diaphus diadematus,Animalia,kingdom,2,FALSE,worms
+diaphus diadematus,Chordata,phylum,1821,FALSE,worms
+diaphus diadematus,Vertebrata,subphylum,146419,FALSE,worms
+diaphus diadematus,Gnathostomata,infraphylum,1828,FALSE,worms
+diaphus diadematus,Osteichthyes,parvphylum,152352,FALSE,worms
+diaphus diadematus,Actinopterygii,gigaclass,10194,FALSE,worms
+diaphus diadematus,Actinopteri,class,843664,FALSE,worms
+diaphus diadematus,Teleostei,subclass,293496,FALSE,worms
+diaphus diadematus,Myctophiformes,order,10309,FALSE,worms
+diaphus diadematus,Myctophidae,family,125498,FALSE,worms
+diaphus diadematus,Diaphus,genus,125819,FALSE,worms
+diaphus diadematus,Diaphus diadematus,species,217690,FALSE,worms
+diaphus holti,Animalia,kingdom,2,FALSE,worms
+diaphus holti,Chordata,phylum,1821,FALSE,worms
+diaphus holti,Vertebrata,subphylum,146419,FALSE,worms
+diaphus holti,Gnathostomata,infraphylum,1828,FALSE,worms
+diaphus holti,Osteichthyes,parvphylum,152352,FALSE,worms
+diaphus holti,Actinopterygii,gigaclass,10194,FALSE,worms
+diaphus holti,Actinopteri,class,843664,FALSE,worms
+diaphus holti,Teleostei,subclass,293496,FALSE,worms
+diaphus holti,Myctophiformes,order,10309,FALSE,worms
+diaphus holti,Myctophidae,family,125498,FALSE,worms
+diaphus holti,Diaphus,genus,125819,FALSE,worms
+diaphus holti,Diaphus holti,species,126592,FALSE,worms
+diaphus rafinesquii,Animalia,kingdom,2,FALSE,worms
+diaphus rafinesquii,Chordata,phylum,1821,FALSE,worms
+diaphus rafinesquii,Vertebrata,subphylum,146419,FALSE,worms
+diaphus rafinesquii,Gnathostomata,infraphylum,1828,FALSE,worms
+diaphus rafinesquii,Osteichthyes,parvphylum,152352,FALSE,worms
+diaphus rafinesquii,Actinopterygii,gigaclass,10194,FALSE,worms
+diaphus rafinesquii,Actinopteri,class,843664,FALSE,worms
+diaphus rafinesquii,Teleostei,subclass,293496,FALSE,worms
+diaphus rafinesquii,Myctophiformes,order,10309,FALSE,worms
+diaphus rafinesquii,Myctophidae,family,125498,FALSE,worms
+diaphus rafinesquii,Diaphus,genus,125819,FALSE,worms
+diaphus rafinesquii,Diaphus rafinesquii,species,126596,FALSE,worms
+dicologlossa cuneata,Animalia,kingdom,2,FALSE,worms
+dicologlossa cuneata,Chordata,phylum,1821,FALSE,worms
+dicologlossa cuneata,Vertebrata,subphylum,146419,FALSE,worms
+dicologlossa cuneata,Gnathostomata,infraphylum,1828,FALSE,worms
+dicologlossa cuneata,Osteichthyes,parvphylum,152352,FALSE,worms
+dicologlossa cuneata,Actinopterygii,gigaclass,10194,FALSE,worms
+dicologlossa cuneata,Actinopteri,class,843664,FALSE,worms
+dicologlossa cuneata,Teleostei,subclass,293496,FALSE,worms
+dicologlossa cuneata,Pleuronectiformes,order,10331,FALSE,worms
+dicologlossa cuneata,Soleidae,family,125581,FALSE,worms
+dicologlossa cuneata,Dicologlossa,genus,126128,FALSE,worms
+dicologlossa cuneata,Dicologlossa cuneata,species,127154,FALSE,worms
+dicrolene hubrechti,Animalia,kingdom,2,FALSE,worms
+dicrolene hubrechti,Chordata,phylum,1821,FALSE,worms
+dicrolene hubrechti,Vertebrata,subphylum,146419,FALSE,worms
+dicrolene hubrechti,Gnathostomata,infraphylum,1828,FALSE,worms
+dicrolene hubrechti,Osteichthyes,parvphylum,152352,FALSE,worms
+dicrolene hubrechti,Actinopterygii,gigaclass,10194,FALSE,worms
+dicrolene hubrechti,Actinopteri,class,843664,FALSE,worms
+dicrolene hubrechti,Teleostei,subclass,293496,FALSE,worms
+dicrolene hubrechti,Ophidiiformes,order,10314,FALSE,worms
+dicrolene hubrechti,Ophidiidae,family,125505,FALSE,worms
+dicrolene hubrechti,Neobythitinae,subfamily,154740,FALSE,worms
+dicrolene hubrechti,Dicrolene,genus,159129,FALSE,worms
+dicrolene hubrechti,Dicrolene hubrechti,species,275894,FALSE,worms
+dicrolene multifilis,Animalia,kingdom,2,FALSE,worms
+dicrolene multifilis,Chordata,phylum,1821,FALSE,worms
+dicrolene multifilis,Vertebrata,subphylum,146419,FALSE,worms
+dicrolene multifilis,Gnathostomata,infraphylum,1828,FALSE,worms
+dicrolene multifilis,Osteichthyes,parvphylum,152352,FALSE,worms
+dicrolene multifilis,Actinopterygii,gigaclass,10194,FALSE,worms
+dicrolene multifilis,Actinopteri,class,843664,FALSE,worms
+dicrolene multifilis,Teleostei,subclass,293496,FALSE,worms
+dicrolene multifilis,Ophidiiformes,order,10314,FALSE,worms
+dicrolene multifilis,Ophidiidae,family,125505,FALSE,worms
+dicrolene multifilis,Neobythitinae,subfamily,154740,FALSE,worms
+dicrolene multifilis,Dicrolene,genus,159129,FALSE,worms
+dicrolene multifilis,Dicrolene multifilis,species,217799,FALSE,worms
+dicrolene nigra,Animalia,kingdom,2,FALSE,worms
+dicrolene nigra,Chordata,phylum,1821,FALSE,worms
+dicrolene nigra,Vertebrata,subphylum,146419,FALSE,worms
+dicrolene nigra,Gnathostomata,infraphylum,1828,FALSE,worms
+dicrolene nigra,Osteichthyes,parvphylum,152352,FALSE,worms
+dicrolene nigra,Actinopterygii,gigaclass,10194,FALSE,worms
+dicrolene nigra,Actinopteri,class,843664,FALSE,worms
+dicrolene nigra,Teleostei,subclass,293496,FALSE,worms
+dicrolene nigra,Ophidiiformes,order,10314,FALSE,worms
+dicrolene nigra,Ophidiidae,family,125505,FALSE,worms
+dicrolene nigra,Neobythitinae,subfamily,154740,FALSE,worms
+dicrolene nigra,Dicrolene,genus,159129,FALSE,worms
+dicrolene nigra,Dicrolene nigra,species,275899,FALSE,worms
+doryrhamphus janssi,Animalia,kingdom,2,FALSE,worms
+doryrhamphus janssi,Chordata,phylum,1821,FALSE,worms
+doryrhamphus janssi,Vertebrata,subphylum,146419,FALSE,worms
+doryrhamphus janssi,Gnathostomata,infraphylum,1828,FALSE,worms
+doryrhamphus janssi,Osteichthyes,parvphylum,152352,FALSE,worms
+doryrhamphus janssi,Actinopterygii,gigaclass,10194,FALSE,worms
+doryrhamphus janssi,Actinopteri,class,843664,FALSE,worms
+doryrhamphus janssi,Teleostei,subclass,293496,FALSE,worms
+doryrhamphus janssi,Syngnathiformes,order,10327,FALSE,worms
+doryrhamphus janssi,Syngnathidae,family,125606,FALSE,worms
+doryrhamphus janssi,Syngnathinae,subfamily,154405,FALSE,worms
+doryrhamphus janssi,Doryrhamphus,genus,206681,FALSE,worms
+doryrhamphus janssi,Doryrhamphus janssi,species,279103,FALSE,worms
+ebinania brephocephala,Animalia,kingdom,2,FALSE,worms
+ebinania brephocephala,Chordata,phylum,1821,FALSE,worms
+ebinania brephocephala,Vertebrata,subphylum,146419,FALSE,worms
+ebinania brephocephala,Gnathostomata,infraphylum,1828,FALSE,worms
+ebinania brephocephala,Osteichthyes,parvphylum,152352,FALSE,worms
+ebinania brephocephala,Actinopterygii,gigaclass,10194,FALSE,worms
+ebinania brephocephala,Actinopteri,class,843664,FALSE,worms
+ebinania brephocephala,Teleostei,subclass,293496,FALSE,worms
+ebinania brephocephala,Perciformes,order,11014,FALSE,worms
+ebinania brephocephala,Psychrolutidae,family,125594,FALSE,worms
+ebinania brephocephala,Ebinania,genus,126168,FALSE,worms
+ebinania brephocephala,Ebinania brephocephala,species,274670,FALSE,worms
+enophrys taurina,Animalia,kingdom,2,FALSE,worms
+enophrys taurina,Chordata,phylum,1821,FALSE,worms
+enophrys taurina,Vertebrata,subphylum,146419,FALSE,worms
+enophrys taurina,Gnathostomata,infraphylum,1828,FALSE,worms
+enophrys taurina,Osteichthyes,parvphylum,152352,FALSE,worms
+enophrys taurina,Actinopterygii,gigaclass,10194,FALSE,worms
+enophrys taurina,Actinopteri,class,843664,FALSE,worms
+enophrys taurina,Teleostei,subclass,293496,FALSE,worms
+enophrys taurina,Perciformes,order,11014,FALSE,worms
+enophrys taurina,Cottidae,family,125589,FALSE,worms
+enophrys taurina,Enophrys,genus,154468,FALSE,worms
+enophrys taurina,Enophrys taurina,species,275356,FALSE,worms
+eopsetta jordani,Animalia,kingdom,2,FALSE,worms
+eopsetta jordani,Chordata,phylum,1821,FALSE,worms
+eopsetta jordani,Vertebrata,subphylum,146419,FALSE,worms
+eopsetta jordani,Gnathostomata,infraphylum,1828,FALSE,worms
+eopsetta jordani,Osteichthyes,parvphylum,152352,FALSE,worms
+eopsetta jordani,Actinopterygii,gigaclass,10194,FALSE,worms
+eopsetta jordani,Actinopteri,class,843664,FALSE,worms
+eopsetta jordani,Teleostei,subclass,293496,FALSE,worms
+eopsetta jordani,Pleuronectiformes,order,10331,FALSE,worms
+eopsetta jordani,Pleuronectidae,family,125579,FALSE,worms
+eopsetta jordani,Pleuronectinae,subfamily,154687,FALSE,worms
+eopsetta jordani,Eopsetta,genus,269080,FALSE,worms
+eopsetta jordani,Eopsetta jordani,species,280690,FALSE,worms
+erisphex pottii,Animalia,kingdom,2,FALSE,worms
+erisphex pottii,Chordata,phylum,1821,FALSE,worms
+erisphex pottii,Vertebrata,subphylum,146419,FALSE,worms
+erisphex pottii,Gnathostomata,infraphylum,1828,FALSE,worms
+erisphex pottii,Osteichthyes,parvphylum,152352,FALSE,worms
+erisphex pottii,Actinopterygii,gigaclass,10194,FALSE,worms
+erisphex pottii,Actinopteri,class,843664,FALSE,worms
+erisphex pottii,Teleostei,subclass,293496,FALSE,worms
+erisphex pottii,Perciformes,order,11014,FALSE,worms
+erisphex pottii,Aploactinidae,family,154253,FALSE,worms
+erisphex pottii,Erisphex,genus,269102,FALSE,worms
+erisphex pottii,Erisphex pottii,species,280703,FALSE,worms
+etropus rimosus,Animalia,kingdom,2,FALSE,worms
+etropus rimosus,Chordata,phylum,1821,FALSE,worms
+etropus rimosus,Vertebrata,subphylum,146419,FALSE,worms
+etropus rimosus,Gnathostomata,infraphylum,1828,FALSE,worms
+etropus rimosus,Osteichthyes,parvphylum,152352,FALSE,worms
+etropus rimosus,Actinopterygii,gigaclass,10194,FALSE,worms
+etropus rimosus,Actinopteri,class,843664,FALSE,worms
+etropus rimosus,Teleostei,subclass,293496,FALSE,worms
+etropus rimosus,Pleuronectiformes,order,10331,FALSE,worms
+etropus rimosus,Paralichthyidae,family,154168,FALSE,worms
+etropus rimosus,Etropus,genus,158797,FALSE,worms
+etropus rimosus,Etropus rimosus,species,158802,FALSE,worms
+eumicrotremus barbatus,Animalia,kingdom,2,FALSE,worms
+eumicrotremus barbatus,Chordata,phylum,1821,FALSE,worms
+eumicrotremus barbatus,Vertebrata,subphylum,146419,FALSE,worms
+eumicrotremus barbatus,Gnathostomata,infraphylum,1828,FALSE,worms
+eumicrotremus barbatus,Osteichthyes,parvphylum,152352,FALSE,worms
+eumicrotremus barbatus,Actinopterygii,gigaclass,10194,FALSE,worms
+eumicrotremus barbatus,Actinopteri,class,843664,FALSE,worms
+eumicrotremus barbatus,Teleostei,subclass,293496,FALSE,worms
+eumicrotremus barbatus,Perciformes,order,11014,FALSE,worms
+eumicrotremus barbatus,Cyclopteridae,family,125590,FALSE,worms
+eumicrotremus barbatus,Eumicrotremus,genus,126159,FALSE,worms
+eumicrotremus barbatus,Eumicrotremus barbatus,species,254534,FALSE,worms
+foa madagascariensis,Animalia,kingdom,2,FALSE,worms
+foa madagascariensis,Chordata,phylum,1821,FALSE,worms
+foa madagascariensis,Vertebrata,subphylum,146419,FALSE,worms
+foa madagascariensis,Gnathostomata,infraphylum,1828,FALSE,worms
+foa madagascariensis,Osteichthyes,parvphylum,152352,FALSE,worms
+foa madagascariensis,Actinopterygii,gigaclass,10194,FALSE,worms
+foa madagascariensis,Actinopteri,class,843664,FALSE,worms
+foa madagascariensis,Teleostei,subclass,293496,FALSE,worms
+foa madagascariensis,Kurtiformes,order,1517499,FALSE,worms
+foa madagascariensis,Apogonidae,family,125518,FALSE,worms
+foa madagascariensis,Apogoninae,subfamily,267079,FALSE,worms
+foa madagascariensis,Foa,genus,206869,FALSE,worms
+foa madagascariensis,Foa madagascariensis,species,209400,FALSE,worms
+grammonus robustus,Animalia,kingdom,2,FALSE,worms
+grammonus robustus,Chordata,phylum,1821,FALSE,worms
+grammonus robustus,Vertebrata,subphylum,146419,FALSE,worms
+grammonus robustus,Gnathostomata,infraphylum,1828,FALSE,worms
+grammonus robustus,Osteichthyes,parvphylum,152352,FALSE,worms
+grammonus robustus,Actinopterygii,gigaclass,10194,FALSE,worms
+grammonus robustus,Actinopteri,class,843664,FALSE,worms
+grammonus robustus,Teleostei,subclass,293496,FALSE,worms
+grammonus robustus,Ophidiiformes,order,10314,FALSE,worms
+grammonus robustus,Bythitidae,family,125503,FALSE,worms
+grammonus robustus,Bythitinae,subfamily,154743,FALSE,worms
+grammonus robustus,Grammonus,genus,125850,FALSE,worms
+grammonus robustus,Grammonus robustus,species,272772,FALSE,worms
+gymnapogon melanogaster,Animalia,kingdom,2,FALSE,worms
+gymnapogon melanogaster,Chordata,phylum,1821,FALSE,worms
+gymnapogon melanogaster,Vertebrata,subphylum,146419,FALSE,worms
+gymnapogon melanogaster,Gnathostomata,infraphylum,1828,FALSE,worms
+gymnapogon melanogaster,Osteichthyes,parvphylum,152352,FALSE,worms
+gymnapogon melanogaster,Actinopterygii,gigaclass,10194,FALSE,worms
+gymnapogon melanogaster,Actinopteri,class,843664,FALSE,worms
+gymnapogon melanogaster,Teleostei,subclass,293496,FALSE,worms
+gymnapogon melanogaster,Kurtiformes,order,1517499,FALSE,worms
+gymnapogon melanogaster,Apogonidae,family,125518,FALSE,worms
+gymnapogon melanogaster,Pseudamiinae,subfamily,826591,FALSE,worms
+gymnapogon melanogaster,Gymnapogon,genus,206221,FALSE,worms
+gymnapogon melanogaster,Gymnapogon melanogaster,species,278711,FALSE,worms
+hephthocara simum,Animalia,kingdom,2,FALSE,worms
+hephthocara simum,Chordata,phylum,1821,FALSE,worms
+hephthocara simum,Vertebrata,subphylum,146419,FALSE,worms
+hephthocara simum,Gnathostomata,infraphylum,1828,FALSE,worms
+hephthocara simum,Osteichthyes,parvphylum,152352,FALSE,worms
+hephthocara simum,Actinopterygii,gigaclass,10194,FALSE,worms
+hephthocara simum,Actinopteri,class,843664,FALSE,worms
+hephthocara simum,Teleostei,subclass,293496,FALSE,worms
+hephthocara simum,Ophidiiformes,order,10314,FALSE,worms
+hephthocara simum,Bythitidae,family,125503,FALSE,worms
+hephthocara simum,Bythitinae,subfamily,154743,FALSE,worms
+hephthocara simum,Hephthocara,genus,269375,FALSE,worms
+hephthocara simum,Hephthocara simum,species,281045,FALSE,worms
+hippichthys spicifer,Animalia,kingdom,2,FALSE,worms
+hippichthys spicifer,Chordata,phylum,1821,FALSE,worms
+hippichthys spicifer,Vertebrata,subphylum,146419,FALSE,worms
+hippichthys spicifer,Gnathostomata,infraphylum,1828,FALSE,worms
+hippichthys spicifer,Osteichthyes,parvphylum,152352,FALSE,worms
+hippichthys spicifer,Actinopterygii,gigaclass,10194,FALSE,worms
+hippichthys spicifer,Actinopteri,class,843664,FALSE,worms
+hippichthys spicifer,Teleostei,subclass,293496,FALSE,worms
+hippichthys spicifer,Syngnathiformes,order,10327,FALSE,worms
+hippichthys spicifer,Syngnathidae,family,125606,FALSE,worms
+hippichthys spicifer,Syngnathinae,subfamily,154405,FALSE,worms
+hippichthys spicifer,Hippichthys,genus,204211,FALSE,worms
+hippichthys spicifer,Hippichthys spicifer,species,218016,FALSE,worms
+hippocampus ingens,Animalia,kingdom,2,FALSE,worms
+hippocampus ingens,Chordata,phylum,1821,FALSE,worms
+hippocampus ingens,Vertebrata,subphylum,146419,FALSE,worms
+hippocampus ingens,Gnathostomata,infraphylum,1828,FALSE,worms
+hippocampus ingens,Osteichthyes,parvphylum,152352,FALSE,worms
+hippocampus ingens,Actinopterygii,gigaclass,10194,FALSE,worms
+hippocampus ingens,Actinopteri,class,843664,FALSE,worms
+hippocampus ingens,Teleostei,subclass,293496,FALSE,worms
+hippocampus ingens,Syngnathiformes,order,10327,FALSE,worms
+hippocampus ingens,Syngnathidae,family,125606,FALSE,worms
+hippocampus ingens,Hippocampinae,subfamily,154406,FALSE,worms
+hippocampus ingens,Hippocampus,genus,126224,FALSE,worms
+hippocampus ingens,Hippocampus ingens,species,275197,FALSE,worms
+hippocampus sindonis,Animalia,kingdom,2,FALSE,worms
+hippocampus sindonis,Chordata,phylum,1821,FALSE,worms
+hippocampus sindonis,Vertebrata,subphylum,146419,FALSE,worms
+hippocampus sindonis,Gnathostomata,infraphylum,1828,FALSE,worms
+hippocampus sindonis,Osteichthyes,parvphylum,152352,FALSE,worms
+hippocampus sindonis,Actinopterygii,gigaclass,10194,FALSE,worms
+hippocampus sindonis,Actinopteri,class,843664,FALSE,worms
+hippocampus sindonis,Teleostei,subclass,293496,FALSE,worms
+hippocampus sindonis,Syngnathiformes,order,10327,FALSE,worms
+hippocampus sindonis,Syngnathidae,family,125606,FALSE,worms
+hippocampus sindonis,Hippocampinae,subfamily,154406,FALSE,worms
+hippocampus sindonis,Hippocampus,genus,126224,FALSE,worms
+hippocampus sindonis,Hippocampus sindonis,species,275209,FALSE,worms
+hippoglossina stomata,Animalia,kingdom,2,FALSE,worms
+hippoglossina stomata,Chordata,phylum,1821,FALSE,worms
+hippoglossina stomata,Vertebrata,subphylum,146419,FALSE,worms
+hippoglossina stomata,Gnathostomata,infraphylum,1828,FALSE,worms
+hippoglossina stomata,Osteichthyes,parvphylum,152352,FALSE,worms
+hippoglossina stomata,Actinopterygii,gigaclass,10194,FALSE,worms
+hippoglossina stomata,Actinopteri,class,843664,FALSE,worms
+hippoglossina stomata,Teleostei,subclass,293496,FALSE,worms
+hippoglossina stomata,Pleuronectiformes,order,10331,FALSE,worms
+hippoglossina stomata,Paralichthyidae,family,154168,FALSE,worms
+hippoglossina stomata,Hippoglossina,genus,158831,FALSE,worms
+hippoglossina stomata,Hippoglossina stomata,species,275827,FALSE,worms
+icelinus filamentosus,Animalia,kingdom,2,FALSE,worms
+icelinus filamentosus,Chordata,phylum,1821,FALSE,worms
+icelinus filamentosus,Vertebrata,subphylum,146419,FALSE,worms
+icelinus filamentosus,Gnathostomata,infraphylum,1828,FALSE,worms
+icelinus filamentosus,Osteichthyes,parvphylum,152352,FALSE,worms
+icelinus filamentosus,Actinopterygii,gigaclass,10194,FALSE,worms
+icelinus filamentosus,Actinopteri,class,843664,FALSE,worms
+icelinus filamentosus,Teleostei,subclass,293496,FALSE,worms
+icelinus filamentosus,Perciformes,order,11014,FALSE,worms
+icelinus filamentosus,Cottidae,family,125589,FALSE,worms
+icelinus filamentosus,Icelinus,genus,269476,FALSE,worms
+icelinus filamentosus,Icelinus filamentosus,species,281136,FALSE,worms
+inimicus caledonicus,Animalia,kingdom,2,FALSE,worms
+inimicus caledonicus,Chordata,phylum,1821,FALSE,worms
+inimicus caledonicus,Vertebrata,subphylum,146419,FALSE,worms
+inimicus caledonicus,Gnathostomata,infraphylum,1828,FALSE,worms
+inimicus caledonicus,Osteichthyes,parvphylum,152352,FALSE,worms
+inimicus caledonicus,Actinopterygii,gigaclass,10194,FALSE,worms
+inimicus caledonicus,Actinopteri,class,843664,FALSE,worms
+inimicus caledonicus,Teleostei,subclass,293496,FALSE,worms
+inimicus caledonicus,Perciformes,order,11014,FALSE,worms
+inimicus caledonicus,Synanceiidae,family,154251,FALSE,worms
+inimicus caledonicus,Choridactylinae,subfamily,154412,FALSE,worms
+inimicus caledonicus,Inimicus,genus,206016,FALSE,worms
+inimicus caledonicus,Inimicus caledonicus,species,212581,FALSE,worms
+krefftichthys anderssoni,Animalia,kingdom,2,FALSE,worms
+krefftichthys anderssoni,Chordata,phylum,1821,FALSE,worms
+krefftichthys anderssoni,Vertebrata,subphylum,146419,FALSE,worms
+krefftichthys anderssoni,Gnathostomata,infraphylum,1828,FALSE,worms
+krefftichthys anderssoni,Osteichthyes,parvphylum,152352,FALSE,worms
+krefftichthys anderssoni,Actinopterygii,gigaclass,10194,FALSE,worms
+krefftichthys anderssoni,Actinopteri,class,843664,FALSE,worms
+krefftichthys anderssoni,Teleostei,subclass,293496,FALSE,worms
+krefftichthys anderssoni,Myctophiformes,order,10309,FALSE,worms
+krefftichthys anderssoni,Myctophidae,family,125498,FALSE,worms
+krefftichthys anderssoni,Krefftichthys,genus,234580,FALSE,worms
+krefftichthys anderssoni,Krefftichthys anderssoni,species,234641,FALSE,worms
+laeops cypho,Animalia,kingdom,2,FALSE,worms
+laeops cypho,Chordata,phylum,1821,FALSE,worms
+laeops cypho,Vertebrata,subphylum,146419,FALSE,worms
+laeops cypho,Gnathostomata,infraphylum,1828,FALSE,worms
+laeops cypho,Osteichthyes,parvphylum,152352,FALSE,worms
+laeops cypho,Actinopterygii,gigaclass,10194,FALSE,worms
+laeops cypho,Actinopteri,class,843664,FALSE,worms
+laeops cypho,Teleostei,subclass,293496,FALSE,worms
+laeops cypho,Pleuronectiformes,order,10331,FALSE,worms
+laeops cypho,Bothidae,family,125576,FALSE,worms
+laeops cypho,Laeops,genus,205353,FALSE,worms
+laeops cypho,Laeops cypho,species,278067,FALSE,worms
+laeops guentheri,Animalia,kingdom,2,FALSE,worms
+laeops guentheri,Chordata,phylum,1821,FALSE,worms
+laeops guentheri,Vertebrata,subphylum,146419,FALSE,worms
+laeops guentheri,Gnathostomata,infraphylum,1828,FALSE,worms
+laeops guentheri,Osteichthyes,parvphylum,152352,FALSE,worms
+laeops guentheri,Actinopterygii,gigaclass,10194,FALSE,worms
+laeops guentheri,Actinopteri,class,843664,FALSE,worms
+laeops guentheri,Teleostei,subclass,293496,FALSE,worms
+laeops guentheri,Pleuronectiformes,order,10331,FALSE,worms
+laeops guentheri,Bothidae,family,125576,FALSE,worms
+laeops guentheri,Laeops,genus,205353,FALSE,worms
+laeops guentheri,Laeops guentheri,species,278069,FALSE,worms
+laeops kitaharae,Animalia,kingdom,2,FALSE,worms
+laeops kitaharae,Chordata,phylum,1821,FALSE,worms
+laeops kitaharae,Vertebrata,subphylum,146419,FALSE,worms
+laeops kitaharae,Gnathostomata,infraphylum,1828,FALSE,worms
+laeops kitaharae,Osteichthyes,parvphylum,152352,FALSE,worms
+laeops kitaharae,Actinopterygii,gigaclass,10194,FALSE,worms
+laeops kitaharae,Actinopteri,class,843664,FALSE,worms
+laeops kitaharae,Teleostei,subclass,293496,FALSE,worms
+laeops kitaharae,Pleuronectiformes,order,10331,FALSE,worms
+laeops kitaharae,Bothidae,family,125576,FALSE,worms
+laeops kitaharae,Laeops,genus,205353,FALSE,worms
+laeops kitaharae,Laeops kitaharae,species,278070,FALSE,worms
+lampadena pontifex,Animalia,kingdom,2,FALSE,worms
+lampadena pontifex,Chordata,phylum,1821,FALSE,worms
+lampadena pontifex,Vertebrata,subphylum,146419,FALSE,worms
+lampadena pontifex,Gnathostomata,infraphylum,1828,FALSE,worms
+lampadena pontifex,Osteichthyes,parvphylum,152352,FALSE,worms
+lampadena pontifex,Actinopterygii,gigaclass,10194,FALSE,worms
+lampadena pontifex,Actinopteri,class,843664,FALSE,worms
+lampadena pontifex,Teleostei,subclass,293496,FALSE,worms
+lampadena pontifex,Myctophiformes,order,10309,FALSE,worms
+lampadena pontifex,Myctophidae,family,125498,FALSE,worms
+lampadena pontifex,Lampadena,genus,125824,FALSE,worms
+lampadena pontifex,Lampadena pontifex,species,272707,FALSE,worms
+lampanyctus jordani,Animalia,kingdom,2,FALSE,worms
+lampanyctus jordani,Chordata,phylum,1821,FALSE,worms
+lampanyctus jordani,Vertebrata,subphylum,146419,FALSE,worms
+lampanyctus jordani,Gnathostomata,infraphylum,1828,FALSE,worms
+lampanyctus jordani,Osteichthyes,parvphylum,152352,FALSE,worms
+lampanyctus jordani,Actinopterygii,gigaclass,10194,FALSE,worms
+lampanyctus jordani,Actinopteri,class,843664,FALSE,worms
+lampanyctus jordani,Teleostei,subclass,293496,FALSE,worms
+lampanyctus jordani,Myctophiformes,order,10309,FALSE,worms
+lampanyctus jordani,Myctophidae,family,125498,FALSE,worms
+lampanyctus jordani,Lampanyctus,genus,125825,FALSE,worms
+lampanyctus jordani,Lampanyctus jordani,species,272712,FALSE,worms
+lepidotrigla kishinouyi,Animalia,kingdom,2,FALSE,worms
+lepidotrigla kishinouyi,Chordata,phylum,1821,FALSE,worms
+lepidotrigla kishinouyi,Vertebrata,subphylum,146419,FALSE,worms
+lepidotrigla kishinouyi,Gnathostomata,infraphylum,1828,FALSE,worms
+lepidotrigla kishinouyi,Osteichthyes,parvphylum,152352,FALSE,worms
+lepidotrigla kishinouyi,Actinopterygii,gigaclass,10194,FALSE,worms
+lepidotrigla kishinouyi,Actinopteri,class,843664,FALSE,worms
+lepidotrigla kishinouyi,Teleostei,subclass,293496,FALSE,worms
+lepidotrigla kishinouyi,Perciformes,order,11014,FALSE,worms
+lepidotrigla kishinouyi,Triglidae,family,125598,FALSE,worms
+lepidotrigla kishinouyi,Lepidotrigla,genus,126179,FALSE,worms
+lepidotrigla kishinouyi,Lepidotrigla kishinouyi,species,274897,FALSE,worms
+lepidotrigla omanensis,Animalia,kingdom,2,FALSE,worms
+lepidotrigla omanensis,Chordata,phylum,1821,FALSE,worms
+lepidotrigla omanensis,Vertebrata,subphylum,146419,FALSE,worms
+lepidotrigla omanensis,Gnathostomata,infraphylum,1828,FALSE,worms
+lepidotrigla omanensis,Osteichthyes,parvphylum,152352,FALSE,worms
+lepidotrigla omanensis,Actinopterygii,gigaclass,10194,FALSE,worms
+lepidotrigla omanensis,Actinopteri,class,843664,FALSE,worms
+lepidotrigla omanensis,Teleostei,subclass,293496,FALSE,worms
+lepidotrigla omanensis,Perciformes,order,11014,FALSE,worms
+lepidotrigla omanensis,Triglidae,family,125598,FALSE,worms
+lepidotrigla omanensis,Lepidotrigla,genus,126179,FALSE,worms
+lepidotrigla omanensis,Lepidotrigla omanensis,species,218124,FALSE,worms
+lepidotrigla venusta,Animalia,kingdom,2,FALSE,worms
+lepidotrigla venusta,Chordata,phylum,1821,FALSE,worms
+lepidotrigla venusta,Vertebrata,subphylum,146419,FALSE,worms
+lepidotrigla venusta,Gnathostomata,infraphylum,1828,FALSE,worms
+lepidotrigla venusta,Osteichthyes,parvphylum,152352,FALSE,worms
+lepidotrigla venusta,Actinopterygii,gigaclass,10194,FALSE,worms
+lepidotrigla venusta,Actinopteri,class,843664,FALSE,worms
+lepidotrigla venusta,Teleostei,subclass,293496,FALSE,worms
+lepidotrigla venusta,Perciformes,order,11014,FALSE,worms
+lepidotrigla venusta,Triglidae,family,125598,FALSE,worms
+lepidotrigla venusta,Lepidotrigla,genus,126179,FALSE,worms
+lepidotrigla venusta,Lepidotrigla venusta,species,274923,FALSE,worms
+leviprora inops,Animalia,kingdom,2,FALSE,worms
+leviprora inops,Chordata,phylum,1821,FALSE,worms
+leviprora inops,Vertebrata,subphylum,146419,FALSE,worms
+leviprora inops,Gnathostomata,infraphylum,1828,FALSE,worms
+leviprora inops,Osteichthyes,parvphylum,152352,FALSE,worms
+leviprora inops,Actinopterygii,gigaclass,10194,FALSE,worms
+leviprora inops,Actinopteri,class,843664,FALSE,worms
+leviprora inops,Teleostei,subclass,293496,FALSE,worms
+leviprora inops,Perciformes,order,11014,FALSE,worms
+leviprora inops,Platycephalidae,family,125593,FALSE,worms
+leviprora inops,Leviprora,genus,269684,FALSE,worms
+leviprora inops,Leviprora inops,species,281347,FALSE,worms
+liparis liparis,Animalia,kingdom,2,FALSE,worms
+liparis liparis,Chordata,phylum,1821,FALSE,worms
+liparis liparis,Vertebrata,subphylum,146419,FALSE,worms
+liparis liparis,Gnathostomata,infraphylum,1828,FALSE,worms
+liparis liparis,Osteichthyes,parvphylum,152352,FALSE,worms
+liparis liparis,Actinopterygii,gigaclass,10194,FALSE,worms
+liparis liparis,Actinopteri,class,843664,FALSE,worms
+liparis liparis,Teleostei,subclass,293496,FALSE,worms
+liparis liparis,Perciformes,order,11014,FALSE,worms
+liparis liparis,Liparidae,family,234519,FALSE,worms
+liparis liparis,Liparis,genus,126160,FALSE,worms
+liparis liparis,Liparis liparis,species,127219,FALSE,worms
+luciobrotula lineata,Animalia,kingdom,2,FALSE,worms
+luciobrotula lineata,Chordata,phylum,1821,FALSE,worms
+luciobrotula lineata,Vertebrata,subphylum,146419,FALSE,worms
+luciobrotula lineata,Gnathostomata,infraphylum,1828,FALSE,worms
+luciobrotula lineata,Osteichthyes,parvphylum,152352,FALSE,worms
+luciobrotula lineata,Actinopterygii,gigaclass,10194,FALSE,worms
+luciobrotula lineata,Actinopteri,class,843664,FALSE,worms
+luciobrotula lineata,Teleostei,subclass,293496,FALSE,worms
+luciobrotula lineata,Ophidiiformes,order,10314,FALSE,worms
+luciobrotula lineata,Ophidiidae,family,125505,FALSE,worms
+luciobrotula lineata,Neobythitinae,subfamily,154740,FALSE,worms
+luciobrotula lineata,Luciobrotula,genus,158763,FALSE,worms
+luciobrotula lineata,Luciobrotula lineata,species,275629,FALSE,worms
+lyopsetta exilis,Animalia,kingdom,2,FALSE,worms
+lyopsetta exilis,Chordata,phylum,1821,FALSE,worms
+lyopsetta exilis,Vertebrata,subphylum,146419,FALSE,worms
+lyopsetta exilis,Gnathostomata,infraphylum,1828,FALSE,worms
+lyopsetta exilis,Osteichthyes,parvphylum,152352,FALSE,worms
+lyopsetta exilis,Actinopterygii,gigaclass,10194,FALSE,worms
+lyopsetta exilis,Actinopteri,class,843664,FALSE,worms
+lyopsetta exilis,Teleostei,subclass,293496,FALSE,worms
+lyopsetta exilis,Pleuronectiformes,order,10331,FALSE,worms
+lyopsetta exilis,Pleuronectidae,family,125579,FALSE,worms
+lyopsetta exilis,Pleuronectinae,subfamily,154687,FALSE,worms
+lyopsetta exilis,Lyopsetta,genus,269759,FALSE,worms
+lyopsetta exilis,Lyopsetta exilis,species,281452,FALSE,worms
+macroramphosus scolopax,Animalia,kingdom,2,FALSE,worms
+macroramphosus scolopax,Chordata,phylum,1821,FALSE,worms
+macroramphosus scolopax,Vertebrata,subphylum,146419,FALSE,worms
+macroramphosus scolopax,Gnathostomata,infraphylum,1828,FALSE,worms
+macroramphosus scolopax,Osteichthyes,parvphylum,152352,FALSE,worms
+macroramphosus scolopax,Actinopterygii,gigaclass,10194,FALSE,worms
+macroramphosus scolopax,Actinopteri,class,843664,FALSE,worms
+macroramphosus scolopax,Teleostei,subclass,293496,FALSE,worms
+macroramphosus scolopax,Syngnathiformes,order,10327,FALSE,worms
+macroramphosus scolopax,Centriscidae,family,125605,FALSE,worms
+macroramphosus scolopax,Macroramphosinae,subfamily,154403,FALSE,worms
+macroramphosus scolopax,Macroramphosus,genus,126222,FALSE,worms
+macroramphosus scolopax,Macroramphosus scolopax,species,127378,FALSE,worms
+melletes papilio,Animalia,kingdom,2,FALSE,worms
+melletes papilio,Chordata,phylum,1821,FALSE,worms
+melletes papilio,Vertebrata,subphylum,146419,FALSE,worms
+melletes papilio,Gnathostomata,infraphylum,1828,FALSE,worms
+melletes papilio,Osteichthyes,parvphylum,152352,FALSE,worms
+melletes papilio,Actinopterygii,gigaclass,10194,FALSE,worms
+melletes papilio,Actinopteri,class,843664,FALSE,worms
+melletes papilio,Teleostei,subclass,293496,FALSE,worms
+melletes papilio,Perciformes,order,11014,FALSE,worms
+melletes papilio,Cottidae,family,125589,FALSE,worms
+melletes papilio,Melletes,genus,297095,FALSE,worms
+melletes papilio,Melletes papilio,species,319199,FALSE,worms
+nectamia zebrina,Animalia,kingdom,2,FALSE,worms
+nectamia zebrina,Chordata,phylum,1821,FALSE,worms
+nectamia zebrina,Vertebrata,subphylum,146419,FALSE,worms
+nectamia zebrina,Gnathostomata,infraphylum,1828,FALSE,worms
+nectamia zebrina,Osteichthyes,parvphylum,152352,FALSE,worms
+nectamia zebrina,Actinopterygii,gigaclass,10194,FALSE,worms
+nectamia zebrina,Actinopteri,class,843664,FALSE,worms
+nectamia zebrina,Teleostei,subclass,293496,FALSE,worms
+nectamia zebrina,Kurtiformes,order,1517499,FALSE,worms
+nectamia zebrina,Apogonidae,family,125518,FALSE,worms
+nectamia zebrina,Apogoninae,subfamily,267079,FALSE,worms
+nectamia zebrina,Nectamia,genus,397692,FALSE,worms
+nectamia zebrina,Nectamia zebrina,species,712643,FALSE,worms
+nautilus suluensis,NA,NA,NA,FALSE,worms
