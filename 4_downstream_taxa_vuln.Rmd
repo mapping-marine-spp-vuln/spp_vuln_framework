@@ -62,7 +62,7 @@ fish_spp <- spp_gp_vuln %>%
   select(species = spp_gp) %>%
   distinct()
 
-fish_gps <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add.xlsx'), 
+fish_gps <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add_bp.xlsx'), 
                                sheet = 'repres_raw') %>%
   .$species_group %>% tolower()
   
@@ -85,13 +85,14 @@ write_csv(fish_repres, 'fish_repres.csv')
 spp_gp_vuln <- read_csv(here('_output/spp_gp_vuln_w_distribution.csv')) %>%
   select(taxon, spp_gp, stressor, vuln, sd_vuln)
 
-repres_fish <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add.xlsx'), 
+repres_fish <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add_bp.xlsx'), 
                                   sheet = 'repres_expanded')
 repres_df   <- readxl::read_excel(here('_raw_data/xlsx/spp_gp_representativeness.xlsx')) %>%
   janitor::clean_names() %>%
   select(taxon, species, repres = representative_rank) %>%
-  mutate(repres = tolower(repres)) %>%
   bind_rows(repres_fish) %>%
+  mutate(species = tolower(species),
+         repres = tolower(repres)) %>%
   filter(!is.na(repres) & repres != 'species')
 
 ### create new dataframe including all representative species, with
