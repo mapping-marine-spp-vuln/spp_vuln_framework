@@ -56,26 +56,8 @@ fish,specialisation,terrestrial and marine life stages,anguilla australis,fw,304
 fish,specialisation,terrestrial and marine life stages,anguilla australis,sw,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),antipodocottus galatheae,does not aggregate,304
 fish,NA,foraging range,antipodocottus galatheae,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon compressus,does not aggregate,304
-fish,NA,foraging range,apogon compressus,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon fleurieu,does not aggregate,304
-fish,NA,foraging range,apogon fleurieu,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon indicus,does not aggregate,304
 fish,NA,foraging range,apogon indicus,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon margaritophorus,does not aggregate,304
-fish,NA,foraging range,apogon margaritophorus,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon neotes,does not aggregate,304
-fish,NA,foraging range,apogon neotes,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon notatus,does not aggregate,304
-fish,NA,foraging range,apogon notatus,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon rubrimacula,does not aggregate,304
-fish,NA,foraging range,apogon rubrimacula,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon sealei,does not aggregate,304
-fish,NA,foraging range,apogon sealei,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon semilineatus,does not aggregate,304
-fish,NA,foraging range,apogon semilineatus,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogon wassinki,does not aggregate,304
-fish,NA,foraging range,apogon wassinki,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),apogonichthys ocellatus,does not aggregate,304
 fish,NA,foraging range,apogonichthys ocellatus,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),arnoglossus brunneus,does not aggregate,304
@@ -201,6 +183,8 @@ fish,NA,breeding/nesting range/number of spawning aggregations (fish),etropus ri
 fish,NA,foraging range,etropus rimosus,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),eumicrotremus barbatus,does not aggregate,304
 fish,NA,foraging range,eumicrotremus barbatus,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),fibramia amboinensis,does not aggregate,304
+fish,NA,foraging range,fibramia amboinensis,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),foa madagascariensis,does not aggregate,304
 fish,NA,foraging range,foa madagascariensis,many,304
 fish,foraging range,sub-population dependence on particular sites,galaxias brevipinnis,only for spawning,304
@@ -208,6 +192,8 @@ fish,NA,breeding/nesting range/number of spawning aggregations (fish),grammonus 
 fish,NA,foraging range,grammonus robustus,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),gymnapogon melanogaster,does not aggregate,304
 fish,NA,foraging range,gymnapogon melanogaster,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),hemilepidotus papilio,does not aggregate,304
+fish,NA,foraging range,hemilepidotus papilio,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),hephthocara simum,does not aggregate,304
 fish,NA,foraging range,hephthocara simum,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),hippichthys spicifer,does not aggregate,304
@@ -252,8 +238,6 @@ fish,NA,breeding/nesting range/number of spawning aggregations (fish),lyopsetta 
 fish,NA,foraging range,lyopsetta exilis,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),macroramphosus scolopax,does not aggregate,304
 fish,NA,foraging range,macroramphosus scolopax,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),melletes papilio,does not aggregate,304
-fish,NA,foraging range,melletes papilio,many,304
 fish,physiological tolerance breadths,salinity,meuschenia scaber,euryhaline-brackish,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),minous dempsterae,does not aggregate,304
 fish,NA,foraging range,minous dempsterae,many,304
@@ -281,10 +265,10 @@ fish,NA,breeding/nesting range/number of spawning aggregations (fish),neobythite
 fish,NA,foraging range,neobythites bimaculatus,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),neobythites franzi,does not aggregate,304
 fish,NA,foraging range,neobythites franzi,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),neomerinthe erostris,does not aggregate,304
+fish,NA,foraging range,neomerinthe erostris,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),neomerinthe hemingwayi,does not aggregate,304
 fish,NA,foraging range,neomerinthe hemingwayi,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),neomerinthe rotunda,does not aggregate,304
-fish,NA,foraging range,neomerinthe rotunda,many,304
 fish,physiological tolerance breadths,salinity,notolabrus celidotus,euryhaline-brackish,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),notopogon macrosolen,does not aggregate,304
 fish,NA,foraging range,notopogon macrosolen,many,304
@@ -293,8 +277,24 @@ fish,NA,foraging range,ocosia possi,many,304
 fish,foraging range,sub-population dependence on particular sites,oncorhynchus nerka,only for spawning,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),ophidion fulvum,does not aggregate,304
 fish,NA,foraging range,ophidion fulvum,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus lateralis,does not aggregate,304
-fish,NA,foraging range,ostorhinchus lateralis,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus compressus,does not aggregate,304
+fish,NA,foraging range,ostorhinchus compressus,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus fleurieu,does not aggregate,304
+fish,NA,foraging range,ostorhinchus fleurieu,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus margaritophorus,does not aggregate,304
+fish,NA,foraging range,ostorhinchus margaritophorus,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus neotes,does not aggregate,304
+fish,NA,foraging range,ostorhinchus neotes,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus notatus,does not aggregate,304
+fish,NA,foraging range,ostorhinchus notatus,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus rubrimacula,does not aggregate,304
+fish,NA,foraging range,ostorhinchus rubrimacula,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus sealei,does not aggregate,304
+fish,NA,foraging range,ostorhinchus sealei,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus semilineatus,does not aggregate,304
+fish,NA,foraging range,ostorhinchus semilineatus,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),ostorhinchus wassinki,does not aggregate,304
+fish,NA,foraging range,ostorhinchus wassinki,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),paracentropogon vespa,does not aggregate,304
 fish,NA,foraging range,paracentropogon vespa,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),paralichthodes algoensis,does not aggregate,304
@@ -303,8 +303,8 @@ fish,NA,breeding/nesting range/number of spawning aggregations (fish),paralichth
 fish,NA,foraging range,paralichthys aestuarius,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),paralichthys dentatus,does not aggregate,304
 fish,NA,foraging range,paralichthys dentatus,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),paralichthys schmitti,does not aggregate,304
-fish,NA,foraging range,paralichthys schmitti,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),paralichthys fernandezianus,does not aggregate,304
+fish,NA,foraging range,paralichthys fernandezianus,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),paraliparis atramentatus,does not aggregate,304
 fish,NA,foraging range,paraliparis atramentatus,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),paraliparis atrolabiatus,does not aggregate,304
@@ -333,6 +333,8 @@ fish,NA,breeding/nesting range/number of spawning aggregations (fish),parupeneus
 fish,NA,foraging range,parupeneus posteli,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),paxton concilians,does not aggregate,304
 fish,NA,foraging range,paxton concilians,many,304
+fish,NA,breeding/nesting range/number of spawning aggregations (fish),pegusa triophthalma,does not aggregate,304
+fish,NA,foraging range,pegusa triophthalma,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),pelotretis flavilatus,does not aggregate,304
 fish,NA,foraging range,pelotretis flavilatus,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),percis matsuii,does not aggregate,304
@@ -406,8 +408,6 @@ fish,NA,breeding/nesting range/number of spawning aggregations (fish),sebastes p
 fish,NA,foraging range,sebastes peduncularis,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),siokunichthys nigrolineatus,does not aggregate,304
 fish,NA,foraging range,siokunichthys nigrolineatus,many,304
-fish,NA,breeding/nesting range/number of spawning aggregations (fish),solea triophthalma,does not aggregate,304
-fish,NA,foraging range,solea triophthalma,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),stelgistrum beringianum,does not aggregate,304
 fish,NA,foraging range,stelgistrum beringianum,many,304
 fish,NA,breeding/nesting range/number of spawning aggregations (fish),stygnobrotula latebricola,does not aggregate,304

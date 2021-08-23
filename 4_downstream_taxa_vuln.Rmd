@@ -46,8 +46,8 @@ Grab data from each rank (kingdom --> phylum, phylum --> class, class --> order,
 Because we are dropping plants and algae, filter wide dataframe to just species in kingdom _Animalia_.  This is done in the `assemble_worms()` function from `common_fxns.R`.
 
 ``` {r assemble full spp taxonomic table from WoRMS}
-spp_all_wide <- assemble_worms('wide', seabirds = TRUE)
-spp_all_long <- assemble_worms('long', seabirds = TRUE)
+spp_all_wide <- assemble_worms('wide', seabirds_only = TRUE)
+spp_all_long <- assemble_worms('long', seabirds_only = TRUE)
 ```
 
 ## Match species with known vulnerability to most specific rank
@@ -91,7 +91,7 @@ repres_df   <- readxl::read_excel(here('_raw_data/xlsx/spp_gp_representativeness
   janitor::clean_names() %>%
   select(taxon, species, repres = representative_rank) %>%
   mutate(repres = tolower(repres)) %>%
-  bind_rows(fish_repres) %>%
+  bind_rows(repres_fish) %>%
   filter(!is.na(repres) & repres != 'species')
 
 ### create new dataframe including all representative species, with
@@ -263,14 +263,14 @@ match_spp <- match_vuln_df %>%
   select(phylum:species, taxon, match_rank) %>%
   distinct() %>%
   arrange(taxon, species) %>%
-  mutate(spp_id = 1:n())
+  mutate(downfill_spp_id = 1:n())
 
 spp_vuln <- match_vuln_df %>%
   select(species, taxon, stressor, vuln, sd_vuln) %>%
   distinct() %>%
-  left_join(match_spp %>% select(taxon, species, spp_id), by = c('taxon', 'species')) %>%
+  left_join(match_spp %>% select(taxon, species, downfill_spp_id), by = c('taxon', 'species')) %>%
   mutate(vuln = round(vuln, 5), sd_vuln = round(sd_vuln, 5)) %>%
-  select(-taxon, -species) ### get these back by matching with spp_id
+  select(-taxon, -species) ### get these back by matching with downfill_spp_id
 
 write_csv(match_spp, here('int/spp_match_downfill.csv'))
 write_csv(spp_vuln,  here('int/vuln_downfill_only.csv'))

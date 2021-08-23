@@ -361,6 +361,14 @@ if(!file.exists(o_from_c_file)) {
 
   o_from_c_df <- o_from_c_df %>%
     bind_rows(missing_order_fix)
+  
+  ### Note: for some reason, birds show up with parent class of both aves and reptilia.
+  ### Filter out the reptilia instances.  Ugh!
+  o_from_c_df <- o_from_c_df %>%
+    group_by(name, parent_level) %>%
+    mutate(dammit = all(c('aves', 'reptilia') %in% parent)) %>%
+    filter(!dammit | parent == 'aves') %>%
+    select(-dammit)
   write_csv(o_from_c_df, o_from_c_file)
 }
 
@@ -439,7 +447,7 @@ if(!file.exists(aquamaps_patch_file)) {
            am_o = order, am_f = family, am_g = genus, species) %>%
     mutate(across(starts_with('am_'), tolower))
   
-  worms_spp <- assemble_worms() ### gather downstream WoRMS classifications
+  worms_spp <- assemble_worms(seabirds_only = FALSE, am_patch = FALSE) ### gather downstream WoRMS classifications
   
   am_spp_match <- am_spp_info %>%
     inner_join(worms_spp, by = 'species')
@@ -496,7 +504,7 @@ am_spp_info <- data.table::fread(file.path('/home/shares/ohi/git-annex',
   rename(am_sid = species_id, iucn_sid = iucn_id, comname = f_bname) %>%
   mutate(species = tolower(paste(genus, species))) 
 
-worms_spp <- assemble_worms() ### gather downstream WoRMS classifications
+worms_spp <- assemble_worms(seabirds_only = FALSE, am_patch = FALSE) ### gather downstream WoRMS classifications
 
 am_patch_1 <- read_csv(aquamaps_patch_file) %>%
   mutate(source = 'worms')
@@ -560,7 +568,7 @@ rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'specie
 all_df <- bind_rows(s_from_g, g_from_f, f_from_o, o_from_c, c_from_p, p_from_k) %>%
   bind_rows(am_patch) %>%
   mutate(rank = factor(rank, levels = rank_lvls)) %>%
-  filter(!is.na(name)) %>%
+  filter(!is.na(name) & !is.na(id)) %>%
   select(-id, -spp_gp) %>%
   distinct()
 
@@ -581,43 +589,7 @@ trait_spp_gps <- read_csv(here('_data/spp_traits_valid.csv')) %>%
   select(taxon, spp_gp) %>%
   distinct()
 
-kng_df <- all_df %>%
-  filter(parent_level == 'kingdom') %>%
-  select(-rank, -name, kingdom = parent, -parent_level) %>%
-  distinct()
-phy_df <- all_df %>%
-  filter(rank == 'phylum') %>%
-  select(-rank, -parent_level, phylum = name) %>%
-  distinct()
-cls_df <- all_df %>%
-  filter(rank == 'class') %>%
-  select(-rank, -parent_level, class = name) %>%
-  distinct()
-ord_df <- all_df %>%
-  filter(rank == 'order') %>%
-  select(-rank, -parent_level, order = name) %>%
-  distinct()
-fam_df <- all_df %>%
-  filter(rank == 'family') %>%
-  select(-rank, -parent_level, family = name) %>%
-  distinct()
-gen_df <- all_df %>%
-  filter(rank == 'genus') %>%
-  select(-rank, -parent_level, genus = name) %>%
-  distinct()
-spp_df <- all_df %>%
-  filter(rank == 'species') %>%
-  select(-rank, -parent_level, species = name) %>%
-  distinct()
-
-spp_df_wide <- kng_df %>%
-  left_join(phy_df, by = c('kingdom' = 'parent')) %>%
-  left_join(cls_df, by = c('phylum' = 'parent')) %>%
-  left_join(ord_df, by = c('class' = 'parent')) %>%
-  left_join(fam_df, by = c('order' = 'parent')) %>%
-  left_join(gen_df, by = c('family' = 'parent')) %>%
-  left_join(spp_df, by = c('genus' = 'parent')) %>%
-  distinct()
+spp_df_wide <- assemble_worms(seabirds_only = TRUE)
 
 matched_df <- inner_join(all_df, trait_spp_gps, by = c('name' = 'spp_gp')) %>%
   mutate(match = rank)
@@ -706,7 +678,7 @@ First look at species who are unmatched
 unmatched_spp <- spp_df_wide %>%
   # mutate(spp = species) %>%
   filter(!species %in% matched_all$species) %>%
-  gather(rank, name, kingdom:species) %>%
+  gather(rank, name, class:species) %>%
   mutate(rank = factor(rank, levels = rank_lvls)) %>%
   group_by(rank) %>%
   summarize(n_rank_notraits = n_distinct(name)) %>%
@@ -719,7 +691,7 @@ Now look at ranks with no direct (pre-gapfill) matches within them at all
 unmatched_at_all <- spp_df_wide %>%
   left_join(matched_all) %>%
   # mutate(spp = species) %>%
-  gather(rank, name, kingdom:species) %>%
+  gather(rank, name, class:species) %>%
   mutate(rank = factor(rank, levels = rank_lvls)) %>%
   distinct() %>%
   group_by(name, rank) %>%

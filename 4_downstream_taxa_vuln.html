@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Mon Aug 2 18:49:12 2021 by ohara" />
+<meta name="author" content="Compiled on Mon Aug 23 12:51:33 2021 by ohara" />
 
 
 <title>Downstream taxa vulnerability</title>
@@ -364,7 +364,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Downstream taxa vulnerability</h1>
-<h4 class="author"><em>Compiled on Mon Aug 2 18:49:12 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Mon Aug 23 12:51:33 2021 by ohara</em></h4>
 
 </div>
 
@@ -393,71 +393,104 @@ div.tocify {
 <h2 number="2.1"><span class="header-section-number">2.1</span> Assemble the taxonomic dataframe</h2>
 <p>Grab data from each rank (kingdom –&gt; phylum, phylum –&gt; class, class –&gt; order, etc.) and assemble into a long dataframe. Long format will be easier to match trait-scored species to, since all ranks will be in the “name” column. But wide format will be easier for keeping track of the structure of each species’ classification.</p>
 <p>Because we are dropping plants and algae, filter wide dataframe to just species in kingdom <em>Animalia</em>. This is done in the <code>assemble_worms()</code> function from <code>common_fxns.R</code>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spp_all_wide <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="st">&#39;wide&#39;</span>, <span class="at">seabirds =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spp_all_long <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="st">&#39;long&#39;</span>, <span class="at">seabirds =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spp_all_wide <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="st">&#39;wide&#39;</span>, <span class="at">seabirds_only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spp_all_long <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="st">&#39;long&#39;</span>, <span class="at">seabirds_only =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="match-species-with-known-vulnerability-to-most-specific-rank" class="section level2" number="2.2">
 <h2 number="2.2"><span class="header-section-number">2.2</span> Match species with known vulnerability to most specific rank</h2>
 <p>Load the vulnerability data, and match to the wide-format species classifications along with the representativeness corrections, to identify species that represent higher ranks. Create a separate dataframe of these higher ranks, based on averages of species vulnerability scores.</p>
 <p>Then bind the representative-based dataframe with the original vulnerability data, and join to long-format species classifications.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spp_gp_vuln <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_output/spp_gp_vuln_w_distribution.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, spp_gp, stressor, vuln, sd_vuln)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>repres_df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/spp_gp_representativeness.xlsx&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, species, <span class="at">repres =</span> representative_rank) <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">repres =</span> <span class="fu">tolower</span>(repres)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(repres) <span class="sc">&amp;</span> repres <span class="sc">!=</span> <span class="st">&#39;species&#39;</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>repr_spp <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(repres_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(spp_all_wide, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp_new =</span> <span class="fu">case_when</span>(repres <span class="sc">==</span> <span class="st">&#39;genus&#39;</span>  <span class="sc">~</span> genus,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;family&#39;</span> <span class="sc">~</span> family,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;order&#39;</span>  <span class="sc">~</span> order,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;class&#39;</span>  <span class="sc">~</span> class,</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                                <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>))</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>repr_spp_gps <span class="ot">&lt;-</span> repr_spp <span class="sc">%&gt;%</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(taxon, spp_gp_new, stressor) <span class="sc">%&gt;%</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd_vuln =</span> <span class="fu">sqrt</span>(<span class="fu">sd</span>(vuln)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">n</span>()<span class="sc">*</span><span class="fu">sum</span>(sd_vuln<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">vuln =</span> <span class="fu">mean</span>(vuln),</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_spp =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">spp_gp =</span> spp_gp_new)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spp_gp_vuln_repr_fix <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(repr_spp_gps <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>n_spp))</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fish_spp <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(taxon <span class="sc">==</span> <span class="st">&#39;fish&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">species =</span> spp_gp) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fish_gps <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/fish_traits_add.xlsx&#39;</span>), </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">sheet =</span> <span class="st">&#39;repres_raw&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>species_group <span class="sc">%&gt;%</span> <span class="fu">tolower</span>()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>fish_repres <span class="ot">&lt;-</span> spp_all_wide <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> fish_spp<span class="sc">$</span>species) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">repres =</span> <span class="fu">case_when</span>(genus <span class="sc">%in%</span> fish_gps  <span class="sc">~</span> <span class="st">&#39;genus&#39;</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                            family <span class="sc">%in%</span> fish_gps <span class="sc">~</span> <span class="st">&#39;family&#39;</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                            order <span class="sc">%in%</span> fish_gps  <span class="sc">~</span> <span class="st">&#39;order&#39;</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                            class <span class="sc">%in%</span> fish_gps  <span class="sc">~</span> <span class="st">&#39;class&#39;</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">taxon =</span> <span class="st">&#39;fish&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, species, repres) <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(fish_repres, <span class="st">&#39;fish_repres.csv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spp_gp_vuln <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_output/spp_gp_vuln_w_distribution.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, spp_gp, stressor, vuln, sd_vuln)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>matched_df <span class="ot">&lt;-</span> spp_all_long <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(spp_gp_vuln_repr_fix, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;name&#39;</span> <span class="ot">=</span> <span class="st">&#39;spp_gp&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match =</span> rank)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># matched_df$rank %&gt;% unique() # species genus   family  class</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>check_status <span class="ot">&lt;-</span> <span class="cf">function</span>(check_ids) {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  check_ids <span class="ot">&lt;-</span> check_ids[<span class="sc">!</span><span class="fu">is.na</span>(check_ids)]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  n_chunks <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">length</span>(check_ids) <span class="sc">/</span> <span class="dv">50</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  records_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="at">length =</span> n_chunks)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_chunks) {</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    indices <span class="ot">&lt;-</span> ((i<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">50</span> <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">min</span>(i<span class="sc">*</span><span class="dv">50</span>, <span class="fu">length</span>(check_ids))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ids_chunk <span class="ot">&lt;-</span> check_ids[indices]</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    ids_param <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;aphiaids[]=&#39;</span>, ids_chunk, <span class="at">collapse =</span> <span class="st">&#39;&amp;&#39;</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    records_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;https://www.marinespecies.org/rest/AphiaRecordsByAphiaIDs?&#39;</span>, ids_param)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    records_list[[i]] <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(records_url) <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">id =</span> AphiaID, <span class="at">sciname =</span> scientificname, status) <span class="sc">%&gt;%</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">distinct</span>()</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  records_df <span class="ot">&lt;-</span> records_list <span class="sc">%&gt;%</span> </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>()</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(records_df)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>unmatched_df <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>spp_gp <span class="sc">%in%</span> matched_df<span class="sc">$</span>name) <span class="sc">%&gt;%</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, spp_gp) <span class="sc">%&gt;%</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>check_class_list <span class="ot">&lt;-</span> <span class="fu">classification</span>(unmatched_df<span class="sc">$</span>spp_gp, <span class="at">db =</span> <span class="st">&#39;worms&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(unmatched_df<span class="sc">$</span>spp_gp)</span></code></pre></div>
-<pre><code>## ══  5 queries  ═══════════════
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>repres_fish <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/fish_traits_add.xlsx&#39;</span>), </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">&#39;repres_expanded&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>repres_df   <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/spp_gp_representativeness.xlsx&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, species, <span class="at">repres =</span> representative_rank) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">repres =</span> <span class="fu">tolower</span>(repres)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(repres_fish) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(repres) <span class="sc">&amp;</span> repres <span class="sc">!=</span> <span class="st">&#39;species&#39;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="do">### create new dataframe including all representative species, with</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">### spp_gp_new assigned to the representative rank</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>repr_spp <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(repres_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(spp_all_wide, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp_new =</span> <span class="fu">case_when</span>(repres <span class="sc">==</span> <span class="st">&#39;genus&#39;</span>  <span class="sc">~</span> genus,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;family&#39;</span> <span class="sc">~</span> family,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;order&#39;</span>  <span class="sc">~</span> order,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;class&#39;</span>  <span class="sc">~</span> class,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                                <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>))</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="do">### group by the new spp gp and summarize vulnerabilities</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>repr_spp_gps <span class="ot">&lt;-</span> repr_spp <span class="sc">%&gt;%</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(taxon, spp_gp_new, stressor) <span class="sc">%&gt;%</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd_vuln =</span> <span class="fu">sqrt</span>(<span class="fu">sd</span>(vuln)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">n</span>()<span class="sc">*</span><span class="fu">sum</span>(sd_vuln<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">vuln =</span> <span class="fu">mean</span>(vuln),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_spp =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">spp_gp =</span> spp_gp_new)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">### add representative spp gps to the original spp_gp_vuln. Note</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">### this will keep the species level scores intact, while also adding</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">### higher order representative ranks.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>spp_gp_vuln_repr_fix <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(repr_spp_gps <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>n_spp))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>matched_df <span class="ot">&lt;-</span> spp_all_long <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(spp_gp_vuln_repr_fix, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;name&#39;</span> <span class="ot">=</span> <span class="st">&#39;spp_gp&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match =</span> rank)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># matched_df$rank %&gt;% unique() # species genus   family  class</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>check_status <span class="ot">&lt;-</span> <span class="cf">function</span>(check_ids) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  check_ids <span class="ot">&lt;-</span> check_ids[<span class="sc">!</span><span class="fu">is.na</span>(check_ids)]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  n_chunks <span class="ot">&lt;-</span> <span class="fu">ceiling</span>(<span class="fu">length</span>(check_ids) <span class="sc">/</span> <span class="dv">50</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  records_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="at">length =</span> n_chunks)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_chunks) {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    indices <span class="ot">&lt;-</span> ((i<span class="dv">-1</span>)<span class="sc">*</span><span class="dv">50</span> <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">:</span><span class="fu">min</span>(i<span class="sc">*</span><span class="dv">50</span>, <span class="fu">length</span>(check_ids))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    ids_chunk <span class="ot">&lt;-</span> check_ids[indices]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    ids_param <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;aphiaids[]=&#39;</span>, ids_chunk, <span class="at">collapse =</span> <span class="st">&#39;&amp;&#39;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    records_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&#39;https://www.marinespecies.org/rest/AphiaRecordsByAphiaIDs?&#39;</span>, ids_param)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    records_list[[i]] <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(records_url) <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">select</span>(<span class="at">id =</span> AphiaID, <span class="at">sciname =</span> scientificname, status) <span class="sc">%&gt;%</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">distinct</span>()</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  records_df <span class="ot">&lt;-</span> records_list <span class="sc">%&gt;%</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(records_df)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>unmatched_df <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>spp_gp <span class="sc">%in%</span> matched_df<span class="sc">$</span>name) <span class="sc">%&gt;%</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, spp_gp) <span class="sc">%&gt;%</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>check_class_list <span class="ot">&lt;-</span> <span class="fu">classification</span>(unmatched_df<span class="sc">$</span>spp_gp, <span class="at">db =</span> <span class="st">&#39;worms&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(unmatched_df<span class="sc">$</span>spp_gp)</span></code></pre></div>
+<pre><code>## ══  8 queries  ═══════════════
+## ✓  Found:  mercenaria mercenaria
+## ✓  Found:  crocodylus acutus
+## ✓  Found:  crocodylus porosus
 ## ✓  Found:  leptopentacta elongata
 ## ✓  Found:  manta
 ## ✓  Found:  nautilus repertus
@@ -465,23 +498,23 @@ div.tocify {
 ## ✓  Found:  sousa chinensis taiwanensis
 ## ══  Results  ═════════════════
 ## 
-## ● Total: 5 
-## ● Found: 4 
-## ● Not Found: 1</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>check_class_df <span class="ot">&lt;-</span> check_class_list[<span class="sc">!</span><span class="fu">is.na</span>(check_class_list)] <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;spp_gp_orig&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.character, tolower)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>check_accepted_df <span class="ot">&lt;-</span> <span class="fu">check_status</span>(check_class_df<span class="sc">$</span>id) <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sciname =</span> <span class="fu">tolower</span>(sciname))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>unmatch_check_df <span class="ot">&lt;-</span> unmatched_df <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">found =</span> <span class="sc">!</span><span class="fu">is.na</span>(check_class_list)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(check_class_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;name&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(check_accepted_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;sciname&#39;</span>, <span class="st">&#39;id&#39;</span>))</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(unmatch_check_df)</span></code></pre></div>
-<div id="htmlwidget-d4492c3027623d3ff1fe" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d4492c3027623d3ff1fe">{"x":{"filter":"none","data":[["1","2","3","4","5"],["echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,false,true],["leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","genus","species",null,"subspecies"],[124635,105755,342237,null,853079],["unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+## • Total: 8 
+## • Found: 7 
+## • Not Found: 1</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>check_class_df <span class="ot">&lt;-</span> check_class_list[<span class="sc">!</span><span class="fu">is.na</span>(check_class_list)] <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;spp_gp_orig&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_if</span>(is.character, tolower)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>check_accepted_df <span class="ot">&lt;-</span> <span class="fu">check_status</span>(check_class_df<span class="sc">$</span>id) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sciname =</span> <span class="fu">tolower</span>(sciname))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>unmatch_check_df <span class="ot">&lt;-</span> unmatched_df <span class="sc">%&gt;%</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">found =</span> <span class="sc">!</span><span class="fu">is.na</span>(check_class_list)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(check_class_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;name&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(check_accepted_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;sciname&#39;</span>, <span class="st">&#39;id&#39;</span>))</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(unmatch_check_df)</span></code></pre></div>
+<div id="htmlwidget-410c1ace6b324b997fa9" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-410c1ace6b324b997fa9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["molluscs","reptiles","reptiles","echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,true,true,true,false,true],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","species","species","species","genus","species",null,"subspecies"],[141919,422566,344030,124635,105755,342237,null,853079],["accepted","accepted","accepted","unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>Notes:</p>
 <ul>
 <li><em>Manta</em> is accepted as a genus, but all spp within it are accepted as <em>Mobula</em></li>
@@ -492,8 +525,8 @@ div.tocify {
 </ul>
 <div id="unmatched-spp-groups-with-scored-traits" class="section level3" number="2.2.1">
 <h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Unmatched spp groups with scored traits:</h3>
-<div id="htmlwidget-e41e593e9e497f9a2cf8" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e41e593e9e497f9a2cf8">{"x":{"filter":"none","data":[["1","2","3","4","5"],["echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,false,true],["leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","genus","species",null,"subspecies"],[124635,105755,342237,null,853079],["unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d2a4fa57834d8c9b7d42" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d2a4fa57834d8c9b7d42">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["molluscs","reptiles","reptiles","echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,true,true,true,false,true],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","species","species","species","genus","species",null,"subspecies"],[141919,422566,344030,124635,105755,342237,null,853079],["accepted","accepted","accepted","unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Problems where a taxon is found, and accepted, may mean error in the <code>downstream</code> call. Check the various <code>X_from_X.csv</code> dataframes to figure out where this taxon is being dropped.</li>
 <li>problems where a taxon is found, but not accepted (or not a main rank), may indicate species where an alternate name will fix the issue.
@@ -514,91 +547,91 @@ div.tocify {
 <div id="expand-classification-for-matched-species" class="section level2" number="2.3">
 <h2 number="2.3"><span class="header-section-number">2.3</span> Expand classification for matched species</h2>
 <p>Identify the rank at which each spp group matched, and disambiguate spp gps that match at multiple ranks to identify the most specific rank.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Loop over matchable ranks to separate out the matched species by rank of match</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>match_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;phylum&#39;</span>, <span class="st">&#39;class&#39;</span>, <span class="st">&#39;order&#39;</span>, <span class="st">&#39;family&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;species&#39;</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rank_partitions <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="at">length =</span> <span class="fu">length</span>(match_ranks)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(match_ranks)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) { <span class="co"># r &lt;- match_ranks[1]</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  rank_partitions[[r]] <span class="ot">&lt;-</span> matched_df <span class="sc">%&gt;%</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(rank <span class="sc">==</span> r) <span class="sc">%&gt;%</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">!!</span><span class="fu">paste0</span>(<span class="st">&#39;match_&#39;</span>, r) <span class="sc">:</span><span class="er">=</span> match, <span class="sc">!!</span><span class="at">r :=</span> name, </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>           stressor, vuln, sd_vuln, taxon) <span class="sc">%&gt;%</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">### Expand matched species to get full classification</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>match_exp <span class="ot">&lt;-</span> spp_all_wide</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="do">### r &lt;- &#39;class&#39;</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> rank_partitions[[r]] <span class="sc">%&gt;%</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&#39;match&#39;</span>), <span class="sc">!!</span>r) <span class="sc">%&gt;%</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  match_exp <span class="ot">&lt;-</span> match_exp <span class="sc">%&gt;%</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(tmp, <span class="at">by =</span> r)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="do">### Disambiguate expanded matches to the most specific rank available</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>match_exp_dis <span class="ot">&lt;-</span> match_exp <span class="sc">%&gt;%</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(key, match_rank, <span class="fu">starts_with</span>(<span class="st">&#39;match&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  <span class="do">### filter unmatched species</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(match_rank)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="do">### keep the most specific match level</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match_rank =</span> <span class="fu">factor</span>(match_rank, <span class="at">levels =</span> match_ranks)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">as.integer</span>(match_rank) <span class="sc">==</span> <span class="fu">max</span>(<span class="fu">as.integer</span>(match_rank))) <span class="sc">%&gt;%</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>key) <span class="sc">%&gt;%</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="do">### Loop over the matchable ranks again, to dice the expanded match and</span></span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a><span class="do">### join trait values by match rank.</span></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>match_vuln_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="at">length =</span> <span class="fu">length</span>(match_ranks)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(match_ranks)</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>  <span class="do">### r &lt;- &#39;class&#39;</span></span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>  tmp_rank_part <span class="ot">&lt;-</span> rank_partitions[[r]] <span class="sc">%&gt;%</span></span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">match_rank :=</span> <span class="sc">!!</span><span class="fu">paste0</span>(<span class="st">&#39;match_&#39;</span>, r))</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>  match_vuln_list[[r]] <span class="ot">&lt;-</span> match_exp_dis <span class="sc">%&gt;%</span></span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(match_rank <span class="sc">==</span> r) <span class="sc">%&gt;%</span></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(tmp_rank_part, <span class="at">by =</span> <span class="fu">c</span>(r, <span class="st">&#39;match_rank&#39;</span>))</span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>match_vuln_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(match_vuln_list) <span class="sc">%&gt;%</span></span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a>  <span class="do">### disambiguate pearl oysters</span></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genus <span class="sc">!=</span> <span class="st">&#39;pinctada&#39;</span> <span class="sc">|</span> class <span class="sc">==</span> <span class="st">&#39;bivalvia&#39;</span>)</span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a><span class="co"># dupes &lt;- match_vuln_df %&gt;%</span></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(phylum:species, taxon) %&gt;%</span></span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a><span class="co">#   distinct() %&gt;%</span></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a><span class="co">#   show_dupes(&#39;species&#39;)</span></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a><span class="do">### Split into a species match table and vulnerability table, with an ID number</span></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a><span class="do">### to facilitate later matching up</span></span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>match_spp <span class="ot">&lt;-</span> match_vuln_df <span class="sc">%&gt;%</span></span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(phylum<span class="sc">:</span>species, taxon, match_rank) <span class="sc">%&gt;%</span></span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(taxon, species) <span class="sc">%&gt;%</span></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>spp_vuln <span class="ot">&lt;-</span> match_vuln_df <span class="sc">%&gt;%</span></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, taxon, stressor, vuln, sd_vuln) <span class="sc">%&gt;%</span></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(match_spp <span class="sc">%&gt;%</span> <span class="fu">select</span>(taxon, species, spp_id), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vuln =</span> <span class="fu">round</span>(vuln, <span class="dv">5</span>), <span class="at">sd_vuln =</span> <span class="fu">round</span>(sd_vuln, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>taxon, <span class="sc">-</span>species) <span class="do">### get these back by matching with spp_id</span></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_spp, <span class="fu">here</span>(<span class="st">&#39;int/spp_match_downfill.csv&#39;</span>))</span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(spp_vuln,  <span class="fu">here</span>(<span class="st">&#39;int/vuln_downfill_only.csv&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Loop over matchable ranks to separate out the matched species by rank of match</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>match_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;phylum&#39;</span>, <span class="st">&#39;class&#39;</span>, <span class="st">&#39;order&#39;</span>, <span class="st">&#39;family&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;species&#39;</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>rank_partitions <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="at">length =</span> <span class="fu">length</span>(match_ranks)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(match_ranks)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) { <span class="co"># r &lt;- match_ranks[1]</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  rank_partitions[[r]] <span class="ot">&lt;-</span> matched_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(rank <span class="sc">==</span> r) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">!!</span><span class="fu">paste0</span>(<span class="st">&#39;match_&#39;</span>, r) <span class="sc">:</span><span class="er">=</span> match, <span class="sc">!!</span><span class="at">r :=</span> name, </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>           stressor, vuln, sd_vuln, taxon) <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="do">### Expand matched species to get full classification</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>match_exp <span class="ot">&lt;-</span> spp_all_wide</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="do">### r &lt;- &#39;class&#39;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> rank_partitions[[r]] <span class="sc">%&gt;%</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&#39;match&#39;</span>), <span class="sc">!!</span>r) <span class="sc">%&gt;%</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>()</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  match_exp <span class="ot">&lt;-</span> match_exp <span class="sc">%&gt;%</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(tmp, <span class="at">by =</span> r)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="do">### Disambiguate expanded matches to the most specific rank available</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>match_exp_dis <span class="ot">&lt;-</span> match_exp <span class="sc">%&gt;%</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(key, match_rank, <span class="fu">starts_with</span>(<span class="st">&#39;match&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>  <span class="do">### filter unmatched species</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(match_rank)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>  <span class="do">### keep the most specific match level</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">match_rank =</span> <span class="fu">factor</span>(match_rank, <span class="at">levels =</span> match_ranks)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">as.integer</span>(match_rank) <span class="sc">==</span> <span class="fu">max</span>(<span class="fu">as.integer</span>(match_rank))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>key) <span class="sc">%&gt;%</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="do">### Loop over the matchable ranks again, to dice the expanded match and</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="do">### join trait values by match rank.</span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>match_vuln_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&#39;list&#39;</span>, <span class="at">length =</span> <span class="fu">length</span>(match_ranks)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(match_ranks)</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(r <span class="cf">in</span> match_ranks) {</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>  <span class="do">### r &lt;- &#39;class&#39;</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>  tmp_rank_part <span class="ot">&lt;-</span> rank_partitions[[r]] <span class="sc">%&gt;%</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(<span class="at">match_rank :=</span> <span class="sc">!!</span><span class="fu">paste0</span>(<span class="st">&#39;match_&#39;</span>, r))</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  match_vuln_list[[r]] <span class="ot">&lt;-</span> match_exp_dis <span class="sc">%&gt;%</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(match_rank <span class="sc">==</span> r) <span class="sc">%&gt;%</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(tmp_rank_part, <span class="at">by =</span> <span class="fu">c</span>(r, <span class="st">&#39;match_rank&#39;</span>))</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>match_vuln_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(match_vuln_list) <span class="sc">%&gt;%</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="do">### disambiguate pearl oysters</span></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genus <span class="sc">!=</span> <span class="st">&#39;pinctada&#39;</span> <span class="sc">|</span> class <span class="sc">==</span> <span class="st">&#39;bivalvia&#39;</span>)</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="co"># dupes &lt;- match_vuln_df %&gt;%</span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(phylum:species, taxon) %&gt;%</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="co">#   distinct() %&gt;%</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="co">#   show_dupes(&#39;species&#39;)</span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="do">### Split into a species match table and vulnerability table, with an ID number</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="do">### to facilitate later matching up</span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>match_spp <span class="ot">&lt;-</span> match_vuln_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(phylum<span class="sc">:</span>species, taxon, match_rank) <span class="sc">%&gt;%</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(taxon, species) <span class="sc">%&gt;%</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">downfill_spp_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">n</span>())</span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>spp_vuln <span class="ot">&lt;-</span> match_vuln_df <span class="sc">%&gt;%</span></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, taxon, stressor, vuln, sd_vuln) <span class="sc">%&gt;%</span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(match_spp <span class="sc">%&gt;%</span> <span class="fu">select</span>(taxon, species, downfill_spp_id), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vuln =</span> <span class="fu">round</span>(vuln, <span class="dv">5</span>), <span class="at">sd_vuln =</span> <span class="fu">round</span>(sd_vuln, <span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>taxon, <span class="sc">-</span>species) <span class="do">### get these back by matching with downfill_spp_id</span></span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_spp, <span class="fu">here</span>(<span class="st">&#39;int/spp_match_downfill.csv&#39;</span>))</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(spp_vuln,  <span class="fu">here</span>(<span class="st">&#39;int/vuln_downfill_only.csv&#39;</span>))</span></code></pre></div>
 <div id="how-many-matched-at-each-level" class="section level3" number="2.3.1">
 <h3 number="2.3.1"><span class="header-section-number">2.3.1</span> How many matched at each level?</h3>
-<p>There are 22839 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(match_rank) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">n_spp_matched =</span> <span class="fu">n_distinct</span>(species)))</span></code></pre></div>
+<p>There are 30259 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(match_rank) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">n_spp_matched =</span> <span class="fu">n_distinct</span>(species)))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -609,32 +642,32 @@ div.tocify {
 <tbody>
 <tr class="odd">
 <td align="left">class</td>
-<td align="right">8817</td>
+<td align="right">8858</td>
 </tr>
 <tr class="even">
 <td align="left">order</td>
-<td align="right">7764</td>
+<td align="right">13595</td>
 </tr>
 <tr class="odd">
 <td align="left">family</td>
-<td align="right">3772</td>
+<td align="right">5132</td>
 </tr>
 <tr class="even">
 <td align="left">genus</td>
-<td align="right">1907</td>
+<td align="right">1909</td>
 </tr>
 <tr class="odd">
 <td align="left">species</td>
-<td align="right">579</td>
+<td align="right">765</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="taxonomic-breakdown" class="section level3" number="2.3.2">
 <h3 number="2.3.2"><span class="header-section-number">2.3.2</span> Taxonomic breakdown?</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(taxon) <span class="sc">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">n_spp_matched =</span> <span class="fu">n_distinct</span>(species)))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(taxon) <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">n_spp_matched =</span> <span class="fu">n_distinct</span>(species)))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -645,27 +678,27 @@ div.tocify {
 <tbody>
 <tr class="odd">
 <td align="left">cephalopods</td>
-<td align="right">809</td>
+<td align="right">812</td>
 </tr>
 <tr class="even">
 <td align="left">corals</td>
-<td align="right">318</td>
+<td align="right">319</td>
 </tr>
 <tr class="odd">
 <td align="left">crustacea_arthropods</td>
-<td align="right">2095</td>
+<td align="right">2097</td>
 </tr>
 <tr class="even">
 <td align="left">echinoderms</td>
-<td align="right">7858</td>
+<td align="right">7875</td>
 </tr>
 <tr class="odd">
 <td align="left">elasmobranchs</td>
-<td align="right">1240</td>
+<td align="right">1243</td>
 </tr>
 <tr class="even">
 <td align="left">fish</td>
-<td align="right">115</td>
+<td align="right">7451</td>
 </tr>
 <tr class="odd">
 <td align="left">marine_mammals</td>
@@ -673,15 +706,15 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">molluscs</td>
-<td align="right">190</td>
+<td align="right">184</td>
 </tr>
 <tr class="odd">
 <td align="left">polychaetes</td>
-<td align="right">1983</td>
+<td align="right">2010</td>
 </tr>
 <tr class="even">
 <td align="left">reptiles</td>
-<td align="right">91</td>
+<td align="right">89</td>
 </tr>
 <tr class="odd">
 <td align="left">seabirds</td>
@@ -689,12 +722,12 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">sponges</td>
-<td align="right">7682</td>
+<td align="right">7721</td>
 </tr>
 </tbody>
 </table>
 <p>Total number of species matched with down-fill:</p>
-<p>22839</p>
+<p>30259</p>
 </div>
 </div>
 </div>
