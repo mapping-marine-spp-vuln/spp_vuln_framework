@@ -44,7 +44,7 @@ Set up a function to consistently clean trait values.  Trait values in the speci
 
 This function also cleans up category and trait names for consistency.  All lower case, punctuation and spaces replaced with underscores.  The species trait file is already cleaned in this manner.
 
-```{r}
+```{r define fxns}
 clean_traitnames <- function(df, overwrite_clean_col = FALSE) {
   df <- df %>% 
     mutate(category = str_replace_all(category, '[^A-Za-z0-9]+', '_') %>% tolower(),
@@ -107,13 +107,13 @@ assign_rank_scores <- function(x) {
 
 Since the species trait file is already cleaned, DO NOT use the `clean_traitvals` function - it will overwrite the `trait_value` column.  Here we will drop plants and algae as physiologies are so fundamentally different from animals.
 
-```{r}
+```{r load traits}
 spp_traits <- read_csv('_data/spp_traits_valid.csv') %>%
   filter(taxon != 'plants_algae')
 
 ```
 
-```{r}
+```{r load stressor trait sheets}
 str_trait_f <- here('_raw_data/xlsx',
                     'stressors_traits_scored.xlsx')
 str_trait_shts <- readxl::excel_sheets(str_trait_f)
@@ -139,7 +139,7 @@ Questions to consider that will affect scoring/weighting:
 To score this we will simply lump together all unique listed habitats, for both within-stage and for across-stage.  Sensitivity to habitat degradation or loss will be based on whether the species has any within-stage dependencies and/or any across-stage dependencies, regardless of which habitats or how many.
 
 ### Calculate for all 
-``` {r}
+``` {r calc sensitivity}
 sens_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'sensitivity') 
 
 sens_traits_df <- sens_traits_raw %>%
@@ -212,7 +212,7 @@ These traits are in the trait-sensitivity scoring sheet but not found in the spe
 
 Here sensitivity for each stressor is normalized by max observed for that stressor.  Biomass removal is excluded, since it is automatically 1 for every species.
 
-```{r}
+```{r summarize sens by gp and str}
 
 plot_df <- spp_sens %>%
   group_by(stressor) %>%
@@ -251,7 +251,7 @@ DT::datatable(top_3_sens)
 
 General adaptive capacity traits are basically related to the overall population's resilience in the face of a threat.  Large extents of occurrence, large population sizes, presence of multiple subpopulations, and reproductive strategies fall into this category.
 
-``` {r}
+``` {r score gen ad cap}
 
 adcap_gen_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'gen_adcap') 
 
@@ -264,15 +264,14 @@ adcap_gen_traits <- adcap_gen_traits_raw %>%
   clean_traitvals()
 
 spp_adcap_gen_raw <- spp_traits %>%
-  left_join(adcap_gen_traits, by = c('category', 'trait', 'trait_value')) %>%
+  inner_join(adcap_gen_traits, by = c('category', 'trait', 'trait_value')) %>%
   mutate(adcap_gen_score = ifelse(is.na(adcap_score), 0, adcap_score)) %>%
   select(-n_spp_gps, -adcap_score, -adcap_score_orig)
 
 spp_adcap_gen <- spp_adcap_gen_raw %>%
-  group_by(spp_gp, taxon, trait) %>%
-  summarize(adcap_gen_score = sum(adcap_gen_score * trait_prob, na.rm = TRUE)) %>%
+  mutate(wt_adcap_gen = trait_prob * adcap_gen_score) %>%
   group_by(spp_gp, taxon) %>%
-  summarize(adcap_gen_score = sum(adcap_gen_score, na.rm = TRUE), 
+  summarize(adcap_gen_score = sum(wt_adcap_gen, na.rm = TRUE), 
             .groups = 'drop')
 
 ```
@@ -281,7 +280,7 @@ spp_adcap_gen <- spp_adcap_gen_raw %>%
 
 Here scores are not normalized. The pattern would be identical if normalized, simply rescaled.
 
-```{r}
+```{r plot gen adcap by taxon}
 p <- ggplot(spp_adcap_gen, aes(x = taxon, y = adcap_gen_score)) +
   geom_jitter(size = 1, alpha = .6, width = .2, height = .2) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5))
@@ -300,7 +299,7 @@ knitr::include_graphics(here('figs/spp_adcap_gen_scores.png'))
 
 Specific adaptive capacity traits are basically related to an organism's ability to avoid or mitigate exposure, primarily through movement and larval dispersal.
 
-``` {r}
+``` {r score spec adcap}
 adcap_spec_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'spec_adcap') %>%
   janitor::clean_names() %>%
   filter(!str_detect(tolower(category), 'spatial')) ### drop exposure traits
@@ -316,14 +315,13 @@ adcap_spec_traits <- adcap_spec_traits_raw %>%
   filter(!is.na(trait))
 
 spp_adcap_spec_raw <- spp_traits %>%
-  left_join(adcap_spec_traits, by = c('category', 'trait', 'trait_value')) %>%
+  inner_join(adcap_spec_traits, by = c('category', 'trait', 'trait_value')) %>%
   mutate(adcap_spec_score = ifelse(is.na(adcap_score), 0, adcap_score)) %>%
   filter(!is.na(stressor)) %>%
   select(-n_spp_gps, -adcap_score, -adcap_score_orig)
 
 spp_adcap_spec <- spp_adcap_spec_raw %>%
-  group_by(spp_gp, stressor, taxon, trait) %>%
-  summarize(adcap_spec_score = sum(adcap_spec_score * trait_prob, na.rm = TRUE)) %>%
+  mutate(wt_adcap_spec = adcap_spec_score * trait_prob) %>%
   group_by(spp_gp, stressor, taxon) %>%
   summarize(adcap_spec_score = sum(adcap_spec_score, na.rm = TRUE), 
             .groups = 'drop')
@@ -359,7 +357,7 @@ Traits in specific ad cap scores, not in spp-traits:
 
 Here these are normalized for each stressor.
 
-```{r}
+```{r plot spec adcap}
 plot_df <- spp_adcap_spec %>%
   group_by(stressor) %>%
   mutate(adcap_spec_norm = adcap_spec_score / max(adcap_spec_score),
@@ -395,7 +393,7 @@ DT::datatable(top_3_adcap)
 
 Exposure potential modifier checks whether the depth and oceanic zones of the stressor match with the depth and oceanic zones of the species.  These fall into the "spatial scale" category with the exception of EOO.
 
-```{r}
+```{r exposure potential}
 
 exp_traits_raw <- readxl::read_excel(str_trait_f, sheet = 'spec_adcap') %>%
   filter(str_detect(tolower(category), 'spatial')) ### include only exposure traits
@@ -478,7 +476,7 @@ Check the spp traits for these species to identify proper assignment of at least
 
 `r knitr::kable(table(cleared_exposure$taxon))`
 
-`r DT::datatable(cleared_exposure)`
+<!-- `r DT::datatable(cleared_exposure)` -->
 
 # Combine scores
 
@@ -502,7 +500,7 @@ For species groups with NA in specific adaptive capacity, force to zero (no matc
 
 These results will be saved by species group for now, for future matching to the species level.
 
-```{r}
+```{r check stressors matching up}
 
 ### Check that all stressors are matched to ensure proper combining of scores
 
@@ -780,7 +778,7 @@ spp_val_check <- spp_scores_mean %>%
          acs_diff = abs(acs_mean - acs_mc))
          
   
-DT::datatable(spp_val_check)
+# DT::datatable(spp_val_check)
 ```
 
 ### Vulnerability per stressor by spp gp
@@ -894,7 +892,7 @@ for(s in stressors) { # s <- stressors[6]
   plotfile <- sprintf('figs/vuln_plot_by_stressor_%s.png', s)
   ggsave(plot = vuln_plot, filename = plotfile, 
          width = 8, height = 8, dpi = 300)
-  cat(sprintf('![](%s)\n', plotfile))
+  # cat(sprintf('![](%s)\n', plotfile))
 }
 
 ```

@@ -1,4 +1,4 @@
-assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
+assemble_worms <- function(aspect = 'wide', seabirds_only = FALSE, am_patch = TRUE) {
   ### Note: this drops all kingdoms but Animalia 
   p_from_k <- read_csv(here('int/expand1_phylum_from_kingdom_worms.csv'), 
                        col_types = c(id = 'i')) %>%
@@ -19,16 +19,20 @@ assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
                        col_types = c(id = 'i')) %>%
     filter(!is.na(id))
   
-  am_patch_long <- read_csv(here('int/expand7_aquamaps_patch.csv'),
-                            col_types = cols(.default = 'c')) %>%
-    select(spp_gp, rank, name) %>%
-    distinct()
-
-  am_patch_wide <- am_patch_long %>%
-    distinct() %>%
-    spread(rank, name) %>%
-    select(-spp_gp) %>%
-    distinct()
+  if(am_patch) {
+    am_patch_long <- read_csv(here('int/expand7_aquamaps_patch.csv'),
+                              col_types = cols(.default = 'c')) %>%
+      select(spp_gp, rank, name) %>%
+      distinct()
+  
+    am_patch_wide <- am_patch_long %>%
+      distinct() %>%
+      spread(rank, name) %>%
+      select(-spp_gp) %>%
+      distinct()
+  } else {
+    am_patch_wide <- data.frame() ### blank dataframe for bind_rows
+  }
   
   rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
   
@@ -53,7 +57,7 @@ assemble_worms <- function(aspect = 'wide', seabirds = TRUE) {
   
   spp_df <- disambiguate_species(spp_wide)
   
-  if(seabirds == TRUE) {
+  if(seabirds_only == TRUE) {
     seabird_list <- readxl::read_excel(here('_raw_data/xlsx/species_numbers.xlsx'),
                                        sheet = 'seabirds', skip = 1) %>%
       janitor::clean_names() %>%
