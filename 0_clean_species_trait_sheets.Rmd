@@ -219,8 +219,9 @@ x <- raw_data_df %>%
 
 ### New fish traits data
 
-```{r}
-fish_beth_raw <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add.xlsx'),
+New species traits from Beth in transposed format; new code to incorporate.
+```{r fish from beth polidoro}
+fish_beth_raw <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add_bp.xlsx'),
                                 sheet = 'srli_fish_traits') %>%
   setNames(tolower(names(.))) %>%
   slice(-c(1, 2)) ### drop empty rows
@@ -246,6 +247,27 @@ raw_data_df <- raw_data_df %>%
   bind_rows(fish_beth)
 ```
 
+New species traits from Mike Kingsford in original format; added instead to `spp_traits_all.xlsx` so no need to re-incorporate.
+```{r fish from mike kingsford}
+fish_mike_raw <- readxl::read_excel(here('_raw_data/xlsx/fish_traits_add_mk.xlsx'))
+
+new_spp <- names(fish_mike_raw)[-c(1:6)] %>% tolower()
+# new_spp[!new_spp %in% raw_data_df$spp_gp]
+
+#  [1] "osterhinchus doederleini"    "cephalopholis cyanostogmata" "lutjanus carponatatus"      
+#  [4] "scarus schlegeri"            "ctenoscarus bicolor"         "naso vlamingi"              
+#  [7] "acanthurus dusumieri"        "gymnothorax javanicus"       "carapus bermudensi"         
+# [10] "phycoduras eques"            "gobiodon histro"             "corphaena hippurus"         
+# [13] "gadus mohua"
+
+### these are all typos or unaccepted names that in Mike's spreadsheet that
+### have been fixed in the up-to-date species trait spreadsheet.
+### No action needed.
+
+```
+
+## clean up troublesome traits
+
 Check raw data against valid category values.
 
 * Set all values to lower case to avoid case sensitivity.
@@ -254,7 +276,6 @@ Check raw data against valid category values.
 * Split trait values on semicolons to separate multiple cell values; then unnest and str_trim.
 
 
-## clean up troublesome traits
 
 ### zone
 
