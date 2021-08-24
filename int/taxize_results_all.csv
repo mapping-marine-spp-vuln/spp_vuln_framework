@@ -5877,16 +5877,6 @@ enchelycore schismatorhynchus,Muraenidae,family,125431,FALSE,worms
 enchelycore schismatorhynchus,Muraeninae,subfamily,151829,FALSE,worms
 enchelycore schismatorhynchus,Enchelycore,genus,125635,FALSE,worms
 enchelycore schismatorhynchus,Enchelycore schismatorhynchus,species,217474,FALSE,worms
-engraulis ringens,Animalia,kingdom,2,FALSE,worms
-engraulis ringens,Chordata,phylum,1821,FALSE,worms
-engraulis ringens,Vertebrata,subphylum,146419,FALSE,worms
-engraulis ringens,Gnathostomata,superclass,1828,FALSE,worms
-engraulis ringens,Pisces,superclass,11676,FALSE,worms
-engraulis ringens,Actinopterygii,class,10194,FALSE,worms
-engraulis ringens,Clupeiformes,order,10297,FALSE,worms
-engraulis ringens,Engraulidae,family,125465,FALSE,worms
-engraulis ringens,Engraulis,genus,125724,FALSE,worms
-engraulis ringens,Engraulis ringens,species,272287,FALSE,worms
 entomacrodus macrospilus,Animalia,kingdom,2,FALSE,worms
 entomacrodus macrospilus,Chordata,phylum,1821,FALSE,worms
 entomacrodus macrospilus,Vertebrata,subphylum,146419,FALSE,worms
@@ -11762,4 +11752,92 @@ rhabdosargus sarba,Eupercaria incertae sedis,order,1517577,FALSE,worms
 rhabdosargus sarba,Sparidae,family,125564,FALSE,worms
 rhabdosargus sarba,Rhabdosargus,genus,204190,FALSE,worms
 rhabdosargus sarba,Rhabdosargus sarba,species,218621,FALSE,worms
+anchoa,Animalia,kingdom,2,FALSE,worms
+anchoa,Chordata,phylum,1821,FALSE,worms
+anchoa,Vertebrata,subphylum,146419,FALSE,worms
+anchoa,Gnathostomata,infraphylum,1828,FALSE,worms
+anchoa,Osteichthyes,parvphylum,152352,FALSE,worms
+anchoa,Actinopterygii,gigaclass,10194,FALSE,worms
+anchoa,Actinopteri,class,843664,FALSE,worms
+anchoa,Teleostei,subclass,293496,FALSE,worms
+anchoa,Clupeiformes,order,10297,FALSE,worms
+anchoa,Engraulidae,family,125465,FALSE,worms
+anchoa,Anchoa,genus,158697,FALSE,worms
+anchoviella,Animalia,kingdom,2,FALSE,worms
+anchoviella,Chordata,phylum,1821,FALSE,worms
+anchoviella,Vertebrata,subphylum,146419,FALSE,worms
+anchoviella,Gnathostomata,infraphylum,1828,FALSE,worms
+anchoviella,Osteichthyes,parvphylum,152352,FALSE,worms
+anchoviella,Actinopterygii,gigaclass,10194,FALSE,worms
+anchoviella,Actinopteri,class,843664,FALSE,worms
+anchoviella,Teleostei,subclass,293496,FALSE,worms
+anchoviella,Clupeiformes,order,10297,FALSE,worms
+anchoviella,Engraulidae,family,125465,FALSE,worms
+anchoviella,Anchoviella,genus,158700,FALSE,worms
+engraulis,Animalia,kingdom,2,FALSE,worms
+engraulis,Chordata,phylum,1821,FALSE,worms
+engraulis,Vertebrata,subphylum,146419,FALSE,worms
+engraulis,Gnathostomata,infraphylum,1828,FALSE,worms
+engraulis,Osteichthyes,parvphylum,152352,FALSE,worms
+engraulis,Actinopterygii,gigaclass,10194,FALSE,worms
+engraulis,Actinopteri,class,843664,FALSE,worms
+engraulis,Teleostei,subclass,293496,FALSE,worms
+engraulis,Clupeiformes,order,10297,FALSE,worms
+engraulis,Engraulidae,family,125465,FALSE,worms
+engraulis,Engraulis,genus,125724,FALSE,worms
+lycengraulis,Animalia,kingdom,2,FALSE,worms
+lycengraulis,Chordata,phylum,1821,FALSE,worms
+lycengraulis,Vertebrata,subphylum,146419,FALSE,worms
+lycengraulis,Gnathostomata,infraphylum,1828,FALSE,worms
+lycengraulis,Osteichthyes,parvphylum,152352,FALSE,worms
+lycengraulis,Actinopterygii,gigaclass,10194,FALSE,worms
+lycengraulis,Actinopteri,class,843664,FALSE,worms
+lycengraulis,Teleostei,subclass,293496,FALSE,worms
+lycengraulis,Clupeiformes,order,10297,FALSE,worms
+lycengraulis,Engraulidae,family,125465,FALSE,worms
+lycengraulis,Lycengraulis,genus,269754,FALSE,worms
+stolephorus,Animalia,kingdom,2,FALSE,worms
+stolephorus,Chordata,phylum,1821,FALSE,worms
+stolephorus,Vertebrata,subphylum,146419,FALSE,worms
+stolephorus,Gnathostomata,infraphylum,1828,FALSE,worms
+stolephorus,Osteichthyes,parvphylum,152352,FALSE,worms
+stolephorus,Actinopterygii,gigaclass,10194,FALSE,worms
+stolephorus,Actinopteri,class,843664,FALSE,worms
+stolephorus,Teleostei,subclass,293496,FALSE,worms
+stolephorus,Clupeiformes,order,10297,FALSE,worms
+stolephorus,Engraulidae,family,125465,FALSE,worms
+stolephorus,Stolephorus,genus,206924,FALSE,worms
+thryssa,Animalia,kingdom,2,FALSE,worms
+thryssa,Chordata,phylum,1821,FALSE,worms
+thryssa,Vertebrata,subphylum,146419,FALSE,worms
+thryssa,Gnathostomata,infraphylum,1828,FALSE,worms
+thryssa,Osteichthyes,parvphylum,152352,FALSE,worms
+thryssa,Actinopterygii,gigaclass,10194,FALSE,worms
+thryssa,Actinopteri,class,843664,FALSE,worms
+thryssa,Teleostei,subclass,293496,FALSE,worms
+thryssa,Clupeiformes,order,10297,FALSE,worms
+thryssa,Engraulidae,family,125465,FALSE,worms
+thryssa,Thryssa,genus,158703,FALSE,worms
+cetengraulis,Animalia,kingdom,2,FALSE,worms
+cetengraulis,Chordata,phylum,1821,FALSE,worms
+cetengraulis,Vertebrata,subphylum,146419,FALSE,worms
+cetengraulis,Gnathostomata,infraphylum,1828,FALSE,worms
+cetengraulis,Osteichthyes,parvphylum,152352,FALSE,worms
+cetengraulis,Actinopterygii,gigaclass,10194,FALSE,worms
+cetengraulis,Actinopteri,class,843664,FALSE,worms
+cetengraulis,Teleostei,subclass,293496,FALSE,worms
+cetengraulis,Clupeiformes,order,10297,FALSE,worms
+cetengraulis,Engraulidae,family,125465,FALSE,worms
+cetengraulis,Cetengraulis,genus,268692,FALSE,worms
+encrasicholina,Animalia,kingdom,2,FALSE,worms
+encrasicholina,Chordata,phylum,1821,FALSE,worms
+encrasicholina,Vertebrata,subphylum,146419,FALSE,worms
+encrasicholina,Gnathostomata,infraphylum,1828,FALSE,worms
+encrasicholina,Osteichthyes,parvphylum,152352,FALSE,worms
+encrasicholina,Actinopterygii,gigaclass,10194,FALSE,worms
+encrasicholina,Actinopteri,class,843664,FALSE,worms
+encrasicholina,Teleostei,subclass,293496,FALSE,worms
+encrasicholina,Clupeiformes,order,10297,FALSE,worms
+encrasicholina,Engraulidae,family,125465,FALSE,worms
+encrasicholina,Encrasicholina,genus,206943,FALSE,worms
 nautilus suluensis,NA,NA,NA,FALSE,worms

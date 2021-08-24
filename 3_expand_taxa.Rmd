@@ -450,7 +450,8 @@ if(!file.exists(aquamaps_patch_file)) {
            am_o = order, am_f = family, am_g = genus, species) %>%
     mutate(across(starts_with('am_'), tolower))
   
-  worms_spp <- assemble_worms(seabirds_only = FALSE, am_patch = FALSE) ### gather downstream WoRMS classifications
+  worms_spp <- assemble_worms('wide', seabirds_only = FALSE, am_patch = FALSE) 
+    ### gather downstream WoRMS classifications
   
   am_spp_match <- am_spp_info %>%
     inner_join(worms_spp, by = 'species')
@@ -553,29 +554,20 @@ write_csv(am_patch, aquamaps_patch_file)
 
 ```
 
+## Caveat! use `assemble_worms()`
+
+These sets still contain ambiguous/duplicated classifications, e.g., certain genera in AquaMaps are listed across multiple families, orders, or classes.  The `assemble_worms()` function (including `resolve_am_disputes()` and `disambiguate_species()` functions) in `common_fxns.R` identifies mismatches and resolves them.  Therefore, that function should be used from here on out to gather the complete taxonomic classification.
+
 ## compare numbers of species
 
 How many species? how many genera? etc.
 
 ```{r compare numbers of spp}
-s_from_g <- read_csv(s_from_g_file)
-g_from_f <- read_csv(g_from_f_file)
-f_from_o <- read_csv(f_from_o_file)
-o_from_c <- read_csv(o_from_c_file)
-c_from_p <- read_csv(c_from_p_file)
-p_from_k <- read_csv(p_from_k_file)
-am_patch <- read_csv(aquamaps_patch_file)
-
-rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
-
-all_df <- bind_rows(s_from_g, g_from_f, f_from_o, o_from_c, c_from_p, p_from_k) %>%
-  bind_rows(am_patch) %>%
-  mutate(rank = factor(rank, levels = rank_lvls)) %>%
-  filter(!is.na(name) & !is.na(id)) %>%
-  select(-id, -spp_gp) %>%
+spp_df_long <- assemble_worms(aspect = 'long', seabirds_only = TRUE) %>%
+  select(-spp) %>%
   distinct()
 
-all_ranks_sum <- all_df %>%
+all_ranks_sum <- spp_df_long %>%
   group_by(rank) %>%
   summarize(n = n_distinct(name)) %>%
   arrange(rank)
@@ -592,9 +584,9 @@ trait_spp_gps <- read_csv(here('_data/spp_traits_valid.csv')) %>%
   select(taxon, spp_gp) %>%
   distinct()
 
-spp_df_wide <- assemble_worms(seabirds_only = TRUE)
+spp_df_wide <- assemble_worms(aspect = 'wide', seabirds_only = TRUE)
 
-matched_df <- inner_join(all_df, trait_spp_gps, by = c('name' = 'spp_gp')) %>%
+matched_df <- inner_join(spp_df_long, trait_spp_gps, by = c('name' = 'spp_gp')) %>%
   mutate(match = rank)
 # matched_df$rank %>% unique() # species genus   family  class 
 spp_matched <- matched_df %>%
@@ -612,6 +604,8 @@ ord_matched <- matched_df %>%
 cls_matched <- matched_df %>%
   filter(rank == 'class') %>%
   select(match_cls = match, class = name)
+
+rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
 
 matched_all <- spp_df_wide %>%
   left_join(spp_matched, by = 'species') %>%

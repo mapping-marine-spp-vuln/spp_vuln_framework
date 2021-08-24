@@ -46,7 +46,8 @@ match_spp <- read_csv(here('int/spp_match_downfill.csv'))
 spp_vuln  <- read_csv(here('int/vuln_downfill_only.csv'))
 
 match_vuln_df <- match_spp %>%
-  inner_join(spp_vuln, by = 'spp_id')
+  inner_join(spp_vuln, by = 'downfill_spp_id') %>%
+  mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
 ```
 
 ## Assemble full spp table from WoRMS
@@ -112,55 +113,74 @@ For probabilistic taxa, we will do a Monte Carlo approach, sampling species from
 ### Deterministic taxa
 
 ``` {r identify deterministic taxa-stressor instances}
+### Because this seems to keep stalling when crunching genus,
+### break into chunks by a higher rank, process separately, then recombine
+ords <- match_vuln_df %>%
+  group_by(order) %>%
+  summarize(n_spp = n_distinct(species)) %>%
+  .$order
 
-gen_fill_det <- match_vuln_df %>%
-  group_by(class, order, family, genus, stressor, taxon) %>%
-  filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
-  summarize(n_spp_known = n_distinct(species),
-            mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln))
-            # med_vuln  = median(vuln),
-            # skew_vuln = psych::skew(vuln, type = 2),
-            # kurt_vuln = psych::kurtosi(vuln, type = 2),
-            # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            # gapfill = 'genus')
+rank_fill_det <- function(ord, ranks) {
+  ### ord <- ords[1]
+  rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
+  ### find the max rank (max == most specific)
+  ranks_fct <- factor(ranks, levels = rank_lvls)
+  gp_rank <- ranks_fct[which.max(ranks_fct)] %>% as.character()
   
-fam_fill_det <- match_vuln_df %>%
-  group_by(class, order, family, stressor, taxon) %>%
-  filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
-  summarize(n_spp_known = n_distinct(species),
-            mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln))
-            # med_vuln  = median(vuln),
-            # skew_vuln = moments::skewness(vuln),
-            # kurt_vuln = moments::kurtosis(vuln),
-            # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            # gapfill = 'family')
+  message('processing ', paste(ranks, collapse = '/'), ', chunking order ', ord)
+  det_tmp <- match_vuln_df %>%
+    filter(order == ord) %>%
+    group_by(!!!syms(gp_rank), stressor, taxon) %>%
+    mutate(tmp = sum(sd_vuln > 0, na.rm = TRUE)) %>%
+    filter(tmp == 0) %>%
+    group_by(!!!syms(ranks), stressor, taxon) %>%
+    summarize(n_spp_known = n_distinct(species),
+              mean_vuln = mean(vuln),
+              sd_vuln   = sd(vuln), ### this line is causing lags
+              # sd_vuln2 = sqrt( sum((vuln - mean_vuln)^2) / (n_spp_known - 1) ),
+              .groups = 'drop')
+  # message('wrapping up order ', ord)
+  return(det_tmp)
+}
+
+gen_fill_det <- parallel::mclapply(ords, mc.cores = 20,
+                  FUN = rank_fill_det, 
+                  ranks = c('class', 'order', 'family', 'genus')) %>%
+  bind_rows()
+    ### placeholder for additional moments
+      # med_vuln  = median(vuln),
+      # skew_vuln = psych::skew(vuln, type = 2),
+      # kurt_vuln = psych::kurtosi(vuln, type = 2),
+      # bimod_coef = mousetrap::bimodality_coefficient(vuln),
+      # gapfill = 'genus')
+message('...done with genus')
+  
+fam_fill_det <- parallel::mclapply(ords, mc.cores = 20,
+                  FUN = rank_fill_det, 
+                  ranks = c('class', 'order', 'family')) %>%
+  bind_rows()
+message('...done with family')
 
 ord_fill_det <- match_vuln_df %>%
   group_by(class, order, stressor, taxon) %>%
-  filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
+  mutate(tmp = sum(sd_vuln > 0, na.rm = TRUE)) %>%
+  filter(tmp == 0) %>%
   summarize(n_spp_known = n_distinct(species),
             mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln))
-            # med_vuln  = median(vuln),
-            # skew_vuln = moments::skewness(vuln),
-            # kurt_vuln = moments::kurtosis(vuln),
-            # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            # gapfill = 'order')
- 
+            sd_vuln   = sd(vuln), 
+            .groups = 'drop')
+message('...done with order')
+
 cls_fill_det <- match_vuln_df %>%
   group_by(class, stressor, taxon) %>%
-  filter(sum(sd_vuln > 0, na.rm = TRUE) == 0) %>%
+  mutate(tmp = sum(sd_vuln > 0, na.rm = TRUE)) %>%
+  filter(tmp == 0) %>%
   summarize(n_spp_known = n_distinct(species),
             mean_vuln = mean(vuln),
-            sd_vuln   = sd(vuln))
-            # med_vuln  = median(vuln),
-            # skew_vuln = moments::skewness(vuln),
-            # kurt_vuln = moments::kurtosis(vuln),
-            # bimod_coef = mousetrap::bimodality_coefficient(vuln),
-            # gapfill = 'class')
- 
+            sd_vuln   = sd(vuln), 
+            .groups = 'drop')
+message('...done with class')
+
 ```
 
 ### Probabilistic taxa
@@ -242,7 +262,7 @@ if(!file.exists(gen_fill_file) | reload) {
     filter(n_spp > 1) %>%
     ungroup()
   
-  genera <- gen_fill_qty$genus %>% unique()
+  genera <- gen_fill_qty$genus %>% unique() %>% sort()
   
   tmp_fstem <- here('tmp/gen_fill_mc_%s.csv')
   
@@ -343,7 +363,7 @@ if(!file.exists(fam_fill_file) | reload) {
     filter(n_spp > 1) %>%
     ungroup()
   
-  fams <- fam_fill_qty$family %>% unique()
+  fams <- fam_fill_qty$family %>% unique() %>% sort()
 
   tmp_fstem <- here('tmp/fam_fill_mc_%s.csv')
 
@@ -445,7 +465,7 @@ if(!file.exists(ord_fill_file) | reload) {
     filter(n_spp > 1) %>%
     ungroup()
   
-  ords <- ord_fill_qty$order %>% unique()
+  ords <- ord_fill_qty$order %>% unique() %>% sort()
 
   tmp_fstem <- here('tmp/ord_fill_mc_%s.csv')
 

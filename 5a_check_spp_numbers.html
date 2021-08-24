@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Fri Jun 18 19:23:09 2021 by ohara" />
+<meta name="author" content="Compiled on Tue Aug 24 15:46:11 2021 by ohara" />
 
 
 <title>Check downfilled numbers vs Nat’s numbers</title>
@@ -75,7 +75,6 @@ In here, put in a link to repo and website?
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -357,7 +356,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Check downfilled numbers vs Nat’s numbers</h1>
-<h4 class="author"><em>Compiled on Fri Jun 18 19:23:09 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Tue Aug 24 15:46:11 2021 by ohara</em></h4>
 
 </div>
 
@@ -371,12 +370,12 @@ div.tocify {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">dplyr.summarise.inform =</span> <span class="cn">FALSE</span>) </span></code></pre></div>
 <div id="summary" class="section level1" number="1">
 <h1 number="1"><span class="header-section-number">1</span> Summary</h1>
-<p>Compare Nat’s species counts to those included in the downfill operation.</p>
+<p>Compare Nat’s species counts to those included in the downfill operation - i.e., matches at higher-order ranks.</p>
 </div>
 <div id="methods" class="section level1" number="2">
 <h1 number="2"><span class="header-section-number">2</span> Methods</h1>
 <p>Read in the downfilled species list (<code>gapfill == &#39;none&#39;</code> indicates properly downfilled). Nat’s sheet is not easily parsed unfortunately, so will generate outputs one taxon at a time.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spp_downfill <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_output/vuln_gapfilled_tx.csv&#39;</span>))</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spp_downfill <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;int/spp_match_downfill.csv&#39;</span>))</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>taxa_in_code <span class="ot">&lt;-</span> spp_downfill<span class="sc">$</span>taxon <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -395,22 +394,21 @@ div.tocify {
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">### t &lt;- taxa_in_code[1]</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  n_in_code <span class="ot">&lt;-</span> spp_downfill <span class="sc">%&gt;%</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(taxon <span class="sc">==</span> t) <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gapfill <span class="sc">==</span> <span class="st">&#39;none&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    .<span class="sc">$</span>n</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  n_in_xlsx <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(xlsx_f, <span class="at">sheet =</span> t) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n_spp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    .<span class="sc">$</span>n</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  count_df <span class="ot">&lt;-</span> count_df <span class="sc">%&gt;%</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>(<span class="fu">data.frame</span>(<span class="at">taxon =</span> t, n_in_code, n_in_xlsx))</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>count_df <span class="ot">&lt;-</span> count_df <span class="sc">%&gt;%</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> n_in_code <span class="sc">-</span> n_in_xlsx,</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">pct_diff =</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(diff <span class="sc">/</span> n_in_xlsx, <span class="dv">3</span>))</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(count_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(pct_diff))))</span></code></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    .<span class="sc">$</span>n</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  n_in_xlsx <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(xlsx_f, <span class="at">sheet =</span> t) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n_spp, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    .<span class="sc">$</span>n</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  count_df <span class="ot">&lt;-</span> count_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">bind_rows</span>(<span class="fu">data.frame</span>(<span class="at">taxon =</span> t, n_in_code, n_in_xlsx))</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>count_df <span class="ot">&lt;-</span> count_df <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> n_in_code <span class="sc">-</span> n_in_xlsx,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">pct_diff =</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(diff <span class="sc">/</span> n_in_xlsx, <span class="dv">3</span>))</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(count_df <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(pct_diff))))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -423,126 +421,138 @@ div.tocify {
 </thead>
 <tbody>
 <tr class="odd">
+<td align="left">fish</td>
+<td align="right">7886</td>
+<td align="right">115</td>
+<td align="right">7771</td>
+<td align="right">6757.4</td>
+</tr>
+<tr class="even">
 <td align="left">crustacea_arthropods</td>
-<td align="right">1396</td>
+<td align="right">2094</td>
 <td align="right">109</td>
-<td align="right">1287</td>
-<td align="right">1180.7</td>
-</tr>
-<tr class="even">
-<td align="left">echinoderms</td>
-<td align="right">101</td>
-<td align="right">6750</td>
-<td align="right">-6649</td>
-<td align="right">-98.5</td>
-</tr>
-<tr class="odd">
-<td align="left">polychaetes</td>
-<td align="right">1955</td>
-<td align="right">1390</td>
-<td align="right">565</td>
-<td align="right">40.6</td>
-</tr>
-<tr class="even">
-<td align="left">seabirds</td>
-<td align="right">466</td>
-<td align="right">359</td>
-<td align="right">107</td>
-<td align="right">29.8</td>
-</tr>
-<tr class="odd">
-<td align="left">sponges</td>
-<td align="right">7372</td>
-<td align="right">8800</td>
-<td align="right">-1428</td>
-<td align="right">-16.2</td>
-</tr>
-<tr class="even">
-<td align="left">corals</td>
-<td align="right">283</td>
-<td align="right">249</td>
-<td align="right">34</td>
-<td align="right">13.7</td>
-</tr>
-<tr class="odd">
-<td align="left">elasmobranchs</td>
-<td align="right">1229</td>
-<td align="right">1104</td>
-<td align="right">125</td>
-<td align="right">11.3</td>
-</tr>
-<tr class="even">
-<td align="left">marine_mammals</td>
-<td align="right">116</td>
-<td align="right">105</td>
-<td align="right">11</td>
-<td align="right">10.5</td>
-</tr>
-<tr class="odd">
-<td align="left">cephalopods</td>
-<td align="right">758</td>
-<td align="right">702</td>
-<td align="right">56</td>
-<td align="right">8.0</td>
-</tr>
-<tr class="even">
-<td align="left">reptiles</td>
-<td align="right">83</td>
-<td align="right">77</td>
-<td align="right">6</td>
-<td align="right">7.8</td>
+<td align="right">1985</td>
+<td align="right">1821.1</td>
 </tr>
 <tr class="odd">
 <td align="left">molluscs</td>
-<td align="right">43</td>
+<td align="right">184</td>
 <td align="right">46</td>
-<td align="right">-3</td>
-<td align="right">-6.5</td>
+<td align="right">138</td>
+<td align="right">300.0</td>
 </tr>
 <tr class="even">
-<td align="left">fish</td>
-<td align="right">115</td>
-<td align="right">115</td>
-<td align="right">0</td>
-<td align="right">0.0</td>
+<td align="left">polychaetes</td>
+<td align="right">2008</td>
+<td align="right">1390</td>
+<td align="right">618</td>
+<td align="right">44.5</td>
+</tr>
+<tr class="odd">
+<td align="left">corals</td>
+<td align="right">319</td>
+<td align="right">249</td>
+<td align="right">70</td>
+<td align="right">28.1</td>
+</tr>
+<tr class="even">
+<td align="left">reptiles</td>
+<td align="right">91</td>
+<td align="right">77</td>
+<td align="right">14</td>
+<td align="right">18.2</td>
+</tr>
+<tr class="odd">
+<td align="left">echinoderms</td>
+<td align="right">7901</td>
+<td align="right">6750</td>
+<td align="right">1151</td>
+<td align="right">17.1</td>
+</tr>
+<tr class="even">
+<td align="left">marine_mammals</td>
+<td align="right">122</td>
+<td align="right">105</td>
+<td align="right">17</td>
+<td align="right">16.2</td>
+</tr>
+<tr class="odd">
+<td align="left">cephalopods</td>
+<td align="right">810</td>
+<td align="right">702</td>
+<td align="right">108</td>
+<td align="right">15.4</td>
+</tr>
+<tr class="even">
+<td align="left">elasmobranchs</td>
+<td align="right">1243</td>
+<td align="right">1104</td>
+<td align="right">139</td>
+<td align="right">12.6</td>
+</tr>
+<tr class="odd">
+<td align="left">sponges</td>
+<td align="right">7718</td>
+<td align="right">8800</td>
+<td align="right">-1082</td>
+<td align="right">-12.3</td>
+</tr>
+<tr class="even">
+<td align="left">seabirds</td>
+<td align="right">336</td>
+<td align="right">359</td>
+<td align="right">-23</td>
+<td align="right">-6.4</td>
 </tr>
 </tbody>
 </table>
+<p>The big differences for fish, crustacea/arthropods, and molluscs are due to accounting for representative species, as well as the expanded fish list. Other reasonable differences may be due to differences of taxonomic opinion about inclusion of species in various taxa (e.g., synonyms, subpopulations, etc).</p>
 </div>
 <div id="check-specific-taxa" class="section level2" number="2.2">
 <h2 number="2.2"><span class="header-section-number">2.2</span> Check specific taxa</h2>
 <div id="seabirds" class="section level3" number="2.2.1">
 <h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Seabirds</h3>
-<p>These should be pretty spot-on, why is the downfill result returning extras?</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>birds_from_code <span class="ot">&lt;-</span> spp_downfill <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(taxon <span class="sc">==</span> <span class="st">&#39;seabirds&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gapfill <span class="sc">==</span> <span class="st">&#39;none&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(family, genus, species) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code =</span> <span class="dv">1</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>birds_from_xlsx <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(xlsx_f, <span class="at">sheet =</span> <span class="st">&#39;seabirds&#39;</span>, <span class="at">skip =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(family<span class="sc">:</span>common_name) <span class="sc">%&gt;%</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">family =</span> <span class="fu">tolower</span>(family),</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">tolower</span>(scientific_name),</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">genus =</span> <span class="fu">str_remove</span>(species, <span class="st">&#39; .+&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xlsx =</span> <span class="dv">1</span>)</span>
+<p>These should be pretty spot-on, since our numbers here select only seabirds. Which species/taxa are still missing?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>seabird_list <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/species_numbers.xlsx&#39;</span>),</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sheet =</span> <span class="st">&#39;seabirds&#39;</span>, <span class="at">skip =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">spp =</span> scientific_name_fixed) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(spp)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp =</span> <span class="fu">tolower</span>(spp)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>spp</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>birds_from_code <span class="ot">&lt;-</span> spp_downfill <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(taxon <span class="sc">==</span> <span class="st">&#39;seabirds&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">seabird =</span> (species <span class="sc">%in%</span> seabird_list)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(family, genus, species, seabird) <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">code =</span> <span class="dv">1</span>)</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>combo <span class="ot">&lt;-</span> birds_from_code <span class="sc">%&gt;%</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(birds_from_xlsx, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;family&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;species&#39;</span>))</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>mismatch <span class="ot">&lt;-</span> combo <span class="sc">%&gt;%</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(code) <span class="sc">|</span> <span class="fu">is.na</span>(xlsx))</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>match <span class="ot">&lt;-</span> combo <span class="sc">%&gt;%</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(code <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> xlsx <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>birds_from_xlsx <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(xlsx_f, <span class="at">sheet =</span> <span class="st">&#39;seabirds&#39;</span>, <span class="at">skip =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">family =</span> family_fixed, <span class="at">species =</span> scientific_name_fixed, common_name) <span class="sc">%&gt;%</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">family =</span> <span class="fu">tolower</span>(family),</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">species =</span> <span class="fu">tolower</span>(species) <span class="sc">%&gt;%</span> <span class="fu">str_trim</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genus =</span> <span class="fu">str_remove</span>(species, <span class="st">&#39; .+&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xlsx =</span> <span class="dv">1</span>)</span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>match_by_fam <span class="ot">&lt;-</span> combo <span class="sc">%&gt;%</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(family) <span class="sc">%&gt;%</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_match =</span> <span class="fu">sum</span>(code <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> xlsx <span class="sc">==</span> <span class="dv">1</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_mismatch =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(code) <span class="sc">|</span> <span class="fu">is.na</span>(xlsx)))</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_by_fam)</span></code></pre></div>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>n_birds_xlsx <span class="ot">&lt;-</span> birds_from_xlsx<span class="sc">$</span>species <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>()</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>n_birds_code <span class="ot">&lt;-</span> birds_from_code<span class="sc">$</span>species <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>()</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>combo <span class="ot">&lt;-</span> birds_from_code <span class="sc">%&gt;%</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(birds_from_xlsx, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;family&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;species&#39;</span>))</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>mismatch <span class="ot">&lt;-</span> combo <span class="sc">%&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(code) <span class="sc">|</span> <span class="fu">is.na</span>(xlsx))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>match <span class="ot">&lt;-</span> combo <span class="sc">%&gt;%</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(code <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> xlsx <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>match_by_fam <span class="ot">&lt;-</span> combo <span class="sc">%&gt;%</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(family) <span class="sc">%&gt;%</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_match =</span> <span class="fu">sum</span>(code <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> xlsx <span class="sc">==</span> <span class="dv">1</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_mismatch =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(code) <span class="sc">|</span> <span class="fu">is.na</span>(xlsx)))</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_by_fam)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -555,17 +565,17 @@ div.tocify {
 <tr class="odd">
 <td align="left">alcidae</td>
 <td align="right">24</td>
-<td align="right">1</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="left">anatidae</td>
-<td align="right">18</td>
-<td align="right">37</td>
+<td align="right">19</td>
+<td align="right">2</td>
 </tr>
 <tr class="odd">
 <td align="left">diomedeidae</td>
-<td align="right">21</td>
-<td align="right">2</td>
+<td align="right">22</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="left">fregatidae</td>
@@ -579,65 +589,60 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">hydrobatidae</td>
-<td align="right">2</td>
-<td align="right">36</td>
+<td align="right">23</td>
+<td align="right">1</td>
 </tr>
 <tr class="odd">
 <td align="left">laridae</td>
-<td align="right">71</td>
-<td align="right">39</td>
+<td align="right">80</td>
+<td align="right">8</td>
 </tr>
 <tr class="even">
-<td align="left">oceanitidae</td>
-<td align="right">0</td>
-<td align="right">9</td>
-</tr>
-<tr class="odd">
 <td align="left">pelecanidae</td>
 <td align="right">3</td>
-<td align="right">5</td>
-</tr>
-<tr class="even">
-<td align="left">pelecanoididae</td>
 <td align="right">0</td>
-<td align="right">4</td>
 </tr>
 <tr class="odd">
+<td align="left">pelecanoididae</td>
+<td align="right">4</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
 <td align="left">phaethontidae</td>
 <td align="right">3</td>
 <td align="right">0</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left">phalacrocoracidae</td>
-<td align="right">10</td>
-<td align="right">42</td>
+<td align="right">29</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">phalaropodidae</td>
+<td align="right">2</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
 <td align="left">podicipedidae</td>
 <td align="right">4</td>
-<td align="right">11</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
 <td align="left">procellariidae</td>
-<td align="right">74</td>
-<td align="right">30</td>
+<td align="right">90</td>
+<td align="right">0</td>
 </tr>
 <tr class="odd">
-<td align="left">scolopacidae</td>
-<td align="right">0</td>
-<td align="right">58</td>
-</tr>
-<tr class="even">
 <td align="left">spheniscidae</td>
 <td align="right">18</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">stercorariidae</td>
-<td align="right">3</td>
-<td align="right">8</td>
+<td align="right">0</td>
 </tr>
 <tr class="even">
+<td align="left">stercorariidae</td>
+<td align="right">7</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
 <td align="left">sulidae</td>
 <td align="right">10</td>
 <td align="right">0</td>
@@ -724,6 +729,294 @@ div.tocify {
 </tr>
 </tbody>
 </table>
+<p>Matches for (counts in code/mismatch vs total in xlsx):</p>
+<ul>
+<li>Alcidae (24/1 vs 24)</li>
+<li>Diomedeidae (21/2 vs 22)</li>
+<li>Fregatidae/Phaethontidae (8/0 vs 8)</li>
+<li>Sphenicidae (18/1 vs. 18)</li>
+<li>Sulidae (10/0 vs. 10)</li>
+<li>Anatidae, Gaviidae, Podicipedidae (19/2, 5/0, 4/0 vs. 30) - total (28/4 vs. 30)</li>
+<li>Oceanitidae, Hydrobatidae (0/0, 23/1) - total (23/1)</li>
+<li>Procellariidae (90/0, vs 18+38) - resulting in 34 extras?</li>
+<li>Pelecanidae, Phalacrocoracidae (3/0, 29/1 - total 32/1 vs. 33) - note also pelecanoididae 4/0</li>
+<li>Phalaropodidae (2/0 vs. 2) - listed on XLSX as Scolopacidae</li>
+<li>Laridae (80/8 vs. 87)</li>
+</ul>
+<p>Notes: fixes have been implemented in the XSLX spreadsheet and code above for improved matching.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>worms <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="at">aspect =</span> <span class="st">&#39;wide&#39;</span>, <span class="at">seabirds =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(class <span class="sc">==</span> <span class="st">&#39;aves&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">seabird =</span> (species <span class="sc">%in%</span> seabird_list))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(worms<span class="sc">$</span>seabird)</span></code></pre></div>
+<pre><code>## [1] 338</code></pre>
+</div>
+</div>
+<div id="final-counts" class="section level2" number="2.3">
+<h2 number="2.3"><span class="header-section-number">2.3</span> Final counts</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>gapfilled_taxa  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_output/vuln_gapfilled_tx.csv&#39;</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gapfilled_score <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_output/vuln_gapfilled_score.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(str, vuln, <span class="sc">-</span>vuln_gf_id) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(gapfilled_taxa, <span class="at">by =</span> <span class="st">&#39;vuln_gf_id&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(vuln))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>nspp_gf <span class="ot">&lt;-</span> gapfilled_score<span class="sc">$</span>species <span class="sc">%&gt;%</span> <span class="fu">n_distinct</span>()</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>gf_df_all <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_output/gapfill_count.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(level, n, <span class="sc">-</span>taxon) <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">str_extract</span>(level, <span class="st">&#39;.+(?=:)&#39;</span>),</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">level =</span> <span class="fu">str_extract</span>(level, <span class="st">&#39;(?&lt;= ).+&#39;</span>),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">level =</span> <span class="fu">factor</span>(level, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&#39;species&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;family&#39;</span>, <span class="st">&#39;order&#39;</span>, <span class="st">&#39;class&#39;</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(taxon, type, level)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>gf_df_long <span class="ot">&lt;-</span> gf_df_all <span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(level <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;order&#39;</span>, <span class="st">&#39;class&#39;</span>) <span class="sc">&amp;</span> type <span class="sc">==</span> <span class="st">&#39;gapfill&#39;</span>))</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>gf_df_wide <span class="ot">&lt;-</span> gf_df_all <span class="sc">%&gt;%</span> </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(level, n)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>n_match <span class="ot">&lt;-</span> gf_df_long <span class="sc">%&gt;%</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&#39;match&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>n <span class="sc">%&gt;%</span> <span class="fu">as.integer</span>()</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>n_gf <span class="ot">&lt;-</span> gf_df_long <span class="sc">%&gt;%</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&#39;gapfill&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>n <span class="sc">%&gt;%</span> <span class="fu">as.integer</span>()</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>n_gf <span class="ot">&lt;-</span> gf_df_long <span class="sc">%&gt;%</span></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&#39;gapfill&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>n <span class="sc">%&gt;%</span> <span class="fu">as.integer</span>()</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>n_gf_order <span class="ot">&lt;-</span> gf_df_all <span class="sc">%&gt;%</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&#39;gapfill&#39;</span> <span class="sc">&amp;</span> level <span class="sc">==</span> <span class="st">&#39;order&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>n <span class="sc">%&gt;%</span> <span class="fu">as.integer</span>()</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>n_gf_class <span class="ot">&lt;-</span> gf_df_all <span class="sc">%&gt;%</span></span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">==</span> <span class="st">&#39;gapfill&#39;</span> <span class="sc">&amp;</span> level <span class="sc">==</span> <span class="st">&#39;class&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>n <span class="sc">%&gt;%</span> <span class="fu">as.integer</span>()</span></code></pre></div>
+<div id="match-counts-per-taxon-and-rank" class="section level3" number="2.3.1">
+<h3 number="2.3.1"><span class="header-section-number">2.3.1</span> match counts per taxon and rank</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">taxon</th>
+<th align="right">species</th>
+<th align="right">genus</th>
+<th align="right">family</th>
+<th align="right">order</th>
+<th align="right">class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cephalopods</td>
+<td align="right">219</td>
+<td align="right">574</td>
+<td align="right">17</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">corals</td>
+<td align="right">1</td>
+<td align="right">318</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">crustacea_arthropods</td>
+<td align="right">7</td>
+<td align="right">93</td>
+<td align="right">859</td>
+<td align="right">NA</td>
+<td align="right">1135</td>
+</tr>
+<tr class="even">
+<td align="left">echinoderms</td>
+<td align="right">98</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+<td align="right">7801</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">elasmobranchs</td>
+<td align="right">35</td>
+<td align="right">574</td>
+<td align="right">628</td>
+<td align="right">6</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">fish</td>
+<td align="right">313</td>
+<td align="right">533</td>
+<td align="right">1329</td>
+<td align="right">5711</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">marine_mammals</td>
+<td align="right">47</td>
+<td align="right">30</td>
+<td align="right">45</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">molluscs</td>
+<td align="right">45</td>
+<td align="right">139</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">polychaetes</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2008</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">reptiles</td>
+<td align="right">8</td>
+<td align="right">13</td>
+<td align="right">70</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">seabirds</td>
+<td align="right">NA</td>
+<td align="right">165</td>
+<td align="right">171</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">sponges</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">7718</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="gapfill-counts-per-taxon-and-rank" class="section level3" number="2.3.2">
+<h3 number="2.3.2"><span class="header-section-number">2.3.2</span> gapfill counts per taxon and rank</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">taxon</th>
+<th align="right">genus</th>
+<th align="right">family</th>
+<th align="right">order</th>
+<th align="right">class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">cephalopods</td>
+<td align="right">22</td>
+<td align="right">50</td>
+<td align="right">6</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="left">corals</td>
+<td align="right">11</td>
+<td align="right">318</td>
+<td align="right">3409</td>
+<td align="right">5571</td>
+</tr>
+<tr class="odd">
+<td align="left">crustacea_arthropods</td>
+<td align="right">NA</td>
+<td align="right">982</td>
+<td align="right">12545</td>
+<td align="right">19701</td>
+</tr>
+<tr class="even">
+<td align="left">echinoderms</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">2667</td>
+</tr>
+<tr class="odd">
+<td align="left">elasmobranchs</td>
+<td align="right">1</td>
+<td align="right">5</td>
+<td align="right">2</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">fish</td>
+<td align="right">471</td>
+<td align="right">3358</td>
+<td align="right">3812</td>
+<td align="right">3125</td>
+</tr>
+<tr class="odd">
+<td align="left">marine_mammals</td>
+<td align="right">23</td>
+<td align="right">71</td>
+<td align="right">10</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">molluscs</td>
+<td align="right">977</td>
+<td align="right">7027</td>
+<td align="right">24302</td>
+<td align="right">17292</td>
+</tr>
+<tr class="odd">
+<td align="left">polychaetes</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">5920</td>
+<td align="right">2648</td>
+</tr>
+<tr class="even">
+<td align="left">reptiles</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">22</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">seabirds</td>
+<td align="right">40</td>
+<td align="right">48</td>
+<td align="right">141</td>
+<td align="right">41</td>
+</tr>
+<tr class="even">
+<td align="left">sponges</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="totals" class="section level3" number="2.3.3">
+<h3 number="2.3.3"><span class="header-section-number">2.3.3</span> Totals</h3>
+<p>The total species count for direct matches (matches driven by traits provided by experts at a representative rank (species, genus, family, order, class) plus those driven by denoting certain species to be representive of a higher rank (e.g., several species that together are representative of an entire family): 30712 species.</p>
+<p>The total species count for gapfilled matches (at genus and family ranks only) is 13404 species.</p>
+<p>The total for species representation including both direct match (downfill) and imputed values (upstream/downstream gapfill) is 44116 species.</p>
+<p>Allowing imputation of species vulnerability from order level would result in an additional 50169 species, for total gapfill of 63573 and grand total of 94285 species.</p>
+<p>Allowing imputation from class level would result in an additional 51059 species, for total gapfill of 114632 and grand total of 145344 species.</p>
 </div>
 </div>
 </div>
