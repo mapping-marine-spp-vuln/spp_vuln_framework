@@ -8,6 +8,7 @@ abdopus tonganus,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,
 abdopus undulatus,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 acanthaster,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 acanthochromis polyacanthus,fish,0,epipelagic;benthic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+acanthopagrus australis,fish,0,epipelagic;demersal;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 acanthurus dussumieri,fish,0,epipelagic;demersal;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 acrochordus,reptiles,0,epipelagic;air;intertidal;benthic,FALSE,TRUE,FALSE,TRUE,TRUE,wildlife_strike
 acropora,corals,0,epipelagic;benthic;neritic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
@@ -141,6 +142,8 @@ champsocephalus gunnari,fish,0,epipelagic;mesopelagic;benthic,TRUE,FALSE,FALSE,T
 cheilodipterus singapurensis,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 chelidonichthys kumu,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 chlopsis kazuko,fish,0,epipelagic;neritic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+chromis atripectoralis,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+chromis dispilus,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 cirripectes alleni,fish,0,epipelagic;intertidal;benthic,TRUE,TRUE,FALSE,TRUE,TRUE,wildlife_strike
 cirripectes filamentosus,fish,0,epipelagic;intertidal;benthic,TRUE,TRUE,FALSE,TRUE,TRUE,wildlife_strike
 cistopus,cephalopods,0,epipelagic;neritic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
@@ -426,6 +429,7 @@ ostrea angasi,molluscs,0,epipelagic;air;intertidal;benthic,FALSE,TRUE,TRUE,TRUE,
 ostrea edulis,molluscs,0,epipelagic;air;intertidal;benthic,FALSE,TRUE,TRUE,TRUE,TRUE,wildlife_strike
 ostrea lurida,molluscs,0,epipelagic;air;intertidal;benthic,FALSE,TRUE,TRUE,TRUE,TRUE,wildlife_strike
 oxynotidae,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+pagrus auratus,fish,0,epipelagic;demersal;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 palaemon elegans,crustacea_arthropods,0,epipelagic;intertidal,FALSE,TRUE,TRUE,TRUE,TRUE,wildlife_strike
 panopea generosa,molluscs,0,epipelagic;benthic,TRUE,FALSE,TRUE,TRUE,TRUE,wildlife_strike
 parablennius parvicornis,fish,0,epipelagic;intertidal;benthic,TRUE,TRUE,FALSE,TRUE,TRUE,wildlife_strike
@@ -503,6 +507,7 @@ plebidonax deltoides,molluscs,0,epipelagic;benthic,TRUE,FALSE,TRUE,TRUE,TRUE,wil
 plectrogenium nanum,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 plectropomus leopardus,fish,0,epipelagic;demersal;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 pocillopora,corals,0,epipelagic;benthic;neritic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+pomacentrus amboinensis,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 pomacentrus coelestis,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 pontinus macrocephalus,fish,0,epipelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 porites,corals,0,epipelagic;benthic;neritic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
@@ -527,6 +532,7 @@ pycnogonida,crustacea_arthropods,0,epipelagic;benthic,FALSE,FALSE,TRUE,TRUE,TRUE
 pycnopodia helianthoides,echinoderms,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 raja,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 rajella,elasmobranchs,0,epipelagic;mesopelagic;bathypelagic;abyssopelagic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
+rhabdosargus sarba,fish,0,epipelagic;demersal;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 rhina,elasmobranchs,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 rhinobatidae,elasmobranchs,0,epipelagic;benthic,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
 rhinomuraena quaesita,fish,0,epipelagic;neritic;demersal,TRUE,FALSE,FALSE,TRUE,TRUE,wildlife_strike
