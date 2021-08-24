@@ -180,7 +180,10 @@ y <- read_csv(here('int/taxize_results_all.csv')) %>%
 yy <- spp_traits %>%
   filter(!spp_gp %in% y$spp_gp) %>%
   .$spp_gp %>% unique()
-if(!is_empty(yy)) stop ('New taxa detected that have not been classified!')
+if(!is_empty(yy)) {
+  stop ('New taxa detected that have not been classified! Run the "iteration" 
+         chunk to classify added species.')
+}
 
 spp_gps_error <- y %>%
   filter(error | is.na(id)) %>%
