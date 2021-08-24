@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Mon Aug 23 12:51:33 2021 by ohara" />
+<meta name="author" content="Compiled on Tue Aug 24 11:08:09 2021 by ohara" />
 
 
 <title>Downstream taxa vulnerability</title>
@@ -364,7 +364,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Downstream taxa vulnerability</h1>
-<h4 class="author"><em>Compiled on Mon Aug 23 12:51:33 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Tue Aug 24 11:08:09 2021 by ohara</em></h4>
 
 </div>
 
@@ -405,7 +405,7 @@ div.tocify {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">species =</span> spp_gp) <span class="sc">%&gt;%</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fish_gps <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/fish_traits_add.xlsx&#39;</span>), </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>fish_gps <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/fish_traits_add_bp.xlsx&#39;</span>), </span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                               <span class="at">sheet =</span> <span class="st">&#39;repres_raw&#39;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>species_group <span class="sc">%&gt;%</span> <span class="fu">tolower</span>()</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -424,34 +424,35 @@ div.tocify {
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spp_gp_vuln <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_output/spp_gp_vuln_w_distribution.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, spp_gp, stressor, vuln, sd_vuln)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>repres_fish <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/fish_traits_add.xlsx&#39;</span>), </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>repres_fish <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/fish_traits_add_bp.xlsx&#39;</span>), </span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sheet =</span> <span class="st">&#39;repres_expanded&#39;</span>)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>repres_df   <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/spp_gp_representativeness.xlsx&#39;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, species, <span class="at">repres =</span> representative_rank) <span class="sc">%&gt;%</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">repres =</span> <span class="fu">tolower</span>(repres)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(repres_fish) <span class="sc">%&gt;%</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(repres) <span class="sc">&amp;</span> repres <span class="sc">!=</span> <span class="st">&#39;species&#39;</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="do">### create new dataframe including all representative species, with</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">### spp_gp_new assigned to the representative rank</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>repr_spp <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(repres_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(spp_all_wide, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp_new =</span> <span class="fu">case_when</span>(repres <span class="sc">==</span> <span class="st">&#39;genus&#39;</span>  <span class="sc">~</span> genus,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;family&#39;</span> <span class="sc">~</span> family,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;order&#39;</span>  <span class="sc">~</span> order,</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;class&#39;</span>  <span class="sc">~</span> class,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                                <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>))</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="do">### group by the new spp gp and summarize vulnerabilities</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>repr_spp_gps <span class="ot">&lt;-</span> repr_spp <span class="sc">%&gt;%</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(taxon, spp_gp_new, stressor) <span class="sc">%&gt;%</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd_vuln =</span> <span class="fu">sqrt</span>(<span class="fu">sd</span>(vuln)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">n</span>()<span class="sc">*</span><span class="fu">sum</span>(sd_vuln<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">vuln =</span> <span class="fu">mean</span>(vuln),</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_spp =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">spp_gp =</span> spp_gp_new)</span></code></pre></div>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(repres_fish) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">species =</span> <span class="fu">tolower</span>(species),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">repres =</span> <span class="fu">tolower</span>(repres)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(repres) <span class="sc">&amp;</span> repres <span class="sc">!=</span> <span class="st">&#39;species&#39;</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">### create new dataframe including all representative species, with</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="do">### spp_gp_new assigned to the representative rank</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>repr_spp <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(repres_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;taxon&#39;</span>, <span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(spp_all_wide, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp_new =</span> <span class="fu">case_when</span>(repres <span class="sc">==</span> <span class="st">&#39;genus&#39;</span>  <span class="sc">~</span> genus,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;family&#39;</span> <span class="sc">~</span> family,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;order&#39;</span>  <span class="sc">~</span> order,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                                repres <span class="sc">==</span> <span class="st">&#39;class&#39;</span>  <span class="sc">~</span> class,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>                                <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span>))</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="do">### group by the new spp gp and summarize vulnerabilities</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>repr_spp_gps <span class="ot">&lt;-</span> repr_spp <span class="sc">%&gt;%</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(taxon, spp_gp_new, stressor) <span class="sc">%&gt;%</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">sd_vuln =</span> <span class="fu">sqrt</span>(<span class="fu">sd</span>(vuln)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">n</span>()<span class="sc">*</span><span class="fu">sum</span>(sd_vuln<span class="sc">^</span><span class="dv">2</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">vuln =</span> <span class="fu">mean</span>(vuln),</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_spp =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">spp_gp =</span> spp_gp_new)</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">### add representative spp gps to the original spp_gp_vuln. Note</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="do">### this will keep the species level scores intact, while also adding</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="do">### higher order representative ranks.</span></span>
@@ -487,19 +488,21 @@ div.tocify {
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>check_class_list <span class="ot">&lt;-</span> <span class="fu">classification</span>(unmatched_df<span class="sc">$</span>spp_gp, <span class="at">db =</span> <span class="st">&#39;worms&#39;</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setNames</span>(unmatched_df<span class="sc">$</span>spp_gp)</span></code></pre></div>
-<pre><code>## ══  8 queries  ═══════════════
+<pre><code>## ══  10 queries  ══════════════
 ## ✓  Found:  mercenaria mercenaria
+## ✓  Found:  ancistroteuthis lichtensteinii
 ## ✓  Found:  crocodylus acutus
 ## ✓  Found:  crocodylus porosus
 ## ✓  Found:  leptopentacta elongata
 ## ✓  Found:  manta
 ## ✓  Found:  nautilus repertus
 ## x  Not Found:  nautilus suluensis
+## ✓  Found:  paraliparis copei
 ## ✓  Found:  sousa chinensis taiwanensis
 ## ══  Results  ═════════════════
 ## 
-## • Total: 8 
-## • Found: 7 
+## • Total: 10 
+## • Found: 9 
 ## • Not Found: 1</code></pre>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>check_class_df <span class="ot">&lt;-</span> check_class_list[<span class="sc">!</span><span class="fu">is.na</span>(check_class_list)] <span class="sc">%&gt;%</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(<span class="at">.id =</span> <span class="st">&#39;spp_gp_orig&#39;</span>) <span class="sc">%&gt;%</span></span>
@@ -513,8 +516,8 @@ div.tocify {
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(check_accepted_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;sciname&#39;</span>, <span class="st">&#39;id&#39;</span>))</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(unmatch_check_df)</span></code></pre></div>
-<div id="htmlwidget-410c1ace6b324b997fa9" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-410c1ace6b324b997fa9">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["molluscs","reptiles","reptiles","echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,true,true,true,false,true],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","species","species","species","genus","species",null,"subspecies"],[141919,422566,344030,124635,105755,342237,null,853079],["accepted","accepted","accepted","unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3704122498ec4273d5f7" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3704122498ec4273d5f7">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],["molluscs","cephalopods","reptiles","reptiles","echinoderms","elasmobranchs","cephalopods","cephalopods","fish","marine_mammals"],["mercenaria mercenaria","ancistroteuthis lichtensteinii","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","paraliparis copei","sousa chinensis taiwanensis"],[true,true,true,true,true,true,true,false,true,true],["mercenaria mercenaria","ancistroteuthis lichtensteinii","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus",null,"paraliparis copei","sousa chinensis taiwanensis"],["species","species","species","species","species","genus","species",null,"species","subspecies"],[141919,140647,422566,344030,124635,105755,342237,null,159530,853079],["accepted","accepted","accepted","accepted","unaccepted","accepted","taxon inquirendum",null,"accepted","accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>Notes:</p>
 <ul>
 <li><em>Manta</em> is accepted as a genus, but all spp within it are accepted as <em>Mobula</em></li>
@@ -525,8 +528,8 @@ div.tocify {
 </ul>
 <div id="unmatched-spp-groups-with-scored-traits" class="section level3" number="2.2.1">
 <h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Unmatched spp groups with scored traits:</h3>
-<div id="htmlwidget-d2a4fa57834d8c9b7d42" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d2a4fa57834d8c9b7d42">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["molluscs","reptiles","reptiles","echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,true,true,true,false,true],["mercenaria mercenaria","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","species","species","species","genus","species",null,"subspecies"],[141919,422566,344030,124635,105755,342237,null,853079],["accepted","accepted","accepted","unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-206ade1486b27a312f8d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-206ade1486b27a312f8d">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10"],["molluscs","cephalopods","reptiles","reptiles","echinoderms","elasmobranchs","cephalopods","cephalopods","fish","marine_mammals"],["mercenaria mercenaria","ancistroteuthis lichtensteinii","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","paraliparis copei","sousa chinensis taiwanensis"],[true,true,true,true,true,true,true,false,true,true],["mercenaria mercenaria","ancistroteuthis lichtensteinii","crocodylus acutus","crocodylus porosus","leptopentacta elongata","manta","nautilus repertus",null,"paraliparis copei","sousa chinensis taiwanensis"],["species","species","species","species","species","genus","species",null,"species","subspecies"],[141919,140647,422566,344030,124635,105755,342237,null,159530,853079],["accepted","accepted","accepted","accepted","unaccepted","accepted","taxon inquirendum",null,"accepted","accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Problems where a taxon is found, and accepted, may mean error in the <code>downstream</code> call. Check the various <code>X_from_X.csv</code> dataframes to figure out where this taxon is being dropped.</li>
 <li>problems where a taxon is found, but not accepted (or not a main rank), may indicate species where an alternate name will fix the issue.
@@ -628,7 +631,7 @@ div.tocify {
 <span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(spp_vuln,  <span class="fu">here</span>(<span class="st">&#39;int/vuln_downfill_only.csv&#39;</span>))</span></code></pre></div>
 <div id="how-many-matched-at-each-level" class="section level3" number="2.3.1">
 <h3 number="2.3.1"><span class="header-section-number">2.3.1</span> How many matched at each level?</h3>
-<p>There are 30259 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
+<p>There are 30712 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(match_rank) <span class="sc">%&gt;%</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">n_spp_matched =</span> <span class="fu">n_distinct</span>(species)))</span></code></pre></div>
@@ -642,23 +645,23 @@ div.tocify {
 <tbody>
 <tr class="odd">
 <td align="left">class</td>
-<td align="right">8858</td>
+<td align="right">8853</td>
 </tr>
 <tr class="even">
 <td align="left">order</td>
-<td align="right">13595</td>
+<td align="right">13518</td>
 </tr>
 <tr class="odd">
 <td align="left">family</td>
-<td align="right">5132</td>
+<td align="right">5127</td>
 </tr>
 <tr class="even">
 <td align="left">genus</td>
-<td align="right">1909</td>
+<td align="right">2441</td>
 </tr>
 <tr class="odd">
 <td align="left">species</td>
-<td align="right">765</td>
+<td align="right">773</td>
 </tr>
 </tbody>
 </table>
@@ -678,7 +681,7 @@ div.tocify {
 <tbody>
 <tr class="odd">
 <td align="left">cephalopods</td>
-<td align="right">812</td>
+<td align="right">810</td>
 </tr>
 <tr class="even">
 <td align="left">corals</td>
@@ -686,11 +689,11 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td align="left">crustacea_arthropods</td>
-<td align="right">2097</td>
+<td align="right">2094</td>
 </tr>
 <tr class="even">
 <td align="left">echinoderms</td>
-<td align="right">7875</td>
+<td align="right">7901</td>
 </tr>
 <tr class="odd">
 <td align="left">elasmobranchs</td>
@@ -698,7 +701,7 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">fish</td>
-<td align="right">7451</td>
+<td align="right">7886</td>
 </tr>
 <tr class="odd">
 <td align="left">marine_mammals</td>
@@ -710,11 +713,11 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td align="left">polychaetes</td>
-<td align="right">2010</td>
+<td align="right">2008</td>
 </tr>
 <tr class="even">
 <td align="left">reptiles</td>
-<td align="right">89</td>
+<td align="right">91</td>
 </tr>
 <tr class="odd">
 <td align="left">seabirds</td>
@@ -722,12 +725,12 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">sponges</td>
-<td align="right">7721</td>
+<td align="right">7718</td>
 </tr>
 </tbody>
 </table>
 <p>Total number of species matched with down-fill:</p>
-<p>30259</p>
+<p>30712</p>
 </div>
 </div>
 </div>

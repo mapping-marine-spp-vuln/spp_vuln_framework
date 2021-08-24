@@ -29,9 +29,9 @@ assemble_worms <- function(aspect = 'wide', seabirds_only = FALSE, am_patch = TR
       distinct() %>%
       spread(rank, name) %>%
       select(-spp_gp) %>%
-      distinct()
+      distinct() %>% mutate(source = 'am')
   } else {
-    am_patch_wide <- data.frame() ### blank dataframe for bind_rows
+    am_patch_wide <- data.frame(source = 'am') ### blank dataframe for bind_rows
   }
   
   rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
@@ -49,13 +49,25 @@ assemble_worms <- function(aspect = 'wide', seabirds_only = FALSE, am_patch = TR
               by = c('class')) %>%
     left_join(p_from_k %>% select(kingdom = parent, phylum = name),
               by = c('phylum')) %>%
-    select(kingdom, phylum, class, order, family, genus, species) %>%
-    filter(kingdom == 'animalia') %>%
-    select(-kingdom) %>%
+    select(phylum, class, order, family, genus, species) %>%
+    mutate(source = 'worms') %>%
     bind_rows(am_patch_wide) %>%
+    filter(phylum %in% p_from_k$name) %>%
+    ### since p_from_k only includes Animalia, this phylum selection drops
+    ### AquaMaps non-animalia phyla, e.g., chlorophytes, cyanobacteria, plants
     distinct()
   
-  spp_df <- disambiguate_species(spp_wide)
+  spp_wide_disambiguated <- disambiguate_species(spp_wide)
+  
+  spp_wide_am_resolved <- resolve_am_disputes(spp_wide_disambiguated)
+  
+  ### disambiguate "not assigned" - these appear at order and class levels; 
+  ### this would only matter when doing upstream/downstream imputation at 
+  ### order/class levels...
+  spp_df <- spp_wide_am_resolved %>%
+    mutate(class = ifelse(class == 'not assigned', paste(phylum, 'not assigned'), class),
+           order = ifelse(order == 'not assigned', paste(class, 'not assigned'), order))
+    
   
   if(seabirds_only == TRUE) {
     seabird_list <- readxl::read_excel(here('_raw_data/xlsx/species_numbers.xlsx'),
@@ -81,12 +93,79 @@ assemble_worms <- function(aspect = 'wide', seabirds_only = FALSE, am_patch = TR
   return(spp_df)
 }
 
+resolve_am_disputes <- function(spp_wide) {
+  ## coerce AM classifications to match WoRMS
+  dupes_g <- show_dupes(spp_wide %>%
+                          select(-species) %>%
+                          distinct(),
+                        'genus') %>%
+    group_by(genus) %>%
+    filter(n_distinct(class) > 1 | n_distinct(order) > 1 | n_distinct(family) > 1) %>%
+    mutate(am_count = sum(source == 'am'),
+           non_am_count = sum(source == 'worms'))
+  ### identify duplicated genera that are included (uniquely) in WoRMS
+  worms_fill <- dupes_g %>%
+    filter(non_am_count > 0) %>%
+    filter(source == 'worms')
+  
+  dupes_g_force_worms <- spp_wide %>%
+    filter(genus %in% worms_fill$genus) %>%
+    rowwise() %>%
+    mutate(family = worms_fill$family[genus == worms_fill$genus],
+           order  = worms_fill$order[genus == worms_fill$genus],
+           class  = worms_fill$class[genus == worms_fill$genus]) %>%
+    ungroup()
+  
+  nonworms_fill <- dupes_g %>%
+    filter(!genus %in% dupes_g_force_worms$genus) %>%
+    mutate(family = case_when(genus  == 'leptocephalus' ~ 'congridae',
+                              family == 'archaeobalanidae' ~ 'balanidae',
+                              TRUE ~ family)) %>%
+    mutate(order = case_when(order  == 'arcoida'     ~ 'arcida',
+                             family == 'balanidae'   ~ 'balanomorpha',
+                             family == 'veneridae'   ~ 'venerida',
+                             family == 'planaxidae'  ~ '[unassigned] caenogastropoda',
+                             family == 'hermaeidae'  ~ 'sacoglossa',
+                             family == 'sabellidae'  ~ 'sabellida',
+                             family == 'cerithiidae' ~ '[unassigned] caenogastropoda',
+                             family == 'epitoniidae' ~ '[unassigned] caenogastropoda',
+                             family == 'pyrgomatidae'    ~ 'balanomorpha',
+                             family == 'tjaernoeiidae'   ~ 'not assigned',
+                             family == 'pyramidellidae'  ~ 'neogastropoda',
+                             family == 'ophiacanthidae'  ~ 'ophiacanthida',
+                             family == 'poecilasmatidae' ~ 'scalpellomorpha',
+                             family == 'plakobranchidae' ~ 'sacoglossa',
+                             family == 'gorgonocephalidae' ~ 'euryalida',
+                             TRUE ~ order)) %>%
+    mutate(class  = ifelse(class == 'maxillopoda', 'thecostraca', class)) %>%
+    distinct()
+  
+  dupes_g_force_nonworms <- spp_wide %>%
+    filter(genus %in% dupes_g$genus & !genus %in% worms_fill$genus) %>%
+    rowwise() %>%
+    mutate(family = nonworms_fill$family[genus == nonworms_fill$genus],
+           order  = nonworms_fill$order[genus  == nonworms_fill$genus],
+           class  = nonworms_fill$class[genus  == nonworms_fill$genus]) %>%
+    ungroup() %>%
+    distinct()
+  
+  spp_wide_am_resolved <- spp_wide %>%
+    filter(!genus %in% dupes_g$genus) %>%
+    bind_rows(dupes_g_force_worms, dupes_g_force_nonworms) %>%
+    select(-source)
+  
+  return(spp_wide_am_resolved)
+}
+
 disambiguate_species <- function(spp_wide) {
+  
   dupes <- spp_wide %>%
-    show_dupes('species')
+    oharac::show_dupes('species')
+  ### no more duplicates?
+  
   spp_wide_nodupes <- spp_wide %>%
     filter(!species %in% dupes$species)
-  ### named vector of 
+
   dupes_fixed <- dupes %>%
     mutate(keep = case_when(genus == 'pinctada' & order == 'ostreida'         ~ TRUE,
                             family == 'margaritidae' & order == 'trochida' & genus != 'pinctada' ~ TRUE,
@@ -113,11 +192,10 @@ disambiguate_species <- function(spp_wide) {
                             genus == 'distefanella' & family == 'radiolitidae' ~ TRUE,
                             TRUE ~ FALSE)) %>%
     filter(keep) %>%
-    select(-keep)
-  # dupes_fixed2 <- dupes %>%
-  #   filter(!species %in% dupes_fixed$species)
-  # dupes_fixed$keep %>% sum()
-  # dupes$species %>% n_distinct()
-  
+    select(-keep) %>%
+    distinct()
+
   spp_wide_clean <- bind_rows(spp_wide_nodupes, dupes_fixed)
+  
+  return(spp_wide_clean)
 }

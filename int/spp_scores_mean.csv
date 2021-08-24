@@ -1385,6 +1385,50 @@ anatidae,storm_disturbance,seabirds,2.3200000000000003,6.683333333333334,1.67
 anatidae,uv,seabirds,0,6.683333333333334,0
 anatidae,water_temp,seabirds,1,6.683333333333334,1
 anatidae,wildlife_strike,seabirds,2.505,6.683333333333334,1.67
+anchoa,air_temp,fish,3.2073333333333336,9.113333333333333,1.34
+anchoa,biomass_removal,fish,1,9.113333333333333,0
+anchoa,bycatch,fish,1,9.113333333333333,0
+anchoa,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+anchoa,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+anchoa,habitat_loss_degradation,fish,2,9.113333333333333,1
+anchoa,inorganic_pollution,fish,5.8053333333333335,9.113333333333333,1
+anchoa,invasive_species,fish,0,9.113333333333333,0.33
+anchoa,light_pollution,fish,0.33,9.113333333333333,1
+anchoa,noise_pollution,fish,0,9.113333333333333,0.67
+anchoa,oa,fish,3.33,9.113333333333333,1
+anchoa,oceanographic,fish,0.33,9.113333333333333,0
+anchoa,organic_pollution,fish,3.7953333333333337,9.113333333333333,1.33
+anchoa,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+anchoa,poisons_toxins,fish,2.66,9.113333333333333,1
+anchoa,salinity,fish,3,9.113333333333333,1
+anchoa,sedimentation,fish,2.33,9.113333333333333,1
+anchoa,slr,fish,0.33,9.113333333333333,1
+anchoa,storm_disturbance,fish,0.66,9.113333333333333,1.34
+anchoa,uv,fish,0.33,9.113333333333333,0.67
+anchoa,water_temp,fish,4.207333333333334,9.113333333333333,0.33
+anchoa,wildlife_strike,fish,0.67,9.113333333333333,0.67
+anchoviella,air_temp,fish,3.23,9.113333333333333,1.34
+anchoviella,biomass_removal,fish,1,9.113333333333333,0
+anchoviella,bycatch,fish,1,9.113333333333333,0
+anchoviella,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+anchoviella,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+anchoviella,habitat_loss_degradation,fish,2,9.113333333333333,1
+anchoviella,inorganic_pollution,fish,5.783333333333333,9.113333333333333,1
+anchoviella,invasive_species,fish,0,9.113333333333333,0.33
+anchoviella,light_pollution,fish,0.33,9.113333333333333,1
+anchoviella,noise_pollution,fish,0,9.113333333333333,0.67
+anchoviella,oa,fish,3.33,9.113333333333333,1
+anchoviella,oceanographic,fish,0.33,9.113333333333333,0
+anchoviella,organic_pollution,fish,3.7733333333333334,9.113333333333333,1.33
+anchoviella,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+anchoviella,poisons_toxins,fish,2.66,9.113333333333333,1
+anchoviella,salinity,fish,3,9.113333333333333,1
+anchoviella,sedimentation,fish,2.33,9.113333333333333,1
+anchoviella,slr,fish,0.33,9.113333333333333,1
+anchoviella,storm_disturbance,fish,0.66,9.113333333333333,1.34
+anchoviella,uv,fish,0.33,9.113333333333333,0.67
+anchoviella,water_temp,fish,4.23,9.113333333333333,0.33
+anchoviella,wildlife_strike,fish,0.67,9.113333333333333,0.67
 ancistrocheirus lesueurii,air_temp,cephalopods,3.0100000000000002,7.34,1.67
 ancistrocheirus lesueurii,biomass_removal,cephalopods,1,7.34,0
 ancistrocheirus lesueurii,bycatch,cephalopods,1,7.34,0
@@ -4487,6 +4531,28 @@ cerastoderma edule,storm_disturbance,molluscs,0.66,7.67,0.67
 cerastoderma edule,uv,molluscs,0.33,7.67,0.67
 cerastoderma edule,water_temp,molluscs,3.845,7.67,0
 cerastoderma edule,wildlife_strike,molluscs,0.67,7.67,0
+cetengraulis,air_temp,fish,3.175,9.113333333333333,1.34
+cetengraulis,biomass_removal,fish,1,9.113333333333333,0
+cetengraulis,bycatch,fish,1,9.113333333333333,0
+cetengraulis,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+cetengraulis,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+cetengraulis,habitat_loss_degradation,fish,2,9.113333333333333,1
+cetengraulis,inorganic_pollution,fish,5.84,9.113333333333333,1
+cetengraulis,invasive_species,fish,0,9.113333333333333,0.33
+cetengraulis,light_pollution,fish,0.33,9.113333333333333,1
+cetengraulis,noise_pollution,fish,0,9.113333333333333,0.67
+cetengraulis,oa,fish,3.33,9.113333333333333,1
+cetengraulis,oceanographic,fish,0.33,9.113333333333333,0
+cetengraulis,organic_pollution,fish,3.83,9.113333333333333,1.33
+cetengraulis,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+cetengraulis,poisons_toxins,fish,2.66,9.113333333333333,1
+cetengraulis,salinity,fish,3,9.113333333333333,1
+cetengraulis,sedimentation,fish,2.33,9.113333333333333,1
+cetengraulis,slr,fish,0.33,9.113333333333333,1
+cetengraulis,storm_disturbance,fish,0.66,9.113333333333333,1.34
+cetengraulis,uv,fish,0.33,9.113333333333333,0.67
+cetengraulis,water_temp,fish,4.175,9.113333333333333,0.33
+cetengraulis,wildlife_strike,fish,0.67,9.113333333333333,0.67
 cetorhinus maximus,air_temp,elasmobranchs,1,4.48,1.67
 cetorhinus maximus,biomass_removal,elasmobranchs,1,4.48,0
 cetorhinus maximus,bycatch,elasmobranchs,1.67,4.48,0
@@ -6775,28 +6841,50 @@ enchelycore schismatorhynchus,storm_disturbance,fish,0.66,5.66,0.67
 enchelycore schismatorhynchus,uv,fish,0.33,5.66,0
 enchelycore schismatorhynchus,water_temp,fish,4.01,5.66,0.33
 enchelycore schismatorhynchus,wildlife_strike,fish,1,5.66,0.67
-engraulis ringens,air_temp,fish,3.34,9.113333333333333,1.34
-engraulis ringens,biomass_removal,fish,1,9.113333333333333,0
-engraulis ringens,bycatch,fish,1,9.113333333333333,0
-engraulis ringens,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
-engraulis ringens,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
-engraulis ringens,habitat_loss_degradation,fish,2,9.113333333333333,1
-engraulis ringens,inorganic_pollution,fish,5.67,9.113333333333333,1
-engraulis ringens,invasive_species,fish,0,9.113333333333333,0.33
-engraulis ringens,light_pollution,fish,0.33,9.113333333333333,1
-engraulis ringens,noise_pollution,fish,0,9.113333333333333,0.67
-engraulis ringens,oa,fish,3.33,9.113333333333333,1
-engraulis ringens,oceanographic,fish,0.33,9.113333333333333,0
-engraulis ringens,organic_pollution,fish,3.66,9.113333333333333,1.33
-engraulis ringens,plastic_pollution_microplastic,fish,2,9.113333333333333,1
-engraulis ringens,poisons_toxins,fish,2.66,9.113333333333333,1
-engraulis ringens,salinity,fish,3,9.113333333333333,1
-engraulis ringens,sedimentation,fish,2.33,9.113333333333333,1
-engraulis ringens,slr,fish,0.33,9.113333333333333,1
-engraulis ringens,storm_disturbance,fish,0.66,9.113333333333333,1.34
-engraulis ringens,uv,fish,0.33,9.113333333333333,0.67
-engraulis ringens,water_temp,fish,4.34,9.113333333333333,0.33
-engraulis ringens,wildlife_strike,fish,0.67,9.113333333333333,0.67
+encrasicholina,air_temp,fish,3.34,9.113333333333333,1.34
+encrasicholina,biomass_removal,fish,1,9.113333333333333,0
+encrasicholina,bycatch,fish,1,9.113333333333333,0
+encrasicholina,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+encrasicholina,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+encrasicholina,habitat_loss_degradation,fish,2,9.113333333333333,1
+encrasicholina,inorganic_pollution,fish,5.67,9.113333333333333,1
+encrasicholina,invasive_species,fish,0,9.113333333333333,0.33
+encrasicholina,light_pollution,fish,0.33,9.113333333333333,1
+encrasicholina,noise_pollution,fish,0,9.113333333333333,0.67
+encrasicholina,oa,fish,3.33,9.113333333333333,1
+encrasicholina,oceanographic,fish,0.33,9.113333333333333,0
+encrasicholina,organic_pollution,fish,3.66,9.113333333333333,1.33
+encrasicholina,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+encrasicholina,poisons_toxins,fish,2.66,9.113333333333333,1
+encrasicholina,salinity,fish,3,9.113333333333333,1
+encrasicholina,sedimentation,fish,2.33,9.113333333333333,1
+encrasicholina,slr,fish,0.33,9.113333333333333,1
+encrasicholina,storm_disturbance,fish,0.66,9.113333333333333,1.34
+encrasicholina,uv,fish,0.33,9.113333333333333,0.67
+encrasicholina,water_temp,fish,4.34,9.113333333333333,0.33
+encrasicholina,wildlife_strike,fish,0.67,9.113333333333333,0.67
+engraulis,air_temp,fish,2.88,9.113333333333333,1.34
+engraulis,biomass_removal,fish,1,9.113333333333333,0
+engraulis,bycatch,fish,1,9.113333333333333,0
+engraulis,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+engraulis,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+engraulis,habitat_loss_degradation,fish,2,9.113333333333333,1
+engraulis,inorganic_pollution,fish,6.1312500000000005,9.113333333333333,1
+engraulis,invasive_species,fish,0,9.113333333333333,0.33
+engraulis,light_pollution,fish,0.33,9.113333333333333,1
+engraulis,noise_pollution,fish,0,9.113333333333333,0.67
+engraulis,oa,fish,3.33,9.113333333333333,1
+engraulis,oceanographic,fish,0.33,9.113333333333333,0
+engraulis,organic_pollution,fish,4.12125,9.113333333333333,1.33
+engraulis,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+engraulis,poisons_toxins,fish,2.66,9.113333333333333,1
+engraulis,salinity,fish,3,9.113333333333333,1
+engraulis,sedimentation,fish,2.33,9.113333333333333,1
+engraulis,slr,fish,0.33,9.113333333333333,1
+engraulis,storm_disturbance,fish,0.66,9.113333333333333,1.34
+engraulis,uv,fish,0.33,9.113333333333333,0.67
+engraulis,water_temp,fish,3.88,9.113333333333333,0.33
+engraulis,wildlife_strike,fish,0.67,9.113333333333333,0.67
 enhydra lutris,air_temp,marine_mammals,2.0100000000000002,4.825,0.67
 enhydra lutris,biomass_removal,marine_mammals,1,4.825,0
 enhydra lutris,bycatch,marine_mammals,1.67,4.825,0
@@ -11505,6 +11593,28 @@ lutjanus sebae,storm_disturbance,fish,0.99,11.67,1.67
 lutjanus sebae,uv,fish,0.33,11.67,0.67
 lutjanus sebae,water_temp,fish,4.34,11.67,0.67
 lutjanus sebae,wildlife_strike,fish,0.67,11.67,1
+lycengraulis,air_temp,fish,3.005,9.113333333333333,1.34
+lycengraulis,biomass_removal,fish,1,9.113333333333333,0
+lycengraulis,bycatch,fish,1,9.113333333333333,0
+lycengraulis,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+lycengraulis,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+lycengraulis,habitat_loss_degradation,fish,2,9.113333333333333,1
+lycengraulis,inorganic_pollution,fish,6.005,9.113333333333333,1
+lycengraulis,invasive_species,fish,0,9.113333333333333,0.33
+lycengraulis,light_pollution,fish,0.33,9.113333333333333,1
+lycengraulis,noise_pollution,fish,0,9.113333333333333,0.67
+lycengraulis,oa,fish,3.33,9.113333333333333,1
+lycengraulis,oceanographic,fish,0.33,9.113333333333333,0
+lycengraulis,organic_pollution,fish,3.995,9.113333333333333,1.33
+lycengraulis,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+lycengraulis,poisons_toxins,fish,2.66,9.113333333333333,1
+lycengraulis,salinity,fish,3,9.113333333333333,1
+lycengraulis,sedimentation,fish,2.33,9.113333333333333,1
+lycengraulis,slr,fish,0.33,9.113333333333333,1
+lycengraulis,storm_disturbance,fish,0.66,9.113333333333333,1.34
+lycengraulis,uv,fish,0.33,9.113333333333333,0.67
+lycengraulis,water_temp,fish,4.005,9.113333333333333,0.33
+lycengraulis,wildlife_strike,fish,0.67,9.113333333333333,0.67
 lycoteuthis,air_temp,cephalopods,3.005,8,1.67
 lycoteuthis,biomass_removal,cephalopods,1,8,0
 lycoteuthis,bycatch,cephalopods,1,8,0
@@ -21141,6 +21251,28 @@ stigmatoteuthis,storm_disturbance,cephalopods,0.66,7.34,1.67
 stigmatoteuthis,uv,cephalopods,0.33,7.34,1.67
 stigmatoteuthis,water_temp,cephalopods,3.67,7.34,0.67
 stigmatoteuthis,wildlife_strike,cephalopods,0.67,7.34,0.67
+stolephorus,air_temp,fish,3.3164285714285713,9.113333333333333,1.34
+stolephorus,biomass_removal,fish,1,9.113333333333333,0
+stolephorus,bycatch,fish,1,9.113333333333333,0
+stolephorus,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+stolephorus,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+stolephorus,habitat_loss_degradation,fish,2,9.113333333333333,1
+stolephorus,inorganic_pollution,fish,5.694285714285714,9.113333333333333,1
+stolephorus,invasive_species,fish,0,9.113333333333333,0.33
+stolephorus,light_pollution,fish,0.33,9.113333333333333,1
+stolephorus,noise_pollution,fish,0,9.113333333333333,0.67
+stolephorus,oa,fish,3.33,9.113333333333333,1
+stolephorus,oceanographic,fish,0.33,9.113333333333333,0
+stolephorus,organic_pollution,fish,3.684285714285714,9.113333333333333,1.33
+stolephorus,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+stolephorus,poisons_toxins,fish,2.66,9.113333333333333,1
+stolephorus,salinity,fish,3,9.113333333333333,1
+stolephorus,sedimentation,fish,2.33,9.113333333333333,1
+stolephorus,slr,fish,0.33,9.113333333333333,1
+stolephorus,storm_disturbance,fish,0.66,9.113333333333333,1.34
+stolephorus,uv,fish,0.33,9.113333333333333,0.67
+stolephorus,water_temp,fish,4.316428571428571,9.113333333333333,0.33
+stolephorus,wildlife_strike,fish,0.67,9.113333333333333,0.67
 stoloteuthis,air_temp,cephalopods,3,7,0.67
 stoloteuthis,biomass_removal,cephalopods,1,7,0
 stoloteuthis,bycatch,cephalopods,0.33,7,0
@@ -21845,6 +21977,28 @@ thaumoctopus mimicus,storm_disturbance,cephalopods,0.66,7.33,1.34
 thaumoctopus mimicus,uv,cephalopods,0.33,7.33,0.67
 thaumoctopus mimicus,water_temp,cephalopods,5.34,7.33,0.33
 thaumoctopus mimicus,wildlife_strike,cephalopods,0.67,7.33,0.67
+thryssa,air_temp,fish,3.29875,9.113333333333333,1.34
+thryssa,biomass_removal,fish,1,9.113333333333333,0
+thryssa,bycatch,fish,1,9.113333333333333,0
+thryssa,entanglement_macroplastic,fish,0.33,9.113333333333333,0.67
+thryssa,eutrophication_nutrient_pollution,fish,4,9.113333333333333,1
+thryssa,habitat_loss_degradation,fish,2,9.113333333333333,1
+thryssa,inorganic_pollution,fish,5.7125,9.113333333333333,1
+thryssa,invasive_species,fish,0,9.113333333333333,0.33
+thryssa,light_pollution,fish,0.33,9.113333333333333,1
+thryssa,noise_pollution,fish,0,9.113333333333333,0.67
+thryssa,oa,fish,3.33,9.113333333333333,1
+thryssa,oceanographic,fish,0.33,9.113333333333333,0
+thryssa,organic_pollution,fish,3.7025,9.113333333333333,1.33
+thryssa,plastic_pollution_microplastic,fish,2,9.113333333333333,1
+thryssa,poisons_toxins,fish,2.66,9.113333333333333,1
+thryssa,salinity,fish,3,9.113333333333333,1
+thryssa,sedimentation,fish,2.33,9.113333333333333,1
+thryssa,slr,fish,0.33,9.113333333333333,1
+thryssa,storm_disturbance,fish,0.66,9.113333333333333,1.34
+thryssa,uv,fish,0.33,9.113333333333333,0.67
+thryssa,water_temp,fish,4.29875,9.113333333333333,0.33
+thryssa,wildlife_strike,fish,0.67,9.113333333333333,0.67
 thunnus maccoyii,air_temp,fish,2.67,7.66,1.34
 thunnus maccoyii,biomass_removal,fish,1,7.66,0
 thunnus maccoyii,bycatch,fish,1.33,7.66,0
