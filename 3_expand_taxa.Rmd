@@ -437,11 +437,12 @@ aquamaps_patch_file <- here('int/expand7_aquamaps_patch.csv')
 
 if(!file.exists(aquamaps_patch_file)) {
 
+  ### directory for AquaMaps files on Mazu server:
+  am_dir <- '/home/shares/ohi/spp_vuln/aquamaps_2021'
+  
   ### read in AquaMaps species info, add missing AquaMaps species to the
   ### classification process to ensure inclusion
-  am_spp_info <- data.table::fread(file.path('/home/shares/ohi/git-annex',
-                                             'aquamaps_2021',
-                                             'ver10_2019_speciesoccursum_iucn.csv')) %>%
+  am_spp_info <- data.table::fread(file.path(am_dir, 'ver10_2019_speciesoccursum_iucn.csv')) %>%
     janitor::clean_names() %>%
     rename(am_sid = species_id, iucn_sid = iucn_id, comname = f_bname) %>%
     mutate(species = tolower(paste(genus, species))) %>%
@@ -500,10 +501,11 @@ if(!file.exists(aquamaps_patch_file)) {
 ```
 
 ```{r aquamaps higher rank match, eval = FALSE}
+  
+### directory for AquaMaps files on Mazu server:
+am_dir <- '/home/shares/ohi/spp_vuln/aquamaps_2021'
 
-am_spp_info <- data.table::fread(file.path('/home/shares/ohi/git-annex',
-                                           'aquamaps_2021',
-                                           'ver10_2019_speciesoccursum_iucn.csv')) %>%
+am_spp_info <- data.table::fread(file.path(am_dir, 'ver10_2019_speciesoccursum_iucn.csv')) %>%
   janitor::clean_names() %>%
   rename(am_sid = species_id, iucn_sid = iucn_id, comname = f_bname) %>%
   mutate(species = tolower(paste(genus, species))) 
