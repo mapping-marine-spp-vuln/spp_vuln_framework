@@ -399,3 +399,14 @@ ggsave('ms_figs/vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
 knitr::include_graphics('ms_figs/vuln_dist_tx_12x1panel.png')
 ```
 
+### Save summary as table for supplement
+```{r}
+si_table <- tx_summary_df %>%
+  select(tx_clean, str_clean, v_mean, n_spp) %>%
+  spread(str_clean, v_mean) %>%
+  select(Taxon = tx_clean, everything(), Overall, `N spp` = n_spp)
+
+write_csv(si_table, here('_output/vuln_summary_table.csv'))
+knitr::kable(si_table)
+```
+
