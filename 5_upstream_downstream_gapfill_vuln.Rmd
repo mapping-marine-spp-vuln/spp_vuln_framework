@@ -26,6 +26,9 @@ oharac::setup()
 source(here('common_fxns.R'))
 options(dplyr.summarise.inform = FALSE) 
 
+### directory on server for large files:
+dir_mazu <- '/home/shares/ohi/spp_vuln/spp_vuln_framework'
+
 ```
 
 # Summary
@@ -655,8 +658,8 @@ vuln_vals <- vuln_all_spp %>%
   mutate(across(where(is.numeric), ~ round(., 5)))
   
 ### write .csvs which can be joined using tx_id
-write_csv(vuln_vals, '~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_values.csv')
-write_csv(vuln_tx,   '~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_taxa.csv')
+write_csv(vuln_vals, file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_values.csv'))
+write_csv(vuln_tx,   file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_taxa.csv'))
 ```
 
 ## Examine gapfill variability by stressor and taxon
@@ -720,8 +723,8 @@ ggplot(pct_pop_by_taxon, aes(x = gapfill, y = pct_to_fill)) +
 First let's use the vulnerability gapfilling to fill in species up to class level (maximum) and write these out for posterity...
 
 ```{r apply upstreamed gapfill values to downstream spp}
-vuln_vals <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_values.csv')
-vuln_tx <- read_csv('~/git-annex/spp_vuln/pre_gapfill/vuln_gapfill_taxa.csv')
+vuln_vals <- read_csv(file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_values.csv'))
+vuln_tx   <- read_csv(file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_taxa.csv'))
 vuln_df <- vuln_tx %>%
   left_join(vuln_vals, by = 'tx_id') %>%
   select(-tx_id, -n_spp_known, -n_prob) %>%
@@ -784,9 +787,9 @@ vuln_gf_sd <- vuln_all_gf %>%
   mutate(sd_vuln = round(sd_vuln, 5)) %>%
   spread(stressor, sd_vuln)
 
-write_csv(vuln_gf_tx, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_all_tx.csv')
-write_csv(vuln_gf_score, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_all_score.csv')
-write_csv(vuln_gf_sd, '~/git-annex/spp_vuln/post_gapfill/vuln_gapfilled_all_sd.csv')
+write_csv(vuln_gf_tx, file.path(dir_mazu, 'post_gapfill/vuln_gapfilled_all_tx.csv'))
+write_csv(vuln_gf_score, file.path(dir_mazu, 'post_gapfill/vuln_gapfilled_all_score.csv'))
+write_csv(vuln_gf_sd, file.path(dir_mazu, 'post_gapfill/vuln_gapfilled_all_sd.csv'))
 
 ```
 
