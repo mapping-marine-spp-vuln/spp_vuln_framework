@@ -37,7 +37,7 @@ clean_titles <- function(df) {
                "crustacea_arthropods",      "Marine arthropods",
                         "echinoderms",     "Echinoderms",
                       "elasmobranchs",   "Elasmobranchs",
-                               "fish",            "Fish",
+                               "fish",     "Bony fishes",
                      "marine_mammals",  "Marine mammals",
                            "molluscs",        "Molluscs",
                         "polychaetes",     "Polychaetes",
