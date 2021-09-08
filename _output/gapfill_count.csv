@@ -1,13 +1,13 @@
 taxon,gapfill: class,gapfill: family,gapfill: genus,gapfill: order,match: class,match: family,match: genus,match: order,match: species
-cephalopods,11,50,22,6,NA,17,574,NA,219
-corals,5571,318,11,3409,NA,NA,318,NA,1
-crustacea_arthropods,19701,982,NA,12545,1135,859,93,NA,7
-echinoderms,2667,NA,NA,NA,NA,NA,2,7801,98
-elasmobranchs,NA,5,1,2,NA,628,574,6,35
-fish,3125,3358,471,3812,NA,1329,533,5711,313
-marine_mammals,2,71,23,10,NA,45,30,NA,47
-molluscs,17292,7027,977,24302,NA,NA,139,NA,45
-polychaetes,2648,NA,NA,5920,NA,2008,NA,NA,NA
-reptiles,1,NA,NA,22,NA,70,13,NA,8
-seabirds,41,48,40,141,NA,171,165,NA,NA
-sponges,NA,NA,NA,NA,7718,NA,NA,NA,NA
+cephalopods,10,33,20,6,NA,17,532,NA,220
+corals,5531,312,11,3261,NA,NA,287,NA,1
+crustacea_arthropods,19537,912,NA,12414,1094,811,93,NA,7
+echinoderms,2634,NA,NA,NA,NA,NA,2,7565,98
+elasmobranchs,NA,8,1,2,NA,626,571,6,35
+fish,3118,3355,471,3814,NA,1331,534,5710,314
+marine_mammals,2,71,23,10,NA,44,27,NA,47
+molluscs,18116,6373,942,22908,NA,NA,130,NA,46
+polychaetes,2618,NA,NA,5851,NA,1980,NA,NA,NA
+reptiles,NA,NA,NA,22,NA,60,13,NA,10
+seabirds,NA,4,NA,NA,NA,172,165,NA,NA
+sponges,NA,NA,NA,NA,7482,NA,NA,NA,NA

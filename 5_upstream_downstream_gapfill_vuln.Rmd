@@ -44,6 +44,8 @@ Using taxonomic trees from WoRMS and the `taxize` package, we will try filling v
 
 ## Load expanded vulnerability scores
 
+These have already been scrubbed of confounding symbols and parenthetical genera...
+
 ```{r load expanded vuln scores from script 4}
 match_spp <- read_csv(here('int/spp_match_downfill.csv'))
 spp_vuln  <- read_csv(here('int/vuln_downfill_only.csv'))
@@ -248,10 +250,10 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
 
 ``` {r monte carlo for genus vuln dists}
 iters <- 10000
-reload <- TRUE
-force  <- TRUE
+reload <- FALSE
+force  <- FALSE
 gen_fill_file <- here('int', sprintf('gapfill_gen_prob_results_%s.csv', iters))
-
+# unlink(g)
 if(!file.exists(gen_fill_file) | reload) {
   gen_fill_prob <- gen_fill_nondet %>%
     anti_join(gen_fill_matchrank %>% select(genus, stressor)) %>%
@@ -796,6 +798,8 @@ write_csv(vuln_gf_sd, file.path(dir_mazu, 'post_gapfill/vuln_gapfilled_all_sd.cs
 ... but for the purposes of the manuscript, let's do this again just to the family level:
 
 ### Outputs: Species matched or gapfilled to family level
+
+These are just those species gapfilled to the family level (though include many downfilled from order or class).  These are the values reported in Nat's paper.
 
 ```{r}
 

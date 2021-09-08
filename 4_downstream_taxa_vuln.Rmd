@@ -121,7 +121,8 @@ repr_spp_gps <- repr_spp %>%
 ### this will keep the species level scores intact, while also adding
 ### higher order representative ranks.
 spp_gp_vuln_repr_fix <- spp_gp_vuln %>%
-  bind_rows(repr_spp_gps %>% select(-n_spp))
+  bind_rows(repr_spp_gps %>% select(-n_spp)) %>%
+  clean_scinames('spp_gp')
 
 matched_df <- spp_all_long %>%
   inner_join(spp_gp_vuln_repr_fix, by = c('name' = 'spp_gp')) %>%
@@ -148,7 +149,7 @@ check_status <- function(check_ids) {
   return(records_df)
 }
 
-unmatched_df <- spp_gp_vuln %>%
+unmatched_df <- spp_gp_vuln_repr_fix %>%
   filter(!spp_gp %in% matched_df$name) %>%
   select(taxon, spp_gp) %>%
   distinct()
