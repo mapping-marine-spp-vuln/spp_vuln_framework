@@ -133,7 +133,7 @@ x <- ggplot(test_df) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('ms_figs/vuln_summary_plot.png', width = 6, height = 6, dpi = 300)
+ggsave('ms_figs/vuln_summary_plot.png', width = 6, height = 6, dpi = 600)
 knitr::include_graphics('ms_figs/vuln_summary_plot.png')
 ```
 
@@ -205,7 +205,7 @@ p <- ggplot(dens_diag) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('ms_figs/vuln_summary_plot_violin.png', width = 6, height = 6, dpi = 300)
+ggsave('ms_figs/vuln_summary_plot_violin.png', width = 6, height = 6, dpi = 600)
 knitr::include_graphics('ms_figs/vuln_summary_plot_violin.png')
 ```
 
@@ -243,7 +243,7 @@ x <- ggplot(mean_df, aes(x = str_clean, y = tx_clean)) +
   labs(fill = 'std dev', color = 'mean',
        title = 'Vulnerability by taxon and stressor')
   
-ggsave('ms_figs/vuln_heatmap.png', width = 6, height = 4, dpi = 300)
+ggsave('ms_figs/vuln_heatmap.png', width = 6, height = 4, dpi = 600)
 knitr::include_graphics('ms_figs/vuln_heatmap.png')
 ```
 
@@ -286,7 +286,7 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) # +
   # labs(title = 'Vulnerability distribution by stressor')
   
-ggsave('ms_figs/vuln_dist_str_box.png', width = 4, height = 3, dpi = 300)
+ggsave('ms_figs/vuln_dist_str_box.png', width = 4, height = 3, dpi = 600)
 knitr::include_graphics('ms_figs/vuln_dist_str_box.png')
 ```
 
@@ -319,7 +319,7 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) #+
   # labs(title = 'Vulnerability distribution by taxon')
   
-ggsave('ms_figs/vuln_dist_tx_box.png', width = 4, height = 2, dpi = 300)
+ggsave('ms_figs/vuln_dist_tx_box.png', width = 4, height = 2, dpi = 600)
 knitr::include_graphics('ms_figs/vuln_dist_tx_box.png')
 ```
 
@@ -395,7 +395,7 @@ x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)),
        y = 'Vulnerability score') +
   facet_wrap( ~ tx_clean, ncol = 1, strip.position = 'right')
   
-ggsave('ms_figs/vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 300)
+ggsave('ms_figs/vuln_dist_tx_12x1panel.png', width = 5, height = 8, dpi = 600)
 knitr::include_graphics('ms_figs/vuln_dist_tx_12x1panel.png')
 ```
 
