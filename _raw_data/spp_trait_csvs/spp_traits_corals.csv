@@ -1,5 +1,5 @@
 category,trait,acropora,diploastrea heliopora,pocillopora,porites
-biomass removal,biomass removal vulnerability trait,vulnerable,vulnerable,vulnerable,vulnerable
+biomass removal,biomass removal sensitivity trait,sensitive,sensitive,sensitive,sensitive
 biophysical traits,adult body mass/body size,unknown,unknown,unknown,unknown
 biophysical traits,biomineral,aragonite,aragonite,aragonite,aragonite
 biophysical traits,calcium carbonate structure location,external,external,external,external
@@ -16,6 +16,7 @@ physiological tolerance breadths,dissolved oxygen,low tolerance,low tolerance,lo
 physiological tolerance breadths,ph,7.8-8.2,7.8-8.2,7.8-8.2,7.8-8.2
 physiological tolerance breadths,salinity,stenohaline,stenohaline,stenohaline,stenohaline
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),not sensitive,not sensitive,not sensitive,not sensitive
+physiological tolerance breadths,sst rise sensitivity trait,sensitive,sensitive,sensitive,sensitive
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,yes,yes,yes,yes
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c,30c,30c,30c
 r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs;5-10yrs,1-5yrs,1-5yrs;5-10yrs

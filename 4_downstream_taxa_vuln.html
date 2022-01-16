@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Wed Sep 8 13:12:14 2021 by ohara" />
+<meta name="author" content="Compiled on Sat Jan 15 14:54:08 2022 by ohara" />
 
 
 <title>Downstream taxa vulnerability</title>
@@ -83,6 +83,7 @@ In here, put in a link to repo and website?
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -364,7 +365,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Downstream taxa vulnerability</h1>
-<h4 class="author"><em>Compiled on Wed Sep 8 13:12:14 2021 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Sat Jan 15 14:54:08 2022 by ohara</em></h4>
 
 </div>
 
@@ -378,11 +379,11 @@ div.tocify {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">here</span>(<span class="st">&#39;common_fxns.R&#39;</span>))</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(taxize)</span></code></pre></div>
 <div id="summary" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Summary</h1>
+<h1><span class="header-section-number">1</span> Summary</h1>
 <p>Using taxonomic trees from WoRMS and the <code>taxize</code> package, we will try filling vulnerabilities for downstream non-scored species.</p>
 </div>
 <div id="methods" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Methods</h1>
+<h1><span class="header-section-number">2</span> Methods</h1>
 <ul>
 <li>Load species vulnerabilities for known species.<br />
 </li>
@@ -390,14 +391,14 @@ div.tocify {
 <li>For vulnerabilities calculated at a non-species level, we will downfill those to the species level (e.g., we know family level traits therefore calculate vulnerability - assign to all non-specified species in that family).</li>
 </ul>
 <div id="assemble-the-taxonomic-dataframe" class="section level2" number="2.1">
-<h2 number="2.1"><span class="header-section-number">2.1</span> Assemble the taxonomic dataframe</h2>
+<h2><span class="header-section-number">2.1</span> Assemble the taxonomic dataframe</h2>
 <p>Grab data from each rank (kingdom –&gt; phylum, phylum –&gt; class, class –&gt; order, etc.) and assemble into a long dataframe. Long format will be easier to match trait-scored species to, since all ranks will be in the “name” column. But wide format will be easier for keeping track of the structure of each species’ classification.</p>
 <p>Because we are dropping plants and algae, filter wide dataframe to just species in kingdom <em>Animalia</em>. This is done in the <code>assemble_worms()</code> function from <code>common_fxns.R</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spp_all_wide <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="st">&#39;wide&#39;</span>, <span class="at">seabirds_only =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spp_all_long <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>(<span class="st">&#39;long&#39;</span>, <span class="at">seabirds_only =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="match-species-with-known-vulnerability-to-most-specific-rank" class="section level2" number="2.2">
-<h2 number="2.2"><span class="header-section-number">2.2</span> Match species with known vulnerability to most specific rank</h2>
+<h2><span class="header-section-number">2.2</span> Match species with known vulnerability to most specific rank</h2>
 <p>Load the vulnerability data, and match to the wide-format species classifications along with the representativeness corrections, to identify species that represent higher ranks. Create a separate dataframe of these higher ranks, based on averages of species vulnerability scores.</p>
 <p>Then bind the representative-based dataframe with the original vulnerability data, and join to long-format species classifications.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fish_spp <span class="ot">&lt;-</span> spp_gp_vuln <span class="sc">%&gt;%</span></span>
@@ -512,8 +513,8 @@ div.tocify {
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(check_accepted_df, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;sciname&#39;</span>, <span class="st">&#39;id&#39;</span>))</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(unmatch_check_df)</span></code></pre></div>
-<div id="htmlwidget-42f8099cac8c6329e26d" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-42f8099cac8c6329e26d">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,false,true],["leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","genus","species",null,"subspecies"],[124635,105755,342237,null,853079],["unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b65a7e148c0f39d5713e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b65a7e148c0f39d5713e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,false,true],["leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","genus","species",null,"subspecies"],[124635,105755,342237,null,853079],["unaccepted","unaccepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <p>Notes:</p>
 <ul>
 <li><em>Manta</em> is accepted as a genus, but all spp within it are accepted as <em>Mobula</em></li>
@@ -523,9 +524,9 @@ div.tocify {
 <li><em>Sousa chinensis taiwanensis</em> is a subspecies (species is separately included)</li>
 </ul>
 <div id="unmatched-spp-groups-with-scored-traits" class="section level3" number="2.2.1">
-<h3 number="2.2.1"><span class="header-section-number">2.2.1</span> Unmatched spp groups with scored traits:</h3>
-<div id="htmlwidget-3d6d555f77da2d469951" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3d6d555f77da2d469951">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,false,true],["leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","genus","species",null,"subspecies"],[124635,105755,342237,null,853079],["unaccepted","accepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<h3><span class="header-section-number">2.2.1</span> Unmatched spp groups with scored traits:</h3>
+<div id="htmlwidget-f16fd245b826e1752b4e" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f16fd245b826e1752b4e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["echinoderms","elasmobranchs","cephalopods","cephalopods","marine_mammals"],["leptopentacta elongata","manta","nautilus repertus","nautilus suluensis","sousa chinensis taiwanensis"],[true,true,true,false,true],["leptopentacta elongata","manta","nautilus repertus",null,"sousa chinensis taiwanensis"],["species","genus","species",null,"subspecies"],[124635,105755,342237,null,853079],["unaccepted","unaccepted","taxon inquirendum",null,"accepted"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>taxon<\/th>\n      <th>spp_gp<\/th>\n      <th>found<\/th>\n      <th>spp_gp_orig<\/th>\n      <th>rank<\/th>\n      <th>id<\/th>\n      <th>status<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":6},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <ul>
 <li>Problems where a taxon is found, and accepted, may mean error in the <code>downstream</code> call. Check the various <code>X_from_X.csv</code> dataframes to figure out where this taxon is being dropped.</li>
 <li>problems where a taxon is found, but not accepted (or not a main rank), may indicate species where an alternate name will fix the issue.
@@ -544,7 +545,7 @@ div.tocify {
 </div>
 </div>
 <div id="expand-classification-for-matched-species" class="section level2" number="2.3">
-<h2 number="2.3"><span class="header-section-number">2.3</span> Expand classification for matched species</h2>
+<h2><span class="header-section-number">2.3</span> Expand classification for matched species</h2>
 <p>Identify the rank at which each spp group matched, and disambiguate spp gps that match at multiple ranks to identify the most specific rank.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">### Loop over matchable ranks to separate out the matched species by rank of match</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>match_ranks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;phylum&#39;</span>, <span class="st">&#39;class&#39;</span>, <span class="st">&#39;order&#39;</span>, <span class="st">&#39;family&#39;</span>, <span class="st">&#39;genus&#39;</span>, <span class="st">&#39;species&#39;</span>)</span>
@@ -626,7 +627,7 @@ div.tocify {
 <span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_spp, <span class="fu">here</span>(<span class="st">&#39;int/spp_match_downfill.csv&#39;</span>))</span>
 <span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(spp_vuln,  <span class="fu">here</span>(<span class="st">&#39;int/vuln_downfill_only.csv&#39;</span>))</span></code></pre></div>
 <div id="how-many-matched-at-each-level" class="section level3" number="2.3.1">
-<h3 number="2.3.1"><span class="header-section-number">2.3.1</span> How many matched at each level?</h3>
+<h3><span class="header-section-number">2.3.1</span> How many matched at each level?</h3>
 <p>There are 30030 (i.e., for taxa scored at the class level, how many species can be included, vs. for taxa at the species level):</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(match_rank) <span class="sc">%&gt;%</span> </span>
@@ -663,7 +664,7 @@ div.tocify {
 </table>
 </div>
 <div id="taxonomic-breakdown" class="section level3" number="2.3.2">
-<h3 number="2.3.2"><span class="header-section-number">2.3.2</span> Taxonomic breakdown?</h3>
+<h3><span class="header-section-number">2.3.2</span> Taxonomic breakdown?</h3>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(match_vuln_df <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>               <span class="fu">group_by</span>(taxon) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>               <span class="fu">summarize</span>(<span class="at">n_spp_matched =</span> <span class="fu">n_distinct</span>(species)))</span></code></pre></div>

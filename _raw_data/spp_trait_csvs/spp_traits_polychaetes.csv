@@ -1,5 +1,5 @@
 category,trait,nephtyidae,nereididae,sabellidae,terebellidae
-biomass removal,biomass removal vulnerability trait,vulnerable,vulnerable,vulnerable,vulnerable
+biomass removal,biomass removal sensitivity trait,sensitive,sensitive,sensitive,sensitive
 biophysical traits,adult body mass/body size,0.5mm-49mm,0.5mm-49mm,0.5mm-49mm,0.5mm-49mm
 biophysical traits,calcium carbonate structure location,none,none,none,none
 biophysical traits,calcium carbonate structure stages,none,none,adult,none
@@ -8,6 +8,7 @@ movement,adult mobility,mobile resident,mobile resident,sessile,sessile
 movement,planktonic larval duration (pld) exposure,<1month,<1month,<1month,<1month
 physiological tolerance breadths,dissolved oxygen,character(0),character(0),character(0),character(0)
 physiological tolerance breadths,salinity,stenohaline,stenohaline,stenohaline,stenohaline
+physiological tolerance breadths,sst rise sensitivity trait,sensitive,sensitive,sensitive,sensitive
 r (reproductive traits),age to 1st reproduction/generation time,1-5yrs,1-5yrs,1-5yrs,1-5yrs
 r (reproductive traits),fecundity,100-1000,1000-10000,5-10;1000-10000,1000-10000
 r (reproductive traits),feeding larva (post-hatching metamorphosis),feeding non-calcifier,feeding non-calcifier,feeding non-calcifier,feeding non-calcifier;non-feeding non-calcifier

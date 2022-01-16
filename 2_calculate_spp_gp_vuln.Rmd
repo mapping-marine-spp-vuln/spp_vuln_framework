@@ -149,7 +149,7 @@ sens_traits_df <- sens_traits_raw %>%
          sens_score = assign_rank_scores(sens_score)) %>%
   clean_traitnames() %>%
   clean_traitvals() %>%
-  filter(!is.na(category)) 
+  filter(!is.na(category))
 
 ### write out traits that increase sensitivity
 x <- sens_traits_df %>% 
@@ -220,7 +220,7 @@ plot_df <- spp_sens %>%
          sens_norm = ifelse(is.nan(sens_norm), 0, sens_norm))
 
 p <- ggplot(plot_df, aes(x = stressor, y = sens_norm)) +
-  geom_jitter(size = 1, alpha = .6, height = .1) +
+  geom_jitter(size = .25, alpha = .6, height = 0) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5, size = 6)) +
   ylim(c(0, 1)) +
   facet_wrap(~ taxon)
@@ -242,7 +242,7 @@ top_3_sens <- spp_sens %>%
   arrange(desc(sens_norm)) %>%
   group_by(taxon) %>%
   filter(sens_norm >= nth(sens_norm, 3)) %>%
-  filter(stressor != 'biomass_removal')
+  filter(!stressor %in% c('biomass_removal', 'sst_rise'))
 
 DT::datatable(top_3_sens)
 ```
@@ -282,7 +282,7 @@ Here scores are not normalized. The pattern would be identical if normalized, si
 
 ```{r plot gen adcap by taxon}
 p <- ggplot(spp_adcap_gen, aes(x = taxon, y = adcap_gen_score)) +
-  geom_jitter(size = 1, alpha = .6, width = .2, height = .2) +
+  geom_jitter(size = .25, alpha = .6, width = .2, height = 0) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5))
 
 ggsave(here('figs/spp_adcap_gen_scores.png'), height = 4, width = 4, dpi = 300)
@@ -363,7 +363,7 @@ plot_df <- spp_adcap_spec %>%
   mutate(adcap_spec_norm = adcap_spec_score / max(adcap_spec_score),
          adcap_spec_norm = ifelse(is.nan(adcap_spec_norm), 0, adcap_spec_norm))
 p <- ggplot(plot_df, aes(x = stressor, y = adcap_spec_norm)) +
-  geom_jitter(size = 1, alpha = .6, width = .2, height = .1) +
+  geom_jitter(size = .25, alpha = .6, width = .2, height = 0) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5, size = 6)) +
   ylim(c(0, 1)) +
   facet_wrap( ~ taxon)
