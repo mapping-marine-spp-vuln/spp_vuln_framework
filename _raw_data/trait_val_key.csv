@@ -46,4 +46,5 @@ Biophysical Traits,navigation requirements (light),yes; no
 Biophysical Traits,navigation requirements (magnetic),yes; no
 Biophysical Traits,extreme pressure wave sensitive structures,high; medium; low; none
 Biophysical Traits,respiration structures,lungs; gills; skin; diffusion; pneumatophores; filter feeders
-biomass removal,biomass removal vulnerability trait,vulnerable
+biomass removal,biomass removal sensitivity trait,sensitive
+physiological tolerance breadths,sst rise sensitivity trait,sensitive

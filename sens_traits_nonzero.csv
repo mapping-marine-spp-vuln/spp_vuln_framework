@@ -25,7 +25,7 @@ biophysical_traits,biomineral,calcite,air_temp,0.67,medium
 biophysical_traits,biomineral,chitin/caco3 mix,air_temp,0.67,medium
 biophysical_traits,biomineral,silicate,air_temp,0.67,medium
 biophysical_traits,biomineral,other,air_temp,0.67,medium
-biomass_removal,biomass_removal_vulnerability_trait,vulnerable,biomass_removal,1,high
+biomass_removal,biomass_removal_sensitivity_trait,sensitive,biomass_removal,1,high
 specialisation,air_sea_interface,floating,bycatch,0.67,medium
 specialisation,air_sea_interface,yes,bycatch,0.67,medium
 specialisation,air_sea_interface,no,bycatch,0.33,low
@@ -111,6 +111,39 @@ r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calc
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding non-calcifier,light_pollution,0.33,low
 specialisation,terrestrial_and_marine_life_stages,yes,light_pollution,0.67,medium
 biophysical_traits,navigation_requirements_light,yes,light_pollution,0.33,low
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,marine_heat_waves,1,high
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,marine_heat_waves,1,high
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calcifier,marine_heat_waves,1,high
+r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding non-calcifier,marine_heat_waves,1,high
+physiological_tolerance_breadths,thermal_tolerance_range,0-2.5c,marine_heat_waves,1,high
+physiological_tolerance_breadths,thermal_tolerance_range,2.5-5c,marine_heat_waves,1,high
+physiological_tolerance_breadths,thermal_tolerance_range,5-7.5c,marine_heat_waves,0.67,medium
+physiological_tolerance_breadths,thermal_tolerance_range,7.5-10c,marine_heat_waves,0.67,medium
+physiological_tolerance_breadths,thermal_tolerance_range,10-15c,marine_heat_waves,0.33,low
+physiological_tolerance_breadths,thermal_tolerance_range,>15c,marine_heat_waves,0.33,low
+physiological_tolerance_breadths,thermal_sensitivity_to_heat_spikes_heat_waves,yes,marine_heat_waves,1,high
+physiological_tolerance_breadths,dissolved_oxygen,low tolerance,marine_heat_waves,0.33,low
+specialisation,air_sea_interface,floating,marine_heat_waves,0.67,medium
+specialisation,air_sea_interface,yes,marine_heat_waves,0.33,low
+specialisation,terrestrial_and_marine_life_stages,yes,marine_heat_waves,0.67,medium
+specialisation,extreme_diet_specialization,specialist,marine_heat_waves,0.33,low
+specialisation,dependent_interspecific_interactions,yes,marine_heat_waves,0.33,low
+biophysical_traits,adult_body_mass_body_size,0.5mm-49mm,marine_heat_waves,0.33,low
+biophysical_traits,adult_body_mass_body_size,<0.4mm,marine_heat_waves,1,high
+biophysical_traits,calcium_carbonate_structure_location,internal,marine_heat_waves,0.67,medium
+biophysical_traits,calcium_carbonate_structure_location,external with a cover,marine_heat_waves,0.67,medium
+biophysical_traits,calcium_carbonate_structure_location,external,marine_heat_waves,0.67,medium
+biophysical_traits,calcium_carbonate_structure_location,in external protein matrix,marine_heat_waves,0.67,medium
+biophysical_traits,calcium_carbonate_structure_location,in cellulose cell wall,marine_heat_waves,0.33,low
+biophysical_traits,calcium_carbonate_structure_stages,larvae,marine_heat_waves,1,high
+biophysical_traits,calcium_carbonate_structure_stages,adult,marine_heat_waves,0.67,medium
+biophysical_traits,calcium_carbonate_structure_stages,both,marine_heat_waves,1,high
+biophysical_traits,biomineral,aragonite,marine_heat_waves,0.67,medium
+biophysical_traits,biomineral,high mg calcite,marine_heat_waves,1,high
+biophysical_traits,biomineral,calcite,marine_heat_waves,0.67,medium
+biophysical_traits,biomineral,chitin/caco3 mix,marine_heat_waves,0.67,medium
+biophysical_traits,biomineral,silicate,marine_heat_waves,0.67,medium
+biophysical_traits,biomineral,other,marine_heat_waves,0.67,medium
 biophysical_traits,communication_requirement_sound,yes,noise_pollution,1,high
 biophysical_traits,navigation_requirements_sound,yes,noise_pollution,1,high
 biophysical_traits,extreme_pressure_wave_sensitive_structures,high,noise_pollution,1,high
@@ -229,6 +262,7 @@ specialisation,air_sea_interface,yes,slr,1,high
 specialisation,terrestrial_and_marine_life_stages,yes,slr,1,high
 biophysical_traits,navigation_requirements_light,yes,slr,0.33,low
 biophysical_traits,respiration_structures,pneumatophores,slr,1,high
+physiological_tolerance_breadths,sst_rise_sensitivity_trait,sensitive,sst_rise,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,storm_disturbance,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,storm_disturbance,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calcifier,storm_disturbance,0.33,low
@@ -247,39 +281,6 @@ r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calc
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calcifier,uv,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding non-calcifier,uv,0.33,low
 specialisation,photosynthetic,yes,uv,1,high
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,water_temp,1,high
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,water_temp,1,high
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding calcifier,water_temp,1,high
-r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,non-feeding non-calcifier,water_temp,1,high
-physiological_tolerance_breadths,thermal_tolerance_range,0-2.5c,water_temp,1,high
-physiological_tolerance_breadths,thermal_tolerance_range,2.5-5c,water_temp,1,high
-physiological_tolerance_breadths,thermal_tolerance_range,5-7.5c,water_temp,0.67,medium
-physiological_tolerance_breadths,thermal_tolerance_range,7.5-10c,water_temp,0.67,medium
-physiological_tolerance_breadths,thermal_tolerance_range,10-15c,water_temp,0.33,low
-physiological_tolerance_breadths,thermal_tolerance_range,>15c,water_temp,0.33,low
-physiological_tolerance_breadths,thermal_sensitivity_to_heat_spikes_heat_waves,yes,water_temp,1,high
-physiological_tolerance_breadths,dissolved_oxygen,low tolerance,water_temp,0.33,low
-specialisation,air_sea_interface,floating,water_temp,0.67,medium
-specialisation,air_sea_interface,yes,water_temp,0.33,low
-specialisation,terrestrial_and_marine_life_stages,yes,water_temp,0.67,medium
-specialisation,extreme_diet_specialization,specialist,water_temp,0.33,low
-specialisation,dependent_interspecific_interactions,yes,water_temp,0.33,low
-biophysical_traits,adult_body_mass_body_size,0.5mm-49mm,water_temp,0.33,low
-biophysical_traits,adult_body_mass_body_size,<0.4mm,water_temp,1,high
-biophysical_traits,calcium_carbonate_structure_location,internal,water_temp,0.67,medium
-biophysical_traits,calcium_carbonate_structure_location,external with a cover,water_temp,0.67,medium
-biophysical_traits,calcium_carbonate_structure_location,external,water_temp,0.67,medium
-biophysical_traits,calcium_carbonate_structure_location,in external protein matrix,water_temp,0.67,medium
-biophysical_traits,calcium_carbonate_structure_location,in cellulose cell wall,water_temp,0.33,low
-biophysical_traits,calcium_carbonate_structure_stages,larvae,water_temp,1,high
-biophysical_traits,calcium_carbonate_structure_stages,adult,water_temp,0.67,medium
-biophysical_traits,calcium_carbonate_structure_stages,both,water_temp,1,high
-biophysical_traits,biomineral,aragonite,water_temp,0.67,medium
-biophysical_traits,biomineral,high mg calcite,water_temp,1,high
-biophysical_traits,biomineral,calcite,water_temp,0.67,medium
-biophysical_traits,biomineral,chitin/caco3 mix,water_temp,0.67,medium
-biophysical_traits,biomineral,silicate,water_temp,0.67,medium
-biophysical_traits,biomineral,other,water_temp,0.67,medium
 specialisation,air_sea_interface,floating,wildlife_strike,1,high
 specialisation,air_sea_interface,yes,wildlife_strike,1,high
 biophysical_traits,adult_body_mass_body_size,>1000mm,wildlife_strike,1,high

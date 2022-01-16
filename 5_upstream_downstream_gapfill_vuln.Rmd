@@ -252,8 +252,9 @@ gen_fill_nondet_solo <- gen_fill_nondet %>%
 iters <- 10000
 reload <- FALSE
 force  <- FALSE
+
 gen_fill_file <- here('int', sprintf('gapfill_gen_prob_results_%s.csv', iters))
-# unlink(g)
+# unlink(gen_fill_file)
 if(!file.exists(gen_fill_file) | reload) {
   gen_fill_prob <- gen_fill_nondet %>%
     anti_join(gen_fill_matchrank %>% select(genus, stressor)) %>%
@@ -275,7 +276,7 @@ if(!file.exists(gen_fill_file) | reload) {
     FUN = function(g) {### g <- genera[1]
       tmp_file <- sprintf(tmp_fstem, g)
       if(!file.exists(tmp_file) | force) {
-        unlink(tmp_file)
+        # unlink(tmp_file)
         g_df <- gen_fill_prob %>%
           filter(genus == g) %>%
           mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
@@ -354,7 +355,7 @@ fam_fill_nondet_solo <- fam_fill_nondet %>%
 
 ``` {r monte carlo for fam vuln dists}
 fam_fill_file <- here('int', sprintf('gapfill_fam_prob_results_%s.csv', iters))
-
+### unlink(fam_fill_file)
 if(!file.exists(fam_fill_file) | reload) {
   fam_fill_prob <- fam_fill_nondet %>%
     anti_join(fam_fill_matchrank %>% select(family, stressor)) %>%
@@ -376,25 +377,25 @@ if(!file.exists(fam_fill_file) | reload) {
     FUN = function(f) {### f <- fams[1]
       tmp_file <- sprintf(tmp_fstem, f)
       if(!file.exists(tmp_file) | force) {
-        unlink(tmp_file)
-      f_df <- fam_fill_prob %>%
-        filter(family == f) %>%
-        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-      
-      message('Sampling ', iters, ' MC iterations for family ', f)
-      
-      mc_results_df <- f_df %>%
-        rowwise() %>%
-        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
-        unnest(v) %>%
-        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
-        group_by(class, order, family, stressor, taxon) %>%
-        summarize(mean_vuln = mean(v),
-                  sd_vuln = sd(v),
-                  # med_vuln = median(v),
-                  n_spp_known = n_distinct(species)) %>%
-        ungroup()
-
+        # unlink(tmp_file)
+        f_df <- fam_fill_prob %>%
+          filter(family == f) %>%
+          mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+        
+        message('Sampling ', iters, ' MC iterations for family ', f)
+        
+        mc_results_df <- f_df %>%
+          rowwise() %>%
+          mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+          unnest(v) %>%
+          mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+          group_by(class, order, family, stressor, taxon) %>%
+          summarize(mean_vuln = mean(v),
+                    sd_vuln = sd(v),
+                    # med_vuln = median(v),
+                    n_spp_known = n_distinct(species)) %>%
+          ungroup()
+  
         write_csv(mc_results_df, tmp_file)
       }
     })
@@ -456,7 +457,7 @@ ord_fill_nondet_solo <- ord_fill_nondet %>%
 
 ``` {r monte carlo for ord vuln dists}
 ord_fill_file <- here('int', sprintf('gapfill_ord_prob_results_%s.csv', iters))
-
+### unlink(ord_fill_file)
 if(!file.exists(ord_fill_file) | reload) {
   ord_fill_prob <- ord_fill_nondet %>%
     anti_join(ord_fill_matchrank %>% select(order, stressor)) %>%
@@ -478,7 +479,7 @@ if(!file.exists(ord_fill_file) | reload) {
     FUN = function(o) {### o <- ords[1]
       tmp_file <- sprintf(tmp_fstem, o)
       if(!file.exists(tmp_file) | force) {
-        unlink(tmp_file)
+        # unlink(tmp_file)
         o_df <- ord_fill_prob %>%
           filter(order == o) %>%
           mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
@@ -497,7 +498,7 @@ if(!file.exists(ord_fill_file) | reload) {
                     n_spp_known = n_distinct(species)) %>%
           ungroup()
   
-          write_csv(mc_results_df, tmp_file)
+        write_csv(mc_results_df, tmp_file)
       }
     })
   
@@ -560,7 +561,7 @@ cls_fill_nondet_solo <- cls_fill_nondet %>%
 
 ``` {r monte carlo for cls vuln dists}
 cls_fill_file <- here('int', sprintf('gapfill_cls_prob_results_%s.csv', iters))
-
+### unlink(cls_fill_file)
 if(!file.exists(cls_fill_file) | reload) {
 
   cls_fill_prob <- cls_fill_nondet %>%
@@ -583,25 +584,25 @@ if(!file.exists(cls_fill_file) | reload) {
     FUN = function(c) {### c <- clss[1]
       tmp_file <- sprintf(tmp_fstem, c)
       if(!file.exists(tmp_file) | force) {
-        unlink(tmp_file)
-      c_df <- cls_fill_prob %>%
-        filter(class == c) %>%
-        mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
-      
-      message('Sampling ', iters, ' MC iterations for class ', c)
-
-      mc_results_df <- c_df %>%
-        rowwise() %>%
-        mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
-        unnest(v) %>%
-        mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
-        group_by(class, stressor, taxon) %>%
-        summarize(mean_vuln = mean(v),
-                  sd_vuln = sd(v),
-                  # med_vuln = median(v),
-                  n_spp_known = n_distinct(species)) %>%
-        ungroup()
-
+        # unlink(tmp_file)
+        c_df <- cls_fill_prob %>%
+          filter(class == c) %>%
+          mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+        
+        message('Sampling ', iters, ' MC iterations for class ', c)
+  
+        mc_results_df <- c_df %>%
+          rowwise() %>%
+          mutate(v = list(rnorm(iters, mean = vuln, sd = sd_vuln))) %>%
+          unnest(v) %>%
+          mutate(v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
+          group_by(class, stressor, taxon) %>%
+          summarize(mean_vuln = mean(v),
+                    sd_vuln = sd(v),
+                    # med_vuln = median(v),
+                    n_spp_known = n_distinct(species)) %>%
+          ungroup()
+  
         write_csv(mc_results_df, tmp_file)
       }
     })
@@ -857,7 +858,7 @@ Using species gapfilled to the family level
 
 ```{r summarize stats by taxon}
 tx_str_sum_outfile <- here('_output/taxon_str_vuln_summary.csv')
-
+### unlink(tx_str_sum_outfile)
 if(!file.exists(tx_str_sum_outfile) | reload) {
 
   taxa <- vuln_all_gf$taxon %>% unique() %>% sort()

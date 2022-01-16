@@ -1274,9 +1274,23 @@ spp_data_biomass_removal <- raw_data_df %>%
   select(spp_gp, sheet) %>%
   distinct() %>%
   mutate(category = 'biomass removal',
-         trait = 'biomass removal vulnerability trait',
-         trait_value = 'vulnerable',
-         trait_val_clean = 'vulnerable')
+         trait = 'biomass removal sensitivity trait',
+         trait_value = 'sensitive',
+         trait_val_clean = 'sensitive')
+  
+```
+
+### Sea surface temperature trait
+
+``` {r add sst rise sensitivity trait}
+	
+spp_data_sst_rise <- raw_data_df %>%
+  select(spp_gp, sheet) %>%
+  distinct() %>%
+  mutate(category = 'physiological tolerance breadths',
+         trait = 'sst rise sensitivity trait',
+         trait_value = 'sensitive',
+         trait_val_clean = 'sensitive')
   
 ```
 
@@ -1389,6 +1403,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_age) %>%
   bind_rows(spp_data_nav_separated) %>%
   bind_rows(spp_data_biomass_removal) %>%
+  bind_rows(spp_data_sst_rise) %>%
   bind_rows(spp_data_habs) %>%
   ### split and unnest, trim and clean:
   mutate(trait_val_clean = str_split(trait_val_clean, ';')) %>%

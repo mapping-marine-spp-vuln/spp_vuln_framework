@@ -1,5 +1,5 @@
 category,trait,demospongiae
-biomass removal,biomass removal vulnerability trait,vulnerable
+biomass removal,biomass removal sensitivity trait,sensitive
 biophysical traits,adult body mass/body size,0.5mm-49mm;50mm-999mm
 biophysical traits,biomineral,silicate
 biophysical traits,calcium carbonate structure location,none
@@ -14,6 +14,7 @@ movement,planktonic larval duration (pld) exposure,<1day
 physiological tolerance breadths,ph,7.8-8.2
 physiological tolerance breadths,salinity,euryhaline
 physiological tolerance breadths,sensitivity to wave energy (physical forcing),sensitive
+physiological tolerance breadths,sst rise sensitivity trait,sensitive
 physiological tolerance breadths,thermal - sensitivity to heat spikes/heat waves,no
 physiological tolerance breadths,thermal - sensitivity to ocean warming - max temps tolerated,30c
 r (reproductive traits),age to 1st reproduction/generation time,<1yr;1-5yrs

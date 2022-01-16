@@ -47,7 +47,7 @@ spp_csvs <- list.files(here('_raw_data/spp_trait_csvs'),
 taxa <- basename(spp_csvs) %>% str_replace_all('spp_traits_|.csv', '')
 
 process_csv <- function(f) { ### f <- spp_csvs[1]
-  x <- read_csv(f) %>%
+  x <- read_csv(f, show_col_types = FALSE) %>%
     gather(spp_gp, trait_value, -category, -trait)
 }
 
