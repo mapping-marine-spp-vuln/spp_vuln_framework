@@ -26302,9 +26302,9 @@ cephalopoda,oegopsida,ommastrephidae,nototodarus,nototodarus hawaiiensis,cephalo
 cephalopoda,oegopsida,ommastrephidae,nototodarus,nototodarus sloanii,cephalopods,none,genus,26301
 actinopterygii,eupercaria incertae sedis,labridae,novaculichthys,novaculichthys taeniourus,fish,family,NA,26302
 actinopterygii,eupercaria incertae sedis,labridae,novaculoides,novaculoides macrolepidotus,fish,family,NA,26303
-actinopterygii,perciformes,labridae,novaculops,novaculops halsteadi,fish,none,order,26304
-actinopterygii,perciformes,labridae,novaculops,novaculops koteamea,fish,none,order,26305
-actinopterygii,perciformes,labridae,novaculops,novaculops pastellus,fish,none,order,26306
+actinopterygii,eupercaria incertae sedis,labridae,novaculops,novaculops halsteadi,fish,none,order,26304
+actinopterygii,eupercaria incertae sedis,labridae,novaculops,novaculops koteamea,fish,none,order,26305
+actinopterygii,eupercaria incertae sedis,labridae,novaculops,novaculops pastellus,fish,none,order,26306
 asteroidea,valvatida,goniasteridae,noviaster,noviaster hostettleri,echinoderms,none,order,26307
 asteroidea,valvatida,goniasteridae,noviaster,noviaster lissajousi,echinoderms,none,order,26308
 asteroidea,valvatida,goniasteridae,noviaster,noviaster polyplax,echinoderms,none,order,26309
@@ -28213,8 +28213,8 @@ ophiuroidea,ophiacanthida,ophiobyrsidae,ophiophrixus,ophiophrixus acanthinus,ech
 ophiuroidea,ophiacanthida,ophiobyrsidae,ophiophrixus,ophiophrixus confinis,echinoderms,none,order,28212
 ophiuroidea,ophiacanthida,ophiobyrsidae,ophiophrixus,ophiophrixus quadrispinosus,echinoderms,none,order,28213
 ophiuroidea,ophiacanthida,ophiobyrsidae,ophiophrixus,ophiophrixus spinosus,echinoderms,none,order,28214
-ophiuroidea,ophiurida,ophiacanthidae,ophiopthalmus,ophiophthalmus cataleimmoidus,echinoderms,none,order,28215
-ophiuroidea,ophiurida,ophiacanthidae,ophiopthalmus,ophiophthalmus normani,echinoderms,none,order,28216
+ophiuroidea,ophiacanthida,ophiacanthidae,ophiopthalmus,ophiophthalmus cataleimmoidus,echinoderms,none,order,28215
+ophiuroidea,ophiacanthida,ophiacanthidae,ophiopthalmus,ophiophthalmus normani,echinoderms,none,order,28216
 ophiuroidea,amphilepidida,ophiotrichidae,ophiophthirius,ophiophthirius actinometrae,echinoderms,none,order,28217
 ophiuroidea,ophiurida,astrophiuridae,ophiophycis,ophiophycis gloriensis,echinoderms,none,order,28218
 ophiuroidea,ophiurida,astrophiuridae,ophiophycis,ophiophycis gracilis,echinoderms,none,order,28219
@@ -30508,7 +30508,7 @@ cephalopoda,octopoda,octopodidae,paroctopus,paroctopus cthulu,cephalopods,none,g
 cephalopoda,octopoda,octopodidae,paroctopus,paroctopus digueti,cephalopods,none,genus,30507
 cephalopoda,octopoda,octopodidae,paroctopus,paroctopus mercatoris,cephalopods,none,genus,30508
 actinopterygii,carangiformes,carangidae,parona,parona signata,fish,none,family,30509
-actinopterygii,perciformes,apogonidae,paroncheilus,paroncheilus affinis,fish,none,family,30510
+actinopterygii,kurtiformes,apogonidae,paroncheilus,paroncheilus affinis,fish,none,family,30510
 actinopterygii,ophidiiformes,ophidiidae,parophidion,parophidion schmidti,fish,none,order,30511
 actinopterygii,ophidiiformes,ophidiidae,parophidion,parophidion vassali,fish,none,order,30512
 actinopterygii,pleuronectiformes,pleuronectidae,parophrys,parophrys vetulus,fish,none,order,30513
@@ -35112,7 +35112,7 @@ pycnogonida,pantopoda,ascorhynchoidea incertae sedis,queubus,queubus echidna,cru
 pycnogonida,pantopoda,ascorhynchoidea incertae sedis,queubus,queubus jamesanus,crustacea_arthropods,none,class,35111
 actinopterygii,gobiiformes,gobiidae,quietula,quietula guaymasiae,fish,family,NA,35112
 actinopterygii,gobiiformes,gobiidae,quietula,quietula ycauda,fish,family,NA,35113
-actinopterygii,perciformes,apogonidae,quinca,quinca mirifica,fish,none,family,35114
+actinopterygii,kurtiformes,apogonidae,quinca,quinca mirifica,fish,none,family,35114
 ophiuroidea,amphilepidida,hemieuryalidae,quironia,quironia johnsoni,echinoderms,none,order,35115
 actinopterygii,perciformes,serranidae,rabaulichthys,rabaulichthys altipinnis,fish,none,order,35116
 actinopterygii,perciformes,serranidae,rabaulichthys,rabaulichthys squirei,fish,none,order,35117
