@@ -22,7 +22,8 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
 library(oharac) ### remotes::install_github('oharac/oharac')
-oharac::setup()
+library(tidyverse)
+library(here)
 source(here('common_fxns.R'))
 options(dplyr.summarise.inform = FALSE) 
 
@@ -44,15 +45,28 @@ Using taxonomic trees from WoRMS and the `taxize` package, we will try filling v
 
 ## Load expanded vulnerability scores
 
-These have already been scrubbed of confounding symbols and parenthetical genera...
+These have already been scrubbed of confounding symbols and parenthetical genera... to avoid problems of tiny differences in mean and sd, round to 4 decimal places.  There are also several conflicting taxonomic classifications of families with multiple orders (WoRMS order noted):
+
+* ophiacanthidae (ophiacanthida)
+* labridae (eupercaria incertae sedis)
+* apogonidae (kurtiformes)
+
+Coerce these appropriately - each spp is listed only for one order, so no additional wrangling is needed.
 
 ```{r load expanded vuln scores from script 4}
-match_spp <- read_csv(here('int/spp_match_downfill.csv'))
-spp_vuln  <- read_csv(here('int/vuln_downfill_only.csv'))
+match_spp <- read_csv(here('int/spp_match_downfill.csv'), show_col_types = FALSE)
+spp_vuln  <- read_csv(here('int/vuln_downfill_only.csv'), show_col_types = FALSE)
 
 match_vuln_df <- match_spp %>%
   inner_join(spp_vuln, by = 'downfill_spp_id') %>%
-  mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln))
+  mutate(order = case_when(family == 'apogonidae' ~ 'kurtiformes',
+                           family == 'labridae' ~ 'eupercaria incertae sedis',
+                           family == 'ophiacanthidae' ~ 'ophiacanthida',
+                           TRUE ~ order)) %>%
+  mutate(sd_vuln = ifelse(is.na(sd_vuln), 0, sd_vuln)) %>%
+  mutate(vuln    = round(vuln, 4),
+         sd_vuln = round(sd_vuln, 4))
+
 ```
 
 ## Assemble full spp table from WoRMS
@@ -117,6 +131,8 @@ For probabilistic taxa, we will do a Monte Carlo approach, sampling species from
 
 ### Deterministic taxa
 
+This code takes ranks where all species in the rank have a deterministic vulnerability score for a given stressor (i.e., no variation in imputed vulnerability due to trait variation), and then summarizes across these species to get a mean and standard deviation for that rank and that stressor.
+
 ``` {r identify deterministic taxa-stressor instances}
 ### Because this seems to keep stalling when crunching genus,
 ### break into chunks by a higher rank, process separately, then recombine
@@ -126,7 +142,7 @@ ords <- match_vuln_df %>%
   .$order
 
 rank_fill_det <- function(ord, ranks) {
-  ### ord <- ords[1]
+  ### ord <- ords[5]
   rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
   ### find the max rank (max == most specific)
   ranks_fct <- factor(ranks, levels = rank_lvls)
@@ -190,7 +206,7 @@ message('...done with class')
 
 ### Probabilistic taxa
 
-If any species in the taxon has a distribution around its vulnerability for a stressor (i.e., sd(vulnerability) != 0), check a few things:
+If any species in the taxon has a distribution around its vulnerability for a stressor (i.e., sd(vulnerability) != 0, due to multiple trait values), check a few things:
 
 * `gen_fill_matchrank`: Are all species in the taxon gapfilled from this rank or a higher rank?  if so, no gapfilling is necessary, as the downstream fill has already necessarily filled all values.
 * `gen_fill_nondet_solo`: Are there more than one unique value for vuln and sd_vuln among species within this rank group?  If not, then all spp have identical distributions.  In this case, it is likely that a single probabilistic species represents the entire genus (or whichever level).  Note: ignore ones entirely gapfilled from a higher level.
@@ -256,6 +272,11 @@ force  <- FALSE
 gen_fill_file <- here('int', sprintf('gapfill_gen_prob_results_%s.csv', iters))
 # unlink(gen_fill_file)
 if(!file.exists(gen_fill_file) | reload) {
+  
+  if(force) {
+    unlink(list.files(here('tmp'), pattern = 'gen_fill_mc.+.csv', full.names = TRUE))
+  }
+  
   gen_fill_prob <- gen_fill_nondet %>%
     anti_join(gen_fill_matchrank %>% select(genus, stressor)) %>%
     anti_join(gen_fill_nondet_solo %>% select(genus, stressor)) %>%
@@ -272,10 +293,10 @@ if(!file.exists(gen_fill_file) | reload) {
   
   tmp_fstem <- here('tmp/gen_fill_mc_%s.csv')
   
-  trash <- parallel::mclapply(genera, mc.cores = 20,
+  trash <- parallel::mclapply(genera, mc.cores = 12,
     FUN = function(g) {### g <- genera[1]
       tmp_file <- sprintf(tmp_fstem, g)
-      if(!file.exists(tmp_file) | force) {
+      if(!file.exists(tmp_file)) {
         # unlink(tmp_file)
         g_df <- gen_fill_prob %>%
           filter(genus == g) %>%
@@ -301,9 +322,14 @@ if(!file.exists(gen_fill_file) | reload) {
   
   genera_fs <- list.files(here('tmp'), pattern = 'gen_fill_mc.+.csv',
                             full.names = TRUE)
-  genera_list <- parallel::mclapply(genera_fs, FUN = read_csv, mc.cores = 20)
+  genera_list <- parallel::mclapply(genera_fs, FUN = read_csv, show_col_types = FALSE, mc.cores = 20)
   gen_fill_prob_results <- genera_list %>%
-    bind_rows() %>%
+    bind_rows() 
+  
+  if(nrow(gen_fill_prob_results) != nrow(gen_fill_qty)) {
+    stop('Mismatch row counts in genus level MC fill!') 
+  }
+  gen_fill_prob_results <- gen_fill_prob_results %>%
     left_join(gen_fill_qty)
   
   write_csv(gen_fill_prob_results, gen_fill_file)
@@ -312,8 +338,7 @@ if(!file.exists(gen_fill_file) | reload) {
 
 combine all genus-level gapfill values:
 ```{r}
-gen_fill_prob_results <- read_csv(gen_fill_file)
-
+gen_fill_prob_results <- read_csv(gen_fill_file, show_col_types = FALSE)
 
 gen_fill_totes <- bind_rows(gen_fill_det,
                             gen_fill_matchrank,
@@ -322,6 +347,10 @@ gen_fill_totes <- bind_rows(gen_fill_det,
   select(-n_spp) %>%
   mutate(gapfill = 'genus') %>%
   left_join(count_df, by = c('genus' = 'name', 'gapfill' = 'rank'))
+
+check <- gen_fill_totes %>%
+  group_by(genus) %>%
+  summarize(n_str = n_distinct(stressor), n_vals = sum(!is.na(mean_vuln)))
 ```
 
 
@@ -357,6 +386,11 @@ fam_fill_nondet_solo <- fam_fill_nondet %>%
 fam_fill_file <- here('int', sprintf('gapfill_fam_prob_results_%s.csv', iters))
 ### unlink(fam_fill_file)
 if(!file.exists(fam_fill_file) | reload) {
+  
+  if(force) {
+    unlink(list.files(here('tmp'), pattern = 'fam_fill_mc.+.csv', full.names = TRUE))
+  }
+
   fam_fill_prob <- fam_fill_nondet %>%
     anti_join(fam_fill_matchrank %>% select(family, stressor)) %>%
     anti_join(fam_fill_nondet_solo %>% select(family, stressor)) %>%
@@ -373,10 +407,10 @@ if(!file.exists(fam_fill_file) | reload) {
 
   tmp_fstem <- here('tmp/fam_fill_mc_%s.csv')
 
-  trash <- parallel::mclapply(fams, mc.cores = 20,
+  trash <- parallel::mclapply(fams, mc.cores = 8,
     FUN = function(f) {### f <- fams[1]
       tmp_file <- sprintf(tmp_fstem, f)
-      if(!file.exists(tmp_file) | force) {
+      if(!file.exists(tmp_file)) {
         # unlink(tmp_file)
         f_df <- fam_fill_prob %>%
           filter(family == f) %>%
@@ -402,9 +436,15 @@ if(!file.exists(fam_fill_file) | reload) {
   
   family_fs <- list.files(here('tmp'), pattern = 'fam_fill_mc.+.csv',
                             full.names = TRUE)
-  fam_list <- parallel::mclapply(family_fs, FUN = read_csv, mc.cores = 20)  
+  fam_list <- parallel::mclapply(family_fs, FUN = read_csv, show_col_types = FALSE, mc.cores = 20)  
   fam_fill_prob_results <- fam_list %>%
-    bind_rows() %>%
+    bind_rows()
+
+  if(nrow(fam_fill_prob_results) != nrow(fam_fill_qty)) {
+    stop('Mismatch row counts in family level MC fill!') 
+  }
+  
+  fam_fill_prob_results <- fam_fill_prob_results %>%
     left_join(fam_fill_qty)
   
   write_csv(fam_fill_prob_results, fam_fill_file)
@@ -413,7 +453,7 @@ if(!file.exists(fam_fill_file) | reload) {
 
 combine all family-level gapfill values:
 ```{r}
-fam_fill_prob_results <- read_csv(fam_fill_file)
+fam_fill_prob_results <- read_csv(fam_fill_file, show_col_types = FALSE)
 
 fam_fill_totes <- bind_rows(fam_fill_det,
                             fam_fill_matchrank,
@@ -422,6 +462,11 @@ fam_fill_totes <- bind_rows(fam_fill_det,
   select(-n_spp) %>%
   mutate(gapfill = 'family') %>%
   left_join(count_df, by = c('family' = 'name', 'gapfill' = 'rank'))
+
+check <- fam_fill_totes %>%
+  group_by(family) %>%
+  summarize(n_str = n_distinct(stressor), n_vals = sum(!is.na(mean_vuln)))
+
 ```
 
 
@@ -456,9 +501,16 @@ ord_fill_nondet_solo <- ord_fill_nondet %>%
 ```
 
 ``` {r monte carlo for ord vuln dists}
+iters <- 5000 ### set to fewer iterations - should be plenty
 ord_fill_file <- here('int', sprintf('gapfill_ord_prob_results_%s.csv', iters))
 ### unlink(ord_fill_file)
+
 if(!file.exists(ord_fill_file) | reload) {
+  
+  if(force) {
+    unlink(list.files(here('tmp'), pattern = 'ord_fill_mc.+.csv', full.names = TRUE))
+  }
+
   ord_fill_prob <- ord_fill_nondet %>%
     anti_join(ord_fill_matchrank %>% select(order, stressor)) %>%
     anti_join(ord_fill_nondet_solo %>% select(order, stressor)) %>%
@@ -475,10 +527,11 @@ if(!file.exists(ord_fill_file) | reload) {
 
   tmp_fstem <- here('tmp/ord_fill_mc_%s.csv')
 
-  trash <- parallel::mclapply(ords, mc.cores = 20,
+  # trash <- parallel::mclapply(ords, mc.cores = 1, ### memory intensive!
+  trash <- lapply(ords,
     FUN = function(o) {### o <- ords[1]
       tmp_file <- sprintf(tmp_fstem, o)
-      if(!file.exists(tmp_file) | force) {
+      if(!file.exists(tmp_file)) {
         # unlink(tmp_file)
         o_df <- ord_fill_prob %>%
           filter(order == o) %>%
@@ -504,10 +557,16 @@ if(!file.exists(ord_fill_file) | reload) {
   
   ord_fs <- list.files(here('tmp'), pattern = 'ord_fill_mc.+.csv',
                             full.names = TRUE)
-  ord_list <- parallel::mclapply(ord_fs, FUN = read_csv, mc.cores = 20)
+  ord_list <- parallel::mclapply(ord_fs, FUN = read_csv, show_col_types = FALSE, mc.cores = 20)
   
   ord_fill_prob_results <- ord_list %>%
-    bind_rows() %>%
+    bind_rows()
+
+  if(nrow(ord_fill_prob_results) != nrow(ord_fill_qty)) {
+    stop('Mismatch row counts in order level MC fill!') 
+  }
+  
+  ord_fill_prob_results <- ord_fill_prob_results %>%
     left_join(ord_fill_qty)
 
   write_csv(ord_fill_prob_results, ord_fill_file)
@@ -515,8 +574,8 @@ if(!file.exists(ord_fill_file) | reload) {
 ```
 
 combine all order-level gapfill values:
-```{r}
-ord_fill_prob_results <- read_csv(ord_fill_file)
+```{r combine order gapfills}
+ord_fill_prob_results <- read_csv(ord_fill_file, show_col_types = FALSE)
 
 ord_fill_totes <- bind_rows(ord_fill_det,
                             ord_fill_matchrank,
@@ -526,6 +585,9 @@ ord_fill_totes <- bind_rows(ord_fill_det,
   mutate(gapfill = 'order') %>%
   left_join(count_df, by = c('order' = 'name', 'gapfill' = 'rank'))
 
+check <- ord_fill_totes %>%
+  group_by(order) %>%
+  summarize(n_str = n_distinct(stressor), n_vals = sum(!is.na(mean_vuln)))
 
 ```
 
@@ -560,9 +622,16 @@ cls_fill_nondet_solo <- cls_fill_nondet %>%
 ```
 
 ``` {r monte carlo for cls vuln dists}
+iters <- 5000
+
 cls_fill_file <- here('int', sprintf('gapfill_cls_prob_results_%s.csv', iters))
 ### unlink(cls_fill_file)
+
 if(!file.exists(cls_fill_file) | reload) {
+
+  if(force) {
+    unlink(list.files(here('tmp'), pattern = 'cls_fill_mc.+.csv', full.names = TRUE))
+  }
 
   cls_fill_prob <- cls_fill_nondet %>%
     anti_join(cls_fill_matchrank %>% select(class, stressor)) %>%
@@ -580,10 +649,10 @@ if(!file.exists(cls_fill_file) | reload) {
 
   tmp_fstem <- here('tmp/cls_fill_mc_%s.csv')
 
-  trash <- parallel::mclapply(clss, mc.cores = 20,
+  trash <- parallel::mclapply(clss, mc.cores = 1, ### memory intensive!
     FUN = function(c) {### c <- clss[1]
       tmp_file <- sprintf(tmp_fstem, c)
-      if(!file.exists(tmp_file) | force) {
+      if(!file.exists(tmp_file)) {
         # unlink(tmp_file)
         c_df <- cls_fill_prob %>%
           filter(class == c) %>%
@@ -609,9 +678,16 @@ if(!file.exists(cls_fill_file) | reload) {
   
   cls_fs <- list.files(here('tmp'), pattern = 'cls_fill_mc.+.csv',
                             full.names = TRUE)
-  cls_list <- parallel::mclapply(cls_fs, FUN = read_csv, mc.cores = 20)  
+  cls_list <- parallel::mclapply(cls_fs, FUN = read_csv, show_col_types = FALSE, mc.cores = 20)  
+  
   cls_fill_prob_results <- cls_list %>%
-    bind_rows() %>%
+    bind_rows()
+
+  if(nrow(cls_fill_prob_results) != nrow(cls_fill_qty)) {
+    stop('Mismatch row counts in class level MC fill!') 
+  }
+  
+  cls_fill_prob_results <- cls_fill_prob_results %>%
     left_join(cls_fill_qty)
   
   write_csv(cls_fill_prob_results, cls_fill_file)
@@ -620,7 +696,7 @@ if(!file.exists(cls_fill_file) | reload) {
 
 combine all class-level gapfill values:
 ```{r}
-cls_fill_prob_results <- read_csv(cls_fill_file)
+cls_fill_prob_results <- read_csv(cls_fill_file, show_col_types = FALSE)
 
 cls_fill_totes <- bind_rows(cls_fill_det,
                             cls_fill_matchrank,
@@ -629,6 +705,11 @@ cls_fill_totes <- bind_rows(cls_fill_det,
   select(-n_spp) %>%
   mutate(gapfill = 'class') %>%
   left_join(count_df, by = c('class' = 'name', 'gapfill' = 'rank'))
+
+check <- cls_fill_totes %>%
+  group_by(class) %>%
+  summarize(n_str = n_distinct(stressor), n_vals = sum(!is.na(mean_vuln)))
+
 ```
 
 
@@ -726,10 +807,10 @@ ggplot(pct_pop_by_taxon, aes(x = gapfill, y = pct_to_fill)) +
 First let's use the vulnerability gapfilling to fill in species up to class level (maximum) and write these out for posterity...
 
 ```{r apply upstreamed gapfill values to downstream spp}
-vuln_vals <- read_csv(file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_values.csv'))
-vuln_tx   <- read_csv(file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_taxa.csv'))
+vuln_vals <- read_csv(file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_values.csv'), show_col_types = FALSE)
+vuln_tx   <- read_csv(file.path(dir_mazu, 'pre_gapfill/vuln_gapfill_taxa.csv'), show_col_types = FALSE)
 vuln_df <- vuln_tx %>%
-  left_join(vuln_vals, by = 'tx_id') %>%
+  oharac::dt_join(vuln_vals, by = 'tx_id', type = 'left') %>%
   select(-tx_id, -n_spp_known, -n_prob) %>%
   distinct()
 
@@ -741,12 +822,12 @@ gf_ranks <- c('species', 'genus', 'family', 'order', 'class')
 gf_list <- vector('list', length = length(gf_ranks)) %>%
   setNames(gf_ranks)
 
-gf_list[[1]] <- data.frame()
+# gf_list[[1]] <- data.frame()
 
 spp_done <- unique(vuln_direct_match$species)
 
 for(i in 2:length(gf_ranks)) {
-  ### i <- 3
+  ### i <- 2
   r <- gf_ranks[i]
   drop_ranks <- gf_ranks[c(1:(i-1))]
   rank_df <- vuln_df %>%
@@ -909,7 +990,7 @@ if(!file.exists(tx_str_sum_outfile) | reload) {
 
   
   
-tx_str_summary <- read_csv(tx_str_sum_outfile)
+tx_str_summary <- read_csv(tx_str_sum_outfile, show_col_types = FALSE)
 DT::datatable(tx_str_summary)
 
 ```
