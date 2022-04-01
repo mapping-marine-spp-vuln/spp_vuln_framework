@@ -1,0 +1,184 @@
+---
+title: "Collect trophic level trait"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac)
+library(tidyverse)
+library(here)
+library(rfishbase)
+source(here('common_fxns.R'))
+source('fb_slb_fxns.R')
+```
+
+# Summary
+
+Gather data on trophic level from FishBase. Gapfill using downfill and upstream-downstream gapfill methodology.
+
+# Data
+
+This script will use processed valid species traits from FishBase and SeaLifeBase.
+
+FishBase is a scientific database, and this has the implication - among others - that its use and the use of its contents are free as long as due credit is given.
+
+This may be done at different levels, for which we suggest different forms of citations:
+
+when referring to FishBase concepts and design, cite its architects (Froese and Pauly 2000);
+when referring to a set of values extracted from a FishBase table, cite the author(s) of the original data, e.g., “Houde and Zastrow (1993)”, or “Welcomme (1988)”. To help us track the use of FishBase in the literature, we would appreciate your also citing Froese and Pauly (2000) in an appropriate part of your text, as the source of the information;
+when discussing the features of a FishBase table, cite the section documenting that table, e.g., “Sa-a et al. (2000).”
+
+## References
+
+Froese, R. and D. Pauly, Editors. 2000. FishBase 2000: concepts, design and data sources. ICLARM, Los Baños, Laguna, Philippines. 344 p.
+Houde, E.D. and C.E. Zastrow. 1993. Ecosystem- and taxon-specific dynamic energetics properties of fish larvae assemblages. Bull. Mar. Sci. 53(2):290-335.
+Sa-a, P., M.L. Palomares and D. Pauly. 2000. The FOOD ITEMS table, p. 182-188. In R. Froese and D. Pauly (eds.) FishBase 2000: concepts, design and data sources. ICLARM, Los Baños, Laguna, Philippines. 344 p.
+Welcomme, R.L. 1988. International introductions of inland aquatic species. FAO Fish. Tech. Pap. 294, 318 p.
+
+# Methods
+
+## Find trophic data in FishBase
+
+```{r food from fb}
+food_df <- get_fb_slb(fxn = fooditems, 
+                      keep_cols = c('food_i', 'troph'), keep_fxn = contains) %>%
+  distinct() %>%
+  mutate(across(contains('troph'), ~as.numeric(.x)),
+         spec_code = as.integer(spec_code))
+# food_df$food_i %>% table()
+   # detritus      nekton      others      plants  zoobenthos zooplankton 
+   #     1606       21823        1619        7067       32369       10587
+# food_df$food_ii %>% table()
+  #              benth. crust.                        birds                  cephalopods 
+  #                      15304                           68                         3641 
+  #                 cnidarians                     detritus                  echinoderms 
+  #                        492                         1606                         1053 
+  #                    finfish          fish (early stages)                        herps 
+  #                      18199                          826                          106 
+  #                    insects           jellyfish/hydroids                      mammals 
+  #                       4484                          388                          138 
+  #                   molluscs                     mollusks   other benth. invertebrates 
+  #                          1                         5030                         1952 
+  # other benth. Invertebrates   other plank. invertebrates   other plank. Invertebrates 
+  #                          4                         2440                           15 
+  #               other plants other terrest. invertebrates other terrest. Invertebrates 
+  #                       3888                          513                           21 
+  #                     others                phytoplankton                 plank. Crust 
+  #                        757                         3178                            1 
+  #              plank. crust.            sponges/tunicates                        worms 
+  #                       6919                          658                         3389 
+
+food_i_df <- food_df %>%
+  filter(!is.na(food_i))
+
+```
+
+```{r diet from fb}
+diet_df <- get_fb_slb(fxn = diet, keep_cols = 'troph', keep_fxn = contains) %>%
+  filter(!is.na(troph)) %>% ### 2480 distinct spp
+  mutate(spec_code = as.integer(spec_code),
+         across(contains('troph'), ~as.numeric(.x)))
+```
+
+``` {r ecol from fb}
+ecol_df <- get_fb_slb(fxn = ecology,
+                   keep_cols = c('troph', 'diet'), keep_fxn = contains,
+                   drop_cols = '_ref', drop_fxn = ends_with) %>%
+  mutate(spec_code = as.integer(spec_code),
+         across(contains('troph'), ~as.numeric(.x))) %>%
+  ### fix outliers; a. nigrofuscus is herbivore, p. leopardus fill with diet_t_lu
+  mutate(food_troph = case_when(species == 'acanthurus nigrofuscus' ~ 2,
+                                species == 'plectropomus leopardus' ~ 4.66,
+                                TRUE ~ food_troph))
+ggplot(ecol_df, aes(x = diet_troph, y = food_troph)) +
+  geom_point()
+summary(lm(food_troph ~ diet_troph, data = ecol_df))
+
+```
+
+### Number of species in each table:
+
+Diet: 2480 distinct species with non-NA `troph` value, 980 of which are unrepresented in `ecol_df$food_troph`, and 1164 of which are unrepresented in `ecol_df$diet_troph` Food: 42 distinct species with non-NA `prey_troph` value, all of which are represented `ecol_df$food_troph` Ecology: 10094 distinct species with non-NA `food_troph` values, and 2030 distinct species with non-NA `diet_troph` values. Combined, this is 10437 distinct species (343 `diet_troph` spp with no `food_troph`)
+
+For this grouping variable, we will use the Ecology table `food_troph` variable, to capture the most species in one variable. To gapfill, we can use the Food table `food_i` variable to fill trophic level = 2 for detritivores and herbivores. Filling higher-order consumers will introduce more uncertainty, so perhaps better to use upstream/downstream gapfilling for those.
+
+The standard error term is a hint at omnivory - ideally, standard deviation around trophic level would tell of the distribution of observed values… so save that as well.
+
+```{r examine trophic}
+herb_detr_df <- food_df %>%
+  group_by(db, spec_code, species) %>%
+  filter(all(food_i %in% c('detritus', 'plants'))) %>%
+  ungroup() %>%
+  select(db, spec_code, species) %>%
+  mutate(est_troph = 2, 
+         est_se_troph = 0)
+
+troph_df <- ecol_df %>%
+  filter(!is.na(food_troph) | !is.na(diet_troph)) %>%
+  full_join(herb_detr_df) %>%
+  mutate(troph    = ifelse(!is.na(food_troph), food_troph, est_troph),
+         troph_se = ifelse(!is.na(food_troph), food_se_troph, est_troph)) %>%
+  select(db, spec_code, species, troph, troph_se) %>%
+  distinct() %>%
+  mutate(troph_se = ifelse(troph == 2, 0, troph_se)) %>%
+    ### can't be herb/detritivore and have a standard error around mean - 
+    ### fix erroneous outlier in db
+  group_by(db, spec_code, species) %>%
+  summarize(troph = mean(troph, na.rm = TRUE),
+            troph_se = sqrt(sum(troph_se^2, na.rm = TRUE)),
+            .groups = 'drop')
+
+ggplot(troph_df, aes(x = troph, y = troph_se)) +
+  geom_point(alpha = .5)
+
+summary(lm(troph_se ~ troph, data = troph_df))
+
+```
+
+
+## Write out results
+
+FishBase/SeaLifeBase is thin on trophic data for a few classes that can be manually gapfilled, as these are generally primary consumers and detritivores:
+
+| anthozoa  | demospongiae | echinoidea | holothuroidea |
+| --------  | ------------ | ---------- | ------------- |
+|    283    |     7175     |      2     |       1       |
+          
+        
+```{r expand and save}
+
+record_df <- collect_records(troph_df, field = 'troph', file_tag = 'resolve_names_fb_troph') %>%
+  filter(aphia_id != -9999)
+
+prob_classes <- c('anthozoa', 'demospongiae', 'echinoidea', 'holothuroidea')
+
+troph_df_gf <- troph_df %>%
+  left_join(record_df, by = c('species' = 'orig_sciname')) %>%
+  mutate(species = ifelse(!is.na(valid_name), valid_name, species)) %>%
+  mutate(species = str_extract(species, '^[a-z]+ [a-z]+')) %>%
+    ### this drops subspp and var. names
+  right_join(assemble_worms(), by = 'species') %>%
+  mutate(troph = ifelse(is.na(troph) & class %in% prob_classes, 2, troph)) %>%
+  select(species, troph, troph_se) %>%
+  filter(!is.na(troph))
+
+write_csv(troph_df_gf, here('_data/fb_traits/trait_trophic_level.csv'))
+
+```
+

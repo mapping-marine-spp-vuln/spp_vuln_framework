@@ -22,7 +22,8 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 ### helper functions and setup
 library(oharac) ### remotes::install_github('oharac/oharac')
-oharac::setup()
+library(tidyverse)
+library(here)
 
 ```
 
@@ -661,8 +662,8 @@ spp_data_fecund <- raw_data_df %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(fecund_lims %>% select(gp, trait_val_clean = trait_value), by = 'gp') %>%
@@ -766,8 +767,8 @@ spp_data_pop3 <- spp_data_pop1 %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(pop_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
@@ -848,8 +849,8 @@ spp_data_age2 <- spp_data_age %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(age_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
@@ -956,8 +957,8 @@ spp_data_gen_time2 <- spp_data_gen_time %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(gen_time_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
@@ -1036,8 +1037,8 @@ spp_data_reprod2 <- spp_data_reprod_opps %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(reprod_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%

@@ -1,0 +1,206 @@
+---
+title: 'Collect reproductivity traits'
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac)
+library(tidyverse)
+library(here)
+library(rfishbase)
+source(here('common_fxns.R'))
+source('fb_slb_fxns.R')
+
+```
+
+# Summary
+
+Gather data on reproductive traits from FishBase and the species vulnerability project: Max fecundity, generation time, parental care (pre-birth/hatch), parental dependence (post-birth/hatch), PLD.
+
+# Data
+
+This script will use processed valid species traits from FishBase and SeaLifeBase.
+
+FishBase is a scientific database, and this has the implication - among others - that its use and the use of its contents are free as long as due credit is given.
+
+This may be done at different levels, for which we suggest different forms of citations:
+
+* when referring to FishBase concepts and design, cite its architects (Froese and Pauly 2000);
+* when referring to a set of values extracted from a FishBase table, cite the author(s) of the original data, e.g., "Houde and Zastrow (1993)", or "Welcomme (1988)". To help us track the use of FishBase in the literature, we would appreciate your also citing Froese and Pauly (2000) in an appropriate part of your text, as the source of the information;
+* when discussing the features of a FishBase table, cite the section documenting that table, e.g., "Sa-a et al. (2000)."
+
+## References
+
+* Froese, R. and D. Pauly, Editors. 2000. FishBase 2000: concepts, design and data sources. ICLARM, Los Baños, Laguna, Philippines. 344 p.
+* Houde, E.D. and C.E. Zastrow. 1993. Ecosystem- and taxon-specific dynamic energetics properties of fish larvae assemblages. Bull. Mar. Sci. 53(2):290-335.
+* Sa-a, P., M.L. Palomares and D. Pauly. 2000. The FOOD ITEMS table, p. 182-188. In R. Froese and D. Pauly (eds.) FishBase 2000: concepts, design and data sources. ICLARM, Los Baños, Laguna, Philippines. 344 p.
+* Welcomme, R.L. 1988. International introductions of inland aquatic species. FAO Fish. Tech. Pap. 294, 318 p.
+
+# Methods
+
+## Age at maturity: Read in data
+
+Read in data from fishbase/sealifebase.  FB/SLB have many NAs for these, but with a continuous value for age to maturity, we could potentially use gapfilling to plug in values for additional species not included in the vulnerability dataset.
+
+### Fishbase/Sealifebase
+
+```{r age to maturity from fishbase}
+
+age_mat_fb_f <- here('int/fb_age_mat_raw.csv')
+
+if(!file.exists(age_mat_fb_f)) {
+  fields <- c('age', 'tm')
+  
+  mat_fb_raw <- get_fb_slb(rfishbase::maturity,
+                         keep_cols = fields, keep_fxn = contains,
+                         drop_cols = '_ref', drop_fxn = ends_with) %>%
+    select(species, tm, age_mat_min, age_mat_min2) %>%
+    filter(!is.na(tm) | !is.na(age_mat_min) | !is.na(age_mat_min2))
+  
+  mat_fb_num <- mat_fb_raw %>%
+    mutate(spec_code = as.integer(spec_code),
+           across(contains(fields), ~as.numeric(.x)))
+  
+  write_csv(mat_fb_num, age_mat_fb_f)
+}
+
+mat_fb_num <- read_csv(age_mat_fb_f)
+  
+lm_amm <- lm(age_mat_min ~ tm, data = mat_fb_num); coef_amm <- lm_amm$coefficients[2]
+# summary(lm_amm)
+### slope = .76, p << .001, adj.R^2 = .67
+lm_amm2 <- lm(age_mat_min2 ~ tm, data = mat_fb_num); coef_amm2 <- lm_amm2$coefficients[2]
+# summary(lm_amm2)
+### slope = 1.43, p << .001, adj.R^2 = .80
+
+mat_fb <- mat_fb_num %>%
+  mutate(age_mat = case_when(!is.na(tm) ~ tm,
+                             !is.na(age_mat_min2) ~ age_mat_min2 / coef_amm2,
+                             TRUE ~ age_mat_min / coef_amm)) %>%
+  select(species, age_mat) %>%
+  filter(!is.na(age_mat))
+### note this keeps duplicate species, but for imputation those observations
+### can be informative.
+
+```
+
+Use WoRMS API to resolve names
+
+```{r resolve unmatched spp from fishbase}
+
+record_df <- collect_records(mat_fb, field = 'age_mat', file_tag = 'resolve_names_fb_maturity') %>%
+  filter(aphia_id != -9999)
+
+mat_fb_clean <- mat_fb %>%
+  left_join(record_df, by = c('species' = 'orig_sciname')) %>%
+  mutate(species = ifelse(!is.na(valid_name), valid_name, species)) %>%
+  mutate(species = str_extract(species, '^[a-z]+ [a-z]+'),
+         trait = 'age to maturity') %>%
+    ### this drops subspp and var. names
+  select(-valid_name, -aphia_id, value = age_mat)
+
+summary(mat_fb_clean$value)
+
+```
+
+Without gapfilling, we get `r mat_fb$species %>% n_distinct()`  distinct species, at least some of which are freshwater.
+
+
+## Fecundity
+
+Read in data from fishbase/sealifebase.  Examine potential for variables to be used to gapfill for max fecundity.  
+
+```{r fecundity from fb and slb}
+fecund_fb_f <- here('int/fb_fecund_raw.csv')
+
+if(!file.exists(fecund_fb_f)) {
+  fields <- c('fecun')
+  fecund_fb_raw <- get_fb_slb(fxn = fecundity,
+                       keep_cols = fields, keep_fxn = contains,
+                       drop_cols = '_ref', drop_fxn = ends_with) %>%
+    select(species, starts_with('fecun'))
+  # summary(fecund_df_raw)
+  # fecund_df_raw %>% summarize(across(starts_with('fecun'), .fns = ~sum(!is.na(.x))))
+  
+  fecund_fb_num <- fecund_fb_raw %>%
+    mutate(spec_code = as.integer(spec_code),
+           across(contains(c('max', 'min', 'mean')), ~as.numeric(.x)))
+  
+  write_csv(fecund_fb_num, fecund_fb_f)
+}
+
+fecund_fb_num <- read_csv(fecund_fb_f, col_types = cols(.default = 'c')) %>%
+  mutate(across(contains('fecundity'), as.numeric))
+
+lm_fec1 <- lm(fecundity_max ~ fecundity_min, data = fecund_fb_num); coef_fec1 <- lm_fec1$coefficients[2]
+# summary(lm_fec1)
+### slope = 2.92, p << .001, adj.R^2 = .83
+lm_fec2 <- lm(fecundity_max ~ fecundity_mean, data = fecund_fb_num); coef_fec2 <- lm_fec2$coefficients[2]
+# summary(lm_fec2)
+### slope = 1.15, p << .001, adj.R^2 = .95
+
+fecund_fb <- fecund_fb_num %>%
+  mutate(max_fecundity = case_when(!is.na(fecundity_max) ~ fecundity_max,
+                             !is.na(fecundity_mean) ~ fecundity_mean * coef_fec2,
+                             !is.na(fecundity_min) ~ fecundity_min * coef_fec1,
+                             TRUE ~ NA_real_)) %>%
+  select(species, max_fecundity) %>%
+  filter(!is.na(max_fecundity))
+### keep all observations for each species, to better inform imputation
+```
+
+
+``` {r resolve and finalize fecundity}
+record_df <- collect_records(fecund_fb, field = 'max_fecundity',
+                             file_tag = 'resolve_names_fb_fecundity') %>%
+  filter(aphia_id != -9999)
+
+fecund_fb_clean <- fecund_fb %>%
+  left_join(record_df, by = c('species' = 'orig_sciname')) %>%
+  mutate(species = ifelse(!is.na(valid_name), valid_name, species)) %>%
+  mutate(species = str_extract(species, '^[a-z]+ [a-z]+'),
+         trait = 'max fecundity') %>%
+    ### this drops subspp and var. names
+  select(-aphia_id, -valid_name, value = max_fecundity)
+
+summary(fecund_fb_clean$value)
+
+```
+
+## Combine data into a single dataframe and save
+
+Write out the results.  In this case, no gapfilling (all down-filling).  Some species might have multiple values of a trait so this must be addressed eventually.
+
+```{r combine and write out}
+
+repr_out_df <- bind_rows(mat_fb_clean, fecund_fb_clean)
+
+write_csv(repr_out_df, here('_data/fb_traits/trait_reproduction.csv'))
+
+# repr_pc1_df <- repr_out_df %>%
+#   mutate(trait = 'repr_pc1') %>%
+#   select(species, gf_level, trait, value = repr_pc1)
+# write_csv(repr_pc1_df, here('_data/traits_grouping/trait_repr_pc1.csv'))
+# repr_pc2_df <- repr_out_df %>%
+#   mutate(trait = 'repr_pc2') %>%
+#   select(species, gf_level, trait, value = repr_pc2)
+# write_csv(repr_pc2_df, here('_data/traits_grouping/trait_repr_pc2.csv'))
+
+```
+
