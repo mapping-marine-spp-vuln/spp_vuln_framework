@@ -1,0 +1,709 @@
+---
+title: "Expand taxonomic groups from expert data"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+library(tidyverse)
+library(here)
+library(taxize)   ### remotes::install_github("ropensci/taxize")
+source(here('common_fxns.R'))
+# library(taxizedb) ### remotes::install_github("ropensci/taxizedb")
+# taxizedb::db_download_ncbi()
+# taxizedb::src_ncbi()
+# taxizedb::db_download_gbif()
+
+```
+
+# Summary
+
+From the taxonomic names given by the taxon experts, expand both upward and downward to create an all-inclusive marine species list.
+
+Use the `taxize` package:
+
+* `taxize::classification()` to get the entire taxonomic hierarchy of a given taxon ID.
+* `taxize::children()` to get immediate taxonomic children for a given taxon
+* `taxize::downstream()` to get names down to a specified rank, e.g., getting all species in a family.
+
+```{r classify_chunks function}
+### create a function to break up large species lists into chunks,
+### saving to tmp, in case of breaks in internet connectivity
+classify_chunks <- function(spp_gps, chunk_size = 20, 
+                            db = 'worms', tag = 'all', overwrite = FALSE) {
+  ### spp_gps is a character vector
+  n_chunks <- ceiling(length(spp_gps) / chunk_size)
+  tmpstem <- here('tmp/taxize_classification_%s_%s.csv')
+  if(overwrite == TRUE) {
+    unlink(sprintf(here('tmp/taxize_classification_%s_*.csv'), tag))
+  }
+  for(i in 1:n_chunks) { ### i <- 1
+    message('Processing chunk ', i, ' of ', n_chunks)
+    indices <- c(1 + chunk_size * (i - 1), min(length(spp_gps), chunk_size * i))
+    chunk_file <- sprintf(tmpstem, tag, paste0(indices, collapse = '_'))
+    if(!file.exists(chunk_file)) {
+      tmp_gps <- spp_gps[indices[1]:indices[2]]
+      
+      chunk_results <- taxize::classification(tmp_gps, db = db)
+      
+      chunk_check <- sapply(chunk_results, is.data.frame)
+      chunk_ok <- chunk_results[chunk_check]
+      
+      chunk_df <- bind_rows(chunk_ok, .id = 'spp_gp') %>%
+        mutate(rank = tolower(rank))
+
+      error_results <- chunk_results[!chunk_check]
+      if(length(error_results) > 0) {
+        message('chunk ', i, ' returned ', length(error_results),
+                ' errors out of ', length(tmp_gps))
+        chunk_errors <- data.frame(spp_gp = names(error_results),
+                                   error = TRUE)
+        chunk_df <- chunk_df %>%
+          bind_rows(chunk_errors)
+      }
+    
+      write_csv(chunk_df, chunk_file)
+    }
+  }
+  
+  tmp_files <- list.files(here('tmp'), pattern = sprintf('taxize_classification_%s', tag),
+                          full.names = TRUE)
+  
+  results_all <- lapply(tmp_files, 
+                        FUN = function(f) {
+                          read_csv(f, col_types = cols(.default = 'c'))
+                        }) %>%
+    bind_rows() %>%
+    mutate(error = ifelse(!'error' %in% names(.), NA, error),
+           error = ifelse(is.na(error), FALSE, error),
+           error = as.logical(error))
+  return(results_all)
+}
+
+```
+
+# Methods
+
+## Match up taxonomic info from experts to names in WoRMS taxonomic database.
+
+Using `taxize::classification()`, check each taxonomic name against the WoRMS database of taxonomic info to get the full upstream classification.  We do this twice: once for WoRMS to get upstream ID numbers for the downstreaming process, and once iterating to catch all species in the expert trait data.
+
+Note that in running `classification()` occasionally a name will have multiple ID numbers, at which point the script pauses for user input.  Carefully check the data frame and choose the line number with the "accepted" version of the taxon, usually line 1.  NOTE: Rossia has two "accepted" lines - the older one, line 2, is cephalopods (choose this one), the newer one (line 1, do not choose) is some kind of fossil chromista genus.  Note that sometimes the line numbers are out of sequence! arghhhh.
+
+
+```{r WoRMS starting point, eval = FALSE}
+spp_traits <- read_csv('_data/spp_traits_valid.csv')
+
+### This queries for all species
+db_api <- 'worms'
+spp_gps <- spp_traits %>%
+  select(taxon, spp_gp) %>%
+  mutate(name = tolower(spp_gp)) %>%
+  .$spp_gp %>% unique()
+
+y <- classify_chunks(spp_gps, db = db_api) %>%
+  mutate(db = db_api)
+# 
+write_csv(y, here('int/taxize_results_all.csv'))
+```
+
+``` {r iteration, eval = FALSE}
+### this can be iterated to fill gaps.  
+### Note: For GBIF seems to fail often when searching for genus/family name.
+### Try downstreaming to species level then searching again.
+db_api <- 'worms'
+
+spp_traits <- read_csv('_data/spp_traits_valid.csv')
+
+y <- read_csv(here('int/taxize_results_all.csv')) %>%
+  filter(spp_gp %in% spp_traits$spp_gp) %>%
+  left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct()) %>%
+  distinct() %>%
+  ### filter NAs out, except where NA is the only record for a spp_gp
+  group_by(spp_gp) %>%
+  filter(!is.na(id) | all(is.na(id))) %>%
+  ungroup()
+
+### any new groups?
+yy <- spp_traits %>%
+  filter(!spp_gp %in% y$spp_gp) %>%
+  .$spp_gp %>% unique()
+spp_gps_error <- y %>%
+  group_by(spp_gp) %>%
+  filter(error | all(is.na(id))) %>%
+  .$spp_gp %>% unique()
+
+z <- classify_chunks(c(yy, spp_gps_error), db = db_api, overwrite = TRUE) %>%
+  mutate(db = db_api)
+
+z %>% filter(error) %>% 
+  .$spp_gp %>% 
+  n_distinct()
+
+zz <- y %>%
+  filter(!error) %>%
+  bind_rows(z %>% mutate(id = as.numeric(id))) %>%
+  select(-taxon)
+
+write_csv(zz, here('int/taxize_results_all.csv'))
+
+```
+
+#### unmatched spp groups
+
+After manual fixes, WoRMS still leaves 4 unmatched out of 848 species groups, but these are duplicated elsewhere in the data e.g. Ardenna was formerly within Puffinus which is in the seabirds data (in the same category).
+
+```{r check matches of worms to spp_gp}
+spp_traits <- read_csv('_data/spp_traits_valid.csv')
+
+y <- read_csv(here('int/taxize_results_all.csv')) %>%
+  filter(spp_gp %in% spp_traits$spp_gp) %>%
+  left_join(spp_traits %>% select(spp_gp, taxon) %>% distinct())
+
+### any new groups?
+yy <- spp_traits %>%
+  filter(!spp_gp %in% y$spp_gp) %>%
+  .$spp_gp %>% unique()
+if(!is_empty(yy)) {
+  stop ('New taxa detected that have not been classified! Run the "iteration" 
+         chunk to classify added species.')
+}
+
+spp_gps_error <- y %>%
+  filter(error | is.na(id)) %>%
+  select(spp_gp, taxon) %>%
+  distinct()
+
+knitr::kable(spp_gps_error)
+
+```
+
+## Get structured downstream from WoRMS
+
+Here we will use WoRMS data to get downstream ranks for all classes represented in the species traits data.  This will give us the structure of the trees moving down toward species, so each species will also have information on genus, family, order, etc.
+
+From the classes in WoRMS under each kingdom, get downstream information for each class.  Here we use the `downstream` function, with `intermediate = FALSE`.  We will do this iteratively for class --> order, order --> family, family --> genus, and genus --> species.  This way we can reassemble the structure.
+
+```{r moar functions}
+
+check_status <- function(check_ids) {
+  check_ids <- check_ids[!is.na(check_ids)]
+  n_chunks <- ceiling(length(check_ids) / 50)
+  records_list <- vector('list', length = n_chunks)
+  for(i in 1:n_chunks) { 
+    # i <- 1
+    indices <- ((i-1)*50 + 1):min(i*50, length(check_ids))
+    ids_chunk <- check_ids[indices]
+    ids_param <- paste0('aphiaids[]=', ids_chunk, collapse = '&')
+    records_url <- paste0('https://www.marinespecies.org/rest/AphiaRecordsByAphiaIDs?', ids_param)
+    records_list[[i]] <- jsonlite::fromJSON(records_url) %>%
+      select(id = AphiaID, sciname = scientificname, status) %>%
+      distinct()
+  }
+  records_df <- records_list %>% 
+    bind_rows()
+  return(records_df)
+}
+
+get_downstream <- function(gp_df, db = 'worms', 
+                           downto, downfrom, 
+                           namestem) {
+  
+  ### Look at all temp files already created for this step, and omit from loop
+  tmp_files_pre <- list.files(here('tmp'),
+                        pattern = sprintf('%s_%s_.+.csv', namestem, db),
+                        full.names = TRUE)
+  names_pre <- basename(tmp_files_pre) %>%
+    str_remove_all(sprintf('%s_%s_|.csv', namestem, db))
+               
+  gp_df <- gp_df %>%
+    mutate(name = str_trim(tolower(name))) %>%
+    arrange(name) %>%
+    filter(!is.na(name)) %>%
+    filter(!name %in% names_pre)
+  names <- gp_df$name %>% unique()
+  
+  for(pname in rev(names)) {
+    ### pname <- names[2]
+    ### pname <- 'manta'
+    tmp_file <- sprintf(here('tmp/%s_%s_%s.csv'), namestem, db, pname)
+    if(!file.exists(tmp_file)) {
+      ids   <- gp_df$id[gp_df$name == pname]
+      
+      tx_out_df <- data.frame() ### blank one
+      for(id in ids) { ### id <- ids[1]
+        message('Processing ', downfrom, ' ', pname, ' - ', id)
+        id_tx_out <- downstream(sci_id = id, db = db, downto = downto, 
+                                marine_only = TRUE)
+        id_tx_out <- id_tx_out[[1]] ### extract dataframe from 1-element list
+        if(nrow(id_tx_out) == 0) {
+          id_tx_out <- data.frame(parent = pname, id = NA_real_)
+        }
+        tx_out_df <- bind_rows(tx_out_df, id_tx_out)
+      }
+      message('...Found ', n_distinct(tx_out_df$name), ' instances for ', pname)
+      
+      if(sum(!is.na(tx_out_df$id)) > 0) {
+        ### check all returned downstream IDs for "accepted" status
+        checked_ids <- check_status(tx_out_df$id)
+        valid_ids <- checked_ids %>%
+          filter(tolower(status) == 'accepted')
+        message('...of these, ', n_distinct(valid_ids$id), ' instances are "accepted"')
+        tx_out_df <- tx_out_df %>%
+          filter(id %in% valid_ids$id)
+      }
+      
+      tx_out_df <- tx_out_df %>%
+        mutate(parent = pname, parent_level = downfrom)
+      write_csv(tx_out_df, tmp_file)
+    }
+  }
+  tmp_files_post <- list.files(here('tmp'),
+                          pattern = sprintf('%s_%s_.+.csv', namestem, db),
+                          full.names = TRUE)
+  
+  tx_out_all <- vector('list', length = length(tmp_files_post)) %>%
+    setNames(tmp_files_post)
+  # for(f in tmp_files_post) {
+  tx_out_all <- parallel::mclapply(tmp_files_post, mc.cores = 16, 
+                   FUN = function(f) { ### f <- tmp_files_post[1]
+                     df_out <- data.table::fread(
+                       f,
+                       colClasses = list(character = c("name", 'rank', 'parent', 'parent_level'), 
+                                         integer = 'id'))
+                     }) %>%
+    bind_rows() %>%
+    mutate_if(is.character, tolower) %>%
+    distinct()
+  
+  return(tx_out_all)
+}
+
+
+```
+
+```{r get phylum from kingdom}
+
+p_from_k_file <- here('int/expand1_phylum_from_kingdom_worms.csv')
+
+if(!file.exists(p_from_k_file)) {
+  taxize_results_all <- read_csv(here('int/taxize_results_all.csv'))
+  
+  kingdom_all_df <- taxize_results_all %>%
+    mutate(name = tolower(name), rank = tolower(rank)) %>%
+    filter(rank == 'kingdom') %>%
+    filter(db == 'worms') %>%
+    group_by(name, id) %>%
+    summarize(n_gps = n_distinct(spp_gp)) %>%
+    ungroup() %>%
+    arrange(n_gps)
+  
+  gp_df <- kingdom_all_df
+  
+  p_from_k_df <- get_downstream(gp_df, 
+                                downto = 'phylum', downfrom = 'kingdom', 
+                                namestem = 'p_from_k')
+
+  write_csv(p_from_k_df, p_from_k_file)
+}
+
+p_from_k_df <- read_csv(p_from_k_file) %>%
+  arrange(parent)
+
+# DT::datatable(p_from_k_df)
+```
+
+```{r get class from phylum}
+
+c_from_p_file <- here('int/expand2_class_from_phylum_worms.csv')
+
+if(!file.exists(c_from_p_file)) {
+  gp_df <- read_csv(p_from_k_file)
+  
+  c_from_p_df <- get_downstream(gp_df, 
+                                downto = 'class', downfrom = 'phylum', 
+                                namestem = 'c_from_p')
+
+  write_csv(c_from_p_df, c_from_p_file)
+}
+
+c_from_p_df <- read_csv(c_from_p_file) %>%
+  arrange(parent)
+
+DT::datatable(c_from_p_df)
+```
+
+```{r order from class}
+o_from_c_file <- here('int/expand3_order_from_class_worms.csv')
+
+if(!file.exists(o_from_c_file)) {
+  gp_df <- read_csv(c_from_p_file)
+  
+  o_from_c_df <- get_downstream(gp_df, downto = 'order', downfrom = 'class', 
+                                namestem = 'o_from_c')
+  missing_order_fix <- tribble( 
+    ~	id, ~ name, ~ rank, ~ parent, ~ parent_level,
+    391063, 'lottioidea', 'order', 'gastropoda', 'class',  ### substitute superfamily for order...
+    156481, 'patelloidea', 'order', 'gastropoda', 'class') ### substitute superfamily for order...
+
+  o_from_c_df <- o_from_c_df %>%
+    bind_rows(missing_order_fix)
+  
+  ### Note: for some reason, birds show up with parent class of both aves and reptilia.
+  ### Filter out the reptilia instances.  Ugh!
+  o_from_c_df <- o_from_c_df %>%
+    group_by(name, parent_level) %>%
+    mutate(dammit = all(c('aves', 'reptilia') %in% parent)) %>%
+    filter(!dammit | parent == 'aves') %>%
+    select(-dammit)
+  write_csv(o_from_c_df, o_from_c_file)
+}
+
+```
+
+```{r family from order}
+f_from_o_file <- here('int/expand4_family_from_order_worms.csv')
+
+if(!file.exists(f_from_o_file)) {
+  gp_df <- read_csv(o_from_c_file) %>%
+    filter(!is.na(id))
+  
+  f_from_o_df <- get_downstream(gp_df, downto = 'family', downfrom = 'order', 
+                                 namestem = 'f_from_o')
+  
+  write_csv(f_from_o_df, f_from_o_file)
+}
+
+```
+
+```{r genus from family}
+
+g_from_f_file <- here('int/expand5_genus_from_family_worms.csv')
+
+if(!file.exists(g_from_f_file)) {
+  gp_df <- read_csv(f_from_o_file) %>%
+    filter(!is.na(id)) 
+  
+  g_from_f_df <- get_downstream(gp_df, downto = 'genus', downfrom = 'family', 
+                                 namestem = 'g_from_f')
+  write_csv(g_from_f_df, g_from_f_file)
+}
+
+```
+
+```{r species from genus}
+s_from_g_file <- here('int/expand6_species_from_genus_worms.csv')
+
+if(!file.exists(s_from_g_file)) {
+  gp_df <- read_csv(g_from_f_file) %>%
+    filter(!is.na(id)) 
+  
+  s_from_g_df <- get_downstream(gp_df, downto = 'species', downfrom = 'genus', 
+                                 namestem = 's_from_g')
+  write_csv(s_from_g_df, s_from_g_file)
+}
+
+```
+
+### Band-aid for AquaMaps spp not included yet
+
+Using the above method, we match about 28k of the 33k species in AquaMaps as of 2021.  In many cases, these missed species are the result of some conflict in the "tree" in which a lower rank might be accepted even if the higher rank is not.  For example, "ariopsis felis" is accepted as a species, though "ariopsis" is not accepted as a genus.
+
+For these missing species, we will attempt to identify the direct classification tree from the species name on up, and patch that in with the other WoRMS-derived classifications.  For those still not matching, simply take the AquaMaps classifications at face value.
+
+These chunks are set to `eval = FALSE` and should only be run manually if necessary.
+
+```{r}
+aquamaps_patch_file <- here('int/expand7_aquamaps_patch.csv')
+```
+
+``` {r iteration for aquamaps filling, eval = FALSE}
+
+if(!file.exists(aquamaps_patch_file)) {
+
+  ### directory for AquaMaps files on Mazu server:
+  am_dir <- '/home/shares/ohi/spp_vuln/aquamaps_2021'
+  
+  ### read in AquaMaps species info, add missing AquaMaps species to the
+  ### classification process to ensure inclusion
+  am_spp_info <- data.table::fread(file.path(am_dir, 'ver10_2019_speciesoccursum_iucn.csv')) %>%
+    janitor::clean_names() %>%
+    rename(am_sid = species_id, iucn_sid = iucn_id, comname = f_bname) %>%
+    mutate(species = tolower(paste(genus, species))) %>%
+    select(am_sid, comname, occur_cells,
+           am_k = kingdom, am_p = phylum, am_c = class, 
+           am_o = order, am_f = family, am_g = genus, species) %>%
+    mutate(across(starts_with('am_'), tolower))
+  
+  worms_spp <- assemble_worms('wide', seabirds_only = FALSE, am_patch = FALSE) 
+    ### gather downstream WoRMS classifications
+  
+  am_spp_match <- am_spp_info %>%
+    inner_join(worms_spp, by = 'species')
+
+  am_spp_nomatch <- am_spp_info %>%
+    filter(!am_sid %in% am_spp_match$am_sid)
+  
+  nomatch_spp <- am_spp_nomatch$species %>% unique()
+  
+  z <- classify_chunks(nomatch_spp, db = 'worms', tag = 'aquamaps_spp',
+                       overwrite = FALSE) %>%
+    mutate(name = tolower(name),
+           rank = str_remove(rank, ' \\(.+\\)')) %>%
+    filter(!error) %>%
+    select(-id, -error) %>%
+    filter(!is.na(rank))
+
+  ranks <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
+  ### classify_chunks output is currently formatted as:
+  ### spp_gp | name | rank | id | error | db
+
+  ### for missing ranks, just pull from AquaMaps and hope for the best. There
+  ### are some "not assigned" values at class and order level that will fail
+  ### in upstream/downstream gapfilling at those levels...
+  classification_by_spp_gp <- z %>%
+    filter(!(name == 'onychopoda' & rank == 'order')) %>% ### problematic for spread
+    spread(rank, name) %>%
+    left_join(am_spp_info, by = c('spp_gp' = 'species')) %>%
+    mutate(class = ifelse(is.na(class), am_c, class),
+           order = ifelse(is.na(order), am_o, order),
+           family = ifelse(is.na(family), am_f, family),
+           class = str_replace(class, 'actinopteri', 'actinopterygii')) %>%
+    select(spp_gp, all_of(ranks)) %>%
+    gather(rank, name, -spp_gp) %>%
+    mutate(rank = factor(rank, levels = ranks)) %>%
+    arrange(spp_gp, rank) %>%
+    group_by(spp_gp) %>%
+    mutate(parent = lag(name),
+           parent_level = lag(rank)) %>%
+    ungroup() %>%
+    filter(rank != 'kingdom')
+  
+  write_csv(classification_by_spp_gp, aquamaps_patch_file)
+}
+
+```
+
+```{r aquamaps higher rank match, eval = FALSE}
+  
+### directory for AquaMaps files on Mazu server:
+am_dir <- '/home/shares/ohi/spp_vuln/aquamaps_2021'
+
+am_spp_info <- data.table::fread(file.path(am_dir, 'ver10_2019_speciesoccursum_iucn.csv')) %>%
+  janitor::clean_names() %>%
+  rename(am_sid = species_id, iucn_sid = iucn_id, comname = f_bname) %>%
+  mutate(species = tolower(paste(genus, species))) 
+
+worms_spp <- assemble_worms(seabirds_only = FALSE, am_patch = FALSE) ### gather downstream WoRMS classifications
+
+am_patch_1 <- read_csv(aquamaps_patch_file) %>%
+  mutate(source = 'worms')
+# spp_gp | rank | name | parent | parent_level
+
+ranks <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
+
+am_patch_2 <- am_spp_info %>%
+  ### drop any in WoRMS currently
+  filter(!species %in% worms_spp$species) %>%
+  ### drop any in the AquaMaps patch 1
+  filter(!species %in% am_patch_1$species) %>%
+  mutate(spp_gp = species) %>%
+  select(spp_gp, all_of(ranks)) %>%
+  gather(rank, name, -spp_gp) %>%
+  mutate(rank = factor(rank, levels = ranks),
+         name = tolower(name)) %>%
+  group_by(spp_gp) %>%
+  arrange(spp_gp, rank) %>%
+  mutate(parent = lag(name),
+         parent_level = lag(rank)) %>%
+  ungroup() %>%
+  filter(rank != 'kingdom') %>%
+  distinct() %>%
+  mutate(source = 'am')
+
+am_patch <- bind_rows(am_patch_1, am_patch_2) %>%
+  group_by(spp_gp) %>%
+  mutate(spp_gp = ifelse(sum(rank == 'species') > 1,
+                         first(name[source == 'worms' & rank == 'species']),
+                         spp_gp)) %>%
+  group_by(spp_gp, rank) %>%
+  # filter(n_distinct(name) > 1) 
+  ### if two names, pick the one from WoRMS instead of AquaMaps
+  filter(n_distinct(name) == 1 | source == 'worms') %>%
+  ungroup() %>%
+  select(-source) %>%
+  distinct()
+
+# aquamaps_patch_file2 <- here('int/expand7_aquamaps_patch2.csv')
+
+write_csv(am_patch, aquamaps_patch_file)
+
+```
+
+## Caveat! use `assemble_worms()`
+
+These sets still contain ambiguous/duplicated classifications, e.g., certain genera in AquaMaps are listed across multiple families, orders, or classes.  The `assemble_worms()` function (including `resolve_am_disputes()` and `disambiguate_species()` functions) in `common_fxns.R` identifies mismatches and resolves them.  Therefore, that function should be used from here on out to gather the complete taxonomic classification.
+
+## compare numbers of species
+
+How many species? how many genera? etc.
+
+```{r compare numbers of spp}
+spp_df_long <- assemble_worms(aspect = 'long', seabirds_only = TRUE) %>%
+  select(-spp) %>%
+  distinct()
+
+all_ranks_sum <- spp_df_long %>%
+  group_by(rank) %>%
+  summarize(n = n_distinct(name)) %>%
+  arrange(rank)
+
+knitr::kable(all_ranks_sum)
+```
+
+### Potential species matched at different levels
+
+These are species whose traits we can infer directly from data given to us by our taxon experts, at different levels.  Note, half the matches are related to class-level traits - and the only class-level traits we were given are from Demospongiae, so many of our current direct matches are sponges.
+
+``` {r potential spp matches}
+trait_spp_gps <- read_csv(here('_data/spp_traits_valid.csv')) %>%
+  select(taxon, spp_gp) %>%
+  distinct()
+
+spp_df_wide <- assemble_worms(aspect = 'wide', seabirds_only = TRUE)
+
+matched_df <- inner_join(spp_df_long, trait_spp_gps, by = c('name' = 'spp_gp')) %>%
+  mutate(match = rank)
+# matched_df$rank %>% unique() # species genus   family  class 
+spp_matched <- matched_df %>%
+  filter(rank == 'species') %>%
+  select(match_spp = match, species = name)
+gen_matched <- matched_df %>%
+  filter(rank == 'genus') %>%
+  select(match_gen = match, genus = name)
+fam_matched <- matched_df %>%
+  filter(rank == 'family') %>%
+  select(match_fam = match, family = name)
+ord_matched <- matched_df %>%
+  filter(rank == 'order') %>%
+  select(match_ord = match, order = name)
+cls_matched <- matched_df %>%
+  filter(rank == 'class') %>%
+  select(match_cls = match, class = name)
+
+rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
+
+matched_all <- spp_df_wide %>%
+  left_join(spp_matched, by = 'species') %>%
+  left_join(gen_matched, by = 'genus') %>%
+  left_join(fam_matched, by = 'family') %>%
+  left_join(ord_matched, by = 'order') %>%
+  left_join(cls_matched, by = 'class') %>%
+  gather(key, match_level, starts_with('match')) %>%
+  mutate(match_level = factor(match_level, levels = rank_lvls)) %>%
+  filter(!is.na(match_level)) %>%
+  group_by(species) %>%
+  filter(as.integer(match_level) == max(as.integer(match_level))) %>%
+  ungroup()
+
+# matched_all$species %>% n_distinct() ### 24704
+# x <- show_dupes(matched_all, 'species')
+### lots of duplicated coral and polychaete/gastropod spp due to multiples in class and order names
+  
+match_summary <- matched_all %>%
+  group_by(match_level) %>%
+  summarize(n_spp = n_distinct(species))
+knitr::kable(match_summary)
+```
+
+### Traits-species groups still unmatched
+
+These are species groups with traits given to us by the taxon experts, that are not currently matching up with data from WoRMS.
+
+``` {r spp_gp still unmatched}
+traits_unmatched <- trait_spp_gps %>%
+  filter(!spp_gp %in% matched_df$name)
+
+traits_unmatched_sum <- traits_unmatched %>%
+  group_by(taxon) %>%
+  summarize(n_gps_unmatched = n_distinct(spp_gp))
+traits_tot_sum <- trait_spp_gps %>%
+  group_by(taxon) %>%
+  summarize(n_gps_tot = n_distinct(spp_gp))
+compare <- traits_unmatched_sum %>%
+  left_join(traits_tot_sum, by = 'taxon') %>%
+  mutate(error_rate = round(n_gps_unmatched / n_gps_tot, 3))
+knitr::kable(compare)
+
+knitr::kable(traits_unmatched)
+```
+
+#### Problems
+
+**To not worry about:**
+
+* _Sousa chinensis taiwanensis_ is a subspecies of _Sousa chinensis_ (which is included in WoRMS but not the traits XLSX), so fails to match. 
+* _Balaenoptera brydei_ is status _taxon inquirendum_, rather than accepted.
+* _Nautilus suluensis_ not found in WoRMS. _Nautilus repertus_ status _taxon inquirendum_.
+* _Leptopentacta elongata_ accepted as _Paraleptopentacta elongata_ (which is included)
+
+**To address:**
+
+* _Lottia scutum_ and _Cellana tramoserica_ have no "order" rank.  These were fixed by adding in a line to use the superfamily as order.
+* _Spiniraja whitleyii_ is accepted, but the genus _Spiniraja_ is unaccepted, instead accepted as _Raja_ - how to reconcile that?!
+
+### Marine species without matches
+
+Note: there are 16 classes in Plantae, 19 in Chromista, and 123 in Animalia (ignoring `isMarine` errors).
+
+First look at species who are unmatched
+```{r}
+unmatched_spp <- spp_df_wide %>%
+  # mutate(spp = species) %>%
+  filter(!species %in% matched_all$species) %>%
+  gather(rank, name, class:species) %>%
+  mutate(rank = factor(rank, levels = rank_lvls)) %>%
+  group_by(rank) %>%
+  summarize(n_rank_notraits = n_distinct(name)) %>%
+  arrange(rank)
+knitr::kable(unmatched_spp)
+```
+
+Now look at ranks with no direct (pre-gapfill) matches within them at all
+``` {r}
+unmatched_at_all <- spp_df_wide %>%
+  left_join(matched_all) %>%
+  # mutate(spp = species) %>%
+  gather(rank, name, class:species) %>%
+  mutate(rank = factor(rank, levels = rank_lvls)) %>%
+  distinct() %>%
+  group_by(name, rank) %>%
+  summarize(no_match = all(is.na(match_level))) %>%
+  ungroup() %>%
+  arrange(rank)
+
+unmatched_at_all_sum <- unmatched_at_all %>%
+  group_by(rank) %>%
+  summarize(n_rank = n_distinct(name),
+            n_no_match_rank = sum(no_match))
+
+knitr::kable(unmatched_at_all_sum)
+```
+

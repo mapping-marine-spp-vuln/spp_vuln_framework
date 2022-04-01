@@ -1,0 +1,43 @@
+---
+title: "Collect species ranges"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac)
+library(tidyverse)
+library(here)
+source(here('common_fxns.R'))
+source('fb_slb_fxns.R')
+```
+
+# Summary
+
+Gather range data from the spp_vuln_mapping project.
+
+# Data
+
+Species range maps taken from IUCN and AquaMaps datasets.
+
+## References
+
+
+# Methods
+
+Species range maps have been prepared in the spp_vuln_mapping project and stored on the server locally: `/home/shares/ohi/spp_vuln/spp_vuln_mapping/spp_maps_mol.` Some are from AquaMaps (with species names) and some from IUCN ()

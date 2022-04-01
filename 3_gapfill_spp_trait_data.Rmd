@@ -1,0 +1,214 @@
+---
+title: "Gapfill species trait data"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+library(tidyverse)
+library(here)
+source(here('common_fxns.R'))
+```
+
+# Summary
+
+Supplement the species traits provided by taxonomic experts, using traits gleaned from FishBase and SeaLifeBase.  This is fundamentally different from the method used for Butt et al. 2022, in which vulnerability scores were calculated based on "known" species and then those vulnerability scores were gapfilled using taxonomic membership.  The basic idea of this new method:
+
+* Gather WoRMS classification for lots of species
+* Assign known traits to known species and taxonomic groups (genus, family)
+* For species missing trait values, fill using trait values from FishBase:
+    * Body size
+    * Max fecundity
+    * Generation time
+    * In addition to these, use species range maps to estimate EOO
+    * These values are all binned to match categories in the expert-driven trait values
+    * These will count as direct matches
+    
+Then in subsequent scripts:
+
+* Downfill traits provided by taxon experts at higher ranks (e.g., genus, family, order, class)
+    * In downfilling, preferentially retain keeping values from lower ranks
+    * Where multiple mutually exclusive trait values provided at higher ranks, assume weighted representation of traits at lower ranks - e.g., if two values provided, each value is given a weight of .50.
+    * These values are considered direct matches, as considered representative according to taxonomic experts.
+* Proceed with genus level gapfilling
+    * For each genus, assign to each trait the weighted set of traits in direct-match species
+    * for species in the genus with a missing trait, assign the weighted set of traits
+* Continue with family level gapfilling, then order, then class
+    * Use only direct-match species? or gapfilled values?  The latter will account for weighting lower ranks by different species counts in these lower ranks - e.g., a family with one small genus and one larger genus will have values weighted more toward the large genus.
+
+* Read in all species 
+
+# Data
+
+`_data/spp_traits_valid.csv` is the spreadsheet of valid trait values prepared in scripts 0 and 1.  Ecological entities in this sheet are species groups, in some cases individual species and in other cases genus, family, or higher rank  For some species, the taxonomic experts who generated the traits lists noted that the species was representative of a higher taxonomic rank.
+
+# Methods
+
+## Create dataframe of traits from other sources
+
+We will pull in traits from FishBase/SeaLifeBase and ranges from the Species Vulnerability Mapping project.
+
+We will need to bin FB and range trait values to match those of the vulnerability framework.
+
+### Traits from FishBase
+
+```{r length}
+spp_length_df <- read_csv(here('_data/fb_traits/trait_length_cm.csv')) %>%
+  mutate(trait_value = case_when(length < 5     ~ '0.5mm-49mm',
+                                 length < 1000  ~ '50mm-999mm',
+                                 length >= 1000 ~ '>1000mm',
+                                 TRUE      ~ 'unknown')) %>%
+  mutate(category = 'biophysical_traits',
+         trait = 'adult_body_mass_body_size')
+
+spp_gen_time_df <- read_csv(here('_data/fb_traits/trait_reproduction.csv')) %>%
+  filter(trait == 'age to maturity') %>%
+  mutate(trait_value = case_when(value < 1   ~ '<1yr',
+                                 value < 5   ~ '1-5yrs',
+                                 value < 10  ~ '5-10yrs',
+                                 value <= 20 ~ '10-20yrs',
+                                 value > 20  ~ '>20yrs',
+                                 TRUE        ~ 'unknown'),
+         trait = 'age_to_1st_reproduction_generation_time',
+         category = 'r_reproductive_traits')
+
+spp_fecundity_df <- read_csv(here('_data/fb_traits/trait_reproduction.csv')) %>%
+  filter(trait == 'max fecundity') %>%
+  mutate(trait_value = case_when(value < 1      ~ '<1',
+                                 value < 2      ~ '1-2',
+                                 value < 5      ~ '2-5',
+                                 value < 10     ~ '5-10',
+                                 value < 20     ~ '10-20',
+                                 value < 50     ~ '20-50',
+                                 value < 100    ~ '50-100',
+                                 value < 1000   ~ '100-1000',
+                                 value <= 10000 ~ '1000-10000',
+                                 value > 10000  ~ '>10000',
+                                 TRUE           ~ 'unknown'),
+         trait = 'fecundity',
+         category = 'r_reproductive_traits')
+         
+  
+```
+
+### Range data from spp_vuln_mapping project
+
+These were generated in the spp vulnerability mapping project, and saved in that repo.  Because some species are included in both AquaMaps and IUCN, we need to disambiguate them.  In some cases, IUCN spp have subpops; for most of those, though, there is also a gen pop.
+
+* Use IUCN first then AM
+* Use largest value across all pops/subpops for same spp name
+
+```{r}
+range_df <- read_csv(here('../spp_vuln_mapping/_data/spp_ranges.csv')) %>%
+  mutate(trait_value = case_when(range_tot_km2 < 100 ~ '<99',
+                                 range_tot_km2 < 5000 ~ '100-4999',
+                                 range_tot_km2 < 20000 ~ '5000-19999',
+                                 range_tot_km2 >= 20000 ~ '>20000',
+                                 TRUE ~ 'unknown')) %>%
+  ### select the highest ranges across sources
+  group_by(sciname, src) %>%
+  arrange(-range_tot_km2) %>%
+  filter(range_tot_km2 == first(range_tot_km2)) %>%
+  ### if multiple sources, keep just the IUCN
+  group_by(sciname) %>%
+  filter(src == 'iucn' | !'iucn' %in% src) %>%
+  ungroup() %>%
+  select(species = sciname, trait_value) %>%
+  mutate(category = 'spatial_scale_of_species',
+         trait = 'eoo_range')
+```
+
+### Combine
+
+Note that many of these new species fall into taxa not included in the vulnerability traits dataset, and thus won't be able to be gapfilled for the remainder of traits.
+
+Note also that some taxa, like coelacantha, myxini, holocephali, bivalvia may not be gapfilled if their class is not represented in the original species groups for vulnerability traits... check these later!
+```{r}
+new_traits_df <- bind_rows(range_df, 
+                           spp_fecundity_df,
+                           spp_gen_time_df, 
+                           spp_length_df) %>%
+  select(category, trait, trait_value, spp_gp = species) %>%
+  distinct() %>%
+  ### use inner_join to drop any without WoRMS matches:
+  inner_join(assemble_worms(), by = c('spp_gp' = 'species')) %>%
+  mutate(taxon = case_when(class  == 'cephalopoda'    ~ 'cephalopods',
+                           class  == 'anthozoa'       ~ 'corals',
+                           phylum == 'arthropoda'     ~ 'crustacea_arthropods',
+                           phylum == 'echinodermata'  ~ 'echinoderms',
+                           class  == 'elasmobranchii' ~ 'elasmobranchs',
+                             class  == 'holocephali'  ~ 'elasmobranchs',
+                           class  == 'actinopterygii' ~ 'fish',
+                             class  == 'myxini'       ~ 'fish',
+                             class  == 'coelacanthi'  ~ 'fish',
+                           class  == 'mammalia'       ~ 'marine_mammals',
+                           phylum == 'mollusca'       ~ 'molluscs',
+                             phylum == 'bivalvia'     ~ 'molluscs',
+                             ### note: cephalopods will be classified in that category
+                           class  == 'polychaeta'     ~ 'polychaetes',
+                           class  == 'reptilia'       ~ 'reptiles',
+                           class  == 'aves'           ~ 'seabirds',
+                           class  == 'demospongiae'   ~ 'sponges',
+                           TRUE ~ 'new group')) %>%
+  filter(taxon != 'new group') %>%
+  select(taxon, spp_gp, category, trait, trait_value) %>%
+  distinct()
+  
+
+# check <- new_traits_df %>%
+#   filter(taxon == 'new group')
+# 
+# check %>% count(phylum) %>% arrange(-n)
+# check %>% ungroup() %>% count(class)
+# 
+# check %>% filter(phylum == 'cnidaria') %>% count(class)
+```
+
+
+## Identify potential spp to fill
+
+Read in spp_traits_valid, and assemble a dataframe of all valid WoRMS species.  Recalculate the proportional allocation of traits based on mutually exclusive (e.g., body length) vs non-exclusive (e.g., preferred habitats).
+
+``` {r}
+spp_traits_valid <- read_csv(here('_data/spp_traits_valid.csv'))
+
+non_mut_excl <- c('adult_mobility', 'biomineral', 
+                  'calcium_carbonate_structure_location', 
+                  'depth_min_max', 'respiration_structures', 
+                  'across_stage_dependent_habitats_condition', 
+                  'within_stage_dependent_habitats_condition', 'zone')
+
+spp_traits_filled <- spp_traits_valid %>%
+  select(-n_spp_gps, -trait_prob) %>%
+  bind_rows(new_traits_df) %>%
+  distinct() %>%
+  filter(trait_value != 'unknown') %>%
+  group_by(taxon) %>%
+  mutate(n_spp_gps = n_distinct(spp_gp)) %>%
+  group_by(trait, spp_gp) %>%
+  mutate(trait_prob = ifelse(trait %in% non_mut_excl, 1, 1/n_distinct(trait_value))) %>%
+  ungroup()
+
+write_csv(spp_traits_filled, here('_data/spp_traits_filled.csv'))
+
+```
+
+
+

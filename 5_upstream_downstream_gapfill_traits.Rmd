@@ -1,0 +1,329 @@
+---
+title: "Upstream-downstream taxa vulnerability trait gapfill"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+library(tidyverse)
+library(here)
+source(here('common_fxns.R'))
+options(dplyr.summarise.inform = FALSE) 
+
+```
+
+# Summary
+
+Using taxonomic trees from WoRMS and the `taxize` package, we will try filling vulnerability traits for non-scored species using an upstream-downstream method.
+
+# Methods
+
+* For a given rank, calculate distribution parameters based on all known downstream spp (e.g., for genus, calc mean and sd based on all scored spp)
+* Then assign those back down to unknown species at the species level.
+* For data given at the genus level (or above), this effectively automatically gapfills all species in the genus.
+* Repeat for higher levels
+
+## Assemble full spp table from WoRMS
+
+Use the `assemble_worms()` function from `common_fxns.R`.
+
+``` {r assemble full spp taxonomic table from WoRMS}
+spp_all_wide <- assemble_worms('wide')
+spp_all_long <- assemble_worms('long')
+```
+
+## Load expanded traits
+
+These have already been scrubbed of confounding symbols and parenthetical genera... 
+
+```{r load expanded vuln scores from script 4}
+match_df <- data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv')) %>%
+  full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))) %>%
+  full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))) %>%
+  full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))) %>%
+  select(-starts_with('df_')) 
+
+match_tx_fix <- match_df %>%
+  left_join(spp_all_wide, by = c('spp' = 'species'))
+```
+
+## create gapfill dataframes
+
+For each rank, gather the frequency of known traits.  Assign these traits and relative frequencies downward to individual species.
+
+``` {r identify deterministic taxa-stressor instances}
+non_mut_excl <- c('adult_mobility', 'biomineral', 'zone',
+                  'calcium_carbonate_structure_location', 
+                  'depth_min_max', 'respiration_structures', 
+                  'across_stage_dependent_habitats_condition', 
+                  'within_stage_dependent_habitats_condition')
+
+trait_fill_by_rank <- function(ranks) {
+  rank_lvls <- c('kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species')
+  ### find the max rank (max == most specific)
+  ranks_fct <- factor(ranks, levels = rank_lvls)
+  gp_rank <- ranks_fct[which.max(ranks_fct)] %>% as.character()
+  
+  message('processing ', paste(ranks, collapse = '/'), '...')
+  rank_traits_tmp <- match_tx_fix %>%
+    group_by(!!!syms(gp_rank), category, trait) %>%
+    mutate(tot_prob = sum(trait_prob),
+           tot_spp = n_distinct(spp)) %>%
+    group_by(!!!syms(gp_rank), category, trait, trait_value) %>%
+    summarize(trait_prob = case_when(
+                first(trait) %in% non_mut_excl ~ n() / first(tot_spp),
+                TRUE ~ sum(trait_prob) / first(tot_prob)),
+              nspp = n_distinct(spp))
+  return(rank_traits_tmp)
+}
+
+traits_fill_gen <- trait_fill_by_rank(ranks = c('class', 'order', 'family', 'genus')) %>%
+  mutate(gapfill = 'genus')
+message('...done summarizing genus!')
+  
+traits_fill_fam <- trait_fill_by_rank(ranks = c('class', 'order', 'family')) %>%
+  mutate(gapfill = 'family')
+message('...done summarizing family!')
+
+traits_fill_ord <- trait_fill_by_rank(ranks = c('class', 'order')) %>%
+  mutate(gapfill = 'order')
+message('...done summarizing order!')
+
+traits_fill_cls <- trait_fill_by_rank(ranks = c('class')) %>%
+  mutate(gapfill = 'class')
+message('...done summarizing class!')
+
+```
+
+## Combine matched and gapfilled traits
+
+```{r combine gapfill value dataframes and save out}
+gapfill_traits_all_spp <- match_tx_fix %>%
+  select(species = spp, category, trait, trait_value, trait_prob, phylum:genus, match) %>%
+  mutate(gapfill = 'none') %>%
+  bind_rows(traits_fill_gen, 
+            traits_fill_fam, 
+            traits_fill_ord, 
+            traits_fill_cls) 
+```
+
+## Calculate gapfill counts and taxon means/sds
+
+For species with missing traits, iteratively gather and 
+
+```{r apply upstreamed gapfill values to downstream spp}
+
+traits_direct_match <- gapfill_traits_all_spp %>%
+  filter(!is.na(match)) %>%
+  mutate(gapfill = 'none')
+
+gf_ranks <- c('species', 'genus', 'family', 'order', 'class')
+
+gf_list <- vector('list', length = length(gf_ranks)) %>%
+  setNames(gf_ranks)
+
+# gf_list[[1]] <- data.frame()
+all_spp_traits <- match_tx_fix %>%
+  select(species = spp, category, trait) %>%
+  complete(species, nesting(category, trait)) %>%
+  left_join(spp_all_wide, by = 'species')
+
+for(i in 2:length(gf_ranks)) {
+  ### i <- 2
+  r <- gf_ranks[i]
+  drop_ranks <- gf_ranks[-i]
+  rank_df <- gapfill_traits_all_spp %>%
+    filter(gapfill == r) %>%
+    select(-all_of(drop_ranks), -phylum) %>%
+    distinct()
+  
+  rank_gf_df <- all_spp_traits %>%
+    anti_join(traits_direct_match, by = c('species', 'category', 'trait')) %>%
+    inner_join(rank_df, by = c(r, 'category', 'trait'))
+  
+  gf_list[[i]] <- rank_gf_df
+}
+```
+
+``` {r bind all ranks gapfill}
+
+### Bind everything, then filter each trait to keep only the
+### most taxonomically specific information.  Drop any traits
+### with tiny percentages
+traits_all_gf <- bind_rows(gf_list) %>%
+  mutate(gapfill = factor(gapfill, levels = gf_ranks)) %>%
+  group_by(species, category, trait) %>%
+  filter(as.integer(gapfill) == max(as.integer(gapfill))) %>%
+  bind_rows(traits_direct_match) 
+
+# check_probs <- traits_all_gf %>%
+#   group_by(species, category, trait) %>%
+#   summarize(sum_probs = sum(trait_prob)) %>%
+#   filter(!trait %in% non_mut_excl)
+# check <- traits_all_gf %>%
+#   group_by(species) %>%
+#   mutate(n_rows = n())
+# hist(check$n_rows)
+# 
+# ### These are all species with only the FB/SLB/range traits even
+# ### after gapfilling... drop!
+# check_low <- check %>% filter(n_rows < 20)
+# check_low$trait %>% unique()
+# 
+# check_high <- check %>% filter(n_rows > 200)
+# check_highest <- check %>% filter(species == 'aboma etheostoma')
+
+traits_all_gf_clean <- traits_all_gf %>%
+  group_by(species) %>%
+  mutate(check = n_distinct(trait) > 4) %>%
+  ungroup() %>%
+  mutate(trait_prob = round(trait_prob, 3)) %>%
+  filter(trait_prob > 0)
+
+check <- traits_all_gf_clean %>%
+  group_by(species) %>%
+  mutate(n_rows = n())
+hist(check$n_rows)
+
+### consider dropping dependent habitats? or changing the way they're categorized
+
+```
+
+The species with many many rows of traits are due species who have been gapfilled across many many dependent habitat descriptions.  In many cases, these habitat descriptions are a tiny fraction of the species included in the gapfill methodology, so it may be worth cleaning up dependent habitat descriptions prior to gapfilling.
+
+To examine the "quality" of gapfilling, we can examine the proportion of traits filled at various gapfill ranks.  
+
+Here, assign gapfill rank = 0 for "none" (i.e., trait known at spp level), 1 for genus, 2 for family, 3 order, 4 class.  There are many species filled mostly at the class level, but all mapped species will have at least one trait known at the species level (i.e., species range).  Consolidating the average # of traits at each level, we get a scale from 0-4.
+
+Similarly, examine the match level, i.e., which level of representative taxon was used to determine the species-level traits, also 0-4.  While matches are based on expert elicitation of representative species and ranks, representativeness of traits provided at higher (more general) ranks seems a little more uncertain than that of traits provided at lower (more specific) ranks.
+``` {r}
+gapfill_quality <- traits_all_gf_clean %>%
+  select(species, genus, family, order, class, category, trait, gapfill, match) %>%
+  distinct() %>%
+  # filter(species == 'novaculops halsteadi') %>%
+  mutate(gapfill = factor(gapfill, levels = c('none', 'genus', 'family', 'order', 'class')),
+         match   = ifelse(is.na(match), 'no match', match),
+         match   = factor(match, levels = c('species', 'genus', 'family', 
+                                            'order', 'class', 'no match'))) %>%
+  group_by(species, genus, family, order, class) %>%
+  summarize(n_traits = n_distinct(trait),
+            mean_gapfill = mean(as.integer(gapfill) - 1),
+            mean_match   = mean(as.integer(match) - 1, na.rm = TRUE),
+            gf_c = sum(gapfill == 'class'),
+            gf_o = sum(gapfill == 'order'),
+            gf_f = sum(gapfill == 'family'),
+            gf_g = sum(gapfill == 'genus'),
+            gf_s = sum(gapfill == 'none'),
+            m_c  = sum(match == 'class'),
+            m_o  = sum(match == 'order'),
+            m_f  = sum(match == 'family'),
+            m_g  = sum(match == 'genus'),
+            m_s  = sum(match == 'species'),
+            m_n  = sum(match == 'no match'))
+### here, mean gapfill of 0 means no gapfilling required; 
+### 1 = genus-level, 2 = family-level, 3 = order level, 4 = class level
+hist(gapfill_quality$mean_gapfill)
+# gapfill_quality$species %>% n_distinct()
+# gapfill_quality %>% filter(mean_gapfill < 3.85) %>% .$species %>% n_distinct()
+# gapfill_quality %>% filter(gf_s >= 2) %>% .$species %>% n_distinct()
+
+write_csv(gapfill_quality, here('int/up_down_gf_quality.csv'))
+```
+
+Using all species, we find a maximum gapfill quality of `r gapfill_quality$mean_gapfill %>% max()`
+
+## Check species counts
+
+Check species counts by taxon, excluding spp with only 4 or fewer traits
+
+```{r}
+spp_to_taxon <- match_tx_fix %>% 
+  select(species = spp, taxon) %>% 
+  distinct()
+
+check_spp <- gapfill_quality %>%
+  left_join(spp_to_taxon, by = 'species') %>%
+  group_by(taxon) %>%
+  summarize(mean_n_traits = round(mean(n_traits), 2),
+            n_spp = n_distinct(species),
+            mean_gf_quality = sum(mean_gapfill * n_traits) / sum(n_traits),
+            mean_match_quality = sum(mean_match * n_traits) / sum(n_traits)) %>%
+  arrange(desc(n_spp))
+
+knitr::kable(check_spp, digits = 3)
+
+### sum(check_spp$n_spp)
+### 30030 spp - same as before - since anything with more than four traits
+### clearly already had traits in the excel sheets...
+```
+
+## Save out
+
+Similar to script 4, for file size and nimbleness, we will break down the file into:
+
+* Taxonomic info, with gf_taxa_id unique to each species
+* Trait info, with gf_trait_id unique to each category/trait/value combo
+* Match and gapfill quality info, with gf_match_id unique to each 
+
+
+```{r}
+spp_to_taxon <- match_tx_fix %>% 
+  select(species = spp, taxon) %>% 
+  distinct()
+
+gf_taxa <- traits_all_gf_clean %>%
+  select(species) %>%
+  distinct() %>%
+  left_join(spp_to_taxon, by = 'species') %>%
+  arrange(taxon, species) %>%
+  mutate(gf_spp_id = 1:n())
+
+gf_traits <- traits_all_gf_clean %>%
+  select(category, trait, trait_value) %>%
+  distinct() %>%
+  arrange(category, trait, trait_value) %>%
+  mutate(gf_trait_id = 1:n())
+
+gf_levels <- traits_all_gf_clean %>%
+  select(match, gapfill) %>%
+  distinct() %>%
+  arrange(match, gapfill) %>%
+  mutate(gf_match_id = 1:n())
+
+gf_spp_traits <- traits_all_gf_clean %>%
+  left_join(gf_taxa, by = c('species')) %>%
+  left_join(gf_traits, by = c('category', 'trait', 'trait_value')) %>%
+  left_join(gf_levels, by = c('match', 'gapfill')) %>%
+  select(gf_spp_id, gf_trait_id, gf_match_id, trait_prob) %>%
+  distinct()
+  
+write_csv(gf_taxa,       here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))
+write_csv(gf_traits,     here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))
+write_csv(gf_levels,     here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))
+write_csv(gf_spp_traits, here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv'))
+
+### to reassemble:
+# traits_gf_df <- data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_spp_traits.csv')) %>%
+#   full_join(data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_levels.csv'))) %>%
+#   full_join(data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_traits.csv'))) %>%
+#   full_join(data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_taxa.csv'))) %>%
+#   select(-starts_with('gf_match'))
+              
+```

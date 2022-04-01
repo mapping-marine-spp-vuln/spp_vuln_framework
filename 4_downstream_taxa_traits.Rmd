@@ -1,0 +1,214 @@
+---
+title: "Downstream fill taxa traits"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
+                      echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac) ### remotes::install_github('oharac/oharac')
+library(tidyverse)
+library(here)
+library(readxl)
+# source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
+source(here('common_fxns.R'))
+library(taxize)
+
+```
+
+# Summary
+
+Using taxonomic trees from WoRMS and the `taxize` package, we will fill traits for downstream non-scored species (i.e., species whose partial traits were extracted from FishBase/SeaLifeBase and range maps).
+
+# Methods
+
+* Load species traits provided by experts and filled with additional information from FishBase/SeaLifeBase   
+* Join the known species traits to the expanded taxonomic list to get the full classification.
+* For traits known at a non-species level, we will downfill those to the species level.
+
+## Assemble the taxonomic dataframe
+
+Grab data from each rank (kingdom --> phylum, phylum --> class, class --> order, etc.) and assemble into a long dataframe.  Long format will be easier to match trait-scored species to, since all ranks will be in the "name" column.  But wide format will be easier for keeping track of the structure of each species' classification.
+
+Because we are dropping plants and algae, filter wide dataframe to just species in kingdom _Animalia_.  This is done in the `assemble_worms()` function from `common_fxns.R`.
+
+``` {r assemble full spp taxonomic table from WoRMS}
+spp_all_wide <- assemble_worms('wide', seabirds_only = TRUE)
+spp_all_long <- assemble_worms('long', seabirds_only = TRUE)
+```
+
+## Match species with known traits to most specific rank
+
+Load the trait data, and match to the wide-format species classifications along with the representativeness corrections, to identify species that represent higher ranks.  Create a separate dataframe of these higher ranks, based on relative frequency of traits across species within that higher rank.
+
+First step, expand the spp group traits to complete the trait set for all species, especially those with only partial traits from FB and range filling.
+
+```{r}
+spp_gp_traits <- read_csv(here('_data/spp_traits_filled.csv'))
+### aatolana rapax test spp
+
+spp_to_taxa <- spp_gp_traits %>%
+  select(spp_gp, taxon) %>%
+  distinct()
+
+spp_gp_traits_complete <- spp_gp_traits %>%
+  select(-taxon) %>%
+  complete(spp_gp, nesting(category, trait)) %>%
+  left_join(spp_to_taxa, by = 'spp_gp') %>%
+  mutate(note = 'traits expanded')
+```
+
+
+``` {r determine representative spp gps}
+
+repres_fish <- read_excel(here('_raw_data/xlsx/fish_traits_add_bp.xlsx'), 
+                          sheet = 'repres_expanded')
+repres_df   <- read_excel(here('_raw_data/xlsx/spp_gp_representativeness.xlsx')) %>%
+  janitor::clean_names() %>%
+  select(taxon, species, repres = representative_rank) %>%
+  bind_rows(repres_fish) %>%
+  mutate(species = tolower(species),
+         repres = tolower(repres)) %>%
+  filter(!is.na(repres) & repres != 'species')
+
+### create new dataframe including all representative species, with
+### spp_gp_new assigned to the representative rank
+repr_spp <- spp_gp_traits %>%
+  inner_join(repres_df, by = c('taxon', 'spp_gp' = 'species')) %>%
+  inner_join(spp_all_wide, by = c('spp_gp' = 'species')) %>%
+  mutate(spp_gp_new = case_when(repres == 'genus'  ~ genus,
+                                repres == 'family' ~ family,
+                                repres == 'order'  ~ order,
+                                repres == 'class'  ~ class,
+                                TRUE ~ NA_character_))
+
+non_mut_excl <- c('adult_mobility', 'biomineral', 'zone',
+                  'calcium_carbonate_structure_location', 
+                  'depth_min_max', 'respiration_structures', 
+                  'across_stage_dependent_habitats_condition', 
+                  'within_stage_dependent_habitats_condition')
+
+### group by the new spp gp and summarize traits
+repr_spp_gps <- repr_spp %>%
+  group_by(taxon, spp_gp_new, category, trait) %>%
+  mutate(tot_prob = sum(trait_prob),
+         tot_spp = n_distinct(spp_gp)) %>%
+  group_by(taxon, spp_gp_new, category, trait, trait_value) %>%
+  summarize(trait_prob = case_when(
+              first(trait) %in% non_mut_excl ~ n() / first(tot_spp),
+              TRUE ~ sum(trait_prob) / first(tot_prob)),
+            nspp = n_distinct(spp_gp)) %>%
+  ungroup() %>%
+  rename(spp_gp = spp_gp_new) %>%
+  mutate(note = 'repr groups')
+
+### to check functioning of non-mutually-exclusive trait calcs
+# x <- repr_spp_gps %>% filter(trait %in% non_mut_excl)
+# y <- x %>% group_by(spp_gp, category, trait) %>% summarize(tot_prob = sum(trait_prob))
+```
+
+Then bind the representative-based dataframe with the original traits data, and join to long-format species classifications.
+
+``` {r match up}
+### add representative spp gps to the original spp_gp_traits. Note
+### this will keep the species level scores intact, while also adding
+### higher order representative ranks.
+
+spp_gp_traits_repr_fix <- spp_gp_traits_complete %>%
+  bind_rows(repr_spp_gps) %>%
+  select(-nspp, -n_spp_gps) %>%
+  clean_scinames('spp_gp')
+
+matched_df <- spp_all_long %>%
+  left_join(spp_gp_traits_repr_fix, by = c('name' = 'spp_gp')) %>%
+  mutate(match = ifelse(is.na(trait_value), NA, as.character(rank))) %>%
+  filter(!is.na(trait_value)) %>%
+  group_by(spp, trait) %>%
+  filter(as.numeric(rank) == max(as.numeric(rank))) %>%
+  ungroup()
+### matched_df$rank %>% unique()
+### [1] class   order   family  genus   species
+### Levels: kingdom phylum class order family genus species
+
+```
+
+## Check species counts
+
+Check species counts by taxon, excluding spp with only 4 or fewer traits
+
+```{r}
+check_spp <- matched_df %>%
+  group_by(spp) %>%
+  filter(n_distinct(trait) > 4) %>%
+  mutate(n_trait = n_distinct(trait)) %>%
+  group_by(taxon) %>%
+  summarize(mean_n_traits = round(mean(n_trait), 2),
+            n_spp = n_distinct(spp)) %>%
+  arrange(desc(n_spp))
+
+knitr::kable(check_spp)
+
+### sum(check_spp$n_spp)
+### 30030 spp - same as before - since anything with more than four traits
+### clearly already had traits in the excel sheets...
+```
+
+## Write out results
+
+Break into several chunks to reduce duplication of info and resulting file size...
+
+```{r}
+match_taxa <- matched_df %>%
+  select(taxon, spp) %>%
+  distinct() %>%
+  arrange(taxon, spp) %>%
+  mutate(df_spp_id = 1:n())
+
+match_traits <- matched_df %>%
+  select(category, trait, trait_value) %>%
+  distinct() %>%
+  arrange(category, trait, trait_value) %>%
+  mutate(df_trait_id = 1:n())
+
+match_levels <- matched_df %>%
+  select(match, match_name = name) %>%
+  distinct() %>%
+  arrange(match, match_name) %>%
+  mutate(df_match_id = 1:n())
+
+match_spp_traits <- matched_df %>%
+  left_join(match_taxa, by = c('taxon', 'spp')) %>%
+  left_join(match_traits, by = c('category', 'trait', 'trait_value')) %>%
+  left_join(match_levels, by = c('match', 'name' = 'match_name')) %>%
+  select(df_spp_id, df_trait_id, df_match_id, trait_prob) %>%
+  distinct()
+  
+write_csv(match_taxa,       here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))
+write_csv(match_traits,     here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))
+write_csv(match_levels,     here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))
+write_csv(match_spp_traits, here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv'))
+
+### to reassemble:
+# match_df <- data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv')) %>%
+#   full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))) %>%
+#   full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))) %>%
+#   full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))) %>%
+#   select(-starts_with('df_match'))
+              
+```
+
