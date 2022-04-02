@@ -1,7 +1,5 @@
 taxon,category,trait,spp_gp,trait_value,n_spp_gps
-corals,biophysical traits,respiration structures,acropora,diffusiion,4
 crustacea_arthropods,biophysical traits,communication requirement (sound),nymphon australe,none,9
-crustacea_arthropods,biophysical traits,respiration structures,nymphon australe,skin or cuticle,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,palaemon elegans,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),penaeus,none,9
 crustacea_arthropods,breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,penaeus,none,9
@@ -10,7 +8,6 @@ crustacea_arthropods,physiological tolerance breadths,dissolved oxygen,penaeus,c
 crustacea_arthropods,specialisation,air-sea interface,penaeus,none,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,penaeus,none,9
 crustacea_arthropods,biophysical traits,communication requirement (sound),pycnogonida,none,9
-crustacea_arthropods,biophysical traits,respiration structures,pycnogonida,skin or cuticle,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,yes w,9
 crustacea_arthropods,specialisation,dependent interspecific interactions,trapezia flavopunctata,coral,9
 echinoderms,specialisation,dependent interspecific interactions,aporometra wilsoni,yes-sargassum cystophora,100

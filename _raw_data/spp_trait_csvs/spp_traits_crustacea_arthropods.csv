@@ -8,7 +8,7 @@ biophysical traits,communication requirement (sound),no,no,none,no,no,none,none,
 biophysical traits,extreme pressure wave sensitive structures,low,low,none,NA,low,high,none,low,low
 biophysical traits,flight,no,no,no,no,no,no,no,no,no
 biophysical traits,navigation requirements (light),yes,yes,NA,yes,yes,yes,NA,yes,yes
-biophysical traits,respiration structures,gills,gills,skin or cuticle,gills,gills,gills;filter feeders,skin or cuticle,gills,gills
+biophysical traits,respiration structures,gills,gills,skin,gills,gills,gills;filter feeders,skin,gills,gills
 breeding/nesting range/number of spawning aggregations (fish),"if one/few, size",NA,NA,NA,small,NA,large,very small,NA,NA
 breeding/nesting range/number of spawning aggregations (fish),number of sites,many,many,many,few,many,does not aggregate,few,many,many
 breeding/nesting range/number of spawning aggregations (fish),sub-population dependence on particular sites,no,no,no,difficult to say-they may be dependent on th intertidal pools in summer and the offshore waters in winter.,no,none,yes,no,no

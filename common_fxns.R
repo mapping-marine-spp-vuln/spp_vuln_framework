@@ -6,6 +6,25 @@ here_anx <- function(f = '', ...) {
   return(f_anx)
 }
 
+get_spp_traits <- function() {
+  ### this grabs all the traits by species, after downfilling and agapfilling
+  traits_gf_df <- data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv')) %>%
+    full_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))) %>%
+    full_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))) %>%
+    full_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))) %>%
+    select(-starts_with('gf_'))
+  return(traits_gf_df)
+}
+
+get_spp_vuln <- function() {
+  ## to reassemble all scores incl components:
+  spp_vuln_scores_all <- data.table::fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_all_scores.csv')) %>%
+    left_join(data.table::fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_str.csv'))) %>%
+    left_join(data.table::fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_tx.csv'))) %>%
+    select(-vuln_tx_id, -vuln_str_id)
+  return(spp_vuln_scores_all)
+}
+
 assemble_worms <- function(aspect = 'wide', seabirds_only = TRUE, am_patch = TRUE) {
   ### Note: this drops all kingdoms but Animalia 
   

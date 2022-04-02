@@ -48,12 +48,12 @@ clean_titles <- function(df) {
                     "biomass_removal", "Biomass Removal",
                             "bycatch",         "Bycatch",
           "entanglement_macroplastic",    "Macroplastic",
-  "eutrophication_nutrient_pollution",     "Eutrophication",
+  "eutrophication_nutrient_pollution",  "Eutrophication",
            "habitat_loss_degradation", "Hab. Loss/Degr.",
                 "inorganic_pollution",    "Inorg. Poll.",
                    "invasive_species",    "Inv. Species",
-                    "light_pollution",      "Light Poll.",
-                    "noise_pollution",      "Noise Poll.",
+                    "light_pollution",     "Light Poll.",
+                    "noise_pollution",     "Noise Poll.",
                                  "oa",     "Ocean acid.",
                       "oceanographic",   "Oceanographic",
                   "organic_pollution",      "Org. Poll.",
@@ -64,7 +64,8 @@ clean_titles <- function(df) {
                                 "slr",  "Sea Level Rise",
                   "storm_disturbance",     "Storm Dist.",
                                  "uv",     "Ultraviolet",
-                         "water_temp",      "Water Temp.",
+                  "marine_heat_waves","Marine heatwaves",
+                           "sst_rise",        "SST rise",
                     "wildlife_strike", "Wildlife Strike"
   )
   
@@ -78,16 +79,7 @@ clean_titles <- function(df) {
 ```
 
 ``` {r}
-vuln_tx_df <- read_csv(here('_output', 'vuln_gapfilled_tx.csv'))
-vuln_score_df <- read_csv(here('_output', 'vuln_gapfilled_score.csv')) %>%
-  gather(stressor, vuln, -vuln_gf_id)
-vuln_sd_df <- read_csv(here('_output', 'vuln_gapfilled_sd.csv')) %>%
-  gather(stressor, vuln_sd, -vuln_gf_id)
-
-
-vuln_df <- vuln_tx_df %>%
-  full_join(vuln_score_df, by = 'vuln_gf_id') %>%
-  full_join(vuln_sd_df, by = c('vuln_gf_id', 'stressor')) %>%
+vuln_df <- get_spp_vuln() %>%
   clean_titles()
 ```
 
@@ -98,8 +90,6 @@ strs <- vuln_df$stressor %>% unique() %>% sort()
 test_df <- vuln_df %>%
   filter(taxon %in% taxa[1:6]) %>%
   filter(stressor %in% strs[1:6]) %>%
-  rowwise() %>%
-  mutate(vuln_d = rnorm(n = 1, mean = vuln, sd = vuln_sd)) %>%
   group_by(stressor, taxon) %>%
   mutate(n_inv = 1/n()) %>%
   ungroup() %>%
@@ -112,15 +102,20 @@ mean_df <- test_df %>%
 linecol <- 'grey20'; linesize = .2
 x <- ggplot(test_df) +
   theme_ohara() +
-  geom_vline(aes(xintercept = vuln_d, alpha = n_inv), 
+  geom_vline(aes(xintercept = vuln, alpha = n_inv), 
              color = linecol, size = linesize) +
-  geom_hline(aes(yintercept = vuln_d, alpha = n_inv), 
+  geom_hline(aes(yintercept = vuln, alpha = n_inv), 
              color = linecol, size = linesize) +
-  geom_vline(data = mean_df, aes(xintercept = mean), color = 'yellow', size = .3) +
-  geom_hline(data = mean_df, aes(yintercept = mean), color = 'yellow', size = .3) +
-  geom_vline(data = mean_df, aes(xintercept = mean), color = 'red', size = .2) +
-  geom_hline(data = mean_df, aes(yintercept = mean), color = 'red', size = .2) +
-  geom_point(data = mean_df, aes(x = mean, y = mean), color = 'red') +
+  geom_vline(data = mean_df, aes(xintercept = mean), 
+             color = 'yellow', size = .3) +
+  geom_hline(data = mean_df, aes(yintercept = mean), 
+             color = 'yellow', size = .3) +
+  geom_vline(data = mean_df, aes(xintercept = mean), 
+             color = 'red', size = .2) +
+  geom_hline(data = mean_df, aes(yintercept = mean), 
+             color = 'red', size = .2) +
+  geom_point(data = mean_df, aes(x = mean, y = mean), 
+             color = 'red') +
   coord_fixed(xlim = c(0, 1), ylim = c(0, 1), expand = TRUE) +
   scale_x_continuous(breaks = c(0.1, 0.9), labels = c(0, 1)) +
   scale_y_continuous(breaks = c(0.1, 0.9), labels = c(0, 1)) +
@@ -133,8 +128,8 @@ x <- ggplot(test_df) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('ms_figs/vuln_summary_plot.png', width = 18, height = 18, units = 'cm', dpi = 600)
-knitr::include_graphics('ms_figs/vuln_summary_plot.png')
+ggsave('ms_figs/vuln_summary_plot_traitfilled.png', width = 18, height = 18, units = 'cm', dpi = 600)
+knitr::include_graphics('ms_figs/vuln_summary_plot_traitfilled.png')
 ```
 
 ```{r diag violin, eval = FALSE}
@@ -143,10 +138,7 @@ strs <- vuln_df$stressor %>% unique() %>% sort()
 
 test_df <- vuln_df %>%
   filter(taxon %in% taxa[1:6]) %>%
-  filter(stressor %in% strs[1:6]) %>%
-  rowwise() %>%
-  mutate(vuln_d = rnorm(n = 1, mean = vuln, sd = vuln_sd)) %>%
-  ungroup()
+  filter(stressor %in% strs[1:6])
 
 zeros <- test_df %>%
   group_by(tx_clean, str_clean) %>%
@@ -159,7 +151,7 @@ mean_df <- test_df %>%
 
 dens_df <- test_df %>%
   group_by(tx_clean, str_clean) %>%
-  summarize(x = list(KernSmooth::bkde(x = vuln_d, 
+  summarize(x = list(KernSmooth::bkde(x = vuln, 
                                       kernel = 'normal', 
                                       bandwidth = .05) %>%
                        as.data.frame())) %>%
@@ -205,8 +197,8 @@ p <- ggplot(dens_diag) +
         strip.text.x = element_text(angle = 90, hjust = 0),
         strip.text.y = element_text(angle = 0, hjust = 0))
   
-ggsave('ms_figs/vuln_summary_plot_violin.png', width = 18, height = 18, units = 'cm', dpi = 600)
-knitr::include_graphics('ms_figs/vuln_summary_plot_violin.png')
+ggsave('ms_figs/vuln_summary_plot_violin_traitfilled.png', width = 18, height = 18, units = 'cm', dpi = 600)
+knitr::include_graphics('ms_figs/vuln_summary_plot_violin_traitfilled.png')
 ```
 
 
@@ -217,7 +209,6 @@ strs <- vuln_df$stressor %>% unique() %>% sort()
 mean_df <- vuln_df %>%
   group_by(tx_clean, str_clean) %>%
   summarize(v_mean = mean(vuln, na.rm = TRUE),
-            v_sd = sqrt(mean(vuln_sd^2)),
             n_spp = n_distinct(species),
             .groups = 'drop') %>%
   arrange(desc(v_mean)) %>%
@@ -227,14 +218,8 @@ mean_df <- vuln_df %>%
 
 x <- ggplot(mean_df, aes(x = str_clean, y = tx_clean)) +
   theme_ohara() +
-  geom_tile(aes(fill = v_sd)) +
-  geom_point(color = 'white', shape = 15, size = 5) +
-  geom_point(aes(color = v_mean), shape = 15, size = 4) +
-  # geom_
-  scale_color_viridis_c(limits = c(0, 1)) +
-  scale_fill_gradient(low = 'white', high = 'grey20', 
-                       breaks = seq(0, .15, .03)) +
-  # scale_x_discrete(expand = c(0, 1.1)) +
+  geom_tile(aes(fill = v_mean)) +
+  scale_fill_viridis_c(limits = c(0, 1)) +
   coord_fixed() +
   theme(axis.title = element_blank(),
         # legend.position = 'none',
@@ -243,15 +228,14 @@ x <- ggplot(mean_df, aes(x = str_clean, y = tx_clean)) +
   labs(fill = 'std dev', color = 'mean',
        title = 'Vulnerability by taxon and stressor')
   
-ggsave('ms_figs/vuln_heatmap.png', width = 18, height = 12, units = 'cm', dpi = 600)
-knitr::include_graphics('ms_figs/vuln_heatmap.png')
+ggsave('ms_figs/vuln_heatmap_traitfilled.png', width = 18, height = 12, units = 'cm', dpi = 600)
+knitr::include_graphics('ms_figs/vuln_heatmap_traitfilled.png')
 ```
 
 ```{r str_summary_boxplot}
 vuln_overall_df <- vuln_df %>%
   group_by(species, tx_clean, vert) %>%
   summarize(vuln = mean(vuln, na.rm = TRUE),
-            vuln_sd = sqrt(mean(vuln_sd^2)),
             .groups = 'drop') %>%
   mutate(str_clean = 'Overall')
 
@@ -262,7 +246,6 @@ str_summary_df <- vuln_df %>%
   group_by(str_clean) %>%
   summarize(v_mean_all = first(v_mean_all),
             v_mean = mean(vuln, na.rm = TRUE),
-            v_sd = sqrt(mean(vuln_sd^2)),
             n_spp = n_distinct(species),
             .groups = 'drop') %>%
   arrange(v_mean) %>%
@@ -286,8 +269,9 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) # +
   # labs(title = 'Vulnerability distribution by stressor')
   
-ggsave('ms_figs/vuln_dist_str_box.png', width = 18, height = 14, units = 'cm', dpi = 600)
-knitr::include_graphics('ms_figs/vuln_dist_str_box.png')
+ggsave('ms_figs/vuln_dist_str_box_traitfilled.png', 
+       width = 18, height = 14, units = 'cm', dpi = 600)
+knitr::include_graphics('ms_figs/vuln_dist_str_box_traitfilled.png')
 ```
 
 ```{r taxa_summary_boxplot}
@@ -297,7 +281,6 @@ tx_summary_df <- vuln_df %>%
   group_by(tx_clean, vert) %>%
   summarize(v_mean_all = first(v_mean_all),
             v_mean = mean(vuln, na.rm = TRUE),
-            v_sd = sqrt(mean(vuln_sd^2)),
             n_spp = n_distinct(species),
             .groups = 'drop') %>%
   arrange(vert, v_mean) %>%
@@ -319,8 +302,8 @@ x <- ggplot(vuln_df %>%
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) #+
   # labs(title = 'Vulnerability distribution by taxon')
   
-ggsave('ms_figs/vuln_dist_tx_box.png', width = 18, height = 9, units = 'cm', dpi = 600)
-knitr::include_graphics('ms_figs/vuln_dist_tx_box.png')
+ggsave('ms_figs/vuln_dist_tx_box_traitfilled.png', width = 18, height = 9, units = 'cm', dpi = 600)
+knitr::include_graphics('ms_figs/vuln_dist_tx_box_traitfilled.png')
 ```
 
 ```{r setup for taxa_12x1panel_boxplot}
@@ -328,7 +311,6 @@ knitr::include_graphics('ms_figs/vuln_dist_tx_box.png')
 vuln_overall_df <- vuln_df %>%
   group_by(species, tx_clean, vert) %>%
   summarize(vuln = mean(vuln, na.rm = TRUE),
-            vuln_sd = sqrt(mean(vuln_sd^2)),
             .groups = 'drop') %>%
   mutate(str_clean = 'Overall')
 
@@ -339,7 +321,6 @@ tx_summary_df <- vuln_df %>%
   group_by(tx_clean, str_clean, vert) %>%
   summarize(v_mean_all = first(v_mean_all),
             v_mean = mean(vuln, na.rm = TRUE),
-            v_sd = sqrt(mean(vuln_sd^2)),
             n_spp = n_distinct(species),
             .groups = 'drop') %>%
   mutate(overall = str_clean == 'Overall') %>%
@@ -352,11 +333,7 @@ tx_summary_df <- vuln_df %>%
 plot_df <- vuln_df %>%
   bind_rows(vuln_overall_df) %>%
   mutate(tx_clean = factor(tx_clean, levels = levels(tx_summary_df$tx_clean)),
-         str_clean = factor(str_clean, levels = levels(str_summary_df$str_clean))) %>%
-  rowwise() %>%
-  mutate(v = rnorm(n = 1, mean = vuln, sd = vuln_sd),
-         v = case_when(v < 0 ~ 0, v > 1 ~ 1, TRUE ~ v)) %>%
-  ungroup()
+         str_clean = factor(str_clean, levels = levels(str_summary_df$str_clean)))
 
 ```
 
@@ -365,11 +342,11 @@ plot_df <- vuln_df %>%
 theme_cols <- c('#0294AD', '#006989', '#00446C')
 
 x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)), 
-            aes(x = str_clean, y = v)) +
+            aes(x = str_clean, y = vuln)) +
   theme_ohara(base_size = 7) +
   ### manually create panel background and gridlines
   scale_x_discrete(expand = c(0, 0)) +
-  annotate('rect', xmin = .5, xmax = 23.5, ymin = 0, ymax = 1, 
+  annotate('rect', xmin = .5, xmax = 24.5, ymin = 0, ymax = 1, 
            color = NA, fill = theme_cols[2], alpha = .1) +
   geom_hline(yintercept = c(.25, .5, .75, 1), color = 'white', size = .5) +
   geom_vline(xintercept = 1:22, color = 'white', size = .5) +
@@ -395,11 +372,11 @@ x <- ggplot(plot_df %>% mutate(str_clean = fct_rev(str_clean)),
        y = 'Vulnerability score') +
   facet_wrap( ~ tx_clean, ncol = 1, strip.position = 'right')
   
-ggsave('ms_figs/vuln_dist_tx_12x1panel.png', 
+ggsave('ms_figs/vuln_dist_tx_12x1panel_traitfilled.png', 
        width = 18, height = 22, units = 'cm', dpi = 600)
-ggsave('ms_figs/vuln_dist_tx_12x1panel.tiff', 
-       width = 18, height = 22, units = 'cm', dpi = 600)
-knitr::include_graphics('ms_figs/vuln_dist_tx_12x1panel.png')
+# ggsave('ms_figs/vuln_dist_tx_12x1panel_traitfilled.tiff', 
+#        width = 18, height = 22, units = 'cm', dpi = 600)
+knitr::include_graphics('ms_figs/vuln_dist_tx_12x1panel_traitfilled.png')
 ```
 
 ### Save summary as table for supplement
@@ -409,7 +386,7 @@ si_table <- tx_summary_df %>%
   spread(str_clean, v_mean) %>%
   select(Taxon = tx_clean, everything(), Overall, `N spp` = n_spp)
 
-write_csv(si_table, here('_output/vuln_summary_table.csv'))
-knitr::kable(si_table)
+write_csv(si_table, here('_output/vuln_summary_table_traitfilled.csv'))
+knitr::kable(si_table, digits = 3)
 ```
 

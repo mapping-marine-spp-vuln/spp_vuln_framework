@@ -22,6 +22,7 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
 library(oharac) ### remotes::install_github('oharac/oharac')
+library(data.table)
 library(tidyverse)
 library(here)
 library(readxl)
@@ -56,11 +57,10 @@ spp_all_long <- assemble_worms('long', seabirds_only = TRUE)
 
 Load the trait data, and match to the wide-format species classifications along with the representativeness corrections, to identify species that represent higher ranks.  Create a separate dataframe of these higher ranks, based on relative frequency of traits across species within that higher rank.
 
-First step, expand the spp group traits to complete the trait set for all species, especially those with only partial traits from FB and range filling.
+First step, expand the spp group traits to complete the trait set for all species, especially those with only partial traits from FB and range filling.  
 
 ```{r}
 spp_gp_traits <- read_csv(here('_data/spp_traits_filled.csv'))
-### aatolana rapax test spp
 
 spp_to_taxa <- spp_gp_traits %>%
   select(spp_gp, taxon) %>%
@@ -198,16 +198,20 @@ match_spp_traits <- matched_df %>%
   select(df_spp_id, df_trait_id, df_match_id, trait_prob) %>%
   distinct()
   
-write_csv(match_taxa,       here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))
-write_csv(match_traits,     here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))
-write_csv(match_levels,     here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))
-write_csv(match_spp_traits, here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv'))
+write_csv(match_taxa,       
+          here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))
+write_csv(match_traits,     
+          here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))
+write_csv(match_levels,     
+          here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))
+write_csv(match_spp_traits, 
+          here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv'))
 
 ### to reassemble:
-# match_df <- data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv')) %>%
-#   full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))) %>%
-#   full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))) %>%
-#   full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))) %>%
+# match_df <- fread(here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv')) %>%
+#   full_join(fread(here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))) %>%
+#   full_join(fread(here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))) %>%
+#   full_join(fread(here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))) %>%
 #   select(-starts_with('df_match'))
               
 ```
