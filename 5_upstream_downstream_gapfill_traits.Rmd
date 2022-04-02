@@ -22,6 +22,7 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
 library(oharac) ### remotes::install_github('oharac/oharac')
+library(data.table)
 library(tidyverse)
 library(here)
 source(here('common_fxns.R'))
@@ -51,16 +52,32 @@ spp_all_long <- assemble_worms('long')
 
 ## Load expanded traits
 
-These have already been scrubbed of confounding symbols and parenthetical genera... 
+These have already been scrubbed of confounding symbols and parenthetical genera... with this expanded list, overwrite downfilled thermal tolerance trait values using AquaMaps at the species level where available.
 
 ```{r load expanded vuln scores from script 4}
-match_df <- data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_spp_traits.csv')) %>%
-  full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_levels.csv'))) %>%
-  full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_traits.csv'))) %>%
-  full_join(data.table::fread(here_anx('1_downfill_traits/spp_match_downfill_taxa.csv'))) %>%
+match_df <- fread(here_anx('1_downfill_traits', 
+                           'spp_match_downfill_spp_traits.csv')) %>%
+  full_join(fread(here_anx('1_downfill_traits', 
+                           'spp_match_downfill_levels.csv'))) %>%
+  full_join(fread(here_anx('1_downfill_traits', 
+                           'spp_match_downfill_traits.csv'))) %>%
+  full_join(fread(here_anx('1_downfill_traits', 
+                           'spp_match_downfill_taxa.csv'))) %>%
   select(-starts_with('df_')) 
 
+spp_thermal_tol <- read_csv(here('_raw_data/aquamaps', 
+                                    'aquamaps_spp_gp_thermal_range.csv')) %>%
+  rename(spp = name, val_new = trait_value, prob_new = trait_prob) %>%
+  filter(rank == 'species') %>%
+  select(-rank) %>%
+  distinct()
+
 match_tx_fix <- match_df %>%
+  left_join(spp_thermal_tol, by = c('spp', 'trait')) %>%
+  mutate(trait_value = ifelse(!is.na(val_new), val_new, trait_value),
+         trait_prob  = ifelse(!is.na(prob_new), prob_new, trait_prob)) %>%
+  select(-val_new, -prob_new) %>%
+  distinct() %>%
   left_join(spp_all_wide, by = c('spp' = 'species'))
 ```
 
@@ -314,16 +331,20 @@ gf_spp_traits <- traits_all_gf_clean %>%
   select(gf_spp_id, gf_trait_id, gf_match_id, trait_prob) %>%
   distinct()
   
-write_csv(gf_taxa,       here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))
-write_csv(gf_traits,     here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))
-write_csv(gf_levels,     here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))
-write_csv(gf_spp_traits, here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv'))
+write_csv(gf_taxa,       
+          here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))
+write_csv(gf_traits,     
+          here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))
+write_csv(gf_levels,     
+          here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))
+write_csv(gf_spp_traits, 
+          here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv'))
 
 ### to reassemble:
-# traits_gf_df <- data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_spp_traits.csv')) %>%
-#   full_join(data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_levels.csv'))) %>%
-#   full_join(data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_traits.csv'))) %>%
-#   full_join(data.table::fread(here_anx('2_gapfill_traits/spp_match_downfill_taxa.csv'))) %>%
-#   select(-starts_with('gf_match'))
+# traits_gf_df <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv')) %>%
+#   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))) %>%
+#   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))) %>%
+#   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))) %>%
+#   select(-starts_with('gf_'))
               
 ```

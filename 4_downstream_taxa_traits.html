@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Fri Apr 1 10:50:55 2022 by ohara" />
+<meta name="author" content="Compiled on Sat Apr 2 09:07:33 2022 by ohara" />
 
 
 <title>Downstream fill taxa traits</title>
@@ -361,7 +361,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Downstream fill taxa traits</h1>
-<h4 class="author"><em>Compiled on Fri Apr 1 10:50:55 2022 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Sat Apr 2 09:07:33 2022 by ohara</em></h4>
 
 </div>
 
@@ -400,17 +400,16 @@ div.tocify {
 <p>Load the trait data, and match to the wide-format species classifications along with the representativeness corrections, to identify species that represent higher ranks. Create a separate dataframe of these higher ranks, based on relative frequency of traits across species within that higher rank.</p>
 <p>First step, expand the spp group traits to complete the trait set for all species, especially those with only partial traits from FB and range filling.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spp_gp_traits <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_data/spp_traits_filled.csv&#39;</span>))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">### aatolana rapax test spp</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>spp_to_taxa <span class="ot">&lt;-</span> spp_gp_traits <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, taxon) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>spp_gp_traits_complete <span class="ot">&lt;-</span> spp_gp_traits <span class="sc">%&gt;%</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>taxon) <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(spp_gp, <span class="fu">nesting</span>(category, trait)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(spp_to_taxa, <span class="at">by =</span> <span class="st">&#39;spp_gp&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">note =</span> <span class="st">&#39;traits expanded&#39;</span>)</span></code></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>spp_to_taxa <span class="ot">&lt;-</span> spp_gp_traits <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, taxon) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>spp_gp_traits_complete <span class="ot">&lt;-</span> spp_gp_traits <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>taxon) <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(spp_gp, <span class="fu">nesting</span>(category, trait)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(spp_to_taxa, <span class="at">by =</span> <span class="st">&#39;spp_gp&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">note =</span> <span class="st">&#39;traits expanded&#39;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>repres_fish <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/fish_traits_add_bp.xlsx&#39;</span>), </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">&#39;repres_expanded&#39;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>repres_df   <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/xlsx/spp_gp_representativeness.xlsx&#39;</span>)) <span class="sc">%&gt;%</span></span>
@@ -515,7 +514,7 @@ div.tocify {
 </tr>
 <tr class="even">
 <td align="left">crustacea_arthropods</td>
-<td align="right">35.43</td>
+<td align="right">36.69</td>
 <td align="right">2005</td>
 </tr>
 <tr class="odd">
@@ -540,12 +539,12 @@ div.tocify {
 </tr>
 <tr class="odd">
 <td align="left">corals</td>
-<td align="right">41.48</td>
+<td align="right">42.06</td>
 <td align="right">288</td>
 </tr>
 <tr class="even">
 <td align="left">molluscs</td>
-<td align="right">39.36</td>
+<td align="right">39.37</td>
 <td align="right">176</td>
 </tr>
 <tr class="odd">
@@ -592,17 +591,21 @@ div.tocify {
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(df_spp_id, df_trait_id, df_match_id, trait_prob) <span class="sc">%&gt;%</span></span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_taxa,       <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_taxa.csv&#39;</span>))</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_traits,     <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_traits.csv&#39;</span>))</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_levels,     <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_levels.csv&#39;</span>))</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_spp_traits, <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_spp_traits.csv&#39;</span>))</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="do">### to reassemble:</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="co"># match_df &lt;- data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_spp_traits.csv&#39;)) %&gt;%</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a><span class="co">#   full_join(data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_levels.csv&#39;))) %&gt;%</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co">#   full_join(data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_traits.csv&#39;))) %&gt;%</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="co">#   full_join(data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_taxa.csv&#39;))) %&gt;%</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(-starts_with(&#39;df_match&#39;))</span></span></code></pre></div>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_taxa,       </span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>          <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_taxa.csv&#39;</span>))</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_traits,     </span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>          <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_traits.csv&#39;</span>))</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_levels,     </span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>          <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_levels.csv&#39;</span>))</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(match_spp_traits, </span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>          <span class="fu">here_anx</span>(<span class="st">&#39;1_downfill_traits/spp_match_downfill_spp_traits.csv&#39;</span>))</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="do">### to reassemble:</span></span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a><span class="co"># match_df &lt;- data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_spp_traits.csv&#39;)) %&gt;%</span></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co">#   full_join(data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_levels.csv&#39;))) %&gt;%</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="co">#   full_join(data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_traits.csv&#39;))) %&gt;%</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a><span class="co">#   full_join(data.table::fread(here_anx(&#39;1_downfill_traits/spp_match_downfill_taxa.csv&#39;))) %&gt;%</span></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(-starts_with(&#39;df_match&#39;))</span></span></code></pre></div>
 </div>
 </div>
 

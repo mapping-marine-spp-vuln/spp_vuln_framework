@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Mon Mar 28 17:08:28 2022 by ohara" />
+<meta name="author" content="Compiled on Sat Apr 2 08:59:45 2022 by ohara" />
 
 
 <title>Clean species trait workbook</title>
@@ -361,7 +361,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Clean species trait workbook</h1>
-<h4 class="author"><em>Compiled on Mon Mar 28 17:08:28 2022 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Sat Apr 2 08:59:45 2022 by ohara</em></h4>
 
 </div>
 
@@ -370,7 +370,8 @@ div.tocify {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">### helper functions and setup</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oharac) <span class="do">### remotes::install_github(&#39;oharac/oharac&#39;)</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>oharac<span class="sc">::</span><span class="fu">setup</span>()</span></code></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code></pre></div>
 <div id="summary" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Summary</h1>
 <p>Read in Excel spreadsheets of taxonomic traits filled in by taxon experts. Process into a long/tidy format with checks on validity of category values. Identify categories that were assigned non-valid values.</p>
@@ -1685,59 +1686,78 @@ div.tocify {
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait =</span> <span class="fu">sprintf</span>(trait_stem, trait_val_clean),</span>
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;yes&#39;</span>)</span></code></pre></div>
 </div>
-<div id="biomass-removal-trait" class="section level3" number="3.4.24">
-<h3><span class="header-section-number">3.4.24</span> Biomass removal trait</h3>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>spp_data_biomass_removal <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;biomass removal&#39;</span>,</span>
-<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait =</span> <span class="st">&#39;biomass removal sensitivity trait&#39;</span>,</span>
-<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="st">&#39;sensitive&#39;</span>,</span>
-<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;sensitive&#39;</span>)</span></code></pre></div>
+<div id="respiration-structures-trait" class="section level3" number="3.4.24">
+<h3><span class="header-section-number">3.4.24</span> Respiration structures trait</h3>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>spp_data_resp_str <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait, <span class="st">&#39;^respiration&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(trait_value)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">### fix typo and assign &quot;cuticle&quot; to &quot;skin&quot;:</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_value =</span> <span class="fu">str_replace</span>(trait_value, <span class="st">&#39;diffusiion&#39;</span>, <span class="st">&#39;diffusion&#39;</span>),</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="fu">str_replace</span>(trait_value, <span class="st">&#39;cuticle&#39;</span>, <span class="st">&#39;skin&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">### separate multiple values</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">str_split</span>(trait_value, <span class="st">&#39;;| or |/&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(tmp) <span class="sc">%&gt;%</span></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">clean_trait</span>(tmp)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_up_mess</span>()</span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>spp_data_resp_str<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span> <span class="fu">table</span>()</span></code></pre></div>
+<pre><code>## .
+##      diffusion filter feeders          gills          lungs           skin 
+##            104             66            756             97              2</code></pre>
 </div>
-<div id="sea-surface-temperature-trait" class="section level3" number="3.4.25">
-<h3><span class="header-section-number">3.4.25</span> Sea surface temperature trait</h3>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>spp_data_sst_rise <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;physiological tolerance breadths&#39;</span>,</span>
-<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait =</span> <span class="st">&#39;sst rise sensitivity trait&#39;</span>,</span>
-<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="st">&#39;sensitive&#39;</span>,</span>
-<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;sensitive&#39;</span>)</span></code></pre></div>
+<div id="biomass-removal-trait" class="section level3" number="3.4.25">
+<h3><span class="header-section-number">3.4.25</span> Biomass removal trait</h3>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>spp_data_biomass_removal <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;biomass removal&#39;</span>,</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait =</span> <span class="st">&#39;biomass removal sensitivity trait&#39;</span>,</span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="st">&#39;sensitive&#39;</span>,</span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;sensitive&#39;</span>)</span></code></pre></div>
 </div>
-<div id="habitats" class="section level3" number="3.4.26">
-<h3><span class="header-section-number">3.4.26</span> habitats</h3>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>hab_vals_raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&#39;_raw_data/xlsx/hab_list.xlsx&#39;</span>, <span class="at">sheet =</span> <span class="st">&#39;habitat_list&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hab_type =</span> <span class="fu">tolower</span>(hab_type))</span>
-<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>hab_vals <span class="ot">&lt;-</span> hab_vals_raw <span class="sc">%&gt;%</span> </span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>hab_type <span class="sc">%&gt;%</span> </span>
-<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>)</span>
-<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>spp_data_habs <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
-<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait, <span class="st">&#39;dependent habitats&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(trait_value)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">str_split</span>(trait_value, <span class="st">&#39;;| or |/|,|-&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(tmp) <span class="sc">%&gt;%</span></span>
-<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tmp <span class="sc">!=</span> <span class="st">&#39;&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">clean_trait</span>(tmp),</span>
-<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">str_replace_all</span>(tmp, <span class="st">&#39;soft benthic|soft sediment&#39;</span>, <span class="st">&#39;soft bottom&#39;</span>),</span>
-<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(tmp, <span class="st">&#39;inter?reef&#39;</span>), <span class="st">&#39;subtidal soft bottom;deep soft bottom&#39;</span>, tmp),</span>
-<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a>           <span class="do">### assume &quot;interreefal&quot; refers to sediment</span></span>
-<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">ifelse</span>(tmp <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;sea ice&#39;</span>, <span class="st">&#39;ice edge&#39;</span>), <span class="st">&#39;sea ice edge&#39;</span>, tmp),</span>
-<span id="cb64-19"><a href="#cb64-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(tmp, <span class="st">&#39;estuar&#39;</span>), <span class="st">&#39;estuary&#39;</span>, tmp),</span>
-<span id="cb64-20"><a href="#cb64-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">valid =</span> <span class="fu">str_detect</span>(tmp, hab_vals)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-21"><a href="#cb64-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb64-22"><a href="#cb64-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">str_extract_all</span>(tmp, hab_vals),</span>
-<span id="cb64-23"><a href="#cb64-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="fu">ifelse</span>(<span class="fu">is_empty</span>(trait_val_clean), tmp, trait_val_clean)) <span class="sc">%&gt;%</span></span>
-<span id="cb64-24"><a href="#cb64-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(trait_val_clean) <span class="sc">%&gt;%</span></span>
-<span id="cb64-25"><a href="#cb64-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_up_mess</span>()</span></code></pre></div>
-<div id="valid-habitats" class="section level4" number="3.4.26.1">
-<h4><span class="header-section-number">3.4.26.1</span> valid habitats</h4>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>spp_data_habs <span class="sc">%&gt;%</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">%in%</span> hab_vals_raw<span class="sc">$</span>hab_type) <span class="sc">%&gt;%</span></span>
-<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span></span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>()</span></code></pre></div>
+<div id="sea-surface-temperature-trait" class="section level3" number="3.4.26">
+<h3><span class="header-section-number">3.4.26</span> Sea surface temperature trait</h3>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>spp_data_sst_rise <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(spp_gp, sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;physiological tolerance breadths&#39;</span>,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait =</span> <span class="st">&#39;sst rise sensitivity trait&#39;</span>,</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_value =</span> <span class="st">&#39;sensitive&#39;</span>,</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="st">&#39;sensitive&#39;</span>)</span></code></pre></div>
+</div>
+<div id="habitats" class="section level3" number="3.4.27">
+<h3><span class="header-section-number">3.4.27</span> habitats</h3>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>hab_vals_raw <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&#39;_raw_data/xlsx/hab_list.xlsx&#39;</span>, <span class="at">sheet =</span> <span class="st">&#39;habitat_list&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hab_type =</span> <span class="fu">tolower</span>(hab_type))</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>hab_vals <span class="ot">&lt;-</span> hab_vals_raw <span class="sc">%&gt;%</span> </span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>hab_type <span class="sc">%&gt;%</span> </span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(<span class="at">collapse =</span> <span class="st">&#39;|&#39;</span>)</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>spp_data_habs <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(trait, <span class="st">&#39;dependent habitats&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(trait_value)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">str_split</span>(trait_value, <span class="st">&#39;;| or |/|,|-&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(tmp) <span class="sc">%&gt;%</span></span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>tmp <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;&#39;</span>, <span class="st">&#39;no&#39;</span>, <span class="st">&#39;unknown&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">clean_trait</span>(tmp),</span>
+<span id="cb66-15"><a href="#cb66-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">str_replace_all</span>(tmp, <span class="st">&#39;soft benthic|soft sediment&#39;</span>, <span class="st">&#39;soft bottom&#39;</span>),</span>
+<span id="cb66-16"><a href="#cb66-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(tmp, <span class="st">&#39;inter?reef&#39;</span>), <span class="st">&#39;subtidal soft bottom;deep soft bottom&#39;</span>, tmp),</span>
+<span id="cb66-17"><a href="#cb66-17" aria-hidden="true" tabindex="-1"></a>           <span class="do">### assume &quot;interreefal&quot; refers to sediment</span></span>
+<span id="cb66-18"><a href="#cb66-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">ifelse</span>(tmp <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;sea ice&#39;</span>, <span class="st">&#39;ice edge&#39;</span>), <span class="st">&#39;sea ice edge&#39;</span>, tmp),</span>
+<span id="cb66-19"><a href="#cb66-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">tmp =</span> <span class="fu">ifelse</span>(<span class="fu">str_detect</span>(tmp, <span class="st">&#39;estuar&#39;</span>), <span class="st">&#39;estuary&#39;</span>, tmp),</span>
+<span id="cb66-20"><a href="#cb66-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">valid =</span> <span class="fu">str_detect</span>(tmp, hab_vals)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-21"><a href="#cb66-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb66-22"><a href="#cb66-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">str_extract_all</span>(tmp, hab_vals),</span>
+<span id="cb66-23"><a href="#cb66-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait_val_clean =</span> <span class="fu">ifelse</span>(<span class="fu">is_empty</span>(trait_val_clean), tmp, trait_val_clean)) <span class="sc">%&gt;%</span></span>
+<span id="cb66-24"><a href="#cb66-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(trait_val_clean) <span class="sc">%&gt;%</span></span>
+<span id="cb66-25"><a href="#cb66-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_up_mess</span>()</span></code></pre></div>
+<div id="valid-habitats" class="section level4" number="3.4.27.1">
+<h4><span class="header-section-number">3.4.27.1</span> valid habitats</h4>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>spp_data_habs <span class="sc">%&gt;%</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">%in%</span> hab_vals_raw<span class="sc">$</span>hab_type) <span class="sc">%&gt;%</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>()</span></code></pre></div>
 <pre><code>## .
 ##                beach              coastal    continental shelf 
 ##                  114                   37                   39 
@@ -1758,12 +1778,12 @@ div.tocify {
 ##        surface water 
 ##                  589</code></pre>
 </div>
-<div id="unmatched-habitats" class="section level4" number="3.4.26.2">
-<h4><span class="header-section-number">3.4.26.2</span> unmatched habitats</h4>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>spp_data_habs <span class="sc">%&gt;%</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>trait_val_clean <span class="sc">%in%</span> hab_vals_raw<span class="sc">$</span>hab_type) <span class="sc">%&gt;%</span></span>
-<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span></span>
-<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>()</span></code></pre></div>
+<div id="unmatched-habitats" class="section level4" number="3.4.27.2">
+<h4><span class="header-section-number">3.4.27.2</span> unmatched habitats</h4>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>spp_data_habs <span class="sc">%&gt;%</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>trait_val_clean <span class="sc">%in%</span> hab_vals_raw<span class="sc">$</span>hab_type) <span class="sc">%&gt;%</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>  .<span class="sc">$</span>trait_val_clean <span class="sc">%&gt;%</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>()</span></code></pre></div>
 <pre><code>## .
 ##                                                               adults fw 
 ##                                                                       1 
@@ -1823,8 +1843,6 @@ div.tocify {
 ##                                                                       1 
 ##                                                                 neritic 
 ##                                                                       1 
-##                                                                      no 
-##                                                                     352 
 ##                                                                   ocean 
 ##                                                                       2 
 ##                                                                    reef 
@@ -1857,8 +1875,6 @@ div.tocify {
 ##                                                                       1 
 ##                                                                      sw 
 ##                                                                       2 
-##                                                                 unknown 
-##                                                                       7 
 ##                                                                     yes 
 ##                                                                      28</code></pre>
 </div>
@@ -1866,114 +1882,116 @@ div.tocify {
 </div>
 <div id="combine-into-a-relatively-clean-df" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> combine into a relatively clean df</h2>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>cleaned_traits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;zone&#39;</span>, <span class="st">&#39;adult mobility&#39;</span>, </span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;fecundity&#39;</span>,</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;planktonic larval duration (pld) exposure&#39;</span>,</span>
-<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;feeding larva (post-hatching metamorphosis)&#39;</span>,</span>
-<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;reproductive strategy&#39;</span>,</span>
-<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;parental investment&#39;</span>,</span>
-<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;global population size&#39;</span>,</span>
-<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;max age&#39;</span>,</span>
-<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;depth (min/max)&#39;</span>,</span>
-<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;number of sites&#39;</span>,</span>
-<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;number of sites, incl. terrestrial wetlands&#39;</span>,</span>
-<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;eoo (range)&#39;</span>,</span>
-<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;age to 1st reproduction/generation time&#39;</span>,</span>
-<span id="cb69-14"><a href="#cb69-14" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;lifetime # reproductive opportunities&#39;</span>,</span>
-<span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;thermal - sensitivity to ocean warming - max temps tolerated&#39;</span>,</span>
-<span id="cb69-16"><a href="#cb69-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;thermal - sensitivity to heat spikes/heat waves&#39;</span>,</span>
-<span id="cb69-17"><a href="#cb69-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;extreme pressure wave sensitive structures&#39;</span>,</span>
-<span id="cb69-18"><a href="#cb69-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;adult body mass/body size&#39;</span>,</span>
-<span id="cb69-19"><a href="#cb69-19" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;ph&#39;</span>,</span>
-<span id="cb69-20"><a href="#cb69-20" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;photosynthetic&#39;</span>,</span>
-<span id="cb69-21"><a href="#cb69-21" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;dissolved oxygen&#39;</span>,</span>
-<span id="cb69-22"><a href="#cb69-22" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;biomineral&#39;</span>,</span>
-<span id="cb69-23"><a href="#cb69-23" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;calcium carbonate structure location&#39;</span>,</span>
-<span id="cb69-24"><a href="#cb69-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;within-stage dependent habitats + condition&#39;</span>,</span>
-<span id="cb69-25"><a href="#cb69-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;across-stage dependent habitats + condition&#39;</span>,</span>
-<span id="cb69-26"><a href="#cb69-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;navigation requirements (sound or light, or magnetic)&#39;</span>)</span>
-<span id="cb69-27"><a href="#cb69-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-28"><a href="#cb69-28" aria-hidden="true" tabindex="-1"></a>spp_data_clean <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
-<span id="cb69-29"><a href="#cb69-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>trait <span class="sc">%in%</span> cleaned_traits) <span class="sc">%&gt;%</span></span>
-<span id="cb69-30"><a href="#cb69-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(trait, <span class="st">&#39;post-birth/hatching.+dependence&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb69-31"><a href="#cb69-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">clean_trait</span>(trait_value)) <span class="sc">%&gt;%</span></span>
-<span id="cb69-32"><a href="#cb69-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_up_mess</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb69-33"><a href="#cb69-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_zones) <span class="sc">%&gt;%</span></span>
-<span id="cb69-34"><a href="#cb69-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_mobility) <span class="sc">%&gt;%</span></span>
-<span id="cb69-35"><a href="#cb69-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_depth) <span class="sc">%&gt;%</span></span>
-<span id="cb69-36"><a href="#cb69-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_thermal) <span class="sc">%&gt;%</span></span>
-<span id="cb69-37"><a href="#cb69-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_ph) <span class="sc">%&gt;%</span></span>
-<span id="cb69-38"><a href="#cb69-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_photo) <span class="sc">%&gt;%</span></span>
-<span id="cb69-39"><a href="#cb69-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_biomin) <span class="sc">%&gt;%</span></span>
-<span id="cb69-40"><a href="#cb69-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_bodysize) <span class="sc">%&gt;%</span></span>
-<span id="cb69-41"><a href="#cb69-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_fecund) <span class="sc">%&gt;%</span></span>
-<span id="cb69-42"><a href="#cb69-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_par_dep) <span class="sc">%&gt;%</span></span>
-<span id="cb69-43"><a href="#cb69-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_pop) <span class="sc">%&gt;%</span></span>
-<span id="cb69-44"><a href="#cb69-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_prs) <span class="sc">%&gt;%</span></span>
-<span id="cb69-45"><a href="#cb69-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_gen_time) <span class="sc">%&gt;%</span></span>
-<span id="cb69-46"><a href="#cb69-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_reprod_opps) <span class="sc">%&gt;%</span></span>
-<span id="cb69-47"><a href="#cb69-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_reprod_strategy) <span class="sc">%&gt;%</span></span>
-<span id="cb69-48"><a href="#cb69-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_nsite) <span class="sc">%&gt;%</span></span>
-<span id="cb69-49"><a href="#cb69-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_eoo) <span class="sc">%&gt;%</span></span>
-<span id="cb69-50"><a href="#cb69-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_pld) <span class="sc">%&gt;%</span></span>
-<span id="cb69-51"><a href="#cb69-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_feeding) <span class="sc">%&gt;%</span></span>
-<span id="cb69-52"><a href="#cb69-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_do) <span class="sc">%&gt;%</span></span>
-<span id="cb69-53"><a href="#cb69-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_parent) <span class="sc">%&gt;%</span></span>
-<span id="cb69-54"><a href="#cb69-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_age) <span class="sc">%&gt;%</span></span>
-<span id="cb69-55"><a href="#cb69-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_nav_separated) <span class="sc">%&gt;%</span></span>
-<span id="cb69-56"><a href="#cb69-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_biomass_removal) <span class="sc">%&gt;%</span></span>
-<span id="cb69-57"><a href="#cb69-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_sst_rise) <span class="sc">%&gt;%</span></span>
-<span id="cb69-58"><a href="#cb69-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_habs) <span class="sc">%&gt;%</span></span>
-<span id="cb69-59"><a href="#cb69-59" aria-hidden="true" tabindex="-1"></a>  <span class="do">### split and unnest, trim and clean:</span></span>
-<span id="cb69-60"><a href="#cb69-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">str_split</span>(trait_val_clean, <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb69-61"><a href="#cb69-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(trait_val_clean) <span class="sc">%&gt;%</span></span>
-<span id="cb69-62"><a href="#cb69-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sheet))</span>
-<span id="cb69-63"><a href="#cb69-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-64"><a href="#cb69-64" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span> <span class="fu">select</span>(trait, trait_value, trait_val_clean) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span>
-<span id="cb69-65"><a href="#cb69-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-66"><a href="#cb69-66" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span></span>
-<span id="cb69-67"><a href="#cb69-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sheet, trait) <span class="sc">%&gt;%</span></span>
-<span id="cb69-68"><a href="#cb69-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_spp =</span> <span class="fu">n_distinct</span>(spp_gp)) <span class="sc">%&gt;%</span></span>
-<span id="cb69-69"><a href="#cb69-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb69-70"><a href="#cb69-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(<span class="at">trait =</span> <span class="fu">unique</span>(spp_data_clean<span class="sc">$</span>trait))</span>
-<span id="cb69-71"><a href="#cb69-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb69-72"><a href="#cb69-72" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span></span>
-<span id="cb69-73"><a href="#cb69-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sheet, trait) <span class="sc">%&gt;%</span></span>
-<span id="cb69-74"><a href="#cb69-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_traits =</span> <span class="fu">n_distinct</span>(trait)) </span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>cleaned_traits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;zone&#39;</span>, <span class="st">&#39;adult mobility&#39;</span>, </span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;fecundity&#39;</span>,</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;respiration structures&#39;</span>,</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;planktonic larval duration (pld) exposure&#39;</span>,</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;feeding larva (post-hatching metamorphosis)&#39;</span>,</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;reproductive strategy&#39;</span>,</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;parental investment&#39;</span>,</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;global population size&#39;</span>,</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;max age&#39;</span>,</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;depth (min/max)&#39;</span>,</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;number of sites&#39;</span>,</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;number of sites, incl. terrestrial wetlands&#39;</span>,</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;eoo (range)&#39;</span>,</span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;age to 1st reproduction/generation time&#39;</span>,</span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;lifetime # reproductive opportunities&#39;</span>,</span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;thermal - sensitivity to ocean warming - max temps tolerated&#39;</span>,</span>
+<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;thermal - sensitivity to heat spikes/heat waves&#39;</span>,</span>
+<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;extreme pressure wave sensitive structures&#39;</span>,</span>
+<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;adult body mass/body size&#39;</span>,</span>
+<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;ph&#39;</span>,</span>
+<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;photosynthetic&#39;</span>,</span>
+<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;dissolved oxygen&#39;</span>,</span>
+<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;biomineral&#39;</span>,</span>
+<span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;calcium carbonate structure location&#39;</span>,</span>
+<span id="cb71-25"><a href="#cb71-25" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;within-stage dependent habitats + condition&#39;</span>,</span>
+<span id="cb71-26"><a href="#cb71-26" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;across-stage dependent habitats + condition&#39;</span>,</span>
+<span id="cb71-27"><a href="#cb71-27" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&#39;navigation requirements (sound or light, or magnetic)&#39;</span>)</span>
+<span id="cb71-28"><a href="#cb71-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-29"><a href="#cb71-29" aria-hidden="true" tabindex="-1"></a>spp_data_clean <span class="ot">&lt;-</span> raw_data_df <span class="sc">%&gt;%</span></span>
+<span id="cb71-30"><a href="#cb71-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>trait <span class="sc">%in%</span> cleaned_traits) <span class="sc">%&gt;%</span></span>
+<span id="cb71-31"><a href="#cb71-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(trait, <span class="st">&#39;post-birth/hatching.+dependence&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb71-32"><a href="#cb71-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">clean_trait</span>(trait_value)) <span class="sc">%&gt;%</span></span>
+<span id="cb71-33"><a href="#cb71-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_up_mess</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb71-34"><a href="#cb71-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_zones) <span class="sc">%&gt;%</span></span>
+<span id="cb71-35"><a href="#cb71-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_mobility) <span class="sc">%&gt;%</span></span>
+<span id="cb71-36"><a href="#cb71-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_depth) <span class="sc">%&gt;%</span></span>
+<span id="cb71-37"><a href="#cb71-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_thermal) <span class="sc">%&gt;%</span></span>
+<span id="cb71-38"><a href="#cb71-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_ph) <span class="sc">%&gt;%</span></span>
+<span id="cb71-39"><a href="#cb71-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_photo) <span class="sc">%&gt;%</span></span>
+<span id="cb71-40"><a href="#cb71-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_biomin) <span class="sc">%&gt;%</span></span>
+<span id="cb71-41"><a href="#cb71-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_bodysize) <span class="sc">%&gt;%</span></span>
+<span id="cb71-42"><a href="#cb71-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_fecund) <span class="sc">%&gt;%</span></span>
+<span id="cb71-43"><a href="#cb71-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_par_dep) <span class="sc">%&gt;%</span></span>
+<span id="cb71-44"><a href="#cb71-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_pop) <span class="sc">%&gt;%</span></span>
+<span id="cb71-45"><a href="#cb71-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_prs) <span class="sc">%&gt;%</span></span>
+<span id="cb71-46"><a href="#cb71-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_gen_time) <span class="sc">%&gt;%</span></span>
+<span id="cb71-47"><a href="#cb71-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_reprod_opps) <span class="sc">%&gt;%</span></span>
+<span id="cb71-48"><a href="#cb71-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_reprod_strategy) <span class="sc">%&gt;%</span></span>
+<span id="cb71-49"><a href="#cb71-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_nsite) <span class="sc">%&gt;%</span></span>
+<span id="cb71-50"><a href="#cb71-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_eoo) <span class="sc">%&gt;%</span></span>
+<span id="cb71-51"><a href="#cb71-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_pld) <span class="sc">%&gt;%</span></span>
+<span id="cb71-52"><a href="#cb71-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_feeding) <span class="sc">%&gt;%</span></span>
+<span id="cb71-53"><a href="#cb71-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_do) <span class="sc">%&gt;%</span></span>
+<span id="cb71-54"><a href="#cb71-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_parent) <span class="sc">%&gt;%</span></span>
+<span id="cb71-55"><a href="#cb71-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_age) <span class="sc">%&gt;%</span></span>
+<span id="cb71-56"><a href="#cb71-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_nav_separated) <span class="sc">%&gt;%</span></span>
+<span id="cb71-57"><a href="#cb71-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_resp_str) <span class="sc">%&gt;%</span></span>
+<span id="cb71-58"><a href="#cb71-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_biomass_removal) <span class="sc">%&gt;%</span></span>
+<span id="cb71-59"><a href="#cb71-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_sst_rise) <span class="sc">%&gt;%</span></span>
+<span id="cb71-60"><a href="#cb71-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(spp_data_habs) <span class="sc">%&gt;%</span></span>
+<span id="cb71-61"><a href="#cb71-61" aria-hidden="true" tabindex="-1"></a>  <span class="do">### split and unnest, trim and clean:</span></span>
+<span id="cb71-62"><a href="#cb71-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_clean =</span> <span class="fu">str_split</span>(trait_val_clean, <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb71-63"><a href="#cb71-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(trait_val_clean) <span class="sc">%&gt;%</span></span>
+<span id="cb71-64"><a href="#cb71-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sheet))</span>
+<span id="cb71-65"><a href="#cb71-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-66"><a href="#cb71-66" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span> <span class="fu">select</span>(trait, trait_value, trait_val_clean) <span class="sc">%&gt;%</span> <span class="fu">distinct</span>()</span>
+<span id="cb71-67"><a href="#cb71-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-68"><a href="#cb71-68" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span></span>
+<span id="cb71-69"><a href="#cb71-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sheet, trait) <span class="sc">%&gt;%</span></span>
+<span id="cb71-70"><a href="#cb71-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_spp =</span> <span class="fu">n_distinct</span>(spp_gp)) <span class="sc">%&gt;%</span></span>
+<span id="cb71-71"><a href="#cb71-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb71-72"><a href="#cb71-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(<span class="at">trait =</span> <span class="fu">unique</span>(spp_data_clean<span class="sc">$</span>trait))</span>
+<span id="cb71-73"><a href="#cb71-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-74"><a href="#cb71-74" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span></span>
+<span id="cb71-75"><a href="#cb71-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sheet, trait) <span class="sc">%&gt;%</span></span>
+<span id="cb71-76"><a href="#cb71-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n_traits =</span> <span class="fu">n_distinct</span>(trait)) </span></code></pre></div>
 </div>
 <div id="write-out-clean-species-group-sheets" class="section level2" number="3.6">
 <h2><span class="header-section-number">3.6</span> write out clean species group sheets</h2>
 <p>Here we need to recombine multiple trait vals into one line, separate using a semicolon for easy splitting later.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>spp_data_out <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">!=</span> <span class="st">&#39;&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp =</span> <span class="fu">tolower</span>(spp_gp),</span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>         <span class="do">### drop parentheticals with &quot;was&quot; or &quot;incl&quot;:</span></span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">spp_gp =</span> <span class="fu">str_remove_all</span>(spp_gp, <span class="st">&#39;</span><span class="sc">\\</span><span class="st">((was|incl).+?</span><span class="sc">\\</span><span class="st">)&#39;</span>),</span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">spp_gp =</span> <span class="fu">str_split</span>(spp_gp, <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(spp_gp) <span class="sc">%&gt;%</span></span>
-<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp =</span> <span class="fu">str_trim</span>(spp_gp)) <span class="sc">%&gt;%</span></span>
-<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">trait_val_orig =</span> trait_value) <span class="sc">%&gt;%</span></span>
-<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(category, trait, sheet, spp_gp) <span class="sc">%&gt;%</span></span>
-<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_orig =</span> <span class="fu">paste0</span>(trait_val_orig, <span class="at">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(category, trait, sheet, spp_gp, trait_val_orig) <span class="sc">%&gt;%</span></span>
-<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">trait_val_clean =</span> <span class="fu">paste0</span>(trait_val_clean, <span class="at">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>sheets <span class="ot">&lt;-</span> spp_data_out<span class="sc">$</span>sheet <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
-<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_*.csv&#39;</span>))</span>
-<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(s <span class="cf">in</span> sheets) { <span class="do">### s &lt;- sheets[1]</span></span>
-<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a>  spp_gp_data <span class="ot">&lt;-</span> spp_data_out <span class="sc">%&gt;%</span></span>
-<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(sheet <span class="sc">==</span> s) <span class="sc">%&gt;%</span></span>
-<span id="cb70-25"><a href="#cb70-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>trait_val_orig, <span class="sc">-</span>sheet) <span class="sc">%&gt;%</span></span>
-<span id="cb70-26"><a href="#cb70-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(spp_gp, trait_val_clean)</span>
-<span id="cb70-27"><a href="#cb70-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb70-28"><a href="#cb70-28" aria-hidden="true" tabindex="-1"></a>  fstem <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_%s.csv&#39;</span>)</span>
-<span id="cb70-29"><a href="#cb70-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(spp_gp_data, <span class="fu">sprintf</span>(fstem, s))</span>
-<span id="cb70-30"><a href="#cb70-30" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>spp_data_out <span class="ot">&lt;-</span> spp_data_clean <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_val_clean <span class="sc">!=</span> <span class="st">&#39;&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp =</span> <span class="fu">tolower</span>(spp_gp),</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>         <span class="do">### drop parentheticals with &quot;was&quot; or &quot;incl&quot;:</span></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">spp_gp =</span> <span class="fu">str_remove_all</span>(spp_gp, <span class="st">&#39;</span><span class="sc">\\</span><span class="st">((was|incl).+?</span><span class="sc">\\</span><span class="st">)&#39;</span>),</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">spp_gp =</span> <span class="fu">str_split</span>(spp_gp, <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(spp_gp) <span class="sc">%&gt;%</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">spp_gp =</span> <span class="fu">str_trim</span>(spp_gp)) <span class="sc">%&gt;%</span></span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">trait_val_orig =</span> trait_value) <span class="sc">%&gt;%</span></span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(category, trait, sheet, spp_gp) <span class="sc">%&gt;%</span></span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_val_orig =</span> <span class="fu">paste0</span>(trait_val_orig, <span class="at">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(category, trait, sheet, spp_gp, trait_val_orig) <span class="sc">%&gt;%</span></span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">trait_val_clean =</span> <span class="fu">paste0</span>(trait_val_clean, <span class="at">collapse =</span> <span class="st">&#39;;&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>sheets <span class="ot">&lt;-</span> spp_data_out<span class="sc">$</span>sheet <span class="sc">%&gt;%</span> <span class="fu">unique</span>()</span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-20"><a href="#cb72-20" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_*.csv&#39;</span>))</span>
+<span id="cb72-21"><a href="#cb72-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-22"><a href="#cb72-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(s <span class="cf">in</span> sheets) { <span class="do">### s &lt;- sheets[1]</span></span>
+<span id="cb72-23"><a href="#cb72-23" aria-hidden="true" tabindex="-1"></a>  spp_gp_data <span class="ot">&lt;-</span> spp_data_out <span class="sc">%&gt;%</span></span>
+<span id="cb72-24"><a href="#cb72-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(sheet <span class="sc">==</span> s) <span class="sc">%&gt;%</span></span>
+<span id="cb72-25"><a href="#cb72-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="sc">-</span>trait_val_orig, <span class="sc">-</span>sheet) <span class="sc">%&gt;%</span></span>
+<span id="cb72-26"><a href="#cb72-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">spread</span>(spp_gp, trait_val_clean)</span>
+<span id="cb72-27"><a href="#cb72-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb72-28"><a href="#cb72-28" aria-hidden="true" tabindex="-1"></a>  fstem <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">&#39;_raw_data/spp_trait_csvs/spp_traits_%s.csv&#39;</span>)</span>
+<span id="cb72-29"><a href="#cb72-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">write_csv</span>(spp_gp_data, <span class="fu">sprintf</span>(fstem, s))</span>
+<span id="cb72-30"><a href="#cb72-30" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
 
