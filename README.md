@@ -50,6 +50,8 @@ The .Rmd scripts in the root directory should be run in numeric order.  Briefly:
 * `int` includes intermediate files saved during computationally intensive scripts to avoid re-processing and to save time.  These files may be used in multiple scripts.
 * `tmp` is similar to `int` but includes very raw temporary files that are only used in a single script.
 
+![Fig. 1](https://github.com/mapping-marine-spp-vuln/spp_vuln_framework/blob/master/ms_figs/vuln_dist_tx_12x1panel_traitfilled.png)
+
 # Prior release and publication info
 
 Butt, N., Halpern, B. S., O’Hara, C. C., Allcock, A. L., Polidoro, B., Sherman, S., Byrne, M., Birkeland, C., Dwyer, R. G., Frazier, M., Woodworth, B. K., Arango, C. P., Kingsford, M. J., Udyawer, V., Hutchings, P., Scanes, E., McClaren, E. J., Maxwell, S. M., Diaz-Pulido, G., … Klein, C. J. (2022). A trait-based framework for assessing the vulnerability of marine species to human impacts. Ecosphere, 13(2), e3919. https://doi.org/10.1002/ecs2.3919
