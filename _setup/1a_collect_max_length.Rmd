@@ -1,0 +1,340 @@
+---
+title: "Collect length/body size trait"
+author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
+output: 
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: yes
+    number_sections: true
+    theme: cerulean
+    highlight: haddock
+    includes: 
+      in_header: '~/github/src/templates/ohara_hdr.html'
+  pdf_document:
+    toc: true
+---
+
+``` {r setup, echo = TRUE, message = FALSE, warning = FALSE}
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+
+library(oharac)
+library(tidyverse)
+library(here)
+library(rfishbase)
+source(here('common_fxns.R'))
+source('fb_slb_fxns.R')
+
+```
+
+# Summary
+
+Gather data on body length from FishBase and the species vulnerability project.  Gapfill using downfill and upstream-downstream gapfill methodology.
+
+# Data
+
+This script will use processed valid species traits from the species vulnerability project, plus FishBase and SeaLifeBase.
+
+FishBase is a scientific database, and this has the implication - among others - that its use and the use of its contents are free as long as due credit is given.
+
+This may be done at different levels, for which we suggest different forms of citations:
+
+* when referring to FishBase concepts and design, cite its architects (Froese and Pauly 2000);
+* when referring to a set of values extracted from a FishBase table, cite the author(s) of the original data, e.g., "Houde and Zastrow (1993)", or "Welcomme (1988)". To help us track the use of FishBase in the literature, we would appreciate your also citing Froese and Pauly (2000) in an appropriate part of your text, as the source of the information;
+* when discussing the features of a FishBase table, cite the section documenting that table, e.g., "Sa-a et al. (2000)."
+
+## References
+
+* Froese, R. and D. Pauly, Editors. 2000. FishBase 2000: concepts, design and data sources. ICLARM, Los Baños, Laguna, Philippines. 344 p.
+* Houde, E.D. and C.E. Zastrow. 1993. Ecosystem- and taxon-specific dynamic energetics properties of fish larvae assemblages. Bull. Mar. Sci. 53(2):290-335.
+* Sa-a, P., M.L. Palomares and D. Pauly. 2000. The FOOD ITEMS table, p. 182-188. In R. Froese and D. Pauly (eds.) FishBase 2000: concepts, design and data sources. ICLARM, Los Baños, Laguna, Philippines. 344 p.
+* Welcomme, R.L. 1988. International introductions of inland aquatic species. FAO Fish. Tech. Pap. 294, 318 p.
+
+# Methods
+
+## Read in data
+
+Read in data from fishbase/sealifebase, from Species table.
+
+```{r}
+l_spp_fb_f <- here('int/fb_length_spp_raw.csv')
+if(!file.exists(l_spp_fb_f)) {
+  
+  keep_cols <- c('f_bname', 'length')
+  length_spp_fb_raw <- get_fb_slb(fxn = species, 
+                              keep_cols = keep_cols, keep_fxn = contains,
+                              drop_cols = '_ref',    drop_fxn = ends_with)
+  
+  length_spp_fb <- length_spp_fb_raw %>%
+    mutate(across(contains('length'), ~ as.numeric(.x)),
+           spec_code = as.integer(spec_code)) %>%
+    select(spec_code, species, db,
+           length, length_female, 
+           common_length, common_length_f) %>%
+    ### drop rows with no useful values at all...
+    filter(!is.na(length) | !is.na(length_female) | !is.na(common_length) | !is.na(common_length_f)) %>%
+    ### what is up with these NA spec codes?
+    filter(!is.na(spec_code)) %>%
+    distinct() %>%
+    mutate(table = 'species')
+  
+  write_csv(length_spp_fb, l_spp_fb_f)
+}
+
+length_spp_fb <- read_csv(l_spp_fb_f)
+
+```
+
+### Gapfill max length using common length or female length
+
+Because the FishBase/SeaLifeBase species contains multiple columns with length information, use that to help gapfill species where `length` data is NA but `common_length` or `length_female` is not NA.  First remove the outlier of common length = 916000 (_Dermochelys coriacea_ are not nine kilometers long)
+
+``` {r}
+
+length_df_outlier_removed <- length_spp_fb %>%
+    filter(common_length < 2500 | is.na(common_length))
+
+ggplot(length_df_outlier_removed %>%
+         gather(fill_trait, val, common_length, length_female), 
+       aes(x = length, y = val, color = fill_trait)) +
+  geom_point() +
+  geom_smooth(method = 'lm')
+
+x <- lm(common_length ~ length, data = length_df_outlier_removed)
+summary(x)
+
+y <- lm(length_female ~ length, data = length_spp_fb)
+summary(y)
+
+l_c_coeff <- x$coefficients[2]
+l_f_coeff <- y$coefficients[2]
+```
+
+`common_length ~ length` shows intercept of less than 2 cm, coefficient of .54, with p < 2e-16 and R^2^ of 83%.  This has strong potential to gapfill max length to gain an additional ~300 spp.
+
+`length_female ~ length` shows an intercept of 3 cm, a coefficient of .89, with highly significant p values and R^2^ around 92%.  This has strong potential to gapfill max length ~700 spp.
+
+Only 11 spp have no `length` but both `common_length` and `length_female`.
+
+```{r}
+length_lm_fb <- length_spp_fb %>%
+  mutate(l_value = case_when(!is.na(length) ~ length,
+                             !is.na(length_female) ~ round(length_female / l_f_coeff, 2),
+                             !is.na(common_length) ~ round(common_length / l_c_coeff, 2),
+                             TRUE ~ NA_real_)) %>%
+  mutate(l_column = case_when(!is.na(length) ~ 'length',
+                              !is.na(length_female) ~ 'length_female',
+                              !is.na(common_length) ~ 'common_length',
+                              TRUE ~ NA_character_)) %>%
+  select(db, spec_code, species, length = l_value, l_column) %>%
+  distinct()
+```
+
+## Check other tables
+
+These tables were mentioned in SI for Boyce et al. Climate Vulnerability Index
+
+### Morphology
+
+```{r, eval = FALSE}
+l_morpho_fb_f <- here('int/fb_length_morpho_raw.csv')
+if(!file.exists(l_morpho_fb_f)) {
+  
+  keep_cols <- c('f_bname', 'length')
+  length_morpho_fb_raw <- get_fb_slb(fxn = morphology, 
+                              keep_cols = keep_cols, keep_fxn = contains,
+                              drop_cols = '_ref',    drop_fxn = ends_with)
+  
+  length_morpho_fb <- length_morpho_fb_raw %>%
+    select(spec_code, species, db,
+           total_length = totallength, 
+           fork_length  = forklength, 
+           std_length   = standard_length_cm) %>%
+    mutate(across(contains('length'), ~ as.numeric(.x)),
+           spec_code    = as.integer(spec_code),
+           in_spp_table = species %in% length_spp_fb$species) %>%
+    filter(!is.na(total_length) | !is.na(fork_length) | !is.na(std_length)) %>%
+    filter(!is.na(spec_code)) %>%
+    distinct() %>%
+    mutate(table = 'morphology')
+  
+  write_csv(length_morpho_fb, l_morpho_fb_f)
+}
+
+length_morpho_fb <- read_csv(l_morpho_fb_f)
+
+```
+
+The small number of species with `total_length`, `fork_length`, or `standard_length_cm` values in the Morpohology table are already included in the Species table.
+
+### PopLL
+
+```{r, eval = TRUE}
+l_popll_fb_f <- here('int/fb_length_popll_raw.csv')
+if(!file.exists(l_popll_fb_f)) {
+  
+  length_popll_fb_raw <- get_fb_slb(fxn = popll, 
+                              keep_cols = NULL, keep_fxn = contains,
+                              drop_cols = '_ref',    drop_fxn = ends_with)
+  
+  length_popll_fb <- length_popll_fb_raw %>%
+    select(spec_code, species, db, length_max) %>%
+    mutate(length_max = as.numeric(length_max),
+           spec_code  = as.integer(spec_code),
+           in_spp_table = species %in% length_spp_fb$species) %>%
+    filter(!is.na(length_max)) %>%
+    filter(!is.na(spec_code)) %>%
+    distinct() %>%
+    mutate(table = 'popll')
+  
+  write_csv(length_popll_fb, l_popll_fb_f)
+}
+
+length_popll_fb <- read_csv(l_popll_fb_f)
+
+```
+
+A few species here (~55) not included in the Species table...
+
+### PopLW
+
+```{r, eval = TRUE}
+l_poplw_fb_f <- here('int/fb_length_poplw_raw.csv')
+if(!file.exists(l_poplw_fb_f)) {
+  
+  length_poplw_fb_raw <- get_fb_slb(fxn = poplw, 
+                              keep_cols = NULL, keep_fxn = contains,
+                              drop_cols = '_ref',    drop_fxn = ends_with)
+  
+  length_poplw_fb <- length_poplw_fb_raw %>%
+    select(spec_code, species, db, length_max) %>%
+    mutate(length_max = as.numeric(length_max),
+           spec_code  = as.integer(spec_code),
+           in_spp_table = species %in% length_spp_fb$species) %>%
+    filter(!is.na(length_max)) %>%
+    filter(!is.na(spec_code)) %>%
+    distinct() %>%
+    mutate(table = 'poplw')
+  
+  write_csv(length_poplw_fb, l_poplw_fb_f)
+}
+
+length_poplw_fb <- read_csv(l_poplw_fb_f)
+
+```
+
+A few more species here (~293) not included in the Species table...
+
+### PopChar
+
+```{r, eval = TRUE}
+l_popchar_fb_f <- here('int/fb_length_popchar_fb_raw.csv')
+if(!file.exists(l_popchar_fb_f)) {
+  
+  length_popchar_fb_raw <- get_fb_slb(fxn = popchar, 
+                              keep_cols = NULL, keep_fxn = contains,
+                              drop_cols = '_ref',    drop_fxn = ends_with)
+  
+  length_popchar_fb <- length_popchar_fb_raw %>%
+    select(spec_code, species, db, length_max = lmax) %>%
+    mutate(length_max = as.numeric(length_max),
+           spec_code  = as.integer(spec_code),
+           in_spp_table = species %in% length_spp_fb$species) %>%
+    filter(!is.na(length_max)) %>%
+    filter(!is.na(spec_code)) %>%
+    distinct() %>%
+    mutate(table = 'popchar')
+  
+  write_csv(length_popchar_fb, l_popchar_fb_f)
+}
+
+length_popchar_fb <- read_csv(l_popchar_fb_f)
+
+```
+
+Quite a few more species here (~895) not included in the Species table...
+
+### Maturity
+
+```{r, eval = TRUE}
+l_mat_fb_f <- here('int/fb_length_maturity_raw.csv')
+if(!file.exists(l_mat_fb_f)) {
+  
+  length_mat_fb_raw <- get_fb_slb(fxn = maturity, 
+                              keep_cols = NULL, keep_fxn = contains,
+                              drop_cols = '_ref',    drop_fxn = ends_with)
+  
+  length_mat_fb <- length_mat_fb_raw %>%
+    select(spec_code, species, db, length_max = lm) %>%
+    mutate(length_max = as.numeric(length_max),
+           spec_code  = as.integer(spec_code),
+           in_spp_table = species %in% length_spp_fb$species) %>%
+    filter(!is.na(length_max)) %>%
+    filter(!is.na(spec_code)) %>%
+    filter(length_max <= 1500) %>% ### drop absurdly long Balaenoptera borealis
+    distinct() %>%
+    mutate(table = 'maturity')
+  
+  write_csv(length_mat_fb, l_mat_fb_f)
+}
+
+length_mat_fb <- read_csv(l_mat_fb_f)
+
+```
+
+A few more species here (~40) not included in the Species table...
+
+## Gather the tables together
+
+```{r}
+length_fb_all <- length_lm_fb %>%
+  mutate(table = 'species') %>%
+  bind_rows(length_popchar_fb %>% rename(length = length_max)) %>%
+  bind_rows(length_popll_fb %>% rename(length = length_max)) %>%
+  bind_rows(length_poplw_fb %>% rename(length = length_max)) %>%
+  bind_rows(length_mat_fb %>% rename(length = length_max)) %>%
+  filter(!is.na(length)) %>%
+  group_by(db, spec_code, species) %>%
+  arrange(desc(length)) %>%
+  summarize(table = first(table),
+            max_length  = max(length),
+            mean_length = mean(length),
+            med_length  = median(length),
+            n_length    = n_distinct(length)) %>%
+  mutate(mean_med_ratio = mean_length/med_length)
+
+ggplot(length_fb_all, aes(x = med_length, y = max_length)) +
+  geom_point(aes(color = table)) +
+  geom_point(aes(y = mean_length, fill = table), shape = 21)
+```
+
+It seems that some records are rather absurdly large, probably owing to mismatches in units (e.g., _Hucho taimen_ salmon at 2000 cm? probably more like 200 cm) or measuring different aspects (e.g., _Cyanea capillata_ lion's mane jelly, max = 3657 cm is probably length of tentacles while median = 229 cm is probably diameter of disk).  For this reason, conservatively let's use the mean or median value where multiple values are available.
+
+```{r}
+length_fb <- length_fb_all %>%
+  select(db, spec_code, species, length = med_length) %>%
+  distinct()
+```
+
+
+## Use WoRMS API to resolve names
+
+``` {r}
+
+record_df <- collect_records(length_fb, field = 'length', 
+                             file_tag = 'resolve_names_fb_length') %>%
+  filter(aphia_id != -9999)
+
+length_fb_fixed <- length_fb %>%
+  left_join(record_df, by = c('species' = 'orig_sciname')) %>%
+  mutate(species = ifelse(!is.na(valid_name), valid_name, species)) %>%
+  mutate(species = str_extract(species, '^[a-z]+ [a-z]+')) %>%
+    ### this drops subspp and var. names
+  select(-aphia_id, -valid_name) %>%
+  distinct()
+
+write_csv(length_fb_fixed, here('_data/fb_traits/trait_length_cm.csv'))
+```
+

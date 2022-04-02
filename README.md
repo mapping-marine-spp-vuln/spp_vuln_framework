@@ -1,13 +1,19 @@
-# Code and data for "A trait-based framework for assessing the vulnerability of marine species to human impacts" 
+# NOTE: UPDATED SINCE PUBLICATION
 
-by Butt, Nathalie; Halpern, Benjamin; O'Hara, Casey; Allcock, Louise; Polidoro, Beth; Sherman, Samantha; Byrne, Maria; Birkeland, Charles; Dwyer, Ross; Frazier, Melanie; Woodworth, Brad; Arango, Claudia; Kingsford, Michael; Udwayer, Vinay; Hutchings, Pat; Scanes, Elliot; McLaren, Emily Jane; Maxwell, Sara; Diaz-Pulido, Guillermo; Dugan, Emma; Simmons, Blake; Wenger, Amelia; Klein, Carissa.
+This repository has been updated since the publication of  in Ecosphere.  If you are looking for the data and code to support that publication, see:
 
-## Abstract
+* `publication` branch here: https://github.com/mapping-marine-spp-vuln/spp_vuln_framework/tree/publication
+* Release v1.0.0 here: https://github.com/mapping-marine-spp-vuln/spp_vuln_framework/releases/tag/v1.0.0
 
-Marine species and ecosystems are widely affected by anthropogenic stressors, ranging from pollution and fishing to climate change. Comprehensive assessments of how species and ecosystems are impacted by anthropogenic stressors are critical for guiding conservation and management investments.
-While previous global assessments of risk or vulnerability have focused on habitats, insights into how susceptibility to different stressors varies at a species level are required to predict how biodiversity will change under human pressure. We present a novel framework that uses life-history traits to assess species’ vulnerability to stressors, which we compare across ~32,000 species from 12 taxonomic groups.
-Using expert elicitation and literature review, we assessed every combination of each of 42 traits and 22 anthropogenic stressors to calculate each species’ or species group’s sensitivity and adaptive capacity to stressors, and then use these assessments to derive their overall relative vulnerability.
-The stressors with the greatest potential impact were related to biomass removal, pollution, and climate change. The taxa with the highest vulnerabilities across the range of stressors were molluscs, corals, and echinoderms, while elasmobranchs had the highest vulnerability to fishing-related stressors. Traits likely to confer vulnerability to climate change stressors were related to the presence of calcium carbonate structures, and whether a species exists across the interface of marine, terrestrial, and atmospheric realms. Traits likely to confer vulnerability to pollution stressors were to do with planktonic state, organism size and respiration. Such a replicable, broadly applicable method is useful for informing ocean conservation and management decisions at a range of scales. Our framework for assessing the vulnerability of marine species is the first critical step towards generating cumulative human impact maps focused on species, rather than habitats.
+## What has been updated?
+
+The updates since publication retool the analysis to downfill and gapfill traits, rather than vulnerability scores.  Because the original project was based largely on species traits provided by taxonomic experts, sometimes at the species level, but sometimes at higher taxonomic ranks or based on representative species (i.e., a species that is more broadly representative of an entire genus, family, or order), imputation and gapfilling was used to expand the scoring for more species.
+
+The new analysis is based on filling of traits rather than calculated vulnerability scores, allowing for additional trait sources to be included at finer taxonomic resolution prior to calculating vulnerability scores, allowing for the vulnerability score of a particular species to be calculated partly from species-specific information and partly from information provided at higher taxonomic ranks.  
+
+Additional traits scored at species level include thermal tolerances (from AquaMaps thermal envelopes), max body size, fecundity, age to maturity (from FishBase/SeaLifeBase), and EOO range (calculated from species range maps).  The FB/SLB traits are not comprehensive; the thermal ranges cover all AquaMaps species but not necessarily those mapped in IUCN; EOO range is comprehensive across all mapped species.
+
+These traits include those most likely to vary within a taxonomic group, so capturing species-specific values where available improves the quality of the vulnerability scoring when taxonomic imputation is required.
 
 ## Organization of repository
 
@@ -43,3 +49,15 @@ The .Rmd scripts in the root directory should be run in numeric order.  Briefly:
 * `figs` includes auto-generated figures for other scripts; these are for data exploration purposes, not for inclusion in manuscript.
 * `int` includes intermediate files saved during computationally intensive scripts to avoid re-processing and to save time.  These files may be used in multiple scripts.
 * `tmp` is similar to `int` but includes very raw temporary files that are only used in a single script.
+
+## Prior release and publication info
+
+Butt, N., Halpern, B. S., O’Hara, C. C., Allcock, A. L., Polidoro, B., Sherman, S., Byrne, M., Birkeland, C., Dwyer, R. G., Frazier, M., Woodworth, B. K., Arango, C. P., Kingsford, M. J., Udyawer, V., Hutchings, P., Scanes, E., McClaren, E. J., Maxwell, S. M., Diaz-Pulido, G., … Klein, C. J. (2022). A trait-based framework for assessing the vulnerability of marine species to human impacts. Ecosphere, 13(2), e3919. https://doi.org/10.1002/ecs2.3919
+
+### Abstract
+
+Marine species and ecosystems are widely affected by anthropogenic stressors, ranging from pollution and fishing to climate change. Comprehensive assessments of how species and ecosystems are impacted by anthropogenic stressors are critical for guiding conservation and management investments.
+While previous global assessments of risk or vulnerability have focused on habitats, insights into how susceptibility to different stressors varies at a species level are required to predict how biodiversity will change under human pressure. We present a novel framework that uses life-history traits to assess species’ vulnerability to stressors, which we compare across ~32,000 species from 12 taxonomic groups.
+Using expert elicitation and literature review, we assessed every combination of each of 42 traits and 22 anthropogenic stressors to calculate each species’ or species group’s sensitivity and adaptive capacity to stressors, and then use these assessments to derive their overall relative vulnerability.
+The stressors with the greatest potential impact were related to biomass removal, pollution, and climate change. The taxa with the highest vulnerabilities across the range of stressors were molluscs, corals, and echinoderms, while elasmobranchs had the highest vulnerability to fishing-related stressors. Traits likely to confer vulnerability to climate change stressors were related to the presence of calcium carbonate structures, and whether a species exists across the interface of marine, terrestrial, and atmospheric realms. Traits likely to confer vulnerability to pollution stressors were to do with planktonic state, organism size and respiration. Such a replicable, broadly applicable method is useful for informing ocean conservation and management decisions at a range of scales. Our framework for assessing the vulnerability of marine species is the first critical step towards generating cumulative human impact maps focused on species, rather than habitats.
+

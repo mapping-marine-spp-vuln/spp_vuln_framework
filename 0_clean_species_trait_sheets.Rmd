@@ -22,7 +22,8 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 ### helper functions and setup
 library(oharac) ### remotes::install_github('oharac/oharac')
-oharac::setup()
+library(tidyverse)
+library(here)
 
 ```
 
@@ -661,8 +662,8 @@ spp_data_fecund <- raw_data_df %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(fecund_lims %>% select(gp, trait_val_clean = trait_value), by = 'gp') %>%
@@ -766,8 +767,8 @@ spp_data_pop3 <- spp_data_pop1 %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(pop_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
@@ -848,8 +849,8 @@ spp_data_age2 <- spp_data_age %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(age_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
@@ -956,8 +957,8 @@ spp_data_gen_time2 <- spp_data_gen_time %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(gen_time_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
@@ -1036,8 +1037,8 @@ spp_data_reprod2 <- spp_data_reprod_opps %>%
   mutate(gp_max = ifelse(gp_min > gp_max, gp_min, gp_max),
          gp = NA) %>% ### tmp
   distinct() %>%
-  group_by(spp_gp, sheet, tmp_sep) %>%
-  complete(gp = gp_min:gp_max, nesting(category, trait, trait_value, spp_gp, sheet)) %>%
+  group_by(spp_gp, sheet, tmp_sep, category, trait, trait_value) %>%
+  complete(gp = min(gp_min):max(gp_max)) %>%
   ungroup() %>%
   filter(!is.na(gp)) %>%
   left_join(reprod_lims %>% select(gp, trait_val_clean = trait_value) %>% distinct(), by = 'gp') %>%
@@ -1265,6 +1266,25 @@ spp_data_nav_separated <- spp_data_nav %>%
   
 ```
 
+### Respiration structures trait
+
+``` {r clean respiration structures trait}
+spp_data_resp_str <- raw_data_df %>%
+  filter(str_detect(trait, '^respiration')) %>%
+  filter(!is.na(trait_value)) %>%
+  ### fix typo and assign "cuticle" to "skin":
+  mutate(trait_value = str_replace(trait_value, 'diffusiion', 'diffusion'),
+         trait_value = str_replace(trait_value, 'cuticle', 'skin')) %>%
+  ### separate multiple values
+  mutate(tmp = str_split(trait_value, ';| or |/')) %>%
+  unnest(tmp) %>%
+  mutate(trait_val_clean = clean_trait(tmp)) %>%
+  clean_up_mess()
+  
+spp_data_resp_str$trait_val_clean %>% table()
+
+```
+
 
 ### Biomass removal trait
 
@@ -1294,6 +1314,7 @@ spp_data_sst_rise <- raw_data_df %>%
   
 ```
 
+
 ### habitats
 
 ```{r clean up habitats}
@@ -1309,7 +1330,7 @@ spp_data_habs <- raw_data_df %>%
   filter(!is.na(trait_value)) %>%
   mutate(tmp = str_split(trait_value, ';| or |/|,|-')) %>%
   unnest(tmp) %>%
-  filter(tmp != '') %>%
+  filter(!tmp %in% c('', 'no', 'unknown')) %>%
   mutate(tmp = clean_trait(tmp),
          tmp = str_replace_all(tmp, 'soft benthic|soft sediment', 'soft bottom'),
          tmp = ifelse(str_detect(tmp, 'inter?reef'), 'subtidal soft bottom;deep soft bottom', tmp),
@@ -1349,6 +1370,7 @@ spp_data_habs %>%
 
 cleaned_traits <- c('zone', 'adult mobility', 
                     'fecundity',
+                    'respiration structures',
                     'planktonic larval duration (pld) exposure',
                     'feeding larva (post-hatching metamorphosis)',
                     'reproductive strategy',
@@ -1402,6 +1424,7 @@ spp_data_clean <- raw_data_df %>%
   bind_rows(spp_data_parent) %>%
   bind_rows(spp_data_age) %>%
   bind_rows(spp_data_nav_separated) %>%
+  bind_rows(spp_data_resp_str) %>%
   bind_rows(spp_data_biomass_removal) %>%
   bind_rows(spp_data_sst_rise) %>%
   bind_rows(spp_data_habs) %>%

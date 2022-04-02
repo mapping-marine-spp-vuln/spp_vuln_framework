@@ -22,7 +22,8 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
                       echo = TRUE, message = FALSE, warning = FALSE)
 
 library(oharac) ### remotes::install_github('oharac/oharac')
-oharac::setup()
+library(tidyverse)
+library(here)
 
 ```
 
@@ -59,31 +60,42 @@ spp_data_raw <- lapply(spp_csvs, FUN = process_csv) %>%
 
 ```
 
-Get the valid trait values from the key and bind with the noted traits to compare validity.  For non-mutually-exclusive traits, if a species or group has multiple values noted, calculate a probability of each value.  For example, if fecundity for a genus is scored as "<1, 1-2, 2-5" score it as if a species in that genus has a 33.3% probability of any particular value.
+Get the valid trait values from the key and bind with the noted traits to compare validity.  Clean up habitats by replacing non-valid instances with "other" to avoid underweighting valid habitats.  For non-mutually-exclusive traits, if a species or group has multiple values noted, calculate a probability of each value.  For example, if fecundity for a genus is scored as "<1, 1-2, 2-5" score it as if a species in that genus has a 33.3% probability of any particular value.
 
 ``` {r}
 
 traitvals_valid <- read_csv('_data/trait_vals_valid.csv')
 
-non_mut_excl <- c('adult_mobility', 'biomineral', 
-                  'calcium_carbonate_structure_location', 
-                  'depth_min_max', 'respiration_structures', 
-                  'across_stage_dependent_habitats_condition', 
-                  'within_stage_dependent_habitats_condition', 'zone')
-
 ### These traits are not being used
 drop_traits <- c('if one/few, size')
 
+### Convert non-matching habitats to "other"
+valid_habs <- traitvals_valid %>%
+  filter(str_detect(trait, 'habitats')) %>%
+  pull(trait_value) %>% unique()
+hab_fix_df <- spp_data_raw %>%
+  filter(str_detect(trait, 'habitats')) %>%
+  select(category, trait, trait_value) %>%
+  distinct() %>%
+  mutate(val_new = case_when(trait_value %in% valid_habs ~ trait_value,
+                             TRUE ~ 'other'))
+
 spp_validcheck <- spp_data_raw %>%
   filter(!trait %in% drop_traits) %>%
+  ### fix "other" habitats
+  left_join(hab_fix_df, by = c('category', 'trait', 'trait_value')) %>%
+  mutate(trait_value = ifelse(!is.na(val_new), val_new, trait_value)) %>%
+  select(-val_new) %>%
+  distinct() %>%
+  ### identify valid trait values to keep
   left_join(traitvals_valid %>% 
               mutate(valid = TRUE), ### add flag to detect unmatched values
             by = c('category', 'trait', 'trait_value')) %>%
   filter(!is.na(spp_gp)) %>%
-  filter(trait_value != '') %>%
+  filter(trait_value != '' & !is.na(trait_value)) %>%
   group_by(taxon) %>%
   mutate(n_spp_gps = n_distinct(spp_gp)) %>%
-  ### keep any note of dependent habitat for now...
+  ### keep "other" habitats as well
   mutate(valid = ifelse(str_detect(trait, 'dependent habitats'), TRUE, valid))
 
 spp_invalid <- spp_validcheck %>%
@@ -91,6 +103,12 @@ spp_invalid <- spp_validcheck %>%
   filter(trait_value != 'na') %>%
   select(-valid)
 write_csv(spp_invalid, 'invalid_spp_trait_values.csv')
+
+non_mut_excl <- c('adult_mobility', 'biomineral', 
+                  'calcium_carbonate_structure_location', 
+                  'depth_min_max', 'respiration_structures', 
+                  'across_stage_dependent_habitats_condition', 
+                  'within_stage_dependent_habitats_condition', 'zone')
 
 spp_valid <- spp_validcheck %>%
   filter(valid) %>%
@@ -105,7 +123,7 @@ spp_valid <- spp_validcheck %>%
   ungroup()
 ```
 
-Include thermal tolerance ranges from AquaMaps envelopes
+Include thermal tolerance ranges from AquaMaps envelopes; these are just temporary and will be overwritten at the species level after downfilling.
 ```{r}
 spp_gps_df <- spp_valid %>%
   select(taxon, spp_gp, n_spp_gps) %>%
