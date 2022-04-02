@@ -65,3 +65,9 @@ The stressors with the greatest potential impact were related to biomass removal
 Traits likely to confer vulnerability to climate change stressors were related to the presence of calcium carbonate structures, and whether a species exists across the interface of marine, terrestrial, and atmospheric realms.
 Traits likely to confer vulnerability to pollution stressors were related to planktonic state, organism size, and respiration. Such a replicable, broadly applicable method is useful for informing ocean conservation and management decisions at a range of scales, and the framework is amenable to further testing and improvement.
 Our framework for assessing the vulnerability of marine species is the first critical step toward generating cumulative human impact maps based on comprehensive assessments of species, rather than habitats.
+
+## Data and code to support this publication
+
+* `publication` branch here: https://github.com/mapping-marine-spp-vuln/spp_vuln_framework/tree/publication
+* Release v1.0.0 here: https://github.com/mapping-marine-spp-vuln/spp_vuln_framework/releases/tag/v1.0.0
+
