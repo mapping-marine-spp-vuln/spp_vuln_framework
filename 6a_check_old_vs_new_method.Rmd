@@ -679,6 +679,34 @@ write_csv(spp_vuln_resc_all_scores,
 
 ## Time for some plots!
 
+### Compare trait-filling vs. score-filling results
+
+```{r}
+vuln_scores_by_trait <- get_spp_vuln() %>%
+  rename(vuln_by_trait = vuln)
+
+vuln_scores_by_value <- fread(here_anx('post_gapfill/vuln_gapfilled_all_tx.csv')) %>%
+  left_join(fread(here_anx('post_gapfill/vuln_gapfilled_all_score.csv'))) %>%
+  select(-vuln_gf_id) %>%
+  gather(stressor, vuln_by_score, air_temp:wildlife_strike) %>%
+  select(species, taxon, stressor, vuln_by_score) %>%
+  distinct()
+
+strs_to_keep <- c('biomass_removal', 'bycatch', 
+                  'eutrophication_nutrient_pollution',
+                  'habitat_loss_degradation', 'light_pollution',
+                  'marine_heat_waves', 'oa', 'plastic_pollution_microplastic',
+                  'slr', 'sst_rise', 'uv', 'wildlife_strike')
+vuln_join <- vuln_scores_by_trait %>%
+  inner_join(vuln_scores_by_value, by = c('species', 'taxon', 'stressor')) %>%
+  filter(stressor %in% strs_to_keep)
+
+ggplot(vuln_join, aes(x = vuln_by_score, y = vuln_by_trait, color = taxon)) +
+  geom_abline(slope = 1, intercept = 0, color = 'red') +
+  geom_point() +
+  facet_wrap(~ stressor)
+```
+
 ### Vulnerability per stressor by spp gp
 
 ``` {r, results = 'asis'}
