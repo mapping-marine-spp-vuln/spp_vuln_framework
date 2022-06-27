@@ -23,6 +23,7 @@ knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.path = 'figs/',
 
 library(oharac) ### remotes::install_github('oharac/oharac')
 library(tidyverse)
+library(data.table)
 library(here)
 source(here('common_fxns.R'))
 ```
@@ -53,7 +54,7 @@ Then in subsequent scripts:
 * Continue with family level gapfilling, then order, then class
     * Use only direct-match species? or gapfilled values?  The latter will account for weighting lower ranks by different species counts in these lower ranks - e.g., a family with one small genus and one larger genus will have values weighted more toward the large genus.
 
-* Read in all species 
+* Read in all species
 
 # Data
 
@@ -66,6 +67,50 @@ Then in subsequent scripts:
 We will pull in traits from FishBase/SeaLifeBase and ranges from the Species Vulnerability Mapping project.
 
 We will need to bin FB and range trait values to match those of the vulnerability framework.
+
+### Traits from AquaMaps
+
+Here we will pull in depth ranges from AquaMaps and include where possible.
+
+```{r}
+worms_names <- assemble_worms()
+am_spp_names <- fread(here_anx('../aquamaps_2021/ver10_2019_speciesoccursum_iucn.csv')) %>%
+  janitor::clean_names() %>%
+  mutate(species = paste(genus, species) %>% tolower()) %>%
+  select(am_sid = species_id, species) %>%
+  filter(species %in% worms_names$species)
+
+depth_class_df <- data.frame(d = 1:11000) %>%
+  mutate(zone = case_when(d <= 200 ~ 'epipelagic',
+                          d <= 1000 ~ 'mesopelagic',
+                          d <= 4000 ~ 'bathypelagic',
+                          d <= 6000 ~ 'abyssopelagic',
+                          d > 6000 ~ 'hadopelagic',
+                          TRUE ~ 'oops')) %>%
+  mutate(zone = fct_inorder(zone))
+z_lvls <- levels(depth_class_df$zone)
+
+spp_depth_df <- read_csv(here_anx('../aquamaps_2021/species_envelope_summary.csv')) %>%
+  filter(param == 'log10_depth') %>%
+  filter(dist %in% c('max', 'min')) %>%
+  mutate(d = round(10^value)) %>%
+  select(am_sid, dist, d) %>%
+  left_join(depth_class_df, by = c('d')) %>%
+  inner_join(am_spp_names, by = 'am_sid')
+
+### expand to get factor levels, then fill factor levels
+spp_depth_df <- spp_depth_df %>%
+  mutate(z = as.integer(zone)) %>%
+  group_by(species) %>%
+  mutate(r = list(min(z):max(z))) %>%
+  unnest(r) %>%
+  mutate(zone = factor(z_lvls[r], levels = z_lvls)) %>%
+  select(species, trait_value = zone) %>%
+  unique() %>%
+  mutate(category = 'spatial_scale_of_species',
+         trait = 'depth_min_max')
+
+```
 
 ### Traits from FishBase
 
@@ -104,8 +149,6 @@ spp_fecundity_df <- read_csv(here('_data/fb_traits/trait_reproduction.csv')) %>%
                                  TRUE           ~ 'unknown'),
          trait = 'fecundity',
          category = 'r_reproductive_traits')
-         
-  
 ```
 
 ### Range data from spp_vuln_mapping project
@@ -144,7 +187,8 @@ Note also that some taxa, like coelacantha, myxini, holocephali, bivalvia may no
 new_traits_df <- bind_rows(range_df, 
                            spp_fecundity_df,
                            spp_gen_time_df, 
-                           spp_length_df) %>%
+                           spp_length_df,
+                           spp_depth_df) %>%
   select(category, trait, trait_value, spp_gp = species) %>%
   distinct() %>%
   ### use inner_join to drop any without WoRMS matches:
@@ -204,7 +248,10 @@ spp_traits_filled <- spp_traits_valid %>%
   mutate(n_spp_gps = n_distinct(spp_gp)) %>%
   group_by(trait, spp_gp) %>%
   mutate(trait_prob = ifelse(trait %in% non_mut_excl, 1, 1/n_distinct(trait_value))) %>%
-  ungroup()
+  ungroup() %>%
+  ### air sharks should not exist...
+  ### intertidal molluscs and flying fish are listed in 'air' as well, OK...
+  filter(!(trait == 'depth_min_max' & trait_value == 'air' & taxon == 'elasmobranchs'))
 
 write_csv(spp_traits_filled, here('_data/spp_traits_filled.csv'))
 

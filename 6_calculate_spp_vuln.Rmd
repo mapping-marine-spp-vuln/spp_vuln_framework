@@ -1,5 +1,5 @@
 ---
-title: "Calculate species vulnerability from traits"
+title: 'Calculate species vulnerability from traits'
 author: "*Compiled on `r date()` by `r Sys.info()['user']`*"
 output: 
   html_document:
@@ -125,6 +125,9 @@ Since the species trait file is already cleaned, DO NOT use the `clean_traitvals
 #   select(-starts_with('gf_'))
 
 spp_traits <- get_spp_traits() ### from common_fxns.R
+
+# cp <- spp_traits %>% filter(species == 'caulophryne polynema')
+# cs <- spp_traits %>% filter(species == 'centrophryne spinulosa')
 ```
 
 ```{r load stressor trait sheets}
@@ -682,7 +685,18 @@ write_csv(spp_vuln_resc_all_scores,
 ### Vulnerability per stressor by spp gp
 
 ``` {r, results = 'asis'}
-
+strs_to_keep <- c('biomass_removal',
+                  'bycatch',
+                  'eutrophication_nutrient_pollution',
+                  'habitat_loss_degradation',
+                  'light_pollution',
+                  'plastic_pollution_microplastic',
+                  'wildlife_strike',
+                  'marine_heat_waves',
+                  'oa',
+                  'slr',
+                  'sst_rise',
+                  'uv')
 plot_df <- spp_vuln_rescale %>% 
   filter(stressor %in% strs_to_keep) %>%
   distinct() %>%

@@ -64,6 +64,9 @@ match_df <- fread(here_anx('1_downfill_traits',
   full_join(fread(here_anx('1_downfill_traits', 
                            'spp_match_downfill_taxa.csv'))) %>%
   select(-starts_with('df_')) 
+# cp <- match_df %>% filter(spp == 'caulophryne polynema')
+# cs <- match_df %>% filter(spp == 'centrophryne spinulosa')
+
 
 spp_thermal_tol <- read_csv(here('_raw_data/aquamaps', 
                                     'aquamaps_spp_gp_thermal_range.csv')) %>%
