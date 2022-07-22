@@ -9,9 +9,12 @@ here_anx <- function(f = '', ...) {
 get_spp_traits <- function() {
   ### this grabs all the traits by species, after downfilling and agapfilling
   traits_gf_df <- data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv')) %>%
-    full_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))) %>%
-    full_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))) %>%
-    full_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))) %>%
+    oharac::dt_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv')),
+                    by = 'gf_match_id', type = 'full') %>%
+    oharac::dt_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv')),
+                    by = 'gf_trait_id', type = 'full') %>%
+    oharac::dt_join(data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv')),
+                    by = 'gf_spp_id', type = 'full') %>%
     select(-starts_with('gf_'))
   return(traits_gf_df)
 }

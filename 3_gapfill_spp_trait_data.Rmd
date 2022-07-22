@@ -70,9 +70,9 @@ We will need to bin FB and range trait values to match those of the vulnerabilit
 
 ### Traits from AquaMaps
 
-Here we will pull in depth ranges from AquaMaps and include where possible.
+Here we will pull in depth ranges from AquaMaps and include where possible. Note: for non-epipelagic spp, set 
 
-```{r}
+```{r depth class and zone}
 worms_names <- assemble_worms()
 am_spp_names <- fread(here_anx('../aquamaps_2021/ver10_2019_speciesoccursum_iucn.csv')) %>%
   janitor::clean_names() %>%
@@ -81,14 +81,14 @@ am_spp_names <- fread(here_anx('../aquamaps_2021/ver10_2019_speciesoccursum_iucn
   filter(species %in% worms_names$species)
 
 depth_class_df <- data.frame(d = 1:11000) %>%
-  mutate(zone = case_when(d <= 200 ~ 'epipelagic',
-                          d <= 1000 ~ 'mesopelagic',
-                          d <= 4000 ~ 'bathypelagic',
-                          d <= 6000 ~ 'abyssopelagic',
-                          d > 6000 ~ 'hadopelagic',
-                          TRUE ~ 'oops')) %>%
-  mutate(zone = fct_inorder(zone))
-z_lvls <- levels(depth_class_df$zone)
+  mutate(depth = case_when(d <= 200 ~ 'epipelagic',
+                           d <= 1000 ~ 'mesopelagic',
+                           d <= 4000 ~ 'bathypelagic',
+                           d <= 6000 ~ 'abyssopelagic',
+                           d > 6000 ~ 'hadopelagic',
+                           TRUE ~ 'oops')) %>%
+  mutate(depth = fct_inorder(depth))
+d_lvls <- levels(depth_class_df$depth)
 
 spp_depth_df <- read_csv(here_anx('../aquamaps_2021/species_envelope_summary.csv')) %>%
   filter(param == 'log10_depth') %>%
@@ -100,15 +100,23 @@ spp_depth_df <- read_csv(here_anx('../aquamaps_2021/species_envelope_summary.csv
 
 ### expand to get factor levels, then fill factor levels
 spp_depth_df <- spp_depth_df %>%
-  mutate(z = as.integer(zone)) %>%
+  mutate(dp = as.integer(depth)) %>%
   group_by(species) %>%
-  mutate(r = list(min(z):max(z))) %>%
+  mutate(r = list(min(dp):max(dp))) %>%
   unnest(r) %>%
-  mutate(zone = factor(z_lvls[r], levels = z_lvls)) %>%
-  select(species, trait_value = zone) %>%
+  ungroup() %>%
+  mutate(depth = factor(d_lvls[r], levels = d_lvls)) %>%
+  select(species, trait_value = depth) %>%
   unique() %>%
   mutate(category = 'spatial_scale_of_species',
          trait = 'depth_min_max')
+
+spp_zone_df <- spp_depth_df %>%
+  group_by(species) %>%
+  filter(min(as.integer(trait_value)) > 1) %>%
+  summarize(category = 'spatial_scale_of_species',
+            trait = 'zone',
+            trait_value = 'oceanic', .groups = 'drop')
 
 ```
 
@@ -158,7 +166,7 @@ These were generated in the spp vulnerability mapping project, and saved in that
 * Use IUCN first then AM
 * Use largest value across all pops/subpops for same spp name
 
-```{r}
+```{r eoo range}
 range_df <- read_csv(here('../spp_vuln_mapping/_data/spp_ranges.csv')) %>%
   mutate(trait_value = case_when(range_tot_km2 < 100 ~ '<99',
                                  range_tot_km2 < 5000 ~ '100-4999',
@@ -183,12 +191,13 @@ range_df <- read_csv(here('../spp_vuln_mapping/_data/spp_ranges.csv')) %>%
 Note that many of these new species fall into taxa not included in the vulnerability traits dataset, and thus won't be able to be gapfilled for the remainder of traits.
 
 Note also that some taxa, like coelacantha, myxini, holocephali, bivalvia may not be gapfilled if their class is not represented in the original species groups for vulnerability traits... check these later!
-```{r}
+```{r combine added traits}
 new_traits_df <- bind_rows(range_df, 
                            spp_fecundity_df,
                            spp_gen_time_df, 
                            spp_length_df,
-                           spp_depth_df) %>%
+                           spp_depth_df,
+                           spp_zone_df) %>%
   select(category, trait, trait_value, spp_gp = species) %>%
   distinct() %>%
   ### use inner_join to drop any without WoRMS matches:
@@ -230,7 +239,7 @@ new_traits_df <- bind_rows(range_df,
 
 Read in spp_traits_valid, and assemble a dataframe of all valid WoRMS species.  Recalculate the proportional allocation of traits based on mutually exclusive (e.g., body length) vs non-exclusive (e.g., preferred habitats).
 
-``` {r}
+``` {r attach filled traits to existing traits}
 spp_traits_valid <- read_csv(here('_data/spp_traits_valid.csv'))
 
 non_mut_excl <- c('adult_mobility', 'biomineral', 

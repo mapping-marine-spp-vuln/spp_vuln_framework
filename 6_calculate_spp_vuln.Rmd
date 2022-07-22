@@ -118,12 +118,6 @@ assign_rank_scores <- function(x) {
 Since the species trait file is already cleaned, DO NOT use the `clean_traitvals` function - it will overwrite the `trait_value` column.  Here we will drop plants and algae as physiologies are so fundamentally different from animals.
 
 ```{r load traits}
-# spp_traits <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv')) %>%
-#   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))) %>%
-#   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))) %>%
-#   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))) %>%
-#   select(-starts_with('gf_'))
-
 spp_traits <- get_spp_traits() ### from common_fxns.R
 
 # cp <- spp_traits %>% filter(species == 'caulophryne polynema')
@@ -677,6 +671,8 @@ write_csv(spp_vuln_resc_all_scores,
 #   left_join(fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_str.csv'))) %>%
 #   left_join(fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_tx.csv'))) %>%
 #   select(-vuln_tx_id, -vuln_str_id)
+# cp <- spp_vuln_scores_all %>% filter(species == 'caulophryne polynema')
+# cs <- spp_vuln_scores_all %>% filter(species == 'centrophryne spinulosa')
 
 ```
 

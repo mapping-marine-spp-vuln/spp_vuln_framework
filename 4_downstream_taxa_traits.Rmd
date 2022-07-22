@@ -26,7 +26,6 @@ library(data.table)
 library(tidyverse)
 library(here)
 library(readxl)
-# source('https://raw.githubusercontent.com/oharac/src/master/R/common.R')
 source(here('common_fxns.R'))
 library(taxize)
 
@@ -59,7 +58,7 @@ Load the trait data, and match to the wide-format species classifications along 
 
 First step, expand the spp group traits to complete the trait set for all species, especially those with only partial traits from FB and range filling.  
 
-```{r}
+```{r expand traits across spp}
 spp_gp_traits <- read_csv(here('_data/spp_traits_filled.csv'))
 
 spp_to_taxa <- spp_gp_traits %>%
@@ -151,7 +150,7 @@ matched_df <- spp_all_long %>%
 
 Check species counts by taxon, excluding spp with only 4 or fewer traits
 
-```{r}
+```{r check spp counts}
 check_spp <- matched_df %>%
   group_by(spp) %>%
   filter(n_distinct(trait) > 4) %>%
@@ -172,7 +171,7 @@ knitr::kable(check_spp)
 
 Break into several chunks to reduce duplication of info and resulting file size...
 
-```{r}
+```{r write out results}
 match_taxa <- matched_df %>%
   select(taxon, spp) %>%
   distinct() %>%

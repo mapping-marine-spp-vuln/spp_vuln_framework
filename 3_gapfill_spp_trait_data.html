@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Mon Jun 27 11:49:06 2022 by ohara" />
+<meta name="author" content="Compiled on Thu Jul 21 20:20:50 2022 by ohara" />
 
 
 <title>Gapfill species trait data</title>
@@ -361,7 +361,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Gapfill species trait data</h1>
-<h4 class="author"><em>Compiled on Mon Jun 27 11:49:06 2022 by ohara</em></h4>
+<h4 class="author"><em>Compiled on Thu Jul 21 20:20:50 2022 by ohara</em></h4>
 
 </div>
 
@@ -422,7 +422,7 @@ div.tocify {
 <p>We will need to bin FB and range trait values to match those of the vulnerability framework.</p>
 <div id="traits-from-aquamaps" class="section level3" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Traits from AquaMaps</h3>
-<p>Here we will pull in depth ranges from AquaMaps and include where possible.</p>
+<p>Here we will pull in depth ranges from AquaMaps and include where possible. Note: for non-epipelagic spp, set</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>worms_names <span class="ot">&lt;-</span> <span class="fu">assemble_worms</span>()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>am_spp_names <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="fu">here_anx</span>(<span class="st">&#39;../aquamaps_2021/ver10_2019_speciesoccursum_iucn.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
@@ -431,14 +431,14 @@ div.tocify {
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">%in%</span> worms_names<span class="sc">$</span>species)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>depth_class_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">d =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">11000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zone =</span> <span class="fu">case_when</span>(d <span class="sc">&lt;=</span> <span class="dv">200</span> <span class="sc">~</span> <span class="st">&#39;epipelagic&#39;</span>,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                          d <span class="sc">&lt;=</span> <span class="dv">1000</span> <span class="sc">~</span> <span class="st">&#39;mesopelagic&#39;</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                          d <span class="sc">&lt;=</span> <span class="dv">4000</span> <span class="sc">~</span> <span class="st">&#39;bathypelagic&#39;</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                          d <span class="sc">&lt;=</span> <span class="dv">6000</span> <span class="sc">~</span> <span class="st">&#39;abyssopelagic&#39;</span>,</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                          d <span class="sc">&gt;</span> <span class="dv">6000</span> <span class="sc">~</span> <span class="st">&#39;hadopelagic&#39;</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                          <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;oops&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zone =</span> <span class="fu">fct_inorder</span>(zone))</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>z_lvls <span class="ot">&lt;-</span> <span class="fu">levels</span>(depth_class_df<span class="sc">$</span>zone)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">depth =</span> <span class="fu">case_when</span>(d <span class="sc">&lt;=</span> <span class="dv">200</span> <span class="sc">~</span> <span class="st">&#39;epipelagic&#39;</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                           d <span class="sc">&lt;=</span> <span class="dv">1000</span> <span class="sc">~</span> <span class="st">&#39;mesopelagic&#39;</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                           d <span class="sc">&lt;=</span> <span class="dv">4000</span> <span class="sc">~</span> <span class="st">&#39;bathypelagic&#39;</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                           d <span class="sc">&lt;=</span> <span class="dv">6000</span> <span class="sc">~</span> <span class="st">&#39;abyssopelagic&#39;</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                           d <span class="sc">&gt;</span> <span class="dv">6000</span> <span class="sc">~</span> <span class="st">&#39;hadopelagic&#39;</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;oops&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">depth =</span> <span class="fu">fct_inorder</span>(depth))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>d_lvls <span class="ot">&lt;-</span> <span class="fu">levels</span>(depth_class_df<span class="sc">$</span>depth)</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>spp_depth_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here_anx</span>(<span class="st">&#39;../aquamaps_2021/species_envelope_summary.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(param <span class="sc">==</span> <span class="st">&#39;log10_depth&#39;</span>) <span class="sc">%&gt;%</span></span>
@@ -450,15 +450,23 @@ div.tocify {
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="do">### expand to get factor levels, then fill factor levels</span></span>
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>spp_depth_df <span class="ot">&lt;-</span> spp_depth_df <span class="sc">%&gt;%</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">z =</span> <span class="fu">as.integer</span>(zone)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">dp =</span> <span class="fu">as.integer</span>(depth)) <span class="sc">%&gt;%</span></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">r =</span> <span class="fu">list</span>(<span class="fu">min</span>(z)<span class="sc">:</span><span class="fu">max</span>(z))) <span class="sc">%&gt;%</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">r =</span> <span class="fu">list</span>(<span class="fu">min</span>(dp)<span class="sc">:</span><span class="fu">max</span>(dp))) <span class="sc">%&gt;%</span></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(r) <span class="sc">%&gt;%</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">zone =</span> <span class="fu">factor</span>(z_lvls[r], <span class="at">levels =</span> z_lvls)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, <span class="at">trait_value =</span> zone) <span class="sc">%&gt;%</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;spatial_scale_of_species&#39;</span>,</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait =</span> <span class="st">&#39;depth_min_max&#39;</span>)</span></code></pre></div>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">depth =</span> <span class="fu">factor</span>(d_lvls[r], <span class="at">levels =</span> d_lvls)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(species, <span class="at">trait_value =</span> depth) <span class="sc">%&gt;%</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;spatial_scale_of_species&#39;</span>,</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait =</span> <span class="st">&#39;depth_min_max&#39;</span>)</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>spp_zone_df <span class="ot">&lt;-</span> spp_depth_df <span class="sc">%&gt;%</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">%&gt;%</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">min</span>(<span class="fu">as.integer</span>(trait_value)) <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">category =</span> <span class="st">&#39;spatial_scale_of_species&#39;</span>,</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            <span class="at">trait =</span> <span class="st">&#39;zone&#39;</span>,</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>            <span class="at">trait_value =</span> <span class="st">&#39;oceanic&#39;</span>, <span class="at">.groups =</span> <span class="st">&#39;drop&#39;</span>)</span></code></pre></div>
 </div>
 <div id="traits-from-fishbase" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Traits from FishBase</h3>
@@ -530,41 +538,42 @@ div.tocify {
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                           spp_fecundity_df,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                           spp_gen_time_df, </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                           spp_length_df,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                           spp_depth_df) <span class="sc">%&gt;%</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(category, trait, trait_value, <span class="at">spp_gp =</span> species) <span class="sc">%&gt;%</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">### use inner_join to drop any without WoRMS matches:</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">assemble_worms</span>(), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">taxon =</span> <span class="fu">case_when</span>(class  <span class="sc">==</span> <span class="st">&#39;cephalopoda&#39;</span>    <span class="sc">~</span> <span class="st">&#39;cephalopods&#39;</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;anthozoa&#39;</span>       <span class="sc">~</span> <span class="st">&#39;corals&#39;</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                           phylum <span class="sc">==</span> <span class="st">&#39;arthropoda&#39;</span>     <span class="sc">~</span> <span class="st">&#39;crustacea_arthropods&#39;</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                           phylum <span class="sc">==</span> <span class="st">&#39;echinodermata&#39;</span>  <span class="sc">~</span> <span class="st">&#39;echinoderms&#39;</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;elasmobranchii&#39;</span> <span class="sc">~</span> <span class="st">&#39;elasmobranchs&#39;</span>,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                             class  <span class="sc">==</span> <span class="st">&#39;holocephali&#39;</span>  <span class="sc">~</span> <span class="st">&#39;elasmobranchs&#39;</span>,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;actinopterygii&#39;</span> <span class="sc">~</span> <span class="st">&#39;fish&#39;</span>,</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                             class  <span class="sc">==</span> <span class="st">&#39;myxini&#39;</span>       <span class="sc">~</span> <span class="st">&#39;fish&#39;</span>,</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                             class  <span class="sc">==</span> <span class="st">&#39;coelacanthi&#39;</span>  <span class="sc">~</span> <span class="st">&#39;fish&#39;</span>,</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;mammalia&#39;</span>       <span class="sc">~</span> <span class="st">&#39;marine_mammals&#39;</span>,</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                           phylum <span class="sc">==</span> <span class="st">&#39;mollusca&#39;</span>       <span class="sc">~</span> <span class="st">&#39;molluscs&#39;</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                             phylum <span class="sc">==</span> <span class="st">&#39;bivalvia&#39;</span>     <span class="sc">~</span> <span class="st">&#39;molluscs&#39;</span>,</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                             <span class="do">### note: cephalopods will be classified in that category</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;polychaeta&#39;</span>     <span class="sc">~</span> <span class="st">&#39;polychaetes&#39;</span>,</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;reptilia&#39;</span>       <span class="sc">~</span> <span class="st">&#39;reptiles&#39;</span>,</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;aves&#39;</span>           <span class="sc">~</span> <span class="st">&#39;seabirds&#39;</span>,</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;demospongiae&#39;</span>   <span class="sc">~</span> <span class="st">&#39;sponges&#39;</span>,</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;new group&#39;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(taxon <span class="sc">!=</span> <span class="st">&#39;new group&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, spp_gp, category, trait, trait_value) <span class="sc">%&gt;%</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># check &lt;- new_traits_df %&gt;%</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(taxon == &#39;new group&#39;)</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># check %&gt;% count(phylum) %&gt;% arrange(-n)</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># check %&gt;% ungroup() %&gt;% count(class)</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># check %&gt;% filter(phylum == &#39;cnidaria&#39;) %&gt;% count(class)</span></span></code></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                           spp_depth_df,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                           spp_zone_df) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(category, trait, trait_value, <span class="at">spp_gp =</span> species) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">### use inner_join to drop any without WoRMS matches:</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">assemble_worms</span>(), <span class="at">by =</span> <span class="fu">c</span>(<span class="st">&#39;spp_gp&#39;</span> <span class="ot">=</span> <span class="st">&#39;species&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">taxon =</span> <span class="fu">case_when</span>(class  <span class="sc">==</span> <span class="st">&#39;cephalopoda&#39;</span>    <span class="sc">~</span> <span class="st">&#39;cephalopods&#39;</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;anthozoa&#39;</span>       <span class="sc">~</span> <span class="st">&#39;corals&#39;</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                           phylum <span class="sc">==</span> <span class="st">&#39;arthropoda&#39;</span>     <span class="sc">~</span> <span class="st">&#39;crustacea_arthropods&#39;</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                           phylum <span class="sc">==</span> <span class="st">&#39;echinodermata&#39;</span>  <span class="sc">~</span> <span class="st">&#39;echinoderms&#39;</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;elasmobranchii&#39;</span> <span class="sc">~</span> <span class="st">&#39;elasmobranchs&#39;</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                             class  <span class="sc">==</span> <span class="st">&#39;holocephali&#39;</span>  <span class="sc">~</span> <span class="st">&#39;elasmobranchs&#39;</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;actinopterygii&#39;</span> <span class="sc">~</span> <span class="st">&#39;fish&#39;</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                             class  <span class="sc">==</span> <span class="st">&#39;myxini&#39;</span>       <span class="sc">~</span> <span class="st">&#39;fish&#39;</span>,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                             class  <span class="sc">==</span> <span class="st">&#39;coelacanthi&#39;</span>  <span class="sc">~</span> <span class="st">&#39;fish&#39;</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;mammalia&#39;</span>       <span class="sc">~</span> <span class="st">&#39;marine_mammals&#39;</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                           phylum <span class="sc">==</span> <span class="st">&#39;mollusca&#39;</span>       <span class="sc">~</span> <span class="st">&#39;molluscs&#39;</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                             phylum <span class="sc">==</span> <span class="st">&#39;bivalvia&#39;</span>     <span class="sc">~</span> <span class="st">&#39;molluscs&#39;</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                             <span class="do">### note: cephalopods will be classified in that category</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;polychaeta&#39;</span>     <span class="sc">~</span> <span class="st">&#39;polychaetes&#39;</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;reptilia&#39;</span>       <span class="sc">~</span> <span class="st">&#39;reptiles&#39;</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;aves&#39;</span>           <span class="sc">~</span> <span class="st">&#39;seabirds&#39;</span>,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                           class  <span class="sc">==</span> <span class="st">&#39;demospongiae&#39;</span>   <span class="sc">~</span> <span class="st">&#39;sponges&#39;</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&#39;new group&#39;</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(taxon <span class="sc">!=</span> <span class="st">&#39;new group&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(taxon, spp_gp, category, trait, trait_value) <span class="sc">%&gt;%</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>()</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co"># check &lt;- new_traits_df %&gt;%</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(taxon == &#39;new group&#39;)</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># check %&gt;% count(phylum) %&gt;% arrange(-n)</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># check %&gt;% ungroup() %&gt;% count(class)</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co"># check %&gt;% filter(phylum == &#39;cnidaria&#39;) %&gt;% count(class)</span></span></code></pre></div>
 </div>
 </div>
 <div id="identify-potential-spp-to-fill" class="section level2" number="3.2">
