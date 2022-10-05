@@ -123,6 +123,16 @@ spp_valid <- spp_validcheck %>%
   ungroup()
 ```
 
+Clean up physiological sensitivity to pH for vertebrates
+
+```{r}
+verts <- c('seabirds', 'marine_mammals', 'elasmobranchs', 'fish', 'reptiles')
+spp_valid <- spp_valid %>%
+  mutate(trait_value = case_when(taxon %in% verts & trait == 'ph' ~ NA_character_,
+                                 TRUE ~ trait_value))
+  
+```
+
 Include thermal tolerance ranges from AquaMaps envelopes; these are just temporary and will be overwritten at the species level after downfilling.
 ```{r}
 spp_gps_df <- spp_valid %>%
@@ -143,6 +153,8 @@ spp_valid_plus_thermal <- spp_valid %>%
 
 write_csv(spp_valid_plus_thermal, '_data/spp_traits_valid.csv')
 ```
+
+
 
 There are `r spp_valid$spp_gp %>% n_distinct()` distinct species/species groups accounted for with at least some valid trait codes.
 
