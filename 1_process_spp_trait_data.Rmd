@@ -123,12 +123,14 @@ spp_valid <- spp_validcheck %>%
   ungroup()
 ```
 
-Clean up physiological sensitivity to pH for vertebrates
+Clean up physiological sensitivity to pH for vertebrates, as well as calcium carbonate structure mineral and stages. This traitset is intended to account for shell-building species. Leave in internal structure (otolith).  Also leave in larval non-calcifying feeder stage for fish.
 
 ```{r}
 verts <- c('seabirds', 'marine_mammals', 'elasmobranchs', 'fish', 'reptiles')
 spp_valid <- spp_valid %>%
   mutate(trait_value = case_when(taxon %in% verts & trait == 'ph' ~ NA_character_,
+                                 taxon %in% verts & trait == 'calcium_carbonate_structure_stages' ~ NA_character_,
+                                 taxon %in% verts & trait == 'biomineral' ~ NA_character_,
                                  TRUE ~ trait_value))
   
 ```
