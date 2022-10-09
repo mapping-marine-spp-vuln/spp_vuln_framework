@@ -199,7 +199,7 @@ Break down by taxon and process in a loop to reduce computational pressures...
 ``` {r}
 sens_int_file <- here_anx('int/sensitivity_by_spp_traits.csv')
 
-if(!file.exists(sens_int_file)) {
+# if(!file.exists(sens_int_file)) {
   ### unlink(sens_int_file)
 
   spp_sens_raw <- str_sens_trait_scores %>%
@@ -229,7 +229,7 @@ if(!file.exists(sens_int_file)) {
   spp_sens <- rbindlist(spp_sens_list)
   write_csv(spp_sens, sens_int_file)
   
-}
+# }
   
 spp_sens <- read_csv(sens_int_file)
 
