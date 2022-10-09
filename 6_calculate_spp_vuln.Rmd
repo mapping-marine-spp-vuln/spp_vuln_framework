@@ -667,10 +667,10 @@ write_csv(spp_vuln_resc_all_scores,
           here_anx('3_vuln_score_traits/spp_vuln_from_traits_all_scores.csv'))
 
 ### to reassemble all scores incl components:
-# spp_vuln_scores_all <- fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_all_scores.csv')) %>%
-#   left_join(fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_str.csv'))) %>%
-#   left_join(fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_tx.csv'))) %>%
-#   select(-vuln_tx_id, -vuln_str_id)
+spp_vuln_scores_all <- fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_all_scores.csv')) %>%
+  left_join(fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_str.csv'))) %>%
+  left_join(fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_tx.csv'))) %>%
+  select(-vuln_tx_id, -vuln_str_id)
 # cp <- spp_vuln_scores_all %>% filter(species == 'caulophryne polynema')
 # cs <- spp_vuln_scores_all %>% filter(species == 'centrophryne spinulosa')
 

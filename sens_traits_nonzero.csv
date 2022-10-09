@@ -255,10 +255,8 @@ biophysical_traits,navigation_requirements_light,yes,sedimentation,1,high
 biophysical_traits,respiration_structures,gills,sedimentation,1,high
 biophysical_traits,respiration_structures,skin,sedimentation,0.67,medium
 biophysical_traits,respiration_structures,filter feeders,sedimentation,1,high
-physiological_tolerance_breadths,salinity,stenohaline,slr,0.33,low
 specialisation,photosynthetic,yes,slr,0.33,low
 specialisation,terrestrial_and_marine_life_stages,yes,slr,0.33,low
-biophysical_traits,respiration_structures,pneumatophores,slr,1,high
 physiological_tolerance_breadths,sst_rise_sensitivity_trait,sensitive,sst_rise,1,high
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding calcifier,storm_disturbance,0.33,low
 r_reproductive_traits,feeding_larva_post_hatching_metamorphosis,feeding non-calcifier,storm_disturbance,0.33,low
