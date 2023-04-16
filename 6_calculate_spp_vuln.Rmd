@@ -367,7 +367,7 @@ spp_adcap_spec_raw <- spp_traits %>%
 spp_adcap_spec <- spp_adcap_spec_raw %>%
   mutate(wt_adcap_spec = adcap_spec_score * trait_prob) %>%
   group_by(species, stressor, taxon) %>%
-  summarize(adcap_spec_score = sum(adcap_spec_score, na.rm = TRUE), 
+  summarize(adcap_spec_score = sum(wt_adcap_spec, na.rm = TRUE), 
             .groups = 'drop')
 
 adcap_spec_sum <- spp_adcap_spec %>%

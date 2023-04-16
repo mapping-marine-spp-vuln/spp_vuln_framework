@@ -95,6 +95,7 @@ spp_validcheck <- spp_data_raw %>%
   filter(trait_value != '' & !is.na(trait_value)) %>%
   group_by(taxon) %>%
   mutate(n_spp_gps = n_distinct(spp_gp)) %>%
+  ungroup() %>%
   ### keep "other" habitats as well
   mutate(valid = ifelse(str_detect(trait, 'dependent habitats'), TRUE, valid))
 
@@ -108,7 +109,8 @@ non_mut_excl <- c('adult_mobility', 'biomineral',
                   'calcium_carbonate_structure_location', 
                   'depth_min_max', 'respiration_structures', 
                   'across_stage_dependent_habitats_condition', 
-                  'within_stage_dependent_habitats_condition', 'zone')
+                  'within_stage_dependent_habitats_condition', 
+                  'zone')
 
 spp_valid <- spp_validcheck %>%
   filter(valid) %>%
@@ -118,7 +120,7 @@ spp_valid <- spp_validcheck %>%
          trait    = str_replace_all(trait, '[^A-Za-z0-9]+', '_'),
          trait    = str_replace_all(trait, '^_|_$', '')) %>%
   mutate(spp_gp = str_replace_all(spp_gp, '\\n', ' ')) %>%
-  group_by(trait, spp_gp) %>%
+  group_by(category, trait, spp_gp) %>%
   mutate(trait_prob = ifelse(trait %in% non_mut_excl, 1, 1/n_distinct(trait_value))) %>%
   ungroup()
 ```
@@ -168,7 +170,8 @@ x <- spp_valid %>%
               group_by(trait, taxon) %>% 
               summarize(n_matches = n(),
                         n_spp_gps = first(n_spp_gps),
-                        pct_match = round(100 * n_matches / n_spp_gps, 1)) %>% 
+                        pct_match = round(100 * n_matches / n_spp_gps, 1),
+                        .groups = 'drop') %>% 
               arrange(desc(n_matches), taxon)
 DT::datatable(x)
 ```
@@ -183,7 +186,8 @@ DT::datatable(spp_invalid %>%
                 group_by(trait, taxon) %>% 
                 summarize(n_mismatches = n(),
                           n_spp_gps = first(n_spp_gps),
-                          pct_mismatch = round(100 * n_mismatches / n_spp_gps, 1)) %>% 
+                          pct_mismatch = round(100 * n_mismatches / n_spp_gps, 1),
+                          .groups = 'drop') %>% 
                 arrange(desc(n_mismatches), taxon))
 ```
 

@@ -125,8 +125,8 @@ spp_zone_df <- spp_depth_df %>%
 ```{r length}
 spp_length_df <- read_csv(here('_data/fb_traits/trait_length_cm.csv')) %>%
   mutate(trait_value = case_when(length < 5     ~ '0.5mm-49mm',
-                                 length < 1000  ~ '50mm-999mm',
-                                 length >= 1000 ~ '>1000mm',
+                                 length < 100  ~ '50mm-999mm',
+                                 length >= 100 ~ '>1000mm',
                                  TRUE      ~ 'unknown')) %>%
   mutate(category = 'biophysical_traits',
          trait = 'adult_body_mass_body_size')
@@ -246,7 +246,8 @@ non_mut_excl <- c('adult_mobility', 'biomineral',
                   'calcium_carbonate_structure_location', 
                   'depth_min_max', 'respiration_structures', 
                   'across_stage_dependent_habitats_condition', 
-                  'within_stage_dependent_habitats_condition', 'zone')
+                  'within_stage_dependent_habitats_condition', 
+                  'zone')
 
 spp_traits_filled <- spp_traits_valid %>%
   select(-n_spp_gps, -trait_prob) %>%
@@ -255,7 +256,7 @@ spp_traits_filled <- spp_traits_valid %>%
   filter(trait_value != 'unknown') %>%
   group_by(taxon) %>%
   mutate(n_spp_gps = n_distinct(spp_gp)) %>%
-  group_by(trait, spp_gp) %>%
+  group_by(category, trait, spp_gp) %>%
   mutate(trait_prob = ifelse(trait %in% non_mut_excl, 1, 1/n_distinct(trait_value))) %>%
   ungroup() %>%
   ### air sharks should not exist...

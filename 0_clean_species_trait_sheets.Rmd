@@ -318,7 +318,7 @@ spp_data_mobility <- raw_data_df %>%
   mutate(tmp = str_split(tmp, ';')) %>%
   unnest(tmp) %>%
   ### clean up some inconsistencies
-  mutate(tmp = str_replace_all(tmp, 'horiz[a-z]+', 'horizontal'),
+  mutate(tmp = str_replace_all(tmp, 'hori?z[a-z]+', 'horizontal'),
          tmp = str_replace_all(tmp, 'vertic[a-z]+', 'vertical'),
          tmp = str_replace_all(tmp, 'migrat[a-z]+', 'migrator'),
          tmp = str_replace_all(tmp, 'residen[a-z]+', 'resident'),

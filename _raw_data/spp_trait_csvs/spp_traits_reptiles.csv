@@ -15,7 +15,7 @@ breeding/nesting range/number of spawning aggregations (fish),sub-population dep
 foraging range,"if one/few, size",few;medium,very small,na,na,medium,medium,na,few;medium,few;medium,na,few;medium,few;medium,na,na,na,few;medium
 foraging range,"number of sites, incl. terrestrial wetlands",many,few;one,does not aggregate,does not aggregate,many,many,does not aggregate,many,many,does not aggregate,many,many,does not aggregate,does not aggregate,does not aggregate,many
 foraging range,sub-population dependence on particular sites,yes,yes,no,no,NA,NA,no,yes,yes,no,yes,yes,no,no,no,yes
-movement,adult mobility,mobile resident,mobile resident,NA,NA,mobile resident,mobile resident,nomadic,mobile resident,mobile resident,NA,mobile resident,mobile resident,NA,nomadic,NA,mobile resident
+movement,adult mobility,mobile resident,mobile resident,horizontal migrator,horizontal migrator,mobile resident,mobile resident,nomadic,mobile resident,mobile resident,horizontal migrator,mobile resident,mobile resident,horizontal migrator,nomadic,horizontal migrator,mobile resident
 movement,planktonic larval duration (pld) exposure,NA,not larvae,not larvae,not larvae,not larvae,not larvae,not larvae,NA,NA,not larvae,NA,NA,not larvae,not larvae,not larvae,NA
 physiological tolerance breadths,dissolved oxygen,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers,air breathers
 physiological tolerance breadths,ph,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4,<7.4

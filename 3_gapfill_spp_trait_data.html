@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Compiled on Wed Oct 5 14:07:02 2022 by ohara" />
+<meta name="author" content="Compiled on Sun Apr 16 14:18:54 2023 by ohara" />
 
 
 <title>Gapfill species trait data</title>
@@ -1683,7 +1683,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Gapfill species trait data</h1>
-<h4 class="author"><em>Compiled on Wed Oct 5 14:07:02 2022 by
+<h4 class="author"><em>Compiled on Sun Apr 16 14:18:54 2023 by
 ohara</em></h4>
 
 </div>
@@ -1824,8 +1824,8 @@ possible. Note: for non-epipelagic spp, set</p>
 FishBase</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spp_length_df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&#39;_data/fb_traits/trait_length_cm.csv&#39;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_value =</span> <span class="fu">case_when</span>(length <span class="sc">&lt;</span> <span class="dv">5</span>     <span class="sc">~</span> <span class="st">&#39;0.5mm-49mm&#39;</span>,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                 length <span class="sc">&lt;</span> <span class="dv">1000</span>  <span class="sc">~</span> <span class="st">&#39;50mm-999mm&#39;</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                 length <span class="sc">&gt;=</span> <span class="dv">1000</span> <span class="sc">~</span> <span class="st">&#39;&gt;1000mm&#39;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                                 length <span class="sc">&lt;</span> <span class="dv">100</span>  <span class="sc">~</span> <span class="st">&#39;50mm-999mm&#39;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                                 length <span class="sc">&gt;=</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">&#39;&gt;1000mm&#39;</span>,</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="cn">TRUE</span>      <span class="sc">~</span> <span class="st">&#39;unknown&#39;</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">category =</span> <span class="st">&#39;biophysical_traits&#39;</span>,</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">trait =</span> <span class="st">&#39;adult_body_mass_body_size&#39;</span>)</span>
@@ -1949,23 +1949,24 @@ habitats).</p>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;calcium_carbonate_structure_location&#39;</span>, </span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;depth_min_max&#39;</span>, <span class="st">&#39;respiration_structures&#39;</span>, </span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;across_stage_dependent_habitats_condition&#39;</span>, </span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;within_stage_dependent_habitats_condition&#39;</span>, <span class="st">&#39;zone&#39;</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>spp_traits_filled <span class="ot">&lt;-</span> spp_traits_valid <span class="sc">%&gt;%</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n_spp_gps, <span class="sc">-</span>trait_prob) <span class="sc">%&gt;%</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(new_traits_df) <span class="sc">%&gt;%</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_value <span class="sc">!=</span> <span class="st">&#39;unknown&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(taxon) <span class="sc">%&gt;%</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_spp_gps =</span> <span class="fu">n_distinct</span>(spp_gp)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trait, spp_gp) <span class="sc">%&gt;%</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_prob =</span> <span class="fu">ifelse</span>(trait <span class="sc">%in%</span> non_mut_excl, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="fu">n_distinct</span>(trait_value))) <span class="sc">%&gt;%</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="do">### air sharks should not exist...</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="do">### intertidal molluscs and flying fish are listed in &#39;air&#39; as well, OK...</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(trait <span class="sc">==</span> <span class="st">&#39;depth_min_max&#39;</span> <span class="sc">&amp;</span> trait_value <span class="sc">==</span> <span class="st">&#39;air&#39;</span> <span class="sc">&amp;</span> taxon <span class="sc">==</span> <span class="st">&#39;elasmobranchs&#39;</span>))</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(spp_traits_filled, <span class="fu">here</span>(<span class="st">&#39;_data/spp_traits_filled.csv&#39;</span>))</span></code></pre></div>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;within_stage_dependent_habitats_condition&#39;</span>, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&#39;zone&#39;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>spp_traits_filled <span class="ot">&lt;-</span> spp_traits_valid <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n_spp_gps, <span class="sc">-</span>trait_prob) <span class="sc">%&gt;%</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(new_traits_df) <span class="sc">%&gt;%</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(trait_value <span class="sc">!=</span> <span class="st">&#39;unknown&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(taxon) <span class="sc">%&gt;%</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_spp_gps =</span> <span class="fu">n_distinct</span>(spp_gp)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(category, trait, spp_gp) <span class="sc">%&gt;%</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trait_prob =</span> <span class="fu">ifelse</span>(trait <span class="sc">%in%</span> non_mut_excl, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="fu">n_distinct</span>(trait_value))) <span class="sc">%&gt;%</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="do">### air sharks should not exist...</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="do">### intertidal molluscs and flying fish are listed in &#39;air&#39; as well, OK...</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(trait <span class="sc">==</span> <span class="st">&#39;depth_min_max&#39;</span> <span class="sc">&amp;</span> trait_value <span class="sc">==</span> <span class="st">&#39;air&#39;</span> <span class="sc">&amp;</span> taxon <span class="sc">==</span> <span class="st">&#39;elasmobranchs&#39;</span>))</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(spp_traits_filled, <span class="fu">here</span>(<span class="st">&#39;_data/spp_traits_filled.csv&#39;</span>))</span></code></pre></div>
 </div>
 </div>
 
