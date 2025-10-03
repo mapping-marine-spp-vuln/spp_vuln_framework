@@ -190,7 +190,7 @@ for(i in 2:length(gf_ranks)) {
 traits_all_gf <- bind_rows(gf_list) %>%
   mutate(gapfill = factor(gapfill, levels = gf_ranks)) %>%
   group_by(species, category, trait) %>%
-  filter(as.integer(gapfill) == max(as.integer(gapfill))) %>%
+  filter(as.integer(gapfill) == min(as.integer(gapfill))) %>%
   bind_rows(traits_direct_match) 
 
 # check_probs <- traits_all_gf %>%
