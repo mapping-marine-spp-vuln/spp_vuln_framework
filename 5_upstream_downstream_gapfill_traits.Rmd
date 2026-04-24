@@ -349,5 +349,10 @@ write_csv(gf_spp_traits,
 #   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))) %>%
 #   full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))) %>%
 #   select(-starts_with('gf_'))
-              
+
+# traits_taxa_levels_key <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv'))
+# gapfill_lvls <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))
+# traits <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))
+# taxa <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))
+
 ```
