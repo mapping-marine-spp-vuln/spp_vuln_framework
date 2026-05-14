@@ -8,5 +8,5 @@ figs/unnamed*.png
 all_traits.csv
 *.Rdata
 *.zip
-update/spp_vuln_framework_traits
-update/spp_vuln_framework_scores
+update/spp_vuln_framework_traits/*.csv
+update/spp_vuln_framework_scores/*.csv
