@@ -1,0 +1,412 @@
+---
+title: 'Align species names and AphiaID'
+author: "Casey O'Hara"
+format:
+  html:
+    embed-resources: true
+---
+
+## Summary
+
+The spp vulnerability project used scientific binomials as the identifier.  WoRMS uses an AphiaID numeric identifier for different taxonomic ranks, and AquaX has taken on that identifier for mapping SDMs.
+
+For this project, we should identify the AphiaID value for each of the species found within the spp vulnerability dataset.
+
+* Match species names directly, comparing the vulnerability dataset to the AquaX META dataset.
+* Identify species names that do not have a direct match; query in WoRMS (using `taxize` or similar).
+* Save a disambiguated set of species names to AphiaID for use throughout the project.
+
+## Data
+
+Species vulnerability scores and trait values are presented in Butt et al. (2022). A trait-based framework for assessing the vulnerability of marine species to human impacts. Ecosphere, 13(2), e3919. https://doi.org/10.1002/ecs2.3919.
+
+* Note, the species trait/vulnerability scores were recalculated after publication; code is available at https://github.com/mapping-marine-spp-vuln/spp_vuln_framework
+* Updated traits and vulnerability scores will be available in KNB eventually.
+
+AquaX species distribution models are presented in Reygondeau et al. (2026). AquaX: An enhanced and revised AquaMaps framework to model marine species distributions and biodiversity. PLOS ONE, 21(2), e0335823. https://doi.org/10.1371/journal.pone.0335823
+
+* Data for 12k IUCN-listed species were provided from Gabriel Reygondeau to Casey O'Hara in April 2026, and placed on Aurora.
+
+## Methods
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(here)
+library(taxize) ### remotes::install_github('ropensci/taxize')
+source('common_fxns.R')
+```
+
+### Read in data
+
+Read in data for species from vulnerability project and AquaX species.
+
+```{r}
+spp_traits <- data.table::fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv')) %>%
+  select(-starts_with('gf_')) %>%
+  rename(sciname = species)
+```
+
+```{r}
+load(here('_data/META_02122025.Rdata'))
+spp_aquax <- META %>%
+  janitor::clean_names() %>%
+  select(aphia_id, sciname = scientific_name, kingdom:genus, sdm) %>%
+  mutate(across(where(is.character), tolower)) %>%
+  distinct()
+```
+
+Note, here we are using the full AquaX metadata, which includes ~170k spp with no SDM in the dataset.  However, these species are listed with their AphiaID so we can grab those values easily even if no map is available.
+
+### Identify direct matches
+
+This subset includes any species whose sciname is included in AquaX and thus tied to an AphiaID.
+
+```{r}
+spp_direct_match <- inner_join(spp_traits, spp_aquax, by = 'sciname')
+
+nrow(spp_direct_match)
+```
+
+### Identify non-matches
+
+```{r}
+spp_nomatch <- anti_join(spp_traits, spp_aquax, by = 'sciname')
+```
+
+Of the ~7k species listed in the traits data that do not have a match in the AquaX data, query WoRMS to identify AphiaID.  Why are these not matched?
+
+### Pass 1: Resolve non-matches
+
+Try all names against WoRMS to match IDs directly using `get_wormsid()`.  This queries each name one at a time, so takes a while.  Compare results against direct matches above - `get_wormsid()` uses fuzzy matching so there may be some overlap with spp noted above, or spp with matches in AquaX already.
+
+```{r}
+pass1_f <- here('tmp/spp_aphia_id_pass1.csv')
+
+if(!file.exists(pass1_f)) {
+  check_classification <- function(x) {
+    y <- classification(x, db = 'worms', ask = FALSE)
+    if(is.data.frame(y[[1]])) {
+      z <- y[[1]] %>%
+        filter(rank == 'Species') %>%
+        select(sciname_match = name, aphia_id = id) %>%
+        mutate(sciname_query = x)
+      return(z)
+    } else {
+      return(data.frame(sciname_query = x, aphia_id = NA))
+    }
+  }
+
+  spp_vec <- spp_nomatch$sciname
+  
+  pass1_list <- lapply(X = spp_vec,
+                       FUN = check_classification)
+  
+  pass1_df <- pass1_list %>%
+    bind_rows()
+  
+  write_csv(pass1_df, pass1_f)
+}
+
+pass1_df <- read_csv(pass1_f)
+```
+
+Examine matches, including IDs that are already included in AquaX that didn't have a direct match from the start.
+
+```{r}
+sum(!is.na(pass1_df$aphia_id))
+
+check1 <- inner_join(spp_aquax, pass1_df, by = c('aphia_id'))
+
+DT::datatable(check1)
+```
+
+It appears that for the small overlapping subset, AquaX has the correct scientific names for the various Aphia ID values that are close matches.
+
+### Pass 2?
+
+```{r}
+still_no_match <- pass1_df %>% filter(is.na(aphia_id))
+```
+
+Some of these are no longer extant! But `taxize` has no parameter to allow `extant = false`.
+
+```{r}
+### use %% to escape a true %
+url_stem <- 'https://marinespecies.org/rest/AphiaRecordsByNames?scientificnames%%5B%%5D=%s&like=false&marine_only=true&extant_only=false'
+
+pass2_f <- here('tmp/spp_aphia_id_pass2.csv')
+
+if(!file.exists(pass2_f)) {
+  
+  check_extant <- function(x) {
+    ### x <- unmatched_vec[1]
+    spp_url <- sprintf(url_stem, x)
+    y <- try(jsonlite::fromJSON(spp_url), silent = TRUE)
+    if(is.data.frame(y[[1]])) {
+      z <- y[[1]] %>%
+        janitor::clean_names() %>%
+        rename(sciname_match = scientificname) %>%
+        mutate(sciname_query = x)
+      return(z)
+    } 
+    ### if try-error?
+    if(class(y) == 'try-error') {
+      return(data.frame(sciname_query = x, aphia_id = NA, try_error = TRUE))
+    }
+    ### no error just empty?
+    return(data.frame(sciname_query = x, aphia_id = NA, try_error = FALSE))
+    
+  }
+
+  unmatched_vec <- still_no_match$sciname_query %>% str_replace(' +', '%20')
+
+  pass2_list <- lapply(X = unmatched_vec,
+                       FUN = check_extant)
+  
+  pass2_df <- pass2_list %>%
+    bind_rows()
+  
+  write_csv(pass2_df, pass2_f)
+}
+
+pass2_df <- read_csv(pass2_f) %>%
+  select(aphia_id, sciname_query, sciname_match, 
+         valid_aphia_id, valid_name, 
+         status, unacceptreason, is_extinct, try_error)
+```
+
+```{r}
+### Still not found:
+sum(pass2_df$try_error, na.rm = TRUE)
+
+### Extinct:
+sum(pass2_df$is_extinct, na.rm = TRUE)
+
+### Accepted:
+DT::datatable(pass2_df %>% filter(status == 'accepted' & !is_extinct))
+
+### Not accepted:
+DT::datatable(pass2_df %>% 
+  filter(!is_extinct) %>%
+  filter(status != 'accepted')
+)
+
+```
+
+### Combined species/ID updates
+
+```{r}
+aquax_matched <- spp_direct_match %>%
+  select(sciname, aphia_id) %>%
+  mutate(valid_sciname = tolower(sciname))
+pass1_matched <- pass1_df %>%
+  filter(!is.na(aphia_id)) %>%
+  mutate(sciname = sciname_query,
+         valid_sciname = tolower(sciname_match)) %>%
+  mutate(match = sciname == valid_sciname)
+
+pass2_matched <- pass2_df %>%
+  mutate(sciname_query = sciname_query %>% str_replace('.20', ' ')) %>%
+  filter(!is.na(aphia_id)) %>%
+  ### if no flag for extinct, keep it for now
+  filter(is_extinct != 1 | is.na(is_extinct)) %>%
+  mutate(valid_sciname = tolower(valid_name),
+         aphia_id = valid_aphia_id) %>%
+  mutate(match = sciname_query == valid_sciname) %>%
+  select(sciname = sciname_query, valid_sciname, aphia_id, match) %>%
+  distinct()
+
+pass2_extinct <- pass2_df %>%
+  filter(is_extinct == 1)
+  
+update_sciname_aphia_df <- bind_rows(aquax_matched, pass1_matched, pass2_matched) %>%
+  select(sciname, aphia_id, valid_sciname) %>%
+  distinct()
+```
+
+
+## Reform outputs
+
+Create updated outputs with simplified column names and file names; zip; put in .gitignore.
+
+These will be uploaded to KNB when it becomes available.
+
+### Trait outputs
+
+Load dataframes of updated traits-to-species.  As aphia_id and valid_sciname may join two spp previously considered separate, and divide one spp previously considered unique, the trait_vals may have to change as well.
+
+Recall that some traits are mutually exclusive (e.g., body length probs must add to 1) and others are not (e.g., habitats/zones may add up to more than one).
+
+```{r}
+library(data.table)
+junction_df     <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv')) %>%
+  rename(trait_id = gf_trait_id, spp_id = gf_spp_id)
+taxa_lookup     <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv')) %>%
+  rename(spp_id = gf_spp_id)
+traitval_lookup <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv')) %>%
+  rename(trait_id = gf_trait_id)
+### these need reordering for sensible levels
+gapfill_lookup  <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv')) %>%
+  mutate(match = factor(match, levels = c('species', 'genus', 'family', 'order', 'class')),
+         gapfill = factor(gapfill, levels = c('none', 'genus', 'family', 'order', 'class'))) %>%
+  arrange(match, gapfill) %>%
+  mutate(gf_match_id_new = 1:n())
+
+junct_taxa_df <- full_join(junction_df, taxa_lookup, by = 'spp_id') %>%
+  left_join(update_sciname_aphia_df, by = c('species' = 'sciname')) %>%
+  left_join(traitval_lookup, by = 'trait_id') %>%
+  left_join(gapfill_lookup, by = 'gf_match_id') %>%
+  select(-spp_id, -species) %>%
+  filter(!is.na(aphia_id))
+
+### resolve trait inconsistencies due to many-to-many relationships among aphia_id and valid_sciname
+non_mut_excl <- c('adult_mobility', 'biomineral', 'zone',
+                  'calcium_carbonate_structure_location', 
+                  'depth_min_max', 'respiration_structures', 
+                  'across_stage_dependent_habitats_condition', 
+                  'within_stage_dependent_habitats_condition')
+
+resolve_mut_excl <- junct_taxa_df %>%
+  filter(!trait %in% non_mut_excl) %>%
+  group_by(aphia_id, category, trait) %>%
+  ### keep only the most specific match level
+  filter(gf_match_id_new == min(gf_match_id_new)) %>%
+  ### total the probabilities across all observed values within the trait...
+  mutate(sum_probs = sum(trait_prob), gf_ids = n_distinct(gf_match_id)) %>%
+  ### then distribute trait values proportionally
+  group_by(aphia_id, category, trait, trait_value, trait_id, gf_match_id = gf_match_id_new, match, gapfill) %>%
+  summarize(trait_prob = sum(trait_prob) / sum_probs, .groups = 'drop')
+  
+resolve_nonmut_excl <- junct_taxa_df %>%
+  filter(trait %in% non_mut_excl) %>%
+  group_by(aphia_id, category, trait) %>%
+  ### keep only the most specific match level
+  filter(gf_match_id_new == min(gf_match_id_new)) %>%
+  distinct() %>%
+  ### no multiple instances with unique probability values
+  select(aphia_id, category, trait, trait_value, trait_id, gf_match_id = gf_match_id_new, match, gapfill)
+
+resolved_traits <- bind_rows(resolve_mut_excl, resolve_nonmut_excl)
+
+### reassembled original dataset for verification:
+traits_check_df <- fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_spp_traits.csv')) %>%
+  full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_levels.csv'))) %>%
+  full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_traits.csv'))) %>%
+  full_join(fread(here_anx('2_gapfill_traits/spp_up_down_gapfill_taxa.csv'))) %>%
+  select(-starts_with('gf_')) %>%
+  filter(species %in% junct_taxa_df$valid_sciname)
+```
+
+The new data include a few extra species (once unrecognized spp are dropped).
+
+Break the resulting traits dataframe back into components to save out with new IDs.
+
+```{r}
+new_junct_df <- resolved_traits %>%
+  select(aphia_id, trait_id, trait_prob, gf_match_id) %>%
+  distinct()
+new_trait_df <- resolved_traits %>%
+  select(trait_id, category, trait, trait_value) %>%
+  distinct() %>% arrange(trait_id)
+new_taxa_df <- junct_taxa_df %>%
+  select(aphia_id, sciname = valid_sciname, taxon) %>%
+  distinct() %>% arrange(aphia_id)
+new_gapfill_df <- resolved_traits %>%
+  select(gf_match_id, gapfill, match) %>%
+  distinct() %>% arrange(gf_match_id)
+
+dir.create(here('update/spp_vuln_framework_traits'))
+write_csv(new_junct_df, here('update/spp_vuln_framework_traits/spp_traits_junction.csv'))
+write_csv(new_trait_df, here('update/spp_vuln_framework_traits/spp_traits_trait_val_lookup.csv'))
+write_csv(new_taxa_df, here('update/spp_vuln_framework_traits/spp_traits_taxa_lookup.csv'))
+write_csv(new_gapfill_df, here('update/spp_vuln_framework_traits/spp_traits_gapfill_levels.csv'))
+```
+
+### Vulnerability score outputs
+
+Separate out lookup tables
+
+```{r}
+vuln_junction <- fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_all_scores.csv'))
+vuln_stressor_lookup <- fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_str.csv'))
+vuln_tx_lookup <- fread(here_anx('3_vuln_score_traits/spp_vuln_from_traits_tx.csv')) %>%
+  mutate(sciname = species)
+
+new_vuln_df <- vuln_junction %>%
+  left_join(vuln_tx_lookup, by = 'vuln_tx_id') %>%
+  left_join(vuln_stressor_lookup, by = 'vuln_str_id') %>%
+  left_join(update_sciname_aphia_df, by = c('species' = 'sciname')) %>%
+  filter(!is.na(aphia_id))
+
+new_vuln_taxa_df <- new_vuln_df %>%
+  select(aphia_id, sciname = valid_sciname, taxon) %>%
+  distinct() %>% arrange(aphia_id)
+
+new_vuln_str_df <- new_vuln_df %>%
+  select(vuln_str_id, stressor) %>%
+  distinct()
+
+```
+
+For the grand junction table, when resolving species names to Aphia IDs, some species are now combined that had been separate.  How to reconcile?
+
+* For sensitivity and adaptive capacity, take mean value
+* for exposure mod, only 2 species have this issue; take the max (exposed).
+* then calc the vulnerability per formula, reusing code from script 6.
+
+```{r}
+spp_scores_mean <- new_vuln_df %>%
+  group_by(aphia_id, vuln_str_id) %>%
+  summarize(sens_score = mean(sens_score), 
+            adcap_gen_score = mean(adcap_gen_score), 
+            adcap_spec_score = mean(adcap_spec_score), 
+            exposure_mod = max(exposure_mod), 
+            mean_vuln = mean(vuln),
+            .groups = 'drop')
+
+### Identify ref values as max value or 1
+ref_values <- spp_scores_mean %>%
+  group_by(vuln_str_id) %>%
+  summarize(max_sens = max(sens_score, 1), 
+              ### the 1 ensures that stressors with very low scores 
+              ### don't get normalized by a low reference
+            max_adcap_gen = max(adcap_gen_score, 1),
+            max_adcap_spec = max(adcap_spec_score, 1), 
+            .groups = 'drop')
+
+### Normalize values against reference for each category
+rescale_vals <- spp_scores_mean %>%
+  left_join(ref_values, by = 'vuln_str_id') %>%
+  mutate(sens_rescale = sens_score / max_sens,
+         acg_rescale  = adcap_gen_score / max_adcap_gen,
+         acs_rescale =  adcap_spec_score / max_adcap_spec)
+
+### Calc vulnerability per formula, then rescale to 0-1 
+new_vuln_calc <- rescale_vals %>%
+  mutate(vuln_raw = sens_rescale / (1 + acg_rescale + acs_rescale) * exposure_mod,
+         vuln = vuln_raw / max(vuln_raw))
+
+
+# asdf <- janitor::get_dupes(new_vuln_df, aphia_id, vuln_str_id)
+# qwer <- asdf %>% group_by(aphia_id, vuln_str_id) %>% filter(n_distinct(exposure_mod) > 1)
+# table(qwer$taxon) ### 1 elasmo spp, 1 sponge spp
+
+new_vuln_junction <- spp_scores_mean %>%
+  left_join(new_vuln_calc %>% select(aphia_id, vuln_str_id, vuln), by = c('aphia_id', 'vuln_str_id'))
+
+check_diffs <- new_vuln_junction %>%
+  filter(vuln != mean_vuln)
+### 16 spp with differences in vulnerability
+```
+
+Write out new tables
+
+```{r}
+dir.create(here('update/spp_vuln_framework_scores'))
+write_csv(new_vuln_junction %>% select(-mean_vuln), here('update/spp_vuln_framework_scores/spp_vuln_junction.csv'))
+write_csv(new_vuln_str_df, here('update/spp_vuln_framework_scores/spp_vuln_stressor_lookup.csv'))
+write_csv(new_vuln_taxa_df, here('update/spp_vuln_framework_scores/spp_vuln_taxa_lookup.csv'))
+```
+

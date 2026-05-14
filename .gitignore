@@ -6,4 +6,7 @@ tmp/
 explore/
 figs/unnamed*.png
 all_traits.csv
-traits_spp.Rdata
+*.Rdata
+*.zip
+update/spp_vuln_framework_traits
+update/spp_vuln_framework_scores
