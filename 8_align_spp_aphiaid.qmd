@@ -224,6 +224,7 @@ pass2_extinct <- pass2_df %>%
 update_sciname_aphia_df <- bind_rows(aquax_matched, pass1_matched, pass2_matched) %>%
   select(sciname, aphia_id, valid_sciname) %>%
   distinct()
+write_csv(update_sciname_aphia_df, 'update/update_sciname_aphia.csv')
 ```
 
 
